@@ -1,0 +1,18 @@
+{
+    "deviceOrientation": "portrait",
+    "showStatusBar": false,
+    "runtimeVersion": "1.0.0",
+    "subpackages": [
+        {
+            "name": "boudoir",
+            "root": "boudoir/"
+        }
+    ],
+    "subPackages": [
+        {
+            "name": "boudoir",
+            "root": "boudoir/"
+        }
+    ],
+    "parallelPreloadSubpackages": []
+}

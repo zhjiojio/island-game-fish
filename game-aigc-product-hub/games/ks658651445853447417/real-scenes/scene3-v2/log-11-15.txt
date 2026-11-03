@@ -1,0 +1,26 @@
+▶ Lv11 · 天津 · 古文化街 · 5 物：泥人张、杨柳青年画、十八街麻花、沙燕风筝、二胡
+   ✅ Lv11 → ./generated/lv11.jpg (5009271 B)
+▶ Lv12 · 石家庄 · 正定古城 · 5 物：古城地图、缸炉烧饼、寺庙铜铃、古琴、木鱼
+   ✅ Lv12 → ./generated/lv12.jpg (4922542 B)
+▶ Lv13 · 沈阳 · 中街清代老街 · 5 物：老边饺子、人参药材、糖饼铁盘、评剧头饰、关东烟袋
+   ✅ Lv13 → ./generated/lv13.jpg (5109184 B)
+▶ Lv14 · 哈尔滨 · 中央大街冰雕 · 6 物：马迭尔冰棍、红肠一节、套娃、冰花小碗、手风琴、教堂尖顶模型
+   ✅ Lv14 → ./generated/lv14.jpg (5442791 B)
+▶ Lv15 · 苏州 · 平江路小桥 · 6 物：苏州折扇、评弹琵琶、苏绣绷架、碧螺春盖碗、小笼蒸屉、油纸伞
+   ⚠ GPT 失败，切 Gemini：请求失败: ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))。建议操作：检查网络连接或确认 SSO 会话是否有效。
+   ✅ Lv15 → ./generated/lv15.jpg (9761053 B)
+
+=== 汇总 ===
+total 111504
+drwxr-xr-x@ 12 fat  staff      384  8  9 02:47 .
+drwxr-xr-x@ 10 fat  staff      320  8  9 02:45 ..
+-rw-r--r--@  1 fat  staff  5830385  8  9 02:40 lv10.jpg
+-rw-r--r--@  1 fat  staff  5009271  8  9 02:41 lv11.jpg
+-rw-r--r--@  1 fat  staff  4922542  8  9 02:42 lv12.jpg
+-rw-r--r--@  1 fat  staff  5109184  8  9 02:43 lv13.jpg
+-rw-r--r--@  1 fat  staff  5442791  8  9 02:44 lv14.jpg
+-rw-r--r--@  1 fat  staff  9761053  8  9 02:47 lv15.jpg
+-rw-r--r--@  1 fat  staff  5052318  8  9 02:43 lv16.jpg
+-rw-r--r--@  1 fat  staff  4997318  8  9 02:44 lv17.jpg
+-rw-r--r--@  1 fat  staff  4913765  8  9 02:45 lv18.jpg
+-rw-r--r--@  1 fat  staff  4945009  8  9 02:46 lv19.jpg

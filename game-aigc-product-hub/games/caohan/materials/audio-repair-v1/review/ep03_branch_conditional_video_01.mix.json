@@ -1,0 +1,18 @@
+{
+  "videoId": "ep03_branch_conditional_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep03_branch_conditional_video_01__l01",
+      "speaker": "贺星冉",
+      "text": "我只是怕你不答应。",
+      "heard": "我只是怕你不答应",
+      "start": 4.415,
+      "end": 6.205,
+      "alignmentScore": 1.0
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 7.035646258503402,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.37347412109375
+}

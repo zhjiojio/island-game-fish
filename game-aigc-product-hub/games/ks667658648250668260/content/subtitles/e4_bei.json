@@ -1,0 +1,10 @@
+{
+  "node": "e4_bei",
+  "speakerKey": "narrator",
+  "speakerName": "旁白",
+  "asrText": "她在盆里搓那块布，水一点点红了。她的手停了一下，抖了一下，又接着搓。她什么都没说。",
+  "asrTextRaw": "他在盆里搓那块布 水一点点红了 他的手停了一下 抖了一下 又接着搓 他什么都没说",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 6
+}

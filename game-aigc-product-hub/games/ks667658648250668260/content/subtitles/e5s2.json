@@ -1,0 +1,10 @@
+{
+  "node": "e5s2",
+  "speakerKey": "aotian",
+  "speakerName": "你",
+  "asrText": "赵铁牛惦记咱家那一亩好地，惦记了整个荒年。今夜，就在这条道上，告诉他他没路可退",
+  "asrTextRaw": "赵铁牛惦记咱家那一摩好地 惦记了整个荒年 今夜就在这条道上 告诉他他没路可退",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 4
+}

@@ -1,0 +1,8 @@
+{
+  "transcript": "陈先生，原来真是您！你们认识？",
+  "utterances": [],
+  "nonverbal": null,
+  "issues": [],
+  "uncertain": "Dedicated STT fallback: speaker identity and nonverbal sounds require separate review.",
+  "provenance": "ep11_scene_00_video_01__p01.stt-qwen3-asr-1.7b.json"
+}

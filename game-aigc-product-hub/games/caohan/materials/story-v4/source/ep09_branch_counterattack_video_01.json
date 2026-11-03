@@ -1,0 +1,112 @@
+{
+  "sourceFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/output/逃婚后我花千万雇了工地糙汉.v4.json",
+  "sourceSha256": "77cee12ed8c5f8a99e49c6ec00ef31136fa64c03eb09995732b91220ca491ec7",
+  "nodeId": "ep09_branch_counterattack",
+  "video": {
+    "id": "ep09_branch_counterattack_video_01",
+    "order": 1,
+    "title": "选择后果·关系摊牌",
+    "durationSec": 6.0,
+    "renderMode": "video_gen",
+    "needsLipSync": true,
+    "continuity": {
+      "locationId": "source_9_9_2",
+      "timeOfDay": "day",
+      "characterIds": [
+        "贺星冉",
+        "贺铭"
+      ],
+      "wardrobe": "沿用角色 wardrobeByEpisode，视频内不得换装",
+      "screenDirection": "保持人物空间轴线与视线方向",
+      "startState": "承接上一视频末帧；首视频承接场景入口",
+      "endState": "保留人物动作、视线与构图状态供下一视频承接"
+    },
+    "assetRefs": [],
+    "shots": [
+      {
+        "id": "ep09_branch_counterattack_video_01_shot_01",
+        "order": 1,
+        "durationSec": 3,
+        "shotSize": "近景",
+        "cameraAngle": "主观视角",
+        "cameraMovement": "固定后骤推",
+        "composition": "贺家庄园·客厅内建立清楚人物方位，主体动作是：贺星冉位于贺家庄园·客厅画面前景，面部近景，视线指向对话对象，嘴唇正在说“不够，所以再来一次。”",
+        "locationId": "source_9_9_2",
+        "timeOfDay": "day",
+        "characters": [
+          "贺星冉"
+        ],
+        "dialogue": [
+          {
+            "speaker": "旁白",
+            "text": "贺星冉坐下，翘起二郎腿，一副闲适的模样。"
+          },
+          {
+            "speaker": "贺星冉",
+            "text": "不够，所以再来一次。"
+          }
+        ],
+        "audio": {
+          "ambient": "贺家庄园·客厅环境底噪",
+          "music": "心动情绪低频铺底",
+          "sfx": []
+        },
+        "visual": {
+          "firstFramePrompt": "日，贺家庄园·客厅，景别：近景，画面人物：贺星冉；贺星冉位于贺家庄园·客厅画面前景，面部近景，视线指向对话对象，嘴唇正在说“不够，所以再来一次。”，人物外观与上镜连续，电影级写实短剧；选择后果：撕掉合同，直接问他敢不敢留下",
+          "videoPrompt": "镜头缓慢推进，清晰呈现贺星冉位于贺家庄园·客厅画面前景，面部近景，视线指向对话对象，嘴唇正在说“不够，所以再来一次。”，保持人物服装、光向和空间轴线连续，明确展示“撕掉合同，直接问他敢不敢留下”导致的动作和关系变化",
+          "negativePrompt": "字幕，水印，畸形手指，多余人物，角色换脸，服装突变，空间跳轴"
+        },
+        "sourceRef": {
+          "episode": 9,
+          "scene": "9-2",
+          "unit": 12,
+          "adaptation": "condensed"
+        },
+        "startSec": 0.0,
+        "endSec": 3.0
+      },
+      {
+        "id": "ep09_branch_counterattack_video_01_shot_02",
+        "order": 2,
+        "durationSec": 3,
+        "shotSize": "特写",
+        "cameraAngle": "平视",
+        "cameraMovement": "轻微手持",
+        "composition": "贺家庄园·客厅内建立清楚人物方位，主体动作是：贺铭位于贺家庄园·客厅画面前景，面部近景，视线指向对话对象，嘴唇正在说“星冉，你还没死心？”",
+        "locationId": "source_9_9_2",
+        "timeOfDay": "day",
+        "characters": [
+          "贺铭"
+        ],
+        "dialogue": [
+          {
+            "speaker": "旁白",
+            "text": "贺铭从沙发上放下茶杯，声音沉了下来。"
+          },
+          {
+            "speaker": "贺铭",
+            "text": "星冉，你还没死心？"
+          }
+        ],
+        "audio": {
+          "ambient": "贺家庄园·客厅环境底噪",
+          "music": "心动情绪低频铺底",
+          "sfx": []
+        },
+        "visual": {
+          "firstFramePrompt": "日，贺家庄园·客厅，景别：特写，画面人物：贺铭；贺铭位于贺家庄园·客厅画面前景，面部近景，视线指向对话对象，嘴唇正在说“星冉，你还没死心？”，人物外观与上镜连续，电影级写实短剧；选择后果：撕掉合同，直接问他敢不敢留下",
+          "videoPrompt": "镜头跟随主体，清晰呈现贺铭位于贺家庄园·客厅画面前景，面部近景，视线指向对话对象，嘴唇正在说“星冉，你还没死心？”，保持人物服装、光向和空间轴线连续，明确展示“撕掉合同，直接问他敢不敢留下”导致的动作和关系变化",
+          "negativePrompt": "字幕，水印，畸形手指，多余人物，角色换脸，服装突变，空间跳轴"
+        },
+        "sourceRef": {
+          "episode": 9,
+          "scene": "9-2",
+          "unit": 13,
+          "adaptation": "condensed"
+        },
+        "startSec": 3.0,
+        "endSec": 6.0
+      }
+    ]
+  }
+}

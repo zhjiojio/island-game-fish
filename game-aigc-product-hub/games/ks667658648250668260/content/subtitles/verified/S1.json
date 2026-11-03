@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S1.mp4",
+  "sha256": "4b57bc3e898a7e87dfc9355d3990c376312357757089d3d2747e5654c0fb8c41",
+  "duration": 10.042,
+  "nodes": [
+    "s1"
+  ],
+  "status": "speech",
+  "transcript": "哦，原来是做梦啊。",
+  "rawText": "哦原来是做梦啊",
+  "asrChars": [
+    [
+      2.7,
+      2.94,
+      "哦"
+    ],
+    [
+      3.64,
+      3.82,
+      "原"
+    ],
+    [
+      3.82,
+      3.94,
+      "来"
+    ],
+    [
+      3.94,
+      4.12,
+      "是"
+    ],
+    [
+      4.12,
+      4.28,
+      "做"
+    ],
+    [
+      4.28,
+      4.52,
+      "梦"
+    ],
+    [
+      4.56,
+      5.185,
+      "啊"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "原来是做梦啊：",
+  "speakerKey": null,
+  "speakerRuleKey": "S1",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

@@ -1,0 +1,10 @@
+{
+  "node": "e5s9",
+  "speakerKey": "narrator",
+  "speakerName": "沈婉儿",
+  "asrText": "这个男人……我要跟一辈子。",
+  "asrTextRaw": "我要跟一辈子",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 1
+}

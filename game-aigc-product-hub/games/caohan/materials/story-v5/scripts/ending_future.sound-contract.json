@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "mode": "diegetic_only",
+  "nodeId": "ending_future",
+  "videoId": "ending_future",
+  "spokenWhitelist": [
+    {
+      "shotId": "ending_future_shot_01",
+      "speakerId": "hexingran",
+      "speaker": "贺星冉",
+      "delivery": "on_screen",
+      "text": "到底是谁让你来救我的？",
+      "startSec": 0.55,
+      "endSec": 6.88
+    },
+    {
+      "shotId": "ending_future_shot_01",
+      "speakerId": "chenjin",
+      "speaker": "陈劲",
+      "delivery": "on_screen",
+      "text": "你。未来的你，花了一千万。",
+      "startSec": 7.12,
+      "endSec": 13.45
+    }
+  ],
+  "nonverbalSound": [
+    {
+      "shotId": "ending_future_shot_01",
+      "audio": {
+        "ambient": "未来感圆形舱门前自然环境声",
+        "music": "无配乐，以现场声为主",
+        "sfx": [],
+        "vocalizations": []
+      }
+    }
+  ],
+  "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+}

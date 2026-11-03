@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>老铁眼真尖 · H5 预览</title>
+<style>
+  html,body { margin:0; padding:0; background:#0F0A1E; overflow:hidden; touch-action:none; }
+  body { display:flex; align-items:center; justify-content:center; height:100vh; }
+  #game { display:block; max-width:100vw; max-height:100vh; background:#FFF5E4; }
+</style>
+</head>
+<body>
+<canvas id="game" width="375" height="667"></canvas>
+<script>window.canvas = document.getElementById('game');</script>
+
+<!-- 平台适配（快手环境走 require；H5 直接顺序加载） · 强制刷新 hash v45 -->
+<script src="js/m3-init.js?v=209"></script>
+<script src="js/telemetry.js?v=209"></script>
+<script src="js/kwai-event-bus.js?v=209"></script>
+<script src="js/kwai-ad-config.js?v=209"></script>
+<script src="api/kwai-open.js?v=209"></script>
+<script src="js/subpackage-loader.js?v=209"></script>
+<script src="js/feedback.js?v=209"></script>
+<script src="js/voice-packs.js?v=209"></script>
+<script src="js/difficulty.js?v=209"></script>
+<script src="js/levels.js?v=209"></script>
+<script src="js/level-loader.js?v=209"></script>
+<script src="js/welcome.js?v=209"></script>
+<script src="js/game.js?v=209"></script>
+<script src="js/main.js?v=209"></script>
+</body>
+</html>

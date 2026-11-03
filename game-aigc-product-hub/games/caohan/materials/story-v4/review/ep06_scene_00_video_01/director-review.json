@@ -1,0 +1,10 @@
+{
+  "videoId": "ep06_scene_00_video_01",
+  "sourceParts": [
+    "ep06_scene_00_video_01__p01"
+  ],
+  "result": "visual_pass_audio_transcript_pass",
+  "durationSec": 6.041667,
+  "sha256": "1ae6b105f70531d2f42cdef71167ca785b5e50cbdfd59abe12078b974e8a8c64",
+  "note": "全部源片段均通过人工身份、构图与独立转写检查；按原文顺序保留原生音轨。"
+}

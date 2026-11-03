@@ -1,0 +1,96 @@
+{
+ "schemaVersion": 1,
+ "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s0b.mp4",
+ "sha256": "af39788b751963ef73ac0eafb4e5a7934208700f727a0f45c77e7d1846491a3e",
+ "duration": 5.042,
+ "nodes": [
+  "e5s0b"
+ ],
+ "status": "speech",
+ "transcript": "粮卖完了，钱，揣热了，婉儿还在家等我呢。",
+ "rawText": "粮卖完了钱揣热了婉儿还在家等我呢",
+ "asrChars": [
+  [
+   0.66,
+   0.9,
+   "粮"
+  ],
+  [
+   0.92,
+   1.08,
+   "卖"
+  ],
+  [
+   1.08,
+   1.26,
+   "完"
+  ],
+  [
+   1.26,
+   1.5,
+   "了"
+  ],
+  [
+   1.82,
+   2.06,
+   "钱"
+  ],
+  [
+   2.18,
+   2.38,
+   "揣"
+  ],
+  [
+   2.38,
+   2.56,
+   "热"
+  ],
+  [
+   2.56,
+   2.8,
+   "了"
+  ],
+  [
+   3.62,
+   3.86,
+   "婉"
+  ],
+  [
+   3.86,
+   3.98,
+   "儿"
+  ],
+  [
+   3.98,
+   4.1,
+   "还"
+  ],
+  [
+   4.1,
+   4.2,
+   "在"
+  ],
+  [
+   4.2,
+   4.4,
+   "家"
+  ],
+  [
+   4.4,
+   4.5,
+   "等"
+  ],
+  [
+   4.5,
+   4.68,
+   "我"
+  ],
+  [
+   4.68,
+   4.885,
+   "呢"
+  ]
+ ],
+ "timingEngine": "asr-anchor(funasr-paraformer)",
+ "reviewMethod": "batch ASR auto (needs human proof-read for punctuation/speaker)."
+}

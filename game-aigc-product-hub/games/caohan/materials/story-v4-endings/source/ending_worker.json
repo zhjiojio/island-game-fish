@@ -1,0 +1,25 @@
+{
+  "id": "ending_worker",
+  "type": "ending",
+  "episodeId": "ep10",
+  "title": "反转结局：反派转职",
+  "isEnding": true,
+  "category": "reversal",
+  "tone": [
+    "反差",
+    "喜剧"
+  ],
+  "rarity": "rare",
+  "isCanonical": false,
+  "unlock": {
+    "requiredFlags": [
+      "ep10_conditional"
+    ],
+    "requiredEndingTags": []
+  },
+  "description": "许邵泽破产后进入陈劲的工地搬砖。",
+  "closing": "三年后，他捧回了安全生产标兵的奖状。",
+  "achievement": "ending_worker",
+  "chapterId": "ch5",
+  "chapterTitle": "第五章：让他再动一次手"
+}

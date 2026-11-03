@@ -1,0 +1,10 @@
+{
+  "node": "e6s4",
+  "speakerKey": "narrator",
+  "speakerName": "傲天",
+  "asrText": "婉儿，我在。你别怕。天塌下来我顶着，谁也别想再动你一根手指头。你往后就安安稳稳待在这个家里。",
+  "asrTextRaw": "婉儿 我在 你别怕 天塌下来我顶着 谁也别想再动你一根手指头 你往后就安安稳稳 待在这个家里",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 6
+}

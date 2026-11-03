@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s3.mp4",
+  "sha256": "1b47d522ddef0da4bbdf11fa3c8ea35cc30b16b04f99ee814b284707688aa74d",
+  "duration": 10.042,
+  "nodes": [
+    "e5s3"
+  ],
+  "status": "speech",
+  "transcript": "婉儿！退后！顶要塌了——去年王家就是这么塌的！",
+  "rawText": "退后王家就是这么塌的",
+  "asrChars": [
+    [
+      5.4,
+      5.66,
+      "婉"
+    ],
+    [
+      5.66,
+      5.92,
+      "儿"
+    ],
+    [
+      6.13,
+      6.29,
+      "退"
+    ],
+    [
+      6.29,
+      6.595,
+      "后"
+    ],
+    [
+      8.69,
+      8.79,
+      "王"
+    ],
+    [
+      8.79,
+      8.91,
+      "家"
+    ],
+    [
+      8.91,
+      9.01,
+      "就"
+    ],
+    [
+      9.01,
+      9.11,
+      "是"
+    ],
+    [
+      9.11,
+      9.23,
+      "这"
+    ],
+    [
+      9.23,
+      9.35,
+      "么"
+    ],
+    [
+      9.35,
+      9.57,
+      "塌"
+    ],
+    [
+      9.57,
+      9.835,
+      "的"
+    ]
+  ],
+  "timingEngine": "asr-anchor+synthetic(婉儿)+interp",
+  "crossCheckText": "傲天(喊):婉儿！退后！ / 沈婉儿(惊):顶要塌了——去年王家就是这么塌的！",
+  "speakerKey": null,
+  "speakerRuleKey": "n5s3",
+  "reviewMethod": "manual-correction: ASR merged both speakers into '退后王家就是这么塌的'; restored 傲天 opening line + 婉儿 full line per video prompt dialogue."
+}

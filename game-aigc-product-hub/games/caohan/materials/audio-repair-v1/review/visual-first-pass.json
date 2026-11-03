@@ -1,0 +1,554 @@
+[
+  {
+    "videoId": "ep01_scene_00_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep01_branch_emotion_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep01_branch_truth_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep01_branch_counterattack_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep01_branch_conditional_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep02_scene_00_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep02_branch_emotion_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep02_branch_truth_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep02_branch_counterattack_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep02_branch_conditional_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep03_scene_00_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep03_branch_emotion_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep03_branch_truth_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep03_branch_counterattack_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep03_branch_conditional_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep04_scene_00_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep04_branch_emotion_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep04_branch_truth_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep04_branch_counterattack_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep04_branch_conditional_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": true,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep05_scene_00_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep05_branch_emotion_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep05_branch_truth_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep05_branch_counterattack_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep05_branch_conditional_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep06_scene_00_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": true,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep06_branch_emotion_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep06_branch_truth_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep06_branch_counterattack_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep06_branch_conditional_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep07_scene_00_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep07_branch_emotion_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep07_branch_truth_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep07_branch_counterattack_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep07_branch_conditional_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep08_scene_00_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep08_branch_emotion_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep08_branch_truth_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep08_branch_counterattack_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep08_branch_conditional_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep09_scene_00_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep09_branch_emotion_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep09_branch_truth_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep09_branch_counterattack_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep09_branch_conditional_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep10_scene_00_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep10_branch_emotion_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep10_branch_truth_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep10_branch_counterattack_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep10_branch_conditional_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep11_scene_00_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep11_branch_emotion_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep11_branch_truth_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep11_branch_counterattack_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ep11_branch_conditional_video_01",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ending_loop",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ending_streamer",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": true,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ending_cow",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ending_terrace",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": true,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ending_reality_show",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ending_empire",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": true,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ending_future",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ending_boss",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ending_crane",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ending_worker",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ending_romance",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ending_independent",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": true,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ending_revenge",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": true,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  },
+  {
+    "videoId": "ending_regret",
+    "firstPass": "six_frame_face_sampling_completed",
+    "scope": "screened mouth pose and scene continuity; sampling alone does not prove lip-sync",
+    "needsTargetedPictureRepair": false,
+    "needsDialogueLipSync": false,
+    "status": "pending_combined_audio_picture_review"
+  }
+]

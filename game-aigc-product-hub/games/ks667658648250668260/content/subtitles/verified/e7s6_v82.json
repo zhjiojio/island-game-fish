@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e7s6_v82.mp4",
+  "sha256": "460b29aa861ace4b1ac6338b5db291b2a40cc8ac0a8eed53673f6ec132cd917e",
+  "duration": 10.042,
+  "nodes": [
+    "e7s6"
+  ],
+  "status": "speech",
+  "transcript": "李傲天，神人！",
+  "rawText": "李傲天神人",
+  "asrChars": [
+    [
+      5.83,
+      6.07,
+      "李"
+    ],
+    [
+      6.39,
+      6.63,
+      "傲"
+    ],
+    [
+      6.81,
+      7.05,
+      "天"
+    ],
+    [
+      8.73,
+      8.97,
+      "神"
+    ],
+    [
+      9.35,
+      9.735,
+      "人"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "李冰。李老十 doubt２李大光。 worry本之欲源。神人。",
+  "speakerKey": null,
+  "speakerRuleKey": "e7s6",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

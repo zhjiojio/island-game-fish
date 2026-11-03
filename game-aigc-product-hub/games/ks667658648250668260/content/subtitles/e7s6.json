@@ -1,0 +1,10 @@
+{
+  "node": "e7s6",
+  "speakerKey": "narrator",
+  "speakerName": "村民",
+  "asrText": "李傲天！神人！",
+  "asrTextRaw": "李澳天神人",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 1
+}

@@ -1,0 +1,10 @@
+{
+  "node": "e8s2",
+  "speakerKey": "narrator",
+  "speakerName": "旁白",
+  "asrText": "",
+  "asrTextRaw": "他要的不是那一畝地 他要的是让性理的永远淹在水里 淹的再也抬不起头 滴没了 人心就散了 李澳天三个字就不值钱了",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 6
+}

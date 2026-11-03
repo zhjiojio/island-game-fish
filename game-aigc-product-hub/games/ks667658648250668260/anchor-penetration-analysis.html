@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>主播活动渗透规模分析 · 暑期星钻活动</title>
+<style>
+  :root{
+    --paper:#0f1117;
+    --panel:#161a23;
+    --line:#272d3a;
+    --dim:#6f7788;
+    --ink-3:#7a8191;
+    --new:#ffb43d;
+    --new-2:#ff7a45;
+    --cyan:#35d6c4;
+    --red:#ff6b5a;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:
+      radial-gradient(900px 480px at 8% 0%, #1d2230 0%, rgba(29,34,48,0) 62%),
+      radial-gradient(1000px 520px at 96% 8%, #24202e 0%, rgba(36,32,46,0) 60%),
+      var(--paper);
+    color:#e8eaf0;
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1660px;margin:0 auto;padding:16px 26px 20px}
+  .eyebrow{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--new);margin-bottom:6px;
+  }
+  h1{font-size:21px;line-height:1.22;margin:0 0 5px;letter-spacing:-.01em;font-weight:800}
+  h1 em{font-style:normal;background:linear-gradient(90deg,var(--new),var(--new-2));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .dek{color:var(--ink-3);font-size:12px;max-width:120em;margin:0 0 11px;line-height:1.45}
+  .dek b{color:var(--new)}
+  .dek b.r{color:var(--red)}
+
+  h2{
+    font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    color:#9aa2b3;margin:0 0 7px;display:flex;align-items:center;gap:9px;
+  }
+  h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),rgba(39,45,58,0))}
+  h2 b{color:var(--new);font-weight:700}
+  section{margin-bottom:12px}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  @keyframes grow{from{width:0 !important}}
+
+  /* 竖版漏斗 · 三段式 */
+  .vfunnel{display:flex;flex-direction:column;gap:8px}
+  .colhead{display:grid;grid-template-columns:238px 1.25fr 1fr;gap:10px;margin-bottom:1px}
+  .colhead div{font-size:10px;letter-spacing:.14em;color:#5f6675;
+    font-family:ui-monospace,monospace;text-transform:uppercase;padding-left:2px}
+  .stage{display:grid;grid-template-columns:238px 1.25fr 1fr;gap:10px;align-items:stretch;
+    animation:rise .6s cubic-bezier(.2,.7,.3,1) both}
+  .stage:nth-child(3){animation-delay:.08s}
+  .stage:nth-child(4){animation-delay:.16s}
+  .stage:nth-child(5){animation-delay:.24s}
+
+  /* 左：漏斗块 */
+  .fbox{background:var(--panel);border:1px solid var(--line);border-radius:11px;
+    padding:28px 13px 10px;position:relative;display:flex;flex-direction:column;justify-content:center}
+  .stg{position:absolute;left:0;top:0;display:inline-flex;align-items:center;gap:6px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;letter-spacing:.14em;
+    padding:4px 11px 4px 12px;border-radius:11px 0 11px 0;font-weight:700}
+  .f1 .stg{background:#242a36;color:#9aa2b3}
+  .f2 .stg{background:rgba(255,180,61,.17);color:var(--new)}
+  .f3 .stg{background:rgba(255,107,90,.18);color:var(--red)}
+  .f4 .stg{background:rgba(53,214,196,.16);color:var(--cyan)}
+  .fbox .slab{font-size:11.5px;color:#aeb5c4;margin-bottom:2px;font-weight:600}
+  .fbox .v{font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1.05;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  .fbox .v s{text-decoration:none;font-size:14px;font-weight:600}
+  .fbox .u{font-size:11px;color:var(--ink-3);margin-top:1px}
+  .fshape{height:6px;border-radius:99px;background:#232833;margin-top:6px;overflow:hidden}
+  .fshape i{display:block;height:100%;border-radius:99px;animation:grow 1s cubic-bezier(.2,.8,.3,1) both}
+  .f1 .v{color:#dfe3ec} .f1 .fshape i{background:#4b5468}
+  .f2 .v{color:var(--new)} .f2 .fshape i{background:linear-gradient(90deg,var(--new),var(--new-2))}
+  .f3 .v{color:var(--red)} .f3 .fshape i{background:linear-gradient(90deg,var(--red),#c0392b)}
+  .f4 .v{color:var(--cyan)} .f4 .fshape i{background:linear-gradient(90deg,var(--cyan),#1f9e91)}
+  .conv{display:flex;align-items:center;gap:7px;margin-top:6px;font-size:11px;
+    font-family:ui-monospace,monospace}
+  .conv .tag{padding:1px 7px;border-radius:4px;background:#232833;color:#9aa2b3}
+  .conv .tag.warn{background:rgba(255,107,90,.16);color:var(--red)}
+  .conv .tag.ok{background:rgba(53,214,196,.14);color:var(--cyan)}
+  .conv .loss{color:var(--ink-3)}
+
+  /* 中 / 右 通用盒 */
+  .sbox{background:var(--panel);border:1px solid var(--line);border-radius:11px;
+    padding:10px 14px;position:relative;overflow:hidden}
+  .abox{background:var(--panel);border:1px solid var(--line);border-radius:11px;
+    padding:10px 14px;position:relative;overflow:hidden;display:flex;flex-direction:column}
+  .abox::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:#3a4152}
+  .abox.p0::before{background:linear-gradient(180deg,var(--red),#c0392b)}
+  .abox.p1::before{background:linear-gradient(180deg,var(--new),var(--new-2))}
+  .abox.p2::before{background:linear-gradient(180deg,#6f7788,#454c5c)}
+  .abox.p0{border-color:#3a2a29;background:linear-gradient(110deg,#1e1817 0%,#161a23 62%)}
+  .abox.p1{border-color:#3b3524;background:linear-gradient(110deg,#1c1a18 0%,#161a23 62%)}
+  .shead{display:flex;align-items:center;gap:8px;margin-bottom:5px;flex-wrap:wrap}
+  .pri{font-size:10.5px;font-family:ui-monospace,monospace;font-weight:700;
+    padding:1px 7px;border-radius:4px;letter-spacing:.06em}
+  .pri.p0{background:rgba(255,107,90,.16);color:var(--red)}
+  .pri.p1{background:rgba(255,180,61,.15);color:var(--new)}
+  .pri.p2{background:#232833;color:var(--dim)}
+  .sname{font-size:13px;font-weight:700}
+  .sjudge{font-size:11px;color:var(--ink-3);line-height:1.4;
+    margin-top:auto;padding-top:7px;border-top:1px solid #232833}
+  .sgrid{display:block}
+  .sk{font-size:10px;letter-spacing:.09em;color:var(--ink-3);
+    font-family:ui-monospace,monospace;text-transform:uppercase;margin-bottom:2px}
+  .st{font-size:12px;color:#cfd4e0;line-height:1.48}
+  .st b{color:var(--new)}
+  .sbox.p0 .st b{color:#ff8a7a}
+  .abox ul{margin:0;padding-left:15px}
+  .abox li{font-size:12px;color:#cfd4e0;line-height:1.45;margin-bottom:3px}
+  .abox li:last-child{margin-bottom:0}
+  .abox li b{color:var(--new)}
+  .abox.p0 li b{color:#ff8a7a}
+  .abox .st b{color:var(--new)}
+  .abox.p0 .st b{color:#ff8a7a}
+
+  /* 端侧小表 */
+  .ends{margin-top:7px;border-top:1px solid #232833;padding-top:6px}
+  .ehead{font-size:10px;letter-spacing:.09em;color:var(--ink-3);
+    font-family:ui-monospace,monospace;text-transform:uppercase;margin-bottom:5px}
+  .etab{width:100%;border-collapse:collapse;font-size:12px}
+  .etab th{font-size:10.5px;color:var(--ink-3);font-weight:600;text-align:right;
+    padding:2px 6px;border-bottom:1px solid #232833}
+  .etab th:first-child,.etab td:first-child{text-align:left}
+  .etab td{padding:3px 6px;border-bottom:1px dashed #212631;text-align:right;
+    font-family:ui-monospace,monospace;color:#cfd4e0}
+  .etab tr:last-child td{border-bottom:none}
+  .etab td.n{font-family:"PingFang SC",sans-serif}
+  .etab .good{color:var(--new);font-weight:700}
+  .etab .bad{color:var(--red);font-weight:700}
+  .note{font-size:11px;color:var(--ink-3);font-family:"PingFang SC",sans-serif}
+
+  /* 其余区块 */
+  .acu{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:11px 14px 10px;
+    animation:rise .6s cubic-bezier(.2,.7,.3,1) both}
+  .card.best{border-color:#3b3524;background:linear-gradient(180deg,#1c1a18 0%,#161a23 60%)}
+  .ctitle{font-size:14px;font-weight:700;margin-bottom:1px}
+  .cmeta{font-size:11.5px;color:var(--ink-3);margin-bottom:7px}
+  .kv{display:flex;justify-content:space-between;align-items:baseline;
+    font-size:12.5px;padding:2px 0;border-bottom:1px dashed #232833}
+  .kv:last-child{border-bottom:none}
+  .kv span{color:var(--ink-3)}
+  .kv b{font-family:ui-monospace,monospace;font-weight:700;color:#dfe3ec}
+  .kv b.hi{color:var(--new)}
+  .kv b.lo{color:var(--red)}
+  .tagline{font-size:11.5px;color:var(--ink-3);margin-top:6px;line-height:1.42;
+    border-top:1px solid #232833;padding-top:6px}
+  .ratio{display:flex;align-items:center;gap:10px;margin-top:7px;padding-top:6px;
+    border-top:1px solid #232833;font-size:12px;color:var(--ink-3)}
+  .ratio b{color:var(--new);font-family:ui-monospace,monospace;font-size:15px}
+
+  .cmp{background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:11px 15px}
+  .row{display:grid;grid-template-columns:120px 1fr 74px;align-items:center;gap:11px;margin-bottom:5px}
+  .row:last-child{margin-bottom:0}
+  .row .lab{font-size:12.5px;color:#cfd4e0}
+  .row .track{height:14px;background:#1d222c;border-radius:4px;position:relative;overflow:hidden}
+  .row .track i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;
+    animation:grow 1s cubic-bezier(.2,.8,.3,1) both}
+  .row .track i.star{background:linear-gradient(90deg,var(--new),var(--new-2))}
+  .row .track i.card2{background:linear-gradient(90deg,#4b5468,#6f7788)}
+  .row .val{font-size:12.5px;font-family:ui-monospace,monospace;text-align:right;color:#dfe3ec}
+  .legend{display:flex;gap:16px;font-size:11.5px;color:var(--ink-3);margin-bottom:8px}
+  .legend i{display:inline-block;width:11px;height:8px;border-radius:2px;margin-right:5px;vertical-align:1px}
+  .legend i.star{background:linear-gradient(90deg,var(--new),var(--new-2))}
+  .legend i.card2{background:#6f7788}
+
+  footer{margin-top:10px;color:#555c6c;font-size:11px;border-top:1px solid var(--line);padding-top:8px}
+
+  .brief{display:grid;grid-template-columns:238px 1.25fr 1fr;gap:10px;margin-bottom:8px}
+  .brief div{background:var(--panel);border:1px solid var(--line);border-radius:11px;
+    padding:9px 13px;font-size:12px;line-height:1.5;color:#cfd4e0}
+  .brief .bk{font-size:10px;letter-spacing:.09em;color:var(--ink-3);
+    font-family:ui-monospace,monospace;text-transform:uppercase;display:block;margin-bottom:2px}
+  .brief b{color:var(--new)}
+  .brief b.r{color:#ff8a7a}
+  .brief .q{border-color:#3a2a29;background:linear-gradient(110deg,#1e1817 0%,#161a23 70%)}
+  .brief .a{border-color:#3b3524;background:linear-gradient(110deg,#1c1a18 0%,#161a23 70%)}
+
+  @media (max-width:1180px){
+    .stage{grid-template-columns:1fr}
+    .brief{grid-template-columns:1fr}
+    .colhead{display:none}
+    .sgrid{grid-template-columns:1fr}
+    .acu{grid-template-columns:1fr}
+    h1{font-size:20px}
+    .row{grid-template-columns:92px 1fr 62px}
+    .wrap{padding:18px 13px 26px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Anchor Penetration Analysis</div>
+  <h1>主播活动渗透规模分析<br/>整体 0.54% 参与率是<em>三段流失叠加</em>的结果</h1>
+  <p class="dek">统计周期内日均开播主播 10.5 万，最终有星钻领取的主播不足 1%。把漏斗逐段拆开，三个环节的流失量级、成因与优先级完全不同 —— 其中<b class="r">曝光到访问是当前最关键的 P0 断点</b>。另：7 月 23 日高点源于移动端观众侧直播间上线右上角必出挂件，主播与用户参与同步出现峰值。</p>
+
+  <section>
+    <h2><b>01</b> 漏斗分段 ｜ 流失规模 · 归因与数据 · 优先级与指向动作</h2>
+    <div class="brief">
+      <div><span class="bk">现状</span>10.5 万开播主播，最终仅 <b>0.54%</b> 领到星钻。</div>
+      <div class="q"><span class="bk">问题</span>入口只覆盖 <b class="r">40%</b>，看到的人里又有 <b class="r">93%</b> 没点进活动页 —— 断点不在任务难度，而在<b class="r">主播压根不知道有这个活动</b>。</div>
+      <div class="a"><span class="bk">解法</span>P0 换钩子：常态资源位 + 阶段性玩法；P1 任务分层，腰尾部默认低门槛；P2 补移动端直播伴侣入口能力。</div>
+    </div>
+    <div class="vfunnel">
+      <div class="colhead"><div>① 漏斗与流失规模</div><div>② 归因与数据</div><div>③ 优先级与指向动作</div></div>
+
+      <div class="stage">
+        <div class="fbox f1">
+          <div class="stg">STAGE 01</div>
+          <div class="slab">开播主播</div>
+          <div class="v">10.5<s> 万</s></div>
+          <div class="u">日均开播主播数（基数）</div>
+          <div class="fshape"><i style="width:100%"></i></div>
+          <div class="conv"><span class="tag">100%</span><span class="loss">全量开播盘子</span></div>
+        </div>
+        <div class="sbox">
+          <div class="shead"><span class="sname">起点：全量游戏开播主播</span></div>
+          <div class="st">三端规模接近：<b>PC 伴侣 3.8 万（37%）</b>、移动端开播 2.9 万（28%）、移动端直播伴侣 3.7 万（35%）。但三端的活动触达能力差异极大，这一差异直接决定了下一段的渗透结果。</div>
+        </div>
+        <div class="abox">
+          <div class="shead"><span class="pri p2">基准</span><span class="sname">本段为分析基数</span></div>
+          <div class="st">不涉及流失，无指向动作。</div>
+          <div class="sjudge">判断：后续三段的流失均以此 10.5 万为分母。</div>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="fbox f2">
+          <div class="stg">STAGE 02</div>
+          <div class="slab">活动入口曝光</div>
+          <div class="v">4.2<s> 万</s></div>
+          <div class="u">有活动入口曝光渗透</div>
+          <div class="fshape"><i style="width:40.1%"></i></div>
+          <div class="conv"><span class="tag">渗透 40.1%</span><span class="loss">流失 6.3 万</span></div>
+        </div>
+        <div class="sbox">
+          <div class="sk">归因</div>
+          <div class="st">开播端的触达能力差异。核心中头部主播集中在 PC 伴侣，该端触达率尚可、参与率 8.52%；而渗透差的端与中长尾主播高度重合 —— 移动端直播伴侣占 35% 开播量，大卡曝光为 <b>0%</b>。</div>
+          <div class="ends">
+            <div class="ehead">分端触达与参与拆解</div>
+            <table class="etab">
+              <thead>
+                <tr><th>开播端</th><th>规模 / 占比</th><th>大卡曝光率</th><th>曝光访问率</th><th>访问参与率</th><th>有效参与率</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="n">PC 伴侣开播</td><td>3.8 万 / 37%</td>
+                  <td class="good">71%</td><td>4.65%</td><td class="good">44.86%</td><td class="good">2.09%</td>
+                </tr>
+                <tr>
+                  <td class="n">移动端开播</td><td>2.9 万 / 28%</td>
+                  <td>51%</td><td class="bad">2.66%</td><td class="bad">11.58%</td><td class="bad">0.31%</td>
+                </tr>
+                <tr>
+                  <td class="n">移动端直播伴侣</td><td>3.7 万 / 35%</td>
+                  <td class="bad">0%</td><td>—</td><td>—</td><td class="bad">—</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="note" style="margin-top:6px;line-height:1.5">PC 伴侣是表现最好的端，未曝光部分主要是低版本原因、短期难解；移动端开播参与率仅为 PC 伴侣的 1/7，曝光率偏低的原因仍需排查；移动端直播伴侣无大卡能力，仅能经用户侧入口参与，是最大的一块结构性缺口。</div>
+          </div>
+        </div>
+        <div class="abox p2">
+          <div class="shead"><span class="pri p2">P2</span><span class="sname">活动入口渗透</span></div>
+          <ul>
+            <li>补齐<b>移动端直播伴侣</b>的触达能力</li>
+            <li>移动端做对游戏主播更友好的触达设计</li>
+          </ul>
+          <div class="sjudge">判断：属于长期产品配套能力要解的问题，非本次活动可短期修复。</div>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="fbox f3">
+          <div class="stg">STAGE 03</div>
+          <div class="slab">访问活动页</div>
+          <div class="v">0.3<s> 万</s></div>
+          <div class="u">完成活动页面访问</div>
+          <div class="fshape"><i style="width:7.2%"></i></div>
+          <div class="conv"><span class="tag warn">转化 7.2%</span><span class="loss">流失 3.9 万</span></div>
+        </div>
+        <div class="sbox p0">
+          <div class="sk">归因</div>
+          <div class="st">入口被看到但主播没点进来，本质是<b>活动对主播的激励钩子不够充分</b>。当前主要外显信息是榜单，而很多主播的冲榜动力不足，且越到后期越疲倦。</div>
+          <div class="ends">
+            <div class="ehead">流失量级</div>
+            <div class="note" style="line-height:1.5">3.9 万主播看到了入口但未进入活动页，占全量开播的 <b style="color:#ff8a7a">37%</b>。相较之下，曝光渗透 40.1% 与访问后参与 32% 均属正常水位，本段是三段中唯一的断崖式流失。</div>
+          </div>
+        </div>
+        <div class="abox p0">
+          <div class="shead"><span class="pri p0">P0</span><span class="sname">曝光 → 访问活动页</span></div>
+          <ul>
+            <li>利用其他<b>常态资源位</b>提升主播对活动的感知，参考盛典活动把用户在间内的行为通过消息提醒告知主播（如「谁在你直播间里开启了盛典红包」）</li>
+            <li>玩法做<b>阶段性调整</b>，不要整个周期都用同一套触达利益点和机制</li>
+            <li>前期可用现金奖励、限时额外福利拉动（活动中期上线的抽手机对主播侧与用户侧均有显著效果）</li>
+            <li>面向主播分阶段设计玩法，让不同阶段的主播都有参与感</li>
+          </ul>
+          <div class="sjudge">判断：当前最大流失环节，下次活动必须解决。</div>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="fbox f4">
+          <div class="stg">STAGE 04</div>
+          <div class="slab">领取星钻</div>
+          <div class="v">0.1<s> 万</s></div>
+          <div class="u">有星钻领取转化</div>
+          <div class="fshape"><i style="width:2.3%"></i></div>
+          <div class="conv"><span class="tag ok">转化 32%</span><span class="loss">整体参与率 0.54%</span></div>
+        </div>
+        <div class="sbox p1">
+          <div class="sk">归因</div>
+          <div class="st">很多主播来了却<b>没有可领取的任务</b>；即便在有领取的主播中，也有 <b>38%</b> 只做了开播时长任务，商业化任务的领取严重不足。</div>
+          <div class="ends">
+            <div class="ehead">佐证</div>
+            <div class="note" style="line-height:1.5">ACU&lt;10 的主播占全量开播规模 97%，有效参与率仅 0.48%，领钻中位数约 880 钻 —— 恰好对应开播时长任务的奖励量级，说明这批主播基本没有触达到商业化任务。</div>
+          </div>
+        </div>
+        <div class="abox p1">
+          <div class="shead"><span class="pri p1">P1</span><span class="sname">访问 → 真实参与</span></div>
+          <ul>
+            <li>任务奖励做<b>分层设计</b>：腰尾部主播默认出低门槛、好完成的任务（如小游戏），先让主播参与进来</li>
+            <li>当主播具备一定经营能力、并实际感受到星钻补贴后，再推荐高星钻、相对复杂的任务</li>
+            <li>主播不知道做什么时，<b>先帮主播做好选择</b></li>
+          </ul>
+          <div class="sjudge">判断：任务设计层面的问题，优先级次于入口感知。</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2><b>02</b> 拆分主播 ACU ｜ 什么样的主播参与意愿高</h2>
+    <div class="acu">
+      <div class="card">
+        <div class="ctitle">ACU &lt; 10 ｜ 中长尾主播</div>
+        <div class="cmeta">月去重开播规模 75 万，占比 97%</div>
+        <div class="kv"><span>有效访问率</span><b class="lo">5.87%</b></div>
+        <div class="kv"><span>有效参与率</span><b class="lo">0.48%</b></div>
+        <div class="kv"><span>领钻中位数</span><b>约 880 钻</b></div>
+        <div class="tagline">占据 97% 的开播规模，但大部分只能领到开播时长任务的奖励，其余任务的完成门槛过高。</div>
+      </div>
+      <div class="card best">
+        <div class="ctitle">ACU &gt; 10 ｜ 中腰部及以上</div>
+        <div class="cmeta">月去重开播规模 2.2 万，占比 3%</div>
+        <div class="kv"><span>有效访问率</span><b class="hi">24%</b></div>
+        <div class="kv"><span>有效参与率</span><b class="hi">8.52%</b></div>
+        <div class="kv"><span>规律</span><b class="hi">ACU 越高渗透越高</b></div>
+        <div class="ratio"><span>参与率差距</span><b>17.8×</b><span>访问率差距 4.1×</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><b>03</b> 横向对比 ｜ 星钻活动 vs 7 月盛夏之星打卡</h2>
+    <div class="cmp">
+      <div class="legend">
+        <div><i class="star"></i>暑期星钻活动</div>
+        <div><i class="card2"></i>7 月盛夏之星打卡活动</div>
+      </div>
+      <div class="row">
+        <div class="lab">整体参与率</div>
+        <div class="track"><i class="star" style="width:23.3%"></i></div>
+        <div class="val">0.54%</div>
+      </div>
+      <div class="row">
+        <div class="lab"></div>
+        <div class="track"><i class="card2" style="width:100%"></i></div>
+        <div class="val">2.32%</div>
+      </div>
+      <p class="dek" style="margin:10px 0 0">打卡活动参与率是同期星钻活动的 <b>4.3 倍</b>。口径不严格：打卡仅需开播后进入活动页点击即算参与，而星钻最低门槛是 4 小时直播时长。差距最大的档位在 <b>ACU 1～100</b>，其中 ACU 5～10 的主播差距达 <b>8 倍</b>；PC 伴侣在两个活动中都是参与度最高的端，但星钻活动在该端的渗透同样明显落后。</p>
+    </div>
+  </section>
+
+  <footer>数据来源：暑期线上星钻活动复盘 · 主播活动渗透规模分析 ｜ 统计周期内日均口径 ｜ 横向对比为非严格口径</footer>
+</div>
+</body>
+</html>

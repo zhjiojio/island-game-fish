@@ -1,0 +1,520 @@
+{
+  "valueDefinitions": [
+    {
+      "id": "favor",
+      "icon": "default/icon_favor.png",
+      "name": "陈劲好感"
+    },
+    {
+      "id": "wisdom",
+      "icon": "default/icon_wisdom.png",
+      "name": "清醒值"
+    },
+    {
+      "id": "courage",
+      "icon": "default/icon_courage.png",
+      "name": "勇气值"
+    }
+  ],
+  "policy": {
+    "purpose": "display_feedback_only",
+    "initialValues": {
+      "favor": 0,
+      "wisdom": 0,
+      "courage": 0
+    },
+    "allowNegative": true,
+    "settlement": "once_after_successful_option_selection",
+    "rewardedAd": "apply_only_after_reward_success",
+    "retry": "rollback_previous_selection_before_reselection",
+    "videoReplay": "no_change",
+    "restart": "reset_all_three_to_zero",
+    "engineImplementation": "required_not_guaranteed_by_config"
+  },
+  "options": [
+    {
+      "choiceId": "ep01_choice_01",
+      "optionId": "emotion",
+      "text": "他只是压力太大，不是认真的",
+      "value": {
+        "favor": 0,
+        "wisdom": -1,
+        "courage": 0
+      },
+      "reason": "忽略已发生的伤害，尚未识别危险。"
+    },
+    {
+      "choiceId": "ep01_choice_01",
+      "optionId": "truth",
+      "text": "他是认真的，他从来没爱过我",
+      "value": {
+        "favor": 0,
+        "wisdom": 2,
+        "courage": 0
+      },
+      "reason": "承认背叛与危险，不涉及陈劲关系。"
+    },
+    {
+      "choiceId": "ep01_choice_01",
+      "optionId": "counterattack",
+      "text": "把牛奶杯砸在他脚边，逼他承认",
+      "value": {
+        "favor": 0,
+        "wisdom": 1,
+        "courage": 2
+      },
+      "reason": "识破伪装并正面质问。"
+    },
+    {
+      "choiceId": "ep01_choice_01",
+      "optionId": "conditional",
+      "text": "播放提前留下的露台录音",
+      "value": {
+        "favor": 0,
+        "wisdom": 2,
+        "courage": 1
+      },
+      "reason": "用已保存录音寻求证实。"
+    },
+    {
+      "choiceId": "ep02_choice_01",
+      "optionId": "emotion",
+      "text": "靠近他，我现在只能信这双手",
+      "value": {
+        "favor": 1,
+        "wisdom": 0,
+        "courage": 0
+      },
+      "reason": "接受陈劲帮助，建立初步信任。"
+    },
+    {
+      "choiceId": "ep02_choice_01",
+      "optionId": "truth",
+      "text": "推开他，我不能再把命交给男人",
+      "value": {
+        "favor": -1,
+        "wisdom": 0,
+        "courage": 0
+      },
+      "reason": "拒绝陈劲靠近，以交易替代信任；自保不扣清醒。"
+    },
+    {
+      "choiceId": "ep02_choice_01",
+      "optionId": "counterattack",
+      "text": "让陈劲当众把追兵吓退",
+      "value": {
+        "favor": 1,
+        "wisdom": 0,
+        "courage": 0
+      },
+      "reason": "信任他的保护，不因广告身份额外加分。"
+    },
+    {
+      "choiceId": "ep02_choice_01",
+      "optionId": "conditional",
+      "text": "用上一集留下的录音反向威胁",
+      "value": {
+        "favor": 0,
+        "wisdom": 2,
+        "courage": 1
+      },
+      "reason": "用录音主动阻止追兵。"
+    },
+    {
+      "choiceId": "ep03_choice_01",
+      "optionId": "emotion",
+      "text": "丢脸也好，至少不用再装体面",
+      "value": {
+        "favor": 1,
+        "wisdom": 0,
+        "courage": 0
+      },
+      "reason": "允许对方看到脆弱并接受照顾。"
+    },
+    {
+      "choiceId": "ep03_choice_01",
+      "optionId": "truth",
+      "text": "忍住，我不能让他看见我崩溃",
+      "value": {
+        "favor": 0,
+        "wisdom": 0,
+        "courage": 0
+      },
+      "reason": "暂时保留私人情绪，不将克制判为错误。"
+    },
+    {
+      "choiceId": "ep03_choice_01",
+      "optionId": "counterattack",
+      "text": "吐完以后抬头说一句谢谢",
+      "value": {
+        "favor": 1,
+        "wisdom": 0,
+        "courage": 1
+      },
+      "reason": "真诚道谢并主动表明仍活着；暴露行踪不加清醒。"
+    },
+    {
+      "choiceId": "ep03_choice_01",
+      "optionId": "conditional",
+      "text": "认出闺蜜提前藏好的定位器",
+      "value": {
+        "favor": 0,
+        "wisdom": 2,
+        "courage": 0
+      },
+      "reason": "认出可信定位器并保留求援线索。"
+    },
+    {
+      "choiceId": "ep04_choice_01",
+      "optionId": "emotion",
+      "text": "让他开，我想看看他能不能接住我的世界",
+      "value": {
+        "favor": 1,
+        "wisdom": 0,
+        "courage": 0
+      },
+      "reason": "愿意把驾驶任务交给陈劲。"
+    },
+    {
+      "choiceId": "ep04_choice_01",
+      "optionId": "truth",
+      "text": "自己开，我不需要任何人掌控方向",
+      "value": {
+        "favor": 0,
+        "wisdom": 1,
+        "courage": 1
+      },
+      "reason": "表达自己的选择并掌握方向，不惩罚自主。"
+    },
+    {
+      "choiceId": "ep04_choice_01",
+      "optionId": "counterattack",
+      "text": "把宾利钥匙直接塞进他手里",
+      "value": {
+        "favor": 0,
+        "wisdom": 0,
+        "courage": 1
+      },
+      "reason": "主动安排出行，但命令口吻不增加好感。"
+    },
+    {
+      "choiceId": "ep04_choice_01",
+      "optionId": "conditional",
+      "text": "说出只有真正信任过他才知道的暗号",
+      "value": {
+        "favor": 1,
+        "wisdom": 1,
+        "courage": 0
+      },
+      "reason": "记住双方暗号并形成安全默契。"
+    },
+    {
+      "choiceId": "ep05_choice_01",
+      "optionId": "emotion",
+      "text": "别推开我，我现在只想抓住一个人",
+      "value": {
+        "favor": 1,
+        "wisdom": 0,
+        "courage": 0
+      },
+      "reason": "坦白需要陪伴，接受对方安抚。"
+    },
+    {
+      "choiceId": "ep05_choice_01",
+      "optionId": "truth",
+      "text": "立刻松手，我不能再失去边界",
+      "value": {
+        "favor": 0,
+        "wisdom": 2,
+        "courage": 0
+      },
+      "reason": "明确休息边界，不因拒绝亲密扣好感。"
+    },
+    {
+      "choiceId": "ep05_choice_01",
+      "optionId": "counterattack",
+      "text": "不躲，反手把他按回床边",
+      "value": {
+        "favor": -1,
+        "wisdom": -1,
+        "courage": 1
+      },
+      "reason": "主动表达亲近却忽略对方边界，勇气与清醒分开评价。"
+    },
+    {
+      "choiceId": "ep05_choice_01",
+      "optionId": "conditional",
+      "text": "用合同里的安全条款叫停越界",
+      "value": {
+        "favor": 0,
+        "wisdom": 2,
+        "courage": 1
+      },
+      "reason": "清晰叫停越界并维护规则。"
+    },
+    {
+      "choiceId": "ep06_choice_01",
+      "optionId": "emotion",
+      "text": "用钱把安全感留住，至少它不会背叛",
+      "value": {
+        "favor": -1,
+        "wisdom": -1,
+        "courage": 0
+      },
+      "reason": "试图用金钱控制对方去留。"
+    },
+    {
+      "choiceId": "ep06_choice_01",
+      "optionId": "truth",
+      "text": "告诉他真相，我要的不是雇佣关系",
+      "value": {
+        "favor": 2,
+        "wisdom": 1,
+        "courage": 1
+      },
+      "reason": "坦诚危险与真实需求，建立信任。"
+    },
+    {
+      "choiceId": "ep06_choice_01",
+      "optionId": "counterattack",
+      "text": "把三千万改成共同创业基金",
+      "value": {
+        "favor": 1,
+        "wisdom": 1,
+        "courage": 1
+      },
+      "reason": "提出平等合作并征得同意。"
+    },
+    {
+      "choiceId": "ep06_choice_01",
+      "optionId": "conditional",
+      "text": "亮出前一集保住的黑卡流水",
+      "value": {
+        "favor": 0,
+        "wisdom": 2,
+        "courage": 1
+      },
+      "reason": "保存财务证据并准备宣布退婚。"
+    },
+    {
+      "choiceId": "ep07_choice_01",
+      "optionId": "emotion",
+      "text": "低头走开，先活下来",
+      "value": {
+        "favor": 0,
+        "wisdom": 1,
+        "courage": 0
+      },
+      "reason": "选择先脱离冲突，不把安全撤退当作怯懦。"
+    },
+    {
+      "choiceId": "ep07_choice_01",
+      "optionId": "truth",
+      "text": "当众开口，把露台真相砸在他脸上",
+      "value": {
+        "favor": 0,
+        "wisdom": 1,
+        "courage": 2
+      },
+      "reason": "明确指认加害者并坚持要求回答。"
+    },
+    {
+      "choiceId": "ep07_choice_01",
+      "optionId": "counterattack",
+      "text": "当众播放露台录音",
+      "value": {
+        "favor": 0,
+        "wisdom": 2,
+        "courage": 1
+      },
+      "reason": "用录音支持公开质询。"
+    },
+    {
+      "choiceId": "ep07_choice_01",
+      "optionId": "conditional",
+      "text": "让陈劲说出管家才懂的旧姓氏",
+      "value": {
+        "favor": 1,
+        "wisdom": 1,
+        "courage": 0
+      },
+      "reason": "与陈劲配合，用线索观察管家反应。"
+    },
+    {
+      "choiceId": "ep08_choice_01",
+      "optionId": "emotion",
+      "text": "装作没看见，给所有人留体面",
+      "value": {
+        "favor": -1,
+        "wisdom": 0,
+        "courage": -1
+      },
+      "reason": "回避对陈劲的试探，未明确维护对方。"
+    },
+    {
+      "choiceId": "ep08_choice_01",
+      "optionId": "truth",
+      "text": "点破试探，我不准他们再踩他",
+      "value": {
+        "favor": 2,
+        "wisdom": 1,
+        "courage": 1
+      },
+      "reason": "识破试探并公开维护陈劲。"
+    },
+    {
+      "choiceId": "ep08_choice_01",
+      "optionId": "counterattack",
+      "text": "接过古董瓶，当场宣布买下它",
+      "value": {
+        "favor": 1,
+        "wisdom": 0,
+        "courage": 1
+      },
+      "reason": "制止羞辱并维护同伴，不将花钱等同于清醒。"
+    },
+    {
+      "choiceId": "ep08_choice_01",
+      "optionId": "conditional",
+      "text": "用陈劲教过的手势拆穿试探",
+      "value": {
+        "favor": 1,
+        "wisdom": 2,
+        "courage": 1
+      },
+      "reason": "运用共同手势与观察拆穿试探。"
+    },
+    {
+      "choiceId": "ep09_choice_01",
+      "optionId": "emotion",
+      "text": "合同能保护我，感情只会让我失控",
+      "value": {
+        "favor": 0,
+        "wisdom": 1,
+        "courage": 0
+      },
+      "reason": "维持契约边界，不惩罚谨慎选择。"
+    },
+    {
+      "choiceId": "ep09_choice_01",
+      "optionId": "truth",
+      "text": "撕掉附加条款，我想知道他为什么留下",
+      "value": {
+        "favor": 1,
+        "wisdom": 1,
+        "courage": 1
+      },
+      "reason": "主动询问真实动机，保留自主判断。"
+    },
+    {
+      "choiceId": "ep09_choice_01",
+      "optionId": "counterattack",
+      "text": "撕掉合同，直接问他敢不敢留下",
+      "value": {
+        "favor": 2,
+        "wisdom": 0,
+        "courage": 1
+      },
+      "reason": "直接表达关系期待并得到回应。"
+    },
+    {
+      "choiceId": "ep09_choice_01",
+      "optionId": "conditional",
+      "text": "调出前一集保存的管家通话",
+      "value": {
+        "favor": 0,
+        "wisdom": 2,
+        "courage": 0
+      },
+      "reason": "保存并核对通话线索。"
+    },
+    {
+      "choiceId": "ep10_choice_01",
+      "optionId": "emotion",
+      "text": "退到陈劲身后，让他替我挡一次",
+      "value": {
+        "favor": 1,
+        "wisdom": 0,
+        "courage": 0
+      },
+      "reason": "接受陈劲保护，不将求助扣为怯懦。"
+    },
+    {
+      "choiceId": "ep10_choice_01",
+      "optionId": "truth",
+      "text": "站到最前面，这次由我亲口拒绝",
+      "value": {
+        "favor": 0,
+        "wisdom": 2,
+        "courage": 2
+      },
+      "reason": "亲自结束强迫婚约。"
+    },
+    {
+      "choiceId": "ep10_choice_01",
+      "optionId": "counterattack",
+      "text": "抢过话筒，让所有宾客听见真相",
+      "value": {
+        "favor": 0,
+        "wisdom": 1,
+        "courage": 2
+      },
+      "reason": "公开指认伤害并面对众人。"
+    },
+    {
+      "choiceId": "ep10_choice_01",
+      "optionId": "conditional",
+      "text": "启用之前积累的全部证据链",
+      "value": {
+        "favor": 0,
+        "wisdom": 2,
+        "courage": 1
+      },
+      "reason": "将完整证据交由律师处理。"
+    },
+    {
+      "choiceId": "ep11_choice_01",
+      "optionId": "emotion",
+      "text": "抓住陈劲的手，和他并肩回家",
+      "value": {
+        "favor": 2,
+        "wisdom": 0,
+        "courage": 1
+      },
+      "reason": "主动选择与陈劲同行。"
+    },
+    {
+      "choiceId": "ep11_choice_01",
+      "optionId": "truth",
+      "text": "拒绝所有婚约，把人生拿回自己手里",
+      "value": {
+        "favor": 0,
+        "wisdom": 2,
+        "courage": 1
+      },
+      "reason": "自主决定婚姻，不因独立结局扣好感。"
+    },
+    {
+      "choiceId": "ep11_choice_01",
+      "optionId": "counterattack",
+      "text": "公开全部证据，让许家当场覆灭",
+      "value": {
+        "favor": 0,
+        "wisdom": 1,
+        "courage": 2
+      },
+      "reason": "承担公开证据、追究责任的行动。"
+    },
+    {
+      "choiceId": "ep11_choice_01",
+      "optionId": "conditional",
+      "text": "松开他的手，一个人回到露台",
+      "value": {
+        "favor": 0,
+        "wisdom": 1,
+        "courage": 0
+      },
+      "reason": "选择独处并表达边界，不以结局好坏倒推扣分。"
+    }
+  ]
+}

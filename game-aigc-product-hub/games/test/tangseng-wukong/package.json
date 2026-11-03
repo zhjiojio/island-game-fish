@@ -1,0 +1,18 @@
+{
+  "name": "wukong-tangseng",
+  "version": "0.2.0",
+  "private": true,
+  "description": "悟空与唐僧文字合成塔防，含网页端公网玩家对战房间服务。",
+  "main": "server/online-server.js",
+  "scripts": {
+    "start": "node server/online-server.js",
+    "test": "node --test server/*.test.js",
+    "sim": "node sim/run.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "ws": "^8.18.3"
+  }
+}

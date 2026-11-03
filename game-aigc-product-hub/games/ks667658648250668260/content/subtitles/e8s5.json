@@ -1,0 +1,10 @@
+{
+  "node": "e8s5",
+  "speakerKey": "narrator",
+  "speakerName": "傲天",
+  "asrText": "这一亩地，宁命不给他们！",
+  "asrTextRaw": "為什麼? 這一母帝 寧命不給他們",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 2
+}

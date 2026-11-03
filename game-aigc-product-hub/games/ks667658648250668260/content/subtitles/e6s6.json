@@ -1,0 +1,10 @@
+{
+  "node": "e6s6",
+  "speakerKey": "narrator",
+  "speakerName": "旁白",
+  "asrText": "灯灭了以后，两个人隔着一道土墙躺着。她听着他那边翻了三回身，他听着她那边一直没动静。这一夜，都没睡着",
+  "asrTextRaw": "灯灭了以后 两个人隔着一道土墙躺着 他听着他那边翻了三回身 他听着他那边一直没动静 这一夜都没睡着",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 4
+}

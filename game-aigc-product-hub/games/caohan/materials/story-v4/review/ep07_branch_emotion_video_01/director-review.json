@@ -1,0 +1,13 @@
+{
+  "videoId": "ep07_branch_emotion_video_01",
+  "sourceParts": [
+    "ep07_branch_emotion_video_01__p01",
+    "ep07_branch_emotion_video_01__p02",
+    "ep07_branch_emotion_video_01__p03"
+  ],
+  "result": "visual_pass_audio_transcript_pass",
+  "durationSec": 16.125,
+  "sha256": "df8fcd75547afcea07bc1ff710f85a7424f438acb64812e1291d11f836b020ba",
+  "note": "全部源片段均通过人工身份、构图与独立转写检查；按原文顺序保留原生音轨。",
+  "finalSamplingReviewed": true
+}

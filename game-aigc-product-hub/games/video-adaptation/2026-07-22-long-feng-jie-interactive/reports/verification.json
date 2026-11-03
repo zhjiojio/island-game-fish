@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "verified_at": "2026-07-22T18:08:33+08:00",
+  "site_url": "https://bboyabssiszai.github.io/long-feng-jie-interactive/",
+  "repository_url": "https://github.com/bboyabssiszai/long-feng-jie-interactive",
+  "commit": "c4de0a95eec09583befe1fa3c626d7d27448d58d",
+  "actions_run_url": "https://github.com/bboyabssiszai/long-feng-jie-interactive/actions/runs/29910572299",
+  "checks": {
+    "tests": { "status": "passed", "files": 4, "tests": 12 },
+    "lint": { "status": "passed" },
+    "build": { "status": "passed", "size_bytes_approx": 10171187 },
+    "asset_policy": { "status": "passed" },
+    "responsive_browser": { "status": "passed", "viewports": ["390x844", "1280x800"] },
+    "ending_routes": { "status": "passed", "count": 3 },
+    "live_media": { "status": "passed", "video_mp4": 8, "image_jpeg": 12 }
+  },
+  "live_media": [
+    { "path": "/long-feng-jie-interactive/assets/capital-deal-Bn0TOQe3.jpg", "content_type": "image/jpeg" },
+    { "path": "/long-feng-jie-interactive/assets/capital-deal-CGOicn7y.mp4", "content_type": "video/mp4" },
+    { "path": "/long-feng-jie-interactive/assets/ending-crown-alone-DA_o8Hln.jpg", "content_type": "image/jpeg" },
+    { "path": "/long-feng-jie-interactive/assets/ending-together-DsCjYx3c.jpg", "content_type": "image/jpeg" },
+    { "path": "/long-feng-jie-interactive/assets/ending-unfinished-BsZD-_RK.jpg", "content_type": "image/jpeg" },
+    { "path": "/long-feng-jie-interactive/assets/jade-distance-Cdm51SvX.mp4", "content_type": "video/mp4" },
+    { "path": "/long-feng-jie-interactive/assets/jade-distance-mK6JfQJ_.jpg", "content_type": "image/jpeg" },
+    { "path": "/long-feng-jie-interactive/assets/jade-trust-BYyQo3wP.jpg", "content_type": "image/jpeg" },
+    { "path": "/long-feng-jie-interactive/assets/jade-trust-CcmOdDxA.mp4", "content_type": "video/mp4" },
+    { "path": "/long-feng-jie-interactive/assets/lab-evidence-BOSv2MzV.jpg", "content_type": "image/jpeg" },
+    { "path": "/long-feng-jie-interactive/assets/lab-evidence-DgsRV4Bg.mp4", "content_type": "video/mp4" },
+    { "path": "/long-feng-jie-interactive/assets/launch-attack-CqCUPPKP.jpg", "content_type": "image/jpeg" },
+    { "path": "/long-feng-jie-interactive/assets/launch-attack-D5_erpN1.mp4", "content_type": "video/mp4" },
+    { "path": "/long-feng-jie-interactive/assets/launch-stage-ChlMq9L5.mp4", "content_type": "video/mp4" },
+    { "path": "/long-feng-jie-interactive/assets/launch-stage-DHJYEFen.jpg", "content_type": "image/jpeg" },
+    { "path": "/long-feng-jie-interactive/assets/protection-contract-BiACwBs3.mp4", "content_type": "video/mp4" },
+    { "path": "/long-feng-jie-interactive/assets/protection-contract-mfIMU7SS.jpg", "content_type": "image/jpeg" },
+    { "path": "/long-feng-jie-interactive/assets/warehouse-priority-CydQK-MD.jpg", "content_type": "image/jpeg" },
+    { "path": "/long-feng-jie-interactive/assets/wedding-crisis-C8pmhbX4.jpg", "content_type": "image/jpeg" },
+    { "path": "/long-feng-jie-interactive/assets/wedding-crisis-gVStdTj2.mp4", "content_type": "video/mp4" }
+  ]
+}

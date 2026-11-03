@@ -1,0 +1,81 @@
+{
+ "schemaVersion": 1,
+ "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_drink_a.mp4",
+ "sha256": "9a3db01a2e1afec6a673085b78fff0ac3eabf830901df433d8a987f0d771ef6c",
+ "duration": 10.042,
+ "nodes": [
+  "r_drink_a"
+ ],
+ "status": "speech",
+ "transcript": "哎，我在那边也没人陪我喝过酒。",
+ "rawText": "哎我在那边也没人陪我喝过酒",
+ "asrChars": [
+  [
+   0.59,
+   0.83,
+   "哎"
+  ],
+  [
+   4.79,
+   5.03,
+   "我"
+  ],
+  [
+   5.03,
+   5.23,
+   "在"
+  ],
+  [
+   5.23,
+   5.43,
+   "那"
+  ],
+  [
+   5.43,
+   5.67,
+   "边"
+  ],
+  [
+   7.53,
+   7.77,
+   "也"
+  ],
+  [
+   7.77,
+   7.93,
+   "没"
+  ],
+  [
+   7.93,
+   8.07,
+   "人"
+  ],
+  [
+   8.07,
+   8.29,
+   "陪"
+  ],
+  [
+   8.29,
+   8.41,
+   "我"
+  ],
+  [
+   8.41,
+   8.57,
+   "喝"
+  ],
+  [
+   8.57,
+   8.81,
+   "过"
+  ],
+  [
+   8.81,
+   9.465,
+   "酒"
+  ]
+ ],
+ "timingEngine": "asr-anchor(funasr-paraformer)",
+ "reviewMethod": "batch ASR auto (needs human proof-read for punctuation/speaker)."
+}

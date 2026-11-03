@@ -1,0 +1,17 @@
+{
+  "sourcePath": "/Users/kwaibear/work/minigame/game-aigc-product-hub/games/ks867658648250668260/materials/story-v4/characters/沐瑶-角色设定.png",
+  "size": [
+    1400,
+    788
+  ],
+  "minDimension": 788,
+  "detailScore": 27.58,
+  "classification": "clear",
+  "identityDecision": "requires Media Director visual review",
+  "character": "沐瑶",
+  "sha256": "3f7be325bc429c27c01830ca49c471405ef037c58de25cee0e3d8d0c7d666919",
+  "anchorVersion": 1,
+  "identityApproved": true,
+  "reviewer": "Media Director",
+  "review": "已逐图查看，脸部清楚、正侧背人物一致，服装与年龄符合角色设定。许邵泽身份图依用户明确指定映射。"
+}

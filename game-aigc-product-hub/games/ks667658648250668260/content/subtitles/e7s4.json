@@ -1,0 +1,10 @@
+{
+  "node": "e7s4",
+  "speakerKey": "narrator",
+  "speakerName": "旁白",
+  "asrText": "信的连夜扛锄头下了地。不信的站在村口啐口水，说李傲天疯了，说他把自己当土地爷。信的信，不信的骂",
+  "asrTextRaw": "信的连夜康竹头下了地 不信地站在村口摧口水 说李耀天疯了 说他把自己当土地爷 信的信不信地骂",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 5
+}

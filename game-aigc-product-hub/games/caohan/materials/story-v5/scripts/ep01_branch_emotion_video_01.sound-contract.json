@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "mode": "diegetic_only",
+  "nodeId": "ep01_branch_emotion",
+  "videoId": "ep01_branch_emotion_video_01",
+  "spokenWhitelist": [],
+  "nonverbalSound": [
+    {
+      "shotId": "ep01_branch_emotion_video_01_shot_01",
+      "audio": {
+        "ambient": "高空风声与远处城市底噪",
+        "music": "无配乐，以现场声为主",
+        "sfx": [
+          "栏杆断裂和衣料掠过声"
+        ],
+        "vocalizations": [
+          {
+            "speakerId": "hexingran",
+            "kind": "scream"
+          }
+        ]
+      }
+    }
+  ],
+  "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+}

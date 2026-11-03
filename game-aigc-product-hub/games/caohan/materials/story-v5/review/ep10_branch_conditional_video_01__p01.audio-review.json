@@ -1,0 +1,8 @@
+{
+  "transcript": "录音、流水、跟踪照片，律师已经收到了。",
+  "utterances": [],
+  "nonverbal": null,
+  "issues": [],
+  "uncertain": "Dedicated STT fallback: speaker identity and nonverbal sounds require separate review.",
+  "provenance": "ep10_branch_conditional_video_01__p01.stt-qwen3-asr-1.7b.json"
+}

@@ -1,0 +1,41 @@
+{
+  "许邵泽执行者A": {
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/materials/逃婚后我花千万雇了个工地糙汉/characters/许邵泽执行者A-角色设定.png",
+    "size": [
+      1400,
+      788
+    ],
+    "minDimension": 788,
+    "detailScore": 26.81,
+    "classification": "clear",
+    "identityDecision": "requires Media Director visual review",
+    "sha256": "eea312ab3822f81e790ae4e78b8e825ec19090eb2b9231be2ce93ce71538fab9",
+    "visualReview": "已查看；完整清晰的人物多视图，仅用于文件名对应角色。"
+  },
+  "沐瑶": {
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/materials/逃婚后我花千万雇了个工地糙汉/characters/沐瑶-角色设定.png",
+    "size": [
+      1400,
+      788
+    ],
+    "minDimension": 788,
+    "detailScore": 27.58,
+    "classification": "clear",
+    "identityDecision": "requires Media Director visual review",
+    "sha256": "3f7be325bc429c27c01830ca49c471405ef037c58de25cee0e3d8d0c7d666919",
+    "visualReview": "已查看；完整清晰的人物多视图，仅用于文件名对应角色。"
+  },
+  "陈劲": {
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/materials/逃婚后我花千万雇了个工地糙汉/characters/陈劲-角色设定.png",
+    "size": [
+      1400,
+      788
+    ],
+    "minDimension": 788,
+    "detailScore": 28.73,
+    "classification": "clear",
+    "identityDecision": "requires Media Director visual review",
+    "sha256": "a1556931be25aeca37985a4a04c8a55521463341b3c6d13340641bd2f214c6ba",
+    "visualReview": "已查看；完整清晰的人物多视图，仅用于文件名对应角色。"
+  }
+}

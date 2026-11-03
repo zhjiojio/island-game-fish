@@ -1,0 +1,19 @@
+{
+  "sourceUnchanged": true,
+  "sourceSha256": "77cee12ed8c5f8a99e49c6ec00ef31136fa64c03eb09995732b91220ca491ec7",
+  "configSha256": "c6917c7d162f4a78b9a06b727c6be4c9fc4e1416112863a564221a71062696d5",
+  "mediaRevision": "audio-repair-v1",
+  "videoCount": 69,
+  "verifiedCdnVideos": 69,
+  "allVideoUrlsChanged": true,
+  "unchangedPictureCount": 62,
+  "localPictureRepairCount": 7,
+  "spokenLineCount": 72,
+  "reachableEndings": 14,
+  "statesExplored": 5651,
+  "allowedTransitions": 5650,
+  "uiAndStoryStateUnchanged": true,
+  "credentialAbsentFromDeliveryFiles": true,
+  "textFilesScanned": 1986,
+  "runtimeIntegrationTested": false
+}

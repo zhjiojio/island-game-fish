@@ -1,0 +1,10 @@
+{
+  "node": "BE_STARVE",
+  "speakerKey": "wanerh",
+  "speakerName": "沈婉儿",
+  "asrText": "",
+  "asrTextRaw": "",
+  "matchScript": true,
+  "textSource": "script-authoritative (v82.0重生成全库视频后，旧ASR已失效，以剧本text为权威)",
+  "cues": 4
+}

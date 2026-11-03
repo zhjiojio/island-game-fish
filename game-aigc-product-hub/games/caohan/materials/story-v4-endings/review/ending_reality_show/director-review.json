@@ -1,0 +1,12 @@
+{
+  "videoId": "ending_reality_show",
+  "sourceParts": [
+    "ending_reality_show__p01",
+    "ending_reality_show__p02"
+  ],
+  "result": "visual_pass_audio_transcript_pass",
+  "durationSec": 16.083333,
+  "sha256": "300f6419963931ca0fb3ea2e8f09ba9448b0b2bc7d09dfac54b61d76b1923636",
+  "note": "全部源片段均通过人工身份、构图与独立转写检查；按原文顺序保留原生音轨。",
+  "finalSamplingNote": "合并抽帧确认综艺观众席至投票结果，女主白西装连续，屏幕独自出道文字稳定。"
+}

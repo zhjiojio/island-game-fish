@@ -1,0 +1,10 @@
+{
+  "node": "BE_MONSTER",
+  "speakerKey": "villager",
+  "speakerName": "村民（举火把嘶吼）",
+  "asrText": "",
+  "asrTextRaw": "",
+  "matchScript": true,
+  "textSource": "script-authoritative (v82.0重生成全库视频后，旧ASR已失效，以剧本text为权威)",
+  "cues": 5
+}

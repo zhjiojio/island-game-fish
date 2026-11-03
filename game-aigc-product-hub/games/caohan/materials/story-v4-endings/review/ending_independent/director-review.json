@@ -1,0 +1,12 @@
+{
+  "videoId": "ending_independent",
+  "sourceParts": [
+    "ending_independent__p01",
+    "ending_independent__p02"
+  ],
+  "result": "visual_pass_audio_transcript_pass",
+  "durationSec": 16.083333,
+  "sha256": "ceb3cf17127b86e4707c2db292a726f2270e2acfd66750d80b99357389f51a84",
+  "note": "全部源片段均通过人工身份、构图与独立转写检查；按原文顺序保留原生音轨。",
+  "finalSamplingNote": "成片五点抽帧确认拒绝婚约、钥匙、独自驾车的顺序，服装连续，音轨来自已审核片段。"
+}

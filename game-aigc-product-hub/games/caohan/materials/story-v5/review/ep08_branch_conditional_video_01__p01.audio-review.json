@@ -1,0 +1,16 @@
+{
+  "transcript": "您还没递稳就松手了。",
+  "utterances": [
+    {
+      "speaker": "female",
+      "text": "您还没递稳就松手了。"
+    }
+  ],
+  "nonverbal": {
+    "sound_events": [
+      "轻微撞击声"
+    ]
+  },
+  "issues": null,
+  "uncertain": null
+}

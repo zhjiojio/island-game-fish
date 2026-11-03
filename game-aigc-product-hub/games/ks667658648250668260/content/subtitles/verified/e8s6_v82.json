@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e8s6_v82.mp4",
+  "sha256": "1305bd0973db0048e630999ad87711b0260282fcc1c59c7824fb37f0ce4c70aa",
+  "duration": 10.042,
+  "nodes": [
+    "e8s6"
+  ],
+  "status": "partial_review",
+  "transcript": "我就要你……一个人，你听到没？",
+  "rawText": "我就要你的星梦一个人你听到没",
+  "asrChars": [
+    [
+      1.22,
+      1.42,
+      "我"
+    ],
+    [
+      1.42,
+      1.58,
+      "就"
+    ],
+    [
+      1.58,
+      1.7,
+      "要"
+    ],
+    [
+      1.7,
+      1.8,
+      "你"
+    ],
+    [
+      1.8,
+      1.92,
+      "的"
+    ],
+    [
+      1.92,
+      2.1,
+      "星"
+    ],
+    [
+      2.1,
+      2.34,
+      "梦"
+    ],
+    [
+      3.46,
+      3.64,
+      "一"
+    ],
+    [
+      3.64,
+      3.82,
+      "个"
+    ],
+    [
+      3.82,
+      4.06,
+      "人"
+    ],
+    [
+      5.44,
+      5.68,
+      "你"
+    ],
+    [
+      5.68,
+      5.84,
+      "听"
+    ],
+    [
+      5.84,
+      6.02,
+      "到"
+    ],
+    [
+      6.02,
+      6.345,
+      "没"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "我只要你一个人。你听到没?",
+  "speakerKey": null,
+  "speakerRuleKey": "e8s6",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration.",
+  "audioReview": {
+    "ranges": [
+      [
+        1.8,
+        2.34
+      ]
+    ],
+    "note": "“我就要你”后存在含混音节，各模型结果不一致；未猜填为剧本台词。"
+  }
+}

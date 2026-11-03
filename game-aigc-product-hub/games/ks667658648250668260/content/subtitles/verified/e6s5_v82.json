@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e6s5_v82.mp4",
+  "sha256": "bc29e388faa06df59c370c7b9ee320239d6c9859c550fbb850d5201fb7d9f4bd",
+  "duration": 10.042,
+  "nodes": [
+    "e6s5"
+  ],
+  "status": "speech",
+  "transcript": "以后，你就是我明媒正娶的正房。",
+  "rawText": "以后你就是我明媒正娶的正房",
+  "asrChars": [
+    [
+      4.04,
+      4.28,
+      "以"
+    ],
+    [
+      4.28,
+      4.52,
+      "后"
+    ],
+    [
+      6.2,
+      6.44,
+      "你"
+    ],
+    [
+      6.5,
+      6.66,
+      "就"
+    ],
+    [
+      6.66,
+      6.84,
+      "是"
+    ],
+    [
+      6.84,
+      7.06,
+      "我"
+    ],
+    [
+      7.06,
+      7.18,
+      "明"
+    ],
+    [
+      7.18,
+      7.42,
+      "媒"
+    ],
+    [
+      7.44,
+      7.66,
+      "正"
+    ],
+    [
+      7.66,
+      7.82,
+      "娶"
+    ],
+    [
+      7.82,
+      7.96,
+      "的"
+    ],
+    [
+      7.96,
+      8.18,
+      "正"
+    ],
+    [
+      8.18,
+      9.135,
+      "房"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "以后,你就是我明媒正娶的正坊。",
+  "speakerKey": null,
+  "speakerRuleKey": "e6s5",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

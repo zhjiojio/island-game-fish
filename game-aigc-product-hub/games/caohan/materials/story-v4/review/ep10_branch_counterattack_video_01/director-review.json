@@ -1,0 +1,13 @@
+{
+  "videoId": "ep10_branch_counterattack_video_01",
+  "sourceParts": [
+    "ep10_branch_counterattack_video_01__p01",
+    "ep10_branch_counterattack_video_01__p02",
+    "ep10_branch_counterattack_video_01__p03"
+  ],
+  "result": "visual_pass_audio_transcript_pass",
+  "durationSec": 24.125,
+  "sha256": "c5c67881ed98d7258c1802d16e34a9e6c7a7cfb18a7dd2f6a7167e9d96d146ef",
+  "note": "全部源片段均通过人工身份、构图与独立转写检查；按原文顺序保留原生音轨。",
+  "finalSamplingNote": "已检查合并后全时段采样，早餐、遇大妈贵宾犬、祝福对白顺序通过。"
+}

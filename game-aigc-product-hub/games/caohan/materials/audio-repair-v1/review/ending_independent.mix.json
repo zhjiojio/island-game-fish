@@ -1,0 +1,27 @@
+{
+  "videoId": "ending_independent",
+  "voiceWindows": [],
+  "newVoice": [
+    {
+      "lineId": "ending_independent__l01",
+      "speaker": "画外叙述者",
+      "kind": "narration",
+      "text": "她拒绝了旧婚约，也没有急着走进下一段关系。",
+      "audioFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/audio/ending_independent__l01.mp3",
+      "start": 0.4,
+      "end": 5.0
+    },
+    {
+      "lineId": "ending_independent__l02",
+      "speaker": "画外叙述者",
+      "kind": "narration",
+      "text": "这一次，她先选择自己。",
+      "audioFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/audio/ending_independent__l02.mp3",
+      "start": 8.442,
+      "end": 11.342
+    }
+  ],
+  "durationSec": 16.091428571428573,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.560760498046875
+}

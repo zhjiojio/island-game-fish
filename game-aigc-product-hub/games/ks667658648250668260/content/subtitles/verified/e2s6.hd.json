@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s6.hd.mp4",
+  "sha256": "9ae961ec75a32ee9062ac048dad5f199fb9e3e24796814bf878257f5105e0bf5",
+  "duration": 10.042,
+  "nodes": [
+    "e2s6"
+  ],
+  "status": "speech",
+  "transcript": "哥们儿，借过路费，十块！不认识你，让开！",
+  "rawText": "哥们儿借过路费十块不认识你让开",
+  "asrChars": [
+    [
+      3.05,
+      3.29,
+      "哥"
+    ],
+    [
+      3.33,
+      3.57,
+      "们"
+    ],
+    [
+      3.57,
+      3.81,
+      "儿"
+    ],
+    [
+      4.55,
+      4.79,
+      "借"
+    ],
+    [
+      4.83,
+      4.99,
+      "过"
+    ],
+    [
+      4.99,
+      5.17,
+      "路"
+    ],
+    [
+      5.17,
+      5.41,
+      "费"
+    ],
+    [
+      6.31,
+      6.53,
+      "十"
+    ],
+    [
+      6.53,
+      6.77,
+      "块"
+    ],
+    [
+      8.31,
+      8.55,
+      "不"
+    ],
+    [
+      8.57,
+      8.75,
+      "认"
+    ],
+    [
+      8.75,
+      8.91,
+      "识"
+    ],
+    [
+      8.91,
+      9.05,
+      "你"
+    ],
+    [
+      9.05,
+      9.21,
+      "让"
+    ],
+    [
+      9.21,
+      9.655,
+      "开"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "哈哈哈哈哈哈。哥儿妈!借过路费。十块!不认识你,让开!",
+  "speakerKey": null,
+  "speakerRuleKey": "e2s6",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

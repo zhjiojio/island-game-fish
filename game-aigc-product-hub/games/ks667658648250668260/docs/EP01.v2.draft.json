@@ -1,0 +1,597 @@
+{
+  "_readme": [
+    "EP01 序章重构草案 v2 —— 依据 docs/interactive-drama-prompt-design.md 的 8 拍骨架。",
+    "本文件刻意放在 docs/ 而非 content/episodes/，因为含 TODO_ 素材占位，放进 episodes 会被 assets-check 判错。",
+    "评审通过后再逐节点合入 content/episodes/EP01.json。",
+    "素材策略：能复用的全部复用已验证 CDN；仅 2 个新增素材（契约卡、未来蒙太奇），提示词见 _new_assets。",
+    "铁律对齐：#38 每个 choice 必带 media；#15 每个 opt 走独立 r_ 节点；#41 image 节点 text 必须与 narr mp3 逐字一致；#25 char 必须在白名单内。"
+  ],
+
+  "_changes": {
+    "首次交互提前": "新增 f_op1 —— 在 op1(白日梦) 之后立刻给第一次选择，从 30s 提前到约 10s",
+    "契约前置": "新增 s_contract 系统卡，在 s2(窑洞醒来) 之后立刻明示 身份/年代/目标/三条数值线",
+    "首选择有效化": "f_s2 三个选项改为分别锚定 wei/qing/liang 三条线，数值差 ≥8，反应文案复读玩家选择",
+    "BE 加预警": "所有秒死选项加 danger:true，由 UI 渲染红色描边 + ⚠️，把地雷变成主动可选的内容",
+    "结尾加钩子": "s6b 技能卡之后新增 s_tease 未来蒙太奇，制造收集欲再进第二章"
+  },
+
+  "_new_assets": {
+    "TODO_contract_card": {
+      "kind": "image",
+      "用途": "s_contract 契约卡背景",
+      "prompt": "一张泛黄的粗纸粮本平放在土炕的旧木桌上，纸面有折痕和霉斑，压着半块黑窝头。油灯暖黄侧光从左上打下，纸面能看见纤维颗粒。俯拍平视，浅景深。1980年代中国北方农村质感，写实胶片颗粒。画面中不要出现人脸、不要出现现代物品、不要出现任何文字。",
+      "备注": "文字由前端叠加渲染，不烧录进图，方便后续改文案不重新出图"
+    },
+    "TODO_tease_montage": {
+      "kind": "video",
+      "用途": "s_tease 未来闪回蒙太奇，3-4 秒",
+      "prompt": "快速闪回蒙太奇，同一位年轻东方女性的四个不同状态各约 0.8 秒：①灶台前添柴，火光映脸；②浅蓝舞裙旋身，水袖扬起；③红色嫁衣端坐，盖头掀起一角；④雨夜屋檐下回头。每段之间白色闪光转场。暖色调，1980年代中国北方农村，写实电影感。全程高领长袖，衣着保守端庄，不露肩不露腿。",
+      "备注": "合规：三层遮盖原则，禁止任何贴身/露肤镜头"
+    }
+  },
+
+  "op1": {
+    "_changed": "重出白日梦视频。核心两点：①镜头语言对齐 VOW（低机位/自下而上 tilt/四级推近/湿与细的特写）；②梦中女主播改用婉儿的脸做现代造型，让穿越后见到婉儿时形成『卧槽是她』的伏笔回收。",
+    "ep": "EP01",
+    "epTitle": "半碗糊糊·技能觉醒",
+    "scene": "city",
+    "media": {
+      "kind": "video",
+      "file": "TODO_op1_v2_daydream",
+      "duration": 10,
+      "label": "白日梦·加班夜的她（婉儿同脸·现代造型）",
+      "poster": "TODO_op1_v2_daydream_lastframe"
+    },
+    "char": "dreammj",
+    "speaker": "梦中女主播",
+    "text": "傲天~今晚不加班嘛？人家一个人在办公室，好无聊哦……讨厌啦你别看啦~",
+    "next": "f_op1"
+  },
+
+  "_op1_v2_prompt": {
+    "_note": "本节点是给 AIGC 出图/出视频用的提示词工作区，不参与运行时。合入 EP01.json 前删除。",
+
+    "角色一致性锚点": {
+      "脸": "鹅蛋脸，大眼双眼皮，肤色暖白，鼻梁秀挺，唇形饱满偏薄",
+      "说明": "与沈婉儿(wanerh)同一张脸，仅造型现代化。这是刻意设计：穿越后玩家见到婉儿会认出是梦里那张脸。",
+      "现代造型": "黑色长发披肩微卷（对应古装的发髻木簪），米白色真丝衬衫（对应米白棉布衣），细金属框眼镜，简约耳钉",
+      "禁止": "不要换脸型、不要浓妆、不要欧美面孔、不要低胸、不要露肩露腿"
+    },
+
+    "镜头脚本（10 秒 · 五镜自下而上递进）": [
+      {
+        "镜": "1",
+        "秒": "0.0-2.0",
+        "景别": "全景 · 极低机位",
+        "画面": "深夜写字楼办公区，只剩一盏工位台灯亮着。摄影机贴在地板高度（约 20cm），从办公桌下方向前推。前景是桌腿与散落的文件，景深虚化。她坐在工位上，只看得见小腿与椅子。",
+        "运镜": "低机位缓慢推轨 dolly-in",
+        "学自": "VOW 沙发戏 / 桌下戏的贴地机位"
+      },
+      {
+        "镜": "2",
+        "秒": "2.0-4.0",
+        "景别": "中景 · 自下而上 tilt",
+        "画面": "镜头从她脚边的高跟鞋起幅，沿椅腿向上摇：脚踝 → 西裤裤线 → 交叠的双手 → 衬衫下摆 → 腰线 → 停在她低头看电脑的侧脸。",
+        "运镜": "tilt-up 上摇，匀速，末尾略微减速",
+        "学自": "VOW 海滩组：脚踝→小腿→裙摆→上身→抬眼"
+      },
+      {
+        "镜": "3",
+        "秒": "4.0-6.0",
+        "景别": "近景 · 细节特写",
+        "画面": "特写她的手：指尖敲键盘停住，抬手用手背抹了一下额角的薄汗。一缕发丝被汗黏在颈侧。台灯暖光斜打，皮肤上有细微的高光和绒毛质感。浅景深，背景全虚。",
+        "运镜": "手持微晃，轻微推近",
+        "学自": "VOW 攀岩组：汗珠 + 黏在颈侧的发丝 + 手部特写。注意这组穿得最多但张力最强——性感来自镜头不来自露肤。"
+      },
+      {
+        "镜": "4",
+        "秒": "6.0-8.0",
+        "景别": "大特写 · 唇与眼",
+        "画面": "她转头看向镜头（＝看向观众/傲天），先是嘴唇入画——轻轻抿了一下，唇上有一点水光；镜头微微上移，露出眼睛，睫毛在台灯下投出影子。她眨了下眼，眼神里带笑。",
+        "运镜": "大特写，机位仍略低于她视线，形成轻微仰角",
+        "学自": "VOW 的特写只拍『湿』和『细』：唇、睫毛、水光"
+      },
+      {
+        "镜": "5",
+        "秒": "8.0-10.0",
+        "景别": "中景 · 后仰",
+        "画面": "她往后靠进办公椅，手臂搭在椅背，仰头舒了口气，长发垂落。窗外城市夜景虚化成暖黄光斑。她抬手对镜头做了个『嘘』的手势，随后画面轻微失焦。",
+        "运镜": "机位固定在低位仰拍，末尾焦点脱焦（为下一镜车祸做转场）",
+        "学自": "VOW 的段落收尾用失焦/白闪转场"
+      }
+    ],
+
+    "完整提示词（可直接投喂 Kling / 可灵 图生视频）": "深夜的写字楼办公区，只剩一盏工位台灯亮着，四周是黑暗的开放式办公桌。一位年轻东方女性独自加班：鹅蛋脸，大眼双眼皮，肤色暖白，唇形饱满，黑色长发披肩微卷，戴细金属框眼镜，穿米白色真丝长袖衬衫和深色西裤，衣着整洁保守。\n\n镜头运动：开场摄影机贴近地板高度，从办公桌下方缓慢向前推轨，前景是虚化的桌腿；随后镜头从她脚边沿椅腿自下而上摇起，掠过脚踝、裤线、交叠的双手、衬衫下摆、腰线，最后停在她低头工作的侧脸；接着切入手部特写——指尖离开键盘，用手背抹去额角的薄汗，一缕发丝被汗黏在颈侧；再推成大特写，她转头看向镜头，嘴唇先入画轻轻抿了一下，唇上有细微水光，镜头微微上移露出眼睛，睫毛在暖光下投出影子，她眨眼带笑；最后她后仰靠进办公椅，长发垂落，抬手做出『嘘』的手势，画面轻微失焦。\n\n摄影：机位全程略低于人物视线，形成轻微仰角。浅景深，f/1.8 虚化。台灯暖黄侧光作为主光，窗外城市夜景作为冷色背景光，冷暖对比。皮肤有细腻高光与绒毛质感，画面有轻微手持晃动和电影颗粒。写实电影质感，35mm 镜头。\n\n负面提示：不要低胸、不要露肩、不要露腿、不要短裙、不要贴身衣物、不要浓妆、不要欧美面孔、不要多余人物、不要文字水印、不要变形手指、不要俯拍。",
+
+    "合规自检": {
+      "遮盖": "长袖真丝衬衫 + 长西裤，全程不露肩不露腿不露胸 ✅",
+      "刺激点来源": "低机位仰角 + 自下而上 tilt + 汗珠/唇部/睫毛特写 —— 全部是镜头语言，不是露肤 ✅",
+      "对照": "VOW 的泳池/桌下镜头在快手过不了审，已剔除；只保留攀岩组那套『穿得多但张力强』的打法 ✅",
+      "红线": "无未成年暗示、无擦边体位、无贴身特写 ✅"
+    },
+
+    "旁白与画面的对位": {
+      "傲天~今晚不加班嘛？": "镜 1-2，只见腿与侧脸，不见正脸，制造悬念",
+      "人家一个人在办公室，好无聊哦……": "镜 3，抹汗 + 发丝黏颈，『一个人』的孤独感落在细节上",
+      "讨厌啦你别看啦~": "镜 4-5，转头看镜头 + 嘘的手势，直接击穿第四面墙"
+    }
+  },
+
+  "f_op1": {
+    "_new": true,
+    "_why": "法则2：首次交互从 30s 提前到 10s，让玩家立刻确认「这是能玩的」",
+    "ep": "EP01",
+    "scene": "city",
+    "type": "choice",
+    "title": "美梦正酣，你——",
+    "media": {
+      "kind": "image",
+      "file": "images/lastframes/op1.c.jpg",
+      "label": "白日梦尾帧"
+    },
+    "options": [
+      { "text": "再睡五分钟，梦要到高潮了", "label": "再睡五分钟，梦要到高潮了", "icon": "hide", "stat": { "qing": 5 }, "next": "s1", "id": "f_op1_opt_0" },
+      { "text": "猛地惊醒——我的外卖超时了！", "label": "猛地惊醒——我的外卖超时了！", "icon": "fight", "stat": { "wei": 5 }, "next": "s1", "id": "f_op1_opt_1" }
+    ]
+  },
+
+  "s1": {
+    "ep": "EP01",
+    "epTitle": "半碗糊糊·技能觉醒",
+    "scene": "city",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S1.mp4",
+      "duration": 10,
+      "label": "傲天骑手梦醒·被撞倒躺地",
+      "poster": "images/lastframes/S1.jpg"
+    },
+    "char": "aotian",
+    "speaker": "傲天",
+    "text": "哦——原来是做梦啊……嘿嘿……",
+    "next": "s2"
+  },
+
+  "s2": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S2.c.mp4",
+      "duration": 10,
+      "label": "窑洞醒来",
+      "poster": "images/lastframes/S2.c.jpg"
+    },
+    "char": "aotian",
+    "speaker": "你（内心）",
+    "text": "再睁眼……这不是我的房。",
+    "next": "s_contract"
+  },
+
+  "s_contract": {
+    "_new": true,
+    "_why": "法则1 契约前置：VOW 第 22 秒就用一纸协议讲清身份+目标。这里用粮本承担同样功能，把原本埋到 s5 的信息提到第 4 拍。",
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "image",
+      "file": "TODO_contract_card",
+      "duration": 4000,
+      "label": "粮本契约卡"
+    },
+    "char": "system",
+    "speaker": "系统",
+    "text": "【荒年·一九八〇 · 李家沟】\n你：李傲天，外卖骑手，现年二十三，昨夜车祸。\n此身：同名同姓，家中断粮第七日。\n同住：沈婉儿，未过门的嫂子。\n目标：让她活到开春。\n可依仗者三——威望、爱意、存粮。",
+    "stay": true,
+    "next": "f_s2"
+  },
+
+  "f_s2": {
+    "_changed": "法则3：三个选项从『数值差<5 且同出口』改为分别锚定三条线，差值 ≥8",
+    "ep": "EP01",
+    "scene": "house",
+    "type": "choice",
+    "title": "断粮第七日，你先——",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s2_a.png",
+      "label": "窑洞醒来"
+    },
+    "options": [
+      { "text": "翻箱倒柜，先找吃的", "label": "翻箱倒柜，先找吃的", "icon": "hide", "stat": { "liang": 10 }, "next": "r_f_s2_a", "id": "f_s2_opt_0" },
+      { "text": "推门出去，看看这村子", "label": "推门出去，看看这村子", "icon": "fight", "stat": { "wei": 10 }, "next": "r_f_s2_b", "id": "f_s2_opt_1" },
+      { "text": "先弄明白，这屋里还有谁", "label": "先弄明白，这屋里还有谁", "icon": "say", "stat": { "qing": 10 }, "next": "r_f_s2_c", "id": "f_s2_opt_2" }
+    ]
+  },
+
+  "r_f_s2_a": {
+    "_changed": "反应文案复读玩家选择（『你先找的是吃的』），让选择被看见",
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s2_a.png",
+      "duration": 3200,
+      "label": ""
+    },
+    "char": "aotian",
+    "speaker": "你（内心）",
+    "text": "你先找的是吃的——饿过的人都这样。米缸、灶台、房梁，翻了个遍，只摸到半把糠。门帘一响，谁进来了？",
+    "next": "s3"
+  },
+
+  "r_f_s2_b": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s2_b.png",
+      "duration": 3200,
+      "label": ""
+    },
+    "char": "aotian",
+    "speaker": "你（内心）",
+    "text": "你先推的是门——想知道自己落在了什么地界。土坡、旱田、稀稀拉拉几户人家，一个人影都没有。身后忽然有脚步声。",
+    "next": "s3"
+  },
+
+  "r_f_s2_c": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s2_c.png",
+      "duration": 3200,
+      "label": ""
+    },
+    "char": "aotian",
+    "speaker": "你（内心）",
+    "text": "你先问的是屋里还有谁——炕沿上叠着件洗得发白的女人衣裳。门帘忽然一动，有人端着碗进来了。",
+    "next": "s3"
+  },
+
+  "s3": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S3.c.mp4",
+      "duration": 10,
+      "label": "婉儿端糊糊",
+      "poster": "images/lastframes/S3.c.jpg"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿（哽咽）",
+    "text": "傲天……你终于醒了！",
+    "next": "f0"
+  },
+
+  "f0": {
+    "_changed": "法则5：BE 选项加 danger:true，UI 渲染红边+⚠️，不再是无预警地雷",
+    "ep": "EP01",
+    "scene": "house",
+    "type": "choice",
+    "title": "她把糊糊端到你面前，你先……",
+    "media": {
+      "kind": "image",
+      "file": "images/lastframes/S3.c.jpg",
+      "label": "婉儿端糊糊"
+    },
+    "options": [
+      { "text": "接过来喝一口暖胃", "label": "接过来喝一口暖胃", "icon": "say", "stat": { "wei": 8, "liang": 3 }, "next": "r_f0_a", "id": "f0_opt_0" },
+      { "text": "先问「婉儿你吃了没」", "label": "先问「婉儿你吃了没」", "icon": "say", "stat": { "wei": 15, "qing": 5 }, "next": "r_f0_b", "id": "f0_opt_1" },
+      { "text": "让她先喝一口", "label": "让她先喝一口", "icon": "say", "stat": { "wei": 12, "qing": 8 }, "next": "r_f0_c", "id": "f0_opt_2" },
+      { "text": "一口闷了不给她", "label": "一口闷了不给她", "icon": "warn", "danger": true, "stat": { "wei": -99, "liang": -99 }, "next": "BE_STARVE", "id": "f0_opt_3" }
+    ]
+  },
+
+  "r_f0_a": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": { "kind": "image", "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f0_a.png", "duration": 3200, "label": "" },
+    "char": "aotian",
+    "speaker": "你",
+    "text": "碗一沾手，热气就冲上了眼眶。你低头喝了一口——是热的。这年头，热的就是命。她在旁边看着，嘴角轻轻扬了一下。",
+    "next": "s4"
+  },
+
+  "r_f0_b": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": { "kind": "image", "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f0_b.png", "duration": 3200, "label": "" },
+    "char": "aotian",
+    "speaker": "你",
+    "text": "你没接碗，抬头看她——脸黄得像张纸。「婉儿，你吃了没？」她别过脸去，只把碗又往你手里推了推。",
+    "next": "s4"
+  },
+
+  "r_f0_c": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": { "kind": "image", "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f0_c.png", "duration": 3200, "label": "" },
+    "char": "aotian",
+    "speaker": "你",
+    "text": "你把碗轻轻推回去。「你先喝。我不饿。」——她愣了半天，眼圈就红了，硬是把碗又端回你面前。",
+    "next": "s4"
+  },
+
+  "s4": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S4.c.mp4",
+      "duration": 10,
+      "label": "温情帧·端碗",
+      "poster": "images/lastframes/S4.c.jpg"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿（温柔）",
+    "text": "慢点，喝了病就好三分。",
+    "next": "f_saoshi"
+  },
+
+  "f_saoshi": {
+    "_changed": "BE 选项加 danger 标记；其余保持原样（此处已是有效选择）",
+    "ep": "EP01",
+    "scene": "house",
+    "type": "choice",
+    "title": "未过门的嫂子……你心里翻涌——",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_saoshi_a.png",
+      "label": "温情帧·端碗"
+    },
+    "options": [
+      { "text": "穿越还有这福利？", "label": "穿越还有这福利？", "icon": "say", "stat": { "wei": 10 }, "next": "r_f_saoshi_a", "id": "f_saoshi_opt_0" },
+      { "text": "震惊！还有未过门的嫂子？", "label": "震惊！还有未过门的嫂子？", "icon": "say", "stat": { "wei": 15, "qing": 5 }, "next": "r_f_saoshi_b", "id": "f_saoshi_opt_1" },
+      { "text": "嫂子，给我跳个舞吧。", "label": "嫂子，给我跳个舞吧。", "icon": "say", "stat": { "wei": 12, "qing": 3 }, "next": "f_saoshi_dance", "id": "f_saoshi_opt_2" },
+      { "text": "顺手摸一下她的腰", "label": "顺手摸一下她的腰", "icon": "warn", "danger": true, "stat": { "wei": -99, "qing": -30 }, "next": "BE_SLAP", "id": "f_saoshi_opt_3" }
+    ]
+  },
+
+  "r_f_saoshi_a": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": { "kind": "image", "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_saoshi_a.png", "duration": 3200, "label": "" },
+    "char": "aotian",
+    "speaker": "你（内心）",
+    "text": "你偷瞄了她一眼，嘴角一抽——老天爷，穿越还配这么个媳妇？这波真赚了……可她突然低下头，声音轻得像叹气。",
+    "next": "s5"
+  },
+
+  "r_f_saoshi_b": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": { "kind": "image", "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_saoshi_b.png", "duration": 3200, "label": "" },
+    "char": "aotian",
+    "speaker": "你（内心）",
+    "text": "端碗的手一抖，糊糊差点洒——等等，未过门的嫂子？！这剧本谁写的？还没等我回过神，她掀开米缸盖，让我看了眼里头。",
+    "next": "s5"
+  },
+
+  "f_saoshi_dance": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side04_kongque.c.mp4",
+      "duration": 10,
+      "label": "孔雀舞"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿（旋身）",
+    "text": "婉儿轻抬手臂，孔雀开屏……",
+    "next": "f_dance_react"
+  },
+
+  "f_dance_react": {
+    "_changed": "铁律38：补 media（原来缺失）；BE 选项加 danger",
+    "ep": "EP01",
+    "scene": "house",
+    "type": "choice",
+    "title": "婉儿转过身，眼睛亮亮地看你——",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_dance_react_a.v2.c.jpg",
+      "label": "孔雀舞尾帧"
+    },
+    "options": [
+      { "text": "你跳得真美，像画里的仙女", "label": "你跳得真美，像画里的仙女", "icon": "say", "stat": { "wei": 18, "qing": 8 }, "next": "r_f_dance_react_a", "id": "f_dance_react_opt_0" },
+      { "text": "再跳一支给我看，看不够", "label": "再跳一支给我看，看不够", "icon": "say", "stat": { "wei": 10, "qing": 3 }, "next": "r_dance_encore_ep01", "id": "f_dance_react_opt_1" },
+      { "text": "就这？也太难看了吧", "label": "就这？也太难看了吧", "icon": "warn", "danger": true, "stat": { "wei": -99, "qing": -20 }, "next": "BE_KICKED", "id": "f_dance_react_opt_2" }
+    ]
+  },
+
+  "r_f_dance_react_a": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": { "kind": "image", "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_dance_react_a.v2.c.jpg", "duration": 3200, "label": "婉儿脸红低头" },
+    "char": "aotian",
+    "speaker": "你",
+    "text": "嫂子——你这一转身，我这辈子都忘不了。婉儿脸唰地红到耳根，抿嘴低头：「呸，油嘴的。」——手里的水袖却攥得更紧。",
+    "next": "s5"
+  },
+
+  "r_dance_encore_ep01": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side07_cailian.c.mp4",
+      "duration": 10,
+      "label": "江南采莲扇舞"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿（含笑）",
+    "text": "傲天……我跳的好看么？",
+    "next": "r_f_dance_react_b"
+  },
+
+  "r_f_dance_react_b": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": { "kind": "image", "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_dance_react_b.v2.c.jpg", "duration": 3200, "label": "婉儿抿嘴再来一支" },
+    "char": "aotian",
+    "speaker": "你",
+    "text": "再来一支，我给你打拍子。婉儿抿嘴笑：「就一支哦，看不够也没了。」——她原地一旋，水袖又飘起来。",
+    "next": "s5"
+  },
+
+  "BE_KICKED": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be5_kicked_out.c.mp4",
+      "duration": 10,
+      "label": "被赶出家门",
+      "poster": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be5_kicked_out.c.jpg"
+    },
+    "char": "narrator",
+    "speaker": "",
+    "text": "",
+    "next": "BE_KICKED_END"
+  },
+
+  "BE_KICKED_END": {
+    "ep": "EP01",
+    "scene": "house",
+    "type": "end",
+    "media": { "kind": "image", "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be5_kicked_out.c.jpg", "label": "" },
+    "char": "aotian",
+    "speaker": "你（内心）",
+    "text": "你嘲讽了她最珍贵的东西。她把你的包袱丢到院外，从此再也没让你进过门。荒年里孤身一人，你才明白——有些话说出口，就是一辈子的悔。"
+  },
+
+  "s5": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S5.c.mp4",
+      "duration": 10,
+      "label": "婉儿摊家底·米缸",
+      "poster": "images/lastframes/S5.c.jpg"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿（心里）",
+    "text": "家底就剩这一点。",
+    "next": "s5b"
+  },
+
+  "s5b": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": { "kind": "image", "file": "images/lastframes/S5.c.jpg", "duration": 2600, "label": "米缸见底" },
+    "char": "wanerh",
+    "speaker": "沈婉儿（压声哽）",
+    "text": "就这大半碗面了……",
+    "stay": true,
+    "next": "s5c"
+  },
+
+  "s5c": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": { "kind": "image", "file": "images/lastframes/S5.c.jpg", "duration": 2600, "label": "米缸见底" },
+    "char": "wanerh",
+    "speaker": "沈婉儿",
+    "text": "再撑三天，就得下地挖野菜。",
+    "stay": true,
+    "next": "f_s5"
+  },
+
+  "f_s5": {
+    "_changed": "BE 选项加 danger 标记",
+    "ep": "EP01",
+    "scene": "house",
+    "type": "choice",
+    "title": "家底只剩大半碗面，你——",
+    "media": { "kind": "image", "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s5_a.png", "label": "米缸见底" },
+    "options": [
+      { "text": "握拳：我一定想办法", "label": "握拳：我一定想办法", "icon": "fight", "stat": { "wei": 12, "qing": 5 }, "next": "r_f_s5_a", "id": "f_s5_opt_0" },
+      { "text": "看向婉儿心疼一下", "label": "看向婉儿心疼一下", "icon": "say", "stat": { "wei": 15, "qing": 8 }, "next": "r_f_s5_b", "id": "f_s5_opt_1" },
+      { "text": "叹口气：这日子……过一天算一天", "label": "叹口气：这日子……过一天算一天", "icon": "hide", "stat": { "wei": 3, "qing": 5 }, "next": "r_f_s5_c", "id": "f_s5_opt_2" },
+      { "text": "让她进城卖身还债", "label": "让她进城卖身还债", "icon": "warn", "danger": true, "stat": { "wei": -99, "qing": -99 }, "next": "BE_LOSE_HER", "id": "f_s5_opt_3" }
+    ]
+  },
+
+  "r_f_s5_a": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": { "kind": "image", "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s5_a.png", "duration": 3200, "label": "" },
+    "char": "aotian",
+    "speaker": "你",
+    "text": "你拳头攥紧，指关节都白了。「婉儿。这日子——我给你顶起来。」话音刚落——诶？我的身体怎么回事？浑身发烫，像有股热流从脚底往上涌。",
+    "next": "s6"
+  },
+
+  "r_f_s5_b": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": { "kind": "image", "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s5_b.png", "duration": 3200, "label": "" },
+    "char": "aotian",
+    "speaker": "你（内心）",
+    "text": "她瘦得肩膀都撑不起衣裳。让她一个人扛这个家，我算什么男人？心口一紧——奇了，脑子里忽然冒出一片田埂的影子，清清楚楚。",
+    "next": "s6"
+  },
+
+  "r_f_s5_c": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": { "kind": "image", "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s5_c.png", "duration": 3200, "label": "" },
+    "char": "aotian",
+    "speaker": "你（内心）",
+    "text": "你颓靠土墙，眼神放空——荒年、破窑、半碗面……总会有办法的吧。可就在这时，手心突然一阵发麻，像攥了把泥土似的。",
+    "next": "s6"
+  },
+
+  "s6": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S6.mp4",
+      "duration": 10,
+      "label": "傲天觉醒·眼中金光·技能激活",
+      "poster": "images/lastframes/S6.jpg"
+    },
+    "char": "aotian",
+    "speaker": "你（低吼）",
+    "text": "我不能让她饿死！",
+    "next": "s6b"
+  },
+
+  "s6b": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": { "kind": "skillcard", "label": "一亩好地" },
+    "char": "system",
+    "speaker": "系统",
+    "text": "叮——技能激活：一亩好地。",
+    "skillcard": "yimu",
+    "stay": true,
+    "next": "s_tease"
+  },
+
+  "s_tease": {
+    "_new": true,
+    "_why": "法则4 Roster Tease：VOW 后 26s 全在轮播角色制造收集欲。我们只有一个女主，就轮播她的四种未来形态。",
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "TODO_tease_montage",
+      "duration": 4,
+      "label": "未来闪回蒙太奇",
+      "mute": true
+    },
+    "char": "narrator",
+    "speaker": "说书大爷",
+    "forceCaption": true,
+    "text": "灶前的她，舞裙的她，红嫁衣的她，雨夜回头的她——这一年往后，你会一个一个地见到。",
+    "stay": true,
+    "next": "f_s6"
+  }
+}

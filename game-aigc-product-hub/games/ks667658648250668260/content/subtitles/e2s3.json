@@ -1,0 +1,10 @@
+{
+  "node": "e2s3",
+  "speakerKey": "vendor",
+  "speakerName": "粮贩子（叼烟·脚踩秤）",
+  "asrText": "这袋玉米潮气重，虫眼儿也多——顶天八毛一斤。爱卖不卖，后头还排着二十个人呢。",
+  "asrTextRaw": "",
+  "matchScript": true,
+  "textSource": "script-authoritative (v82.0重生成全库视频后，旧ASR已失效，以剧本text为权威)",
+  "cues": 3
+}

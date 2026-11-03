@@ -1,0 +1,5933 @@
+{
+  "generatedAt": "2026-09-16T18:30:03.961Z",
+  "sourceFile": "package/js/story.js",
+  "nodeCount": 252,
+  "nodes": {
+    "op1": {
+      "id": "op1",
+      "line": 306,
+      "raw_snippet": "\"op1\": {\"ep\":\"EP01\",\"epTitle\":\"半碗糊糊·技能觉醒\",\"scene\":\"city\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/",
+      "ep": "EP01",
+      "epTitle": "半碗糊糊·技能觉醒",
+      "scene": "city",
+      "char": "dreammj",
+      "speaker": "梦中女主播",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/op1_final20s.mp4",
+      "next": [
+        "f_op1_outfit"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": []
+    },
+    "f_op1_outfit": {
+      "id": "f_op1_outfit",
+      "line": 307,
+      "raw_snippet": "\"f_op1_outfit\": {\"ep\":\"EP01\",\"epTitle\":\"半碗糊糊·技能觉醒\",\"scene\":\"city\",\"type\":\"choice\",\"title\":\"她像换衣服给你看，要看么？\",\"media\":{\"kind",
+      "ep": "EP01",
+      "epTitle": "半碗糊糊·技能觉醒",
+      "scene": "city",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "images/lastframes/op1.v2.jpg",
+      "next": [
+        "s_op1_lace",
+        "s1"
+      ],
+      "hasOptions": true,
+      "optionCount": 2,
+      "from": [
+        "op1"
+      ]
+    },
+    "s_op1_lace": {
+      "id": "s_op1_lace",
+      "line": 308,
+      "raw_snippet": "\"s_op1_lace\": {\"ep\":\"EP01\",\"epTitle\":\"半碗糊糊·技能觉醒\",\"scene\":\"city\",\"media\":{\"kind\":\"video\",\"file\":\"https://p4-ad.adkwai.com",
+      "ep": "EP01",
+      "epTitle": "半碗糊糊·技能觉醒",
+      "scene": "city",
+      "char": "dreammj",
+      "speaker": "梦中女主播",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/lace_confess_final.mp4",
+      "next": [
+        "s1"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_op1_outfit"
+      ]
+    },
+    "s1": {
+      "id": "s1",
+      "line": 309,
+      "raw_snippet": "\"s1\": {\"ep\":\"EP01\",\"epTitle\":\"半碗糊糊·技能觉醒\",\"scene\":\"city\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/p",
+      "ep": "EP01",
+      "epTitle": "半碗糊糊·技能觉醒",
+      "scene": "city",
+      "char": "aotian",
+      "speaker": "傲天",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S1a.dream.mp4",
+      "next": [
+        "f_dream_more"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_op1_outfit",
+        "s_op1_lace"
+      ]
+    },
+    "f_dream_more": {
+      "id": "f_dream_more",
+      "line": 310,
+      "raw_snippet": "\"f_dream_more\": {\"ep\":\"EP01\",\"epTitle\":\"半碗糊糊·技能觉醒\",\"scene\":\"city\",\"type\":\"choice\",\"title\":\"没看够，再看一个？\",\"media\":{\"kind\":\"i",
+      "ep": "EP01",
+      "epTitle": "半碗糊糊·技能觉醒",
+      "scene": "city",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "images/lastframes/S1a.dream.jpg",
+      "next": [
+        "s_dream_yujie",
+        "s_dream_xinggan",
+        "s_dream_zhixing",
+        "s1b"
+      ],
+      "hasOptions": true,
+      "optionCount": 4,
+      "from": [
+        "s1",
+        "s_dream_yujie",
+        "s_dream_xinggan",
+        "s_dream_zhixing"
+      ]
+    },
+    "s_dream_yujie": {
+      "id": "s_dream_yujie",
+      "line": 311,
+      "raw_snippet": "\"s_dream_yujie\": {\"ep\":\"EP01\",\"epTitle\":\"半碗糊糊·技能觉醒\",\"scene\":\"city\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.",
+      "ep": "EP01",
+      "epTitle": "半碗糊糊·技能觉醒",
+      "scene": "city",
+      "char": "aotian",
+      "speaker": "傲天",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/dream_yujie.v1.mp4",
+      "next": [
+        "f_dream_more"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_dream_more"
+      ]
+    },
+    "s_dream_xinggan": {
+      "id": "s_dream_xinggan",
+      "line": 312,
+      "raw_snippet": "\"s_dream_xinggan\": {\"ep\":\"EP01\",\"epTitle\":\"半碗糊糊·技能觉醒\",\"scene\":\"city\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwa",
+      "ep": "EP01",
+      "epTitle": "半碗糊糊·技能觉醒",
+      "scene": "city",
+      "char": "aotian",
+      "speaker": "傲天",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/dream_xinggan.v1.mp4",
+      "next": [
+        "f_dream_more"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_dream_more"
+      ]
+    },
+    "s_dream_zhixing": {
+      "id": "s_dream_zhixing",
+      "line": 313,
+      "raw_snippet": "\"s_dream_zhixing\": {\"ep\":\"EP01\",\"epTitle\":\"半碗糊糊·技能觉醒\",\"scene\":\"city\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwa",
+      "ep": "EP01",
+      "epTitle": "半碗糊糊·技能觉醒",
+      "scene": "city",
+      "char": "aotian",
+      "speaker": "傲天",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/dream_zhixing.v1.mp4",
+      "next": [
+        "f_dream_more"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_dream_more"
+      ]
+    },
+    "s1b": {
+      "id": "s1b",
+      "line": 314,
+      "raw_snippet": "\"s1b\": {\"ep\":\"EP01\",\"epTitle\":\"半碗糊糊·技能觉醒\",\"scene\":\"city\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/",
+      "ep": "EP01",
+      "epTitle": "半碗糊糊·技能觉醒",
+      "scene": "city",
+      "char": "aotian",
+      "speaker": "傲天",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S1b.crash.mp4",
+      "next": [
+        "s2"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_dream_more"
+      ]
+    },
+    "s2": {
+      "id": "s2",
+      "line": 315,
+      "raw_snippet": "\"s2\": {\"ep\":\"EP01\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGam",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（内心）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S2.hd.mp4",
+      "next": [
+        "f_s2"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "s1b"
+      ]
+    },
+    "f_s2": {
+      "id": "f_s2",
+      "line": 316,
+      "raw_snippet": "\"f_s2\": {\"ep\":\"EP01\",\"scene\":\"house\",\"type\":\"choice\",\"title\":\"前一秒车祸，这一秒在窑洞——你先：\",\"media\":{\"kind\":\"image\",\"file\":\"https:/",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s2_a.png",
+      "next": [
+        "r_f_s2_a",
+        "r_f_s2_b",
+        "r_f_s2_c"
+      ],
+      "hasOptions": true,
+      "optionCount": 3,
+      "from": [
+        "s2"
+      ]
+    },
+    "r_f_s2_a": {
+      "id": "r_f_s2_a",
+      "line": 317,
+      "raw_snippet": "\"r_f_s2_a\": {\"ep\":\"EP01\",\"scene\":\"house\",\"media\":{\"kind\":\"image\",\"file\":\"https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（内心）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s2_a.png",
+      "next": [
+        "s3"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_s2"
+      ]
+    },
+    "r_f_s2_b": {
+      "id": "r_f_s2_b",
+      "line": 318,
+      "raw_snippet": "\"r_f_s2_b\": {\"ep\":\"EP01\",\"scene\":\"house\",\"media\":{\"kind\":\"image\",\"file\":\"https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（内心）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s2_b.png",
+      "next": [
+        "s3"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_s2"
+      ]
+    },
+    "r_f_s2_c": {
+      "id": "r_f_s2_c",
+      "line": 319,
+      "raw_snippet": "\"r_f_s2_c\": {\"ep\":\"EP01\",\"scene\":\"house\",\"media\":{\"kind\":\"image\",\"file\":\"https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（内心）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s2_c.png",
+      "next": [
+        "s3"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_s2"
+      ]
+    },
+    "s3": {
+      "id": "s3",
+      "line": 320,
+      "raw_snippet": "\"s3\": {\"ep\":\"EP01\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGam",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（哽咽）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S3.hd.mp4",
+      "next": [
+        "f0"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_f_s2_a",
+        "r_f_s2_b",
+        "r_f_s2_c"
+      ]
+    },
+    "f0": {
+      "id": "f0",
+      "line": 321,
+      "raw_snippet": "\"f0\": {\"ep\":\"EP01\",\"scene\":\"house\",\"type\":\"choice\",\"title\":\"她把糊糊端到你面前，你先……\",\"media\":{\"kind\":\"image\",\"file\":\"images/lastf",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "images/lastframes/S3.hd.jpg",
+      "next": [
+        "r_f0_a",
+        "r_f0_b",
+        "r_f0_c",
+        "BE_STARVE"
+      ],
+      "hasOptions": true,
+      "optionCount": 4,
+      "from": [
+        "s3"
+      ]
+    },
+    "r_f0_a": {
+      "id": "r_f0_a",
+      "line": 322,
+      "raw_snippet": "\"r_f0_a\": {\"ep\":\"EP01\",\"scene\":\"house\",\"media\":{\"kind\":\"image\",\"file\":\"https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-S",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f0_a.png",
+      "next": [
+        "s4"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f0"
+      ]
+    },
+    "r_f0_b": {
+      "id": "r_f0_b",
+      "line": 323,
+      "raw_snippet": "\"r_f0_b\": {\"ep\":\"EP01\",\"scene\":\"house\",\"media\":{\"kind\":\"image\",\"file\":\"https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-S",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f0_b.png",
+      "next": [
+        "s4"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f0"
+      ]
+    },
+    "r_f0_c": {
+      "id": "r_f0_c",
+      "line": 324,
+      "raw_snippet": "\"r_f0_c\": {\"ep\":\"EP01\",\"scene\":\"house\",\"media\":{\"kind\":\"image\",\"file\":\"https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-S",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f0_c.png",
+      "next": [
+        "s4"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f0"
+      ]
+    },
+    "s4": {
+      "id": "s4",
+      "line": 325,
+      "raw_snippet": "\"s4\": {\"ep\":\"EP01\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGam",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（温柔）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S4.hd.mp4",
+      "next": [
+        "f_saoshi"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_f0_a",
+        "r_f0_b",
+        "r_f0_c"
+      ]
+    },
+    "f_saoshi": {
+      "id": "f_saoshi",
+      "line": 326,
+      "raw_snippet": "\"f_saoshi\": {\"ep\":\"EP01\",\"scene\":\"house\",\"type\":\"choice\",\"title\":\"未过门的嫂子……你心里翻涌——\",\"media\":{\"kind\":\"image\",\"file\":\"image",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "images/lastframes/S4.hd.jpg",
+      "next": [
+        "r_f_saoshi_a",
+        "r_f_saoshi_b",
+        "f_saoshi_dance",
+        "BE_SLAP"
+      ],
+      "hasOptions": true,
+      "optionCount": 4,
+      "from": [
+        "s4"
+      ]
+    },
+    "r_f_saoshi_a": {
+      "id": "r_f_saoshi_a",
+      "line": 327,
+      "raw_snippet": "\"r_f_saoshi_a\": {\"ep\":\"EP01\",\"scene\":\"house\",\"media\":{\"kind\":\"image\",\"file\":\"https://p4-ad.adkwai.com/udata/pkg/KS-GAME/",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（内心）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_saoshi_a.png",
+      "next": [
+        "s5"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_saoshi"
+      ]
+    },
+    "r_f_saoshi_b": {
+      "id": "r_f_saoshi_b",
+      "line": 328,
+      "raw_snippet": "\"r_f_saoshi_b\": {\"ep\":\"EP01\",\"scene\":\"house\",\"media\":{\"kind\":\"image\",\"file\":\"https://p4-ad.adkwai.com/udata/pkg/KS-GAME/",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（内心）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_saoshi_b.png",
+      "next": [
+        "s5"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_saoshi"
+      ]
+    },
+    "f_saoshi_dance": {
+      "id": "f_saoshi_dance",
+      "line": 329,
+      "raw_snippet": "\"f_saoshi_dance\": {\"ep\":\"EP01\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAM",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（旋身）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side04_kongque.hd.mp4",
+      "next": [
+        "f_dance_react"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_saoshi"
+      ]
+    },
+    "f_dance_react": {
+      "id": "f_dance_react",
+      "line": 330,
+      "raw_snippet": "\"f_dance_react\": {\"ep\":\"EP01\",\"scene\":\"house\",\"type\":\"choice\",\"title\":\"婉儿转过身，眼睛亮亮地看你——\",\"options\":[{\"text\":\"你跳得真美，像画里的仙女",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "r_f_dance_react_a",
+        "r_dance_encore_ep01",
+        "BE_KICKED"
+      ],
+      "hasOptions": true,
+      "optionCount": 3,
+      "from": [
+        "f_saoshi_dance"
+      ]
+    },
+    "r_f_dance_react_a": {
+      "id": "r_f_dance_react_a",
+      "line": 331,
+      "raw_snippet": "\"r_f_dance_react_a\": {\"ep\":\"EP01\",\"scene\":\"house\",\"char\":\"aotian\",\"speaker\":\"你\",\"media\":{\"kind\":\"image\",\"file\":\"https://",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_dance_react_a.v2.c.jpg",
+      "next": [
+        "s5"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_dance_react"
+      ]
+    },
+    "r_f_dance_react_b": {
+      "id": "r_f_dance_react_b",
+      "line": 332,
+      "raw_snippet": "\"r_f_dance_react_b\": {\"ep\":\"EP01\",\"scene\":\"house\",\"char\":\"aotian\",\"speaker\":\"你\",\"media\":{\"kind\":\"image\",\"file\":\"https://",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_dance_react_b.v2.c.jpg",
+      "next": [
+        "s5"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": []
+    },
+    "BE_KICKED": {
+      "id": "BE_KICKED",
+      "line": 333,
+      "raw_snippet": "\"BE_KICKED\": {\"ep\":\"EP01\",\"scene\":\"outside\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/A",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "outside",
+      "char": null,
+      "speaker": null,
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be5_kicked_out.hd.mp4",
+      "next": [
+        "BE_KICKED_END"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_dance_react"
+      ]
+    },
+    "BE_KICKED_END": {
+      "id": "BE_KICKED_END",
+      "line": 334,
+      "raw_snippet": "\"BE_KICKED_END\": {\"ep\":\"EP01\",\"scene\":\"end\",\"type\":\"end\",\"ending\":\"BE12\",\"media\":{\"kind\":\"image\",\"file\":\"images/lastfram",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "end",
+      "char": "aotian",
+      "speaker": "你（内心）",
+      "type": "end",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "images/lastframes/be5_kicked_out.hd.jpg",
+      "next": [],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "BE_KICKED"
+      ]
+    },
+    "s5": {
+      "id": "s5",
+      "line": 335,
+      "raw_snippet": "\"s5\": {\"ep\":\"EP01\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGam",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（心里）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S5.hd.mp4",
+      "next": [
+        "s5b"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_f_saoshi_a",
+        "r_f_saoshi_b",
+        "r_f_dance_react_a",
+        "r_f_dance_react_b",
+        "r_dance_encore_ep01"
+      ]
+    },
+    "s5b": {
+      "id": "s5b",
+      "line": 336,
+      "raw_snippet": "\"s5b\": {\"ep\":\"EP01\",\"scene\":\"house\",\"char\":\"wanerh\",\"speaker\":\"沈婉儿（压声哽）\",\"text\":\"就这大半碗面了……\",\"next\":\"s5c\"},",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（压声哽）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "s5c"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "s5"
+      ]
+    },
+    "s5c": {
+      "id": "s5c",
+      "line": 337,
+      "raw_snippet": "\"s5c\": {\"ep\":\"EP01\",\"scene\":\"house\",\"char\":\"wanerh\",\"speaker\":\"沈婉儿\",\"text\":\"再撑三天，就得下地挖野菜。\",\"next\":\"f_s5\"},",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "f_s5"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "s5b"
+      ]
+    },
+    "f_s5": {
+      "id": "f_s5",
+      "line": 338,
+      "raw_snippet": "\"f_s5\": {\"ep\":\"EP01\",\"scene\":\"house\",\"type\":\"choice\",\"title\":\"家底只剩大半碗面，你——\",\"media\":{\"kind\":\"image\",\"file\":\"images/lastf",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "images/lastframes/S5.hd.jpg",
+      "next": [
+        "r_f_s5_a",
+        "r_f_s5_b",
+        "r_f_s5_c",
+        "BE_LOSE_HER"
+      ],
+      "hasOptions": true,
+      "optionCount": 4,
+      "from": [
+        "s5c"
+      ]
+    },
+    "r_f_s5_a": {
+      "id": "r_f_s5_a",
+      "line": 339,
+      "raw_snippet": "\"r_f_s5_a\": {\"ep\":\"EP01\",\"scene\":\"house\",\"media\":{\"kind\":\"image\",\"file\":\"https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s5_a.png",
+      "next": [
+        "s6"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_s5"
+      ]
+    },
+    "r_f_s5_b": {
+      "id": "r_f_s5_b",
+      "line": 340,
+      "raw_snippet": "\"r_f_s5_b\": {\"ep\":\"EP01\",\"scene\":\"house\",\"media\":{\"kind\":\"image\",\"file\":\"https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（内心）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s5_b.png",
+      "next": [
+        "s6"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_s5"
+      ]
+    },
+    "r_f_s5_c": {
+      "id": "r_f_s5_c",
+      "line": 341,
+      "raw_snippet": "\"r_f_s5_c\": {\"ep\":\"EP01\",\"scene\":\"house\",\"media\":{\"kind\":\"image\",\"file\":\"https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（内心）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s5_c.png",
+      "next": [
+        "s6"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_s5"
+      ]
+    },
+    "s6": {
+      "id": "s6",
+      "line": 342,
+      "raw_snippet": "\"s6\": {\"ep\":\"EP01\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGam",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（低吼）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S6.hd.mp4",
+      "next": [
+        "s6b"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_f_s5_a",
+        "r_f_s5_b",
+        "r_f_s5_c"
+      ]
+    },
+    "s6b": {
+      "id": "s6b",
+      "line": 343,
+      "raw_snippet": "\"s6b\": {\"ep\":\"EP01\",\"scene\":\"house\",\"media\":{\"kind\":\"skillcard\",\"name\":\"一亩好地·Lv1\",\"desc\":\"这块地，真能救下嫂子吗？\",\"achvId\":\"skill_",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": "system",
+      "speaker": "系统",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "skillcard",
+      "mediaFile": null,
+      "next": [
+        "f_s6"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "s6"
+      ]
+    },
+    "r_dance_encore_ep01": {
+      "id": "r_dance_encore_ep01",
+      "line": 344,
+      "raw_snippet": "\"r_dance_encore_ep01\": {\"ep\":\"EP01\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/K",
+      "ep": "EP01",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（含笑）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side07_cailian.hd.mp4",
+      "next": [
+        "s5"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_dance_react"
+      ]
+    },
+    "f_s6": {
+      "id": "f_s6",
+      "line": 345,
+      "raw_snippet": "\"f_s6\": {\"ep\":\"EP02\",\"scene\":\"house\",\"type\":\"choice\",\"title\":\"一亩好地已觉醒——先替嫂子试一回？\",\"media\":{\"kind\":\"image\",\"file\":\"images/",
+      "ep": "EP02",
+      "epTitle": "一亩好地·为嫂子挣第一笔钱",
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "images/lastframes/S6.hd.jpg",
+      "next": [
+        "r_f_s6_a",
+        "r_f_s6_b",
+        "r_f_s6_c",
+        "BE_GOD"
+      ],
+      "hasOptions": true,
+      "optionCount": 4,
+      "from": [
+        "s6b"
+      ]
+    },
+    "r_f_s6_a": {
+      "id": "r_f_s6_a",
+      "line": 346,
+      "raw_snippet": "\"r_f_s6_a\": {\"ep\":\"EP02\",\"scene\":\"field\",\"media\":{\"kind\":\"image\",\"file\":\"https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "field",
+      "char": "aotian",
+      "speaker": "你（内心）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s6_a.png",
+      "next": [
+        "s8"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_s6"
+      ]
+    },
+    "r_f_s6_b": {
+      "id": "r_f_s6_b",
+      "line": 347,
+      "raw_snippet": "\"r_f_s6_b\": {\"ep\":\"EP02\",\"scene\":\"field\",\"media\":{\"kind\":\"image\",\"file\":\"https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "field",
+      "char": "aotian",
+      "speaker": "你",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s6_b.png",
+      "next": [
+        "s8"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_s6"
+      ]
+    },
+    "r_f_s6_c": {
+      "id": "r_f_s6_c",
+      "line": 348,
+      "raw_snippet": "\"r_f_s6_c\": {\"ep\":\"EP02\",\"scene\":\"house\",\"media\":{\"kind\":\"image\",\"file\":\"https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s6_c.png",
+      "next": [
+        "s8"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_s6"
+      ]
+    },
+    "s8": {
+      "id": "s8",
+      "line": 349,
+      "raw_snippet": "\"s8\": {\"ep\":\"EP02\",\"scene\":\"field\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGam",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "field",
+      "char": "aotian",
+      "speaker": "你（震撼低语）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S8.hd.mp4",
+      "next": [
+        "s8b"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_f_s6_a",
+        "r_f_s6_b",
+        "r_f_s6_c"
+      ]
+    },
+    "s8b": {
+      "id": "s8b",
+      "line": 350,
+      "raw_snippet": "\"s8b\": {\"ep\":\"EP02\",\"scene\":\"field\",\"char\":\"aotian\",\"speaker\":\"你（攥拳）\",\"text\":\"这地……真是我的了！\",\"next\":\"f_s8\"},",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "field",
+      "char": "aotian",
+      "speaker": "你（攥拳）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "f_s8"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "s8"
+      ]
+    },
+    "f_s8": {
+      "id": "f_s8",
+      "line": 351,
+      "raw_snippet": "\"f_s8\": {\"ep\":\"EP02\",\"scene\":\"field\",\"type\":\"choice\",\"title\":\"一夜长成熟玉米——你先：\",\"media\":{\"kind\":\"image\",\"file\":\"images/lastf",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "field",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "images/lastframes/S8.hd.jpg",
+      "next": [
+        "r_f_s8_a",
+        "r_f_s8_b",
+        "r_f_s8_c"
+      ],
+      "hasOptions": true,
+      "optionCount": 3,
+      "from": [
+        "s8b"
+      ]
+    },
+    "r_f_s8_a": {
+      "id": "r_f_s8_a",
+      "line": 352,
+      "raw_snippet": "\"r_f_s8_a\": {\"ep\":\"EP02\",\"scene\":\"field\",\"media\":{\"kind\":\"image\",\"file\":\"https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "field",
+      "char": "aotian",
+      "speaker": "你",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s8_a.png",
+      "next": [
+        "s9"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_s8"
+      ]
+    },
+    "r_f_s8_b": {
+      "id": "r_f_s8_b",
+      "line": 353,
+      "raw_snippet": "\"r_f_s8_b\": {\"ep\":\"EP02\",\"scene\":\"field\",\"media\":{\"kind\":\"image\",\"file\":\"https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "field",
+      "char": "aotian",
+      "speaker": "你（嚼）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s8_b.png",
+      "next": [
+        "s9"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_s8"
+      ]
+    },
+    "r_f_s8_c": {
+      "id": "r_f_s8_c",
+      "line": 354,
+      "raw_snippet": "\"r_f_s8_c\": {\"ep\":\"EP02\",\"scene\":\"field\",\"media\":{\"kind\":\"image\",\"file\":\"https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "field",
+      "char": "aotian",
+      "speaker": "你（内心）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s8_c.png",
+      "next": [
+        "s9"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_s8"
+      ]
+    },
+    "s9": {
+      "id": "s9",
+      "line": 355,
+      "raw_snippet": "\"s9\": {\"ep\":\"EP02\",\"scene\":\"field\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGam",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "field",
+      "char": "wanerh",
+      "speaker": "沈婉儿（掩嘴颤）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S9.hd.mp4",
+      "next": [
+        "s9b"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_f_s8_a",
+        "r_f_s8_b",
+        "r_f_s8_c"
+      ]
+    },
+    "s9b": {
+      "id": "s9b",
+      "line": 356,
+      "raw_snippet": "\"s9b\": {\"ep\":\"EP02\",\"scene\":\"field\",\"char\":\"wanerh\",\"speaker\":\"沈婉儿（跪下泪）\",\"text\":\"傲天，你是老天派来的。\",\"next\":\"f_s9\"},",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "field",
+      "char": "wanerh",
+      "speaker": "沈婉儿（跪下泪）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "f_s9"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "s9"
+      ]
+    },
+    "f_s9": {
+      "id": "f_s9",
+      "line": 357,
+      "raw_snippet": "\"f_s9\": {\"ep\":\"EP02\",\"scene\":\"field\",\"type\":\"choice\",\"title\":\"婉儿跪到地上，你——\",\"media\":{\"kind\":\"image\",\"file\":\"images/lastfra",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "field",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "images/lastframes/S9.hd.jpg",
+      "next": [
+        "r_f_s9_a",
+        "r_f_s9_b",
+        "r_f_s9_c"
+      ],
+      "hasOptions": true,
+      "optionCount": 3,
+      "from": [
+        "s9b"
+      ]
+    },
+    "r_f_s9_a": {
+      "id": "r_f_s9_a",
+      "line": 358,
+      "raw_snippet": "\"r_f_s9_a\": {\"ep\":\"EP02\",\"scene\":\"field\",\"media\":{\"kind\":\"image\",\"file\":\"https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "field",
+      "char": "aotian",
+      "speaker": "你",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s9_a.png",
+      "next": [
+        "s10"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_s9"
+      ]
+    },
+    "r_f_s9_b": {
+      "id": "r_f_s9_b",
+      "line": 359,
+      "raw_snippet": "\"r_f_s9_b\": {\"ep\":\"EP02\",\"scene\":\"field\",\"media\":{\"kind\":\"image\",\"file\":\"https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "field",
+      "char": "aotian",
+      "speaker": "你",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s9_b.png",
+      "next": [
+        "s10"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_s9"
+      ]
+    },
+    "r_f_s9_c": {
+      "id": "r_f_s9_c",
+      "line": 360,
+      "raw_snippet": "\"r_f_s9_c\": {\"ep\":\"EP02\",\"scene\":\"field\",\"media\":{\"kind\":\"image\",\"file\":\"https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "field",
+      "char": "aotian",
+      "speaker": "你（内心）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s9_c.png",
+      "next": [
+        "s10"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_s9"
+      ]
+    },
+    "s10": {
+      "id": "s10",
+      "line": 361,
+      "raw_snippet": "\"s10\": {\"ep\":\"EP02\",\"scene\":\"field\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGa",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "field",
+      "char": "aotian",
+      "speaker": "你（沉声）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S10.hd.mp4",
+      "next": [
+        "s10b"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_f_s9_a",
+        "r_f_s9_b",
+        "r_f_s9_c"
+      ]
+    },
+    "s10b": {
+      "id": "s10b",
+      "line": 362,
+      "raw_snippet": "\"s10b\": {\"ep\":\"EP02\",\"scene\":\"field\",\"char\":\"aotian\",\"speaker\":\"你（温柔）\",\"text\":\"婉儿，你不用再愁了。\",\"next\":\"f_s10\"},",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "field",
+      "char": "aotian",
+      "speaker": "你（温柔）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "f_s10"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "s10"
+      ]
+    },
+    "f_s10": {
+      "id": "f_s10",
+      "line": 363,
+      "raw_snippet": "\"f_s10\": {\"ep\":\"EP02\",\"scene\":\"field\",\"type\":\"choice\",\"title\":\"金光散去，你握紧拳头——第一件当家事，先做啥？\",\"media\":{\"kind\":\"image\",\"file\":\"",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "field",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "images/lastframes/S10.hd.jpg",
+      "next": [
+        "r_s10_a",
+        "r_s10_b",
+        "r_s10_c"
+      ],
+      "hasOptions": true,
+      "optionCount": 3,
+      "from": [
+        "s10b"
+      ]
+    },
+    "r_s10_a": {
+      "id": "r_s10_a",
+      "line": 364,
+      "raw_snippet": "\"r_s10_a\": {\"ep\":\"EP02\",\"scene\":\"field\",\"char\":\"aotian\",\"speaker\":\"你（心里）\",\"text\":\"（转身牵她的手·掌心暖着掌心）今夜——起两个锅，蒸馍、熬粥。婉儿眼圈一红：「",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "field",
+      "char": "aotian",
+      "speaker": "你（心里）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "s10c"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_s10"
+      ]
+    },
+    "r_s10_b": {
+      "id": "r_s10_b",
+      "line": 365,
+      "raw_snippet": "\"r_s10_b\": {\"ep\":\"EP02\",\"scene\":\"field\",\"char\":\"aotian\",\"speaker\":\"你（心里）\",\"text\":\"（一步一步踏过田垄·把每一寸地都印在心里）明儿一早——赶集或是留粮，都得心里",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "field",
+      "char": "aotian",
+      "speaker": "你（心里）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "s10c"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_s10"
+      ]
+    },
+    "r_s10_c": {
+      "id": "r_s10_c",
+      "line": 366,
+      "raw_snippet": "\"r_s10_c\": {\"ep\":\"EP02\",\"scene\":\"field\",\"char\":\"aotian\",\"speaker\":\"你（心里）\",\"text\":\"（扛起一袋玉米往肩上一摔）不打探行情，明儿卖两袋都得吃亏。婉儿在窗后望着你—",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "field",
+      "char": "aotian",
+      "speaker": "你（心里）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "s10c"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_s10"
+      ]
+    },
+    "s10c": {
+      "id": "s10c",
+      "line": 367,
+      "raw_snippet": "\"s10c\": {\"ep\":\"EP02\",\"scene\":\"night\",\"media\":{\"kind\":\"image\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoG",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "night",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k0_a.jpg",
+      "next": [
+        "k_bridge1"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_s10_a",
+        "r_s10_b",
+        "r_s10_c"
+      ]
+    },
+    "k_bridge1": {
+      "id": "k_bridge1",
+      "line": 368,
+      "raw_snippet": "\"k_bridge1\": {\"ep\":\"EP02\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIG",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（搓衣角）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/k_bridge.hd.mp4",
+      "next": [
+        "k_side_gate_bridge"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "s10c"
+      ]
+    },
+    "k_side_gate_bridge": {
+      "id": "k_side_gate_bridge",
+      "line": 369,
+      "raw_snippet": "\"k_side_gate_bridge\": {\"ep\":\"EP02\",\"scene\":\"house\",\"char\":\"narrator\",\"speaker\":\"旁白\",\"text\":\"（她把樟木箱盖轻轻掀开·油灯映着一件叠得整齐的大红肚兜，",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "k_side_gate"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k_bridge1"
+      ]
+    },
+    "k_side_gate": {
+      "id": "k_side_gate",
+      "line": 370,
+      "raw_snippet": "\"k_side_gate\": {\"ep\":\"EP02\",\"scene\":\"house\",\"type\":\"choice\",\"title\":\"樟木箱一开，你眼睛就直了——今晚，想让嫂子……\",\"options\":[{\"text\":\"跳一支江南采",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "r_side07",
+        "r_side01",
+        "BE_SLAP",
+        "k_side_after"
+      ],
+      "hasOptions": true,
+      "optionCount": 4,
+      "from": [
+        "k_side_gate_bridge"
+      ]
+    },
+    "r_side07": {
+      "id": "r_side07",
+      "line": 371,
+      "raw_snippet": "\"r_side07\": {\"ep\":\"EP02\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（含笑）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side07_cailian.hd.mp4",
+      "next": [
+        "f_side_dance_react"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k_side_gate"
+      ]
+    },
+    "k_side_dress": {
+      "id": "k_side_dress",
+      "line": 372,
+      "raw_snippet": "\"k_side_dress\": {\"ep\":\"EP02\",\"scene\":\"house\",\"type\":\"choice\",\"title\":\"婉儿羞得低下头：「你……你想看嫂子穿哪件？」\",\"options\":[{\"text\":\"🎁 大红肚",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "r_side01",
+        "r_side02",
+        "r_side03",
+        "BE_SLAP",
+        "k_side_after"
+      ],
+      "hasOptions": true,
+      "optionCount": 6,
+      "from": []
+    },
+    "r_side01": {
+      "id": "r_side01",
+      "line": 373,
+      "raw_snippet": "\"r_side01\": {\"ep\":\"EP02\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（气声）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side01_hongdudou.hd.mp4",
+      "next": [
+        "f_side_dress_react"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k_side_gate",
+        "k_side_dress"
+      ]
+    },
+    "r_side02": {
+      "id": "r_side02",
+      "line": 374,
+      "raw_snippet": "\"r_side02\": {\"ep\":\"EP02\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（气声）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side02_qipao.hd.mp4",
+      "next": [
+        "f_side_dress_react"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k_side_dress"
+      ]
+    },
+    "r_side03": {
+      "id": "r_side03",
+      "line": 375,
+      "raw_snippet": "\"r_side03\": {\"ep\":\"EP02\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（气声）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side03_shishen.hd.mp4",
+      "next": [
+        "f_side_dress_react"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k_side_dress"
+      ]
+    },
+    "f_side_dress_react": {
+      "id": "f_side_dress_react",
+      "line": 376,
+      "raw_snippet": "\"f_side_dress_react\": {\"ep\":\"EP02\",\"scene\":\"house\",\"type\":\"choice\",\"title\":\"婉儿站在灯影里转了一圈——「傲天，好看么？」\",\"options\":[{\"text\":\"",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "f_dress_a",
+        "f_dress_b",
+        "f_dress_c",
+        "f_dress_d"
+      ],
+      "hasOptions": true,
+      "optionCount": 4,
+      "from": [
+        "r_side01",
+        "r_side02",
+        "r_side03"
+      ]
+    },
+    "f_dress_a": {
+      "id": "f_dress_a",
+      "line": 377,
+      "raw_snippet": "\"f_dress_a\": {\"ep\":\"EP02\",\"scene\":\"house\",\"stay\":true,\"char\":\"aotian\",\"speaker\":\"你（凝望）\",\"media\":{\"kind\":\"image\",\"file\":\"",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（凝望）",
+      "type": "text",
+      "stay": true,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/f_dress_a.jpg",
+      "next": [
+        "k_side_after"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_side_dress_react"
+      ]
+    },
+    "f_dress_b": {
+      "id": "f_dress_b",
+      "line": 378,
+      "raw_snippet": "\"f_dress_b\": {\"ep\":\"EP02\",\"scene\":\"house\",\"stay\":true,\"char\":\"aotian\",\"speaker\":\"你（憨笑）\",\"media\":{\"kind\":\"image\",\"file\":\"",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（憨笑）",
+      "type": "text",
+      "stay": true,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/f_dress_b.jpg",
+      "next": [
+        "k_side_after"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_side_dress_react"
+      ]
+    },
+    "f_dress_c": {
+      "id": "f_dress_c",
+      "line": 379,
+      "raw_snippet": "\"f_dress_c\": {\"ep\":\"EP02\",\"scene\":\"house\",\"stay\":true,\"char\":\"aotian\",\"speaker\":\"你（招手）\",\"media\":{\"kind\":\"image\",\"file\":\"",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（招手）",
+      "type": "text",
+      "stay": true,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/f_dress_c.jpg",
+      "next": [
+        "k_side_after"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_side_dress_react"
+      ]
+    },
+    "f_dress_d": {
+      "id": "f_dress_d",
+      "line": 380,
+      "raw_snippet": "\"f_dress_d\": {\"ep\":\"EP02\",\"scene\":\"house\",\"stay\":true,\"char\":\"aotian\",\"speaker\":\"你（打哈欠）\",\"media\":{\"kind\":\"image\",\"file\":",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（打哈欠）",
+      "type": "text",
+      "stay": true,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/f_dress_d.jpg",
+      "next": [
+        "k_side_after"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_side_dress_react"
+      ]
+    },
+    "k_side_dance": {
+      "id": "k_side_dance",
+      "line": 381,
+      "raw_snippet": "\"k_side_dance\": {\"ep\":\"EP02\",\"scene\":\"house\",\"char\":\"wanerh\",\"speaker\":\"沈婉儿（拿下发簪）\",\"text\":\"娘家教过我一支孔雀舞——你就站好，我跳给你看。\",\"nex",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（拿下发簪）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "r_side04"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": []
+    },
+    "r_side04": {
+      "id": "r_side04",
+      "line": 382,
+      "raw_snippet": "\"r_side04\": {\"ep\":\"EP02\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（撒娇）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side04_kongque.hd.mp4",
+      "next": [
+        "f_side_dance_react"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k_side_dance"
+      ]
+    },
+    "r_side05": {
+      "id": "r_side05",
+      "line": 383,
+      "raw_snippet": "\"r_side05\": {\"ep\":\"EP02\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（撒娇）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side05_jazz.hd.mp4",
+      "next": [
+        "f_side_dance_react"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": []
+    },
+    "r_side06": {
+      "id": "r_side06",
+      "line": 384,
+      "raw_snippet": "\"r_side06\": {\"ep\":\"EP02\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（撒娇）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side06_dunhuang.hd.mp4",
+      "next": [
+        "f_side_dance_react"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": []
+    },
+    "f_side_dance_react": {
+      "id": "f_side_dance_react",
+      "line": 385,
+      "raw_snippet": "\"f_side_dance_react\": {\"ep\":\"EP02\",\"scene\":\"house\",\"type\":\"choice\",\"title\":\"婉儿旋完最后一圈，眼睛亮亮地望过来——\",\"options\":[{\"text\":\"好看！",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "f_dance_a",
+        "r_dance_encore_home_ep02",
+        "f_dance_c"
+      ],
+      "hasOptions": true,
+      "optionCount": 3,
+      "from": [
+        "r_side07",
+        "r_side04",
+        "r_side05",
+        "r_side06"
+      ]
+    },
+    "f_dance_a": {
+      "id": "f_dance_a",
+      "line": 386,
+      "raw_snippet": "\"f_dance_a\": {\"ep\":\"EP02\",\"scene\":\"house\",\"stay\":true,\"char\":\"aotian\",\"speaker\":\"你（着迷）\",\"media\":{\"kind\":\"image\",\"file\":\"",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（着迷）",
+      "type": "text",
+      "stay": true,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/f_dance_a.jpg",
+      "next": [
+        "k_side_after"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_side_dance_react"
+      ]
+    },
+    "f_dance_b": {
+      "id": "f_dance_b",
+      "line": 387,
+      "raw_snippet": "\"f_dance_b\": {\"ep\":\"EP02\",\"scene\":\"house\",\"stay\":true,\"char\":\"aotian\",\"speaker\":\"你（起哄）\",\"media\":{\"kind\":\"image\",\"file\":\"",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（起哄）",
+      "type": "text",
+      "stay": true,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/f_dance_b.jpg",
+      "next": [
+        "k_side_after"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": []
+    },
+    "f_dance_c": {
+      "id": "f_dance_c",
+      "line": 388,
+      "raw_snippet": "\"f_dance_c\": {\"ep\":\"EP02\",\"scene\":\"house\",\"stay\":true,\"char\":\"aotian\",\"speaker\":\"你（撇嘴）\",\"media\":{\"kind\":\"image\",\"file\":\"",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（撇嘴）",
+      "type": "text",
+      "stay": true,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/f_dance_c.jpg",
+      "next": [
+        "k_side_after"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_side_dance_react"
+      ]
+    },
+    "k_side_after": {
+      "id": "k_side_after",
+      "line": 389,
+      "raw_snippet": "\"k_side_after\": {\"ep\":\"EP02\",\"scene\":\"house\",\"stay\":true,\"media\":{\"kind\":\"image\",\"file\":\"https://p1-ad.adkwai.com/udata/",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（依偎）",
+      "type": "text",
+      "stay": true,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k_side_after.jpg",
+      "next": [
+        "k_side_after2"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k_side_gate",
+        "k_side_dress",
+        "f_dress_a",
+        "f_dress_b",
+        "f_dress_c",
+        "f_dress_d",
+        "f_dance_a",
+        "f_dance_b",
+        "f_dance_c",
+        "r_dance_encore_home_ep02"
+      ]
+    },
+    "k_side_after2": {
+      "id": "k_side_after2",
+      "line": 390,
+      "raw_snippet": "\"k_side_after2\": {\"ep\":\"EP02\",\"scene\":\"house\",\"stay\":true,\"media\":{\"kind\":\"image\",\"file\":\"https://p5-ad.adkwai.com/udata",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（内心）",
+      "type": "text",
+      "stay": true,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k_side_after2.jpg",
+      "next": [
+        "k0"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k_side_after"
+      ]
+    },
+    "k_side_after_gentle": {
+      "id": "k_side_after_gentle",
+      "line": 391,
+      "raw_snippet": "\"k_side_after_gentle\": {\"ep\":\"EP02\",\"scene\":\"night\",\"media\":{\"kind\":\"image\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/K",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "night",
+      "char": "aotian",
+      "speaker": "你（轻声）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k_side_after_gentle.jpg",
+      "next": [
+        "k0"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": []
+    },
+    "k0": {
+      "id": "k0",
+      "line": 392,
+      "raw_snippet": "\"k0\": {\"ep\":\"EP02\",\"scene\":\"house\",\"type\":\"choice\",\"narr\":true,\"text\":\"今年头一袋玉米，重于一块大洋。卖、存、显，三条路口、边上那盏灯把你背影拉得好长。婉儿隔着窗没说话，",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k_side_after.jpg",
+      "next": [
+        "k0_a",
+        "k0_b",
+        "k0_c",
+        "BE_DRUNK"
+      ],
+      "hasOptions": true,
+      "optionCount": 4,
+      "from": [
+        "k_side_after2",
+        "k_side_after_gentle"
+      ]
+    },
+    "k0_a": {
+      "id": "k0_a",
+      "line": 393,
+      "raw_snippet": "\"k0_a\": {\"ep\":\"EP02\",\"scene\":\"house\",\"stay\":true,\"media\":{\"kind\":\"image\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-G",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（拍板）",
+      "type": "text",
+      "stay": true,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k0_a.jpg",
+      "next": [
+        "e2s1"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k0"
+      ]
+    },
+    "k0_b": {
+      "id": "k0_b",
+      "line": 394,
+      "raw_snippet": "\"k0_b\": {\"ep\":\"EP02\",\"scene\":\"house\",\"stay\":true,\"media\":{\"kind\":\"image\",\"file\":\"https://p4-ad.adkwai.com/udata/pkg/KS-G",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（内心）",
+      "type": "text",
+      "stay": true,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k0_b.jpg",
+      "next": [
+        "k0_b_bridge"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k0"
+      ]
+    },
+    "k0_b_bridge": {
+      "id": "k0_b_bridge",
+      "line": 395,
+      "raw_snippet": "\"k0_b_bridge\": {\"ep\":\"EP02\",\"scene\":\"house\",\"stay\":true,\"media\":{\"kind\":\"image\",\"file\":\"https://p5-ad.adkwai.com/udata/p",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": true,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k0_b_bridge.jpg",
+      "next": [
+        "e2s1"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k0_b"
+      ]
+    },
+    "k0_c": {
+      "id": "k0_c",
+      "line": 396,
+      "raw_snippet": "\"k0_c\": {\"ep\":\"EP02\",\"scene\":\"house\",\"stay\":true,\"media\":{\"kind\":\"image\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-G",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（笑）",
+      "type": "text",
+      "stay": true,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k0_c.jpg",
+      "next": [
+        "k0_c_bridge"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k0"
+      ]
+    },
+    "k0_c_bridge": {
+      "id": "k0_c_bridge",
+      "line": 397,
+      "raw_snippet": "\"k0_c_bridge\": {\"ep\":\"EP02\",\"scene\":\"house\",\"stay\":true,\"media\":{\"kind\":\"image\",\"file\":\"https://p5-ad.adkwai.com/udata/p",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": true,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k0_c_bridge.jpg",
+      "next": [
+        "e2s1"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k0_c"
+      ]
+    },
+    "e2s1": {
+      "id": "e2s1",
+      "line": 398,
+      "raw_snippet": "\"e2s1\": {\"ep\":\"EP02\",\"scene\":\"trans\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoG",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "trans",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": false,
+      "forceCaption": true,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s1.hd.mp4",
+      "next": [
+        "e2s2"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k0_a",
+        "k0_b_bridge",
+        "k0_c_bridge"
+      ]
+    },
+    "e2s2": {
+      "id": "e2s2",
+      "line": 399,
+      "raw_snippet": "\"e2s2\": {\"ep\":\"EP02\",\"scene\":\"village\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-S",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": false,
+      "forceCaption": true,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s2.hd.mp4",
+      "next": [
+        "f_e2s2"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "e2s1"
+      ]
+    },
+    "f_e2s2": {
+      "id": "f_e2s2",
+      "line": 400,
+      "raw_snippet": "\"f_e2s2\": {\"ep\":\"EP02\",\"scene\":\"village\",\"type\":\"choice\",\"title\":\"1980 年的县城——你怎么面对这市井人潮？\",\"media\":{\"kind\":\"image\",\"file\"",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/e2s2.jpg",
+      "next": [
+        "r_e2s2_a",
+        "r_e2s2_b",
+        "r_e2s2_c"
+      ],
+      "hasOptions": true,
+      "optionCount": 3,
+      "from": [
+        "e2s2"
+      ]
+    },
+    "r_e2s2_a": {
+      "id": "r_e2s2_a",
+      "line": 401,
+      "raw_snippet": "\"r_e2s2_a\": {\"ep\":\"EP02\",\"scene\":\"village\",\"char\":\"aotian\",\"speaker\":\"你（心里）\",\"media\":{\"kind\":\"image\",\"file\":\"https://p5-",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "aotian",
+      "speaker": "你（心里）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_e2s2_a.c.jpg",
+      "next": [
+        "e2s3"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e2s2"
+      ]
+    },
+    "r_e2s2_b": {
+      "id": "r_e2s2_b",
+      "line": 402,
+      "raw_snippet": "\"r_e2s2_b\": {\"ep\":\"EP02\",\"scene\":\"village\",\"char\":\"aotian\",\"speaker\":\"你（心里）\",\"media\":{\"kind\":\"image\",\"file\":\"https://p5-",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "aotian",
+      "speaker": "你（心里）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_e2s2_b.c.jpg",
+      "next": [
+        "e2s3"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e2s2"
+      ]
+    },
+    "r_e2s2_c": {
+      "id": "r_e2s2_c",
+      "line": 403,
+      "raw_snippet": "\"r_e2s2_c\": {\"ep\":\"EP02\",\"scene\":\"village\",\"char\":\"aotian\",\"speaker\":\"你（心里）\",\"media\":{\"kind\":\"image\",\"file\":\"https://p5-",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "aotian",
+      "speaker": "你（心里）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_e2s2_c.c.jpg",
+      "next": [
+        "e2s3"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e2s2"
+      ]
+    },
+    "e2s3": {
+      "id": "e2s3",
+      "line": 404,
+      "raw_snippet": "\"e2s3\": {\"ep\":\"EP02\",\"scene\":\"village\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-S",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "vendor",
+      "speaker": "粮贩子（叼烟·脚踩秤）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s3.hd.mp4",
+      "next": [
+        "e2s3b"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_e2s2_a",
+        "r_e2s2_b",
+        "r_e2s2_c"
+      ]
+    },
+    "e2s3b": {
+      "id": "e2s3b",
+      "line": 405,
+      "raw_snippet": "\"e2s3b\": {\"ep\":\"EP02\",\"scene\":\"village\",\"char\":\"aotian\",\"speaker\":\"你（心里）\",\"text\":\"（攥紧麻袋口·眼角扫见他脚下那杆秤——秤砣位置偏了半寸）……这老小子秤有猫腻",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "aotian",
+      "speaker": "你（心里）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "f_e2_haggle"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "e2s3"
+      ]
+    },
+    "f_e2_haggle": {
+      "id": "f_e2_haggle",
+      "line": 406,
+      "raw_snippet": "\"f_e2_haggle\": {\"ep\":\"EP02\",\"scene\":\"village\",\"type\":\"choice\",\"title\":\"粮贩子压到八毛——你怎么接？\",\"media\":{\"kind\":\"image\",\"file\":\"h",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/e2s3.jpg",
+      "next": [
+        "r_haggle_a",
+        "r_haggle_b",
+        "r_haggle_c",
+        "BE_STARVE",
+        "r_haggle_d"
+      ],
+      "hasOptions": true,
+      "optionCount": 5,
+      "from": [
+        "e2s3b"
+      ]
+    },
+    "r_haggle_a": {
+      "id": "r_haggle_a",
+      "line": 407,
+      "raw_snippet": "\"r_haggle_a\": {\"ep\":\"EP02\",\"scene\":\"village\",\"char\":\"aotian\",\"speaker\":\"你\",\"media\":{\"kind\":\"image\",\"file\":\"https://p5-ad",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "aotian",
+      "speaker": "你",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/r_haggle_a.jpg",
+      "next": [
+        "r_haggle_a2"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e2_haggle"
+      ]
+    },
+    "r_haggle_a2": {
+      "id": "r_haggle_a2",
+      "line": 408,
+      "raw_snippet": "\"r_haggle_a2\": {\"ep\":\"EP02\",\"scene\":\"village\",\"char\":\"vendor\",\"speaker\":\"粮贩子（脸抽了抽）\",\"text\":\"……行行行，一块，一块！你这后生嘴皮子够利索。搬秤上来。",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "vendor",
+      "speaker": "粮贩子（脸抽了抽）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "e2s4"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_haggle_a"
+      ]
+    },
+    "r_haggle_b": {
+      "id": "r_haggle_b",
+      "line": 409,
+      "raw_snippet": "\"r_haggle_b\": {\"ep\":\"EP02\",\"scene\":\"village\",\"char\":\"aotian\",\"speaker\":\"你（哑声）\",\"media\":{\"kind\":\"image\",\"file\":\"https://p",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "aotian",
+      "speaker": "你（哑声）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/r_haggle_b.jpg",
+      "next": [
+        "r_haggle_b2"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e2_haggle"
+      ]
+    },
+    "r_haggle_b2": {
+      "id": "r_haggle_b2",
+      "line": 410,
+      "raw_snippet": "\"r_haggle_b2\": {\"ep\":\"EP02\",\"scene\":\"village\",\"char\":\"vendor\",\"speaker\":\"粮贩子（叹口气）\",\"text\":\"……哎。看你这后生也不容易。九毛就九毛，别让人听见了闹哄—",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "vendor",
+      "speaker": "粮贩子（叹口气）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "e2s4"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_haggle_b"
+      ]
+    },
+    "r_haggle_c": {
+      "id": "r_haggle_c",
+      "line": 411,
+      "raw_snippet": "\"r_haggle_c\": {\"ep\":\"EP02\",\"scene\":\"village\",\"char\":\"aotian\",\"speaker\":\"你（冷）\",\"media\":{\"kind\":\"image\",\"file\":\"https://p5",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "aotian",
+      "speaker": "你（冷）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_haggle_c.v2.c.jpg",
+      "next": [
+        "r_haggle_c2"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e2_haggle"
+      ]
+    },
+    "r_haggle_c2": {
+      "id": "r_haggle_c2",
+      "line": 412,
+      "raw_snippet": "\"r_haggle_c2\": {\"ep\":\"EP02\",\"scene\":\"village\",\"char\":\"vendor\",\"speaker\":\"粮贩子（追出来·陪笑）\",\"text\":\"哎哎哎兄弟！回来回来！一块一，一块一行不行？我这也是",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "vendor",
+      "speaker": "粮贩子（追出来·陪笑）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "e2s4"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_haggle_c"
+      ]
+    },
+    "r_haggle_d": {
+      "id": "r_haggle_d",
+      "line": 413,
+      "raw_snippet": "\"r_haggle_d\": {\"ep\":\"EP02\",\"scene\":\"village\",\"char\":\"aotian\",\"speaker\":\"你（一把踢开秤盘）\",\"media\":{\"kind\":\"image\",\"file\":\"https",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "aotian",
+      "speaker": "你（一把踢开秤盘）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/r_haggle_d.jpg",
+      "next": [
+        "r_haggle_d2"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e2_haggle"
+      ]
+    },
+    "r_haggle_d2": {
+      "id": "r_haggle_d2",
+      "line": 414,
+      "raw_snippet": "\"r_haggle_d2\": {\"ep\":\"EP02\",\"scene\":\"village\",\"char\":\"narrator\",\"speaker\":\"旁白\",\"text\":\"（围观群众炸开了锅·粮贩子脸白如纸）\",\"next\":\"r_hag",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "r_haggle_d3"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_haggle_d"
+      ]
+    },
+    "r_haggle_d3": {
+      "id": "r_haggle_d3",
+      "line": 415,
+      "raw_snippet": "\"r_haggle_d3\": {\"ep\":\"EP02\",\"scene\":\"village\",\"char\":\"vendor\",\"speaker\":\"粮贩子（哆嗦跪地）\",\"media\":{\"kind\":\"image\",\"file\":\"http",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "vendor",
+      "speaker": "粮贩子（哆嗦跪地）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/r_haggle_d.jpg",
+      "next": [
+        "s_stone_video"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_haggle_d2"
+      ]
+    },
+    "s_stone_video": {
+      "id": "s_stone_video",
+      "line": 416,
+      "raw_snippet": "\"s_stone_video\": {\"ep\":\"EP02\",\"scene\":\"village\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GA",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/skill_stone_activate.c.mp4",
+      "next": [
+        "s_stone"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_haggle_d3"
+      ]
+    },
+    "s_stone": {
+      "id": "s_stone",
+      "line": 417,
+      "raw_snippet": "\"s_stone\": {\"ep\":\"EP02\",\"scene\":\"village\",\"media\":{\"kind\":\"skillcard\",\"name\":\"石头变钱·Lv1\",\"desc\":\"一咬牙一跺脚·顽石落地成铜板\",\"achvId\"",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "system",
+      "speaker": "系统",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "skillcard",
+      "mediaFile": null,
+      "next": [
+        "e2s4"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "s_stone_video"
+      ]
+    },
+    "e2s4": {
+      "id": "e2s4",
+      "line": 418,
+      "raw_snippet": "\"e2s4\": {\"ep\":\"EP02\",\"scene\":\"village\",\"media\":{\"kind\":\"image\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-S",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s4.c.jpg",
+      "next": [
+        "k_side_gate_e2"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_haggle_a2",
+        "r_haggle_b2",
+        "r_haggle_c2",
+        "s_stone"
+      ]
+    },
+    "k_side_gate_e2": {
+      "id": "k_side_gate_e2",
+      "line": 419,
+      "raw_snippet": "\"k_side_gate_e2\": {\"ep\":\"EP02\",\"scene\":\"village\",\"type\":\"choice\",\"title\":\"卖完粮拿了钱，集市歇脚一会——你想干点啥？\",\"media\":{\"kind\":\"image\"",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s4_market_rest.v2.c.jpg",
+      "next": [
+        "r_side05_e2",
+        "r_side06_e2",
+        "e2_cloth_enter"
+      ],
+      "hasOptions": true,
+      "optionCount": 3,
+      "from": [
+        "e2s4"
+      ]
+    },
+    "r_side05_e2": {
+      "id": "r_side05_e2",
+      "line": 420,
+      "raw_snippet": "\"r_side05_e2\": {\"ep\":\"EP02\",\"scene\":\"village\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "aotian",
+      "speaker": "你（内心）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side05_jazz.hd.mp4",
+      "next": [
+        "f_side_dance_e2_react"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k_side_gate_e2"
+      ]
+    },
+    "r_side06_e2": {
+      "id": "r_side06_e2",
+      "line": 421,
+      "raw_snippet": "\"r_side06_e2\": {\"ep\":\"EP02\",\"scene\":\"village\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "aotian",
+      "speaker": "你（内心）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side06_dunhuang.hd.mp4",
+      "next": [
+        "f_side_dance_e2_react"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k_side_gate_e2"
+      ]
+    },
+    "f_side_dance_e2_react": {
+      "id": "f_side_dance_e2_react",
+      "line": 422,
+      "raw_snippet": "\"f_side_dance_e2_react\": {\"ep\":\"EP02\",\"scene\":\"village\",\"type\":\"choice\",\"title\":\"（想象里她转过头，眼睛亮亮地问你——）\\\"傲天，我跳得好看么？\\\"\",\"med",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s4_market_rest.v2.c.jpg",
+      "next": [
+        "r_side_dance_e2_a",
+        "r_dance_encore_market_ep02",
+        "r_side_dance_e2_c"
+      ],
+      "hasOptions": true,
+      "optionCount": 3,
+      "from": [
+        "r_side05_e2",
+        "r_side06_e2"
+      ]
+    },
+    "r_side_dance_e2_a": {
+      "id": "r_side_dance_e2_a",
+      "line": 423,
+      "raw_snippet": "\"r_side_dance_e2_a\": {\"ep\":\"EP02\",\"scene\":\"village\",\"char\":\"aotian\",\"speaker\":\"你（心里）\",\"stay\":true,\"text\":\"（你嘟囔一句『好看，最好看』",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "aotian",
+      "speaker": "你（心里）",
+      "type": "text",
+      "stay": true,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "e2_cloth_enter"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_side_dance_e2_react"
+      ]
+    },
+    "r_side_dance_e2_b": {
+      "id": "r_side_dance_e2_b",
+      "line": 424,
+      "raw_snippet": "\"r_side_dance_e2_b\": {\"ep\":\"EP02\",\"scene\":\"village\",\"char\":\"aotian\",\"speaker\":\"你（心里）\",\"stay\":true,\"text\":\"（心里接上一句『再跳一支吧—",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "aotian",
+      "speaker": "你（心里）",
+      "type": "text",
+      "stay": true,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "e2_cloth_enter"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": []
+    },
+    "r_side_dance_e2_c": {
+      "id": "r_side_dance_e2_c",
+      "line": 425,
+      "raw_snippet": "\"r_side_dance_e2_c\": {\"ep\":\"EP02\",\"scene\":\"village\",\"char\":\"aotian\",\"speaker\":\"你（心里）\",\"stay\":true,\"text\":\"（你在心里嘀咕一句『先买布，",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "aotian",
+      "speaker": "你（心里）",
+      "type": "text",
+      "stay": true,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "e2_cloth_enter"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_side_dance_e2_react"
+      ]
+    },
+    "e2_cloth_enter": {
+      "id": "e2_cloth_enter",
+      "line": 426,
+      "raw_snippet": "\"e2_cloth_enter\": {\"ep\":\"EP02\",\"scene\":\"village\",\"char\":\"narrator\",\"speaker\":\"旁白\",\"stay\":true,\"media\":{\"kind\":\"image\",\"f",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": true,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/e2s5.jpg",
+      "next": [
+        "f_e2_cloth"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k_side_gate_e2",
+        "r_side_dance_e2_a",
+        "r_side_dance_e2_b",
+        "r_side_dance_e2_c",
+        "r_dance_encore_market_ep02"
+      ]
+    },
+    "f_e2_cloth": {
+      "id": "f_e2_cloth",
+      "line": 427,
+      "raw_snippet": "\"f_e2_cloth\": {\"ep\":\"EP02\",\"scene\":\"village\",\"type\":\"choice\",\"title\":\"布铺柜台前——给嫂子挑块什么布？\",\"media\":{\"kind\":\"image\",\"file\":\"",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_e2_cloth_counter.v2.c.jpg",
+      "next": [
+        "e2s5",
+        "r_e2_cloth_indigo",
+        "r_e2_cloth_red",
+        "r_e2_cloth_qipao"
+      ],
+      "hasOptions": true,
+      "optionCount": 4,
+      "from": [
+        "e2_cloth_enter"
+      ]
+    },
+    "r_e2_cloth_indigo": {
+      "id": "r_e2_cloth_indigo",
+      "line": 428,
+      "raw_snippet": "\"r_e2_cloth_indigo\": {\"ep\":\"EP02\",\"scene\":\"village\",\"char\":\"aotian\",\"speaker\":\"你（心里）\",\"text\":\"（一掌拍在靛蓝细麻上）就它——嫂子做活计得耐脏，两丈",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "aotian",
+      "speaker": "你（心里）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "e2s5"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e2_cloth"
+      ]
+    },
+    "r_e2_cloth_red": {
+      "id": "r_e2_cloth_red",
+      "line": 429,
+      "raw_snippet": "\"r_e2_cloth_red\": {\"ep\":\"EP02\",\"scene\":\"village\",\"char\":\"aotian\",\"speaker\":\"你（内心）\",\"media\":{\"kind\":\"image\",\"file\":\"https",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "aotian",
+      "speaker": "你（内心）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2_cloth_red.v2.c.jpg",
+      "next": [
+        "e2s5"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e2_cloth"
+      ]
+    },
+    "r_e2_cloth_qipao": {
+      "id": "r_e2_cloth_qipao",
+      "line": 430,
+      "raw_snippet": "\"r_e2_cloth_qipao\": {\"ep\":\"EP02\",\"scene\":\"village\",\"char\":\"aotian\",\"speaker\":\"你（内心）\",\"media\":{\"kind\":\"image\",\"file\":\"htt",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "aotian",
+      "speaker": "你（内心）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2_cloth_qipao.v2.c.jpg",
+      "next": [
+        "e2s5"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e2_cloth"
+      ]
+    },
+    "e2s5": {
+      "id": "e2s5",
+      "line": 431,
+      "raw_snippet": "\"e2s5\": {\"ep\":\"EP02\",\"scene\":\"village\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-S",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "aotian",
+      "speaker": "你",
+      "type": "text",
+      "stay": false,
+      "forceCaption": true,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s5.hd.mp4",
+      "next": [
+        "e2s5b_shop"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e2_cloth",
+        "r_e2_cloth_indigo",
+        "r_e2_cloth_red",
+        "r_e2_cloth_qipao"
+      ]
+    },
+    "e2s5b_shop": {
+      "id": "e2s5b_shop",
+      "line": 432,
+      "raw_snippet": "\"e2s5b_shop\": {\"ep\":\"EP02\",\"scene\":\"village\",\"media\":{\"kind\":\"image\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "shopwoman",
+      "speaker": "布铺老板娘（笑眯眯）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s5_boss.v2.c.jpg",
+      "next": [
+        "e2s5b"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "e2s5"
+      ]
+    },
+    "e2s5b": {
+      "id": "e2s5b",
+      "line": 433,
+      "raw_snippet": "\"e2s5b\": {\"ep\":\"EP02\",\"scene\":\"village\",\"char\":\"aotian\",\"speaker\":\"你（心里）\",\"text\":\"（把布卷紧紧夹在腋下）婉儿……今晚就让她穿上试试。给她一件像样的衣裳，这一趟",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "aotian",
+      "speaker": "你（心里）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "e2s5_bridge"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "e2s5b_shop"
+      ]
+    },
+    "e2s5_bridge": {
+      "id": "e2s5_bridge",
+      "line": 434,
+      "raw_snippet": "\"e2s5_bridge\": {\"ep\":\"EP02\",\"scene\":\"trans\",\"char\":\"narrator\",\"speaker\":\"旁白\",\"media\":{\"kind\":\"image\",\"file\":\"https://p5-",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "trans",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s5_road.v2.c.jpg",
+      "next": [
+        "e2s6"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "e2s5b"
+      ]
+    },
+    "e2s6": {
+      "id": "e2s6",
+      "line": 435,
+      "raw_snippet": "\"e2s6\": {\"ep\":\"EP02\",\"scene\":\"trans\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoG",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "trans",
+      "char": "zhao",
+      "speaker": "赵铁牛（拦路，痞笑）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": true,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s6.hd.mp4",
+      "next": [
+        "f_e2s6"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "e2s5_bridge"
+      ]
+    },
+    "f_e2s6": {
+      "id": "f_e2s6",
+      "line": 436,
+      "raw_snippet": "\"f_e2s6\": {\"ep\":\"EP02\",\"scene\":\"trans\",\"type\":\"choice\",\"title\":\"赵铁牛拦路要过路费——你怎么办？\",\"media\":{\"kind\":\"image\",\"file\":\"https:",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "trans",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s6.v2.c.jpg",
+      "next": [
+        "e2s6b",
+        "r_e2s6_pay",
+        "r_e2s6_hide"
+      ],
+      "hasOptions": true,
+      "optionCount": 3,
+      "from": [
+        "e2s6"
+      ]
+    },
+    "r_e2s6_pay": {
+      "id": "r_e2s6_pay",
+      "line": 437,
+      "raw_snippet": "\"r_e2s6_pay\": {\"ep\":\"EP02\",\"scene\":\"trans\",\"char\":\"aotian\",\"speaker\":\"你（心里）\",\"text\":\"（掏出五块塞他手里）拿去打二两酒。他嘿嘿一笑接过：「哥们够意思。」——",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "trans",
+      "char": "aotian",
+      "speaker": "你（心里）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "k1"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e2s6"
+      ]
+    },
+    "r_e2s6_hide": {
+      "id": "r_e2s6_hide",
+      "line": 438,
+      "raw_snippet": "\"r_e2s6_hide\": {\"ep\":\"EP02\",\"scene\":\"trans\",\"char\":\"aotian\",\"speaker\":\"你（心里）\",\"text\":\"（一头扎进侧边荆棘小道·背影贴着崖壁）今日避一避，是为了明日不吃他这",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "trans",
+      "char": "aotian",
+      "speaker": "你（心里）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "k1"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e2s6"
+      ]
+    },
+    "e2s6b": {
+      "id": "e2s6b",
+      "line": 439,
+      "raw_snippet": "\"e2s6b\": {\"ep\":\"EP02\",\"scene\":\"trans\",\"char\":\"aotian\",\"speaker\":\"你（冷）\",\"text\":\"（收布卷）不认识你。让开。\",\"next\":\"k1\"},",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "trans",
+      "char": "aotian",
+      "speaker": "你（冷）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "k1"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e2s6"
+      ]
+    },
+    "k1": {
+      "id": "k1",
+      "line": 440,
+      "raw_snippet": "\"k1\": {\"ep\":\"EP02\",\"scene\":\"trans\",\"type\":\"choice\",\"title\":\"赵铁牛盯着你，你选哪条路——\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-a",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "trans",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/k1_zhao_encounter.c.mp4",
+      "next": [
+        "r_k1_a",
+        "r_k1_b",
+        "r_k1_c",
+        "BE_PARTNER"
+      ],
+      "hasOptions": true,
+      "optionCount": 4,
+      "from": [
+        "r_e2s6_pay",
+        "r_e2s6_hide",
+        "e2s6b"
+      ]
+    },
+    "r_k1_a": {
+      "id": "r_k1_a",
+      "line": 441,
+      "raw_snippet": "\"r_k1_a\": {\"ep\":\"EP02\",\"scene\":\"trans\",\"char\":\"aotian\",\"speaker\":\"你（心里）\",\"media\":{\"kind\":\"image\",\"file\":\"https://p5-ad.a",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "trans",
+      "char": "aotian",
+      "speaker": "你（心里）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_k1_a.v2.c.jpg",
+      "next": [
+        "k1_bridge_a"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k1"
+      ]
+    },
+    "r_k1_b": {
+      "id": "r_k1_b",
+      "line": 442,
+      "raw_snippet": "\"r_k1_b\": {\"ep\":\"EP02\",\"scene\":\"trans\",\"char\":\"aotian\",\"speaker\":\"你\",\"media\":{\"kind\":\"image\",\"file\":\"https://p5-ad.adkwa",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "trans",
+      "char": "aotian",
+      "speaker": "你",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/r_k1_b.jpg",
+      "next": [
+        "k1_bridge_b"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k1"
+      ]
+    },
+    "r_k1_c": {
+      "id": "r_k1_c",
+      "line": 443,
+      "raw_snippet": "\"r_k1_c\": {\"ep\":\"EP02\",\"scene\":\"trans\",\"char\":\"aotian\",\"speaker\":\"你（心里）\",\"media\":{\"kind\":\"image\",\"file\":\"https://p5-ad.a",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "trans",
+      "char": "aotian",
+      "speaker": "你（心里）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_k1_c.v2.c.jpg",
+      "next": [
+        "k1_bridge_c"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k1"
+      ]
+    },
+    "k1_bridge_a": {
+      "id": "k1_bridge_a",
+      "line": 444,
+      "raw_snippet": "\"k1_bridge_a\": {\"ep\":\"EP02\",\"scene\":\"trans\",\"char\":\"narrator\",\"speaker\":\"旁白\",\"stay\":true,\"media\":{\"kind\":\"image\",\"file\":",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "trans",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": true,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_k1_a.v2.c.jpg",
+      "next": [
+        "e3s1"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_k1_a"
+      ]
+    },
+    "k1_bridge_b": {
+      "id": "k1_bridge_b",
+      "line": 445,
+      "raw_snippet": "\"k1_bridge_b\": {\"ep\":\"EP02\",\"scene\":\"trans\",\"char\":\"narrator\",\"speaker\":\"旁白\",\"stay\":true,\"media\":{\"kind\":\"image\",\"file\":",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "trans",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": true,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/r_k1_b.jpg",
+      "next": [
+        "e3s1"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_k1_b"
+      ]
+    },
+    "k1_bridge_c": {
+      "id": "k1_bridge_c",
+      "line": 446,
+      "raw_snippet": "\"k1_bridge_c\": {\"ep\":\"EP02\",\"scene\":\"trans\",\"char\":\"narrator\",\"speaker\":\"旁白\",\"stay\":true,\"media\":{\"kind\":\"image\",\"file\":",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "trans",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": true,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_k1_c.v2.c.jpg",
+      "next": [
+        "e3s1"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_k1_c"
+      ]
+    },
+    "r_dance_encore_home_ep02": {
+      "id": "r_dance_encore_home_ep02",
+      "line": 447,
+      "raw_snippet": "\"r_dance_encore_home_ep02\": {\"ep\":\"EP02\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（撒娇）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side04_kongque.hd.mp4",
+      "next": [
+        "k_side_after"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_side_dance_react"
+      ]
+    },
+    "r_dance_encore_market_ep02": {
+      "id": "r_dance_encore_market_ep02",
+      "line": 448,
+      "raw_snippet": "\"r_dance_encore_market_ep02\": {\"ep\":\"EP02\",\"scene\":\"village\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/ud",
+      "ep": "EP02",
+      "epTitle": null,
+      "scene": "village",
+      "char": "wanerh",
+      "speaker": "沈婉儿（含笑）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side07_cailian.hd.mp4",
+      "next": [
+        "e2_cloth_enter"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_side_dance_e2_react"
+      ]
+    },
+    "k_side_gate2": {
+      "id": "k_side_gate2",
+      "line": 449,
+      "raw_snippet": "\"k_side_gate2\": {\"ep\":\"EP03\",\"scene\":\"house\",\"type\":\"choice\",\"title\":\"夜里，婉儿给你掏胳膊花土——要不要再来一回？\",\"options\":[{\"text\":\"看她跳支新舞",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "r_side08",
+        "k_side_dress_e3",
+        "e3_trans1",
+        "BE_SLAP"
+      ],
+      "hasOptions": true,
+      "optionCount": 4,
+      "from": [
+        "k2"
+      ]
+    },
+    "e3s1": {
+      "id": "e3s1",
+      "line": 450,
+      "raw_snippet": "\"e3s1\": {\"ep\":\"EP03\",\"epTitle\":\"换新衣\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/",
+      "ep": "EP03",
+      "epTitle": "换新衣",
+      "scene": "house",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": false,
+      "forceCaption": true,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s1.hd.mp4",
+      "next": [
+        "e3s1b"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k1_bridge_a",
+        "k1_bridge_b",
+        "k1_bridge_c"
+      ]
+    },
+    "e3s1b": {
+      "id": "e3s1b",
+      "line": 451,
+      "raw_snippet": "\"e3s1b\": {\"ep\":\"EP03\",\"scene\":\"house\",\"char\":\"wanerh\",\"speaker\":\"沈婉儿（心里）\",\"text\":\"（指尖悬在布卷上不敢碰）……三丈布，够买半月的粮。\",\"next\":\"f_e",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（心里）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "f_e3s1"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "e3s1"
+      ]
+    },
+    "f_e3s1": {
+      "id": "f_e3s1",
+      "line": 452,
+      "raw_snippet": "\"f_e3s1\": {\"ep\":\"EP03\",\"scene\":\"house\",\"type\":\"choice\",\"title\":\"婉儿蜷在炕上摸布未眠——你要不要打扰她？\",\"media\":{\"kind\":\"image\",\"file\":\"ht",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/e3s1.jpg",
+      "next": [
+        "e3s2"
+      ],
+      "hasOptions": true,
+      "optionCount": 3,
+      "from": [
+        "e3s1b"
+      ]
+    },
+    "e3s2": {
+      "id": "e3s2",
+      "line": 453,
+      "raw_snippet": "\"e3s2\": {\"ep\":\"EP03\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoG",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿",
+      "type": "text",
+      "stay": false,
+      "forceCaption": true,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s2.hd.mp4",
+      "next": [
+        "e3s2b"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e3s1"
+      ]
+    },
+    "e3s2b": {
+      "id": "e3s2b",
+      "line": 454,
+      "raw_snippet": "\"e3s2b\": {\"ep\":\"EP03\",\"scene\":\"house\",\"char\":\"aotian\",\"speaker\":\"你\",\"text\":\"（走到她身后·顿了顿）……嫂子。这钱是我挣的，就是给你花的。\",\"next\":\"f2\"}",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "f2"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "e3s2"
+      ]
+    },
+    "f2": {
+      "id": "f2",
+      "line": 455,
+      "raw_snippet": "\"f2\": {\"ep\":\"EP03\",\"scene\":\"house\",\"type\":\"choice\",\"title\":\"她还在推——你怎么让她收下？\",\"media\":{\"kind\":\"image\",\"file\":\"https://p5-a",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/e3s2.jpg",
+      "next": [
+        "r_f2_a",
+        "r_f2_b",
+        "r_f2_c",
+        "r_f2_d",
+        "BE_DRUNK"
+      ],
+      "hasOptions": true,
+      "optionCount": 5,
+      "from": [
+        "e3s2b"
+      ]
+    },
+    "r_f2_a": {
+      "id": "r_f2_a",
+      "line": 456,
+      "raw_snippet": "\"r_f2_a\": {\"ep\":\"EP03\",\"scene\":\"house\",\"char\":\"aotian\",\"speaker\":\"你\",\"media\":{\"kind\":\"image\",\"file\":\"https://p5-ad.adkwa",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f2_a.c.jpg",
+      "next": [
+        "e3s3"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f2"
+      ]
+    },
+    "r_f2_b": {
+      "id": "r_f2_b",
+      "line": 457,
+      "raw_snippet": "\"r_f2_b\": {\"ep\":\"EP03\",\"scene\":\"house\",\"char\":\"narrator\",\"speaker\":\"旁白\",\"media\":{\"kind\":\"image\",\"file\":\"https://p5-ad.ad",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f2_b.c.jpg",
+      "next": [
+        "e3s3"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f2"
+      ]
+    },
+    "r_f2_c": {
+      "id": "r_f2_c",
+      "line": 458,
+      "raw_snippet": "\"r_f2_c\": {\"ep\":\"EP03\",\"scene\":\"house\",\"char\":\"aotian\",\"speaker\":\"你\",\"media\":{\"kind\":\"image\",\"file\":\"https://p5-ad.adkwa",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f2_c.jpg",
+      "next": [
+        "e3s3"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f2"
+      ]
+    },
+    "r_f2_d": {
+      "id": "r_f2_d",
+      "line": 459,
+      "raw_snippet": "\"r_f2_d\": {\"ep\":\"EP03\",\"scene\":\"house\",\"char\":\"aotian\",\"speaker\":\"你\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwa",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f2_d.hd.mp4",
+      "next": [
+        "e3s3"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f2"
+      ]
+    },
+    "e3s3": {
+      "id": "e3s3",
+      "line": 460,
+      "raw_snippet": "\"e3s3\": {\"ep\":\"EP03\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoG",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": false,
+      "forceCaption": true,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s3_v2.hd.mp4",
+      "next": [
+        "e3s3b"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_f2_a",
+        "r_f2_b",
+        "r_f2_c",
+        "r_f2_d"
+      ]
+    },
+    "e3s3b": {
+      "id": "e3s3b",
+      "line": 461,
+      "raw_snippet": "\"e3s3b\": {\"ep\":\"EP03\",\"scene\":\"house\",\"char\":\"aotian\",\"speaker\":\"你（心里）\",\"text\":\"（喉结在滚·扣紧膝盖）不能回头。不能回头。\",\"next\":\"f_e3s3\"},",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（心里）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "f_e3s3"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "e3s3"
+      ]
+    },
+    "f_e3s3": {
+      "id": "f_e3s3",
+      "line": 462,
+      "raw_snippet": "\"f_e3s3\": {\"ep\":\"EP03\",\"scene\":\"house\",\"type\":\"choice\",\"title\":\"屏风后窸窣不断——你怎么熬这一刻？\",\"options\":[{\"text\":\"闭眼别看·硬憋\",\"icon\":\"",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "r_f_e3s3_a",
+        "r_f_e3s3_c"
+      ],
+      "hasOptions": true,
+      "optionCount": 2,
+      "from": [
+        "e3s3b"
+      ]
+    },
+    "r_f_e3s3_a": {
+      "id": "r_f_e3s3_a",
+      "line": 463,
+      "raw_snippet": "\"r_f_e3s3_a\": {\"ep\":\"EP03\",\"scene\":\"house\",\"char\":\"aotian\",\"speaker\":\"你（心里）\",\"media\":{\"kind\":\"image\",\"file\":\"https://p5-",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（心里）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_e3s3_a.v2.c.jpg",
+      "next": [
+        "e3s4"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e3s3"
+      ]
+    },
+    "r_f_e3s3_c": {
+      "id": "r_f_e3s3_c",
+      "line": 464,
+      "raw_snippet": "\"r_f_e3s3_c\": {\"ep\":\"EP03\",\"scene\":\"house\",\"char\":\"aotian\",\"speaker\":\"你（心里）\",\"media\":{\"kind\":\"image\",\"file\":\"https://p5-",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（心里）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_e3s3_c.v2.c.jpg",
+      "next": [
+        "e3s4"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e3s3"
+      ]
+    },
+    "e3s4": {
+      "id": "e3s4",
+      "line": 465,
+      "raw_snippet": "\"e3s4\": {\"ep\":\"EP03\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoG",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿",
+      "type": "text",
+      "stay": false,
+      "forceCaption": true,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s4.hd.mp4",
+      "next": [
+        "e3s4b"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_f_e3s3_a",
+        "r_f_e3s3_c"
+      ]
+    },
+    "e3s4b": {
+      "id": "e3s4b",
+      "line": 466,
+      "raw_snippet": "\"e3s4b\": {\"ep\":\"EP03\",\"scene\":\"house\",\"char\":\"wanerh\",\"speaker\":\"沈婉儿（脸红）\",\"text\":\"（一手轻拢胸前衣襟）……傲天·你看看·合身吗？\",\"next\":\"f_e3_",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（脸红）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "f_e3_look"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "e3s4"
+      ]
+    },
+    "f_e3_look": {
+      "id": "f_e3_look",
+      "line": 467,
+      "raw_snippet": "\"f_e3_look\": {\"ep\":\"EP03\",\"scene\":\"house\",\"type\":\"choice\",\"title\":\"她的衣领滑到肩下——你敢不敢直视她？\",\"options\":[{\"text\":\"立刻转开视线看地面\",\"i",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "e3s5",
+        "r_e3_eyes",
+        "r_e3_pull"
+      ],
+      "hasOptions": true,
+      "optionCount": 3,
+      "from": [
+        "e3s4b"
+      ]
+    },
+    "r_e3_eyes": {
+      "id": "r_e3_eyes",
+      "line": 468,
+      "raw_snippet": "\"r_e3_eyes\": {\"ep\":\"EP03\",\"scene\":\"house\",\"char\":\"aotian\",\"speaker\":\"你\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.ad",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_e3_eyes.hd.mp4",
+      "next": [
+        "e3s5"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e3_look"
+      ]
+    },
+    "r_e3_pull": {
+      "id": "r_e3_pull",
+      "line": 469,
+      "raw_snippet": "\"r_e3_pull\": {\"ep\":\"EP03\",\"scene\":\"house\",\"char\":\"aotian\",\"speaker\":\"你\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.ad",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_e3_pull.hd.mp4",
+      "next": [
+        "e3s5"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e3_look"
+      ]
+    },
+    "e3s5": {
+      "id": "e3s5",
+      "line": 470,
+      "raw_snippet": "\"e3s5\": {\"ep\":\"EP03\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoG",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿",
+      "type": "text",
+      "stay": false,
+      "forceCaption": true,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s5.hd.mp4",
+      "next": [
+        "e3s5b"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e3_look",
+        "r_e3_eyes",
+        "r_e3_pull"
+      ]
+    },
+    "e3s5b": {
+      "id": "e3s5b",
+      "line": 471,
+      "raw_snippet": "\"e3s5b\": {\"ep\":\"EP03\",\"scene\":\"house\",\"char\":\"aotian\",\"speaker\":\"你\",\"text\":\"（呼吸猛地一滞·反手攥住她的手腕·力道大得几乎要捏碎·却又忽然放软·转过身逼近她眉眼间只",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "f_e3s5"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "e3s5"
+      ]
+    },
+    "f_e3s5": {
+      "id": "f_e3s5",
+      "line": 472,
+      "raw_snippet": "\"f_e3s5\": {\"ep\":\"EP03\",\"scene\":\"house\",\"type\":\"choice\",\"media\":{\"kind\":\"image\",\"file\":\"https://p5-ad.adkwai.com/udata/pk",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/e3s5.jpg",
+      "next": [
+        "e3s6",
+        "r_f_e3s5_c",
+        "r_f_e3s5_ad",
+        "BE_LOSE_HER"
+      ],
+      "hasOptions": true,
+      "optionCount": 4,
+      "from": [
+        "e3s5b"
+      ]
+    },
+    "r_f_e3s5_ad": {
+      "id": "r_f_e3s5_ad",
+      "line": 473,
+      "raw_snippet": "\"r_f_e3s5_ad\": {\"ep\":\"EP03\",\"scene\":\"house\",\"char\":\"narrator\",\"speaker\":\"旁白\",\"forceCaption\":true,\"media\":{\"kind\":\"image\"",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": false,
+      "forceCaption": true,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_e3s5_ad.v2.c.jpg",
+      "next": [
+        "e3s6"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e3s5"
+      ]
+    },
+    "r_f_e3s5_c": {
+      "id": "r_f_e3s5_c",
+      "line": 474,
+      "raw_snippet": "\"r_f_e3s5_c\": {\"ep\":\"EP03\",\"scene\":\"house\",\"char\":\"narrator\",\"speaker\":\"旁白\",\"forceCaption\":true,\"media\":{\"kind\":\"image\",",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": false,
+      "forceCaption": true,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_e3s5_c.v2.c.jpg",
+      "next": [
+        "e3s6"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e3s5"
+      ]
+    },
+    "e3s6": {
+      "id": "e3s6",
+      "line": 475,
+      "raw_snippet": "\"e3s6\": {\"ep\":\"EP03\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoG",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s6.hd.mp4",
+      "next": [
+        "e3s6b"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e3s5",
+        "r_f_e3s5_ad",
+        "r_f_e3s5_c"
+      ]
+    },
+    "e3s6b": {
+      "id": "e3s6b",
+      "line": 476,
+      "raw_snippet": "\"e3s6b\": {\"ep\":\"EP03\",\"scene\":\"house\",\"char\":\"aotian\",\"speaker\":\"你\",\"text\":\"（回头·眼神动容·嘴唇微启）……嗯。\",\"next\":\"f_e3s6\"},",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "f_e3s6"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "e3s6"
+      ]
+    },
+    "f_e3s6": {
+      "id": "f_e3s6",
+      "line": 477,
+      "raw_snippet": "\"f_e3s6\": {\"ep\":\"EP03\",\"scene\":\"house\",\"type\":\"choice\",\"title\":\"她说要给你当好这个家——你怎么回应？\",\"options\":[{\"text\":\"正视她一句『好』\",\"icon\"",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "e3s7",
+        "r_f_e3s6_b",
+        "r_f_e3s6_gold"
+      ],
+      "hasOptions": true,
+      "optionCount": 3,
+      "from": [
+        "e3s6b"
+      ]
+    },
+    "r_f_e3s6_b": {
+      "id": "r_f_e3s6_b",
+      "line": 478,
+      "raw_snippet": "\"r_f_e3s6_b\": {\"ep\":\"EP03\",\"scene\":\"house\",\"char\":\"narrator\",\"speaker\":\"旁白\",\"forceCaption\":true,\"media\":{\"kind\":\"image\",",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": false,
+      "forceCaption": true,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_e3s6_b.v2.c.jpg",
+      "next": [
+        "e3s7"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e3s6"
+      ]
+    },
+    "r_f_e3s6_gold": {
+      "id": "r_f_e3s6_gold",
+      "line": 479,
+      "raw_snippet": "\"r_f_e3s6_gold\": {\"ep\":\"EP03\",\"scene\":\"house\",\"char\":\"wanerh\",\"speaker\":\"沈婉儿\",\"media\":{\"kind\":\"image\",\"file\":\"https://p5",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_e3s6_b.v2.c.jpg",
+      "next": [
+        "r_f_e3s6_gold_b"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e3s6"
+      ]
+    },
+    "r_f_e3s6_gold_b": {
+      "id": "r_f_e3s6_gold_b",
+      "line": 480,
+      "raw_snippet": "\"r_f_e3s6_gold_b\": {\"ep\":\"EP03\",\"scene\":\"house\",\"char\":\"aotian\",\"speaker\":\"你\",\"media\":{\"kind\":\"image\",\"file\":\"https://p5",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_e3s6_b.v2.c.jpg",
+      "next": [
+        "e3s7"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_f_e3s6_gold"
+      ]
+    },
+    "e3s7": {
+      "id": "e3s7",
+      "line": 481,
+      "raw_snippet": "\"e3s7\": {\"ep\":\"EP03\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoG",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s7.hd.mp4",
+      "next": [
+        "k2"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e3s6",
+        "r_f_e3s6_b",
+        "r_f_e3s6_gold_b"
+      ]
+    },
+    "k2": {
+      "id": "k2",
+      "line": 482,
+      "raw_snippet": "\"k2\": {\"ep\":\"EP03\",\"scene\":\"house\",\"type\":\"choice\",\"title\":\"接下来去做什么？\",\"options\":[{\"text\":\"把石头换钱再多赚一笔\",\"icon\":\"give\",\"sta",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "r_k2_1",
+        "r_k2_2",
+        "r_k2_3",
+        "k_side_gate2",
+        "BE_LOSE_HER"
+      ],
+      "hasOptions": true,
+      "optionCount": 5,
+      "from": [
+        "e3s7"
+      ]
+    },
+    "r_k2_1": {
+      "id": "r_k2_1",
+      "line": 483,
+      "raw_snippet": "\"r_k2_1\": {\"ep\":\"EP03\",\"scene\":\"house\",\"char\":\"aotian\",\"speaker\":\"你（心里）\",\"text\":\"（把玉米地里翻出的怪石头一颗颗擦干净）这年头儿，怪石头也能进城换饭钱。\",\"n",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（心里）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "e3_trans1"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k2"
+      ]
+    },
+    "r_k2_2": {
+      "id": "r_k2_2",
+      "line": 484,
+      "raw_snippet": "\"r_k2_2\": {\"ep\":\"EP03\",\"scene\":\"house\",\"char\":\"aotian\",\"speaker\":\"你（心里）\",\"text\":\"（拎两瓶烧酒摸黑上山）李叔，教教我下套子和瞄准。这年头儿，会打猎才活得住。\",",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（心里）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "e3_trans1"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k2"
+      ]
+    },
+    "r_k2_3": {
+      "id": "r_k2_3",
+      "line": 485,
+      "raw_snippet": "\"r_k2_3\": {\"ep\":\"EP03\",\"scene\":\"house\",\"char\":\"aotian\",\"speaker\":\"你（心里）\",\"text\":\"（借来一支毛笔·蘸口水在土地上划）婉儿，这是「李」，你的姓，也是我的姓。她看你",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（心里）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "e3_trans1"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k2"
+      ]
+    },
+    "r_side08": {
+      "id": "r_side08",
+      "line": 486,
+      "raw_snippet": "\"r_side08\": {\"ep\":\"EP03\",\"scene\":\"house\",\"type\":\"story\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/p",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "story",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side08_shuixiu.c.mp4",
+      "next": [
+        "e3_trans1"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k_side_gate2"
+      ]
+    },
+    "k_side_dress_e3": {
+      "id": "k_side_dress_e3",
+      "line": 487,
+      "raw_snippet": "\"k_side_dress_e3\": {\"ep\":\"EP03\",\"scene\":\"house\",\"type\":\"choice\",\"title\":\"婉儿羞得低下头：「你……你想看嫂子穿哪件？」\",\"options\":[{\"text\":\"🎁 ",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "r_side01_e3",
+        "r_side02_e3",
+        "r_side03_e3",
+        "BE_SLAP",
+        "e3_trans1"
+      ],
+      "hasOptions": true,
+      "optionCount": 6,
+      "from": [
+        "k_side_gate2"
+      ]
+    },
+    "r_side01_e3": {
+      "id": "r_side01_e3",
+      "line": 488,
+      "raw_snippet": "\"r_side01_e3\": {\"ep\":\"EP03\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/A",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（气声）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side01_hongdudou.hd.mp4",
+      "next": [
+        "e3_trans1"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k_side_dress_e3"
+      ]
+    },
+    "r_side02_e3": {
+      "id": "r_side02_e3",
+      "line": 489,
+      "raw_snippet": "\"r_side02_e3\": {\"ep\":\"EP03\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/A",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（气声）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side02_qipao.hd.mp4",
+      "next": [
+        "e3_trans1"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k_side_dress_e3"
+      ]
+    },
+    "r_side03_e3": {
+      "id": "r_side03_e3",
+      "line": 490,
+      "raw_snippet": "\"r_side03_e3\": {\"ep\":\"EP03\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/A",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（气声）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side03_shishen.hd.mp4",
+      "next": [
+        "e3_trans1"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k_side_dress_e3"
+      ]
+    },
+    "e3_trans1": {
+      "id": "e3_trans1",
+      "line": 491,
+      "raw_snippet": "\"e3_trans1\": {\"ep\":\"EP03\",\"scene\":\"house\",\"media\":{\"kind\":\"image\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIG",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": false,
+      "forceCaption": true,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/e3s7.jpg",
+      "next": [
+        "e3_trans2"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k_side_gate2",
+        "r_k2_1",
+        "r_k2_2",
+        "r_k2_3",
+        "r_side08",
+        "k_side_dress_e3",
+        "r_side01_e3",
+        "r_side02_e3",
+        "r_side03_e3"
+      ]
+    },
+    "e3_trans2": {
+      "id": "e3_trans2",
+      "line": 492,
+      "raw_snippet": "\"e3_trans2\": {\"ep\":\"EP03\",\"scene\":\"house\",\"media\":{\"kind\":\"image\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIG",
+      "ep": "EP03",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（心里）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": true,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s6.v2.c.jpg",
+      "next": [
+        "e4s1"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "e3_trans1"
+      ]
+    },
+    "e4s1": {
+      "id": "e4s1",
+      "line": 493,
+      "raw_snippet": "\"e4s1\": {\"ep\":\"EP04\",\"epTitle\":\"赵铁牛上门\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pk",
+      "ep": "EP04",
+      "epTitle": "赵铁牛上门",
+      "scene": "house",
+      "char": "zhao",
+      "speaker": "赵铁牛（嘶吼）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s1.c.mp4",
+      "next": [
+        "e4s3"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "e3_trans2"
+      ]
+    },
+    "e4s3": {
+      "id": "e4s3",
+      "line": 494,
+      "raw_snippet": "\"e4s3\": {\"ep\":\"EP04\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoG",
+      "ep": "EP04",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（低吼）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s3.c.mp4",
+      "next": [
+        "f3"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "e4s1"
+      ]
+    },
+    "f3": {
+      "id": "f3",
+      "line": 495,
+      "raw_snippet": "\"f3\": {\"ep\":\"EP04\",\"scene\":\"house\",\"type\":\"choice\",\"title\":\"赵铁牛带了五个人堵在院子里——你怎么应对？\",\"options\":[{\"text\":\"硬闯正路·拿锄头干他一个\",\"ic",
+      "ep": "EP04",
+      "epTitle": null,
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "r_f3_1",
+        "BE_BEATEN",
+        "r_f3_3"
+      ],
+      "hasOptions": true,
+      "optionCount": 3,
+      "from": [
+        "e4s3"
+      ]
+    },
+    "e4s4": {
+      "id": "e4s4",
+      "line": 496,
+      "raw_snippet": "\"e4s4\": {\"ep\":\"EP04\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoG",
+      "ep": "EP04",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你",
+      "type": "text",
+      "stay": false,
+      "forceCaption": true,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s4.c.mp4",
+      "next": [
+        "f_e4s4"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_f3_1",
+        "r_f3_3"
+      ]
+    },
+    "e4s6": {
+      "id": "e4s6",
+      "line": 497,
+      "raw_snippet": "\"e4s6\": {\"ep\":\"EP04\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoG",
+      "ep": "EP04",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（怒吼）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s6.c.mp4",
+      "next": [
+        "e4s7"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "s_muscle"
+      ]
+    },
+    "e4s7": {
+      "id": "e4s7",
+      "line": 498,
+      "raw_snippet": "\"e4s7\": {\"ep\":\"EP04\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoG",
+      "ep": "EP04",
+      "epTitle": null,
+      "scene": "house",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s7_v82.mp4",
+      "next": [
+        "e4s8"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "e4s6"
+      ]
+    },
+    "e4s8": {
+      "id": "e4s8",
+      "line": 499,
+      "raw_snippet": "\"e4s8\": {\"ep\":\"EP04\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoG",
+      "ep": "EP04",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（哽）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": true,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s8.c.mp4",
+      "next": [
+        "f_e4s8"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "e4s7"
+      ]
+    },
+    "r_f3_1": {
+      "id": "r_f3_1",
+      "line": 500,
+      "raw_snippet": "\"r_f3_1\": {\"ep\":\"EP04\",\"scene\":\"house\",\"char\":\"aotian\",\"speaker\":\"你（心里）\",\"text\":\"（一锄头拍在为首那个后脑上·只听锅盖一样的声音）把嫂子抢回来·就这样。局不开你",
+      "ep": "EP04",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（心里）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "e4s4"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f3"
+      ]
+    },
+    "r_f3_3": {
+      "id": "r_f3_3",
+      "line": 501,
+      "raw_snippet": "\"r_f3_3\": {\"ep\":\"EP04\",\"scene\":\"house\",\"char\":\"aotian\",\"speaker\":\"你（心里）\",\"text\":\"（追出去一脚踹在为首那个屁股上）下次再来·把腿给你踹断。\",\"next\":\"e",
+      "ep": "EP04",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（心里）",
+      "type": "text",
+      "stay": true,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "e4s4"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f3"
+      ]
+    },
+    "f_e4s4": {
+      "id": "f_e4s4",
+      "line": 502,
+      "raw_snippet": "\"f_e4s4\": {\"ep\":\"EP04\",\"scene\":\"house\",\"type\":\"choice\",\"title\":\"「背后是我未过门的媳妇」——这句话已经出口了，接着？\",\"options\":[{\"text\":\"再补一句「谁动她",
+      "ep": "EP04",
+      "epTitle": null,
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "r_fe4s4_a",
+        "r_fe4s4_b",
+        "r_fe4s4_c"
+      ],
+      "hasOptions": true,
+      "optionCount": 3,
+      "from": [
+        "e4s4"
+      ]
+    },
+    "r_fe4s4_a": {
+      "id": "r_fe4s4_a",
+      "line": 503,
+      "raw_snippet": "\"r_fe4s4_a\": {\"ep\":\"EP04\",\"scene\":\"house\",\"char\":\"narrator\",\"speaker\":\"旁白\",\"text\":\"（锄头往地上一顿·声音压过全院）谁动她一根头发·我要谁的命。赵铁牛脸上的横",
+      "ep": "EP04",
+      "epTitle": null,
+      "scene": "house",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": true,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "e4_muscle"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e4s4"
+      ]
+    },
+    "r_fe4s4_b": {
+      "id": "r_fe4s4_b",
+      "line": 504,
+      "raw_snippet": "\"r_fe4s4_b\": {\"ep\":\"EP04\",\"scene\":\"house\",\"char\":\"narrator\",\"speaker\":\"旁白\",\"text\":\"（伸手把她的手攥进掌心·十指扣紧·当着五个人的面）她整个人一震·手心全是汗",
+      "ep": "EP04",
+      "epTitle": null,
+      "scene": "house",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "e4_muscle"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e4s4"
+      ]
+    },
+    "r_fe4s4_c": {
+      "id": "r_fe4s4_c",
+      "line": 505,
+      "raw_snippet": "\"r_fe4s4_c\": {\"ep\":\"EP04\",\"scene\":\"house\",\"char\":\"narrator\",\"speaker\":\"旁白\",\"text\":\"（回头·声音忽然软下来）婉儿·你怕不怕。她摇头·又点头·最后小声说：你在·",
+      "ep": "EP04",
+      "epTitle": null,
+      "scene": "house",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "e4_muscle"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e4s4"
+      ]
+    },
+    "f_e4s8": {
+      "id": "f_e4s8",
+      "line": 506,
+      "raw_snippet": "\"f_e4s8\": {\"ep\":\"EP04\",\"scene\":\"house\",\"type\":\"choice\",\"title\":\"「你要是没了，我也不活。」——她说完，煤油灯芯爆了一下\",\"options\":[{\"text\":\"「那你好好活着",
+      "ep": "EP04",
+      "epTitle": null,
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "r_fe4s8_b",
+        "r_fe4s8_c",
+        "r_fe4s8_d"
+      ],
+      "hasOptions": true,
+      "optionCount": 3,
+      "from": [
+        "e4s8"
+      ]
+    },
+    "r_fe4s8_b": {
+      "id": "r_fe4s8_b",
+      "line": 507,
+      "raw_snippet": "\"r_fe4s8_b\": {\"ep\":\"EP04\",\"scene\":\"house\",\"char\":\"narrator\",\"speaker\":\"旁白\",\"text\":\"（握住她给你上药的那只手）真要有那一天·你就好好活着·替我看着这个家。她猛",
+      "ep": "EP04",
+      "epTitle": null,
+      "scene": "house",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4_shangyao_v82.mp4",
+      "next": [
+        "e4_to_e5"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e4s8"
+      ]
+    },
+    "r_fe4s8_c": {
+      "id": "r_fe4s8_c",
+      "line": 508,
+      "raw_snippet": "\"r_fe4s8_c\": {\"ep\":\"EP04\",\"scene\":\"house\",\"char\":\"narrator\",\"speaker\":\"旁白\",\"text\":\"（反手把她整个人搂进怀里·下巴压在她发顶）一句话没说。她起先僵着·后来两只",
+      "ep": "EP04",
+      "epTitle": null,
+      "scene": "house",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "e4_to_e5"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e4s8"
+      ]
+    },
+    "r_fe4s8_d": {
+      "id": "r_fe4s8_d",
+      "line": 509,
+      "raw_snippet": "\"r_fe4s8_d\": {\"ep\":\"EP04\",\"scene\":\"house\",\"char\":\"narrator\",\"speaker\":\"旁白\",\"text\":\"（看着房梁·忽然开口）等秋收完·我就去请王婆做媒。明媒正娶·八抬大轿。她手",
+      "ep": "EP04",
+      "epTitle": null,
+      "scene": "house",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "e4_to_e5"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_e4s8"
+      ]
+    },
+    "e4_muscle": {
+      "id": "e4_muscle",
+      "line": 510,
+      "raw_snippet": "\"e4_muscle\": {\"ep\":\"EP04\",\"scene\":\"house\",\"media\":{\"kind\":\"image\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIG",
+      "ep": "EP04",
+      "epTitle": null,
+      "scene": "house",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": false,
+      "forceCaption": true,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/skill_muscle_activate.c.jpg",
+      "next": [
+        "s_muscle"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_fe4s4_a",
+        "r_fe4s4_b",
+        "r_fe4s4_c"
+      ]
+    },
+    "s_muscle": {
+      "id": "s_muscle",
+      "line": 511,
+      "raw_snippet": "\"s_muscle\": {\"ep\":\"EP04\",\"scene\":\"house\",\"media\":{\"kind\":\"skillcard\",\"name\":\"变身猛男·Lv1\",\"desc\":\"一身蛮力从天上掉下来·五个人也拦不住\",\"achv",
+      "ep": "EP04",
+      "epTitle": null,
+      "scene": "house",
+      "char": "system",
+      "speaker": "系统",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "skillcard",
+      "mediaFile": null,
+      "next": [
+        "e4s6"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "e4_muscle"
+      ]
+    },
+    "e4_to_e5": {
+      "id": "e4_to_e5",
+      "line": 512,
+      "raw_snippet": "\"e4_to_e5\": {\"ep\":\"EP04\",\"scene\":\"trans\",\"media\":{\"kind\":\"image\",\"file\":\"images/lastframes/e4s7_v82.jpg\",\"label\":\"赵铁牛被架走",
+      "ep": "EP04",
+      "epTitle": null,
+      "scene": "trans",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": false,
+      "forceCaption": true,
+      "kind": "image",
+      "mediaFile": "images/lastframes/e4s7_v82.jpg",
+      "next": [
+        "e5s0a"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_fe4s8_b",
+        "r_fe4s8_c",
+        "r_fe4s8_d"
+      ]
+    },
+    "e5s0a": {
+      "id": "e5s0a",
+      "line": 513,
+      "raw_snippet": "\"e5s0a\": {\"epTitle\":\"房倒屋塌，如何致富？\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/",
+      "ep": "EP05",
+      "epTitle": "房倒屋塌，如何致富？",
+      "scene": "village",
+      "char": "aotian",
+      "speaker": "你（冷眼）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s0a.mp4",
+      "next": [
+        "e5s0b"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "e4_to_e5"
+      ]
+    },
+    "e5s0b": {
+      "id": "e5s0b",
+      "line": 514,
+      "raw_snippet": "\"e5s0b\": {\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "village",
+      "char": "aotian",
+      "speaker": "你（揣钱回家）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s0b.mp4",
+      "next": [
+        "e5s1"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "e5s0a"
+      ]
+    },
+    "e5s1": {
+      "id": "e5s1",
+      "line": 515,
+      "raw_snippet": "\"e5s1\": {\"epTitle\":\"房倒屋塌，如何致富？\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/k",
+      "ep": "EP05",
+      "epTitle": "房倒屋塌，如何致富？",
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（推门）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s1.mp4",
+      "next": [
+        "e5s2"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "e5s0b"
+      ]
+    },
+    "e5s2": {
+      "id": "e5s2",
+      "line": 516,
+      "raw_snippet": "\"e5s2\": {\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（笑）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s2.mp4",
+      "next": [
+        "f5_drink"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "e5s1"
+      ]
+    },
+    "f5_drink": {
+      "id": "f5_drink",
+      "line": 517,
+      "raw_snippet": "\"f5_drink\": {\"ep\":\"EP05\",\"epTitle\":\"半坛酒与一场雨\",\"scene\":\"house\",\"type\":\"choice\",\"title\":\"她连赢三把，脸都红了，还举着空碗——你？\",\"options\":[{",
+      "ep": "EP05",
+      "epTitle": "半坛酒与一场雨",
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "r_drink_a",
+        "r_drink_b",
+        "r_drink_c"
+      ],
+      "hasOptions": true,
+      "optionCount": 3,
+      "from": [
+        "e5s2"
+      ]
+    },
+    "r_drink_a": {
+      "id": "r_drink_a",
+      "line": 518,
+      "raw_snippet": "\"r_drink_a\": {\"ep\":\"EP05\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIG",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（醉眼）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_drink_a.mp4",
+      "next": [
+        "e5s2c"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f5_drink"
+      ]
+    },
+    "r_drink_b": {
+      "id": "r_drink_b",
+      "line": 519,
+      "raw_snippet": "\"r_drink_b\": {\"ep\":\"EP05\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIG",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（凑近）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_drink_b.mp4",
+      "next": [
+        "e5s2c"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f5_drink"
+      ]
+    },
+    "r_drink_c": {
+      "id": "r_drink_c",
+      "line": 520,
+      "raw_snippet": "\"r_drink_c\": {\"ep\":\"EP05\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIG",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（仰头）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_drink_c.mp4",
+      "next": [
+        "e5s2c"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f5_drink"
+      ]
+    },
+    "e5s2c": {
+      "id": "e5s2c",
+      "line": 521,
+      "raw_snippet": "\"e5s2c\": {\"ep\":\"EP05\",\"scene\":\"house\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-So",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（回想）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_drink_peak.mp4",
+      "next": [
+        "e5s3"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_drink_a",
+        "r_drink_b",
+        "r_drink_c"
+      ]
+    },
+    "e5s3": {
+      "id": "e5s3",
+      "line": 522,
+      "raw_snippet": "\"e5s3\": {\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（惊）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s3.mp4",
+      "next": [
+        "f5_fix"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "e5s2c"
+      ]
+    },
+    "f5_fix": {
+      "id": "f5_fix",
+      "line": 523,
+      "raw_snippet": "\"f5_fix\": {\"type\":\"choice\",\"title\":\"泥水正往炕上灌，房梁在响——你怎么办？\",\"options\":[{\"text\":\"冒雨爬上房顶去堵\",\"icon\":\"fight\",\"stat\":{\"wei\":10,\"",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "BE_ROOF",
+        "r_fix_b",
+        "r_fix_c"
+      ],
+      "hasOptions": true,
+      "optionCount": 3,
+      "from": [
+        "e5s3"
+      ]
+    },
+    "r_fix_b": {
+      "id": "r_fix_b",
+      "line": 524,
+      "raw_snippet": "\"r_fix_b\": {\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（低声）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_fix_b.mp4",
+      "next": [
+        "r_fix_b_grand"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f5_fix",
+        "f5_fix2"
+      ]
+    },
+    "r_fix_b_grand": {
+      "id": "r_fix_b_grand",
+      "line": 525,
+      "raw_snippet": "\"r_fix_b_grand\": {\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks6676586482506",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（惊喜）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_fix_b_grand.mp4",
+      "next": [
+        "e5s4"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_fix_b"
+      ]
+    },
+    "r_fix_c": {
+      "id": "r_fix_c",
+      "line": 526,
+      "raw_snippet": "\"r_fix_c\": {\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（发抖）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_fix_c.mp4",
+      "next": [
+        "e5_bridge"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f5_fix"
+      ]
+    },
+    "e5_bridge": {
+      "id": "e5_bridge",
+      "line": 527,
+      "raw_snippet": "\"e5_bridge\": {\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks66765864825066826",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "house",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_bridge.mp4",
+      "next": [
+        "f5_fix2"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_fix_c"
+      ]
+    },
+    "f5_fix2": {
+      "id": "f5_fix2",
+      "line": 528,
+      "raw_snippet": "\"f5_fix2\": {\"type\":\"choice\",\"title\":\"天亮了。这屋还是得修——现在再想想？\",\"options\":[{\"text\":\"还是爬房顶\",\"icon\":\"fight\",\"stat\":{\"wei\":5,\"qing",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "BE_ROOF",
+        "r_fix_b"
+      ],
+      "hasOptions": true,
+      "optionCount": 2,
+      "from": [
+        "e5_bridge"
+      ]
+    },
+    "e5s4": {
+      "id": "e5s4",
+      "line": 529,
+      "raw_snippet": "\"e5s4\": {\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（怔住）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s4.mp4",
+      "next": [
+        "e5s5"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_fix_b_grand"
+      ]
+    },
+    "e5s5": {
+      "id": "e5s5",
+      "line": 530,
+      "raw_snippet": "\"e5s5\": {\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（认真）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s5.mp4",
+      "next": [
+        "f5_biz"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "e5s4"
+      ]
+    },
+    "f5_biz": {
+      "id": "f5_biz",
+      "line": 531,
+      "raw_snippet": "\"f5_biz\": {\"type\":\"choice\",\"title\":\"她想让你带全村人一起干——你选哪条路？\",\"options\":[{\"text\":\"种玉米，稳当\",\"icon\":\"hide\",\"stat\":{\"liang\":-10,\"",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "BE_DROUGHT",
+        "r_biz_b",
+        "BE_ALONE"
+      ],
+      "hasOptions": true,
+      "optionCount": 3,
+      "from": [
+        "e5s5"
+      ]
+    },
+    "r_biz_b": {
+      "id": "r_biz_b",
+      "line": 532,
+      "raw_snippet": "\"r_biz_b\": {\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（记账）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_biz_b.mp4",
+      "next": [
+        "e5s6"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f5_biz"
+      ]
+    },
+    "e5s6": {
+      "id": "e5s6",
+      "line": 533,
+      "raw_snippet": "\"e5s6\": {\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "house",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s6.mp4",
+      "next": [
+        "e5s7"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_biz_b"
+      ]
+    },
+    "e5s7": {
+      "id": "e5s7",
+      "line": 534,
+      "raw_snippet": "\"e5s7\": {\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（趴在栏上）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s7.mp4",
+      "next": [
+        "f5_rub"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "e5s6"
+      ]
+    },
+    "f5_rub": {
+      "id": "f5_rub",
+      "line": 535,
+      "raw_snippet": "\"f5_rub\": {\"type\":\"choice\",\"title\":\"她趴在猪圈栏杆上起不来——你？\",\"options\":[{\"text\":\"就在这儿给她揉揉腰\",\"icon\":\"say\",\"stat\":{\"qing\":15},\"nex",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "house",
+      "char": null,
+      "speaker": null,
+      "type": "choice",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [
+        "r_rub_a",
+        "r_rub_b",
+        "r_rub_c"
+      ],
+      "hasOptions": true,
+      "optionCount": 3,
+      "from": [
+        "e5s7"
+      ]
+    },
+    "r_rub_a": {
+      "id": "r_rub_a",
+      "line": 536,
+      "raw_snippet": "\"r_rub_a\": {\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（长出一口气）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_rub_a.mp4",
+      "next": [
+        "r_rub_a2"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f5_rub"
+      ]
+    },
+    "r_rub_a2": {
+      "id": "r_rub_a2",
+      "line": 537,
+      "raw_snippet": "\"r_rub_a2\": {\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（很轻）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_rub_a2.mp4",
+      "next": [
+        "e5s8"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_rub_a"
+      ]
+    },
+    "r_rub_b": {
+      "id": "r_rub_b",
+      "line": 538,
+      "raw_snippet": "\"r_rub_b\": {\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（怔）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_rub_b.mp4",
+      "next": [
+        "r_rub_b2"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f5_rub"
+      ]
+    },
+    "r_rub_b2": {
+      "id": "r_rub_b2",
+      "line": 539,
+      "raw_snippet": "\"r_rub_b2\": {\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（低）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_rub_b2.mp4",
+      "next": [
+        "e5s8"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_rub_b"
+      ]
+    },
+    "r_rub_c": {
+      "id": "r_rub_c",
+      "line": 540,
+      "raw_snippet": "\"r_rub_c\": {\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（平淡）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_rub_c.mp4",
+      "next": [
+        "BE_RUB_ALONE"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f5_rub"
+      ]
+    },
+    "e5s8": {
+      "id": "e5s8",
+      "line": 541,
+      "raw_snippet": "\"e5s8\": {\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（心里）",
+      "type": "text",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s8.mp4",
+      "next": [
+        "e5_end"
+      ],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_rub_a2",
+        "r_rub_b2"
+      ]
+    },
+    "e5_end": {
+      "id": "e5_end",
+      "line": 542,
+      "raw_snippet": "\"e5_end\": {\"ep\":\"EP05\",\"scene\":\"trans\",\"type\":\"end\",\"epContinue\":true,\"title\":\"敬请期待\",\"text\":\"第五幕完 · 后续章节，敬请期待……\"},",
+      "ep": "EP05",
+      "epTitle": null,
+      "scene": "trans",
+      "char": null,
+      "speaker": null,
+      "type": "end",
+      "stay": false,
+      "forceCaption": false,
+      "kind": null,
+      "mediaFile": null,
+      "next": [],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "e5s8"
+      ]
+    },
+    "BE_SLAP": {
+      "id": "BE_SLAP",
+      "line": 543,
+      "raw_snippet": "\"BE_SLAP\": {\"ep\":\"EP99\",\"scene\":\"house\",\"type\":\"end\",\"ending\":\"BE5\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai",
+      "ep": "EP99",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（怒吐）",
+      "type": "end",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be5_kicked_out.hd.mp4",
+      "next": [],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_saoshi",
+        "k_side_gate",
+        "k_side_dress",
+        "k_side_gate2",
+        "k_side_dress_e3"
+      ]
+    },
+    "BE_GOD": {
+      "id": "BE_GOD",
+      "line": 544,
+      "raw_snippet": "\"BE_GOD\": {\"ep\":\"EP99\",\"scene\":\"village\",\"type\":\"end\",\"ending\":\"BE4\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwa",
+      "ep": "EP99",
+      "epTitle": null,
+      "scene": "village",
+      "char": "villager",
+      "speaker": "村民（举火把嘶吼）",
+      "type": "end",
+      "stay": false,
+      "forceCaption": true,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be4_witch_hunt.c.mp4",
+      "next": [],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_s6"
+      ]
+    },
+    "BE_MONSTER": {
+      "id": "BE_MONSTER",
+      "line": 545,
+      "raw_snippet": "\"BE_MONSTER\": {\"ep\":\"EP99\",\"scene\":\"village\",\"type\":\"end\",\"ending\":\"BE4\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.a",
+      "ep": "EP99",
+      "epTitle": null,
+      "scene": "village",
+      "char": "villager",
+      "speaker": "村民（举火把嘶吼）",
+      "type": "end",
+      "stay": false,
+      "forceCaption": true,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be4_witch_hunt.c.mp4",
+      "next": [],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": []
+    },
+    "BE_LOSE_HER": {
+      "id": "BE_LOSE_HER",
+      "line": 546,
+      "raw_snippet": "\"BE_LOSE_HER\": {\"ep\":\"EP99\",\"scene\":\"trans\",\"type\":\"end\",\"ending\":\"BE1\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.ad",
+      "ep": "EP99",
+      "epTitle": null,
+      "scene": "trans",
+      "char": "aotian",
+      "speaker": "你（内心）",
+      "type": "end",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be1_she_left.c.mp4",
+      "next": [],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f_s5",
+        "f_e3s5",
+        "k2"
+      ]
+    },
+    "BE_RUNAWAY": {
+      "id": "BE_RUNAWAY",
+      "line": 547,
+      "raw_snippet": "\"BE_RUNAWAY\": {\"ep\":\"EP99\",\"scene\":\"trans\",\"type\":\"end\",\"ending\":\"BE8\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adk",
+      "ep": "EP99",
+      "epTitle": null,
+      "scene": "trans",
+      "char": "aotian",
+      "speaker": "你（内心）",
+      "type": "end",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be3_nowhere.c.mp4",
+      "next": [],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": []
+    },
+    "BE_RUNAWAY_BRIDE": {
+      "id": "BE_RUNAWAY_BRIDE",
+      "line": 548,
+      "raw_snippet": "\"BE_RUNAWAY_BRIDE\": {\"ep\":\"EP99\",\"scene\":\"house\",\"type\":\"end\",\"ending\":\"BE9\",\"media\":{\"kind\":\"image\",\"file\":\"images/last",
+      "ep": "EP99",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（心碎）",
+      "type": "end",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "image",
+      "mediaFile": "images/lastframes/be1_she_left.c.jpg",
+      "next": [],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": []
+    },
+    "BE_DRUNK": {
+      "id": "BE_DRUNK",
+      "line": 549,
+      "raw_snippet": "\"BE_DRUNK\": {\"ep\":\"EP99\",\"scene\":\"village\",\"type\":\"end\",\"ending\":\"BE10\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.ad",
+      "ep": "EP99",
+      "epTitle": null,
+      "scene": "village",
+      "char": "aotian",
+      "speaker": "你（酒话）",
+      "type": "end",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be6_lost_power_v2.c.mp4",
+      "next": [],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k0",
+        "f2"
+      ]
+    },
+    "BE_PARTNER": {
+      "id": "BE_PARTNER",
+      "line": 550,
+      "raw_snippet": "\"BE_PARTNER\": {\"ep\":\"EP99\",\"scene\":\"night\",\"type\":\"end\",\"ending\":\"BE11\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.ad",
+      "ep": "EP99",
+      "epTitle": null,
+      "scene": "night",
+      "char": "aotian",
+      "speaker": "你（内心）",
+      "type": "end",
+      "stay": false,
+      "forceCaption": true,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be_partner_drunk.c.mp4",
+      "next": [],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "k1"
+      ]
+    },
+    "BE_STARVE": {
+      "id": "BE_STARVE",
+      "line": 551,
+      "raw_snippet": "\"BE_STARVE\": {\"ep\":\"EP99\",\"scene\":\"house\",\"type\":\"end\",\"ending\":\"BE2\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkw",
+      "ep": "EP99",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿",
+      "type": "end",
+      "stay": false,
+      "forceCaption": true,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be2_starve_death_v2.c.mp4",
+      "next": [],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f0",
+        "f_e2_haggle"
+      ]
+    },
+    "BE_ALLIANCE_KILLED": {
+      "id": "BE_ALLIANCE_KILLED",
+      "line": 552,
+      "raw_snippet": "\"BE_ALLIANCE_KILLED\": {\"ep\":\"EP99\",\"scene\":\"trans\",\"type\":\"end\",\"ending\":\"BE14\",\"media\":{\"kind\":\"image\",\"file\":\"https://",
+      "ep": "EP99",
+      "epTitle": null,
+      "scene": "trans",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "end",
+      "stay": false,
+      "forceCaption": true,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/BE_ALLIANCE_KILLED_frame.v2.c.jpg",
+      "next": [],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": []
+    },
+    "BE_ROOF": {
+      "id": "BE_ROOF",
+      "line": 553,
+      "raw_snippet": "\"BE_ROOF\": {\"ep\":\"EP99\",\"scene\":\"house\",\"type\":\"end\",\"ending\":\"BE9\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkwai",
+      "ep": "EP99",
+      "epTitle": null,
+      "scene": "house",
+      "char": "wanerh",
+      "speaker": "沈婉儿（雨里）",
+      "type": "end",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_fix_a.mp4",
+      "next": [],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f5_fix",
+        "f5_fix2"
+      ]
+    },
+    "BE_DROUGHT": {
+      "id": "BE_DROUGHT",
+      "line": 554,
+      "raw_snippet": "\"BE_DROUGHT\": {\"ep\":\"EP99\",\"scene\":\"house\",\"type\":\"end\",\"ending\":\"BE10\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.ad",
+      "ep": "EP99",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（跪在地头）",
+      "type": "end",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_biz_a.mp4",
+      "next": [],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f5_biz"
+      ]
+    },
+    "BE_ALONE": {
+      "id": "BE_ALONE",
+      "line": 555,
+      "raw_snippet": "\"BE_ALONE\": {\"ep\":\"EP99\",\"scene\":\"house\",\"type\":\"end\",\"ending\":\"BE11\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.adkw",
+      "ep": "EP99",
+      "epTitle": null,
+      "scene": "house",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "end",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_biz_c.mp4",
+      "next": [],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f5_biz"
+      ]
+    },
+    "BE_RUB_ALONE": {
+      "id": "BE_RUB_ALONE",
+      "line": 556,
+      "raw_snippet": "\"BE_RUB_ALONE\": {\"ep\":\"EP99\",\"scene\":\"house\",\"type\":\"end\",\"ending\":\"BE12\",\"media\":{\"kind\":\"video\",\"file\":\"https://p5-ad.",
+      "ep": "EP99",
+      "epTitle": null,
+      "scene": "house",
+      "char": "aotian",
+      "speaker": "你（一个人）",
+      "type": "end",
+      "stay": false,
+      "forceCaption": false,
+      "kind": "video",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_guanggun.mp4",
+      "next": [],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "r_rub_c"
+      ]
+    },
+    "BE_BEATEN": {
+      "id": "BE_BEATEN",
+      "line": 557,
+      "raw_snippet": "\"BE_BEATEN\": {\"ep\":\"EP99\",\"scene\":\"house\",\"type\":\"end\",\"ending\":\"BE15\",\"media\":{\"kind\":\"image\",\"file\":\"https://p5-ad.adk",
+      "ep": "EP99",
+      "epTitle": null,
+      "scene": "house",
+      "char": "narrator",
+      "speaker": "旁白",
+      "type": "end",
+      "stay": false,
+      "forceCaption": true,
+      "kind": "image",
+      "mediaFile": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/BE_BEATEN_frame.c.jpg",
+      "next": [],
+      "hasOptions": false,
+      "optionCount": 0,
+      "from": [
+        "f3"
+      ]
+    }
+  }
+}

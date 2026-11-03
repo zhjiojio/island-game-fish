@@ -1,0 +1,12 @@
+[
+  {
+    "partId": "ep11_scene_00_video_01__p01",
+    "speakerId": "zhoubo",
+    "reason": "Speaking character is visibly present in reviewed keyframe; align formal delivery and position-specific prompt."
+  },
+  {
+    "partId": "ending_streamer__p01",
+    "speakerId": "chenjin",
+    "reason": "Speaking character is visibly present in reviewed keyframe; align formal delivery and position-specific prompt."
+  }
+]

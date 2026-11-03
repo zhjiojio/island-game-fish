@@ -1,0 +1,34 @@
+{
+  "partId": "ending_boss__p01.r3",
+  "sourceSha256": "6f5edd14c9960d4b851a565f41c9fb14abf527423274b8acd1f2c9743860ed93",
+  "model": "google/gemini-2.5-flash",
+  "review": {
+    "utterances": [
+      {
+        "startSec": 0.0,
+        "endSec": 0.0,
+        "text": "这次我雇的不是保镖，是合伙人。",
+        "audibleVoice": "无法判断",
+        "visibleSpeaker": "无法判断",
+        "mouthSyncEvidence": "无口型"
+      },
+      {
+        "startSec": 2.36,
+        "endSec": 5.46,
+        "text": "这次我雇的不是保镖，是合伙人。",
+        "audibleVoice": "画面中穿白色西装的年轻女性",
+        "visibleSpeaker": "画面中穿白色西装的年轻女性",
+        "mouthSyncEvidence": "0.0-0.0：无口型；2.36-5.46：口型与声音同步"
+      }
+    ],
+    "nonverbal": [
+      {
+        "startSec": 0.0,
+        "endSec": 6.04,
+        "text": "持续的背景噪音，包括风声和远处施工的声音。"
+      }
+    ],
+    "issues": [],
+    "uncertain": []
+  }
+}

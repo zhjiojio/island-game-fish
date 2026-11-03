@@ -1,0 +1,121 @@
+<mxfile host="app.diagrams.net" modified="2026-08-18T14:32:31.000Z" agent="MyFlicker" version="24.7.17" type="device">
+  <diagram id="ddz-phase1-architecture" name="一期阿里云生产架构">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title" value="斗地主服务端一期阿里云生产架构" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#1F2937;" vertex="1" parent="1">
+          <mxGeometry x="400" y="30" width="800" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="单活动游戏进程 · ALB 统一接入 · RDS 跨可用区高可用 · 云内日志监控与密钥管理" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=13;fontColor=#6B7280;" vertex="1" parent="1">
+          <mxGeometry x="350" y="78" width="900" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="accessZone" value="公网接入层" style="swimlane;html=1;startSize=32;horizontal=1;rounded=1;arcSize=8;fillColor=#E8F1FF;strokeColor=#4F81BD;fontColor=#1F4E78;fontStyle=1;fontSize=14;swimlaneFillColor=#F7FAFF;" vertex="1" parent="1">
+          <mxGeometry x="80" y="140" width="1440" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="appZone" value="应用计算层（阿里云生产 VPC）" style="swimlane;html=1;startSize=32;horizontal=1;rounded=1;arcSize=8;fillColor=#E9F7EF;strokeColor=#3D9970;fontColor=#216E4E;fontStyle=1;fontSize=14;swimlaneFillColor=#F6FCF8;" vertex="1" parent="1">
+          <mxGeometry x="80" y="350" width="1440" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="supportZone" value="数据与云支撑层" style="swimlane;html=1;startSize=32;horizontal=1;rounded=1;arcSize=8;fillColor=#FFF3E0;strokeColor=#D79B00;fontColor=#8A5700;fontStyle=1;fontSize=14;swimlaneFillColor=#FFFBF3;" vertex="1" parent="1">
+          <mxGeometry x="80" y="560" width="1440" height="260" as="geometry" />
+        </mxCell>
+
+        <mxCell id="player" value="&lt;b&gt;快手小游戏客户端&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#6B7280&quot;&gt;公网玩家流量&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#DAE8FC;strokeColor=#6C8EBF;strokeWidth=2;fontSize=15;verticalAlign=middle;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="200" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="dns" value="&lt;b&gt;备案域名与云解析 DNS&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#6B7280&quot;&gt;正式 WSS 域名&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#E1D5E7;strokeColor=#9673A6;strokeWidth=2;fontSize=15;verticalAlign=middle;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="540" y="200" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="alb" value="&lt;b&gt;公网 ALB&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#6B7280&quot;&gt;TLS 终止 · WSS · 健康检查&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#FFE6CC;strokeColor=#D79B00;strokeWidth=2;fontSize=15;verticalAlign=middle;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="950" y="200" width="270" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="operator" value="&lt;b&gt;受控运维人员&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#6B7280&quot;&gt;最小权限 · 操作审计&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#F5F5F5;strokeColor=#666666;strokeWidth=2;fontSize=15;verticalAlign=middle;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="230" y="410" width="230" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ecs" value="&lt;b&gt;活动 ECS&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#216E4E&quot;&gt;Node.js 单活动游戏进程&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#6B7280&quot;&gt;私网端口 8080&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#D5E8D4;strokeColor=#82B366;strokeWidth=3;fontSize=16;verticalAlign=middle;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="670" y="400" width="290" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="singleActiveNote" value="仅允许一台活动实例接入 ALB&lt;br&gt;当前房间与匹配状态位于进程内存" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontColor=#7F6000;fontSize=12;align=left;verticalAlign=middle;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="400" width="300" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rds" value="&lt;b&gt;RDS MySQL 高可用版&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8A5700&quot;&gt;跨可用区主备&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#6B7280&quot;&gt;私网端口 3306&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#FFE6CC;strokeColor=#D79B00;strokeWidth=2;fontSize=14;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="630" width="250" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="kms" value="&lt;b&gt;KMS Secrets Manager&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#6B7280&quot;&gt;认证密钥 · RDS 凭据&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#F8CECC;strokeColor=#B85450;strokeWidth=2;fontSize=14;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="630" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="sls" value="&lt;b&gt;SLS 日志服务&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#6B7280&quot;&gt;应用日志 · 业务埋点&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#DAE8FC;strokeColor=#6C8EBF;strokeWidth=2;fontSize=14;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="830" y="630" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="cm" value="&lt;b&gt;云监控与告警&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#6B7280&quot;&gt;ALB · ECS · RDS 指标&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=12;fillColor=#E1D5E7;strokeColor=#9673A6;strokeWidth=2;fontSize=14;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="630" width="250" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="backup" value="&lt;b&gt;自动备份&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#6B7280&quot;&gt;日志备份 · 可选跨地域备份&lt;/font&gt;" style="shape=datastore;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;strokeWidth=2;fontSize=14;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="750" width="250" height="55" as="geometry" />
+        </mxCell>
+
+        <mxCell id="edgePlayerDns" value="WSS 443" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#4F81BD;fontSize=13;fontStyle=1;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="player" target="dns">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeDnsAlb" value="域名解析" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#9673A6;fontSize=13;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="dns" target="alb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeAlbEcs" value="私网 WS 8080" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=3;strokeColor=#3D9970;fontSize=13;fontStyle=1;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="alb" target="ecs">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1085" y="365" />
+              <mxPoint x="815" y="365" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edgeOperatorEcs" value="云助手 / 堡垒机" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;dashed=1;dashPattern=8 4;strokeWidth=2;strokeColor=#666666;fontSize=12;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="operator" target="ecs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeEcsRds" value="私网 3306" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#D79B00;fontSize=13;fontStyle=1;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="ecs" target="rds">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="815" y="585" />
+              <mxPoint x="285" y="585" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edgeEcsKms" value="运行时读取密钥" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#B85450;fontSize=12;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="ecs" target="kms">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeEcsSls" value="日志 / 埋点" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#6C8EBF;fontSize=12;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="ecs" target="sls">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeAlbCm" value="接入指标" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.5;strokeColor=#9673A6;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="alb" target="cm">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1450" y="240" />
+              <mxPoint x="1450" y="675" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edgeEcsCm" value="主机与进程指标" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.5;strokeColor=#9673A6;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="ecs" target="cm">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeRdsCm" value="数据库指标" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=1.5;strokeColor=#9673A6;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="rds" target="cm">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="285" y="745" />
+              <mxPoint x="1285" y="745" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edgeRdsBackup" value="自动备份" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;strokeColor=#D6B656;fontSize=11;labelBackgroundColor=#FFFFFF;" edge="1" parent="1" source="rds" target="backup">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend" value="&lt;b&gt;架构约束&lt;/b&gt;：一期基础设施具备托管高可用能力，但游戏房间与匹配状态仍在单个 Node.js 进程内；实例故障后已提交 RDS 数据可保留，进行中牌局需要中止和幂等补偿。" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#F9FAFB;strokeColor=#9CA3AF;dashed=1;fontSize=13;fontColor=#374151;align=left;verticalAlign=middle;spacingLeft=12;spacingRight=12;" vertex="1" parent="1">
+          <mxGeometry x="200" y="860" width="1200" height="70" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

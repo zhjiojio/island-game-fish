@@ -1,0 +1,28 @@
+{
+  "partId": "ending_loop__p01",
+  "sourceSha256": "d172f785989ed68cc0fff8e069817605f9c2f23c047be62c85044ba0fe87d396",
+  "model": "google/gemini-2.5-flash",
+  "review": {
+    "transcript": [
+      {
+        "startSec": 2.36,
+        "endSec": 3.06,
+        "text": "分手吧。",
+        "audibleVoice": "画面中穿黑色西装的年轻男性",
+        "visibleSpeaker": "画面中穿黑色西装的年轻男性",
+        "mouthSyncEvidence": "男性张嘴发音"
+      },
+      {
+        "startSec": 4.06,
+        "endSec": 5.76,
+        "text": "这一次，我知道了。",
+        "audibleVoice": "画面中穿红色长裙的年轻女性",
+        "visibleSpeaker": "画面中穿红色长裙的年轻女性",
+        "mouthSyncEvidence": "女性张嘴发音"
+      }
+    ],
+    "nonverbal": "持续背景声：轻微的背景音乐。",
+    "issues": [],
+    "uncertain": []
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "_comment": "刷新奖励弹窗切图索引。pad=透明安全区，渲染时目标矩形需向外扩 pad（见 pd-game.js drawPopupImg）",
+  "scale": 2,
+  "group": "popup:reward",
+  "slices": {
+    "popup_panel": {
+      "w": 544,
+      "h": 580,
+      "file": "assets/ui/popup/popup_panel.png",
+      "visual": [
+        500,
+        530
+      ],
+      "pad": 22,
+      "insets": [
+        62,
+        62,
+        62,
+        62
+      ]
+    },
+    "popup_title_bar": {
+      "w": 388,
+      "h": 128,
+      "file": "assets/ui/popup/title_bar.png",
+      "visual": [
+        344,
+        84
+      ],
+      "pad": 22,
+      "insets": [
+        64,
+        64,
+        64,
+        64
+      ]
+    },
+    "popup_btn_close": {
+      "w": 104,
+      "h": 104,
+      "file": "assets/ui/popup/btn_close.png",
+      "visual": [
+        60,
+        60
+      ],
+      "pad": 22,
+      "insets": null
+    },
+    "popup_content_bg": {
+      "w": 428,
+      "h": 282,
+      "file": "assets/ui/popup/content_bg.png",
+      "visual": [
+        428,
+        282
+      ],
+      "pad": 0,
+      "insets": null
+    },
+    "popup_btn_green": {
+      "w": 288,
+      "h": 124,
+      "file": "assets/ui/popup/btn_green.png",
+      "visual": [
+        244,
+        80
+      ],
+      "pad": 22,
+      "insets": [
+        62,
+        62,
+        62,
+        62
+      ]
+    },
+    "popup_btn_green_pressed": {
+      "w": 288,
+      "h": 124,
+      "file": "assets/ui/popup/btn_green_pressed.png",
+      "visual": [
+        244,
+        80
+      ],
+      "pad": 22,
+      "insets": [
+        62,
+        62,
+        62,
+        62
+      ]
+    },
+    "popup_icon_refresh": {
+      "w": 220,
+      "h": 220,
+      "file": "assets/ui/popup/icon_refresh.png",
+      "visual": [
+        220,
+        220
+      ],
+      "pad": 0,
+      "insets": null
+    }
+  }
+}

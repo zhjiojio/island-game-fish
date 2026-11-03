@@ -1,0 +1,10 @@
+{
+  "node": "e6s3",
+  "speakerKey": "narrator",
+  "speakerName": "旁白",
+  "asrText": "煤油灯芯爆了一下。灯光是暖的，把她半边肩膀染成蜜色，另半边沉在暗里。她低头绞着衣角，谁也没先开口",
+  "asrTextRaw": "没有灯星暴了一下 灯光是暖的 把它半边肩膀染成蜜色 另半边沉在暗里 它低头角这一角 谁也没先开口",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 6
+}

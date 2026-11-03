@@ -1,0 +1,10 @@
+{
+  "node": "e9s4",
+  "speakerKey": "aotian",
+  "speakerName": "你（颤）",
+  "asrText": "婉儿，我不会说话。这三年，你没嫌我穷、没嫌我笨、挨过打、跟我逃过命。说完了，你肯、你不肯，都成",
+  "asrTextRaw": "婉儿 我不会说话 这三年 你没嫌我穷 没嫌我笨 挨过打 跟我逃过命 说完了 你肯 你不肯 都成",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 7
+}

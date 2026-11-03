@@ -1,0 +1,10 @@
+{
+  "node": "e8s6",
+  "speakerKey": "narrator",
+  "speakerName": "沈婉儿",
+  "asrText": "我就要你一个人，你听到没！",
+  "asrTextRaw": "我就要你的星王一个人 你听到没",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 2
+}

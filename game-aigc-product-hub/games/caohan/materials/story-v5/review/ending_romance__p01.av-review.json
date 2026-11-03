@@ -1,0 +1,28 @@
+{
+  "partId": "ending_romance__p01",
+  "sourceSha256": "96252f33eb7d8c0ca42cc66fe3ba234a48cddb9465288b6fc02107abe48f3f5e",
+  "model": "google/gemini-2.5-flash",
+  "review": {
+    "utterances": [
+      {
+        "startSec": 2.76,
+        "endSec": 3.26,
+        "text": "回家吧。",
+        "audibleVoice": "画面中穿黑色T恤的男性，中年",
+        "visibleSpeaker": "画面中穿黑色T恤的男性，中年",
+        "mouthSyncEvidence": "嘴唇张合"
+      },
+      {
+        "startSec": 4.26,
+        "endSec": 4.46,
+        "text": "好。",
+        "audibleVoice": "画面中穿白色西装的女性，年轻",
+        "visibleSpeaker": "画面中穿白色西装的女性，年轻",
+        "mouthSyncEvidence": "嘴唇张合"
+      }
+    ],
+    "nonverbal": "持续背景声：环境音，包括车辆行驶声和人声。",
+    "issues": [],
+    "uncertain": []
+  }
+}

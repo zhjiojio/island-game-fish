@@ -1,0 +1,25 @@
+{
+  "id": "ending_cow",
+  "type": "ending",
+  "episodeId": "ep03",
+  "title": "荒诞结局：奶牛真相",
+  "isEnding": true,
+  "category": "absurd",
+  "tone": [
+    "无厘头",
+    "彩蛋"
+  ],
+  "rarity": "legendary",
+  "isCanonical": false,
+  "unlock": {
+    "requiredFlags": [
+      "ep03_conditional"
+    ],
+    "requiredEndingTags": []
+  },
+  "description": "所有阴谋线索最终都指向第一集那杯牛奶。",
+  "closing": "镜头切向牧场，一头奶牛意味深长地看向观众。",
+  "achievement": "ending_cow",
+  "chapterId": "ch2",
+  "chapterTitle": "第二章：荒野上的交易"
+}

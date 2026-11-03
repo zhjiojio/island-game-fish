@@ -1,0 +1,27 @@
+{
+  "videoId": "ending_crane",
+  "voiceWindows": [],
+  "newVoice": [
+    {
+      "lineId": "ending_crane__l01",
+      "speaker": "司仪",
+      "kind": "dialogue",
+      "text": "谁反对？",
+      "audioFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/audio/ending_crane__l01.mp3",
+      "start": 8.3,
+      "end": 9.531
+    },
+    {
+      "lineId": "ending_crane__l02",
+      "speaker": "画外叙述者",
+      "kind": "narration",
+      "text": "他们真的把婚礼办在了塔吊顶端。",
+      "audioFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/audio/ending_crane__l02.mp3",
+      "start": 0.4,
+      "end": 3.6
+    }
+  ],
+  "durationSec": 16.091428571428573,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.56048583984375
+}

@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s6.hd.mp4",
+  "sha256": "1f0e7f71487cca101a310c937f236cf37701e292397823bcb0798dbaaee51800",
+  "duration": 10.042,
+  "nodes": [
+    "e3s6"
+  ],
+  "status": "speech",
+  "transcript": "从现在起，我会好好打理这个家的。",
+  "rawText": "从现在起我会好好打理这个家的",
+  "asrChars": [
+    [
+      3.82,
+      4.06,
+      "从"
+    ],
+    [
+      4.14,
+      4.34,
+      "现"
+    ],
+    [
+      4.34,
+      4.58,
+      "在"
+    ],
+    [
+      4.58,
+      4.82,
+      "起"
+    ],
+    [
+      6.06,
+      6.3,
+      "我"
+    ],
+    [
+      6.3,
+      6.5,
+      "会"
+    ],
+    [
+      6.5,
+      6.64,
+      "好"
+    ],
+    [
+      6.64,
+      6.84,
+      "好"
+    ],
+    [
+      6.84,
+      7.0,
+      "打"
+    ],
+    [
+      7.0,
+      7.18,
+      "理"
+    ],
+    [
+      7.18,
+      7.28,
+      "这"
+    ],
+    [
+      7.28,
+      7.4,
+      "个"
+    ],
+    [
+      7.4,
+      7.64,
+      "家"
+    ],
+    [
+      7.64,
+      7.935,
+      "的"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "从现在起,我会好好打理这个家的。",
+  "speakerKey": null,
+  "speakerRuleKey": "e3s6",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

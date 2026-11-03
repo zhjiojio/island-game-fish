@@ -1,0 +1,18 @@
+{
+  "videoId": "ep03_scene_00_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep03_scene_00_video_01__l01",
+      "speaker": "陈劲",
+      "text": "好，答应了。",
+      "heard": "好答应了",
+      "start": 1.575,
+      "end": 2.765,
+      "alignmentScore": 1.0
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 3.0418140589569163,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.59722900390625
+}

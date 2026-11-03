@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S2.hd.mp4",
+  "sha256": "3e1b736d487c4476ce5f6b4c4d2c6092235963693921dc7e39bd662872d05f86",
+  "duration": 10.042,
+  "nodes": [
+    "s2"
+  ],
+  "status": "speech",
+  "transcript": "这不是医院。土炕、油灯、粗麻布，我穿越了，什么年代？",
+  "rawText": "这不是医院土炕沿灯粗麻布我穿越了什么年代",
+  "asrChars": [
+    [
+      1.71,
+      1.95,
+      "这"
+    ],
+    [
+      2.49,
+      2.73,
+      "不"
+    ],
+    [
+      2.79,
+      2.93,
+      "是"
+    ],
+    [
+      2.93,
+      3.09,
+      "医"
+    ],
+    [
+      3.09,
+      3.33,
+      "院"
+    ],
+    [
+      4.55,
+      4.79,
+      "土"
+    ],
+    [
+      4.87,
+      5.11,
+      "炕"
+    ],
+    [
+      5.37,
+      5.61,
+      "沿"
+    ],
+    [
+      5.65,
+      5.85,
+      "灯"
+    ],
+    [
+      5.85,
+      6.01,
+      "粗"
+    ],
+    [
+      6.01,
+      6.17,
+      "麻"
+    ],
+    [
+      6.17,
+      6.41,
+      "布"
+    ],
+    [
+      6.83,
+      7.07,
+      "我"
+    ],
+    [
+      7.09,
+      7.25,
+      "穿"
+    ],
+    [
+      7.25,
+      7.47,
+      "越"
+    ],
+    [
+      7.47,
+      7.71,
+      "了"
+    ],
+    [
+      8.65,
+      8.89,
+      "什"
+    ],
+    [
+      8.91,
+      9.05,
+      "么"
+    ],
+    [
+      9.05,
+      9.21,
+      "年"
+    ],
+    [
+      9.21,
+      9.655,
+      "代"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "这：不是医院：土抗油灯粗麻布：我穿越了。什么年代?",
+  "speakerKey": null,
+  "speakerRuleKey": "S2",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

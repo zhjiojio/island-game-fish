@@ -1,0 +1,19 @@
+:root {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  color: #f3eddf;
+  background: #04070d;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+
+html { background: #04070d; }
+
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+
+button, input, textarea, select { font: inherit; }
+
+button { -webkit-tap-highlight-color: transparent; }
+
+img, video { display: block; max-width: 100%; }

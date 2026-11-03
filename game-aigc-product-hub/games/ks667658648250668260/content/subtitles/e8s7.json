@@ -1,0 +1,10 @@
+{
+  "node": "e8s7",
+  "speakerKey": "aotian",
+  "speakerName": "你（心声）",
+  "asrText": "就算死这坑里，也得把坑堵上。婉儿还在岸上等我",
+  "asrTextRaw": "就算死这坑里 也得把坑堵上 婉儿还在岸上等我",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 3
+}

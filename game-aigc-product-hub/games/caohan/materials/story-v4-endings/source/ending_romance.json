@@ -1,0 +1,25 @@
+{
+  "id": "ending_romance",
+  "type": "ending",
+  "episodeId": "ep11",
+  "title": "正式结局：被接住之后",
+  "isEnding": true,
+  "category": "romance",
+  "tone": [
+    "爱情",
+    "并肩"
+  ],
+  "rarity": "common",
+  "isCanonical": true,
+  "unlock": {
+    "requiredFlags": [
+      "ep11_emotion"
+    ],
+    "requiredEndingTags": []
+  },
+  "description": "贺星冉在清醒中选择了陈劲，但不再把自己交给任何人。",
+  "closing": "陈劲伸出手：回家吧。这次她自己决定回哪个家。",
+  "achievement": "ending_romance",
+  "chapterId": "ch5",
+  "chapterTitle": "第五章：让他再动一次手"
+}

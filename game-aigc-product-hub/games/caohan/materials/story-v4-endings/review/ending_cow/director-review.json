@@ -1,0 +1,12 @@
+{
+  "videoId": "ending_cow",
+  "sourceParts": [
+    "ending_cow__p01",
+    "ending_cow__p02"
+  ],
+  "result": "visual_pass_audio_transcript_pass",
+  "durationSec": 16.083333,
+  "sha256": "d482b7abaf55cd0cb99dfebb558b3cdf8fc8d4963464f312ef2b5846b69ed618",
+  "note": "全部源片段均通过人工身份、构图与独立转写检查；按原文顺序保留原生音轨。",
+  "finalSamplingNote": "合并成片五点抽帧核对证据墙至牧场顺序，画面无异常，原生音轨由通过原文转写审核的片段保留。"
+}

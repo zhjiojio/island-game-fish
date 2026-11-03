@@ -1,0 +1,13 @@
+{
+  "transcript": "他买下了整个工地。",
+  "utterances": [
+    {
+      "speaker": "speaker_0",
+      "text": "他买下了整个工地。"
+    }
+  ],
+  "nonverbal": [],
+  "issues": [],
+  "uncertain": "",
+  "reviewModel": "mistralai/voxtral-small-24b-2507"
+}

@@ -1,0 +1,108 @@
+{
+  "sourceFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/output/逃婚后我花千万雇了工地糙汉.v4.json",
+  "sourceSha256": "77cee12ed8c5f8a99e49c6ec00ef31136fa64c03eb09995732b91220ca491ec7",
+  "nodeId": "ep08_branch_truth",
+  "video": {
+    "id": "ep08_branch_truth_video_01",
+    "order": 1,
+    "title": "选择后果·公开护短",
+    "durationSec": 8.0,
+    "renderMode": "video_gen",
+    "needsLipSync": true,
+    "continuity": {
+      "locationId": "source_8_8_1",
+      "timeOfDay": "day",
+      "characterIds": [
+        "贺星冉",
+        "周伯"
+      ],
+      "wardrobe": "沿用角色 wardrobeByEpisode，视频内不得换装",
+      "screenDirection": "保持人物空间轴线与视线方向",
+      "startState": "承接上一视频末帧；首视频承接场景入口",
+      "endState": "保留人物动作、视线与构图状态供下一视频承接"
+    },
+    "assetRefs": [],
+    "shots": [
+      {
+        "id": "ep08_branch_truth_video_01_shot_01",
+        "order": 1,
+        "durationSec": 5,
+        "shotSize": "特写",
+        "cameraAngle": "平视",
+        "cameraMovement": "轻微手持",
+        "composition": "贺家庄园·走廊深处内建立清楚人物方位，主体动作是：他重新打量这个拎着蛇皮袋的年轻人：走路随意，站姿稳得像钉在地上，刚才那个接瓶的动作，反应速度和控制力，不是工地小子该有的。",
+        "locationId": "source_8_8_1",
+        "timeOfDay": "day",
+        "characters": [
+          "贺星冉"
+        ],
+        "dialogue": [
+          {
+            "speaker": "旁白",
+            "text": "他重新打量这个拎着蛇皮袋的年轻人：走路随意，站姿稳得像钉在地上，刚才那个接瓶的动作，反应速度和控制力，不是工地小子该有的。"
+          }
+        ],
+        "audio": {
+          "ambient": "贺家庄园·走廊深处环境底噪",
+          "music": "暧昧情绪低频铺底",
+          "sfx": []
+        },
+        "visual": {
+          "firstFramePrompt": "日，贺家庄园·走廊深处，景别：特写，画面人物：贺星冉；他重新打量这个拎着蛇皮袋的年轻人：走路随意，站姿稳得像钉在地上，刚才那个接瓶的动作，反应速度和控制力，不是工地小子该有的。，人物外观与上镜连续，电影级写实短剧；选择后果：点破试探，我不准他们再踩他",
+          "videoPrompt": "镜头跟随主体，清晰呈现他重新打量这个拎着蛇皮袋的年轻人：走路随意，站姿稳得像钉在地上，刚才那个接瓶的动作，反应速度和控制力，不是工地小子该有的。，保持人物服装、光向和空间轴线连续，明确展示“点破试探，我不准他们再踩他”导致的动作和关系变化",
+          "negativePrompt": "字幕，水印，畸形手指，多余人物，角色换脸，服装突变，空间跳轴"
+        },
+        "sourceRef": {
+          "episode": 8,
+          "scene": "8-1",
+          "unit": 19,
+          "adaptation": "condensed"
+        },
+        "startSec": 0.0,
+        "endSec": 5.0
+      },
+      {
+        "id": "ep08_branch_truth_video_01_shot_02",
+        "order": 2,
+        "durationSec": 3,
+        "shotSize": "全景",
+        "cameraAngle": "低角度",
+        "cameraMovement": "缓推",
+        "composition": "贺家庄园·走廊深处内建立清楚人物方位，主体动作是：周伯位于贺家庄园·走廊深处画面前景，面部近景，视线指向对话对象，嘴唇正在说“小伙子……我说话直，你别介意。”",
+        "locationId": "source_8_8_1",
+        "timeOfDay": "day",
+        "characters": [
+          "周伯"
+        ],
+        "dialogue": [
+          {
+            "speaker": "旁白",
+            "text": "周伯收起试探，语气不由自主客气了几分。"
+          },
+          {
+            "speaker": "周伯",
+            "text": "小伙子……我说话直，你别介意。"
+          }
+        ],
+        "audio": {
+          "ambient": "贺家庄园·走廊深处环境底噪",
+          "music": "暧昧情绪低频铺底",
+          "sfx": []
+        },
+        "visual": {
+          "firstFramePrompt": "日，贺家庄园·走廊深处，景别：全景，画面人物：周伯；周伯位于贺家庄园·走廊深处画面前景，面部近景，视线指向对话对象，嘴唇正在说“小伙子……我说话直，你别介意。”，人物外观与上镜连续，电影级写实短剧；选择后果：点破试探，我不准他们再踩他",
+          "videoPrompt": "镜头缓慢推进，清晰呈现周伯位于贺家庄园·走廊深处画面前景，面部近景，视线指向对话对象，嘴唇正在说“小伙子……我说话直，你别介意。”，保持人物服装、光向和空间轴线连续，明确展示“点破试探，我不准他们再踩他”导致的动作和关系变化",
+          "negativePrompt": "字幕，水印，畸形手指，多余人物，角色换脸，服装突变，空间跳轴"
+        },
+        "sourceRef": {
+          "episode": 8,
+          "scene": "8-1",
+          "unit": 20,
+          "adaptation": "condensed"
+        },
+        "startSec": 5.0,
+        "endSec": 8.0
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "videoId": "ep06_branch_conditional_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep06_branch_conditional_video_01__l01",
+      "speaker": "贺星冉",
+      "text": "因为——我要带你去见我父母，顺便宣布退婚。",
+      "heard": "因为我要带你去见我父母顺便宣布退婚",
+      "start": 4.455,
+      "end": 10.505,
+      "alignmentScore": 1.0
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 20.085260770975058,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.5428466796875
+}

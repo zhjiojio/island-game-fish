@@ -1,0 +1,18 @@
+{
+  "videoId": "ep02_branch_emotion_video_01",
+  "voiceWindows": [],
+  "newVoice": [
+    {
+      "lineId": "ep02_branch_emotion_video_01__l01",
+      "speaker": "画外叙述者",
+      "kind": "narration",
+      "text": "这里没有信号，救援车也找不到她。",
+      "audioFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/audio/ep02_branch_emotion_video_01__l01.mp3",
+      "start": 0.4,
+      "end": 4.0
+    }
+  ],
+  "durationSec": 20.085260770975058,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.52301025390625
+}

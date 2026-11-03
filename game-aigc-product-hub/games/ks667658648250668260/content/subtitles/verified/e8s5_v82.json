@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e8s5_v82.mp4",
+  "sha256": "3e8a4407793bbe8de0b880eb749b89576bb6ad0c699d1afa4d372ddba950b73f",
+  "duration": 10.042,
+  "nodes": [
+    "e8s5"
+  ],
+  "status": "partial_review",
+  "transcript": "这一亩地……不给他们！",
+  "rawText": "那么这一亩地宁命不给他们",
+  "asrChars": [
+    [
+      0.01,
+      0.07,
+      "那"
+    ],
+    [
+      0.07,
+      0.345,
+      "么"
+    ],
+    [
+      2.49,
+      2.69,
+      "这"
+    ],
+    [
+      2.69,
+      2.87,
+      "一"
+    ],
+    [
+      2.87,
+      3.03,
+      "亩"
+    ],
+    [
+      3.03,
+      3.27,
+      "地"
+    ],
+    [
+      4.17,
+      4.41,
+      "宁"
+    ],
+    [
+      4.45,
+      4.69,
+      "命"
+    ],
+    [
+      4.71,
+      4.87,
+      "不"
+    ],
+    [
+      4.87,
+      5.05,
+      "给"
+    ],
+    [
+      5.05,
+      5.27,
+      "他"
+    ],
+    [
+      5.27,
+      5.625,
+      "们"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "什么? 这一幕地, 命命不给他们!",
+  "speakerKey": null,
+  "speakerRuleKey": "e8s5",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration.",
+  "audioReview": {
+    "ranges": [
+      [
+        0,
+        0.4
+      ],
+      [
+        4.1,
+        4.7
+      ]
+    ],
+    "note": "开头短语及“一亩地”后两字在多模型中仍不清晰；仅保留稳定识别的台词，省略处用停顿表示。"
+  }
+}

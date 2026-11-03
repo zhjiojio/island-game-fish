@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>拼豆遮罩编辑器 · 快来帮帮我</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin:0; background:#1a1720; color:#EDE9F2; font:14px/1.6 -apple-system,"PingFang SC",sans-serif; display:flex; }
+  #left { padding:14px; width:300px; flex:none; overflow:auto; height:100vh; }
+  #right { flex:1; display:flex; align-items:flex-start; justify-content:center; padding:14px; }
+  h1 { font-size:17px; margin:0 0 4px; }
+  .sub { color:#9C93AC; font-size:12px; margin-bottom:14px; }
+  .box { background:#262233; border:1px solid #383246; border-radius:10px; padding:12px; margin-bottom:12px; }
+  .box h2 { font-size:13px; margin:0 0 8px; color:#C9BEE0; letter-spacing:.5px; }
+  button { background:#3E3550; color:#EDE9F2; border:1px solid #514463; border-radius:8px;
+           padding:8px 12px; cursor:pointer; font-size:13px; margin:0 6px 6px 0; }
+  button:hover { background:#4C4165; }
+  button.on { background:#7B5BD6; border-color:#9B7BF6; }
+  button.go { background:#2FA84F; border-color:#48C468; }
+  button.warn { background:#B3403F; border-color:#D45B5A; }
+  label { display:flex; align-items:center; gap:8px; margin:6px 0; font-size:13px; }
+  input[type=range] { flex:1; }
+  .val { color:#C0B4D6; min-width:44px; text-align:right; font-variant-numeric:tabular-nums; }
+  .swatches { display:flex; flex-wrap:wrap; gap:6px; }
+  .sw { width:30px; height:30px; border-radius:7px; cursor:pointer; border:3px solid transparent; }
+  .sw.on { border-color:#FFF; }
+  textarea { width:100%; height:150px; background:#15121C; color:#9FE8B0; border:1px solid #383246;
+             border-radius:8px; padding:8px; font:11px/1.45 ui-monospace,Menlo,monospace; resize:vertical; }
+  canvas { border-radius:12px; box-shadow:0 10px 40px rgba(0,0,0,.6); cursor:crosshair;
+           touch-action:none; display:block; }
+  .hint { color:#8E85A0; font-size:11.5px; margin-top:6px; }
+  .stat { color:#FFD27A; font-size:12px; }
+  kbd { background:#15121C; border:1px solid #453C58; border-radius:4px; padding:1px 5px; font-size:11px; }
+</style>
+</head>
+<body>
+<div id="left">
+  <h1>拼豆遮罩编辑器</h1>
+  <div class="sub">在立绘上圈出裙子 → 豆子自动铺满这个形状</div>
+
+  <div class="box">
+    <h2>第 1 步 · 工具</h2>
+    <button id="tPoly" class="on">① 画框（点顶点）</button>
+    <button id="tBrush">② 刷豆子</button>
+    <button id="tErase">③ 擦豆子</button>
+    <div class="hint">
+      <b>画框</b>：沿裙子边缘依次点击顶点，形成闭合多边形 →「铺满」<br>
+      <b>刷/擦</b>：铺满后在栅格上手动精修（可拖动连续刷）
+    </div>
+  </div>
+
+  <div class="box">
+    <h2>第 2 步 · 参数</h2>
+    <label>格子 <input type="range" id="cell" min="16" max="56" value="30"><span class="val" id="cellV">30</span></label>
+    <label>笔刷 <input type="range" id="brush" min="1" max="6" value="2"><span class="val" id="brushV">2</span></label>
+    <label>波点率 <input type="range" id="dot" min="0" max="60" value="26"><span class="val" id="dotV">26%</span></label>
+    <label>裙摆行 <input type="range" id="hem" min="0" max="5" value="2"><span class="val" id="hemV">2</span></label>
+    <label><input type="checkbox" id="showImg" checked> 显示立绘</label>
+    <label><input type="checkbox" id="showGrid"> 显示栅格线</label>
+  </div>
+
+  <div class="box">
+    <h2>第 3 步 · 画笔颜色</h2>
+    <div class="swatches" id="sw"></div>
+    <div class="hint">选「自动」= 交给代码按底色+波点+裙摆规则上色</div>
+  </div>
+
+  <div class="box">
+    <h2>操作</h2>
+    <button id="fill" class="go">用框铺满豆子</button>
+    <button id="clearPoly">清空框</button>
+    <button id="clearBeans" class="warn">清空豆子</button>
+    <button id="undo">撤销顶点 <kbd>⌘Z</kbd></button>
+    <div class="stat" id="stat">豆子 0 · 顶点 0</div>
+  </div>
+
+  <div class="box">
+    <h2>第 4 步 · 导出</h2>
+    <button id="expArt" class="go">导出 ASCII（精确）</button>
+    <button id="expPoly">导出多边形（简洁）</button>
+    <button id="copy">复制</button>
+    <textarea id="out" placeholder="点上面按钮生成，然后复制给我，我直接贴进 pd-core.js 的 PD.MASKS"></textarea>
+    <div class="hint">ASCII 精确保留你每一颗豆；多边形只存 4~N 个顶点，代码里再栅格化</div>
+  </div>
+</div>
+
+<div id="right"><canvas id="cv"></canvas></div>
+
+<script>
+// ── 设计稿常量：必须与 pd-core.js 的 PD.DW/PD.DH 一致 ──
+var DW = 750, DH = 1624;
+var VIEW_H = Math.min(window.innerHeight - 30, 900);
+var VIEW_W = Math.round(VIEW_H * DW / DH);
+
+var cv = document.getElementById('cv');
+cv.width = VIEW_W; cv.height = VIEW_H;
+var ctx = cv.getContext('2d');
+var k = VIEW_W / DW;              // 设计稿 → 视图 缩放
+
+// 与游戏一致的调色板
+var COLORS = {
+  black:{main:'#2B2B33',side:'#15151A'}, white:{main:'#FDFCFA',side:'#D2CEC8'},
+  pink:{main:'#FF6FB5',side:'#D64992'},  cyan:{main:'#6FD8F0',side:'#3FA8C8'},
+  red:{main:'#F04A4A',side:'#C22E2E'},   yellow:{main:'#FFD24A',side:'#D9A81E'},
+  green:{main:'#6ED16E',side:'#3FA44A'}
+};
+var CH = { black:'k', white:'w', pink:'p', cyan:'c', red:'r', yellow:'y', green:'g', auto:'x' };
+var KEYS = ['auto','white','pink','cyan','black','red','yellow','green'];
+
+var tool = 'poly', paint = 'auto';
+var poly = [];                     // [[nx,ny]] 归一化
+var beans = {};                    // "gx_gy" -> color|'auto'
+var cell = 30, brushR = 2, dotRate = .26, hemRows = 2;
+var img = new Image(), imgOK = false;
+img.onload = function(){ imgOK = true; draw(); };
+img.onerror = function(){ imgOK = false; draw(); };
+img.src = '../package/assets/bg_nuonuo_750x1624.jpg';
+
+// ── 栅格：以设计稿中心为原点，与 pd-core 的 gx = c-(W-1)/2 语义对齐 ──
+function gridToDesign(gx, gy) { return { x: DW/2 + gx*cell, y: gy*cell + cell/2 }; }
+function designToGrid(x, y)   { return { gx: Math.round((x - DW/2)/cell), gy: Math.floor(y/cell) }; }
+function viewToDesign(vx, vy) { return { x: vx/k, y: vy/k }; }
+
+function inPoly(x, y, p) {
+  var inside=false, i, j;
+  for (i=0, j=p.length-1; i<p.length; j=i++) {
+    var xi=p[i][0], yi=p[i][1], xj=p[j][0], yj=p[j][1];
+    if (((yi>y)!==(yj>y)) && (x < (xj-xi)*(y-yi)/(yj-yi)+xi)) inside = !inside;
+  }
+  return inside;
+}
+
+function fillFromPoly() {
+  if (poly.length < 3) { alert('先点至少 3 个顶点圈出裙子'); return; }
+  beans = {};
+  var minY=1, maxY=0, minX=1, maxX=0, i;
+  for (i=0;i<poly.length;i++){
+    minX=Math.min(minX,poly[i][0]); maxX=Math.max(maxX,poly[i][0]);
+    minY=Math.min(minY,poly[i][1]); maxY=Math.max(maxY,poly[i][1]);
+  }
+  var g0 = designToGrid(minX*DW, minY*DH), g1 = designToGrid(maxX*DW, maxY*DH);
+  for (var gy=g0.gy; gy<=g1.gy; gy++) {
+    for (var gx=g0.gx-1; gx<=g1.gx+1; gx++) {
+      var d = gridToDesign(gx, gy);
+      if (inPoly(d.x/DW, d.y/DH, poly)) beans[gx+'_'+gy] = 'auto';
+    }
+  }
+  draw();
+}
+
+function brushAt(vx, vy, erase) {
+  var d = viewToDesign(vx, vy), g = designToGrid(d.x, d.y);
+  for (var dy=-brushR+1; dy<brushR; dy++) {
+    for (var dx=-brushR+1; dx<brushR; dx++) {
+      if (dx*dx+dy*dy > brushR*brushR) continue;
+      var key = (g.gx+dx)+'_'+(g.gy+dy);
+      if (erase) delete beans[key];
+      else beans[key] = paint;
+    }
+  }
+  draw();
+}
+
+// ── 绘制 ──
+function drawBean(g, x, y, col, sz) {
+  var c = COLORS[col] || {main:'#B9AEE0', side:'#8A7EB5'};
+  var w=sz, h=sz*.82, legW=sz*.22, legH=sz*.3;
+  var x0=x-w/2, y0=y-h/2-legH*.3;
+  g.fillStyle = c.side;
+  rr(g, x0+w*.16, y0+h-2, legW, legH, legW*.4); g.fill();
+  rr(g, x0+w-w*.16-legW, y0+h-2, legW, legH, legW*.4); g.fill();
+  rr(g, x0, y0, w, h, sz*.22); g.fillStyle = c.main; g.fill();
+  rr(g, x0+w*.16, y0+h*.12, w*.34, h*.2, h*.1);
+  g.fillStyle = 'rgba(255,255,255,.5)'; g.fill();
+}
+function rr(g,x,y,w,h,r){
+  r=Math.min(r,Math.abs(w)/2,Math.abs(h)/2); g.beginPath();
+  g.moveTo(x+r,y); g.lineTo(x+w-r,y); g.quadraticCurveTo(x+w,y,x+w,y+r);
+  g.lineTo(x+w,y+h-r); g.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+  g.lineTo(x+r,y+h); g.quadraticCurveTo(x,y+h,x,y+h-r);
+  g.lineTo(x,y+r); g.quadraticCurveTo(x,y,x+r,y); g.closePath();
+}
+
+// 稳定伪随机（同一格子每次同色，避免重绘闪烁）
+function hashRand(s){ var h=2166136261; for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);} return ((h>>>0)%1000)/1000; }
+
+function autoColor(key, gy, maxGy) {
+  if (hemRows>0 && gy > maxGy-hemRows) return 'white';
+  var r = hashRand(key);
+  if (r < dotRate) return (hashRand(key+'d') < .5) ? 'pink' : 'cyan';
+  return 'white';
+}
+
+function draw() {
+  ctx.clearRect(0,0,VIEW_W,VIEW_H);
+  ctx.fillStyle = '#2A2432'; ctx.fillRect(0,0,VIEW_W,VIEW_H);
+  if (imgOK && document.getElementById('showImg').checked) {
+    ctx.globalAlpha = 1; ctx.drawImage(img, 0,0, VIEW_W, VIEW_H);
+  }
+  // 栅格线
+  if (document.getElementById('showGrid').checked) {
+    ctx.strokeStyle='rgba(255,255,255,.10)'; ctx.lineWidth=1;
+    for (var x=DW/2; x<DW; x+=cell){ ctx.beginPath(); ctx.moveTo(x*k,0); ctx.lineTo(x*k,VIEW_H); ctx.stroke(); }
+    for (var x2=DW/2; x2>0; x2-=cell){ ctx.beginPath(); ctx.moveTo(x2*k,0); ctx.lineTo(x2*k,VIEW_H); ctx.stroke(); }
+    for (var y=cell; y<DH; y+=cell){ ctx.beginPath(); ctx.moveTo(0,y*k); ctx.lineTo(VIEW_W,y*k); ctx.stroke(); }
+  }
+  // 豆子
+  var keys = Object.keys(beans), maxGy = 0, i;
+  for (i=0;i<keys.length;i++) maxGy = Math.max(maxGy, +keys[i].split('_')[1]);
+  for (i=0;i<keys.length;i++) {
+    var p = keys[i].split('_'), gx=+p[0], gy=+p[1];
+    var d = gridToDesign(gx, gy);
+    var col = beans[keys[i]];
+    if (col === 'auto') col = autoColor(keys[i], gy, maxGy);
+    drawBean(ctx, d.x*k, d.y*k, col, (cell-4)*k);
+  }
+  // 多边形
+  if (poly.length) {
+    ctx.strokeStyle='#FFD64A'; ctx.lineWidth=2; ctx.setLineDash([6,4]);
+    ctx.beginPath();
+    for (i=0;i<poly.length;i++){
+      var vx=poly[i][0]*DW*k, vy=poly[i][1]*DH*k;
+      if(i===0) ctx.moveTo(vx,vy); else ctx.lineTo(vx,vy);
+    }
+    if (poly.length>2) ctx.closePath();
+    ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle='rgba(255,214,74,.10)'; if(poly.length>2) ctx.fill();
+    for (i=0;i<poly.length;i++){
+      ctx.beginPath(); ctx.arc(poly[i][0]*DW*k, poly[i][1]*DH*k, 5, 0, 6.2832);
+      ctx.fillStyle='#FFD64A'; ctx.fill();
+      ctx.strokeStyle='#7A5A00'; ctx.lineWidth=1.5; ctx.stroke();
+    }
+  }
+  document.getElementById('stat').textContent =
+    '豆子 ' + keys.length + ' · 顶点 ' + poly.length + ' · 格子 ' + cell + 'px';
+}
+
+// ── 交互 ──
+var dragging = false;
+function evPos(e){
+  var r = cv.getBoundingClientRect();
+  var t = (e.touches && e.touches[0]) || e;
+  return { x: t.clientX - r.left, y: t.clientY - r.top };
+}
+cv.addEventListener('mousedown', function(e){
+  var p = evPos(e);
+  if (tool === 'poly') { var d = viewToDesign(p.x,p.y); poly.push([d.x/DW, d.y/DH]); draw(); }
+  else { dragging = true; brushAt(p.x, p.y, tool==='erase'); }
+});
+cv.addEventListener('mousemove', function(e){
+  if (!dragging || tool==='poly') return;
+  var p = evPos(e); brushAt(p.x, p.y, tool==='erase');
+});
+window.addEventListener('mouseup', function(){ dragging=false; });
+cv.addEventListener('touchstart', function(e){ e.preventDefault(); var p=evPos(e);
+  if (tool==='poly'){ var d=viewToDesign(p.x,p.y); poly.push([d.x/DW,d.y/DH]); draw(); }
+  else { dragging=true; brushAt(p.x,p.y,tool==='erase'); } }, {passive:false});
+cv.addEventListener('touchmove', function(e){ e.preventDefault();
+  if(!dragging||tool==='poly')return; var p=evPos(e); brushAt(p.x,p.y,tool==='erase'); }, {passive:false});
+cv.addEventListener('touchend', function(){ dragging=false; });
+
+function setTool(t){
+  tool = t;
+  document.getElementById('tPoly').className  = t==='poly'  ? 'on':'';
+  document.getElementById('tBrush').className = t==='brush' ? 'on':'';
+  document.getElementById('tErase').className = t==='erase' ? 'on':'';
+}
+document.getElementById('tPoly').onclick  = function(){ setTool('poly'); };
+document.getElementById('tBrush').onclick = function(){ setTool('brush'); };
+document.getElementById('tErase').onclick = function(){ setTool('erase'); };
+
+// 颜色板
+var swBox = document.getElementById('sw');
+KEYS.forEach(function(kk){
+  var d = document.createElement('div');
+  d.className = 'sw' + (kk===paint ? ' on':'');
+  d.title = kk;
+  d.style.background = kk==='auto'
+    ? 'linear-gradient(135deg,#FDFCFA 0 33%,#FF6FB5 33% 66%,#6FD8F0 66%)'
+    : COLORS[kk].main;
+  d.onclick = function(){
+    paint = kk;
+    [].forEach.call(swBox.children, function(c){ c.className='sw'; });
+    d.className='sw on';
+    if (tool==='poly') setTool('brush');
+  };
+  swBox.appendChild(d);
+});
+
+function bindRange(id, fn){
+  var el = document.getElementById(id), v = document.getElementById(id+'V');
+  el.oninput = function(){ fn(+el.value, v); draw(); };
+}
+bindRange('cell',  function(x,v){ cell=x;   v.textContent=x; });
+bindRange('brush', function(x,v){ brushR=x; v.textContent=x; });
+bindRange('dot',   function(x,v){ dotRate=x/100; v.textContent=x+'%'; });
+bindRange('hem',   function(x,v){ hemRows=x; v.textContent=x; });
+document.getElementById('showImg').onchange = draw;
+document.getElementById('showGrid').onchange = draw;
+
+document.getElementById('fill').onclick = fillFromPoly;
+document.getElementById('clearPoly').onclick   = function(){ poly=[]; draw(); };
+document.getElementById('clearBeans').onclick  = function(){ beans={}; draw(); };
+document.getElementById('undo').onclick = function(){ poly.pop(); draw(); };
+window.addEventListener('keydown', function(e){
+  if ((e.metaKey||e.ctrlKey) && e.key==='z') { poly.pop(); draw(); }
+});
+
+// ── 导出 ──
+document.getElementById('expArt').onclick = function(){
+  var keys = Object.keys(beans);
+  if (!keys.length) { alert('还没有豆子'); return; }
+  var minGx=1e9,maxGx=-1e9,minGy=1e9,maxGy=-1e9, i;
+  for (i=0;i<keys.length;i++){
+    var p=keys[i].split('_'), gx=+p[0], gy=+p[1];
+    minGx=Math.min(minGx,gx); maxGx=Math.max(maxGx,gx);
+    minGy=Math.min(minGy,gy); maxGy=Math.max(maxGy,gy);
+  }
+  var W=maxGx-minGx+1, H=maxGy-minGy+1, rows=[];
+  for (var r=0;r<H;r++){
+    var s='';
+    for (var c=0;c<W;c++){
+      var v = beans[(minGx+c)+'_'+(minGy+r)];
+      s += v ? (CH[v]||'x') : '.';
+    }
+    rows.push("        '" + s + "'");
+  }
+  // 顶部锚点：豆阵首行在设计稿的 y
+  var oy = gridToDesign(0, minGy).y;
+  var ox = gridToDesign((minGx+maxGx)/2, 0).x;
+  var out =
+"    skirt_nuonuo: {\n" +
+"      name: '糯糯的裙子',\n" +
+"      tip: '裙子被拼豆挡住了，帮帮我！',\n" +
+"      cell: " + cell + ", ox: " + Math.round(ox) + ", oy: " + Math.round(oy) + ",\n" +
+"      palette: { base: 'white', dots: ['pink','cyan'], dotRate: " + dotRate.toFixed(2) +
+             ", hemRows: " + hemRows + ", hem: 'white' },\n" +
+"      art: [\n" + rows.join(",\n") + "\n      ]\n" +
+"    }";
+  document.getElementById('out').value = out;
+};
+document.getElementById('expPoly').onclick = function(){
+  if (poly.length<3){ alert('至少 3 个顶点'); return; }
+  var s = poly.map(function(p){ return '['+p[0].toFixed(3)+', '+p[1].toFixed(3)+']'; }).join(', ');
+  document.getElementById('out').value =
+"    skirt_nuonuo: {\n" +
+"      name: '糯糯的裙子',\n" +
+"      tip: '裙子被拼豆挡住了，帮帮我！',\n" +
+"      poly: [" + s + "],\n" +
+"      cell: " + cell + ",\n" +
+"      palette: { base: 'white', dots: ['pink','cyan'], dotRate: " + dotRate.toFixed(2) +
+             ", hemRows: " + hemRows + ", hem: 'white' }\n" +
+"    }";
+};
+document.getElementById('copy').onclick = function(){
+  var t = document.getElementById('out');
+  t.select(); document.execCommand('copy');
+  this.textContent = '已复制 ✓';
+  var self=this; setTimeout(function(){ self.textContent='复制'; }, 1400);
+};
+
+// 预置：当前代码里的默认裙子框，方便你直接微调
+poly = [[0.385,0.387],[0.615,0.387],[0.860,0.671],[0.150,0.671]];
+fillFromPoly();
+</script>
+</body>
+</html>

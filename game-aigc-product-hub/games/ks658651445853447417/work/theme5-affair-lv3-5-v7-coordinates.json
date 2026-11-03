@@ -1,0 +1,25 @@
+{
+  "affair_lipstick_cup": { "x": 19.5, "y": 45.2, "w": 10.5, "h": 10.8 },
+  "affair_parking_ticket": { "x": 49.2, "y": 2.5, "w": 9, "h": 6.2 },
+  "affair_strange_barrette_car": { "x": 82, "y": 62.2, "w": 10, "h": 8.5 },
+  "affair_spare_phone_card": { "x": 55.5, "y": 45.7, "w": 6, "h": 3.8 },
+  "affair_womens_sunglasses": { "x": 12, "y": 68.8, "w": 21.5, "h": 10 },
+  "affair_lipstick_napkin": { "x": 55, "y": 83.5, "w": 12, "h": 6 },
+
+  "affair_pair_train_tickets": { "x": 14.2, "y": 32.7, "w": 8.5, "h": 6.3 },
+  "affair_jewelry_receipt": { "x": 85.2, "y": 43, "w": 9.5, "h": 4.8 },
+  "affair_roomcard_sleeve_1808": { "x": 80.7, "y": 53.2, "w": 14, "h": 6.2 },
+  "affair_burgundy_nightdress": { "x": 48.5, "y": 75.5, "w": 29.5, "h": 13.8 },
+  "affair_makeup_pouch": { "x": 47.2, "y": 50.8, "w": 9.5, "h": 6.5 },
+  "affair_pearl_necklace": { "x": 73.2, "y": 7.5, "w": 8.5, "h": 10.8 },
+  "affair_strange_lipstick_case": { "x": 30.8, "y": 76.6, "w": 7.5, "h": 4.5 },
+
+  "affair_hidden_phone": { "x": 31, "y": 82.5, "w": 13.5, "h": 7.2 },
+  "affair_hotel_date_card": { "x": 85.3, "y": 13.8, "w": 8.5, "h": 7.5 },
+  "affair_transfer_slip": { "x": 79, "y": 35.2, "w": 10.5, "h": 9 },
+  "affair_cropped_photo": { "x": 48.5, "y": 64.5, "w": 13, "h": 7.5 },
+  "affair_note_1808": { "x": 22, "y": 62, "w": 12.5, "h": 5.5 },
+  "affair_double_reservation": { "x": 61.2, "y": 11.5, "w": 6.5, "h": 5 },
+  "affair_pearl_bracelet": { "x": 44, "y": 27.2, "w": 10.5, "h": 9.5 },
+  "affair_spare_charging_cable": { "x": 55.2, "y": 48, "w": 15.5, "h": 6.5 }
+}

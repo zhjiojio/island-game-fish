@@ -1,0 +1,18 @@
+{
+  "videoId": "ep04_branch_truth_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep04_branch_truth_video_01__l01",
+      "speaker": "贺星冉",
+      "text": "还行，比我预想的笨要好一些。",
+      "heard": "还行比我预想的份要好一些",
+      "start": 3.015,
+      "end": 5.88,
+      "alignmentScore": 0.9167
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 10.100680272108843,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.459381103515625
+}

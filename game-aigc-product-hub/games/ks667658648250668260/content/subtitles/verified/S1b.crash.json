@@ -1,0 +1,29 @@
+{
+ "schemaVersion": 1,
+ "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S1b.crash.mp4",
+ "sha256": "27c1cd0438842447e45524ad31968e8344ecdf43ec85a46f5ea386e69d91147f",
+ "duration": 4.631,
+ "nodes": [
+  "s1b"
+ ],
+ "status": "speech",
+ "transcript": "哼哼。",
+ "rawText": "哼哼",
+ "asrChars": [
+  [
+   0.05,
+   0.17,
+   "哼"
+  ],
+  [
+   0.17,
+   0.42,
+   "哼"
+  ]
+ ],
+ "timingEngine": "FunASR-paraformer-zh",
+ "crossCheckText": "哼哼。",
+ "speakerKey": null,
+ "speakerRuleKey": "S1b",
+ "reviewMethod": "Local file byte-identical to CDN upload, hashed; FunASR paraformer-zh + fsmn-vad + ct-punc character timestamps."
+}

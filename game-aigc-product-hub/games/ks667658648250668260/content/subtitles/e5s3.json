@@ -1,0 +1,10 @@
+{
+  "node": "e5s3",
+  "speakerKey": "narrator",
+  "speakerName": "旁白",
+  "asrText": "",
+  "asrTextRaw": "云走得很快 月亮从云凤里漏下来 把后山那道田耿照的雪白 月色刚好断几粮 照的青人影 又照不清埋在土里的东西",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 6
+}

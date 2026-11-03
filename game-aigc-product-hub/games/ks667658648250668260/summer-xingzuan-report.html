@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>暑期星钻活动 · 全成本口径增量 ROI 分析报告</title>
+<style>
+  :root{
+    --ink:#14161c;
+    --ink-2:#3d434f;
+    --ink-3:#767d8c;
+    --line:#e2e0da;
+    --paper:#f7f5f0;
+    --card:#fffdf9;
+    --gold:#b8892a;
+    --gold-soft:#f0dfb6;
+    --teal:#1f6f6a;
+    --red:#b3402f;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1100px 500px at 12% -8%, #fdf3dd 0%, rgba(253,243,221,0) 60%),
+      radial-gradient(900px 480px at 92% 4%, #e8f0ee 0%, rgba(232,240,238,0) 55%),
+      var(--paper);
+    color:var(--ink);
+    font-family:"Songti SC","Source Han Serif SC","Noto Serif CJK SC",Georgia,serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:56px 28px 96px}
+  header{border-bottom:2px solid var(--ink);padding-bottom:22px;margin-bottom:12px}
+  .eyebrow{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:10px;
+  }
+  h1{font-size:40px;line-height:1.2;margin:0 0 10px;letter-spacing:-.01em}
+  .sub{color:var(--ink-3);font-size:14px;margin:0}
+  .kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:30px 0 40px}
+  .kpi{
+    background:var(--card);border:1px solid var(--line);border-radius:3px;
+    padding:18px 16px;position:relative;overflow:hidden;
+    animation:rise .6s cubic-bezier(.2,.7,.3,1) both;
+  }
+  .kpi:nth-child(2){animation-delay:.07s}
+  .kpi:nth-child(3){animation-delay:.14s}
+  .kpi:nth-child(4){animation-delay:.21s}
+  .kpi:nth-child(5){animation-delay:.28s}
+  .kpi::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold)}
+  .kpi .lab{font-size:12px;color:var(--ink-3);letter-spacing:.04em}
+  .kpi .val{font-size:30px;font-weight:700;letter-spacing:-.02em;margin-top:4px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  .kpi .note{font-size:12px;color:var(--ink-3);margin-top:2px}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  section{margin:0 0 52px}
+  h2{
+    font-size:13px;letter-spacing:.2em;text-transform:uppercase;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    color:var(--ink);border-top:1px solid var(--ink);padding-top:12px;margin:0 0 6px;
+  }
+  h2 span{color:var(--gold);margin-right:10px}
+  .lead{font-size:20px;line-height:1.5;margin:0 0 22px;max-width:56em}
+  p{margin:0 0 14px;max-width:60em}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin:18px 0 10px;
+    background:var(--card);border:1px solid var(--line)}
+  caption{text-align:left;font-size:12px;color:var(--ink-3);padding:0 0 8px}
+  th,td{padding:9px 11px;text-align:right;border-bottom:1px solid var(--line)}
+  th:first-child,td:first-child{text-align:left}
+  thead th{background:#efece4;font-weight:600;font-size:12.5px;color:var(--ink-2);
+    border-bottom:1.5px solid var(--ink)}
+  thead th.cost{background:#f3e9d6}
+  tbody tr:hover{background:#fbf7ec}
+  tfoot td{font-weight:700;background:#f2efe7;border-top:1.5px solid var(--ink);border-bottom:none}
+  .num{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-variant-numeric:tabular-nums}
+  .muted{color:var(--ink-3)}
+  .fn{display:inline-block;margin-left:5px;padding:1px 5px;border-radius:2px;font-size:10.5px;
+    font-weight:600;letter-spacing:.02em;background:#e6e1d4;color:var(--ink-3);vertical-align:1px}
+  .roi-good{color:#1c6144;font-weight:700}
+  .roi-bad{color:var(--red);font-weight:700}
+  .roi-mid{color:#7d5c12;font-weight:700}
+  .neg{color:var(--red)}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);
+    padding:16px 18px;border-radius:2px}
+  .card h3{margin:0 0 8px;font-size:16px}
+  .card p{font-size:14px;margin:0 0 8px;color:var(--ink-2)}
+  .warn{background:#fdf6e6;border:1px solid var(--gold-soft);border-left:3px solid var(--gold);
+    padding:16px 18px;border-radius:2px;font-size:14px;margin-top:18px}
+  .warn b{color:var(--gold)}
+  footer{border-top:1px solid var(--line);padding-top:18px;color:var(--ink-3);font-size:12.5px}
+  @media (max-width:1100px){
+    .kpis{grid-template-columns:repeat(3,1fr)}
+  }
+  @media (max-width:900px){
+    .kpis{grid-template-columns:repeat(2,1fr)}
+    .cols{grid-template-columns:1fr}
+    h1{font-size:30px}
+    .lead{font-size:17px}
+    table{font-size:12px}
+    th,td{padding:7px 6px}
+    .wrap{padding:36px 14px 64px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow">Summer Diamond Campaign · Full-Cost Incremental ROI</div>
+  <h1>暑期星钻活动<br/>全成本口径补贴分布与增量 ROI 分析</h1>
+  <p class="sub">活动周期 2026/06/29 – 2026/09/01 ｜ 钻石按 1 元 = 1000 钻折算 ｜ <b>收入口径 = YoY 增量消耗</b> ｜ <b>成本口径 = 主播侧 483 万 + 用户侧 216 万 = 699 万</b> ｜ 已剔除 dsp 数据</p>
+</header>
+<div class="kpis">
+  <div class="kpi"><div class="lab">总成本</div><div class="val">699.0 万</div><div class="note">主播 483.0 万 + 用户 216.0 万</div></div>
+  <div class="kpi"><div class="lab">YoY 增量收入</div><div class="val">1,434.9 万</div><div class="note">聚星 1,102.8 万 + 合伙人 332.1 万</div></div>
+  <div class="kpi"><div class="lab">整体增量 ROI</div><div class="val">2.05</div><div class="note">每 1 元成本换回 2.05 元增量</div></div>
+  <div class="kpi"><div class="lab">净增量</div><div class="val">735.9 万</div><div class="note">成本率 48.7%</div></div>
+  <div class="kpi"><div class="lab">覆盖主播（去重）</div><div class="val">9,527</div><div class="note">人均成本 734 元</div></div>
+</div>
+<div class="warn" style="margin-top:0;margin-bottom:40px">
+  <b>成本口径说明</b>：总成本 <b>6,990,000 元</b> = 主播侧 <b>4,830,000 元</b> + 用户侧 <b>2,160,000 元</b>。两项均无法直接拆分到任务，统一<b>按各任务领取钻石占比等比分摊</b>。其中主播侧财务口径 483 万与明细加总 477.5 万相差 5.5 万元（1.15%），差额一并按比例摊入。该假设意味着「补贴越多的任务、用户侧投入也越多」，对用户侧投放不均衡的任务存在偏差，结论请以结构性判断为准。
+</div>
+<section>
+  <h2><span>01</span>成本花到哪些任务上去了</h2>
+  <p class="lead">699 万元总成本中，近一半压在「引导下载并成功安装」一个任务上；加上安卓观众充值与引导登录，三项吃掉 84.4% 的钱，而覆盖主播（去重 3,845 人）只占全体的 40.4%。</p>
+  <table>
+    <caption>表 1 ｜ 分任务成本与增量 ROI（金额单位：元）</caption>
+    <thead>
+      <tr>
+        <th>任务</th><th>归属</th><th>领取主播数<span class="fn">去重</span></th>
+        <th>主播侧成本</th><th class="cost">用户侧分摊</th><th class="cost">总成本</th>
+        <th>成本占比</th><th>增量收入</th><th>ROI</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>引导下载并成功安装</td><td>大游戏</td><td class="num">3,733</td><td class="num">2,328,588</td><td class="num muted">1,041,356</td><td class="num">3,369,945</td><td class="num">48.2%</td><td class="num">11,027,955</td><td class="roi-good">3.27</td></tr>
+      <tr><td>安卓观众充值 1 元</td><td>大游戏</td><td class="num">423</td><td class="num">1,176,770</td><td class="num muted">526,258</td><td class="num">1,703,028</td><td class="num">24.4%</td><td class="num">239,471</td><td class="roi-bad">0.14</td></tr>
+      <tr><td>引导安卓观众登录</td><td>大游戏</td><td class="num">903</td><td class="num">571,097</td><td class="num muted">255,397</td><td class="num">826,494</td><td class="num">11.8%</td><td class="num">3,043,976</td><td class="roi-good">3.68</td></tr>
+      <tr><td>引导玩 10 分钟小游戏</td><td>小游戏</td><td class="num">1,613</td><td class="num">380,524</td><td class="num muted">170,172</td><td class="num">550,697</td><td class="num">7.9%</td><td class="num muted">无直接归因</td><td class="muted">—</td></tr>
+      <tr><td>小游戏打开任务</td><td>小游戏</td><td class="num">2,109</td><td class="num">130,088</td><td class="num muted">58,176</td><td class="num">188,264</td><td class="num">2.7%</td><td class="num muted">无直接归因</td><td class="muted">—</td></tr>
+      <tr><td>小游戏看激励广告</td><td>小游戏</td><td class="num">1,190</td><td class="num">113,420</td><td class="num muted">50,722</td><td class="num">164,142</td><td class="num">2.3%</td><td class="num" rowspan="2">37,869</td><td class="roi-bad" rowspan="2">0.19</td></tr>
+      <tr><td>小游戏充值<span class="fn">原表遗漏</span></td><td>小游戏</td><td class="num">156</td><td class="num">22,140</td><td class="num muted">9,901</td><td class="num">32,040</td><td class="num">0.5%</td></tr>
+      <tr><td>小游戏打开任务（自动挂载）</td><td>小游戏</td><td class="num">2,359</td><td class="num">47,021</td><td class="num muted">21,028</td><td class="num">68,050</td><td class="num">1.0%</td><td class="num muted">无直接归因</td><td class="muted">—</td></tr>
+      <tr><td>今日游戏直播 240 分钟</td><td>生态开播</td><td class="num">6,200</td><td class="num">43,942</td><td class="num muted">19,651</td><td class="num">63,593</td><td class="num">0.9%</td><td class="num muted">无</td><td class="roi-bad">0</td></tr>
+      <tr><td>引导观众预约新游</td><td>大游戏</td><td class="num">302</td><td class="num">16,409</td><td class="num muted">7,338</td><td class="num">23,747</td><td class="num">0.3%</td><td class="num muted">无直接归因</td><td class="muted">—</td></tr>
+    </tbody>
+    <tfoot>
+      <tr><td>合计<span class="fn">去重</span></td><td>—</td><td class="num">9,527</td><td class="num">4,830,000</td><td class="num">2,160,000</td><td class="num">6,990,000</td><td class="num">100%</td><td class="num">14,349,270</td><td class="num">2.05</td></tr>
+    </tfoot>
+  </table>
+  <p class="sub" style="font-size:13px">注：「引导下载并成功安装」的增量收入取聚星全部增量消耗 11,027,955 元（星直播 5,605,629 + 星任务 5,422,326），该任务占聚星补贴的 90%，是聚星商单的主要承接载体。「小游戏看激励广告」与「小游戏充值」在结算上同属小游戏 CPS，增量收入 37,869 元与 ROI 0.19 按两项合并成本 196,182 元计算。各任务主播数为去重口径，逐任务相加会重复计人，合计行取全活动去重主播数 9,527。</p>
+  <div class="cols">
+    <div class="card" style="border-left-color:#1c6144">
+      <h3>做得好的任务</h3>
+      <p><b>引导安卓观众登录</b>：总成本 826,494 元换回 3,043,976 元增量收入，ROI 3.68，净赚 221.7 万元，是效率最高的单任务，且只用了 903 位主播。</p>
+      <p><b>引导下载并成功安装</b>：总成本 3,369,945 元、覆盖 3,733 位主播（人均 903 元），承接聚星商单并带来 1,102.8 万元增量消耗，ROI 3.27，净赚 765.8 万元，是活动最大的收益来源。</p>
+    </div>
+    <div class="card" style="border-left-color:#b3402f">
+      <h3>有提升空间的任务</h3>
+      <p><b>安卓观众充值 1 元</b>：总成本 1,703,028 元只换回 239,471 元增量，ROI 0.14，<b>净亏 146.4 万元</b>。全场第二大成本项、效率最差的大项，且高度集中在 423 位主播身上（人均 4,026 元），必须首先处理。</p>
+      <p><b>小游戏 CPS</b>（看广告 + 充值）：总成本 196,182 元、增量收入 37,869 元，ROI 0.19，净亏 15.8 万元。</p>
+      <p><b>引导观众预约新游</b>：302 位主播、总成本 23,747 元，占比 0.3% 且无增量归因，基本可判定为失效任务。</p>
+    </div>
+  </div>
+  <div class="warn">
+    <b>未建立增量收入对价的成本</b>：引导玩 10 分钟（550,697 元）、小游戏打开任务（主动 + 自动挂载合计 256,314 元）、今日游戏直播 240 分钟（63,593 元）、引导预约新游（23,747 元），共 <b>894,351 元</b>，占总成本 12.8%。这部分只能定性为拉活成本，无法计算 ROI。
+  </div>
+</section>
+<section>
+  <h2><span>02</span>任务模式：聚星 vs 合伙人</h2>
+  <p class="lead">计入全口径成本后差距进一步拉开：聚星增量 ROI 3.06，合伙人仅 1.03 —— 已逼近盈亏平衡线。合伙人内部 CPA 3.69、两个 CPS 深度倒挂。</p>
+  <table>
+    <caption>表 2 ｜ 分任务模式的成本、增量收入与 ROI（金额单位：元）</caption>
+    <thead>
+      <tr>
+        <th>任务模式</th><th>对应任务</th><th>领取主播数<span class="fn">去重</span></th>
+        <th>主播侧成本</th><th class="cost">用户侧分摊</th><th class="cost">总成本</th>
+        <th>增量收入</th><th>ROI</th><th>成本率</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><b>聚星</b>（主动挂载 · 聚星）</td><td>以引导下载并成功安装为主</td><td class="num">2,200</td><td class="num">2,487,018</td><td class="num muted">1,112,207</td><td class="num">3,599,224</td><td class="num">11,027,955</td><td class="roi-good">3.06</td><td class="num">32.6%</td></tr>
+      <tr><td>— 合伙人 · CPA 大游戏</td><td>引导安卓观众登录</td><td class="num">875</td><td class="num">569,763</td><td class="num muted">254,801</td><td class="num">824,564</td><td class="num">3,043,976</td><td class="roi-good">3.69</td><td class="num">27.1%</td></tr>
+      <tr><td>— 合伙人 · CPS 大游戏</td><td>安卓观众充值 1 元</td><td class="num">421</td><td class="num">1,176,755</td><td class="num muted">526,251</td><td class="num">1,703,006</td><td class="num">239,471</td><td class="roi-bad">0.14</td><td class="num">711.2%</td></tr>
+      <tr><td>— 合伙人 · CPS 小游戏</td><td>小游戏看激励广告 + 充值</td><td class="num">856</td><td class="num">55,686</td><td class="num muted">24,903</td><td class="num">80,589</td><td class="num">37,869</td><td class="roi-bad">0.47</td><td class="num">212.8%</td></tr>
+      <tr><td>— 合伙人 · 生态任务</td><td>预约 / 下载 / 打开 / 玩 10 分钟</td><td class="num">3,243</td><td class="num">383,437</td><td class="num muted">171,475</td><td class="num">554,911</td><td class="num muted">无直接归因</td><td class="muted">—</td><td class="num">—</td></tr>
+      <tr><td>— 合伙人 · 自动挂载</td><td>小游戏打开任务（自动挂载）</td><td class="num">2,359</td><td class="num">47,021</td><td class="num muted">21,028</td><td class="num">68,050</td><td class="num muted">无直接归因</td><td class="muted">—</td><td class="num">—</td></tr>
+      <tr style="background:#f4f1e9"><td><b>合伙人小计</b>（tr 主动 + 自动挂载）</td><td>—</td><td class="num">5,063</td><td class="num">2,232,662</td><td class="num">998,458</td><td class="num">3,231,120</td><td class="num">3,321,316</td><td class="roi-mid">1.03</td><td class="num">97.3%</td></tr>
+      <tr><td><b>生态开播</b>（无挂载值）</td><td>今日游戏直播 240 分钟 + 无挂载任务</td><td class="num">6,708</td><td class="num">110,320</td><td class="num muted">49,336</td><td class="num">159,655</td><td class="num">0</td><td class="roi-bad">0</td><td class="num">纯成本</td></tr>
+    </tbody>
+    <tfoot>
+      <tr><td>整体<span class="fn">去重</span></td><td>—</td><td class="num">9,527</td><td class="num">4,830,000</td><td class="num">2,160,000</td><td class="num">6,990,000</td><td class="num">14,349,270</td><td class="num">2.05</td><td class="num">48.7%</td></tr>
+    </tfoot>
+  </table>
+  <p><b>聚星</b>：总成本 3,599,224 元带来 11,027,955 元增量消耗，ROI 3.06、成本率 32.6%，净赚 742.9 万元，贡献了全部增量收入的 76.9%，是活动唯一实质盈利的板块。成本高度集中且人数最少：仅 2,200 位主播（占全体 23.1%）吃掉 51.5% 的成本，人均 1,636 元；同一「引导下载并成功安装」任务在合伙人侧人均仅 49 元，聚星单价约为其 33 倍，可判定聚星走商单议价、合伙人走平台标准价。</p>
+  <p><b>合伙人</b>：总成本 3,231,120 元、增量收入 3,321,316 元，ROI 1.03、成本率 97.3%，净增量仅 9.0 万元 —— <b>计入用户侧成本后，合伙人整体已基本不赚钱</b>。结构性原因非常明确：CPA 一项贡献 91.6% 的增量收入却只占 25.5% 的成本；CPS 大游戏花掉 52.7% 的成本，只换回 7.2% 的增量。两个 CPS 合计成本 1,783,595 元、增量收入 277,340 元，<b>净亏 150.6 万元</b>，恰好抵消了 CPA 赚到的 221.9 万元。合伙人的问题不在通道，而在 CPS 定价。</p>
+  <p><b>生态开播</b>：159,655 元无任何业务对价，覆盖 6,708 位主播、人均仅 24 元，占总成本 2.3%，成本与激励效果都很小，可作为参与门槛保留。</p>
+  <div class="warn">
+    <b>口径说明</b>：聚星增量 11,027,955 元为「星直播 5,605,629 + 星任务 5,422,326」之和；钻石侧数据仅有「聚星」一个挂载类型，无法拆分星直播与星任务，故合并计算。另：自动挂载的小游戏打开任务任务名与结算规则缺失，其 68,050 元总成本挂在合伙人侧但无法归因。各模式主播数为去重口径，主播可同时出现在多个模式中，因此分项相加（16,662）远大于整体去重值 9,527；合伙人小计 5,063 亦小于其五个分项之和 7,754。
+  </div>
+</section>
+<section>
+  <h2><span>03</span>大游戏 vs 小游戏</h2>
+  <p class="lead">大游戏占 84.7% 成本、贡献 99.3% 增量，ROI 2.41；小游戏覆盖 4,271 位主播、人均成本仅 235 元，但总成本 1,003,193 元只换回 96,707 元增量，<b>ROI 0.10，净亏 90.6 万元</b>。</p>
+  <table>
+    <caption>表 3 ｜ 大小游戏对比（金额单位：元，收入口径为 YoY 增量消耗，成本为全口径）</caption>
+    <thead>
+      <tr><th>维度</th><th>大游戏</th><th>小游戏</th><th>生态开播</th><th>整体</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>包含任务</td><td>预约 / 下载安装 / 登录 / 充值</td><td>看广告 / 充值 / 打开 / 玩 10 分钟 / 自动挂载打开</td><td>直播 240 分钟</td><td>全部任务</td></tr>
+      <tr><td>领取主播数<span class="fn">去重</span></td><td class="num">3,845</td><td class="num">4,271</td><td class="num">6,200</td><td class="num">9,527</td></tr>
+      <tr><td>主播侧成本</td><td class="num">4,092,864</td><td class="num">693,194</td><td class="num">43,942</td><td class="num">4,830,000</td></tr>
+      <tr><td>用户侧分摊成本</td><td class="num muted">1,830,349</td><td class="num muted">310,000</td><td class="num muted">19,651</td><td class="num muted">2,160,000</td></tr>
+      <tr><td><b>总成本</b></td><td class="num">5,923,214</td><td class="num">1,003,193</td><td class="num">63,593</td><td class="num">6,990,000</td></tr>
+      <tr><td>成本占比</td><td class="num">84.7%</td><td class="num">14.4%</td><td class="num">0.9%</td><td class="num">100%</td></tr>
+      <tr><td>人均总成本</td><td class="num">1,540</td><td class="num">235</td><td class="num">10</td><td class="num">734</td></tr>
+      <tr><td>合伙人侧总成本</td><td class="num">2,678,624</td><td class="num">552,592</td><td class="num">—</td><td class="num">3,231,216</td></tr>
+      <tr><td>合伙人侧增量收入</td><td class="num">3,283,447</td><td class="num">37,869</td><td class="num">0</td><td class="num">3,321,316</td></tr>
+      <tr><td><b>合伙人侧 ROI</b></td><td class="roi-mid">1.23</td><td class="roi-bad">0.07</td><td class="muted">—</td><td class="roi-mid">1.03</td></tr>
+      <tr><td>聚星侧总成本</td><td class="num">3,242,141</td><td class="num">357,187</td><td class="num">—</td><td class="num">3,599,328</td></tr>
+      <tr><td>聚星侧增量收入</td><td class="num">10,969,116</td><td class="num">58,838</td><td class="num">0</td><td class="num">11,027,955</td></tr>
+      <tr><td><b>聚星侧 ROI</b></td><td class="roi-good">3.38</td><td class="roi-bad">0.16</td><td class="muted">—</td><td class="roi-good">3.06</td></tr>
+      <tr style="background:#f4f1e9"><td><b>整体增量收入</b></td><td class="num">14,252,563</td><td class="num">96,707</td><td class="num">0</td><td class="num">14,349,270</td></tr>
+      <tr style="background:#f4f1e9"><td><b>整体 ROI</b></td><td class="roi-good">2.41</td><td class="roi-bad">0.10</td><td class="roi-bad">0</td><td class="roi-good">2.05</td></tr>
+      <tr style="background:#f4f1e9"><td><b>净增量</b></td><td class="num">8,329,349</td><td class="num neg">-906,486</td><td class="num neg">-63,593</td><td class="num">7,359,270</td></tr>
+    </tbody>
+  </table>
+  <p><b>大游戏</b>：3,845 位主播、人均总成本 1,540 元，是小游戏的 6.6 倍，整体增量 ROI 2.41，净赚 833.0 万元。支撑点是聚星商单（3.38）与 CPA 登录（3.69）；唯一拖累项是 CPS 充值（0.14）。若剔除安卓观众充值任务，大游戏 ROI 可提升至 3.33。</p>
+  <p><b>小游戏</b>：4,271 位主播参与、总成本 1,003,193 元，只带来 96,707 元增量消耗，<b>整体 ROI 0.10，净亏 90.6 万元</b>。合伙人侧 0.07、聚星侧 0.16，两条通道同样不成立，说明这不是结算方式问题，而是小游戏暑期本身没有跑出增量。值得注意的是小游戏并非「广撒网」：其中 1,308 人同时参与大游戏任务，纯小游戏主播 2,963 人，人均成本 235 元。覆盖面不小、单价不高，但增量几乎为零，是本次活动最明确的无效投入区。</p>
+  <p><b>生态开播</b>：无收入对价，ROI 为 0，净亏 6.4 万元，覆盖 6,200 位主播、人均仅 10 元，是全活动覆盖最广的单任务，定位是参与门槛而非效率项，不参与效率评估。</p>
+  <div class="warn">
+    <b>数据核对</b>：原始增量表中「总计 · 大游戏 16,077,400」与各平台大游戏行加总 14,252,563 元不一致（差 1,824,837 元），且「大游戏 + 小游戏 = 16,174,107」也与总计 14,349,270 不符。本报告采用各行加总口径，因其与总计完全自洽，建议回查总计行的大游戏取数。<br>
+    <b>人数口径</b>：本表主播数为<b>去重</b>口径，由钻石领取明细（22,157 条上报记录）按用户 ID 逐任务去重得到。主播普遍同时参与多类任务，大游戏 3,845 + 小游戏 4,271 + 生态开播 6,200 = 14,316，远大于全活动去重主播数 9,527，其中大游戏与小游戏重叠 1,308 人。<b>三列不可横向相加</b>。
+  </div>
+</section>
+<footer>
+  数据口径说明：钻石按 1 元 = 1000 钻折算；收入统一采用 YoY 增量消耗口径；成本 = 主播侧 4,830,000 元 + 用户侧 2,160,000 元 = 6,990,000 元，按各任务领取钻石占比等比分摊；主播侧财务口径 483 万与明细加总 477.5 万相差 5.5 万元，差额一并按比例摊入。已剔除 dsp（自动挂载 dsp 仅 1 条记录、410 钻，无统计意义）；运营挂载（合伙人专属通道）本次未产生数据。上报数据存在偏差，建议用于结构判断而非财务口径。<br>
+  <b>人数口径（2026-09-15 修订）</b>：全文主播数一律为<b>按用户 ID 去重</b>，源自钻石领取明细 22,157 条上报记录，全活动去重主播 9,527 位。此前版本误将「上报记录条数」当作人次、并将各任务数值直接相加，导致大游戏 6,301、小游戏 9,398、合计 21,899 等虚高数值（小游戏实际 4,271，且原数中混入了归类为「其他」的自动挂载任务）。同一主播通常参与多个任务，<b>任何分项主播数均不可相加</b>。本次修订同时补入原表遗漏的「小游戏充值」任务（156 位主播、32,040 元），并按最新钻石占比重算全部分摊成本，各项合计仍为 6,990,000 元。
+</footer>
+</div>
+</body>
+</html>

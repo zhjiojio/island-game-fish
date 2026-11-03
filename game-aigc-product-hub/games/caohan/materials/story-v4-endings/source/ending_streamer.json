@@ -1,0 +1,25 @@
+{
+  "id": "ending_streamer",
+  "type": "ending",
+  "episodeId": "ep02",
+  "title": "荒诞结局：反渣直播一姐",
+  "isEnding": true,
+  "category": "absurd",
+  "tone": [
+    "喜剧",
+    "传播"
+  ],
+  "rarity": "rare",
+  "isCanonical": false,
+  "unlock": {
+    "requiredFlags": [
+      "ep02_counterattack"
+    ],
+    "requiredEndingTags": []
+  },
+  "description": "牛奶杯证据意外直播曝光，她转行连麦鉴渣。",
+  "closing": "榜一大哥陈劲只发了一条弹幕：下播，吃饭。",
+  "achievement": "ending_streamer",
+  "chapterId": "ch2",
+  "chapterTitle": "第二章：荒野上的交易"
+}

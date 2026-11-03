@@ -1,0 +1,61 @@
+{
+ "schemaVersion": 1,
+ "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_biz_a.mp4",
+ "sha256": "eda14952c284769e6004aa8756769f7dd0ad65da97903999c33581711ce22870",
+ "duration": 10.042,
+ "nodes": [
+  "r_biz_a"
+ ],
+ "status": "speech",
+ "transcript": "那三个月没下一滴雨。",
+ "rawText": "那三个月没下一滴雨",
+ "asrChars": [
+  [
+   1.86,
+   2.255,
+   "那"
+  ],
+  [
+   4.47,
+   4.71,
+   "三"
+  ],
+  [
+   4.77,
+   4.93,
+   "个"
+  ],
+  [
+   4.93,
+   5.17,
+   "月"
+  ],
+  [
+   5.19,
+   5.33,
+   "没"
+  ],
+  [
+   5.33,
+   5.53,
+   "下"
+  ],
+  [
+   5.53,
+   5.67,
+   "一"
+  ],
+  [
+   5.67,
+   5.85,
+   "滴"
+  ],
+  [
+   5.85,
+   6.265,
+   "雨"
+  ]
+ ],
+ "timingEngine": "asr-anchor(funasr-paraformer)",
+ "reviewMethod": "batch ASR auto (needs human proof-read for punctuation/speaker)."
+}

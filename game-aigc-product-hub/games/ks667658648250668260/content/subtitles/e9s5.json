@@ -1,0 +1,10 @@
+{
+  "node": "e9s5",
+  "speakerKey": "narrator",
+  "speakerName": "傲天",
+  "asrText": "婉儿，你愿意嫁给我吗？",
+  "asrTextRaw": "你愿意嫁给我吗",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 1
+}

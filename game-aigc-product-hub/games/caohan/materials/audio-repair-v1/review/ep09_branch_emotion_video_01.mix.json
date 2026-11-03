@@ -1,0 +1,18 @@
+{
+  "videoId": "ep09_branch_emotion_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep09_branch_emotion_video_01__l01",
+      "speaker": "陈劲",
+      "text": "你连衣服都是定制的？",
+      "heard": "你连衣服都是定制的",
+      "start": 20.575,
+      "end": 21.92,
+      "alignmentScore": 1.0
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 22.0821768707483,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.4639892578125
+}

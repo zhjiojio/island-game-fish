@@ -1,0 +1,25 @@
+{
+  "transcript": "谁反对",
+  "utterances": [
+    {
+      "speaker": null,
+      "text": "谁反对",
+      "start": null,
+      "duration": null
+    }
+  ],
+  "nonverbal": [
+    {
+      "description": "风声",
+      "start": null,
+      "duration": null
+    },
+    {
+      "description": "较大机械声音",
+      "start": null,
+      "duration": null
+    }
+  ],
+  "issues": [],
+  "uncertain": ""
+}

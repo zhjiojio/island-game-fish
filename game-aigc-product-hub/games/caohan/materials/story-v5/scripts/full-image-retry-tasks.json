@@ -1,0 +1,77 @@
+[
+  {
+    "partId": "ep01_branch_counterattack_video_01__p01.keyframe-r2",
+    "basePartId": "ep01_branch_counterattack_video_01__p01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep01_branch_counterattack_video_01__p01.keyframe-r2.json",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep01_branch_counterattack_video_01__p01.keyframe-r2.png"
+  },
+  {
+    "partId": "ep02_branch_truth_video_01__p01.keyframe-r2",
+    "basePartId": "ep02_branch_truth_video_01__p01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep02_branch_truth_video_01__p01.keyframe-r2.json",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep02_branch_truth_video_01__p01.keyframe-r2.png"
+  },
+  {
+    "partId": "ep03_scene_00_video_01__p01.keyframe-r2",
+    "basePartId": "ep03_scene_00_video_01__p01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep03_scene_00_video_01__p01.keyframe-r2.json",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep03_scene_00_video_01__p01.keyframe-r2.png"
+  },
+  {
+    "partId": "ep03_branch_emotion_video_01__p01.keyframe-r2",
+    "basePartId": "ep03_branch_emotion_video_01__p01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep03_branch_emotion_video_01__p01.keyframe-r2.json",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep03_branch_emotion_video_01__p01.keyframe-r2.png"
+  },
+  {
+    "partId": "ep04_scene_00_video_01__p01.keyframe-r2",
+    "basePartId": "ep04_scene_00_video_01__p01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep04_scene_00_video_01__p01.keyframe-r2.json",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep04_scene_00_video_01__p01.keyframe-r2.png"
+  },
+  {
+    "partId": "ep07_scene_00_video_01__p01.keyframe-r2",
+    "basePartId": "ep07_scene_00_video_01__p01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep07_scene_00_video_01__p01.keyframe-r2.json",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep07_scene_00_video_01__p01.keyframe-r2.png"
+  },
+  {
+    "partId": "ep07_branch_emotion_video_01__p01.keyframe-r2",
+    "basePartId": "ep07_branch_emotion_video_01__p01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep07_branch_emotion_video_01__p01.keyframe-r2.json",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep07_branch_emotion_video_01__p01.keyframe-r2.png"
+  },
+  {
+    "partId": "ep07_branch_counterattack_video_01__p01.keyframe-r3",
+    "basePartId": "ep07_branch_counterattack_video_01__p01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep07_branch_counterattack_video_01__p01.keyframe-r3.json",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep07_branch_counterattack_video_01__p01.keyframe-r3.png"
+  },
+  {
+    "partId": "ep09_branch_truth_video_01__p01.keyframe-r2",
+    "basePartId": "ep09_branch_truth_video_01__p01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep09_branch_truth_video_01__p01.keyframe-r2.json",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep09_branch_truth_video_01__p01.keyframe-r2.png"
+  },
+  {
+    "partId": "ep04_branch_truth_video_01__p01.keyframe-r2",
+    "basePartId": "ep04_branch_truth_video_01__p01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep04_branch_truth_video_01__p01.keyframe-r2.json",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep04_branch_truth_video_01__p01.keyframe-r2.png",
+    "videoRetryRequired": true
+  },
+  {
+    "partId": "ep07_branch_counterattack_video_01__p01.keyframe-r4",
+    "basePartId": "ep07_branch_counterattack_video_01__p01.r2",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep07_branch_counterattack_video_01__p01.keyframe-r4.json",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep07_branch_counterattack_video_01__p01.keyframe-r4.png",
+    "videoRetryRequired": true
+  },
+  {
+    "partId": "ep07_branch_counterattack_video_01__p01.phone-keyframe",
+    "basePartId": "ep07_branch_counterattack_video_01__p01.r3",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep07_branch_counterattack_video_01__p01.phone-keyframe.json",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep07_branch_counterattack_video_01__p01.phone-keyframe.png",
+    "videoRetryRequired": true
+  }
+]

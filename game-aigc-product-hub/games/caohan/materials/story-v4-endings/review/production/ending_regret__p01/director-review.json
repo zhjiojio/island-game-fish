@@ -1,0 +1,7 @@
+{
+  "id": "ending_regret__p01",
+  "approved": true,
+  "sha256": "54af7d8e7d0bca2f7173a225a9d6efe28150839c71008d9bae8069c213c917da",
+  "reviewer": "Media Director",
+  "note": "尾裁至4.2秒；原生语音能量在4.10575秒结束，下一句4.776125秒才开始，保留完整原旁白且删除额外人声。原始本地Whisper识别青蒜（清算同音），截后近音转写青川，无额外台词；五点抽帧人物正常。"
+}

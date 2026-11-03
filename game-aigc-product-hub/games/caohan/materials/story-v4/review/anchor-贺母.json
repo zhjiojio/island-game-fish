@@ -1,0 +1,17 @@
+{
+  "sourcePath": "/Users/kwaibear/work/minigame/game-aigc-product-hub/games/ks867658648250668260/materials/story-v4/characters/贺母-角色设定.png",
+  "size": [
+    1792,
+    1024
+  ],
+  "minDimension": 1024,
+  "detailScore": 22.2,
+  "classification": "clear",
+  "identityDecision": "requires Media Director visual review",
+  "character": "贺母",
+  "sha256": "9778059f6d3ace931caff9c8238a61118856eb5fd460047a7bdb386c71e2a67b",
+  "anchorVersion": 1,
+  "identityApproved": true,
+  "reviewer": "Media Director",
+  "review": "已逐图查看，脸部清楚、正侧背人物一致，服装与年龄符合角色设定。许邵泽身份图依用户明确指定映射。"
+}

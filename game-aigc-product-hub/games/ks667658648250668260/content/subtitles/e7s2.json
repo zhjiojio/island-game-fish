@@ -1,0 +1,10 @@
+{
+  "node": "e7s2",
+  "speakerKey": "narrator",
+  "speakerName": "傲天",
+  "asrText": "三天后……申时。",
+  "asrTextRaw": "三天后 身世",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 1
+}

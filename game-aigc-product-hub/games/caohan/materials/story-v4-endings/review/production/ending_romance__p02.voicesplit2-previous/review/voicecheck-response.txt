@@ -1,0 +1,20 @@
+{
+  "utterances": [
+    {
+      "startSec": 0.8,
+      "endSec": 3.2,
+      "voice": "A",
+      "gender": "male",
+      "text": "陳敬伸出手，回家吧。"
+    },
+    {
+      "startSec": 4.1,
+      "endSec": 6.5,
+      "voice": "B",
+      "gender": "female",
+      "text": "這次她自己決定回哪個家。"
+    }
+  ],
+  "voiceNotes": "Voice A is male with a deep, calm, and steady timbre. Voice B is female with a soft, clear, and gentle timbre. The first phrase is spoken by Voice A, and the subsequent phrase is spoken by Voice B, so they do not share the same voice.",
+  "uncertain": "The exact characters of the name at the beginning, transcribed phonetically as '陳敬' (Chen Jing)."
+}

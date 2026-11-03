@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be_partner_drunk.c.mp4",
+  "sha256": "eb7cf706d173370739e3437cb5fbd264ac4eb1fb4bb1515581a6a4e1efa32cbc",
+  "duration": 10.042,
+  "nodes": [
+    "BE_PARTNER"
+  ],
+  "status": "speech",
+  "transcript": "兄弟，今晚咱一起把你嫂子抱回来！",
+  "rawText": "兄弟今晚咱一起把你嫂子抱回来",
+  "asrChars": [
+    [
+      2.91,
+      3.15,
+      "兄"
+    ],
+    [
+      3.27,
+      3.51,
+      "弟"
+    ],
+    [
+      4.13,
+      4.37,
+      "今"
+    ],
+    [
+      4.47,
+      4.71,
+      "晚"
+    ],
+    [
+      4.71,
+      4.95,
+      "咱"
+    ],
+    [
+      4.95,
+      5.17,
+      "一"
+    ],
+    [
+      5.17,
+      5.41,
+      "起"
+    ],
+    [
+      5.81,
+      6.05,
+      "把"
+    ],
+    [
+      6.05,
+      6.29,
+      "你"
+    ],
+    [
+      6.33,
+      6.57,
+      "嫂"
+    ],
+    [
+      6.65,
+      6.89,
+      "子"
+    ],
+    [
+      7.31,
+      7.55,
+      "抱"
+    ],
+    [
+      7.77,
+      8.01,
+      "回"
+    ],
+    [
+      8.07,
+      9.085,
+      "来"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "兄弟,今晚咱一起把你嫂子抱回来!",
+  "speakerKey": null,
+  "speakerRuleKey": "be_partner_drunk",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

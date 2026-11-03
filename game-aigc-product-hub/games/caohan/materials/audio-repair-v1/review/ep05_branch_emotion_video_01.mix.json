@@ -1,0 +1,18 @@
+{
+  "videoId": "ep05_branch_emotion_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep05_branch_emotion_video_01__l01",
+      "speaker": "贺星冉",
+      "text": "你站在这里做什么？",
+      "heard": "你站在这里做什么",
+      "start": 10.255,
+      "end": 11.665,
+      "alignmentScore": 1.0
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 12.097596371882085,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.47216796875
+}

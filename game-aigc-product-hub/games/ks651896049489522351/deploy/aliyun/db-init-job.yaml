@@ -1,0 +1,28 @@
+# ============================================================
+# 正式环境数据库初始化 Job
+# ------------------------------------------------------------
+# 新库建表后执行一次：初始化机器人资金池账户。
+# 必须与 ddz-server 使用完全相同的 ConfigMap、Secret 和镜像版本。
+# ============================================================
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ddz-db-init
+  namespace: ddz
+spec:
+  backoffLimit: 1
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: db-init
+          image: __REGISTRY__/ddz-server:__TAG__
+          command: ["node", "scripts/init-mysql.js"]
+          env:
+            - name: DDZ_MYSQL_CREATE_DATABASE
+              value: "false"
+          envFrom:
+            - configMapRef:
+                name: ddz-prod-config
+            - secretRef:
+                name: ddz-prod-secret

@@ -1,0 +1,18 @@
+{
+  "videoId": "ep01_branch_counterattack_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep01_branch_counterattack_video_01__l01",
+      "speaker": "许邵泽",
+      "text": "你跑哪去了，我找了你一圈——来，喝点热的，你手都凉了。",
+      "heard": "你跑哪儿去了我找了你一圈来喝点热的你手都凉了",
+      "start": 21.915,
+      "end": 26.865,
+      "alignmentScore": 0.9767
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 27.144126984126984,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.25140380859375
+}

@@ -1,0 +1,143 @@
+{
+  "sourceFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/output/逃婚后我花千万雇了工地糙汉.v4.json",
+  "sourceSha256": "77cee12ed8c5f8a99e49c6ec00ef31136fa64c03eb09995732b91220ca491ec7",
+  "nodeId": "ep05_branch_emotion",
+  "video": {
+    "id": "ep05_branch_emotion_video_01",
+    "order": 1,
+    "title": "选择后果·依恋冲动",
+    "durationSec": 9.0,
+    "renderMode": "video_gen",
+    "needsLipSync": true,
+    "continuity": {
+      "locationId": "source_5_5_1",
+      "timeOfDay": "night",
+      "characterIds": [
+        "贺星冉",
+        "陈劲"
+      ],
+      "wardrobe": "沿用角色 wardrobeByEpisode，视频内不得换装",
+      "screenDirection": "保持人物空间轴线与视线方向",
+      "startState": "承接上一视频末帧；首视频承接场景入口",
+      "endState": "保留人物动作、视线与构图状态供下一视频承接"
+    },
+    "assetRefs": [],
+    "shots": [
+      {
+        "id": "ep05_branch_emotion_video_01_shot_01",
+        "order": 1,
+        "durationSec": 3,
+        "shotSize": "全景",
+        "cameraAngle": "侧后方",
+        "cameraMovement": "缓推",
+        "composition": "酒店阳台内建立清楚人物方位，主体动作是：洗漱完毕，贺星冉发现陈劲站在阳台上抽烟，一动不动。",
+        "locationId": "source_5_5_1",
+        "timeOfDay": "night",
+        "characters": [
+          "贺星冉",
+          "陈劲"
+        ],
+        "dialogue": [
+          {
+            "speaker": "旁白",
+            "text": "洗漱完毕，贺星冉发现陈劲站在阳台上抽烟，一动不动。"
+          }
+        ],
+        "audio": {
+          "ambient": "酒店阳台环境底噪",
+          "music": "暧昧情绪低频铺底",
+          "sfx": []
+        },
+        "visual": {
+          "firstFramePrompt": "夜，酒店阳台，景别：全景，画面人物：贺星冉、陈劲；洗漱完毕，贺星冉发现陈劲站在阳台上抽烟，一动不动。，人物外观与上镜连续，电影级写实短剧；选择后果：别推开我，我现在只想抓住一个人",
+          "videoPrompt": "镜头缓慢推进，清晰呈现洗漱完毕，贺星冉发现陈劲站在阳台上抽烟，一动不动。，保持人物服装、光向和空间轴线连续，明确展示“别推开我，我现在只想抓住一个人”导致的动作和关系变化",
+          "negativePrompt": "字幕，水印，畸形手指，多余人物，角色换脸，服装突变，空间跳轴"
+        },
+        "sourceRef": {
+          "episode": 5,
+          "scene": "5-1",
+          "unit": 1,
+          "adaptation": "condensed"
+        },
+        "startSec": 0.0,
+        "endSec": 3.0
+      },
+      {
+        "id": "ep05_branch_emotion_video_01_shot_02",
+        "order": 2,
+        "durationSec": 3,
+        "shotSize": "中景",
+        "cameraAngle": "主观视角",
+        "cameraMovement": "跟拍",
+        "composition": "酒店阳台内建立清楚人物方位，主体动作是：她走过去。",
+        "locationId": "source_5_5_1",
+        "timeOfDay": "night",
+        "characters": [
+          "贺星冉"
+        ],
+        "dialogue": [
+          {
+            "speaker": "旁白",
+            "text": "她走过去。"
+          }
+        ],
+        "audio": {
+          "ambient": "酒店阳台环境底噪",
+          "music": "暧昧情绪低频铺底",
+          "sfx": []
+        },
+        "visual": {
+          "firstFramePrompt": "夜，酒店阳台，景别：中景，画面人物：贺星冉；她走过去。，人物外观与上镜连续，电影级写实短剧；选择后果：别推开我，我现在只想抓住一个人",
+          "videoPrompt": "镜头跟随主体，清晰呈现她走过去。，保持人物服装、光向和空间轴线连续，明确展示“别推开我，我现在只想抓住一个人”导致的动作和关系变化",
+          "negativePrompt": "字幕，水印，畸形手指，多余人物，角色换脸，服装突变，空间跳轴"
+        },
+        "sourceRef": {
+          "episode": 5,
+          "scene": "5-1",
+          "unit": 2,
+          "adaptation": "condensed"
+        },
+        "startSec": 3.0,
+        "endSec": 6.0
+      },
+      {
+        "id": "ep05_branch_emotion_video_01_shot_03",
+        "order": 3,
+        "durationSec": 3,
+        "shotSize": "近景",
+        "cameraAngle": "平视",
+        "cameraMovement": "固定后骤推",
+        "composition": "酒店阳台内建立清楚人物方位，主体动作是：贺星冉位于酒店阳台画面前景，面部近景，视线指向对话对象，嘴唇正在说“你站在这里做什么？”",
+        "locationId": "source_5_5_1",
+        "timeOfDay": "night",
+        "characters": [
+          "贺星冉"
+        ],
+        "dialogue": [
+          {
+            "speaker": "贺星冉",
+            "text": "你站在这里做什么？"
+          }
+        ],
+        "audio": {
+          "ambient": "酒店阳台环境底噪",
+          "music": "暧昧情绪低频铺底",
+          "sfx": []
+        },
+        "visual": {
+          "firstFramePrompt": "夜，酒店阳台，景别：近景，画面人物：贺星冉；贺星冉位于酒店阳台画面前景，面部近景，视线指向对话对象，嘴唇正在说“你站在这里做什么？”，人物外观与上镜连续，电影级写实短剧；选择后果：别推开我，我现在只想抓住一个人",
+          "videoPrompt": "镜头缓慢推进，清晰呈现贺星冉位于酒店阳台画面前景，面部近景，视线指向对话对象，嘴唇正在说“你站在这里做什么？”，保持人物服装、光向和空间轴线连续，明确展示“别推开我，我现在只想抓住一个人”导致的动作和关系变化",
+          "negativePrompt": "字幕，水印，畸形手指，多余人物，角色换脸，服装突变，空间跳轴"
+        },
+        "sourceRef": {
+          "episode": 5,
+          "scene": "5-1",
+          "unit": 3,
+          "adaptation": "condensed"
+        },
+        "startSec": 6.0,
+        "endSec": 9.0
+      }
+    ]
+  }
+}

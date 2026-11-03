@@ -1,0 +1,50 @@
+# ============================================================
+# 正式环境（阿里云 ACK）游戏服务端 Deployment 片段
+# ------------------------------------------------------------
+# 配置注入方式：ConfigMap（非敏感）+ Secret（敏感），镜像内不含任何环境配置。
+# 同一镜像可先发测试环境，验证通过后原样发布到正式环境。
+# ============================================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ddz-server
+  namespace: ddz
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ddz-server
+  template:
+    metadata:
+      labels:
+        app: ddz-server
+    spec:
+      containers:
+        - name: ddz-server
+          image: __REGISTRY__/ddz-server:__TAG__
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: ddz-prod-config
+            - secretRef:
+                name: ddz-prod-secret
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 15
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "512Mi"
+            limits:
+              cpu: "2"
+              memory: "2Gi"

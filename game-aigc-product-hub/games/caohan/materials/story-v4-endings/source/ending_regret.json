@@ -1,0 +1,25 @@
+{
+  "id": "ending_regret",
+  "type": "ending",
+  "episodeId": "ep11",
+  "title": "正式结局：错过的那只手",
+  "isEnding": true,
+  "category": "bad",
+  "tone": [
+    "遗憾",
+    "克制"
+  ],
+  "rarity": "uncommon",
+  "isCanonical": false,
+  "unlock": {
+    "requiredFlags": [
+      "ep11_conditional"
+    ],
+    "requiredEndingTags": []
+  },
+  "description": "她赢下了清算，却在最后一次选择里松开陈劲的手。",
+  "closing": "工地燈火逐盏熄灭，那句没说出口的留下吧成了遗憾。",
+  "achievement": "ending_regret",
+  "chapterId": "ch5",
+  "chapterTitle": "第五章：让他再动一次手"
+}

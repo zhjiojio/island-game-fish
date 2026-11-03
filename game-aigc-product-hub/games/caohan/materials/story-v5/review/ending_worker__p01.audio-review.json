@@ -1,0 +1,20 @@
+{
+  "transcript": "干得不错。明天我还来。",
+  "utterances": [
+    {
+      "speaker": "male",
+      "text": "干得不错。"
+    },
+    {
+      "speaker": "male",
+      "text": "明天我还来。"
+    }
+  ],
+  "nonverbal": {
+    "sound_events": [
+      "background noise of dishes or utensils clinking"
+    ]
+  },
+  "issues": null,
+  "uncertain": null
+}

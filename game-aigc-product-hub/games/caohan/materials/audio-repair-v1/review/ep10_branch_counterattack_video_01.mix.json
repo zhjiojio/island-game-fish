@@ -1,0 +1,18 @@
+{
+  "videoId": "ep10_branch_counterattack_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep10_branch_counterattack_video_01__l01",
+      "speaker": "大妈",
+      "text": "哟，小情侣早上好！你们这是刚买完早饭呀？年轻真好！祝你们幸福哦！",
+      "heard": "哟小情侣早上好你们这是刚买完早饭啊年轻真好祝你们幸福哦",
+      "start": 17.315,
+      "end": 24.125,
+      "alignmentScore": 0.963
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 24.125532879818593,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.65069580078125
+}

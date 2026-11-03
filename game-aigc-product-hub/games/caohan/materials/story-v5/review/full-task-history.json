@@ -1,0 +1,721 @@
+[
+  {
+    "partId": "ep01_branch_counterattack_video_01__p01",
+    "videoId": "ep01_branch_counterattack_video_01",
+    "nodeId": "ep01_branch_counterattack",
+    "shotId": "ep01_branch_counterattack_video_01_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep01_branch_counterattack_video_01__p01.json",
+    "requestSha256": "59bfeaade32878424244759f0daca57b1bd55c61a12db5320ce54db4fd74133b",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep01_branch_counterattack_video_01__p01.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep01_branch_counterattack_video_01__p01.json",
+    "durationSec": 8,
+    "expectedSpeech": [
+      {
+        "shotId": "ep01_branch_counterattack_video_01_shot_01",
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "on_screen",
+        "text": "来，喝点热的。",
+        "startSec": 0.55,
+        "endSec": 2.4
+      },
+      {
+        "shotId": "ep01_branch_counterattack_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "刚才推我的时候，你怎么不装了？",
+        "startSec": 2.65,
+        "endSec": 7.45
+      }
+    ],
+    "requiredSound": {
+      "ambient": "贺家卧室门口自然环境声",
+      "music": "无配乐，以现场声为主",
+      "sfx": [
+        "杯子在地面碎裂、牛奶溅落声"
+      ],
+      "vocalizations": []
+    },
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep01_branch_counterattack_video_01__p01.png",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep01_branch_counterattack_video_01.mp4",
+    "reuseSourceFrame": false
+  },
+  {
+    "partId": "ep01_branch_counterattack_video_01__p01",
+    "sha256": "5f8f1fd9dcee81e9f0aa11cce44d005ec0d5197c0e4b239056716292719545b9",
+    "status": "needs_keyframe_revision",
+    "evidence": "keyframes/ep01_branch_counterattack_video_01__p01.png",
+    "decision": "人物与递奶动作正确；许邵泽需恢复与露台样片一致的黑西装、白衬衫、黑领带。"
+  },
+  {
+    "partId": "ep02_branch_truth_video_01__p01",
+    "videoId": "ep02_branch_truth_video_01",
+    "nodeId": "ep02_branch_truth",
+    "shotId": "ep02_branch_truth_video_01_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep02_branch_truth_video_01__p01.json",
+    "requestSha256": "2cde04950f4ee607a5ed678f5f0b8a3760c1484adbbf400819a7d1b59c5c1095",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep02_branch_truth_video_01__p01.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep02_branch_truth_video_01__p01.json",
+    "durationSec": 6,
+    "expectedSpeech": [
+      {
+        "shotId": "ep02_branch_truth_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "五万，现在转，转完就走。",
+        "startSec": 0.55,
+        "endSec": 4.74
+      },
+      {
+        "shotId": "ep02_branch_truth_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "行。",
+        "startSec": 4.99,
+        "endSec": 5.45
+      }
+    ],
+    "requiredSound": {
+      "ambient": "摩托引擎和轻微风声",
+      "music": "无配乐，以现场声为主",
+      "sfx": [],
+      "vocalizations": []
+    },
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep02_branch_truth_video_01__p01.png",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep02_branch_truth_video_01.mp4",
+    "reuseSourceFrame": false
+  },
+  {
+    "partId": "ep02_branch_truth_video_01__p01",
+    "sha256": "21bbf0c0d2f22f3097dab4ba461091415693e1baf2477f75f2b0bb1678b276d1",
+    "status": "needs_keyframe_revision",
+    "evidence": "full-keyframes-round1.jpg",
+    "decision": "女主误用酒红礼服，须改回灰色外套、白内搭、黑长裤。"
+  },
+  {
+    "partId": "ep03_scene_00_video_01__p01",
+    "videoId": "ep03_scene_00_video_01",
+    "nodeId": "ep03_scene_00",
+    "shotId": "ep03_scene_00_video_01_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep03_scene_00_video_01__p01.json",
+    "requestSha256": "92dc29cf69f193e78e811873592df0b85de5b071c7c9a3ac9690a66730708b86",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep03_scene_00_video_01__p01.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep03_scene_00_video_01__p01.json",
+    "durationSec": 6,
+    "expectedSpeech": [],
+    "requiredSound": {
+      "ambient": "乡间路边自然环境声",
+      "music": "无配乐，以现场声为主",
+      "sfx": [],
+      "vocalizations": [
+        {
+          "speakerId": "hexingran",
+          "kind": "gasp"
+        }
+      ]
+    },
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep03_scene_00_video_01__p01.png",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep03_scene_00_video_01.mp4",
+    "reuseSourceFrame": false
+  },
+  {
+    "partId": "ep03_scene_00_video_01__p01",
+    "status": "needs_keyframe_revision",
+    "sha256": "9fcc52c88642bc9616f2b946563dae63e467ea9a450e61f36692eaaa51793bd3",
+    "evidence": "full-keyframes-round2.jpg",
+    "decision": "女主错误使用礼服，应穿灰外套白内搭黑裤。"
+  },
+  {
+    "partId": "ep03_branch_emotion_video_01__p01",
+    "videoId": "ep03_branch_emotion_video_01",
+    "nodeId": "ep03_branch_emotion",
+    "shotId": "ep03_branch_emotion_video_01_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep03_branch_emotion_video_01__p01.json",
+    "requestSha256": "6c0ccb1fab035c434cc50d9aeda32de5086528e78a478ca73e1ee2685d7c9931",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep03_branch_emotion_video_01__p01.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep03_branch_emotion_video_01__p01.json",
+    "durationSec": 6,
+    "expectedSpeech": [
+      {
+        "shotId": "ep03_branch_emotion_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "蹲下。别站那么高看我。",
+        "startSec": 0.55,
+        "endSec": 4.04
+      },
+      {
+        "shotId": "ep03_branch_emotion_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "喝口水。",
+        "startSec": 4.29,
+        "endSec": 5.45
+      }
+    ],
+    "requiredSound": {
+      "ambient": "乡间路边自然环境声",
+      "music": "无配乐，以现场声为主",
+      "sfx": [],
+      "vocalizations": []
+    },
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep03_branch_emotion_video_01__p01.png",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep03_branch_emotion_video_01.mp4",
+    "reuseSourceFrame": false
+  },
+  {
+    "partId": "ep03_branch_emotion_video_01__p01",
+    "status": "needs_keyframe_revision",
+    "sha256": "ad36608dd08c0f7e8434307fa7070948d6bc2bdc8aaf94862d2601081574f8c8",
+    "evidence": "full-keyframes-round2.jpg",
+    "decision": "陈劲应站着，不能在女主说“蹲下”前已经蹲下。"
+  },
+  {
+    "partId": "ep04_scene_00_video_01__p01",
+    "videoId": "ep04_scene_00_video_01",
+    "nodeId": "ep04_scene_00",
+    "shotId": "ep04_scene_00_video_01_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep04_scene_00_video_01__p01.json",
+    "requestSha256": "0fd19c81df4ac6528ca3271556ff6b1ca350b724c57724c11330ec8f785eb8e0",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep04_scene_00_video_01__p01.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep04_scene_00_video_01__p01.json",
+    "durationSec": 6,
+    "expectedSpeech": [
+      {
+        "shotId": "ep04_scene_00_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "会开吗？",
+        "startSec": 0.55,
+        "endSec": 3.34
+      },
+      {
+        "shotId": "ep04_scene_00_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "坐好。",
+        "startSec": 3.59,
+        "endSec": 5.45
+      }
+    ],
+    "requiredSound": {
+      "ambient": "宾利车内及路边自然环境声",
+      "music": "无配乐，以现场声为主",
+      "sfx": [],
+      "vocalizations": []
+    },
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep04_scene_00_video_01__p01.png",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep04_scene_00_video_01.mp4",
+    "reuseSourceFrame": false
+  },
+  {
+    "partId": "ep07_scene_00_video_01__p01",
+    "videoId": "ep07_scene_00_video_01",
+    "nodeId": "ep07_scene_00",
+    "shotId": "ep07_scene_00_video_01_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep07_scene_00_video_01__p01.json",
+    "requestSha256": "adb978f0070a4b0decef4b389b3eaa64a85cfe427d00c92c0cdbecaf0efd5bc6",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep07_scene_00_video_01__p01.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep07_scene_00_video_01__p01.json",
+    "durationSec": 6,
+    "expectedSpeech": [
+      {
+        "shotId": "ep07_scene_00_video_01_shot_01",
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "on_screen",
+        "text": "冉冉，回来了。",
+        "startSec": 0.55,
+        "endSec": 5.45
+      }
+    ],
+    "requiredSound": {
+      "ambient": "贺家客厅自然环境声",
+      "music": "无配乐，以现场声为主",
+      "sfx": [],
+      "vocalizations": []
+    },
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep07_scene_00_video_01__p01.png",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep07_scene_00_video_01.mp4",
+    "reuseSourceFrame": false
+  },
+  {
+    "partId": "ep07_branch_emotion_video_01__p01",
+    "videoId": "ep07_branch_emotion_video_01",
+    "nodeId": "ep07_branch_emotion",
+    "shotId": "ep07_branch_emotion_video_01_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep07_branch_emotion_video_01__p01.json",
+    "requestSha256": "17e04a596c85b1d4b10af3211d7913e51d76bcff37e5a3d900c18b83c1791ed3",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep07_branch_emotion_video_01__p01.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep07_branch_emotion_video_01__p01.json",
+    "durationSec": 6,
+    "expectedSpeech": [
+      {
+        "shotId": "ep07_branch_emotion_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "我累了。让开。",
+        "startSec": 0.55,
+        "endSec": 5.45
+      }
+    ],
+    "requiredSound": {
+      "ambient": "贺家客厅自然环境声",
+      "music": "无配乐，以现场声为主",
+      "sfx": [],
+      "vocalizations": []
+    },
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep07_branch_emotion_video_01__p01.png",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep07_branch_emotion_video_01.mp4",
+    "reuseSourceFrame": false
+  },
+  {
+    "partId": "ep09_branch_truth_video_01__p01",
+    "videoId": "ep09_branch_truth_video_01",
+    "nodeId": "ep09_branch_truth",
+    "shotId": "ep09_branch_truth_video_01_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep09_branch_truth_video_01__p01.json",
+    "requestSha256": "66cdcd384d895cfd8f766f7a0a89767a2b75e49e2e0a2e507028ec624b8ebbf8",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep09_branch_truth_video_01__p01.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep09_branch_truth_video_01__p01.json",
+    "durationSec": 9,
+    "expectedSpeech": [
+      {
+        "shotId": "ep09_branch_truth_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "不算这些条款，你为什么留下？",
+        "startSec": 0.55,
+        "endSec": 4.92
+      },
+      {
+        "shotId": "ep09_branch_truth_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "因为你还需要人帮你。",
+        "startSec": 5.17,
+        "endSec": 8.45
+      }
+    ],
+    "requiredSound": {
+      "ambient": "贺家书桌旁自然环境声",
+      "music": "无配乐，以现场声为主",
+      "sfx": [],
+      "vocalizations": []
+    },
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep09_branch_truth_video_01__p01.png",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep09_branch_truth_video_01.mp4",
+    "reuseSourceFrame": false
+  },
+  {
+    "partId": "ep06_branch_counterattack_video_01__p01",
+    "videoId": "ep06_branch_counterattack_video_01",
+    "nodeId": "ep06_branch_counterattack",
+    "shotId": "ep06_branch_counterattack_video_01_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep06_branch_counterattack_video_01__p01.json",
+    "requestSha256": "c9eb153b822dec1d903004ae4808574183774f24d6efca2f6a3135b0e4469ab9",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep06_branch_counterattack_video_01__p01.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep06_branch_counterattack_video_01__p01.json",
+    "durationSec": 8,
+    "expectedSpeech": [
+      {
+        "shotId": "ep06_branch_counterattack_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "这三千万，算我们一起做生意。",
+        "startSec": 0.55,
+        "endSec": 4.82
+      },
+      {
+        "shotId": "ep06_branch_counterattack_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "行。",
+        "startSec": 5.07,
+        "endSec": 5.42
+      },
+      {
+        "shotId": "ep06_branch_counterattack_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "那就说定了。",
+        "startSec": 5.67,
+        "endSec": 7.45
+      }
+    ],
+    "requiredSound": {
+      "ambient": "早餐桌旁自然环境声",
+      "music": "无配乐，以现场声为主",
+      "sfx": [],
+      "vocalizations": []
+    },
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep06_branch_counterattack_video_01__p01.png",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep06_branch_counterattack_video_01.mp4",
+    "reuseSourceFrame": false
+  },
+  {
+    "partId": "ep07_branch_counterattack_video_01__p01",
+    "videoId": "ep07_branch_counterattack_video_01",
+    "nodeId": "ep07_branch_counterattack",
+    "shotId": "ep07_branch_counterattack_video_01_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep07_branch_counterattack_video_01__p01.json",
+    "requestSha256": "dce9fb74172e7462e17c5e5495e5b522486b6d2783302ac2ab7ae46c09a6c162",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep07_branch_counterattack_video_01__p01.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep07_branch_counterattack_video_01__p01.json",
+    "durationSec": 8,
+    "expectedSpeech": [
+      {
+        "shotId": "ep07_branch_counterattack_video_01_shot_01",
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "off_screen",
+        "text": "贺家这条船要沉了——我不陪你。",
+        "startSec": 0.55,
+        "endSec": 4.98
+      },
+      {
+        "shotId": "ep07_branch_counterattack_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "爸，听清楚了吗？",
+        "startSec": 5.23,
+        "endSec": 7.45
+      }
+    ],
+    "requiredSound": {
+      "ambient": "贺家客厅自然环境声",
+      "music": "无配乐，以现场声为主",
+      "sfx": [],
+      "vocalizations": []
+    },
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep07_branch_counterattack_video_01__p01.png",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep07_branch_counterattack_video_01.mp4",
+    "reuseSourceFrame": false
+  },
+  {
+    "partId": "ep04_branch_truth_video_01__p01",
+    "videoId": "ep04_branch_truth_video_01",
+    "nodeId": "ep04_branch_truth",
+    "shotId": "ep04_branch_truth_video_01_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep04_branch_truth_video_01__p01.json",
+    "requestSha256": "cb34fb77618224c6853fd1f6be8ab3bdd84339df09c3b6017ecc97334a964842",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep04_branch_truth_video_01__p01.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep04_branch_truth_video_01__p01.json",
+    "durationSec": 6,
+    "expectedSpeech": [
+      {
+        "shotId": "ep04_branch_truth_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "我来。方向盘我自己握。",
+        "startSec": 0.55,
+        "endSec": 4.04
+      },
+      {
+        "shotId": "ep04_branch_truth_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "听你的。",
+        "startSec": 4.29,
+        "endSec": 5.45
+      }
+    ],
+    "requiredSound": {
+      "ambient": "宾利车旁及车内自然环境声",
+      "music": "无配乐，以现场声为主",
+      "sfx": [],
+      "vocalizations": []
+    },
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep04_branch_truth_video_01__p01.png",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep04_branch_truth_video_01.mp4",
+    "reuseSourceFrame": false
+  },
+  {
+    "partId": "ep07_branch_counterattack_video_01__p01",
+    "videoId": "ep07_branch_counterattack_video_01",
+    "nodeId": "ep07_branch_counterattack",
+    "shotId": "ep07_branch_counterattack_video_01_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep07_branch_counterattack_video_01__p01.json",
+    "requestSha256": "c997a9b693d0d0cd655afed4d82a3bb765b1a42fe8a5debdc8b10646770049a1",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep07_branch_counterattack_video_01__p01.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep07_branch_counterattack_video_01__p01.json",
+    "durationSec": 8,
+    "expectedSpeech": [
+      {
+        "shotId": "ep07_branch_counterattack_video_01_shot_01",
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "off_screen",
+        "text": "贺家这条船要沉了——我不陪你。",
+        "startSec": 0.55,
+        "endSec": 4.98
+      },
+      {
+        "shotId": "ep07_branch_counterattack_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "爸，听清楚了吗？",
+        "startSec": 5.23,
+        "endSec": 7.45
+      }
+    ],
+    "requiredSound": {
+      "ambient": "贺家客厅自然环境声",
+      "music": "无配乐，以现场声为主",
+      "sfx": [],
+      "vocalizations": []
+    },
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep07_branch_counterattack_video_01__p01.keyframe-r3.png",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep07_branch_counterattack_video_01.mp4",
+    "reuseSourceFrame": false,
+    "frameRevision": "r2"
+  },
+  {
+    "partId": "ep07_branch_counterattack_video_01__p01.r2",
+    "videoId": "ep07_branch_counterattack_video_01",
+    "nodeId": "ep07_branch_counterattack",
+    "shotId": "ep07_branch_counterattack_video_01_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep07_branch_counterattack_video_01__p01.r2.json",
+    "requestSha256": "a784579cb75cb5b5ebf4e9fa1c121aaa5fdfc14affb113176070a100b3b96630",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep07_branch_counterattack_video_01__p01.r2.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep07_branch_counterattack_video_01__p01.r2.json",
+    "durationSec": 8,
+    "expectedSpeech": [
+      {
+        "shotId": "ep07_branch_counterattack_video_01_shot_01",
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "off_screen",
+        "text": "贺家这条船要沉了——我不陪你。",
+        "startSec": 0.55,
+        "endSec": 4.98
+      },
+      {
+        "shotId": "ep07_branch_counterattack_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "爸，听清楚了吗？",
+        "startSec": 5.23,
+        "endSec": 7.45
+      }
+    ],
+    "requiredSound": {
+      "ambient": "贺家客厅自然环境声",
+      "music": "无配乐，以现场声为主",
+      "sfx": [],
+      "vocalizations": []
+    },
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep07_branch_counterattack_video_01__p01.keyframe-r3.png",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep07_branch_counterattack_video_01.mp4",
+    "reuseSourceFrame": false,
+    "frameRevision": "r2"
+  },
+  {
+    "partId": "ep07_branch_counterattack_video_01__p01.r3",
+    "videoId": "ep07_branch_counterattack_video_01",
+    "nodeId": "ep07_branch_counterattack",
+    "shotId": "ep07_branch_counterattack_video_01_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep07_branch_counterattack_video_01__p01.r3.json",
+    "requestSha256": "09cedf207e4d226d2c385997e0c8baeb319f60b18cb1a80359b36a7a03c77d56",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep07_branch_counterattack_video_01__p01.r3.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep07_branch_counterattack_video_01__p01.r3.json",
+    "durationSec": 8,
+    "expectedSpeech": [
+      {
+        "shotId": "ep07_branch_counterattack_video_01_shot_01",
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "off_screen",
+        "text": "贺家这条船要沉了——我不陪你。",
+        "startSec": 0.55,
+        "endSec": 4.98
+      },
+      {
+        "shotId": "ep07_branch_counterattack_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "爸，听清楚了吗？",
+        "startSec": 5.23,
+        "endSec": 7.45
+      }
+    ],
+    "requiredSound": {
+      "ambient": "贺家客厅自然环境声",
+      "music": "无配乐，以现场声为主",
+      "sfx": [],
+      "vocalizations": []
+    },
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep07_branch_counterattack_video_01__p01.keyframe-r4.png",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep07_branch_counterattack_video_01.mp4",
+    "reuseSourceFrame": false,
+    "frameRevision": "r2"
+  },
+  {
+    "partId": "ep07_branch_counterattack_video_01__p01.r3",
+    "videoId": "ep07_branch_counterattack_video_01",
+    "nodeId": "ep07_branch_counterattack",
+    "shotId": "ep07_branch_counterattack_video_01_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep07_branch_counterattack_video_01__p01.r3.json",
+    "requestSha256": "09cedf207e4d226d2c385997e0c8baeb319f60b18cb1a80359b36a7a03c77d56",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep07_branch_counterattack_video_01__p01.r3.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep07_branch_counterattack_video_01__p01.r3.json",
+    "durationSec": 5,
+    "expectedSpeech": [
+      {
+        "shotId": "ep07_branch_counterattack_video_01_shot_01",
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "off_screen",
+        "text": "贺家这条船要沉了——我不陪你。",
+        "startSec": 0.3,
+        "endSec": 4.7
+      }
+    ],
+    "requiredSound": {
+      "ambient": "贺家客厅自然环境声",
+      "music": "无配乐，以现场声为主",
+      "sfx": [],
+      "vocalizations": []
+    },
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep07_branch_counterattack_video_01__p01.keyframe-r4.png",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep07_branch_counterattack_video_01.mp4",
+    "reuseSourceFrame": false,
+    "frameRevision": "r2"
+  },
+  {
+    "partId": "ep07_branch_counterattack_video_01__p02",
+    "videoId": "ep07_branch_counterattack_video_01",
+    "nodeId": "ep07_branch_counterattack",
+    "shotId": "ep07_branch_counterattack_video_01_shot_02",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep07_branch_counterattack_video_01__p02.json",
+    "requestSha256": "25ae458a14a3c2315790633a9a9e652cc25269a72b9e7bd2588c1ab561b9deeb",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep07_branch_counterattack_video_01__p02.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep07_branch_counterattack_video_01__p02.json",
+    "durationSec": 4,
+    "expectedSpeech": [
+      {
+        "shotId": "ep07_branch_counterattack_video_01_shot_02",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "爸，听清楚了吗？",
+        "startSec": 0.5,
+        "endSec": 3.5
+      }
+    ],
+    "requiredSound": {
+      "ambient": "贺家客厅自然环境声",
+      "music": "无配乐，以现场声为主",
+      "sfx": [],
+      "vocalizations": []
+    },
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep07_branch_counterattack_video_01__p01.keyframe-r4.png",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep07_branch_counterattack_video_01.mp4",
+    "reuseSourceFrame": false,
+    "frameRevision": "r2"
+  },
+  {
+    "partId": "ending_boss__p01",
+    "videoId": "ending_boss",
+    "nodeId": "ending_boss",
+    "shotId": "ending_boss_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ending_boss__p01.json",
+    "requestSha256": "367f95beeeac84c921982ce0317c32981d9836f0d897b60a881e5f24e7b2e7ce",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ending_boss__p01.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ending_boss__p01.json",
+    "durationSec": 6,
+    "expectedSpeech": [
+      {
+        "shotId": "ending_boss_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "这次我雇的不是保镖，是合伙人。",
+        "startSec": 0.55,
+        "endSec": 5.45
+      }
+    ],
+    "requiredSound": {
+      "ambient": "工地项目现场自然环境声",
+      "music": "无配乐，以现场声为主",
+      "sfx": [],
+      "vocalizations": []
+    },
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ending_boss__p01.png",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_boss.mp4",
+    "reuseSourceFrame": false
+  },
+  {
+    "partId": "ending_worker__p02",
+    "videoId": "ending_worker",
+    "nodeId": "ending_worker",
+    "shotId": "ending_worker_shot_02",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ending_worker__p02.json",
+    "requestSha256": "75ccd2a3264e18a6fd8ea7dd66751896ff6ac0c7f8abd0cbce8973df85ff2099",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ending_worker__p02.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ending_worker__p02.json",
+    "durationSec": 5,
+    "expectedSpeech": [],
+    "requiredSound": {
+      "ambient": "工地表彰现场自然环境声",
+      "music": "无配乐，以现场声为主",
+      "sfx": [
+        "短暂现场鼓掌"
+      ],
+      "vocalizations": []
+    },
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ending_worker__p02.png",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_worker.mp4",
+    "reuseSourceFrame": false
+  },
+  {
+    "partId": "ending_boss__p01.r2",
+    "videoId": "ending_boss",
+    "nodeId": "ending_boss",
+    "shotId": "ending_boss_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ending_boss__p01.r2.json",
+    "requestSha256": "1e3bd67d69e1c09056207453ec0f9b04cc480e1c6cedc4d4d15e96449e4ef160",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ending_boss__p01.r2.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ending_boss__p01.r2.json",
+    "durationSec": 6,
+    "expectedSpeech": [
+      {
+        "shotId": "ending_boss_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "这次我雇的不是保镖，是合伙人。",
+        "startSec": 0.55,
+        "endSec": 5.45
+      }
+    ],
+    "requiredSound": {
+      "ambient": "工地项目现场自然环境声",
+      "music": "无配乐，以现场声为主",
+      "sfx": [],
+      "vocalizations": []
+    },
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ending_boss__p01.png",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_boss.mp4",
+    "reuseSourceFrame": false
+  }
+]

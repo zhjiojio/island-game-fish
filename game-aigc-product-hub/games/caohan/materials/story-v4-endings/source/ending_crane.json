@@ -1,0 +1,25 @@
+{
+  "id": "ending_crane",
+  "type": "ending",
+  "episodeId": "ep10",
+  "title": "荒诞结局：塔吊婚礼",
+  "isEnding": true,
+  "category": "absurd",
+  "tone": [
+    "浪漫",
+    "荒诞"
+  ],
+  "rarity": "rare",
+  "isCanonical": false,
+  "unlock": {
+    "requiredFlags": [
+      "ep10_counterattack"
+    ],
+    "requiredEndingTags": []
+  },
+  "description": "两人把婚礼办在塔吊顶端，全城工地同时鸣笛。",
+  "closing": "司仪问谁反对，三十台挖掘机一起按响喇叭。",
+  "achievement": "ending_crane",
+  "chapterId": "ch5",
+  "chapterTitle": "第五章：让他再动一次手"
+}

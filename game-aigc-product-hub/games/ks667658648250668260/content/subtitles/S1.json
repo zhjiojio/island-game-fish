@@ -1,0 +1,11 @@
+{
+  "node": "s1",
+  "speakerKey": "aotian",
+  "speakerName": "傲天",
+  "asrText": "",
+  "asrTextRaw": "日子过成这样房租外卖加班一天到头也就够糊口混了二十三年没混出个人样老天爷跟我开了个玩笑再睁眼就是另一个世道了",
+  "matchScript": true,
+  "textSource": "script-authoritative (旧 ASR output/S1.json 对应旧视频，v76.12 已换新视频，本精修覆盖旧 ASR)",
+  "note": "v76.12 重生成新 S1.mp4：傲天骑手梦醒·被撞倒躺地，台词「哦——原来是做梦啊……嘿嘿……」。v84.0 build 脚本只发现 output/S1.json（旧 ASR）无 content 精修，走 only-output 分支写入旧文本。本文件修复该问题，此后 rebuild 永久正确。",
+  "cues": 2
+}

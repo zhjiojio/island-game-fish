@@ -1,0 +1,18 @@
+{
+    "description": "快手小游戏项目配置文件",
+    "projectname": "火眼来找茬",
+    "appid": "ks713539070148088972",
+    "setting": {
+        "es6": false,
+        "ignore": [
+            "node_modules/**",
+            "test/**",
+            "tools/**",
+            "jest.config.js",
+            "package.json",
+            "package-lock.json",
+            "assets/meinv/**"
+        ]
+    },
+    "engine_type": "frog"
+}

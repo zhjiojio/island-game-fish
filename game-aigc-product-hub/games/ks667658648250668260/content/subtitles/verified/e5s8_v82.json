@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e5s8_v82.mp4",
+  "sha256": "cd2fb302e2057e16bdfad43caa88af8e09f162b1ffb00c18a142591643264b5e",
+  "duration": 10.042,
+  "nodes": [
+    "e5s8"
+  ],
+  "status": "speech",
+  "transcript": "这辈子我再不敢了，给您磕头。",
+  "rawText": "这辈子我再不敢了给您磕头",
+  "asrChars": [
+    [
+      2.59,
+      2.83,
+      "这"
+    ],
+    [
+      2.89,
+      3.13,
+      "辈"
+    ],
+    [
+      3.19,
+      3.43,
+      "子"
+    ],
+    [
+      4.83,
+      5.07,
+      "我"
+    ],
+    [
+      5.17,
+      5.41,
+      "再"
+    ],
+    [
+      5.53,
+      5.73,
+      "不"
+    ],
+    [
+      5.73,
+      5.97,
+      "敢"
+    ],
+    [
+      6.03,
+      6.27,
+      "了"
+    ],
+    [
+      7.79,
+      8.03,
+      "给"
+    ],
+    [
+      8.05,
+      8.29,
+      "您"
+    ],
+    [
+      8.37,
+      8.61,
+      "磕"
+    ],
+    [
+      8.65,
+      9.365,
+      "头"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "这辈子,我再不敢了,给你磕头。",
+  "speakerKey": null,
+  "speakerRuleKey": "e5s8",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

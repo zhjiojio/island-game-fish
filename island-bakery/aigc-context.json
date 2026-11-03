@@ -1,0 +1,22 @@
+{
+    "appid": "<APPID>",
+    "gameName": "孤岛烤鱼店",
+    "features": [
+        "ad",
+        "repost",
+        "storage",
+        "media",
+        "subpackage"
+    ],
+    "subpackages": [
+        {
+            "name": "night-defense",
+            "root": "subpackages/night-defense/"
+        },
+        {
+            "name": "vip-content",
+            "root": "subpackages/vip-content/"
+        }
+    ],
+    "currentStep": 7
+}

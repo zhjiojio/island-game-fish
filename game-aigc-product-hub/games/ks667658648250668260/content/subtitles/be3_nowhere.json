@@ -1,0 +1,10 @@
+{
+  "node": "BE_RUNAWAY",
+  "speakerKey": "aotian",
+  "speakerName": "你（内心）",
+  "asrText": "",
+  "asrTextRaw": "",
+  "matchScript": true,
+  "textSource": "script-authoritative (v82.0重生成全库视频后，旧ASR已失效，以剧本text为权威)",
+  "cues": 4
+}

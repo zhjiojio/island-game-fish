@@ -1,0 +1,83 @@
+services:
+  game-server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    image: ddz-server:latest
+    container_name: ddz-server
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      PORT: 8080
+      DDZ_AUTH_MODE: ${DDZ_AUTH_MODE:-strict}
+      DDZ_AUTH_SECRET: ${DDZ_AUTH_SECRET:?DDZ_AUTH_SECRET must be set}
+      DDZ_BOT_MATCH_ENABLED: ${DDZ_BOT_MATCH_ENABLED:-true}
+      DDZ_KWAI_APP_ID: ${DDZ_KWAI_APP_ID:-}
+      DDZ_KWAI_APP_SECRET: ${DDZ_KWAI_APP_SECRET:-}
+      DDZ_KWAI_PAY_SIGN_KEY: ${DDZ_KWAI_PAY_SIGN_KEY:-}
+      DDZ_KWAI_PAY_NOTIFY_KEY: ${DDZ_KWAI_PAY_NOTIFY_KEY:-}
+      DDZ_VOICE_CHAT_ENABLED: ${DDZ_VOICE_CHAT_ENABLED:-true}
+      DDZ_VOICE_TRADE_ENABLED: ${DDZ_VOICE_TRADE_ENABLED:-false}
+      DDZ_HAND_STRENGTH_MODE: ${DDZ_HAND_STRENGTH_MODE:-lite}
+      DDZ_DOUZERO_MODE: ${DDZ_DOUZERO_MODE:-active}
+      DDZ_DOUZERO_URL: ${DDZ_DOUZERO_URL:-http://douzero:2021}
+      DDZ_DOUZERO_TIMEOUT_MS: ${DDZ_DOUZERO_TIMEOUT_MS:-800}
+      DDZ_DOUZERO_TRAFFIC_PERCENT: ${DDZ_DOUZERO_TRAFFIC_PERCENT:-100}
+      DDZ_DOUZERO_SHADOW_PERCENT: ${DDZ_DOUZERO_SHADOW_PERCENT:-0}
+      DDZ_DOUZERO_MODEL_VERSION: ${DDZ_DOUZERO_MODEL_VERSION:-douzero-wp}
+      # Share one capacity setting with the Sidecar to prevent upstream over-admission.
+      DDZ_DOUZERO_MAX_CONCURRENT: ${DOUZERO_MAX_CONCURRENT:-4}
+      DDZ_DOUZERO_SHADOW_MAX_CONCURRENT: ${DDZ_DOUZERO_SHADOW_MAX_CONCURRENT:-2}
+      DDZ_DOUZERO_SHADOW_LOG_EVERY: ${DDZ_DOUZERO_SHADOW_LOG_EVERY:-100}
+      DDZ_DOUZERO_DECISION_LOG_PERCENT: ${DDZ_DOUZERO_DECISION_LOG_PERCENT:-5}
+      DDZ_DOUZERO_CIRCUIT_WINDOW: ${DDZ_DOUZERO_CIRCUIT_WINDOW:-20}
+      DDZ_DOUZERO_CIRCUIT_COOLDOWN_MS: ${DDZ_DOUZERO_CIRCUIT_COOLDOWN_MS:-30000}
+      # 正式 MySQL 实例：由部署环境注入 IP 或域名，Compose 不再启动或初始化数据库。
+      DDZ_MYSQL_HOST: ${DDZ_MYSQL_HOST:?DDZ_MYSQL_HOST must be set}
+      DDZ_MYSQL_PORT: ${DDZ_MYSQL_PORT:-3306}
+      DDZ_MYSQL_USER: ${DDZ_MYSQL_USER:?DDZ_MYSQL_USER must be set}
+      DDZ_MYSQL_PASSWORD: ${DDZ_MYSQL_PASSWORD:?DDZ_MYSQL_PASSWORD must be set}
+      DDZ_MYSQL_DATABASE: ${DDZ_MYSQL_DATABASE:?DDZ_MYSQL_DATABASE must be set}
+      DDZ_MYSQL_SSL: ${DDZ_MYSQL_SSL:-true}
+    healthcheck:
+      test: ["CMD", "node", "-e", "const fs=require('fs'),net=require('net');if(!fs.existsSync('/tmp/ddz-ready'))process.exit(1);net.createConnection(8080,'127.0.0.1').on('connect',()=>process.exit(0)).on('error',()=>process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  douzero:
+    profiles: ["douzero"]
+    build:
+      context: ./douzero-service
+      dockerfile: Dockerfile
+    image: ddz-douzero:latest
+    restart: unless-stopped
+    expose:
+      - "2021"
+    environment:
+      PORT: 2021
+      DOUZERO_MAX_CONCURRENT: ${DOUZERO_MAX_CONCURRENT:-4}
+      DOUZERO_INTRA_OP_THREADS: ${DOUZERO_INTRA_OP_THREADS:-1}
+      DOUZERO_INTER_OP_THREADS: ${DOUZERO_INTER_OP_THREADS:-1}
+      DOUZERO_AUTO_DOWNLOAD: ${DOUZERO_AUTO_DOWNLOAD:-true}
+      # 生产默认不依赖公共 HuggingFace；使用预置模型缓存或内网制品地址。
+      DOUZERO_ALLOW_HUGGINGFACE_DOWNLOAD: ${DOUZERO_ALLOW_HUGGINGFACE_DOWNLOAD:-false}
+      DOUZERO_MODEL_DOWNLOAD_URL_TEMPLATE: ${DOUZERO_MODEL_DOWNLOAD_URL_TEMPLATE:-}
+      DOUZERO_DOWNLOAD_TIMEOUT_SECONDS: ${DOUZERO_DOWNLOAD_TIMEOUT_SECONDS:-300}
+      DOUZERO_REQUIRE_APPROVED_MANIFEST_SHA256: ${DOUZERO_REQUIRE_APPROVED_MANIFEST_SHA256:-false}
+      DOUZERO_APPROVED_MANIFEST_SHA256: ${DOUZERO_APPROVED_MANIFEST_SHA256:-}
+    volumes:
+      - douzero-models:/app/models
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:2021/readyz', timeout=2)"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    cpus: ${DOUZERO_CPUS:-2.0}
+    mem_limit: ${DOUZERO_MEMORY_LIMIT:-2g}
+
+volumes:
+  douzero-models:

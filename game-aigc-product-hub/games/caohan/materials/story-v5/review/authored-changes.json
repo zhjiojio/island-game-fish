@@ -1,0 +1,1127 @@
+[
+  {
+    "nodeId": "ep01_scene_00",
+    "lines": [
+      {
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "on_screen",
+        "text": "贺星冉，分手吧。贺家这条船要沉了——我不陪你。",
+        "startSec": 0.55,
+        "endSec": 9.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep01_branch_truth",
+    "lines": [
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "喂。活着吗。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep01_branch_counterattack",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "刚才推我的时候，你怎么不装了？",
+        "startSec": 2.65,
+        "endSec": 7.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep01_branch_conditional",
+    "lines": [
+      {
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "off_screen",
+        "text": "贺星冉，分手吧。",
+        "startSec": 0.55,
+        "endSec": 2.68,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "那就听完。",
+        "startSec": 6.03,
+        "endSec": 7.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep02_branch_emotion",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "救援来不了。我跟你走。",
+        "startSec": 0.55,
+        "endSec": 4.35,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep02_branch_counterattack",
+    "lines": [
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "找她？先过我这关。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep02_branch_conditional",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "录音已经传出去了。还追？",
+        "startSec": 0.55,
+        "endSec": 4.42,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "坐稳。",
+        "startSec": 4.67,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep03_branch_emotion",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "蹲下。别站那么高看我。",
+        "startSec": 0.55,
+        "endSec": 4.04,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "喝口水。",
+        "startSec": 4.29,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep03_branch_truth",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "我没事。别看我。",
+        "startSec": 0.55,
+        "endSec": 3.09,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "东西放这儿。",
+        "startSec": 3.34,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep03_branch_counterattack",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "谢谢你。沐瑶，我安全，先别联系我爸妈。帮我查一下我的卡哪张还能用。",
+        "startSec": 0.55,
+        "endSec": 11.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep03_branch_conditional",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "是沐瑶留的。她能找到我。",
+        "startSec": 0.55,
+        "endSec": 4.42,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "收好。",
+        "startSec": 4.67,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep04_scene_00",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "会开吗？",
+        "startSec": 0.55,
+        "endSec": 3.34,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep04_branch_emotion",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "你开。我看看你的本事。",
+        "startSec": 0.55,
+        "endSec": 4.74,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep04_branch_truth",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "我来。方向盘我自己握。",
+        "startSec": 0.55,
+        "endSec": 4.04,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "听你的。",
+        "startSec": 4.29,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep04_branch_counterattack",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "钥匙给你，别磨蹭。",
+        "startSec": 0.55,
+        "endSec": 3.26,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "还真不客气。",
+        "startSec": 3.51,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep04_branch_conditional",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "抓紧。还记得吗？",
+        "startSec": 0.55,
+        "endSec": 3.09,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "记得。别回头。",
+        "startSec": 3.34,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep05_branch_emotion",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "别推开我。就一会儿。",
+        "startSec": 0.55,
+        "endSec": 4.27,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep05_branch_truth",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "刚才是我失态了。你睡沙发吧。",
+        "startSec": 0.55,
+        "endSec": 4.84,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep05_branch_counterattack",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "我今天受了惊吓，抱着你睡有安全感。你不是我的临时男朋友吗？",
+        "startSec": 0.55,
+        "endSec": 8.69,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "临时的也得讲规矩。",
+        "startSec": 8.94,
+        "endSec": 11.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep05_branch_conditional",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "安全条款。未经允许，不准越界。",
+        "startSec": 0.55,
+        "endSec": 5.07,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "记住了。",
+        "startSec": 5.32,
+        "endSec": 6.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep06_branch_emotion",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "钱给你。你得保证，这一年不走。",
+        "startSec": 0.55,
+        "endSec": 4.54,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "你想清楚了？",
+        "startSec": 4.79,
+        "endSec": 6.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep06_branch_truth",
+    "lines": [
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "说下去。",
+        "startSec": 8.52,
+        "endSec": 9.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep06_branch_counterattack",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "这三千万，算我们一起做生意。",
+        "startSec": 0.55,
+        "endSec": 4.82,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep06_branch_conditional",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "这些记录我都留着。回去见我父母，顺便宣布退婚。",
+        "startSec": 0.55,
+        "endSec": 7.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep07_scene_00",
+    "lines": [
+      {
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "on_screen",
+        "text": "冉冉，回来了。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep07_branch_emotion",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "我累了。让开。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep07_branch_truth",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "露台上推我的人，就是你。",
+        "startSec": 0.55,
+        "endSec": 3.91,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "on_screen",
+        "text": "冉冉，你犯不着找一个土包子来气我。",
+        "startSec": 4.16,
+        "endSec": 9.19,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "回答我。",
+        "startSec": 9.44,
+        "endSec": 10.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep07_branch_counterattack",
+    "lines": [
+      {
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "off_screen",
+        "text": "贺家这条船要沉了——我不陪你。",
+        "startSec": 0.55,
+        "endSec": 4.98,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "爸，听清楚了吗？",
+        "startSec": 5.23,
+        "endSec": 7.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep07_branch_conditional",
+    "lines": [
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "周伯，这个姓，还记得吗？",
+        "startSec": 0.55,
+        "endSec": 3.88,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "zhoubo",
+        "speaker": "周伯",
+        "delivery": "on_screen",
+        "text": "你从哪儿知道这个姓？",
+        "startSec": 4.12,
+        "endSec": 7.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": "保留旧姓触发反应，具体姓氏不展示、不朗读；不新增沈姓设定。"
+  },
+  {
+    "nodeId": "ep08_scene_00",
+    "lines": [
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "手滑？",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep08_branch_emotion",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "没摔着就好。走吧。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep08_branch_truth",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "周伯，试够了吗？他是我带回来的人。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "zhoubo",
+        "speaker": "周伯",
+        "delivery": "on_screen",
+        "text": "是我唐突了。",
+        "startSec": 5.7,
+        "endSec": 7.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep08_branch_counterattack",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "这瓶子我买了。以后别拿它试人。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep08_branch_conditional",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "您还没递稳，就松手了？",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep09_scene_00",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "一年，三千万。你连价都不看？",
+        "startSec": 0.55,
+        "endSec": 4.56,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "看清楚要做什么就够了。",
+        "startSec": 4.81,
+        "endSec": 8.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep09_branch_emotion",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "按合同办。别谈别的。",
+        "startSec": 0.55,
+        "endSec": 4.68,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep09_branch_truth",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "不算这些条款，你为什么留下？",
+        "startSec": 0.55,
+        "endSec": 4.92,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "因为你还需要人帮你。",
+        "startSec": 5.17,
+        "endSec": 8.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep09_branch_counterattack",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "没了合同，你还敢不敢留下？",
+        "startSec": 0.55,
+        "endSec": 4.81,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep09_branch_conditional",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "周伯刚才的通话，我保存了。",
+        "startSec": 0.55,
+        "endSec": 4.99,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "先留着。",
+        "startSec": 5.24,
+        "endSec": 6.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": "只保留既有选项中的通话存档事实；不补写未知录音或新的身世证据。"
+  },
+  {
+    "nodeId": "ep10_scene_00",
+    "lines": [
+      {
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "on_screen",
+        "text": "跑了一圈，你不还是回来了？",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep10_branch_emotion",
+    "lines": [
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "她不想见你。让开。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep10_branch_truth",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "婚约到此为止。以后别再来找我。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep10_branch_counterattack",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "各位听清楚。推我下露台的，就是我的未婚夫。",
+        "startSec": 0.55,
+        "endSec": 6.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep10_branch_conditional",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "录音、流水、跟踪照片，律师已经收到了。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep11_scene_00",
+    "lines": [
+      {
+        "speakerId": "zhoubo",
+        "speaker": "周伯",
+        "delivery": "off_screen",
+        "text": "陈先生，原来真是您。",
+        "startSec": 0.55,
+        "endSec": 3.65,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "你们认识？",
+        "startSec": 3.9,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep11_branch_emotion",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "走吧。一起回家。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep11_branch_truth",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "我不结婚了。以后，我自己选。",
+        "startSec": 0.55,
+        "endSec": 4.81,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep11_branch_counterattack",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "材料全部公开。我说过，要让所有人知道。",
+        "startSec": 0.55,
+        "endSec": 6.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ep11_branch_conditional",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "这次，让我一个人走。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ending_loop",
+    "lines": [
+      {
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "on_screen",
+        "text": "分手吧。",
+        "startSec": 0.55,
+        "endSec": 1.95,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "这一次，我知道了。",
+        "startSec": 2.2,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ending_streamer",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "你把聊天记录翻到那一天。",
+        "startSec": 0.55,
+        "endSec": 4.69,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "off_screen",
+        "text": "下播，吃饭。",
+        "startSec": 4.94,
+        "endSec": 6.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ending_reality_show",
+    "lines": [
+      {
+        "speakerId": "host",
+        "speaker": "节目主持人",
+        "delivery": "off_screen",
+        "text": "投票结果：贺星冉，独自出道！",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ending_empire",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "许家、工地、婚庆公司，都签好了。",
+        "startSec": 0.55,
+        "endSec": 6.45,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "贺总，轮到你敲钟了。",
+        "startSec": 7.55,
+        "endSec": 12.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ending_future",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "到底是谁让你来救我的？",
+        "startSec": 0.55,
+        "endSec": 6.88,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "你。未来的你，花了一千万。",
+        "startSec": 7.12,
+        "endSec": 13.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ending_boss",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "这次我雇的不是保镖，是合伙人。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ending_crane",
+    "lines": [
+      {
+        "speakerId": "officiant",
+        "speaker": "司仪",
+        "delivery": "off_screen",
+        "text": "谁反对？",
+        "startSec": 0.55,
+        "endSec": 4.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ending_worker",
+    "lines": [
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "干得不错。",
+        "startSec": 0.55,
+        "endSec": 2.62,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "on_screen",
+        "text": "明天我还来。",
+        "startSec": 2.87,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ending_romance",
+    "lines": [
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "回家吧。",
+        "startSec": 0.55,
+        "endSec": 4.04,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ending_independent",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "婚约取消。我的事，我自己决定。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  },
+  {
+    "nodeId": "ending_revenge",
+    "lines": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "证据都在这里。请查清楚。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "note": null
+  }
+]

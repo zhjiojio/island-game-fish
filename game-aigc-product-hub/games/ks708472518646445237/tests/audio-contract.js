@@ -1,0 +1,17 @@
+const assert=require('assert');
+const fs=require('fs');
+const path=require('path');
+const root=path.join(__dirname,'..','package','js');
+const audio=fs.readFileSync(path.join(root,'tb-audio.js'),'utf8');
+const config=fs.readFileSync(path.join(root,'tb-config.js'),'utf8');
+const engine=fs.readFileSync(path.join(root,'tb-engine.js'),'utf8');
+for(const scene of ['opening','showcase','pk','finale'])assert.match(config,new RegExp(scene+':'));
+assert.ok(!/audio\/soundscape\/[\w-]+\.wav/.test(config),'真机持续声场不再直接播放 PCM WAV');
+assert.equal((config.match(/media\/soundscape\/[\w-]+\.mp3/g)||[]).length,4,'四幕各使用一条本地 MP3');
+assert.equal((config.match(/ambient: null/g)||[]).length,4,'移除宽频噪声 ambient 层');
+for(const feature of ['function enter','function duck','function restore','function foley','function stopAll'])assert.ok(audio.includes(feature),feature);
+assert.match(audio,/loop=true/);
+assert.match(engine,/Aud\.enter\(/);
+assert.match(engine,/if \(s\.embedded\) Aud\.duck\(\)/);
+assert.match(engine,/Aud\.foley\('assets\/audio\/foley\/ui-tap\.wav'\)/);
+console.log('audio contract passed');

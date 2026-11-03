@@ -1,0 +1,28 @@
+{
+  "partId": "ending_worker__p02",
+  "sourceSha256": "2e8ec95979877975828f72930e7d1f5bb62aaa8ba6b8199a45e18e1177fef24b",
+  "model": "google/gemini-2.5-flash",
+  "review": {
+    "transcript": [
+      {
+        "startSec": 0.0,
+        "endSec": 0.0,
+        "text": "嗯",
+        "audibleVoice": "画面中穿黑色短袖的男性，年龄约30-40岁",
+        "visibleSpeaker": "画面中穿黑色短袖的男性，年龄约30-40岁",
+        "mouthSyncEvidence": "嘴唇微张",
+        "uncertain": false
+      }
+    ],
+    "nonverbal": [
+      {
+        "startSec": 0.0,
+        "endSec": 5.04,
+        "text": "持续的掌声",
+        "audibleVoice": "场外声音"
+      }
+    ],
+    "issues": [],
+    "uncertain": []
+  }
+}

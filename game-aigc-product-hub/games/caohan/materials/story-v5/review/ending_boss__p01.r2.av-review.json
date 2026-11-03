@@ -1,0 +1,34 @@
+{
+  "partId": "ending_boss__p01.r2",
+  "sourceSha256": "78432620bd7f5ddb357b0174b1ca2295c57f260b99864106fd1969fab080766b",
+  "model": "google/gemini-2.5-flash",
+  "review": {
+    "transcript": [
+      {
+        "startSec": 1.82,
+        "endSec": 5.52,
+        "text": "这次我雇的不是保镖,是合伙人。",
+        "audibleVoice": "年轻女性",
+        "visibleSpeaker": "年轻女性，白色安全帽，白色西装",
+        "mouthSyncEvidence": "00:01.820-00:05.520，嘴唇随声音发音"
+      },
+      {
+        "startSec": 5.72,
+        "endSec": 6.04,
+        "text": "嗯。",
+        "audibleVoice": "年轻男性",
+        "visibleSpeaker": "年轻男性，黄色安全帽，黑色T恤",
+        "mouthSyncEvidence": "00:05.720-00:06.040，嘴唇随声音发音"
+      }
+    ],
+    "nonverbal": [
+      {
+        "startSec": 0.0,
+        "endSec": 6.04,
+        "text": "持续的背景环境音：建筑工地噪音，包括起重机、施工机械和远处的人声。"
+      }
+    ],
+    "issues": [],
+    "uncertain": []
+  }
+}

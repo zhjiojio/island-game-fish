@@ -1,0 +1,23 @@
+/* ui-design-spec-sha256: b096aab592be9023cd141990278b6323e58c9759699bbbabcc0e8c62c39acd8b */
+:root {
+  --ui-color-accent: #c7a45b;
+  --ui-color-background: #100d12;
+  --ui-color-danger: #a13a4d;
+  --ui-color-ink: #171014;
+  --ui-color-line: #c7a45b55;
+  --ui-color-muted: #b9adb3;
+  --ui-color-primary: #7e2636;
+  --ui-color-secondary: #4a2b35;
+  --ui-color-surface: #24141d;
+  --ui-color-text: #f2e8d8;
+  --ui-color-violet: #30202a;
+  --ui-typography-body: 'PingFang SC', 'Noto Sans SC', sans-serif;
+  --ui-typography-display: 'Songti SC', 'STSong', 'Noto Serif SC', serif;
+  --ui-typography-latin: Georgia, 'Times New Roman', serif;
+  --ui-shape-border-width: 1px;
+  --ui-shape-radius: 2px;
+  --ui-shape-shadow: 0 14px 38px #00000066;
+  --ui-motion-easing: cubic-bezier(.22,.75,.24,1);
+  --ui-motion-fast-ms: 160ms;
+  --ui-motion-normal-ms: 420ms;
+}

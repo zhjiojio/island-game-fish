@@ -1,0 +1,9 @@
+{
+  "videoId": "ep11_branch_truth_video_01",
+  "attempt": 2,
+  "sha256": "43365ff8d62c8b7bae946a5c830815d44b137dfbe5e40fc603a10ca81de80009",
+  "visualIdentity": "五点抽帧人工比对通过，人物身份、服装、场景保持，无明显换脸。",
+  "audio": "独立转写与原文相符，陈劲人名存在同音转写差异。仅女声旁白，角色保持沉默，多余分支选项台词已去除。",
+  "timingReview": "3秒镜头，嘴角轻微动作和沉默符合；未作逐帧音素测量。",
+  "result": "visual_pass_audio_transcript_pass"
+}

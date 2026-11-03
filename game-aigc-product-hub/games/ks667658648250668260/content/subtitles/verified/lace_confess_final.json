@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/lace_confess_final.mp4",
+  "sha256": "e00ee9a518e7cd253c96922a09027cd0972abe1e7f1d2372ee69b74cdb7bc332",
+  "duration": 10.042,
+  "nodes": [
+    "s_op1_lace"
+  ],
+  "status": "speech",
+  "transcript": "换好了，哥哥，谢谢你帮我。",
+  "rawText": "换好了哥哥谢谢你帮我",
+  "asrChars": [
+    [
+      3.95,
+      4.15,
+      "换"
+    ],
+    [
+      4.15,
+      4.33,
+      "好"
+    ],
+    [
+      4.33,
+      4.51,
+      "了"
+    ],
+    [
+      4.51,
+      4.51,
+      "，"
+    ],
+    [
+      4.51,
+      4.67,
+      "哥"
+    ],
+    [
+      4.67,
+      4.91,
+      "哥"
+    ],
+    [
+      4.91,
+      4.91,
+      "，"
+    ],
+    [
+      5.73,
+      5.97,
+      "谢"
+    ],
+    [
+      5.97,
+      6.15,
+      "谢"
+    ],
+    [
+      6.15,
+      6.29,
+      "你"
+    ],
+    [
+      6.29,
+      6.49,
+      "帮"
+    ],
+    [
+      6.49,
+      6.905,
+      "我"
+    ],
+    [
+      6.905,
+      6.905,
+      "。"
+    ]
+  ],
+  "timingEngine": "FunASR-paraformer-zh",
+  "crossCheckText": "换好了，哥哥，谢谢你帮我。",
+  "speakerKey": null,
+  "speakerRuleKey": "lace_confess_final",
+  "reviewMethod": "New interactive-version asset (no burned-in subtitles). Local FunASR paraformer-zh word timings from the actual CDN file; transcript matches spoken audio."
+}

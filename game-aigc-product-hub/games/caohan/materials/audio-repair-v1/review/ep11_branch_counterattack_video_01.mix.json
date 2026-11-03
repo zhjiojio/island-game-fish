@@ -1,0 +1,18 @@
+{
+  "videoId": "ep11_branch_counterattack_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep11_branch_counterattack_video_01__l01",
+      "speaker": "陈劲",
+      "text": "你今天好看。",
+      "heard": "你今天好看",
+      "start": 13.615,
+      "end": 14.665,
+      "alignmentScore": 1.0
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 15.09297052154195,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.47930908203125
+}

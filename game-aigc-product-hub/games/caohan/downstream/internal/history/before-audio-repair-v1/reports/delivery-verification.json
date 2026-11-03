@@ -1,0 +1,12 @@
+{
+  "sourceUnchanged": true,
+  "sourceSha256": "77cee12ed8c5f8a99e49c6ec00ef31136fa64c03eb09995732b91220ca491ec7",
+  "configSha256": "ae1f0dff6dcc30c7b8a6ddcbec58a98d28c3f5b0efdc4b08d3d0752f7a71b903",
+  "videoCount": 69,
+  "verifiedCdnVideos": 69,
+  "reachableEndings": 14,
+  "statesExplored": 5651,
+  "allowedTransitions": 5650,
+  "credentialAbsentFromDeliveryFiles": true,
+  "runtimeIntegrationTested": false
+}

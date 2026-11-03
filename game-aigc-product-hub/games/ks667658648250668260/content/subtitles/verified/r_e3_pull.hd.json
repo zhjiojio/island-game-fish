@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_e3_pull.hd.mp4",
+  "sha256": "ab9ef14b2fcc453d3b33a824580dc253989dfa6b6ee26fd6a28754c7ec1fe84e",
+  "duration": 10.042,
+  "nodes": [
+    "r_e3_pull"
+  ],
+  "status": "speech",
+  "transcript": "从今往后，这扣子你不用自己扣了，我给你解，也给你扣。",
+  "rawText": "从今往后这扣子你不用自己扣了我给你姐也给你扣",
+  "asrChars": [
+    [
+      3.31,
+      3.49,
+      "从"
+    ],
+    [
+      3.49,
+      3.69,
+      "今"
+    ],
+    [
+      3.69,
+      3.79,
+      "往"
+    ],
+    [
+      3.79,
+      4.03,
+      "后"
+    ],
+    [
+      4.87,
+      5.11,
+      "这"
+    ],
+    [
+      5.13,
+      5.33,
+      "扣"
+    ],
+    [
+      5.33,
+      5.57,
+      "子"
+    ],
+    [
+      6.11,
+      6.31,
+      "你"
+    ],
+    [
+      6.31,
+      6.41,
+      "不"
+    ],
+    [
+      6.41,
+      6.55,
+      "用"
+    ],
+    [
+      6.55,
+      6.63,
+      "自"
+    ],
+    [
+      6.63,
+      6.81,
+      "己"
+    ],
+    [
+      6.81,
+      6.99,
+      "扣"
+    ],
+    [
+      6.99,
+      7.23,
+      "了"
+    ],
+    [
+      7.61,
+      7.85,
+      "我"
+    ],
+    [
+      7.85,
+      8.01,
+      "给"
+    ],
+    [
+      8.01,
+      8.11,
+      "你"
+    ],
+    [
+      8.11,
+      8.35,
+      "姐"
+    ],
+    [
+      8.91,
+      9.15,
+      "也"
+    ],
+    [
+      9.15,
+      9.31,
+      "给"
+    ],
+    [
+      9.31,
+      9.43,
+      "你"
+    ],
+    [
+      9.43,
+      9.755,
+      "扣"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "从今往后,这扣子,你不用自己扣了。我给你解,也给你扣。",
+  "speakerKey": null,
+  "speakerRuleKey": "r_e3_pull",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

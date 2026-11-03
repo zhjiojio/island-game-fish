@@ -1,0 +1,34 @@
+{
+  "partId": "ep11_scene_00_video_01__p01",
+  "sourceSha256": "7630b4591fdc0baf46284592b4f44697bf359384d8f4056be81a6622483602cb",
+  "model": "google/gemini-2.5-flash",
+  "review": {
+    "transcript": [
+      {
+        "startSec": 1.46,
+        "endSec": 3.96,
+        "text": "陈先生,原来真是您。",
+        "audibleVoice": "老年男性",
+        "visibleSpeaker": "画面中老年男性，穿黑色西装，站在门口",
+        "mouthSyncEvidence": [
+          "00:01.460",
+          "00:03.960"
+        ]
+      },
+      {
+        "startSec": 5.56,
+        "endSec": 6.26,
+        "text": "你们认识?",
+        "audibleVoice": "年轻女性",
+        "visibleSpeaker": "画面中年轻女性，穿白色衬衫，正在给男性整理领带",
+        "mouthSyncEvidence": [
+          "00:05.560",
+          "00:06.260"
+        ]
+      }
+    ],
+    "nonverbal": [],
+    "issues": [],
+    "uncertain": []
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "deviceOrientation": "portrait",
+  "showStatusBar": false,
+  "subpackages": [
+    {
+      "name": "assets-all",
+      "root": "subpackages/assets-all/"
+    }
+  ],
+  "parallelPreloadSubpackages": [
+    {
+      "name": "assets-all"
+    }
+  ]
+}

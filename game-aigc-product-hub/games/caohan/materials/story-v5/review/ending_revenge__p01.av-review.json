@@ -1,0 +1,34 @@
+{
+  "partId": "ending_revenge__p01",
+  "sourceSha256": "35de8bb31e890a9dc9f1823d22620b9093229d4af512b9933046fda8232f2bd8",
+  "model": "google/gemini-2.5-flash",
+  "review": {
+    "utterances": [
+      {
+        "startSec": 1.52,
+        "endSec": 2.8,
+        "text": "证据都在这里。",
+        "audibleVoice": "年轻女性",
+        "visibleSpeaker": "年轻女性，米色西装",
+        "mouthSyncEvidence": "嘴唇随声音发音"
+      },
+      {
+        "startSec": 4.2,
+        "endSec": 5.0,
+        "text": "请查清楚。",
+        "audibleVoice": "年轻女性",
+        "visibleSpeaker": "年轻女性，米色西装",
+        "mouthSyncEvidence": "嘴唇随声音发音"
+      }
+    ],
+    "nonverbal": [
+      {
+        "startSec": 0.0,
+        "endSec": 6.04,
+        "text": "持续的相机快门声和人群嘈杂声"
+      }
+    ],
+    "issues": [],
+    "uncertain": []
+  }
+}

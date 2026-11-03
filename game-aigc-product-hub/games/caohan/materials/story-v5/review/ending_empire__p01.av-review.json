@@ -1,0 +1,171 @@
+{
+  "partId": "ending_empire__p01",
+  "sourceSha256": "cfd8e3ccff84fb20e5a86d54f8940115865615f5f29a3444f91b57d458de1787",
+  "model": "google/gemini-2.5-flash",
+  "review": {
+    "transcript": [
+      {
+        "startSec": 3.36,
+        "endSec": 6.94,
+        "text": "许家工地婚庆公司都签好了。",
+        "audibleVoice": "画面中年轻女性，米色西装",
+        "visibleSpeaker": "画面中年轻女性，米色西装",
+        "mouthSyncEvidence": "03.36-06.94，嘴唇持续张合，与声音同步。",
+        "speakerAge": "young adult",
+        "speakerClothes": "米色西装",
+        "speakerLocation": "画面中央"
+      }
+    ],
+    "nonverbal": [
+      {
+        "startSec": 0.0,
+        "endSec": 0.08,
+        "text": "笔尖在纸上划动的声音",
+        "audibleVoice": "nonverbal",
+        "visibleSpeaker": "no speaker"
+      },
+      {
+        "startSec": 0.16,
+        "endSec": 0.24,
+        "text": "笔尖在纸上划动的声音",
+        "audibleVoice": "nonverbal",
+        "visibleSpeaker": "no speaker"
+      },
+      {
+        "startSec": 0.32,
+        "endSec": 0.4,
+        "text": "笔尖在纸上划动的声音",
+        "audibleVoice": "nonverbal",
+        "visibleSpeaker": "no speaker"
+      },
+      {
+        "startSec": 0.48,
+        "endSec": 0.56,
+        "text": "笔尖在纸上划动的声音",
+        "audibleVoice": "nonverbal",
+        "visibleSpeaker": "no speaker"
+      },
+      {
+        "startSec": 0.64,
+        "endSec": 0.72,
+        "text": "笔尖在纸上划动的声音",
+        "audibleVoice": "nonverbal",
+        "visibleSpeaker": "no speaker"
+      },
+      {
+        "startSec": 0.8,
+        "endSec": 0.88,
+        "text": "笔尖在纸上划动的声音",
+        "audibleVoice": "nonverbal",
+        "visibleSpeaker": "no speaker"
+      },
+      {
+        "startSec": 0.96,
+        "endSec": 1.04,
+        "text": "笔尖在纸上划动的声音",
+        "audibleVoice": "nonverbal",
+        "visibleSpeaker": "no speaker"
+      },
+      {
+        "startSec": 1.12,
+        "endSec": 1.2,
+        "text": "笔尖在纸上划动的声音",
+        "audibleVoice": "nonverbal",
+        "visibleSpeaker": "no speaker"
+      },
+      {
+        "startSec": 1.28,
+        "endSec": 1.36,
+        "text": "笔尖在纸上划动的声音",
+        "audibleVoice": "nonverbal",
+        "visibleSpeaker": "no speaker"
+      },
+      {
+        "startSec": 1.44,
+        "endSec": 1.52,
+        "text": "笔尖在纸上划动的声音",
+        "audibleVoice": "nonverbal",
+        "visibleSpeaker": "no speaker"
+      },
+      {
+        "startSec": 1.6,
+        "endSec": 1.68,
+        "text": "笔尖在纸上划动的声音",
+        "audibleVoice": "nonverbal",
+        "visibleSpeaker": "no speaker"
+      },
+      {
+        "startSec": 1.76,
+        "endSec": 1.84,
+        "text": "笔尖在纸上划动的声音",
+        "audibleVoice": "nonverbal",
+        "visibleSpeaker": "no speaker"
+      },
+      {
+        "startSec": 1.92,
+        "endSec": 2.0,
+        "text": "笔尖在纸上划动的声音",
+        "audibleVoice": "nonverbal",
+        "visibleSpeaker": "no speaker"
+      },
+      {
+        "startSec": 2.08,
+        "endSec": 2.16,
+        "text": "笔尖在纸上划动的声音",
+        "audibleVoice": "nonverbal",
+        "visibleSpeaker": "no speaker"
+      },
+      {
+        "startSec": 2.24,
+        "endSec": 2.32,
+        "text": "笔尖在纸上划动的声音",
+        "audibleVoice": "nonverbal",
+        "visibleSpeaker": "no speaker"
+      },
+      {
+        "startSec": 2.4,
+        "endSec": 2.48,
+        "text": "笔尖在纸上划动的声音",
+        "audibleVoice": "nonverbal",
+        "visibleSpeaker": "no speaker"
+      },
+      {
+        "startSec": 2.56,
+        "endSec": 2.64,
+        "text": "笔尖在纸上划动的声音",
+        "audibleVoice": "nonverbal",
+        "visibleSpeaker": "no speaker"
+      },
+      {
+        "startSec": 2.72,
+        "endSec": 2.8,
+        "text": "笔尖在纸上划动的声音",
+        "audibleVoice": "nonverbal",
+        "visibleSpeaker": "no speaker"
+      },
+      {
+        "startSec": 2.88,
+        "endSec": 2.96,
+        "text": "笔尖在纸上划动的声音",
+        "audibleVoice": "nonverbal",
+        "visibleSpeaker": "no speaker"
+      },
+      {
+        "startSec": 3.04,
+        "endSec": 3.12,
+        "text": "笔尖在纸上划动的声音",
+        "audibleVoice": "nonverbal",
+        "visibleSpeaker": "no speaker"
+      },
+      {
+        "startSec": 3.2,
+        "endSec": 3.28,
+        "text": "笔尖在纸上划动的声音",
+        "audibleVoice": "nonverbal",
+        "visibleSpeaker": "no speaker"
+      }
+    ],
+    "issues": [],
+    "uncertain": []
+  }
+}

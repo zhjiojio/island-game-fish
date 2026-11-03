@@ -1,0 +1,46 @@
+{
+ "schemaVersion": 1,
+ "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_rub_a.mp4",
+ "sha256": "0412469a21fb7fb797d2d2bde47fe881c6e9e9f3bde60bd29e4428a8ba7c7e27",
+ "duration": 10.042,
+ "nodes": [
+  "r_rub_a"
+ ],
+ "status": "speech",
+ "transcript": "嗯，再往上一点。",
+ "rawText": "嗯再往上一点",
+ "asrChars": [
+  [
+   2.46,
+   2.685,
+   "嗯"
+  ],
+  [
+   9.02,
+   9.26,
+   "再"
+  ],
+  [
+   9.28,
+   9.44,
+   "往"
+  ],
+  [
+   9.44,
+   9.62,
+   "上"
+  ],
+  [
+   9.62,
+   9.76,
+   "一"
+  ],
+  [
+   9.76,
+   9.935,
+   "点"
+  ]
+ ],
+ "timingEngine": "asr-anchor(funasr-paraformer)",
+ "reviewMethod": "batch ASR auto (needs human proof-read for punctuation/speaker)."
+}

@@ -1,0 +1,18 @@
+{
+  "transcript": "爸，听清楚了吗？",
+  "utterances": [
+    {
+      "speaker": "female",
+      "text": "爸，听清楚了吗？"
+    }
+  ],
+  "nonverbal": [],
+  "issues": [],
+  "uncertain": "",
+  "provenance": [
+    "ep07_branch_counterattack_video_01__p02.r2.stt-qwen3-asr-1.7b.json",
+    "ep07_branch_counterattack_video_01__p02.r2.stt-whisper-large-v3.json",
+    "ep07_branch_counterattack_video_01__p02.r2.speaker-crosscheck-voxtral.json"
+  ],
+  "note": "Qwen与Whisper盲转写一致单个爸，Voxtral用于女性声确认，其爸爸转写不采纳。"
+}

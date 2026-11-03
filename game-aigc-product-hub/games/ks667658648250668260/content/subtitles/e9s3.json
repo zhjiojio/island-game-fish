@@ -1,0 +1,10 @@
+{
+  "node": "e9s3",
+  "speakerKey": "narrator",
+  "speakerName": "沈婉儿",
+  "asrText": "……好看么。我这辈子没戴过这么好的东西。你说好看，我就一直戴着，戴到老。",
+  "asrTextRaw": "好看吗 我这辈子没带过这么好的东西 你说好看 我就一直带着 带到老",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 5
+}

@@ -1,0 +1,18 @@
+{
+  "videoId": "ep03_branch_emotion_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep03_branch_emotion_video_01__l01",
+      "speaker": "贺星冉",
+      "text": "蹲下。",
+      "heard": "蹲下",
+      "start": 14.675,
+      "end": 15.565,
+      "alignmentScore": 1.0
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 18.088344671201813,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.3343505859375
+}

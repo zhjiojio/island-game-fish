@@ -1,0 +1,3568 @@
+{
+  "version": "2026-09-08",
+  "generatedAt": "2026-09-08T12:17:52.528Z",
+  "cdnBase": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260",
+  "stats": {
+    "total": 311,
+    "published": 192,
+    "needs_upload": 0,
+    "missing": 0,
+    "local_bytes": 3651070,
+    "bundled": 119
+  },
+  "assets": {
+    "skill_land": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/skill_land.png",
+      "status": "published",
+      "refs": [
+        "package/js/achievements.js"
+      ]
+    },
+    "skill_stone": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/skill_stone.png",
+      "status": "published",
+      "refs": [
+        "package/js/achievements.js"
+      ]
+    },
+    "skill_weather": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/skill_weather.png",
+      "status": "published",
+      "refs": [
+        "package/js/achievements.js"
+      ]
+    },
+    "medal_first": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/medal_first.png",
+      "status": "published",
+      "refs": [
+        "package/js/achievements.js"
+      ]
+    },
+    "medal_peacock": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/medal_peacock.png",
+      "status": "published",
+      "refs": [
+        "package/js/achievements.js"
+      ]
+    },
+    "medal_bunny": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/medal_bunny.png",
+      "status": "published",
+      "refs": [
+        "package/js/achievements.js"
+      ]
+    },
+    "medal_mongol": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/medal_mongol.png",
+      "status": "published",
+      "refs": [
+        "package/js/achievements.js"
+      ]
+    },
+    "medal_cloth1": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/medal_cloth1.png",
+      "status": "published",
+      "refs": [
+        "package/js/achievements.js"
+      ]
+    },
+    "medal_cloth2": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/medal_cloth2.png",
+      "status": "published",
+      "refs": [
+        "package/js/achievements.js"
+      ]
+    },
+    "medal_cloth3": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/medal_cloth3.png",
+      "status": "published",
+      "refs": [
+        "package/js/achievements.js"
+      ]
+    },
+    "medal_slap": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/medal_slap.png",
+      "status": "published",
+      "refs": [
+        "package/js/achievements.js"
+      ]
+    },
+    "tutorial_bg": {
+      "type": "image",
+      "cdn": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/ui/tutorial_bg.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/main.js"
+      ]
+    },
+    "cover_text": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/cover-text.png",
+      "status": "published",
+      "refs": [
+        "package/js/main.js"
+      ]
+    },
+    "S3": {
+      "type": "image",
+      "cdn": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/lastframe/S3.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/main.js",
+        "package/js/registry.js",
+        "content/assets.registry.json"
+      ]
+    },
+    "r_haggle_a": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/r_haggle_a.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "r_haggle_b": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/r_haggle_b.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "r_haggle_c_v2_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_haggle_c.v2.c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "r_haggle_d": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/r_haggle_d.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "e2s4_market_rest_v2_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s4_market_rest.v2.c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "f_e2_cloth_counter_v2_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_e2_cloth_counter.v2.c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "e2s5_boss_v2_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s5_boss.v2.c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "e2s6_v2_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s6.v2.c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "S1": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S1.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP01.json",
+        "content/subtitles/verified/S1.json"
+      ]
+    },
+    "S10_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S10.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json",
+        "content/subtitles/verified/S10.c.json"
+      ]
+    },
+    "S2_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S2.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP01.json",
+        "content/subtitles/verified/S2.c.json"
+      ]
+    },
+    "S3_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S3.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP01.json",
+        "content/subtitles/verified/S3.c.json"
+      ]
+    },
+    "S4_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S4.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP01.json",
+        "content/subtitles/verified/S4.c.json"
+      ]
+    },
+    "S5_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S5.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP01.json",
+        "content/subtitles/verified/S5.c.json"
+      ]
+    },
+    "S6_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S6.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP01.json",
+        "content/subtitles/verified/S6.c.json"
+      ]
+    },
+    "S8_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S8.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json",
+        "content/subtitles/verified/S8.c.json"
+      ]
+    },
+    "S9_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S9.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json",
+        "content/subtitles/verified/S9.c.json"
+      ]
+    },
+    "be1_she_left_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be1_she_left.c.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP99.json",
+        "content/subtitles/verified/be1_she_left.c.json"
+      ]
+    },
+    "be2_starve_death_v2_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be2_starve_death_v2.c.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP99.json",
+        "content/subtitles/verified/be2_starve_death_v2.c.json"
+      ]
+    },
+    "be3_nowhere_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be3_nowhere.c.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP99.json",
+        "content/subtitles/verified/be3_nowhere.c.json"
+      ]
+    },
+    "be4_witch_hunt_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be4_witch_hunt.c.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP99.json",
+        "content/subtitles/verified/be4_witch_hunt.c.json"
+      ]
+    },
+    "be5_kicked_out_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be5_kicked_out.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP01.json",
+        "content/episodes/EP99.json",
+        "content/subtitles/verified/be5_kicked_out.c.json"
+      ]
+    },
+    "be6_lost_power_v2_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be6_lost_power_v2.c.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP99.json",
+        "content/subtitles/verified/be6_lost_power_v2.c.json"
+      ]
+    },
+    "be_partner_drunk_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be_partner_drunk.c.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP99.json",
+        "content/subtitles/verified/be_partner_drunk.c.json"
+      ]
+    },
+    "e2s1_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s1.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json",
+        "content/subtitles/verified/e2s1.c.json"
+      ]
+    },
+    "e2s2_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s2.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json",
+        "content/subtitles/verified/e2s2.c.json"
+      ]
+    },
+    "e2s3_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s3.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json",
+        "content/subtitles/verified/e2s3.c.json"
+      ]
+    },
+    "e2s5_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s5.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json",
+        "content/subtitles/verified/e2s5.c.json"
+      ]
+    },
+    "e2s6_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s6.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json",
+        "content/subtitles/verified/e2s6.c.json"
+      ]
+    },
+    "e3s1_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s1.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP03.json",
+        "content/subtitles/verified/e3s1.c.json"
+      ]
+    },
+    "e3s2_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s2.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP03.json",
+        "content/subtitles/verified/e3s2.c.json"
+      ]
+    },
+    "e3s3_v2_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s3_v2.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP03.json",
+        "content/subtitles/verified/e3s3_v2.c.json"
+      ]
+    },
+    "e3s4_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s4.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP03.json",
+        "content/subtitles/verified/e3s4.c.json"
+      ]
+    },
+    "e3s5_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s5.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP03.json",
+        "content/subtitles/verified/e3s5.c.json"
+      ]
+    },
+    "e3s6_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s6.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP03.json",
+        "content/subtitles/verified/e3s6.c.json"
+      ]
+    },
+    "e3s7_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s7.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP03.json",
+        "content/subtitles/verified/e3s7.c.json"
+      ]
+    },
+    "e4_bei_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4_bei_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP04.json",
+        "content/subtitles/verified/e4_bei_v82.json"
+      ]
+    },
+    "e4_escape_bridge_v83": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4_escape_bridge_v83.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP04.json",
+        "content/subtitles/verified/e4_escape_bridge_v83.json"
+      ]
+    },
+    "e4_escape_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4_escape_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP04.json",
+        "content/subtitles/verified/e4_escape_v82.json"
+      ]
+    },
+    "e4_shangyao_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4_shangyao_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP04.json",
+        "content/subtitles/verified/e4_shangyao_v82.json"
+      ]
+    },
+    "e4s1_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s1.c.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP04.json",
+        "content/subtitles/verified/e4s1.c.json"
+      ]
+    },
+    "e4s2_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s2_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP04.json",
+        "content/subtitles/verified/e4s2_v82.json"
+      ]
+    },
+    "e4s3_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s3.c.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP04.json",
+        "content/subtitles/verified/e4s3.c.json"
+      ]
+    },
+    "e4s4_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s4.c.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP04.json",
+        "content/subtitles/verified/e4s4.c.json"
+      ]
+    },
+    "e4s5_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s5_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP04.json",
+        "content/subtitles/verified/e4s5_v82.json"
+      ]
+    },
+    "e4s6_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s6.c.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP04.json",
+        "content/subtitles/verified/e4s6.c.json"
+      ]
+    },
+    "e4s7_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s7_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP04.json",
+        "content/subtitles/verified/e4s7_v82.json"
+      ]
+    },
+    "e4s8_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s8.c.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP04.json",
+        "content/subtitles/verified/e4s8.c.json"
+      ]
+    },
+    "e5s1_v83": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e5s1_v83.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP05.json",
+        "content/subtitles/verified/e5s1_v83.json"
+      ]
+    },
+    "e5s2": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e5s2.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP05.json",
+        "content/subtitles/verified/e5s2.json"
+      ]
+    },
+    "e5s3_v83": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e5s3_v83.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP05.json",
+        "content/subtitles/verified/e5s3_v83.json"
+      ]
+    },
+    "e5s4": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e5s4.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP05.json",
+        "content/subtitles/verified/e5s4.json"
+      ]
+    },
+    "e5s5_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e5s5_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP05.json",
+        "content/subtitles/verified/e5s5_v82.json"
+      ]
+    },
+    "e5s6_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e5s6_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP05.json",
+        "content/subtitles/verified/e5s6_v82.json"
+      ]
+    },
+    "e5s7": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e5s7.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP05.json",
+        "content/subtitles/verified/e5s7.json"
+      ]
+    },
+    "e5s8_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e5s8_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP05.json",
+        "content/subtitles/verified/e5s8_v82.json"
+      ]
+    },
+    "e5s9_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e5s9_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP05.json",
+        "content/subtitles/verified/e5s9_v82.json"
+      ]
+    },
+    "e6s1_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e6s1_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP06.json",
+        "content/subtitles/verified/e6s1_v82.json"
+      ]
+    },
+    "e6s2": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e6s2.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP06.json",
+        "content/subtitles/verified/e6s2.json"
+      ]
+    },
+    "e6s3": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e6s3.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP06.json",
+        "content/subtitles/verified/e6s3.json"
+      ]
+    },
+    "e6s4_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e6s4_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP06.json",
+        "content/subtitles/verified/e6s4_v82.json"
+      ]
+    },
+    "e6s5_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e6s5_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP06.json",
+        "content/subtitles/verified/e6s5_v82.json"
+      ]
+    },
+    "e6s6": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e6s6.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP06.json",
+        "content/subtitles/verified/e6s6.json"
+      ]
+    },
+    "e7s1": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e7s1.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP07.json",
+        "content/subtitles/verified/e7s1.json"
+      ]
+    },
+    "e7s2_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e7s2_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP07.json",
+        "content/subtitles/verified/e7s2_v82.json"
+      ]
+    },
+    "e7s3": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e7s3.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP07.json",
+        "content/subtitles/verified/e7s3.json"
+      ]
+    },
+    "e7s4": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e7s4.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP07.json",
+        "content/subtitles/verified/e7s4.json"
+      ]
+    },
+    "e7s5_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e7s5_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP07.json",
+        "content/subtitles/verified/e7s5_v82.json"
+      ]
+    },
+    "e7s6_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e7s6_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP07.json",
+        "content/subtitles/verified/e7s6_v82.json"
+      ]
+    },
+    "e8s1_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e8s1_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP08.json",
+        "content/subtitles/verified/e8s1_v82.json"
+      ]
+    },
+    "e8s3": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e8s3.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP08.json",
+        "content/subtitles/verified/e8s3.json"
+      ]
+    },
+    "e8s4": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e8s4.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP08.json",
+        "content/subtitles/verified/e8s4.json"
+      ]
+    },
+    "e8s5_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e8s5_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP08.json",
+        "content/subtitles/verified/e8s5_v82.json"
+      ]
+    },
+    "e8s6_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e8s6_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP08.json",
+        "content/subtitles/verified/e8s6_v82.json"
+      ]
+    },
+    "e8s7_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e8s7.c.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP08.json",
+        "content/subtitles/verified/e8s7.c.json"
+      ]
+    },
+    "e8s8_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e8s8_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP08.json",
+        "content/subtitles/verified/e8s8_v82.json"
+      ]
+    },
+    "e9s1": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e9s1.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP09.json",
+        "content/subtitles/verified/e9s1.json"
+      ]
+    },
+    "e9s10": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e9s10.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP09.json",
+        "content/subtitles/verified/e9s10.json"
+      ]
+    },
+    "e9s2": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e9s2.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP09.json",
+        "content/subtitles/verified/e9s2.json"
+      ]
+    },
+    "e9s2b_v83": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e9s2b_v83.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP09.json",
+        "content/subtitles/verified/e9s2b_v83.json"
+      ]
+    },
+    "e9s3_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e9s3_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP09.json",
+        "content/subtitles/verified/e9s3_v82.json"
+      ]
+    },
+    "e9s4": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e9s4.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP09.json",
+        "content/subtitles/verified/e9s4.json"
+      ]
+    },
+    "e9s5_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e9s5_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP09.json",
+        "content/subtitles/verified/e9s5_v82.json"
+      ]
+    },
+    "e9s6_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e9s6_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP09.json",
+        "content/subtitles/verified/e9s6_v82.json"
+      ]
+    },
+    "e9s7_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e9s7.c.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP09.json",
+        "content/subtitles/verified/e9s7.c.json"
+      ]
+    },
+    "e9s8_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e9s8_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP09.json",
+        "content/subtitles/verified/e9s8_v82.json"
+      ]
+    },
+    "e9s9_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e9s9_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP09.json",
+        "content/subtitles/verified/e9s9_v82.json"
+      ]
+    },
+    "k1_zhao_encounter_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/k1_zhao_encounter.c.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json",
+        "content/subtitles/verified/k1_zhao_encounter.c.json"
+      ]
+    },
+    "k_bridge_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/k_bridge.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json",
+        "content/subtitles/verified/k_bridge.c.json"
+      ]
+    },
+    "op1_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/op1.v2.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP01.json",
+        "content/subtitles/verified/op1.c.json"
+      ]
+    },
+    "r_e3_eyes_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_e3_eyes.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP03.json",
+        "content/subtitles/verified/r_e3_eyes.c.json"
+      ]
+    },
+    "r_e3_pull_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_e3_pull.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP03.json",
+        "content/subtitles/verified/r_e3_pull.c.json"
+      ]
+    },
+    "r_f2_d_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f2_d.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP03.json",
+        "content/subtitles/verified/r_f2_d.c.json"
+      ]
+    },
+    "r_f_e7s2_a_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_e7s2_a_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP07.json",
+        "content/subtitles/verified/r_f_e7s2_a_v82.json"
+      ]
+    },
+    "r_f_e7s2_b_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_e7s2_b_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP07.json",
+        "content/subtitles/verified/r_f_e7s2_b_v82.json"
+      ]
+    },
+    "r_f_e7s2_c_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_e7s2_c_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP07.json",
+        "content/subtitles/verified/r_f_e7s2_c_v82.json"
+      ]
+    },
+    "r_f_e7s2_d_v82": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_e7s2_d_v82.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP07.json",
+        "content/subtitles/verified/r_f_e7s2_d_v82.json"
+      ]
+    },
+    "side01_hongdudou_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side01_hongdudou.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json",
+        "content/episodes/EP03.json",
+        "content/episodes/EP05.json",
+        "content/episodes/EP09.json",
+        "content/subtitles/verified/side01_hongdudou.c.json"
+      ]
+    },
+    "side02_qipao_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side02_qipao.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json",
+        "content/episodes/EP03.json",
+        "content/episodes/EP05.json",
+        "content/subtitles/verified/side02_qipao.c.json"
+      ]
+    },
+    "side03_shishen_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side03_shishen.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json",
+        "content/episodes/EP03.json",
+        "content/episodes/EP05.json",
+        "content/episodes/EP06.json",
+        "content/episodes/EP07.json",
+        "content/subtitles/verified/side03_shishen.c.json"
+      ]
+    },
+    "side04_kongque_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side04_kongque.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP01.json",
+        "content/episodes/EP02.json",
+        "content/subtitles/verified/side04_kongque.c.json"
+      ]
+    },
+    "side05_jazz_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side05_jazz.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json",
+        "content/episodes/EP05.json",
+        "content/subtitles/verified/side05_jazz.c.json"
+      ]
+    },
+    "side06_dunhuang_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side06_dunhuang.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json",
+        "content/episodes/EP07.json",
+        "content/subtitles/verified/side06_dunhuang.c.json"
+      ]
+    },
+    "side07_cailian_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side07_cailian.hd.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP01.json",
+        "content/episodes/EP02.json",
+        "content/episodes/EP06.json",
+        "content/subtitles/verified/side07_cailian.c.json"
+      ]
+    },
+    "side08_shuixiu_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side08_shuixiu.c.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP03.json",
+        "content/episodes/EP09.json",
+        "content/subtitles/verified/side08_shuixiu.c.json"
+      ]
+    },
+    "skill_stone_activate_c": {
+      "type": "video",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/skill_stone_activate.c.mp4",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json",
+        "content/subtitles/verified/skill_stone_activate.c.json"
+      ]
+    },
+    "be1_she_left": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/lastframe/be1_she_left.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "content/assets.registry.json"
+      ]
+    },
+    "S3_2": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/lastframe/S3.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "content/assets.registry.json"
+      ]
+    },
+    "S4": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/lastframe/S4.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "content/assets.registry.json"
+      ]
+    },
+    "S5": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/lastframe/S5.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "content/assets.registry.json"
+      ]
+    },
+    "S6": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/lastframe/S6.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "content/assets.registry.json"
+      ]
+    },
+    "S8": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/lastframe/S8.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "content/assets.registry.json"
+      ]
+    },
+    "S9": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/lastframe/S9.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "content/assets.registry.json"
+      ]
+    },
+    "S10": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/lastframe/S10.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "content/assets.registry.json"
+      ]
+    },
+    "E8S9": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/lastframe/E8S9.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/registry.js",
+        "content/assets.registry.json"
+      ]
+    },
+    "f_s2_a": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s2_a.png",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP01.json"
+      ]
+    },
+    "f_s2_b": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s2_b.png",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP01.json"
+      ]
+    },
+    "f_s2_c": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s2_c.png",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP01.json"
+      ]
+    },
+    "f0_a": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f0_a.png",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP01.json"
+      ]
+    },
+    "f0_b": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f0_b.png",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP01.json"
+      ]
+    },
+    "f0_c": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f0_c.png",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP01.json"
+      ]
+    },
+    "f_saoshi_a": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_saoshi_a.png",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP01.json"
+      ]
+    },
+    "f_saoshi_b": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_saoshi_b.png",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP01.json"
+      ]
+    },
+    "r_f_dance_react_a_v2_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_dance_react_a.v2.c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP01.json"
+      ]
+    },
+    "r_f_dance_react_b_v2_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_dance_react_b.v2.c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP01.json"
+      ]
+    },
+    "f_s5_a": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s5_a.png",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP01.json"
+      ]
+    },
+    "f_s5_b": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s5_b.png",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP01.json"
+      ]
+    },
+    "f_s5_c": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s5_c.png",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP01.json"
+      ]
+    },
+    "f_s6_a": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s6_a.png",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "f_s6_b": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s6_b.png",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "f_s6_c": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s6_c.png",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "f_s8_a": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s8_a.png",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "f_s8_b": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s8_b.png",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "f_s8_c": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s8_c.png",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "f_s9_a": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s9_a.png",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "f_s9_b": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s9_b.png",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "f_s9_c": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s9_c.png",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "k0_a": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k0_a.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "f_dress_a": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/f_dress_a.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json",
+        "content/episodes/EP03.json"
+      ]
+    },
+    "f_dress_b": {
+      "type": "image",
+      "cdn": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/f_dress_b.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json",
+        "content/episodes/EP03.json"
+      ]
+    },
+    "f_dress_c": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/f_dress_c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json",
+        "content/episodes/EP03.json"
+      ]
+    },
+    "f_dress_d": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/f_dress_d.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json",
+        "content/episodes/EP03.json"
+      ]
+    },
+    "f_dance_a": {
+      "type": "image",
+      "cdn": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/f_dance_a.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "f_dance_b": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/f_dance_b.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "f_dance_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/f_dance_c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "k_side_after": {
+      "type": "image",
+      "cdn": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k_side_after.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "k_side_after2": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k_side_after2.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "k_side_after_gentle": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k_side_after_gentle.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "k_side_after_2": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k_side_after.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "k0_b": {
+      "type": "image",
+      "cdn": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k0_b.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "k0_b_bridge": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k0_b_bridge.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "k0_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k0_c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "k0_c_bridge": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k0_c_bridge.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "e2s2": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/e2s2.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "r_e2s2_a_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_e2s2_a.c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "r_e2s2_b_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_e2s2_b.c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "r_e2s2_c_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_e2s2_c.c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "e2s3": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/e2s3.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "e2s4_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s4.c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "e2s5": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/e2s5.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "e2_cloth_red_v2_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2_cloth_red.v2.c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "e2_cloth_qipao_v2_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2_cloth_qipao.v2.c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "e2s5_road_v2_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s5_road.v2.c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "r_k1_a_v2_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_k1_a.v2.c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "r_k1_b": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/r_k1_b.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "r_k1_c_v2_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_k1_c.v2.c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "e3s1": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/e3s1.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP03.json"
+      ]
+    },
+    "e3s2": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/e3s2.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP03.json"
+      ]
+    },
+    "r_f2_a_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f2_a.c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP03.json"
+      ]
+    },
+    "r_f2_b_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f2_b.c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP03.json"
+      ]
+    },
+    "r_f2_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f2_c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP03.json"
+      ]
+    },
+    "r_f_e3s3_a_v2_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_e3s3_a.v2.c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP03.json"
+      ]
+    },
+    "r_f_e3s3_c_v2_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_e3s3_c.v2.c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP03.json"
+      ]
+    },
+    "e3s5": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/e3s5.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP03.json"
+      ]
+    },
+    "r_f_e3s5_ad_v2_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_e3s5_ad.v2.c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP03.json"
+      ]
+    },
+    "r_f_e3s5_c_v2_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_e3s5_c.v2.c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP03.json"
+      ]
+    },
+    "r_f_e3s6_b_v2_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_e3s6_b.v2.c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP03.json"
+      ]
+    },
+    "BE_ALLIANCE_KILLED_frame_v2_c": {
+      "type": "image",
+      "cdn": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/BE_ALLIANCE_KILLED_frame.v2.c.jpg",
+      "status": "published",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP99.json"
+      ]
+    },
+    "icon_achv": {
+      "type": "image",
+      "local": "images/icons/icon_achv.png",
+      "size": 15418,
+      "sha": "6ca0ba141a4ac90f",
+      "status": "bundled",
+      "refs": [
+        "package/js/achievements.js",
+        "package/js/main.js"
+      ]
+    },
+    "icon_wei": {
+      "type": "image",
+      "local": "images/icons/icon_wei.png",
+      "size": 11706,
+      "sha": "da3c7917adb8cfcc",
+      "status": "bundled",
+      "refs": [
+        "package/js/main.js"
+      ]
+    },
+    "icon_qing": {
+      "type": "image",
+      "local": "images/icons/icon_qing.png",
+      "size": 14431,
+      "sha": "6678eaffe5665dc4",
+      "status": "bundled",
+      "refs": [
+        "package/js/main.js"
+      ]
+    },
+    "icon_liang": {
+      "type": "image",
+      "local": "images/icons/icon_liang.png",
+      "size": 18108,
+      "sha": "4540791fddec2e03",
+      "status": "bundled",
+      "refs": [
+        "package/js/main.js"
+      ]
+    },
+    "btn_tag_unlock": {
+      "type": "image",
+      "local": "images/icons/btn_tag_unlock.png",
+      "size": 9798,
+      "sha": "93ab8bce7b3f2ed0",
+      "status": "bundled",
+      "refs": [
+        "package/js/main.js"
+      ]
+    },
+    "icon_unlock": {
+      "type": "image",
+      "local": "images/icons/icon_unlock.png",
+      "size": 740,
+      "sha": "9488e80b8c5168fa",
+      "status": "bundled",
+      "refs": [
+        "package/js/main.js"
+      ]
+    },
+    "btn_tag": {
+      "type": "image",
+      "local": "images/icons/btn_tag.png",
+      "size": 5304,
+      "sha": "f5ae9ecbec7676e9",
+      "status": "bundled",
+      "refs": [
+        "package/js/main.js"
+      ]
+    },
+    "icon_lock": {
+      "type": "image",
+      "local": "images/icons/icon_lock.png",
+      "size": 2612,
+      "sha": "052dcf28e132158b",
+      "status": "bundled",
+      "refs": [
+        "package/js/main.js"
+      ]
+    },
+    "dont_touch": {
+      "type": "image",
+      "local": "images/fx/dont-touch.png",
+      "size": 33343,
+      "sha": "d965de6e58daa18c",
+      "status": "bundled",
+      "refs": [
+        "package/js/main.js"
+      ]
+    },
+    "side04_kongque_c_2": {
+      "type": "image",
+      "local": "images/lastframes/side04_kongque.hd.jpg",
+      "size": 22884,
+      "sha": "c59c26e96425e666",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP01.json",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "S5_c_2": {
+      "type": "image",
+      "local": "images/lastframes/S5.hd.jpg",
+      "size": 20306,
+      "sha": "9e32917e6962ef2b",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP01.json"
+      ]
+    },
+    "S8_c_2": {
+      "type": "image",
+      "local": "images/lastframes/S8.hd.jpg",
+      "size": 60953,
+      "sha": "6f6e46cf38bcc433",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "S9_c_2": {
+      "type": "image",
+      "local": "images/lastframes/S9.hd.jpg",
+      "size": 50787,
+      "sha": "254a25732ce5ff31",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "S10_c_2": {
+      "type": "image",
+      "local": "images/lastframes/S10.hd.jpg",
+      "size": 38082,
+      "sha": "388fefb133201816",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "k_bridge_c_2": {
+      "type": "image",
+      "local": "images/lastframes/k_bridge.hd.jpg",
+      "size": 31056,
+      "sha": "5d8c8ca54cb8e35e",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "side01_hongdudou_c_2": {
+      "type": "image",
+      "local": "images/lastframes/side01_hongdudou.hd.jpg",
+      "size": 21644,
+      "sha": "172d1dc43ca0fb73",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json",
+        "content/episodes/EP03.json",
+        "content/episodes/EP05.json",
+        "content/episodes/EP09.json"
+      ]
+    },
+    "side07_cailian_c_2": {
+      "type": "image",
+      "local": "images/lastframes/side07_cailian.hd.jpg",
+      "size": 23990,
+      "sha": "1c056ba2ca9bdcda",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP01.json",
+        "content/episodes/EP02.json",
+        "content/episodes/EP06.json"
+      ]
+    },
+    "e2s3_c_2": {
+      "type": "image",
+      "local": "images/lastframes/e2s3.hd.jpg",
+      "size": 33693,
+      "sha": "cfc6666e421dc6d0",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "e3s7_c_2": {
+      "type": "image",
+      "local": "images/lastframes/e3s7.hd.jpg",
+      "size": 27280,
+      "sha": "cb3810f14c9c6c42",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP03.json"
+      ]
+    },
+    "e3s1_c_2": {
+      "type": "image",
+      "local": "images/lastframes/e3s1.hd.jpg",
+      "size": 27376,
+      "sha": "5205a1e494c5a24c",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP03.json"
+      ]
+    },
+    "e3s2_c_2": {
+      "type": "image",
+      "local": "images/lastframes/e3s2.hd.jpg",
+      "size": 30891,
+      "sha": "9cc43cafb7cca612",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP03.json"
+      ]
+    },
+    "e3s3_v2_c_2": {
+      "type": "image",
+      "local": "images/lastframes/e3s3_v2.hd.jpg",
+      "size": 41893,
+      "sha": "09bd286855dff3cf",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP03.json"
+      ]
+    },
+    "e3s4_c_2": {
+      "type": "image",
+      "local": "images/lastframes/e3s4.hd.jpg",
+      "size": 24244,
+      "sha": "0bb30fe2ce61e033",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP03.json"
+      ]
+    },
+    "e3s5_c_2": {
+      "type": "image",
+      "local": "images/lastframes/e3s5.hd.jpg",
+      "size": 31360,
+      "sha": "4ca088586a91703f",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP03.json"
+      ]
+    },
+    "e3s6_c_2": {
+      "type": "image",
+      "local": "images/lastframes/e3s6.hd.jpg",
+      "size": 30961,
+      "sha": "cac7796d88a7f40c",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP03.json"
+      ]
+    },
+    "e4s3_c_2": {
+      "type": "image",
+      "local": "images/lastframes/e4s3.c.jpg",
+      "size": 25439,
+      "sha": "34bc3492e19c82af",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP04.json"
+      ]
+    },
+    "e4_shangyao_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/e4_shangyao_v82.jpg",
+      "size": 25984,
+      "sha": "cebb417d0ce32b21",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP04.json"
+      ]
+    },
+    "e4s1_c_2": {
+      "type": "image",
+      "local": "images/lastframes/e4s1.c.jpg",
+      "size": 38999,
+      "sha": "5b0bb2e4dfdcc38c",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP04.json"
+      ]
+    },
+    "e4s4_c_2": {
+      "type": "image",
+      "local": "images/lastframes/e4s4.c.jpg",
+      "size": 30929,
+      "sha": "890e01581a4e3a11",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP04.json"
+      ]
+    },
+    "e4s5_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/e4s5_v82.jpg",
+      "size": 28881,
+      "sha": "9a2035678f967d28",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP04.json"
+      ]
+    },
+    "e4s6_c_2": {
+      "type": "image",
+      "local": "images/lastframes/e4s6.c.jpg",
+      "size": 29435,
+      "sha": "352f336f48d40250",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP04.json"
+      ]
+    },
+    "e4_escape_bridge_v83_2": {
+      "type": "image",
+      "local": "images/lastframes/e4_escape_bridge_v83.jpg",
+      "size": 19586,
+      "sha": "8ba483cb2b0c227f",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP04.json"
+      ]
+    },
+    "e4s8_c_2": {
+      "type": "image",
+      "local": "images/lastframes/e4s8.c.jpg",
+      "size": 29795,
+      "sha": "1b86ef02dd2fb4bb",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP04.json"
+      ]
+    },
+    "e5s9_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/e5s9_v82.jpg",
+      "size": 22497,
+      "sha": "4fa3ffa92b93d302",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP05.json"
+      ]
+    },
+    "e5s3_v83_2": {
+      "type": "image",
+      "local": "images/lastframes/e5s3_v83.jpg",
+      "size": 29074,
+      "sha": "c7c2057cb2502c74",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP05.json"
+      ]
+    },
+    "e5s6_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/e5s6_v82.jpg",
+      "size": 32036,
+      "sha": "3c94723643dca8c6",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP05.json"
+      ]
+    },
+    "e5s7_2": {
+      "type": "image",
+      "local": "images/lastframes/e5s7.jpg",
+      "size": 25838,
+      "sha": "a64aabb164d69058",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP05.json"
+      ]
+    },
+    "e6s1_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/e6s1_v82.jpg",
+      "size": 24177,
+      "sha": "869b0a33b35b4366",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP06.json"
+      ]
+    },
+    "e6s2_2": {
+      "type": "image",
+      "local": "images/lastframes/e6s2.jpg",
+      "size": 24152,
+      "sha": "ecfb4a85a5691683",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP06.json"
+      ]
+    },
+    "e6s4_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/e6s4_v82.jpg",
+      "size": 22096,
+      "sha": "4a34537c29bff44c",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP06.json"
+      ]
+    },
+    "e6s6_2": {
+      "type": "image",
+      "local": "images/lastframes/e6s6.jpg",
+      "size": 17750,
+      "sha": "2f65bc796e8e51ff",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP06.json"
+      ]
+    },
+    "e6s3_2": {
+      "type": "image",
+      "local": "images/lastframes/e6s3.jpg",
+      "size": 22862,
+      "sha": "eacffee93bd545ba",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP06.json"
+      ]
+    },
+    "e7s6_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/e7s6_v82.jpg",
+      "size": 35857,
+      "sha": "f7f854219ee07ccc",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP07.json"
+      ]
+    },
+    "r_f_e7s2_a_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/r_f_e7s2_a_v82.jpg",
+      "size": 36947,
+      "sha": "543b39f340bf20b7",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP07.json"
+      ]
+    },
+    "e7s2_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/e7s2_v82.jpg",
+      "size": 36781,
+      "sha": "1cde925fccb3828d",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP07.json"
+      ]
+    },
+    "e7s5_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/e7s5_v82.jpg",
+      "size": 34358,
+      "sha": "e17d360eda92bc6a",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP07.json"
+      ]
+    },
+    "e8s6_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/e8s6_v82.jpg",
+      "size": 24627,
+      "sha": "7d1250d84fe4ff6b",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP08.json"
+      ]
+    },
+    "e9s1_2": {
+      "type": "image",
+      "local": "images/lastframes/e9s1.jpg",
+      "size": 36099,
+      "sha": "2b3be2c54afa798a",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP08.json",
+        "content/episodes/EP09.json"
+      ]
+    },
+    "e8s3_2": {
+      "type": "image",
+      "local": "images/lastframes/e8s3.jpg",
+      "size": 29527,
+      "sha": "7e9ccef3ec35811e",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP08.json"
+      ]
+    },
+    "e8s8_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/e8s8_v82.jpg",
+      "size": 26724,
+      "sha": "af15c2d65cfbe32f",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP08.json"
+      ]
+    },
+    "e9s3_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/e9s3_v82.jpg",
+      "size": 31427,
+      "sha": "3e4e3fda4ba3a51e",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP09.json"
+      ]
+    },
+    "e9s10_2": {
+      "type": "image",
+      "local": "images/lastframes/e9s10.jpg",
+      "size": 56678,
+      "sha": "62fb096b53776cce",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP09.json"
+      ]
+    },
+    "e9s5_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/e9s5_v82.jpg",
+      "size": 36454,
+      "sha": "b6858e5f6d6d233d",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP09.json"
+      ]
+    },
+    "e9s8_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/e9s8_v82.jpg",
+      "size": 33257,
+      "sha": "6e0a016c13b0a1c5",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP09.json"
+      ]
+    },
+    "e9s9_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/e9s9_v82.jpg",
+      "size": 35788,
+      "sha": "d05a047d88552166",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP09.json"
+      ]
+    },
+    "S1_2": {
+      "type": "image",
+      "local": "images/lastframes/S1.jpg",
+      "size": 29495,
+      "sha": "f49284b993c56030",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP01.json"
+      ]
+    },
+    "S2_c_2": {
+      "type": "image",
+      "local": "images/lastframes/S2.hd.jpg",
+      "size": 25586,
+      "sha": "cab28bb928dae06c",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP01.json"
+      ]
+    },
+    "S3_c_2": {
+      "type": "image",
+      "local": "images/lastframes/S3.hd.jpg",
+      "size": 35781,
+      "sha": "22e58fe808c89a84",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP01.json"
+      ]
+    },
+    "S4_c_2": {
+      "type": "image",
+      "local": "images/lastframes/S4.hd.jpg",
+      "size": 24461,
+      "sha": "10dc07a4219e1901",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP01.json"
+      ]
+    },
+    "S6_c_2": {
+      "type": "image",
+      "local": "images/lastframes/S6.hd.jpg",
+      "size": 38666,
+      "sha": "971dcb898d1138ec",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP01.json",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "be1_she_left_c_2": {
+      "type": "image",
+      "local": "images/lastframes/be1_she_left.c.jpg",
+      "size": 23591,
+      "sha": "50123b48b8b07a6e",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP99.json"
+      ]
+    },
+    "be2_starve_death_v2_c_2": {
+      "type": "image",
+      "local": "images/lastframes/be2_starve_death_v2.c.jpg",
+      "size": 23143,
+      "sha": "79c498810d9130af",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP99.json"
+      ]
+    },
+    "be3_nowhere_c_2": {
+      "type": "image",
+      "local": "images/lastframes/be3_nowhere.c.jpg",
+      "size": 24874,
+      "sha": "a1e96fe5bb29003d",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP99.json"
+      ]
+    },
+    "be4_witch_hunt_c_2": {
+      "type": "image",
+      "local": "images/lastframes/be4_witch_hunt.c.jpg",
+      "size": 26861,
+      "sha": "a78036c216e63d80",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP99.json"
+      ]
+    },
+    "be5_kicked_out_c_2": {
+      "type": "image",
+      "local": "images/lastframes/be5_kicked_out.hd.jpg",
+      "size": 35627,
+      "sha": "2d63f6ebdf6af7f9",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP01.json",
+        "content/episodes/EP99.json"
+      ]
+    },
+    "be6_lost_power_v2_c_2": {
+      "type": "image",
+      "local": "images/lastframes/be6_lost_power_v2.c.jpg",
+      "size": 29514,
+      "sha": "dee6c8e83d830647",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP99.json"
+      ]
+    },
+    "be_partner_drunk_c_2": {
+      "type": "image",
+      "local": "images/lastframes/be_partner_drunk.c.jpg",
+      "size": 25795,
+      "sha": "edf316b1ab7950d3",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP99.json"
+      ]
+    },
+    "e2s1_c_2": {
+      "type": "image",
+      "local": "images/lastframes/e2s1.hd.jpg",
+      "size": 27229,
+      "sha": "04ed9cd4bf9fa1af",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "e2s2_c_2": {
+      "type": "image",
+      "local": "images/lastframes/e2s2.hd.jpg",
+      "size": 28275,
+      "sha": "b1e4b915f4c6ef2b",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "e2s5_c_2": {
+      "type": "image",
+      "local": "images/lastframes/e2s5.hd.jpg",
+      "size": 23646,
+      "sha": "90b00cf4ee18178d",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "e2s6_c_2": {
+      "type": "image",
+      "local": "images/lastframes/e2s6.hd.jpg",
+      "size": 45560,
+      "sha": "867466101da66ebc",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "e4_bei_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/e4_bei_v82.jpg",
+      "size": 29339,
+      "sha": "6f22de710a1661d6",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP04.json"
+      ]
+    },
+    "e4_escape_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/e4_escape_v82.jpg",
+      "size": 45282,
+      "sha": "9a5403f8f2811ada",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP04.json"
+      ]
+    },
+    "e4s2_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/e4s2_v82.jpg",
+      "size": 22721,
+      "sha": "32edd0e49f181851",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP04.json"
+      ]
+    },
+    "e4s7_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/e4s7_v82.jpg",
+      "size": 33299,
+      "sha": "dcd15d07bcdd5e63",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP04.json"
+      ]
+    },
+    "e5s1_v83_2": {
+      "type": "image",
+      "local": "images/lastframes/e5s1_v83.jpg",
+      "size": 25511,
+      "sha": "738341ab2aeabef6",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP05.json"
+      ]
+    },
+    "e5s2_2": {
+      "type": "image",
+      "local": "images/lastframes/e5s2.jpg",
+      "size": 24361,
+      "sha": "a81be56c112c267f",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP05.json"
+      ]
+    },
+    "e5s4_2": {
+      "type": "image",
+      "local": "images/lastframes/e5s4.jpg",
+      "size": 25225,
+      "sha": "e1e5bac94c8798b6",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP05.json"
+      ]
+    },
+    "e5s5_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/e5s5_v82.jpg",
+      "size": 23786,
+      "sha": "017fceb8303ad1b1",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP05.json"
+      ]
+    },
+    "e5s8_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/e5s8_v82.jpg",
+      "size": 24985,
+      "sha": "b65dd2965c6698c2",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP05.json"
+      ]
+    },
+    "e6s5_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/e6s5_v82.jpg",
+      "size": 21740,
+      "sha": "018dff3e42fe236b",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP06.json"
+      ]
+    },
+    "e7s1_2": {
+      "type": "image",
+      "local": "images/lastframes/e7s1.jpg",
+      "size": 44905,
+      "sha": "08e52db4f3ce7fef",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP07.json"
+      ]
+    },
+    "e7s3_2": {
+      "type": "image",
+      "local": "images/lastframes/e7s3.jpg",
+      "size": 29527,
+      "sha": "7da4b74fd4ff3e9d",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP07.json"
+      ]
+    },
+    "e7s4_2": {
+      "type": "image",
+      "local": "images/lastframes/e7s4.jpg",
+      "size": 29352,
+      "sha": "1a1a835ee8956bfb",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP07.json"
+      ]
+    },
+    "e8s1_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/e8s1_v82.jpg",
+      "size": 15038,
+      "sha": "5e97d01719326ad1",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP08.json"
+      ]
+    },
+    "e8s4_2": {
+      "type": "image",
+      "local": "images/lastframes/e8s4.jpg",
+      "size": 40781,
+      "sha": "5363d1d9e11e13d5",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP08.json"
+      ]
+    },
+    "e8s5_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/e8s5_v82.jpg",
+      "size": 25238,
+      "sha": "b8f2845663bd3736",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP08.json"
+      ]
+    },
+    "e8s7_c_2": {
+      "type": "image",
+      "local": "images/lastframes/e8s7.c.jpg",
+      "size": 31535,
+      "sha": "adc160c4af000a9f",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP08.json"
+      ]
+    },
+    "e9s2_2": {
+      "type": "image",
+      "local": "images/lastframes/e9s2.jpg",
+      "size": 40712,
+      "sha": "f5ec6f0acc3fe6cb",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP09.json"
+      ]
+    },
+    "e9s2b_v83_2": {
+      "type": "image",
+      "local": "images/lastframes/e9s2b_v83.jpg",
+      "size": 43527,
+      "sha": "a61ea16796defcdc",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP09.json"
+      ]
+    },
+    "e9s4_2": {
+      "type": "image",
+      "local": "images/lastframes/e9s4.jpg",
+      "size": 25972,
+      "sha": "ebe08bb7cdd1348d",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP09.json"
+      ]
+    },
+    "e9s6_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/e9s6_v82.jpg",
+      "size": 29272,
+      "sha": "88a07d61493944b6",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP09.json"
+      ]
+    },
+    "e9s7_c_2": {
+      "type": "image",
+      "local": "images/lastframes/e9s7.c.jpg",
+      "size": 47508,
+      "sha": "fc66f462f1b88cf6",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP09.json"
+      ]
+    },
+    "k1_zhao_encounter_c_2": {
+      "type": "image",
+      "local": "images/lastframes/k1_zhao_encounter.c.jpg",
+      "size": 35483,
+      "sha": "e7db2e5804a2256b",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "op1_c_2": {
+      "type": "image",
+      "local": "images/lastframes/op1.c.jpg",
+      "size": 33541,
+      "sha": "66241311f0b093f4",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP01.json"
+      ]
+    },
+    "r_e3_eyes_c_2": {
+      "type": "image",
+      "local": "images/lastframes/r_e3_eyes.hd.jpg",
+      "size": 24754,
+      "sha": "407240245575d59e",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP03.json"
+      ]
+    },
+    "r_e3_pull_c_2": {
+      "type": "image",
+      "local": "images/lastframes/r_e3_pull.hd.jpg",
+      "size": 24138,
+      "sha": "bcdd49b10031ccd7",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP03.json"
+      ]
+    },
+    "r_f2_d_c_2": {
+      "type": "image",
+      "local": "images/lastframes/r_f2_d.hd.jpg",
+      "size": 31246,
+      "sha": "132db871697bb7dd",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP03.json"
+      ]
+    },
+    "r_f_e7s2_b_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/r_f_e7s2_b_v82.jpg",
+      "size": 55687,
+      "sha": "943726a6381dec99",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP07.json"
+      ]
+    },
+    "r_f_e7s2_c_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/r_f_e7s2_c_v82.jpg",
+      "size": 27267,
+      "sha": "fd44d1d269a0c997",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP07.json"
+      ]
+    },
+    "r_f_e7s2_d_v82_2": {
+      "type": "image",
+      "local": "images/lastframes/r_f_e7s2_d_v82.jpg",
+      "size": 17238,
+      "sha": "69270e5018457654",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP07.json"
+      ]
+    },
+    "side02_qipao_c_2": {
+      "type": "image",
+      "local": "images/lastframes/side02_qipao.hd.jpg",
+      "size": 29559,
+      "sha": "25f02293be608d9b",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json",
+        "content/episodes/EP03.json",
+        "content/episodes/EP05.json"
+      ]
+    },
+    "side03_shishen_c_2": {
+      "type": "image",
+      "local": "images/lastframes/side03_shishen.hd.jpg",
+      "size": 19334,
+      "sha": "d5182c5dbe228dc2",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json",
+        "content/episodes/EP03.json",
+        "content/episodes/EP05.json",
+        "content/episodes/EP06.json",
+        "content/episodes/EP07.json"
+      ]
+    },
+    "side05_jazz_c_2": {
+      "type": "image",
+      "local": "images/lastframes/side05_jazz.hd.jpg",
+      "size": 27418,
+      "sha": "cbc63cbb5be2847b",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json",
+        "content/episodes/EP05.json"
+      ]
+    },
+    "side06_dunhuang_c_2": {
+      "type": "image",
+      "local": "images/lastframes/side06_dunhuang.hd.jpg",
+      "size": 36822,
+      "sha": "d5671853f39f29d9",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json",
+        "content/episodes/EP07.json"
+      ]
+    },
+    "side08_shuixiu_c_2": {
+      "type": "image",
+      "local": "images/lastframes/side08_shuixiu.c.jpg",
+      "size": 26298,
+      "sha": "e5c21b96705454e3",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP03.json",
+        "content/episodes/EP09.json"
+      ]
+    },
+    "skill_stone_activate_c_2": {
+      "type": "image",
+      "local": "images/lastframes/skill_stone_activate.c.jpg",
+      "size": 40577,
+      "sha": "657b2665f4f4f31f",
+      "status": "bundled",
+      "refs": [
+        "package/js/registry.js",
+        "package/js/story.js",
+        "content/assets.registry.json",
+        "content/episodes/EP02.json"
+      ]
+    },
+    "home_background": {
+      "type": "image",
+      "local": "images/chapters/home-background.jpg",
+      "size": 59368,
+      "sha": "9774262d488deade",
+      "status": "bundled",
+      "refs": [
+        "package/js/story.js",
+        "content/meta.json"
+      ]
+    },
+    "title_v90_4": {
+      "type": "image",
+      "local": "images/chapters/title-v90.4.png",
+      "size": 29501,
+      "sha": "3b2f0729233ad9e8",
+      "status": "bundled",
+      "refs": [
+        "package/js/story.js",
+        "content/meta.json"
+      ]
+    },
+    "cover_EP01_v90_5": {
+      "type": "image",
+      "local": "images/chapters/cover-EP01-v90.5.jpg",
+      "size": 35132,
+      "sha": "7ae139be9c54c90c",
+      "status": "bundled",
+      "refs": [
+        "package/js/story.js",
+        "content/meta.json"
+      ]
+    },
+    "cover_EP02_v90_17": {
+      "type": "image",
+      "local": "images/chapters/cover-EP02-v90.17.jpg",
+      "size": 61897,
+      "sha": "8243efe8f951ec4b",
+      "status": "bundled",
+      "refs": [
+        "package/js/story.js",
+        "content/meta.json"
+      ]
+    },
+    "cover_EP03_v90_6": {
+      "type": "image",
+      "local": "images/chapters/cover-EP03-v90.6.jpg",
+      "size": 32925,
+      "sha": "1f38fd544b396908",
+      "status": "bundled",
+      "refs": [
+        "package/js/story.js",
+        "content/meta.json"
+      ]
+    },
+    "cover_EP04_v90_5": {
+      "type": "image",
+      "local": "images/chapters/cover-EP04-v90.5.jpg",
+      "size": 45824,
+      "sha": "916e0f35d36e86c1",
+      "status": "bundled",
+      "refs": [
+        "package/js/story.js",
+        "content/meta.json"
+      ]
+    },
+    "cover_EP05_v90_5": {
+      "type": "image",
+      "local": "images/chapters/cover-EP05-v90.5.jpg",
+      "size": 41424,
+      "sha": "4aee84e66a8c5e29",
+      "status": "bundled",
+      "refs": [
+        "package/js/story.js",
+        "content/meta.json"
+      ]
+    },
+    "cover_EP06_v90_5": {
+      "type": "image",
+      "local": "images/chapters/cover-EP06-v90.5.jpg",
+      "size": 32090,
+      "sha": "6fb99d8a94bd2036",
+      "status": "bundled",
+      "refs": [
+        "package/js/story.js",
+        "content/meta.json"
+      ]
+    },
+    "cover_EP07_v90_7": {
+      "type": "image",
+      "local": "images/chapters/cover-EP07-v90.7.jpg",
+      "size": 37605,
+      "sha": "6ac5680d580ceb89",
+      "status": "bundled",
+      "refs": [
+        "package/js/story.js",
+        "content/meta.json"
+      ]
+    },
+    "cover_EP08_v90_5": {
+      "type": "image",
+      "local": "images/chapters/cover-EP08-v90.5.jpg",
+      "size": 46951,
+      "sha": "b66abef2872debad",
+      "status": "bundled",
+      "refs": [
+        "package/js/story.js",
+        "content/meta.json"
+      ]
+    },
+    "cover_EP09_v90_5": {
+      "type": "image",
+      "local": "images/chapters/cover-EP09-v90.5.jpg",
+      "size": 53020,
+      "sha": "ce2dfb8a63c4c0f0",
+      "status": "bundled",
+      "refs": [
+        "package/js/story.js",
+        "content/meta.json"
+      ]
+    },
+    "e8s2_dam_v9016": {
+      "type": "image",
+      "local": "images/story/e8s2-dam-v9016.jpg",
+      "size": 65337,
+      "sha": "2026d6896e245ab5",
+      "status": "bundled",
+      "refs": [
+        "package/js/story.js",
+        "content/episodes/EP08.json"
+      ]
+    }
+  }
+}

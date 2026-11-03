@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e9s9_v82.mp4",
+  "sha256": "37329aa40ae221b1c3777fc0178ea81cc981f7422a4110569fd9034aec3211f8",
+  "duration": 10.042,
+  "nodes": [
+    "e9s9"
+  ],
+  "status": "speech",
+  "transcript": "婉儿，回家了。",
+  "rawText": "婉儿回家了",
+  "asrChars": [
+    [
+      4.77,
+      4.99,
+      "婉"
+    ],
+    [
+      4.99,
+      5.23,
+      "儿"
+    ],
+    [
+      5.79,
+      5.99,
+      "回"
+    ],
+    [
+      5.99,
+      6.15,
+      "家"
+    ],
+    [
+      6.15,
+      6.475,
+      "了"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "晚儿,回家了。",
+  "speakerKey": null,
+  "speakerRuleKey": "e9s9",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

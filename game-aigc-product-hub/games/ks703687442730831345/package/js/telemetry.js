@@ -1,0 +1,1 @@
+(function(r){var M=r.M3;M.Tele={events:[],report:function(name,data){this.events.push({name:name,data:data,time:Date.now()});if(this.events.length>100)this.events.shift();}};})(typeof GameGlobal!=='undefined'?GameGlobal:typeof window!=='undefined'?window:global);

@@ -1,0 +1,10 @@
+{
+  "node": "e4s7",
+  "speakerKey": "narrator",
+  "speakerName": "旁白",
+  "asrText": "他用手背抹掉嘴角的血，抬头看着前面，喘得厉害。这一顿他记一辈子。挨过这一顿，他就再也不怕了。",
+  "asrTextRaw": "他用手背抹掉嘴角的血 抬头看着前面 这一顿他记一辈子 挨过这一顿 他就再也不怕了",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 5
+}

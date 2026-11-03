@@ -1,0 +1,754 @@
+{
+  "_comment": "漫剧互动游戏 · 精简测试配置 · 顶层 nodes 扁平节点图，所有跳转由 components[].nextNodeId 或 unlockType 行为驱动",
+  "meta": {
+    "version": "2.4.0",
+    "gameId": "drama_shengshi_001",
+    "gameName": "盛世天下·倾城之恋",
+    "lang": "zh-CN",
+    "description": "古装宫廷恋爱互动剧，玩家扮演女主角，在宫廷中与三位男主角展开不同结局的爱情故事",
+    "configUpdatedAt": "2026-09-05T20:00:00+08:00"
+  },
+  "theme": {
+    "uiStyle": "style1",
+    "_uiStyleNote": "UI 风格 ID，对应 uiStyle/{id}/components.js 中已注册的风格。目前可选：style1（沉浸暗金）",
+    "primaryColor": "#C8902A",
+    "overlayOpacity": 0.65,
+    "animDuration": 400,
+    "textColor": "#F5E6C8",
+    "buttonTextColor": "#302D2A",
+    "titleTextColor": "#F2DBAB",
+    "_renderColorsNote": "以下字段控制纯渲染（无 bg 图片）模式下各组件的颜色，支持动态下发。panelColor=面板/hub/文本/dialog 共用背景色（透明度 0.75 写死在代码里）；borderColor=全部描边色；buttonBg=浅色按钮背景（渐变起点）；buttonBgEnd=浅色按钮背景渐变终点；buttonBgLock=锁定按钮背景",
+    "borderColor": "#FFE8CB",
+    "buttonBg": "#FFF8F0",
+    "buttonBgEnd": "#FFF1E0",
+    "buttonBgLock": "#616161",
+    "panelColor": "#0D0F1C"
+  },
+  "_componentTimingNote": "components[].showTime/endTime 统一语义：showTime 为数字时按媒体开始后的毫秒延迟展示；showTime 为 null 时在视频播放完成/图片展示完成后展示；endTime 为数字时到时失效；endTime 为 null 时保持展示直到切换节点，由 NodeRunner.stop() 统一清除。",
+  "valueDefinitions": [
+    {
+      "id": "favor",
+      "icon": "default/icon_favor.png",
+      "name": "好感度",
+      "_note": "玩家与男主的综合好感，影响结局判定"
+    },
+    {
+      "id": "wisdom",
+      "icon": "default/icon_wisdom.png",
+      "name": "智慧值",
+      "_note": "体现玩家应对宫廷局势的智识"
+    },
+    {
+      "id": "courage",
+      "icon": "default/icon_courage.png",
+      "name": "勇气值",
+      "_note": "体现玩家行动的果断程度"
+    }
+  ],
+  "_valueDefinitionsNote": "顶层数值定义数组：每项含 id（唯一键）、icon（图标链接）、name（显示名）。node 内 component.value 字段按此 id 配置变化量。",
+  "homepage": {
+    "image": "images/home_bg.png",
+    "_imageNote": "首包图片，建议尺寸 750×1624px（375px × 2x DPR），兼顾安全区上下各 44px",
+    "loadingTitle": "正在载入荒年世界…",
+    "_loadingTitleNote": "loading 面板顶部固定标题文案",
+    "loadingHints": [
+      { "prefix": "命运的每一次转折，都从", "highlight": "一个选择开始" },
+      { "prefix": "在乱世中，", "highlight": "你的每步棋都至关重要" },
+      { "prefix": "荒年之中，", "highlight": "智谋与勇气缺一不可" }
+    ],
+    "_loadingHintsNote": "loading 期间底部轮播提示文案，每条含 prefix（金色）和 highlight（白色）两段",
+    "hotspots": [
+      {
+        "id": "btn_new_game",
+        "label": "开始游戏",
+        "action": "new_game",
+        "x": 0.12,
+        "y": 0.72,
+        "w": 0.76,
+        "h": 0.09,
+        "showCondition": null
+      }
+    ],
+    "copyright": "著作权人：北京慕远科技xx有限公司",
+    "bgm": "audio/home_bgm.mp3"
+  },
+  "entryNodeId": "node_start",
+  "preload": {
+    "_note": "预加载策略配置。strategy: EAGER=立即预加载后继节点(默认) / LAZY=视频80%时触发 / MANUAL=手动调用; lookahead: 向前预加载几层节点; initialNodes: 首次进入游戏时需要优先下载的节点列表（会在 HomeScene 的 loading 阶段一并下载），建议包含 entryNodeId 及其直接后继节点。视频会持久化保存到 ks.env.USER_DATA_PATH/asset/，下次启动自动命中本地缓存，无需重新下载。",
+    "strategy": "EAGER",
+    "lookahead": 2,
+    "initialNodes": [
+      "node_start",
+      "node_direct",
+      "node_ad",
+      "node_share"
+    ],
+    "_initialNodesNote": "首次进入必须预下载的节点（含 entryNode 及高频前几个节点）。数量建议不超过 5 个，避免 HomeScene loading 等待时间过长。玩家实际游玩后的节点由 EAGER/LAZY 策略动态预下载。"
+  },
+  "nodes": [
+    {
+      "nodeId": "node_start",
+      "nodeDesc": "入口节点：展示开场文案，并在一个节点里提供 direct、ad、share、shortcut、follow 多种交互选项。",
+      "title": "入宫抉择",
+      "nodeType": "video",
+      "sceneType": "begin",
+      "nodeIconUrl": "https://cdn.example.com/thumbnails/node_start.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks712131693858878897/skill_weather_activate.mp4",
+        "firstFrameUrl": "https://cdn.example.com/frames/node_start_first.jpg",
+        "endFrameUrl": "https://cdn.example.com/frames/node_start_end.jpg",
+        "preload": true,
+        "loop": false,
+        "muted": false,
+        "duration": 10
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "start_text_intro",
+          "componentType": "text1",
+          "showTime": 0,
+          "endTime": 5000,
+          "nextNodeId": null,
+          "unlockType": null,
+          "position": {
+            "_note": "基准 414×896，不传 x/y 则居中/默认位置；传了则按比例缩放到实际屏幕",
+            "x": null,
+            "y": 390,
+            "width": 360,
+            "height": null
+          },
+          "content": {
+            "roleName": "林晚艺",
+            "title": "",
+            "text": "大周元和三年，选秀大典开始。你站在宫门前，必须选择第一步如何行动。",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null
+        },
+        {
+          "componentId": "start_btn_direct",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "node_direct",
+          "unlockType": null,
+          "position": {
+            "_note": "button 的 position 会覆盖自动堆叠排布的 x/y/width/height",
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          },
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "直接入宫：测试普通跳转",
+            "iconUrl": null,
+            "lable": "A"
+          },
+          "value": {
+            "favor": 1,
+            "wisdom": 0,
+            "courage": 1
+          }
+        },
+        {
+          "componentId": "start_btn_ad",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "node_ad",
+          "unlockType": "ad",
+          "position": { "x": null, "y": 591, "width": 360, "height": 48 },
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "观看激励广告后查看密信。",
+            "buttonText": "看广告解锁密信",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": {
+            "wisdom": 2
+          },
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": "ad_unit_001",
+            "failNextNodeId": "node_direct"
+          }
+        },
+        {
+          "componentId": "start_btn_share",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "_nextNodeId": "node_share",
+          "nextNodeId": "node_end",
+          "unlockType": "share",
+          "position": { "x": null, "y": 649, "width": 360, "height": 48 },
+          "content": {
+            "roleName": "",
+            "title": "分享解锁",
+            "text": "分享后获得外援线索。",
+            "buttonText": "分享给好友解锁",
+            "iconUrl": "images/icon_share.png",
+            "lable": "B"
+          },
+          "value": {
+            "favor": 2
+          },
+          "shareConfig": {
+            "shareType": "friend",
+            "shareTitle": "我在《盛世天下》开启宫廷试炼",
+            "shareImageUrl": "https://cdn.example.com/share/start.jpg",
+            "failNextNodeId": "node_direct"
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "node_direct",
+      "nodeDesc": "普通跳转结果节点：验证 showTime/endTime 数值展示，并通过 direct_next 点击任意区域进入倒计时节点。",
+      "title": "素衣入殿",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://cdn.example.com/thumbnails/node_direct.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks712131693858878897/skill_stone_activate.mp4",
+        "firstFrameUrl": "https://cdn.example.com/frames/node_direct_first.jpg",
+        "endFrameUrl": "https://cdn.example.com/frames/node_direct_end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 9
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "direct_text_now",
+          "componentType": "text1",
+          "showTime": 0,
+          "endTime": 4000,
+          "nextNodeId": null,
+          "unlockType": null,
+          "position": { "x": null, "y": 390, "width": 360, "height": null },
+          "content": {
+            "roleName": "旁白",
+            "title": "",
+            "text": "你素衣入殿，神色从容。这个 text1 会在视频开始立即展示，4 秒后失效。",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null
+        },
+        {
+          "componentId": "direct_text_after",
+          "componentType": "text2",
+          "showTime": 0,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "position": { "x": null, "y": 390, "width": 360, "height": null },
+          "content": {
+            "roleName": "",
+            "title": "点击继续测试",
+            "text": "媒体结束后，这段文字会展示；点击任意区域进入倒计时节点。",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null
+        },
+        {
+          "componentId": "direct_next_anywhere",
+          "componentType": null,
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "node_countdown",
+          "unlockType": "direct_next",
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "点击任意区域继续",
+            "buttonText": "",
+            "iconUrl": null,
+            "delay": 500,
+            "position": "bottom"
+          },
+          "value": {
+            "wisdom": 1
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "node_ad",
+      "nodeDesc": "广告解锁成功节点：从入口 ad 按钮跳入，用于验证广告交互后的目标跳转和 value 加成。",
+      "title": "密信得手",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://cdn.example.com/thumbnails/node_ad.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks712131693858878897/skill_weather_activate.mp4",
+        "firstFrameUrl": "https://cdn.example.com/frames/node_ad_first.jpg",
+        "endFrameUrl": "https://cdn.example.com/frames/node_ad_end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 8
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ad_text",
+          "componentType": "text2",
+          "showTime": 0,
+          "endTime": 3500,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "傅相",
+            "title": "",
+            "text": "你读懂了密信里的暗号，提前避开了一场陷害。",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "position": {
+            "_note": "基准 414×896，不传 x/y 则居中/默认位置；传了则按比例缩放到实际屏幕",
+            "x": null,
+            "y": 390,
+            "width": 360,
+            "height": null
+          },
+          "value": null
+        },
+        {
+          "componentId": "ad_btn_next",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "node_countdown",
+          "unlockType": null,
+          "position": { "x": null, "y": 529, "width": 360, "height": 48 },
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "继续宫宴试炼",
+            "iconUrl": null
+          },
+          "value": {
+            "wisdom": 2,
+            "favor": 1
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "node_share",
+      "nodeDesc": "分享解锁成功节点：从入口 share 按钮跳入，用于验证分享交互后的目标跳转和 value 加成。",
+      "title": "好友来援",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://cdn.example.com/thumbnails/node_share.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks712131693858878897/e4s8.mp4",
+        "firstFrameUrl": "https://cdn.example.com/frames/node_share_first.jpg",
+        "endFrameUrl": "https://cdn.example.com/frames/node_share_end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 8
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "share_text",
+          "componentType": "text1",
+          "showTime": 0,
+          "endTime": 3500,
+          "nextNodeId": null,
+          "unlockType": null,
+          "position": { "x": null, "y": 390, "width": 360, "height": null },
+          "content": {
+            "roleName": "旁白",
+            "title": "",
+            "text": "你的消息传出宫墙，旧友带来了关键证词。",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null
+        },
+        {
+          "componentId": "share_btn_next",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "node_countdown",
+          "unlockType": null,
+          "position": { "x": null, "y": 529, "width": 360, "height": 48 },
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "携证入宴",
+            "iconUrl": null
+          },
+          "value": {
+            "favor": 1,
+            "wisdom": 1
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "node_shortcut",
+      "nodeDesc": "侧边栏/快捷入口解锁成功节点：从入口 shortcut 按钮跳入，用于验证 shortcut 交互。",
+      "title": "追更留痕",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://cdn.example.com/thumbnails/node_shortcut.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks712131693858878897/skill_stone_activate.mp4",
+        "firstFrameUrl": "https://cdn.example.com/frames/node_shortcut_first.jpg",
+        "endFrameUrl": "https://cdn.example.com/frames/node_shortcut_end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 8
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "shortcut_text",
+          "componentType": "text1",
+          "showTime": 0,
+          "endTime": 3500,
+          "nextNodeId": null,
+          "unlockType": null,
+          "position": { "x": null, "y": 390, "width": 360, "height": null },
+          "content": {
+            "roleName": "旁白",
+            "title": "",
+            "text": "你留下暗记，之后可以更快回到这段命运分岔。",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null
+        },
+        {
+          "componentId": "shortcut_btn_next",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "node_countdown",
+          "unlockType": null,
+          "position": { "x": null, "y": 529, "width": 360, "height": 48 },
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "前往宫宴",
+            "iconUrl": null
+          },
+          "value": {
+            "courage": 1
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "node_follow",
+      "nodeDesc": "关注官方号解锁成功节点：从入口 follow 按钮跳入，用于验证 follow 交互。",
+      "title": "圣旨将至",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://cdn.example.com/thumbnails/node_follow.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks712131693858878897/skill_weather_activate.mp4",
+        "firstFrameUrl": "https://cdn.example.com/frames/node_follow_first.jpg",
+        "endFrameUrl": "https://cdn.example.com/frames/node_follow_end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 8
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "follow_text",
+          "componentType": "text1",
+          "showTime": 0,
+          "endTime": 3500,
+          "nextNodeId": null,
+          "unlockType": null,
+          "position": { "x": null, "y": 390, "width": 360, "height": null },
+          "content": {
+            "roleName": "旁白",
+            "title": "",
+            "text": "官方号传来新剧情提示，皇上的赏赐即将揭晓。",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null
+        },
+        {
+          "componentId": "follow_btn_next",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "node_end_be",
+          "unlockType": null,
+          "position": { "x": null, "y": 529, "width": 360, "height": 48 },
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "进入最终选择",
+            "iconUrl": null
+          },
+          "value": {
+            "favor": 2
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "node_countdown",
+      "nodeDesc": "倒计时选择节点：验证 countdown 流程、多个按钮选项、超时默认跳转和每个选择的 value 加减。",
+      "title": "宫宴急辩",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://cdn.example.com/thumbnails/node_countdown.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks712131693858878897/e4s8.mp4",
+        "firstFrameUrl": "https://cdn.example.com/frames/node_countdown_first.jpg",
+        "endFrameUrl": "https://cdn.example.com/frames/node_countdown_end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 10
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "countdown_text_prompt",
+          "componentType": "text2",
+          "showTime": 0,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "position": { "x": null, "y": 390, "width": 360, "height": null },
+          "content": {
+            "roleName": "限时抉择",
+            "title": "",
+            "text": "贵妃当众发难，所有目光都落在你身上。请在倒计时结束前选择回应方式。",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null
+        },
+        {
+          "componentId": "countdown_control",
+          "componentType": "countdownButton",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "node_follow",
+          "unlockType": "follow",
+          "position": { "x": null, "y": 529, "width": 360, "height": 48 },
+          "content": {
+            "roleName": "",
+            "title": "限时解锁",
+            "text": "",
+            "buttonText": "倒计时结束后按钮消失",
+            "iconUrl": null,
+            "duration": 8
+          },
+          "value": null
+        },
+        {
+          "componentId": "countdown_btn_fight",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "node_end",
+          "unlockType": null,
+          "position": { "x": null, "y": 591, "width": 360, "height": 48 },
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "据理力争：智慧+2 勇气+2",
+            "iconUrl": null
+          },
+          "value": {
+            "wisdom": 2,
+            "courage": 2
+          }
+        },
+        {
+          "componentId": "countdown_btn_yield",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "node_end",
+          "unlockType": null,
+          "position": { "x": null, "y": 653, "width": 360, "height": 48 },
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "以退为进：智慧+3 勇气-1",
+            "iconUrl": null
+          },
+          "value": {
+            "wisdom": 3,
+            "courage": -1
+          }
+        },
+        {
+          "componentId": "countdown_btn_back",
+          "componentType": "button2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "node_direct",
+          "unlockType": null,
+          "position": { "x": null, "y": 715, "width": 360, "height": 48 },
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "回到上一节点重新考虑",
+            "iconUrl": null
+          },
+          "value": null
+        }
+      ]
+    },
+    {
+      "nodeId": "node_end",
+      "nodeDesc": "好结局节点：播放结局视频，媒体结束后自动展示 endingDialog_he 弹窗。弹窗内容由 components[1].content 配置，按钮行为由 unlockType=share + nextNodeId=null 决定（分享后不跳转）。点弹窗外区域调用 GameEngine.restart() 重新开始。",
+      "title": "第一幕结局",
+      "nodeType": "video",
+      "sceneType": "end",
+      "nodeIconUrl": "https://cdn.example.com/thumbnails/node_end.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks712131693858878897/skill_weather_activate.mp4",
+        "firstFrameUrl": "https://cdn.example.com/frames/node_end_first.jpg",
+        "endFrameUrl": "https://cdn.example.com/frames/node_end_end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 10
+      },
+      "image": null,
+      "components": [
+        {
+          "_note": "视频播放期间展示字幕，endTime=6000ms 后消失",
+          "componentId": "end_text_title",
+          "componentType": "text2",
+          "showTime": 0,
+          "endTime": 6000,
+          "nextNodeId": null,
+          "unlockType": "share",
+          "position": { "x": null, "y": 390, "width": 360, "height": null },
+          "content": {
+            "roleName": "",
+            "title": "第一幕终局",
+            "text": "你在宫宴中站稳脚跟，新的风浪即将到来。",
+            "buttonText": "分享给好友",
+            "iconUrl": null
+          },
+          "value": null
+        },
+        {
+          "_note": "媒体结束后（showTime=null）自动展示好结局弹窗。content.buttonText=分享给好友，unlockType=share 触发分享行为，nextNodeId=null 表示分享后不跳转（停留当前结局画面）。点弹窗外 → GameEngine.restart()",
+          "componentId": "end_dialog_he",
+          "componentType": "endingDialog_he",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": "share",
+          "position": null,
+          "content": {
+            "roleName": "",
+            "title": "终于等到你",
+            "text": "原来有些相遇，并不是偶然。\n绕了这么久，你们还是走到了彼此身边。",
+            "buttonText": "分享给好友",
+            "iconUrl": null
+          },
+          "value": null
+        }
+      ]
+    },
+    {
+      "nodeId": "node_end_be",
+      "nodeDesc": "坏结局节点：播放结局视频，媒体结束后展示 endingDialog_be 弹窗。按钮看广告回到上个选择：unlockType=ad + nextNodeId=node_countdown，看完广告后跳回倒计时节点重新选择。点弹窗外 → GameEngine.restart()",
+      "title": "第一幕坏结局",
+      "nodeType": "video",
+      "sceneType": "end",
+      "nodeIconUrl": "https://cdn.example.com/thumbnails/node_end_be.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks712131693858878897/skill_weather_activate.mp4",
+        "firstFrameUrl": "https://cdn.example.com/frames/node_end_be_first.jpg",
+        "endFrameUrl": "https://cdn.example.com/frames/node_end_be_end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 10
+      },
+      "image": null,
+      "components": [
+        {
+          "_note": "视频播放期间展示字幕",
+          "componentId": "end_be_text_title",
+          "componentType": "text2",
+          "showTime": 0,
+          "endTime": 6000,
+          "nextNodeId": null,
+          "unlockType": null,
+          "position": { "x": null, "y": 390, "width": 360, "height": null },
+          "content": {
+            "roleName": "",
+            "title": "第一幕终局",
+            "text": "这一次，她没能留住他。",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null
+        },
+        {
+          "_note": "媒体结束后展示坏结局弹窗。unlockType=ad + nextNodeId=node_countdown：点按钮触发激励广告，广告看完后跳回倒计时节点重新选择。点弹窗外 → GameEngine.restart()",
+          "componentId": "end_dialog_be",
+          "componentType": "endingDialog_be",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "node_countdown",
+          "unlockType": "ad",
+          "position": null,
+          "content": {
+            "roleName": "",
+            "title": "没能说出口的话",
+            "text": "这一次，她没能留住他。\n有些选择不会再有第二次机会。",
+            "buttonText": "看广告回到上个选择",
+            "iconUrl": null
+          },
+          "value": null
+        }
+      ]
+    }
+  ],
+  "globalSettings": {
+    "enableAutoSave": true,
+    "enableUnlockPersistence": true,
+    "syncUnlockToServer": false,
+    "debugMode": false,
+    "_note": "debugMode=true 时开启 console 日志，生产环境务必关闭"
+  },
+  "adConfig": {
+    "rewardedAdId": "ad_unit_001",
+    "interstitialAdId": "ad_unit_002",
+    "bannerAdId": "ad_unit_003"
+  }
+}

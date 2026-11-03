@@ -1,0 +1,48 @@
+{
+  "_comment": "把以下 hooks 片段合并到 ~/.codeflicker/settings.json 的 hooks 字段中。install.sh 会自动合并。",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          { "type": "command", "command": "node /Users/$USER/.codeflicker/kwaipilot-hooks/aigc-minigame/hub-repo-init.js", "timeout": 15 },
+          { "type": "command", "command": "node /Users/$USER/.codeflicker/kwaipilot-hooks/aigc-minigame/session-start-check.js", "timeout": 10 }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "execute_command",
+        "hooks": [
+          { "type": "command", "command": "node /Users/$USER/.codeflicker/kwaipilot-hooks/aigc-minigame/enforce-orchestrator.js", "timeout": 8 }
+        ]
+      },
+      {
+        "matcher": "write_to_file|replace_in_file|multi_replace_in_file",
+        "hooks": [
+          { "type": "command", "command": "node /Users/$USER/.codeflicker/kwaipilot-hooks/aigc-minigame/enforce-orchestrator.js", "timeout": 8 }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "write_to_file|replace_in_file|multi_replace_in_file",
+        "hooks": [
+          { "type": "command", "command": "node /Users/$USER/.codeflicker/kwaipilot-hooks/aigc-minigame/skill-sync.js", "timeout": 15, "async": true }
+        ]
+      },
+      {
+        "matcher": "use_subagent",
+        "hooks": [
+          { "type": "command", "command": "node /Users/$USER/.codeflicker/kwaipilot-hooks/aigc-minigame/mark-orchestrator-ran.js", "timeout": 3 }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          { "type": "command", "command": "node /Users/$USER/.codeflicker/kwaipilot-hooks/aigc-minigame/detect-context.js", "timeout": 5 }
+        ]
+      }
+    ]
+  }
+}

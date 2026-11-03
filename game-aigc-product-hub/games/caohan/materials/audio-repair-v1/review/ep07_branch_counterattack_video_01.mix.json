@@ -1,0 +1,27 @@
+{
+  "videoId": "ep07_branch_counterattack_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep07_branch_counterattack_video_01__l01",
+      "speaker": "贺铭",
+      "text": "冉冉，你从小娇生惯养，爸爸知道你是在赌气，可你再怎么闹，也不能拿自己的人生开玩笑。他一个乡下出来的，高中都没毕业，你跟他有什么未来？",
+      "heard": "你从小交生灌养爸爸知道你是在赌气可你再怎么闹也不能拿自己的人生开玩笑他一个乡下出来的高中都没毕业你跟他有什么未来",
+      "start": 4.58,
+      "end": 20.525,
+      "alignmentScore": 0.9474
+    },
+    {
+      "lineId": "ep07_branch_counterattack_video_01__l02",
+      "speaker": "贺星冉",
+      "text": "爸，我已经长大了，我的事我自己决定。",
+      "heard": "爸我已经长大了我的事我自己决定",
+      "start": 32.935,
+      "end": 37.105,
+      "alignmentScore": 1.0
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 37.17514739229025,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.6591796875
+}

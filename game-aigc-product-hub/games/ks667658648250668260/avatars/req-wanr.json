@@ -1,0 +1,8 @@
+{
+  "task": "edit",
+  "prompt": "Ultra clear close-up headshot portrait of a beautiful young Chinese woman in Ming Dynasty era simple peasant clothing, hair loosely tied with a wooden pin. Face fills 80% of the frame. Sharp clear delicate facial features, fair soft skin, rosy blushing cheeks, gentle half-closed dreamy eyes with a hint of tender longing gaze, slightly parted soft lips, shy affectionate warm expression full of emotion and yearning tenderness. Cinematic soft warm golden hour lighting on face. PURE FLAT SOLID WHITE BACKGROUND (#FFFFFF), no shadows on background, no scenery, no props, no text. Head and shoulders only, centered composition. Photorealistic portrait, sharp focus on face, high detail. Keep identity from reference image.",
+  "references": ["/Users/fat/.codeflicker/skills/wo-de-weihunqi-interactive-drama/reference/wanr.png"],
+  "aspectRatio": "1:1",
+  "resolution": "1K",
+  "quality": "high"
+}

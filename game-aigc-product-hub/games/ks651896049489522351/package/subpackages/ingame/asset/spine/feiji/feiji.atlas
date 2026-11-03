@@ -1,0 +1,68 @@
+feiji.png
+size: 1303,571
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+飞机素材(1)/feifei/1
+  rotate: false
+  xy: 895, 3
+  size: 195, 233
+  orig: 195, 233
+  offset: 0, 0
+  index: -1
+飞机素材(1)/feifei/2
+  rotate: true
+  xy: 625, 2
+  size: 221, 268
+  orig: 221, 268
+  offset: 0, 0
+  index: -1
+飞机素材(1)/feifei/3
+  rotate: false
+  xy: 1092, 88
+  size: 196, 259
+  orig: 196, 259
+  offset: 0, 0
+  index: -1
+飞机素材(1)/feifei/4
+  rotate: false
+  xy: 1086, 349
+  size: 215, 220
+  orig: 215, 220
+  offset: 0, 0
+  index: -1
+飞机素材(1)/feifei/jishen
+  rotate: true
+  xy: 276, 129
+  size: 440, 347
+  orig: 440, 347
+  offset: 0, 0
+  index: -1
+飞机素材(1)/light
+  rotate: false
+  xy: 818, 238
+  size: 266, 331
+  orig: 272, 340
+  offset: 2, 5
+  index: -1
+飞机素材(1)/star
+  rotate: true
+  xy: 625, 225
+  size: 344, 191
+  orig: 344, 193
+  offset: 0, 1
+  index: -1
+飞机素材(1)/star (2)
+  rotate: true
+  xy: 2, 18
+  size: 91, 82
+  orig: 97, 87
+  offset: 2, 3
+  index: -1
+飞机素材(1)/wei
+  rotate: true
+  xy: 2, 111
+  size: 458, 272
+  orig: 492, 299
+  offset: 13, 7
+  index: -1

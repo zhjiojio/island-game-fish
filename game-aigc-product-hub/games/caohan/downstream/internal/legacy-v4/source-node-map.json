@@ -1,0 +1,471 @@
+{
+  "ep01_scene_00": {
+    "videoId": "ep01_scene_00_video_01",
+    "sourceNodeId": "ep01_scene_00",
+    "chapterId": "ch1",
+    "episodeId": "ep01",
+    "attachedSourceNodeId": "ep01_choice_01"
+  },
+  "ep01_branch_emotion": {
+    "videoId": "ep01_branch_emotion_video_01",
+    "sourceNodeId": "ep01_branch_emotion",
+    "chapterId": "ch1",
+    "episodeId": "ep01",
+    "attachedSourceNodeId": "ep01_ad_01"
+  },
+  "ep01_branch_truth": {
+    "videoId": "ep01_branch_truth_video_01",
+    "sourceNodeId": "ep01_branch_truth",
+    "chapterId": "ch1",
+    "episodeId": "ep01",
+    "attachedSourceNodeId": "ep01_ad_02"
+  },
+  "ep01_branch_counterattack": {
+    "videoId": "ep01_branch_counterattack_video_01",
+    "sourceNodeId": "ep01_branch_counterattack",
+    "chapterId": "ch1",
+    "episodeId": "ep01",
+    "attachedSourceNodeId": "ep01_ad_03"
+  },
+  "ep01_branch_conditional": {
+    "videoId": "ep01_branch_conditional_video_01",
+    "sourceNodeId": "ep01_branch_conditional",
+    "chapterId": "ch1",
+    "episodeId": "ep01",
+    "attachedSourceNodeId": "ep01_ad_04"
+  },
+  "ep02_scene_00": {
+    "videoId": "ep02_scene_00_video_01",
+    "sourceNodeId": "ep02_scene_00",
+    "chapterId": "ch2",
+    "episodeId": "ep02",
+    "attachedSourceNodeId": "ep02_choice_01"
+  },
+  "ep02_branch_emotion": {
+    "videoId": "ep02_branch_emotion_video_01",
+    "sourceNodeId": "ep02_branch_emotion",
+    "chapterId": "ch2",
+    "episodeId": "ep02",
+    "attachedSourceNodeId": "ep02_ad_01"
+  },
+  "ep02_branch_truth": {
+    "videoId": "ep02_branch_truth_video_01",
+    "sourceNodeId": "ep02_branch_truth",
+    "chapterId": "ch2",
+    "episodeId": "ep02",
+    "attachedSourceNodeId": "ep02_ad_02"
+  },
+  "ep02_branch_counterattack": {
+    "videoId": "ep02_branch_counterattack_video_01",
+    "sourceNodeId": "ep02_branch_counterattack",
+    "chapterId": "ch2",
+    "episodeId": "ep02",
+    "attachedSourceNodeId": "ep02_ad_03"
+  },
+  "ep02_branch_conditional": {
+    "videoId": "ep02_branch_conditional_video_01",
+    "sourceNodeId": "ep02_branch_conditional",
+    "chapterId": "ch2",
+    "episodeId": "ep02",
+    "attachedSourceNodeId": "ep02_ad_04"
+  },
+  "ep03_scene_00": {
+    "videoId": "ep03_scene_00_video_01",
+    "sourceNodeId": "ep03_scene_00",
+    "chapterId": "ch2",
+    "episodeId": "ep03",
+    "attachedSourceNodeId": "ep03_choice_01"
+  },
+  "ep03_branch_emotion": {
+    "videoId": "ep03_branch_emotion_video_01",
+    "sourceNodeId": "ep03_branch_emotion",
+    "chapterId": "ch2",
+    "episodeId": "ep03",
+    "attachedSourceNodeId": "ep03_ad_01"
+  },
+  "ep03_branch_truth": {
+    "videoId": "ep03_branch_truth_video_01",
+    "sourceNodeId": "ep03_branch_truth",
+    "chapterId": "ch2",
+    "episodeId": "ep03",
+    "attachedSourceNodeId": "ep03_ad_02"
+  },
+  "ep03_branch_counterattack": {
+    "videoId": "ep03_branch_counterattack_video_01",
+    "sourceNodeId": "ep03_branch_counterattack",
+    "chapterId": "ch2",
+    "episodeId": "ep03",
+    "attachedSourceNodeId": "ep03_ad_03"
+  },
+  "ep03_branch_conditional": {
+    "videoId": "ep03_branch_conditional_video_01",
+    "sourceNodeId": "ep03_branch_conditional",
+    "chapterId": "ch2",
+    "episodeId": "ep03",
+    "attachedSourceNodeId": "ep03_ad_04"
+  },
+  "ep04_scene_00": {
+    "videoId": "ep04_scene_00_video_01",
+    "sourceNodeId": "ep04_scene_00",
+    "chapterId": "ch3",
+    "episodeId": "ep04",
+    "attachedSourceNodeId": "ep04_choice_01"
+  },
+  "ep04_branch_emotion": {
+    "videoId": "ep04_branch_emotion_video_01",
+    "sourceNodeId": "ep04_branch_emotion",
+    "chapterId": "ch3",
+    "episodeId": "ep04",
+    "attachedSourceNodeId": "ep04_ad_01"
+  },
+  "ep04_branch_truth": {
+    "videoId": "ep04_branch_truth_video_01",
+    "sourceNodeId": "ep04_branch_truth",
+    "chapterId": "ch3",
+    "episodeId": "ep04",
+    "attachedSourceNodeId": "ep04_ad_02"
+  },
+  "ep04_branch_counterattack": {
+    "videoId": "ep04_branch_counterattack_video_01",
+    "sourceNodeId": "ep04_branch_counterattack",
+    "chapterId": "ch3",
+    "episodeId": "ep04",
+    "attachedSourceNodeId": "ep04_ad_03"
+  },
+  "ep04_branch_conditional": {
+    "videoId": "ep04_branch_conditional_video_01",
+    "sourceNodeId": "ep04_branch_conditional",
+    "chapterId": "ch3",
+    "episodeId": "ep04",
+    "attachedSourceNodeId": "ep04_ad_04"
+  },
+  "ep05_scene_00": {
+    "videoId": "ep05_scene_00_video_01",
+    "sourceNodeId": "ep05_scene_00",
+    "chapterId": "ch3",
+    "episodeId": "ep05",
+    "attachedSourceNodeId": "ep05_choice_01"
+  },
+  "ep05_branch_emotion": {
+    "videoId": "ep05_branch_emotion_video_01",
+    "sourceNodeId": "ep05_branch_emotion",
+    "chapterId": "ch3",
+    "episodeId": "ep05",
+    "attachedSourceNodeId": "ep05_ad_01"
+  },
+  "ep05_branch_truth": {
+    "videoId": "ep05_branch_truth_video_01",
+    "sourceNodeId": "ep05_branch_truth",
+    "chapterId": "ch3",
+    "episodeId": "ep05",
+    "attachedSourceNodeId": "ep05_ad_02"
+  },
+  "ep05_branch_counterattack": {
+    "videoId": "ep05_branch_counterattack_video_01",
+    "sourceNodeId": "ep05_branch_counterattack",
+    "chapterId": "ch3",
+    "episodeId": "ep05",
+    "attachedSourceNodeId": "ep05_ad_03"
+  },
+  "ep05_branch_conditional": {
+    "videoId": "ep05_branch_conditional_video_01",
+    "sourceNodeId": "ep05_branch_conditional",
+    "chapterId": "ch3",
+    "episodeId": "ep05",
+    "attachedSourceNodeId": "ep05_ad_04"
+  },
+  "ep06_scene_00": {
+    "videoId": "ep06_scene_00_video_01",
+    "sourceNodeId": "ep06_scene_00",
+    "chapterId": "ch3",
+    "episodeId": "ep06",
+    "attachedSourceNodeId": "ep06_choice_01"
+  },
+  "ep06_branch_emotion": {
+    "videoId": "ep06_branch_emotion_video_01",
+    "sourceNodeId": "ep06_branch_emotion",
+    "chapterId": "ch3",
+    "episodeId": "ep06",
+    "attachedSourceNodeId": "ep06_ad_01"
+  },
+  "ep06_branch_truth": {
+    "videoId": "ep06_branch_truth_video_01",
+    "sourceNodeId": "ep06_branch_truth",
+    "chapterId": "ch3",
+    "episodeId": "ep06",
+    "attachedSourceNodeId": "ep06_ad_02"
+  },
+  "ep06_branch_counterattack": {
+    "videoId": "ep06_branch_counterattack_video_01",
+    "sourceNodeId": "ep06_branch_counterattack",
+    "chapterId": "ch3",
+    "episodeId": "ep06",
+    "attachedSourceNodeId": "ep06_ad_03"
+  },
+  "ep06_branch_conditional": {
+    "videoId": "ep06_branch_conditional_video_01",
+    "sourceNodeId": "ep06_branch_conditional",
+    "chapterId": "ch3",
+    "episodeId": "ep06",
+    "attachedSourceNodeId": "ep06_ad_04"
+  },
+  "ep07_scene_00": {
+    "videoId": "ep07_scene_00_video_01",
+    "sourceNodeId": "ep07_scene_00",
+    "chapterId": "ch4",
+    "episodeId": "ep07",
+    "attachedSourceNodeId": "ep07_choice_01"
+  },
+  "ep07_branch_emotion": {
+    "videoId": "ep07_branch_emotion_video_01",
+    "sourceNodeId": "ep07_branch_emotion",
+    "chapterId": "ch4",
+    "episodeId": "ep07",
+    "attachedSourceNodeId": "ep07_ad_01"
+  },
+  "ep07_branch_truth": {
+    "videoId": "ep07_branch_truth_video_01",
+    "sourceNodeId": "ep07_branch_truth",
+    "chapterId": "ch4",
+    "episodeId": "ep07",
+    "attachedSourceNodeId": "ep07_ad_02"
+  },
+  "ep07_branch_counterattack": {
+    "videoId": "ep07_branch_counterattack_video_01",
+    "sourceNodeId": "ep07_branch_counterattack",
+    "chapterId": "ch4",
+    "episodeId": "ep07",
+    "attachedSourceNodeId": "ep07_ad_03"
+  },
+  "ep07_branch_conditional": {
+    "videoId": "ep07_branch_conditional_video_01",
+    "sourceNodeId": "ep07_branch_conditional",
+    "chapterId": "ch4",
+    "episodeId": "ep07",
+    "attachedSourceNodeId": "ep07_ad_04"
+  },
+  "ep08_scene_00": {
+    "videoId": "ep08_scene_00_video_01",
+    "sourceNodeId": "ep08_scene_00",
+    "chapterId": "ch4",
+    "episodeId": "ep08",
+    "attachedSourceNodeId": "ep08_choice_01"
+  },
+  "ep08_branch_emotion": {
+    "videoId": "ep08_branch_emotion_video_01",
+    "sourceNodeId": "ep08_branch_emotion",
+    "chapterId": "ch4",
+    "episodeId": "ep08",
+    "attachedSourceNodeId": "ep08_ad_01"
+  },
+  "ep08_branch_truth": {
+    "videoId": "ep08_branch_truth_video_01",
+    "sourceNodeId": "ep08_branch_truth",
+    "chapterId": "ch4",
+    "episodeId": "ep08",
+    "attachedSourceNodeId": "ep08_ad_02"
+  },
+  "ep08_branch_counterattack": {
+    "videoId": "ep08_branch_counterattack_video_01",
+    "sourceNodeId": "ep08_branch_counterattack",
+    "chapterId": "ch4",
+    "episodeId": "ep08",
+    "attachedSourceNodeId": "ep08_ad_03"
+  },
+  "ep08_branch_conditional": {
+    "videoId": "ep08_branch_conditional_video_01",
+    "sourceNodeId": "ep08_branch_conditional",
+    "chapterId": "ch4",
+    "episodeId": "ep08",
+    "attachedSourceNodeId": "ep08_ad_04"
+  },
+  "ep09_scene_00": {
+    "videoId": "ep09_scene_00_video_01",
+    "sourceNodeId": "ep09_scene_00",
+    "chapterId": "ch4",
+    "episodeId": "ep09",
+    "attachedSourceNodeId": "ep09_choice_01"
+  },
+  "ep09_branch_emotion": {
+    "videoId": "ep09_branch_emotion_video_01",
+    "sourceNodeId": "ep09_branch_emotion",
+    "chapterId": "ch4",
+    "episodeId": "ep09",
+    "attachedSourceNodeId": "ep09_ad_01"
+  },
+  "ep09_branch_truth": {
+    "videoId": "ep09_branch_truth_video_01",
+    "sourceNodeId": "ep09_branch_truth",
+    "chapterId": "ch4",
+    "episodeId": "ep09",
+    "attachedSourceNodeId": "ep09_ad_02"
+  },
+  "ep09_branch_counterattack": {
+    "videoId": "ep09_branch_counterattack_video_01",
+    "sourceNodeId": "ep09_branch_counterattack",
+    "chapterId": "ch4",
+    "episodeId": "ep09",
+    "attachedSourceNodeId": "ep09_ad_03"
+  },
+  "ep09_branch_conditional": {
+    "videoId": "ep09_branch_conditional_video_01",
+    "sourceNodeId": "ep09_branch_conditional",
+    "chapterId": "ch4",
+    "episodeId": "ep09",
+    "attachedSourceNodeId": "ep09_ad_04"
+  },
+  "ep10_scene_00": {
+    "videoId": "ep10_scene_00_video_01",
+    "sourceNodeId": "ep10_scene_00",
+    "chapterId": "ch5",
+    "episodeId": "ep10",
+    "attachedSourceNodeId": "ep10_choice_01"
+  },
+  "ep10_branch_emotion": {
+    "videoId": "ep10_branch_emotion_video_01",
+    "sourceNodeId": "ep10_branch_emotion",
+    "chapterId": "ch5",
+    "episodeId": "ep10",
+    "attachedSourceNodeId": "ep10_ad_01"
+  },
+  "ep10_branch_truth": {
+    "videoId": "ep10_branch_truth_video_01",
+    "sourceNodeId": "ep10_branch_truth",
+    "chapterId": "ch5",
+    "episodeId": "ep10",
+    "attachedSourceNodeId": "ep10_ad_02"
+  },
+  "ep10_branch_counterattack": {
+    "videoId": "ep10_branch_counterattack_video_01",
+    "sourceNodeId": "ep10_branch_counterattack",
+    "chapterId": "ch5",
+    "episodeId": "ep10",
+    "attachedSourceNodeId": "ep10_ad_03"
+  },
+  "ep10_branch_conditional": {
+    "videoId": "ep10_branch_conditional_video_01",
+    "sourceNodeId": "ep10_branch_conditional",
+    "chapterId": "ch5",
+    "episodeId": "ep10",
+    "attachedSourceNodeId": "ep10_ad_04"
+  },
+  "ep11_scene_00": {
+    "videoId": "ep11_scene_00_video_01",
+    "sourceNodeId": "ep11_scene_00",
+    "chapterId": "ch5",
+    "episodeId": "ep11",
+    "attachedSourceNodeId": "ep11_choice_01"
+  },
+  "ep11_branch_emotion": {
+    "videoId": "ep11_branch_emotion_video_01",
+    "sourceNodeId": "ep11_branch_emotion",
+    "chapterId": "ch5",
+    "episodeId": "ep11",
+    "attachedSourceNodeId": "ep11_ad_01"
+  },
+  "ep11_branch_truth": {
+    "videoId": "ep11_branch_truth_video_01",
+    "sourceNodeId": "ep11_branch_truth",
+    "chapterId": "ch5",
+    "episodeId": "ep11",
+    "attachedSourceNodeId": "ep11_ad_02"
+  },
+  "ep11_branch_counterattack": {
+    "videoId": "ep11_branch_counterattack_video_01",
+    "sourceNodeId": "ep11_branch_counterattack",
+    "chapterId": "ch5",
+    "episodeId": "ep11",
+    "attachedSourceNodeId": "ep11_ad_03"
+  },
+  "ep11_branch_conditional": {
+    "videoId": "ep11_branch_conditional_video_01",
+    "sourceNodeId": "ep11_branch_conditional",
+    "chapterId": "ch5",
+    "episodeId": "ep11",
+    "attachedSourceNodeId": "ep11_ad_04"
+  },
+  "ending_loop": {
+    "videoId": "ending_loop",
+    "sourceNodeId": "ending_loop",
+    "chapterId": "ch1",
+    "episodeId": "ep01"
+  },
+  "ending_streamer": {
+    "videoId": "ending_streamer",
+    "sourceNodeId": "ending_streamer",
+    "chapterId": "ch2",
+    "episodeId": "ep02"
+  },
+  "ending_cow": {
+    "videoId": "ending_cow",
+    "sourceNodeId": "ending_cow",
+    "chapterId": "ch2",
+    "episodeId": "ep03"
+  },
+  "ending_terrace": {
+    "videoId": "ending_terrace",
+    "sourceNodeId": "ending_terrace",
+    "chapterId": "ch3",
+    "episodeId": "ep04"
+  },
+  "ending_reality_show": {
+    "videoId": "ending_reality_show",
+    "sourceNodeId": "ending_reality_show",
+    "chapterId": "ch3",
+    "episodeId": "ep05"
+  },
+  "ending_empire": {
+    "videoId": "ending_empire",
+    "sourceNodeId": "ending_empire",
+    "chapterId": "ch3",
+    "episodeId": "ep06"
+  },
+  "ending_future": {
+    "videoId": "ending_future",
+    "sourceNodeId": "ending_future",
+    "chapterId": "ch4",
+    "episodeId": "ep07"
+  },
+  "ending_boss": {
+    "videoId": "ending_boss",
+    "sourceNodeId": "ending_boss",
+    "chapterId": "ch4",
+    "episodeId": "ep08"
+  },
+  "ending_crane": {
+    "videoId": "ending_crane",
+    "sourceNodeId": "ending_crane",
+    "chapterId": "ch5",
+    "episodeId": "ep10"
+  },
+  "ending_worker": {
+    "videoId": "ending_worker",
+    "sourceNodeId": "ending_worker",
+    "chapterId": "ch5",
+    "episodeId": "ep10"
+  },
+  "ending_romance": {
+    "videoId": "ending_romance",
+    "sourceNodeId": "ending_romance",
+    "chapterId": "ch5",
+    "episodeId": "ep11"
+  },
+  "ending_independent": {
+    "videoId": "ending_independent",
+    "sourceNodeId": "ending_independent",
+    "chapterId": "ch5",
+    "episodeId": "ep11"
+  },
+  "ending_revenge": {
+    "videoId": "ending_revenge",
+    "sourceNodeId": "ending_revenge",
+    "chapterId": "ch5",
+    "episodeId": "ep11"
+  },
+  "ending_regret": {
+    "videoId": "ending_regret",
+    "sourceNodeId": "ending_regret",
+    "chapterId": "ch5",
+    "episodeId": "ep11"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "task": "edit",
+  "prompt": "Ultra clear close-up headshot portrait of a young handsome Chinese man in Ming Dynasty era peasant clothing (simple rough linen robe, no ornaments). Face fills 80% of the frame, clean sharp facial features, strong jawline, deep expressive eyes, confident charismatic gaze, subtle smile, cinematic soft lighting on face. PURE FLAT SOLID WHITE BACKGROUND (#FFFFFF), no shadows on background, no scenery, no props, no text. Head and shoulders only, centered composition. Photorealistic, sharp focus on face, high detail skin texture, 8K quality. Keep identity from reference image.",
+  "references": ["/Users/fat/weihunqi-large-assets/chars/aotian.png"],
+  "aspectRatio": "1:1",
+  "resolution": "1K",
+  "quality": "high"
+}

@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s1.hd.mp4",
+  "sha256": "a8244a42a0e6c589ff5414096258b34a911547037c9dcca5caad2d4a64090a21",
+  "duration": 10.042,
+  "nodes": [
+    "e3s1"
+  ],
+  "status": "speech",
+  "transcript": "傲天哥，你怎么对我这么好？我这辈子哪修来的福气？",
+  "rawText": "傲天哥你怎么对我这么好我这辈子哪修来的福气",
+  "asrChars": [
+    [
+      3.57,
+      3.77,
+      "傲"
+    ],
+    [
+      3.77,
+      4.01,
+      "天"
+    ],
+    [
+      4.01,
+      4.25,
+      "哥"
+    ],
+    [
+      5.49,
+      5.73,
+      "你"
+    ],
+    [
+      5.77,
+      5.93,
+      "怎"
+    ],
+    [
+      5.93,
+      6.01,
+      "么"
+    ],
+    [
+      6.01,
+      6.15,
+      "对"
+    ],
+    [
+      6.15,
+      6.29,
+      "我"
+    ],
+    [
+      6.29,
+      6.45,
+      "这"
+    ],
+    [
+      6.45,
+      6.57,
+      "么"
+    ],
+    [
+      6.57,
+      6.81,
+      "好"
+    ],
+    [
+      7.93,
+      8.17,
+      "我"
+    ],
+    [
+      8.19,
+      8.35,
+      "这"
+    ],
+    [
+      8.35,
+      8.59,
+      "辈"
+    ],
+    [
+      8.59,
+      8.71,
+      "子"
+    ],
+    [
+      8.71,
+      8.91,
+      "哪"
+    ],
+    [
+      8.91,
+      9.11,
+      "修"
+    ],
+    [
+      9.11,
+      9.29,
+      "来"
+    ],
+    [
+      9.29,
+      9.43,
+      "的"
+    ],
+    [
+      9.43,
+      9.65,
+      "福"
+    ],
+    [
+      9.65,
+      9.885,
+      "气"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "李家沟。澳天哥,你怎么对我这么好?我这辈子哪修来得服气?",
+  "speakerKey": "wanerh",
+  "speakerRuleKey": "e3s1",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

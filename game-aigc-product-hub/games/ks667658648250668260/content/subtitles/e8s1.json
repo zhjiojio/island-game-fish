@@ -1,0 +1,10 @@
+{
+  "node": "e8s1",
+  "speakerKey": "narrator",
+  "speakerName": "副主任",
+  "asrText": "今夜一声令，它就没了。",
+  "asrTextRaw": "今夜一声令 他就没了 他就没了",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 2
+}

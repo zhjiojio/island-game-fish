@@ -1,0 +1,61 @@
+{
+ "schemaVersion": 1,
+ "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_fix_c.mp4",
+ "sha256": "96c3d06cc1609bae9d04b43672125efda4ef33b12f0c54186437e70f00ef1264",
+ "duration": 10.042,
+ "nodes": [
+  "r_fix_c"
+ ],
+ "status": "speech",
+ "transcript": "有你在，这屋漏就漏吧。",
+ "rawText": "有你在这屋漏就漏吧",
+ "asrChars": [
+  [
+   5.39,
+   5.63,
+   "有"
+  ],
+  [
+   5.63,
+   5.85,
+   "你"
+  ],
+  [
+   5.85,
+   6.09,
+   "在"
+  ],
+  [
+   7.17,
+   7.41,
+   "这"
+  ],
+  [
+   7.41,
+   7.57,
+   "屋"
+  ],
+  [
+   7.57,
+   7.81,
+   "漏"
+  ],
+  [
+   7.81,
+   7.91,
+   "就"
+  ],
+  [
+   7.91,
+   8.15,
+   "漏"
+  ],
+  [
+   8.15,
+   9.134,
+   "吧"
+  ]
+ ],
+ "timingEngine": "asr-anchor(funasr-paraformer)",
+ "reviewMethod": "batch ASR auto (needs human proof-read for punctuation/speaker)."
+}

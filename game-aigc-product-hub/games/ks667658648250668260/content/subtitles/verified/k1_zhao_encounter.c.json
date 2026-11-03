@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/k1_zhao_encounter.c.mp4",
+  "sha256": "3b7c38ca98fb04668e51503caea64da7356d76139cb333546e0203144c63540d",
+  "duration": 10.042,
+  "nodes": [
+    "k1"
+  ],
+  "status": "speech",
+  "transcript": "哥们儿，借过路费，十块，认识不认识？",
+  "rawText": "哥们儿借过路费十块认识不认识",
+  "asrChars": [
+    [
+      3.19,
+      3.41,
+      "哥"
+    ],
+    [
+      3.41,
+      3.59,
+      "们"
+    ],
+    [
+      3.59,
+      3.83,
+      "儿"
+    ],
+    [
+      5.11,
+      5.35,
+      "借"
+    ],
+    [
+      5.45,
+      5.61,
+      "过"
+    ],
+    [
+      5.61,
+      5.85,
+      "路"
+    ],
+    [
+      5.85,
+      6.09,
+      "费"
+    ],
+    [
+      7.17,
+      7.41,
+      "十"
+    ],
+    [
+      7.45,
+      7.69,
+      "块"
+    ],
+    [
+      8.41,
+      8.59,
+      "认"
+    ],
+    [
+      8.59,
+      8.69,
+      "识"
+    ],
+    [
+      8.69,
+      8.83,
+      "不"
+    ],
+    [
+      8.83,
+      8.99,
+      "认"
+    ],
+    [
+      8.99,
+      9.635,
+      "识"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "哥们儿,借过炉费十块,认识不认识啊?",
+  "speakerKey": "zhao",
+  "speakerRuleKey": "k1_zhao_encounter",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

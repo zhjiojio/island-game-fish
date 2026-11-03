@@ -1,0 +1,7998 @@
+/**
+ * 微婚期 · 快小游 UI v3
+ * - 视频全屏铺满
+ * - 右侧竖排 3 个数值胶囊（悬浮）
+ * - 底部 3 行竖排选项
+ * - 无顶部 EP chip
+ * - 支持 skillcard 类型（canvas 绘制技能卡 3s 停留）
+ */
+(function (global) {
+  'use strict';
+  var isKS = typeof wx !== 'undefined';
+  var canvas = global.canvas || (global.window && global.window.canvas);
+  if (!canvas) { console.error('[main] no canvas'); return; }
+  var ctx = canvas.getContext('2d');
+  var sys = isKS && wx.getSystemInfoSync ? wx.getSystemInfoSync() : { windowWidth: 393, windowHeight: 852, pixelRatio: 3 };
+  var W = sys.windowWidth || 393;
+  var H = sys.windowHeight || 852;
+  var DPR = sys.pixelRatio || 2;
+  canvas.width = W * DPR;
+  canvas.height = H * DPR;
+  ctx.scale(DPR, DPR);
+
+  var RAW = global.STORY || (global.window && global.window.STORY) || {};
+  var NODES = RAW.nodes || RAW;
+  var ENDINGS = RAW.endings || {};
+  function getNode (id) { return NODES[id] || ENDINGS[id] || null; }
+
+  // 视频全屏，UI 悬浮
+  var MEDIA_Y = 0, MEDIA_H = H;
+  var BOT_H = 250;   // 底部选项/台词区（选项 3 行时用）
+  var CAP_H = 80;    // 台词区（无选项）
+
+  // ============== 全局日志系统 v76.6 · 全开 + 屏幕日志面板 ==============
+  // 用户反馈："我现在都看不到日志啊！！！"
+  //   v76.6 起：LG 白名单废弃（LG_CORE 已删除），所有 LG 一律记录到 ring buffer + console.log
+  //   右上角常驻 🐛 按钮，点击打开屏幕日志面板（含滚动/清空/复制）
+  var LOG = { lastRenderKey: null, lastDrawState: null };
+  var LG_RING = [];               // 最近 N 条日志，供屏幕面板显示
+  var LG_RING_MAX = 300;
+  // v78.6 · 上线态日志过滤：默认屏蔽诊断类冗余日志（console + ring buffer 均静默）
+  //   开启方式（真机调试）：GameGlobal.__LG_VERBOSE__ = true
+  //   保留策略：报错类（*-FAIL / *-ERR / *-EX / *-DIAG）、生命周期关键节点（NEXT-GO / SAVE-* / SUBPKG-* / LOGIN-* / USER-INFO / BGM-* / CLEAR-CACHE / SHARE-*）
+  var LG_BLACKLIST = {
+    'DRAW-STATE': 1,           // 打字机每帧刷屏元凶
+    'VIDEO-SETVIDEO-ENTRY': 1, // setVideo 入口，同 src 每次调用刷屏
+    'VIDEO-SKIP': 1,           // 同 src 短路
+    'VIDEO-SETSRC': 1,         // 切换视频（RENDER-NODE 已足够）
+    'VIDEO-RATE': 1,           // 倍速设置
+    'VIDEO-CACHE-STATUS': 1,   // 视频缓存状态查询
+    'LASTFRAME-LOAD-START': 1, // 兜底图加载起点
+    'LASTFRAME-FALLBACK': 1,   // 兜底图已加载
+    'RENDER-NODE': 1,          // 渲染新节点（telemetry.node_enter 已代替）
+    'CHOICE-IMG-START': 1,     // choice 图加载起点
+    'CHOICE-IMG-OK': 1,        // choice 图加载完成
+    'IMG-LOAD-START': 1,       // 普通图加载起点
+    'IMG-LOAD-OK': 1,          // 普通图加载完成
+    'IMG-NO-AUTOADV': 1,       // 图片节点等用户点
+    'CAPTION-DRAW': 1,         // 字幕绘制
+    'AUTO-SKIP-CAPTION': 1,    // 跳过字幕
+    'NARR-AUDIO-END': 1,       // 旁白播完
+    'AUTH-CHK': 1,             // 授权检查
+    'VIDEO-CREATE': 1,         // 创建视频对象
+    'VIDEO-ONPLAY': 1,         // onPlay 触发
+    'VIDEO-ONENDED': 1,        // 视频播完（onended-next 更关键）
+    'NEXT-ENTRY': 1            // next 入口（NEXT-GO 更关键）
+  };
+  function LG (tag, msg, data) {
+    // v78.6 · 黑名单过滤（VERBOSE 模式绕过）
+    if (!global.__LG_VERBOSE__ && LG_BLACKLIST[tag]) return;
+    var t = new Date();
+    var ts = ('0' + t.getHours()).slice(-2) + ':' + ('0' + t.getMinutes()).slice(-2) + ':' + ('0' + t.getSeconds()).slice(-2) + '.' + ('00' + t.getMilliseconds()).slice(-3);
+    var curId = (typeof state !== 'undefined' && state.curId) ? state.curId : '-';
+    var line = '[' + ts + '][' + tag + '][' + curId + '] ' + (msg || '');
+    if (data !== undefined) { try { line += ' | ' + JSON.stringify(data); } catch (e) { } }
+    console.log(line);
+    LG_RING.push({ ts: ts, tag: tag, curId: curId, msg: msg || '', data: data, line: line });
+    if (LG_RING.length > LG_RING_MAX) LG_RING.shift();
+  }
+  // 全局导出，方便脚本外部读日志（真机 Debug 可直接 kwaigame 里 eval `LG_DUMP()`）
+  try { global.LG_DUMP = function () { return LG_RING.map(function (x) { return x.line; }).join('\n'); }; } catch (_) { }
+  try { global.LG_CLEAR = function () { LG_RING.length = 0; }; } catch (_) { }
+
+  var state = {
+    splash: { active: true, img: null, imgKey: null, t0: Date.now(), tried: 0 },
+    curId: RAW.start || 's1',
+    stats: (RAW.meta && RAW.meta.initStat) ? {
+      wei: RAW.meta.initStat.wei || 50,
+      qing: RAW.meta.initStat.qing || 50,
+      liang: RAW.meta.initStat.liang || 50
+    } : { wei: 50, qing: 50, liang: 50 },
+    video: null, videoKey: null, videoCurTime: 0,
+    mediaImg: null, mediaImgKey: null,
+    imgAdvKey: null,
+    hitZones: [],
+    ep: 'EP01', epTitle: '',
+    // 打字机效果
+    tw: { key: null, chars: 0, startT: 0, done: false },
+    // 视频加载中标志
+    videoLoading: false,
+    // 视频已真正开始播放（首帧渲染），才允许显示字幕/继续按钮
+    videoStarted: false,
+    hasPlayedStory: false,
+    // 当前启动会话的免广告后门状态（不写入本地存储，重启自动失效）
+    sessionAdBypass: false,
+    // 点赞：直播间样式，每 100 赞 +1 嫂子好感
+    like: { count: 0, lastTap: 0, streak: 0, btnScale: 1, btnPulseT: 0 },
+    hearts: [],
+    // V32 · 点击空白 · 波纹 + 别碰我贴纸
+    tapFx: { ripples: [], stickers: [], lastAt: 0, img: null, imgKey: null },
+    // v71.5 · 三数值胶囊「引导浮层看完后再出现 + 数字从 0 滚到初始值」
+    //   statsRevealed=false: 三胶囊完全不画；=true: drawStatsRight 里从 revealT 开始 1.2s lerp 0→real
+    statsRevealed: false, statsRevealT: 0,
+    // v71.5 · 成就胶囊「婉儿登场且 sister_unlock.mp3 播完/成就 popup 收起后」才出现
+    achvRevealed: false
+  };
+  // V41 · 把 state 暴露到 GameGlobal，供 achievements.js 判断 sisterUnlocked（否则入口胶囊永远按 3 条算，未解锁时中间会空一大块）
+  try { (typeof GameGlobal !== 'undefined' ? GameGlobal : global).state = state; } catch (e) { }
+  // ============== 触感反馈 · 全局 ==============
+  // kind: 'light' | 'medium' | 'heavy'
+  function hapticTap (kind) {
+    try {
+      if (typeof KwaiDevice !== 'undefined' && KwaiDevice.vibrateShort) {
+        KwaiDevice.vibrateShort(kind || 'light');
+      } else if (typeof navigator !== 'undefined' && navigator.vibrate) {
+        navigator.vibrate(kind === 'heavy' ? 40 : (kind === 'medium' ? 25 : 15));
+      }
+    } catch (e) { }
+  }
+  // v76.5 · 底部按钮按压视觉反馈：draw 时读 state._btnPress[action]，若最近 180ms 内按过 → 缩放 0.86 + 亮环
+  // v93.0 · 【按压反馈错位修复】mute / pause / eye 这三枚是「双态按钮」：点一下状态就翻转，
+  //   kind 从 mute_off→mute_on、pause→play、eye→eye_off。按下时按 'ctrl:mute_off' 记的时间戳，
+  //   下一帧却按翻转后的 'ctrl:mute_on' 去查 → 查不到 → 这枚按钮【完全没有按压动画】。
+  //   用户观感就是「我点的这枚没反应」，进而怀疑点到了别的按钮。这里统一归一化成一个稳定 key。
+  function _btnPressKey (action) {
+    var k = String(action || '');
+    if (k === 'ctrl:mute_on' || k === 'ctrl:mute_off') return 'ctrl:@mute';
+    if (k === 'ctrl:pause' || k === 'ctrl:play') return 'ctrl:@playpause';
+    if (k === 'ctrl:eye' || k === 'ctrl:eye_off') return 'ctrl:@eye';
+    return k;
+  }
+  function pulseBtnPress (action) {
+    try {
+      state._btnPress = state._btnPress || {};
+      state._btnPress[_btnPressKey(action)] = Date.now();
+    } catch (_) { }
+  }
+  var TYPE_SPEED = 45;  // 每字毫秒
+  // V29 · 当前倍速 · getter（读 state.ui.speedIdx，兼容 state.ui 尚未初始化的早期渲染）
+  function curSpeed () {
+    try { return SPEEDS[state.ui && state.ui.speedIdx || 0] || 1; } catch (e) { return 1; }
+  }
+  // V31 · 兼容多种快手/微信容器的视频倍速 API
+  function applyVideoRate (v) {
+    if (!v) return;
+    var r = curSpeed();
+    // 1) 直接赋值（微信/快手 native · 大多数容器）
+    try { if (v.playbackRate !== undefined) v.playbackRate = r; } catch (e) { }
+    // 2) setPlaybackRate 方法（部分快手容器）
+    try { if (typeof v.setPlaybackRate === 'function') v.setPlaybackRate(r); } catch (e) { }
+    // 3) requestFullScreen 前置的隐藏 API
+    try { if (v._underlying && v._underlying.playbackRate !== undefined) v._underlying.playbackRate = r; } catch (e) { }
+    LG('VIDEO-RATE', '倍速设置', { rate: r });
+  }
+
+  function resetTypewriter (id) {
+    state.tw.key = id;
+    state.tw.chars = 0;
+    state.tw.startT = Date.now();
+    state.tw.done = false;
+  }
+
+  // ---- 视频缓存（wx.downloadFile 到本地）----
+  var videoCache = {};    // url -> localPath
+  var videoLoading = {};  // url -> true 正在下载
+  // V33 · 并发控制：CDN 视频太大（15-36MB/个），一次并发 8 个会把 s1 都拖住
+  //   → 全局最多 2 个下载同时进行；其余排队。用户点击/正在播的视频享有优先权（unshift 到队首）
+  var DL_MAX_CONCURRENT = 4;  // V41.4 · 从 2 → 4 · splash 阶段激进并发预热前 10 帧
+  var dlActive = 0;
+  var dlQueue = [];   // [{ url, cb }]
+  var dlProgress = {};  // url -> 0~100
+  function _dlStart (url, cb) {
+    dlActive++;
+    videoLoading[url] = true;
+    try {
+      var task = wx.downloadFile({
+        url: url,
+        success: function (res) {
+          var local = res.tempFilePath || res.filePath || url;
+          videoCache[url] = local;
+          videoLoading[url] = false;
+          dlProgress[url] = 100;
+          dlActive--;
+          cb && cb(local);
+          _dlKick();
+        },
+        fail: function (e) {
+          videoLoading[url] = false;
+          dlActive--;
+          console.log('[v] dl-fail', url, e && e.errMsg);
+          cb && cb(url);
+          _dlKick();
+        }
+      });
+      // V33 · 进度回调（快手小游戏支持）
+      if (task && task.onProgressUpdate) {
+        try { task.onProgressUpdate(function (r) { if (r && typeof r.progress === 'number') dlProgress[url] = r.progress; }); } catch (_) { }
+      }
+    } catch (e) {
+      videoLoading[url] = false;
+      dlActive--;
+      cb && cb(url);
+      _dlKick();
+    }
+  }
+  function _dlKick () {
+    while (dlActive < DL_MAX_CONCURRENT && dlQueue.length) {
+      var t = dlQueue.shift();
+      // 排队时 videoCache 可能已被别处填充（比如 setVideo 阶段插队时同 url）→ 跳过
+      if (videoCache[t.url]) { t.cb && t.cb(videoCache[t.url]); continue; }
+      _dlStart(t.url, t.cb);
+    }
+  }
+  function _dlEnqueue (url, cb, priority) {
+    // 已在下载：把 cb 挂进 videoLoading 轮询（保持原有语义）
+    if (videoLoading[url]) {
+      var it = setInterval(function () {
+        if (videoCache[url]) { clearInterval(it); cb && cb(videoCache[url]); }
+        else if (!videoLoading[url]) { clearInterval(it); cb && cb(url); }
+      }, 200);
+      return;
+    }
+    // 已在队列里：提优先级到队首
+    for (var i = 0; i < dlQueue.length; i++) {
+      if (dlQueue[i].url === url) {
+        if (priority) { var q = dlQueue.splice(i, 1)[0]; dlQueue.unshift(q); }
+        // 复用现有队列项，追加一个 cb —— 简化：轮询 videoCache
+        var it2 = setInterval(function () {
+          if (videoCache[url]) { clearInterval(it2); cb && cb(videoCache[url]); }
+          else if (!videoLoading[url] && !_findInQueue(url)) { clearInterval(it2); cb && cb(url); }
+        }, 200);
+        return;
+      }
+    }
+    // 全新入队
+    var item = { url: url, cb: cb };
+    if (priority) dlQueue.unshift(item);
+    else dlQueue.push(item);
+    _dlKick();
+  }
+  function _findInQueue (url) {
+    for (var i = 0; i < dlQueue.length; i++) if (dlQueue[i].url === url) return true;
+    return false;
+  }
+  // V34 · 分级视频加载策略：
+  //   ① 主包内（BUNDLED_VIDEOS · 秒开）：S1 / S2  → 压缩后 h264 CRF22（首两段进包，8-12MB）
+  //   ② 分包内（SUBPKG_VIDEOS · 开局静默加载分包 sp1 · 中优先）：S3 / S4 / S5
+  //   ③ CDN 动态（其余）：S6 及以后视频，走 downloadFile 队列（DL_MAX_CONCURRENT=2）
+  var BUNDLED_VIDEOS = {
+    // V40·3 全部走 CDN。原本地包 assets/videos/ + subpkg-videos/ 已挪出（打包超限），CDN 兜底即可
+  };
+  // 分包 sp1 中的视频 URL → 分包内相对路径（等价于包内文件）· V40·3 已废弃，保留兼容
+  var SUBPKG_VIDEOS = {};
+  // 分包懒加载状态
+  // V63 · sp2 = assets/frames/（图片分包 · project.config.json 里 frames/*.jpg 被 ignore 出主包）
+  var subpkgLoaded = { sp1: false, sp2: false };
+  var subpkgLoading = { sp1: false, sp2: false };
+  var subpkgWaiters = { sp1: [], sp2: [] };
+  function ensureSubpkg (name, cb) {
+    if (subpkgLoaded[name]) return cb && cb(true);
+    if (!isKS || !wx.loadSubpackage) {
+      // 非 KS：直接尝试相对路径（本地预览环境）
+      subpkgLoaded[name] = true;
+      return cb && cb(true);
+    }
+    if (cb) subpkgWaiters[name].push(cb);
+    if (subpkgLoading[name]) return;
+    subpkgLoading[name] = true;
+    LG('SUBPKG-START', '📦 开始加载分包', { name: name });
+    try {
+      var task = wx.loadSubpackage({
+        name: name,
+        success: function () {
+          subpkgLoaded[name] = true;
+          subpkgLoading[name] = false;
+          LG('SUBPKG-OK', '📦 分包加载完成', { name: name });
+          var ws = subpkgWaiters[name].splice(0);
+          for (var i = 0; i < ws.length; i++) { try { ws[i](true); } catch (e) { } }
+        },
+        fail: function (e) {
+          subpkgLoading[name] = false;
+          LG('SUBPKG-FAIL', '❌ 分包加载失败', { name: name, err: e && e.errMsg });
+          var ws = subpkgWaiters[name].splice(0);
+          for (var i = 0; i < ws.length; i++) { try { ws[i](false); } catch (e) { } }
+        }
+      });
+      if (task && task.onProgressUpdate) {
+        task.onProgressUpdate(function (res) {
+          global._subpkgProgress = global._subpkgProgress || {};
+          global._subpkgProgress[name] = res.progress || 0;
+        });
+      }
+    } catch (e) {
+      subpkgLoading[name] = false;
+      LG('SUBPKG-EX', '❌ 分包加载异常', { err: e && e.message });
+      var ws = subpkgWaiters[name].splice(0);
+      for (var i = 0; i < ws.length; i++) { try { ws[i](false); } catch (e) { } }
+    }
+  }
+  // V32·2 · 把包内相对路径 copyFile 到 USER_DATA_PATH，得到 wx.createVideo 认识的 wxfile:// 绝对路径
+  var bundledCopied = {};   // relPath -> wxfileAbsPath
+  var bundledCopying = {};  // relPath -> true 正在拷
+  function ensureBundledCopied (relPath, cb) {
+    if (bundledCopied[relPath]) return cb(bundledCopied[relPath]);
+    if (!isKS || !wx.getFileSystemManager || !wx.env || !wx.env.USER_DATA_PATH) {
+      // 非 KS 或缺 API：直接用相对路径（可能失败 → 上层降级 CDN）
+      return cb(relPath);
+    }
+    if (bundledCopying[relPath]) {
+      var t = setInterval(function () {
+        if (bundledCopied[relPath]) { clearInterval(t); cb(bundledCopied[relPath]); }
+        else if (!bundledCopying[relPath]) { clearInterval(t); cb(relPath); }
+      }, 80);
+      return;
+    }
+    bundledCopying[relPath] = true;
+    var fs = wx.getFileSystemManager();
+    var destPath = wx.env.USER_DATA_PATH + '/' + relPath.replace(/[/\\]/g, '_');
+    // 先看 dest 是否已存在（避免重复拷）
+    try {
+      fs.accessSync(destPath);
+      bundledCopied[relPath] = destPath;
+      bundledCopying[relPath] = false;
+      LG('BUNDLED-CACHE', '✅ 已缓存过，直接用', { rel: relPath, wxfile: destPath });
+      return cb(destPath);
+    } catch (_) { /* 不存在，继续拷 */ }
+    try {
+      fs.copyFile({
+        srcPath: relPath,
+        destPath: destPath,
+        success: function () {
+          bundledCopied[relPath] = destPath;
+          bundledCopying[relPath] = false;
+          LG('BUNDLED-COPY-OK', '📦 包内视频拷贝完成', { rel: relPath, wxfile: destPath });
+          cb(destPath);
+        },
+        fail: function (e) {
+          bundledCopying[relPath] = false;
+          LG('BUNDLED-COPY-FAIL', '❌ 包内视频拷贝失败', { rel: relPath, err: e && e.errMsg });
+          cb(relPath); // 让上层报 onError 后走 CDN 兜底
+        }
+      });
+    } catch (e) {
+      bundledCopying[relPath] = false;
+      LG('BUNDLED-COPY-EXC', '❌ copyFile 异常', { err: e && e.message });
+      cb(relPath);
+    }
+  }
+  function ensureVideoLocal (url, cb, priority) {
+    // V32·2 · 优先使用包内本地视频 → copyFile 到 USER_DATA_PATH 得到 wxfile:// 绝对路径
+    if (BUNDLED_VIDEOS[url]) {
+      return ensureBundledCopied(BUNDLED_VIDEOS[url], function (absOrRel) {
+        videoCache[url] = absOrRel;
+        cb && cb(absOrRel);
+      });
+    }
+    // V34 · 分包视频：先 loadSubpackage，成功后走 copyFile → wxfile://
+    if (SUBPKG_VIDEOS[url]) {
+      return ensureSubpkg('sp2', function (ok) {
+        if (!ok) {
+          // 分包加载失败 → 降级走 CDN
+          if (!isKS || !wx.downloadFile) return cb && cb(url);
+          return _dlEnqueue(url, cb || function () { }, !!priority);
+        }
+        ensureBundledCopied(SUBPKG_VIDEOS[url], function (absOrRel) {
+          videoCache[url] = absOrRel;
+          cb && cb(absOrRel);
+        });
+      });
+    }
+    if (videoCache[url]) return cb && cb(videoCache[url]);
+    if (!isKS || !wx.downloadFile) return cb && cb(url);
+
+    // v73.2 · 黑屏根治：不再秒切 CDN URL 边下边播（V53 策略导致慢网/CDN 失败时长时间黑屏）
+    //   改为：先等 downloadFile 落盘（最多等 5s），超时才降级 CDN URL 边下边播。
+    //   期间 lastframe 兜底图 + drawLoading 占位，用户看到"嫂子正在准备"而非黑屏。
+    //   如果 downloadFile 在 5s 内完成 → 用本地路径起播（无黑屏）；
+    //   如果 5s 超时 → 降级 CDN 边下边播 + 视频起播超时 8s 自动 next 兜底。
+    var _dlTimedOut = false;
+    var _cbCalled = false;
+    var _dlTimer = setTimeout(function () {
+      _dlTimedOut = true;
+      if (!_cbCalled) {
+        _cbCalled = true;
+        LG('VIDEO-DL-TIMEOUT', '⏳ downloadFile 5s 未完成，降级 CDN 边下边播', { url: url });
+        cb && cb(url);  // 降级：用 CDN URL 让 native video 边下边播
+      }
+    }, 5000);
+
+    _dlEnqueue(url, function (localPath) {
+      clearTimeout(_dlTimer);
+      if (!_cbCalled) {
+        _cbCalled = true;
+        videoCache[url] = localPath;
+        cb && cb(localPath);
+      } else if (!_dlTimedOut && localPath !== url) {
+        // cb 已被 CDN 降级调用过，但 downloadFile 后续成功了 → 更新缓存供下次命中
+        videoCache[url] = localPath;
+      }
+    }, !!priority);
+    return;
+  }
+
+  // 收集所有视频 URL（供预下载用）
+  function collectVideoUrls () {
+    var arr = [];
+    for (var id in NODES) {
+      var n = NODES[id]; var m = n && n.media;
+      if (m && m.file && (m.kind === 'video' || /\.mp4$/i.test(m.file))) {
+        var f = m.file;
+        if (!/^https?:\/\//.test(f)) f = 'https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/' + f.replace(/^.*\//, '');
+        arr.push({ id: id, url: f });
+      }
+    }
+    return arr;
+  }
+  // 预下载：从"当前节点"往后按剧情顺序预取
+  var ALL_VIDS = collectVideoUrls();
+  function prefetchAhead (curId, count) {
+    count = count || 3;  // V41.4 · 默认预取 3 个（原 1 个），滚雪球更快
+    // V33 · 关键守卫：当前节点视频还没缓存到 → 完全不预取（把带宽让给当前）
+    var _cur = getNode(curId);
+    if (_cur && _cur.media && _cur.media.file) {
+      var _curUrl = _cur.media.file;
+      if (!/^https?:\/\//.test(_curUrl)) _curUrl = 'https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/' + _curUrl.replace(/^.*\//, '');
+      if (!BUNDLED_VIDEOS[_curUrl] && !SUBPKG_VIDEOS[_curUrl] && !videoCache[_curUrl]) return;
+    }
+    // V41.4 · BFS 广度优先，选项分支所有路径并发拉
+    var queue = [curId], seen = {}, budget = count;
+    while (queue.length && budget > 0) {
+      var id = queue.shift();
+      if (!id || seen[id]) continue;
+      seen[id] = 1;
+      var n = getNode(id);
+      if (!n) continue;
+      if (id !== curId) {
+        var m = n.media;
+        if (m && m.file && (m.kind === 'video' || /\.mp4$/i.test(m.file))) {
+          var f = m.file;
+          if (!/^https?:\/\//.test(f)) f = 'https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/' + f.replace(/^.*\//, '');
+          if (!videoCache[f] && !videoLoading[f]) {
+            ensureVideoLocal(f);
+          }
+          budget--;
+        }
+      }
+      // 广度：next + choice 所有 options
+      if (n.next) queue.push(n.next);
+      if (n.type === 'choice' && n.options) {
+        for (var oi = 0; oi < n.options.length; oi++) if (n.options[oi] && n.options[oi].next) queue.push(n.options[oi].next);
+      }
+    }
+  }
+  // 启动首屏预下载：s1 高优 + 前 10 帧视频 + 前 10 帧关联图片 + 11 段 BE 音频 + 4 个 icon
+  function bootPrefetch () {
+    // V53 · 首屏铁律：前 10 关的视频 + 图片全部下完才允许点"立即解锁"。全部走高优。
+    state._prefetchStatus = state._prefetchStatus || { total: 0, done: 0, items: {} };
+    var S = state._prefetchStatus;
+
+    function _mark (k, v) {
+      if (!S.items[k]) { S.items[k] = 0; S.total++; }
+      var prev = S.items[k];
+      S.items[k] = v;
+      if (v >= 100 && prev < 100) S.done++;
+    }
+
+    // 1) 首播 s1 视频（高优）
+    var startId = (RAW.start || 's1');
+    var startVid = null;
+    for (var i = 0; i < ALL_VIDS.length; i++) {
+      if (ALL_VIDS[i].id === startId) { startVid = ALL_VIDS[i]; break; }
+    }
+    if (startVid) {
+      _mark('vid:' + startVid.id, 0);
+      try { ensureVideoLocalStrict(startVid.url, function () { _mark('vid:' + startVid.id, 100); }, true); } catch (e) { }
+      // V53 · 真实进度回填：每 200ms 从 dlProgress 拉真实百分比
+      S._urlMap = S._urlMap || {};
+      S._urlMap['vid:' + startVid.id] = startVid.url;
+    }
+
+    // 2) 前 4 帧的所有视频 + 图片（BFS · 全部高优 · 强制走 downloadFile 落盘）
+    // v72.1 修复：原代码写 3 → 只预下前 3 段，s3+ 全靠边播边下导致卡顿
+    // v83.1 优化：从 10 降到 4，避免 S8(1.6MB)/S9(1.1MB) 拖慢开门速度
+    try {
+      var q = [startId], seen2 = {}, mediaCount = 0;
+      while (q.length && mediaCount < 4) {
+        var id2 = q.shift();
+        if (!id2 || seen2[id2]) continue;
+        seen2[id2] = 1;
+        var n2 = getNode(id2);
+        if (!n2) continue;
+        if (id2 !== startId) {
+          var m2 = n2.media;
+          if (m2 && m2.file) {
+            var f2 = m2.file;
+            if (!/^https?:\/\//.test(f2) && f2.indexOf('/') < 0) f2 = 'https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/' + f2.replace(/^.*\//, '');
+            var _isV = m2.kind === 'video' || /\.mp4$/i.test(m2.file);
+            var _isI = m2.kind === 'image' || /\.(jpg|jpeg|png|webp)$/i.test(m2.file);
+            if (_isV && !videoCache[f2] && !videoLoading[f2]) {
+              (function (vf, vid) {
+                _mark('vid:' + vid, 0);
+                S._urlMap = S._urlMap || {}; S._urlMap['vid:' + vid] = vf;
+                try { ensureVideoLocalStrict(vf, function () { _mark('vid:' + vid, 100); }, true); } catch (e) { }
+              })(f2, id2);
+              mediaCount++;
+            } else if (_isI) {
+              (function (imf, iid) {
+                _mark('img:' + iid, 0);
+                try {
+                  var _im = wx.createImage ? wx.createImage() : new Image();
+                  _im.onload = function () { _mark('img:' + iid, 100); };
+                  _im.onerror = function () { _mark('img:' + iid, 100); };
+                  _im.src = imf;
+                } catch (e) { _mark('img:' + iid, 100); }
+              })(f2, id2);
+              mediaCount++;
+            }
+          }
+        }
+        if (n2.next) q.push(n2.next);
+        if (n2.type === 'choice' && n2.options) {
+          for (var oi2 = 0; oi2 < n2.options.length; oi2++) if (n2.options[oi2] && n2.options[oi2].next) q.push(n2.options[oi2].next);
+        }
+      }
+    } catch (e) { }
+
+    // 3) 11 段 BE 死因鉴定音频（主包内，直接就绪）
+    try {
+      var BE_KEYS = ['BE_STARVE', 'BE_KICKED', 'BE_SLAP', 'BE_MONSTER', 'BE_LOSE_HER', 'BE_RUNAWAY', 'BE_DRUNK', 'BE_KILL', 'BE_PARTNER', 'BE_RUNAWAY_BRIDE', 'BE_KICKED_END'];
+      BE_KEYS.forEach(function (k) {
+        _mark('audio:' + k, 100);
+      });
+    } catch (e) { }
+
+    // 4) icon + 头像：持久化落盘，不计入 splash 进度条（不应该卡开门）
+    try {
+      var ICON_KEYS = ['wei', 'qing', 'liang', 'aotian', 'wanr'];
+      state.iconImgs = state.iconImgs || {};
+      ICON_KEYS.forEach(function (ik) {
+        if (state.iconImgs[ik]) return;  // 已有，跳过
+        var _url = (ik === 'aotian' || ik === 'wanr')
+          ? (_CDN_AVATARS + ik + '.png')
+          : _iconUrl(ik);
+        _loadImgPersist(_url, (function (kk) { return function (im) {
+          state.iconImgs[kk] = im || false;
+        }; })(ik));
+      });
+    } catch (e) { }
+
+  }
+
+  // V53 · 严格模式：不走秒切边下边播，一定要 downloadFile 落盘后才 cb —— 用于首屏预取
+  function ensureVideoLocalStrict (url, cb, priority) {
+    if (BUNDLED_VIDEOS[url]) {
+      return ensureBundledCopied(BUNDLED_VIDEOS[url], function (absOrRel) {
+        videoCache[url] = absOrRel;
+        cb && cb(absOrRel);
+      });
+    }
+    if (SUBPKG_VIDEOS[url]) {
+      return ensureSubpkg('sp2', function (ok) {
+        if (!ok) {
+          if (!isKS || !wx.downloadFile) return cb && cb(url);
+          return _dlEnqueue(url, cb || function () { }, !!priority);
+        }
+        ensureBundledCopied(SUBPKG_VIDEOS[url], function (absOrRel) {
+          videoCache[url] = absOrRel;
+          cb && cb(absOrRel);
+        });
+      });
+    }
+    if (videoCache[url]) return cb && cb(videoCache[url]);
+    if (!isKS || !wx.downloadFile) return cb && cb(url);
+    _dlEnqueue(url, cb || function () { }, !!priority);
+  }
+
+  // V42.2 · Video Player Warmup 已禁用（保留空函数避免其他地方引用报错）
+  function warmupVideoPlayer () { /* noop */ }
+
+  // V53 · 综合就绪判断：video 走 dlProgress 真实进度，img/audio/icon 走 0/100
+  function getPrefetchProgress () {
+    var S = state._prefetchStatus;
+    if (!S || !S.total) return { pct: 0, s1Ready: false, vidsReady: 0 };
+    var sum = 0, keys = Object.keys(S.items);
+    var s1Ready = false;
+    var vidsReady = 0;
+    var _startVidKey = 'vid:' + (RAW.start || 's1');
+    for (var i = 0; i < keys.length; i++) {
+      var k = keys[i];
+      var v = S.items[k] || 0;
+      // vid: 类型的用真实下载进度替换
+      if (k.indexOf('vid:') === 0 && v < 100 && S._urlMap && S._urlMap[k]) {
+        var _url = S._urlMap[k];
+        var _real = dlProgress[_url];
+        if (typeof _real === 'number' && _real > v) v = Math.min(100, Math.floor(_real));
+      }
+      sum += v;
+      // v72.1 · 修复 s1Ready：只有首播节点(s1)的视频落盘才算，不是「任意 vid 到 100%」
+      if (k === _startVidKey && v >= 100) s1Ready = true;
+      if (k.indexOf('vid:') === 0 && v >= 100) vidsReady++;
+    }
+    var pct = Math.floor(sum / keys.length);
+    return { pct: pct, s1Ready: s1Ready, vidsReady: vidsReady };
+  }
+
+  // ---- 视频 ----（无缝切换：先建新视频 → onPlay 触发后再销毁旧视频）
+  // V31·8 · initialTime 参数：用于倍速切换时销毁重建后无缝续播
+  // v90.13: every current video has a verified packaged poster in the registry.
+  var _CDN_AVATARS   = 'https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/avatars/';
+  var _CDN_ICONS     = 'https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/icons/';
+  // V84 · 本地图标覆盖表（优先用本地包内图片，省去 CDN 请求）
+  var _LOCAL_ICONS   = { wei: 'images/icons/icon_wei.png', qing: 'images/icons/icon_qing.png', liang: 'images/icons/icon_liang.png', achv: 'images/icons/icon_achv.png' };
+  function _iconUrl(key) { return _LOCAL_ICONS[key] || (_CDN_ICONS + 'icon_' + key + '.png'); }
+
+  // ── 资源槽管理：不再用 AssetManager，改为显式数组追踪 ──────────
+  //   _curResources:  当前段落（节点切换后）新加载的图片 Image 对象列表
+  //   _prevResources: 上一段落的图片列表，等新内容渲染后批量析构
+  //   _persistImages: persist 级图片（icon/avatar），永不析构
+  var _curResources  = [];  // { img: Image, src: string }
+  var _prevResources = [];
+  var _persistImages = {};  // src → Image（永不析构）
+  var _releasedTotal = 0;   // 累计已释放图片数
+  var _releasedLog   = [];  // 已释放图片文件名列表（滚动，最多保留 200 条）
+
+  /** 把当前槽移到待销毁槽，准备接纳新一批资源 */
+  function _swapResources () {
+    if (_prevResources.length) {
+      // 上上轮还没销毁完 → 追加进去一起等
+      _prevResources = _prevResources.concat(_curResources);
+    } else {
+      _prevResources = _curResources;
+    }
+    _curResources = [];
+    try { LG('RES-SWAP', '资源槽切换', { prev: _prevResources.length }); } catch (_) {}
+  }
+
+  /** 销毁 _prevResources 里的图片（在新内容就绪后调用）*/
+  function _releasePrevResources () {
+    if (!_prevResources.length) return;
+    var released = 0, disposed = [];
+    _prevResources.forEach(function(entry) {
+      if (!entry || !entry.img || disposed.indexOf(entry.img) >= 0) return;
+      var im = entry.img;
+      // Keep visible transition images and any aliases used by the current scene.
+      if (im === state.mediaImg) { _trackImg(im, entry.src); return; }
+      if (_curResources.some(function(e) { return e.img === im; }) ||
+          Object.keys(_persistImages).some(function(k) { return _persistImages[k] === im; })) return;
+      Object.keys(imgCache).forEach(function(k) { if (imgCache[k] === im) delete imgCache[k]; });
+      Object.keys(_lastframeCache).forEach(function(k) { if (_lastframeCache[k] === im) delete _lastframeCache[k]; });
+      im.onload = null; im.onerror = null;
+      try { im.src = ''; } catch (_) {}
+      disposed.push(im); released++;
+      _releasedLog.push((entry.src || '').split('/').pop());
+    });
+    if (_releasedLog.length > 200) _releasedLog.splice(0, _releasedLog.length - 200);
+    _releasedTotal += released; _prevResources = [];
+    try { LG('RES-RELEASE', '销毁旧资源', { count: released }); } catch (_) {}
+  }
+  function _trackImg (img, src) {
+    if (!img || _curResources.some(function(e) { return e.img === img; })) return;
+    _curResources.push({ img: img, src: src });
+  }
+
+  // 小图持久化缓存：downloadFile 落盘到 USER_DATA_PATH，persist 级永不析构
+  var _imgDlCache = {};  // cdnUrl -> localPath (wxfile://)
+  function _loadImgPersist (url, group, onImg) {
+    if (typeof group === 'function') { onImg = group; group = 'persist'; }
+    // persist 级内存命中
+    if (_persistImages[url]) { onImg(_persistImages[url]); return; }
+    // 本地落盘命中
+    var _doLoad = function (src) {
+      try {
+        var im = wx && wx.createImage ? wx.createImage() : new Image();
+        im.onload  = function () { _persistImages[url] = im; imgCache[url] = im; onImg(im); };
+        im.onerror = function () { onImg(null); };
+        im.src = src;
+      } catch (e) { onImg(null); }
+    };
+    if (_imgDlCache[url]) { _doLoad(_imgDlCache[url]); return; }
+    if (!isKS || !wx.downloadFile || !wx.env || !wx.env.USER_DATA_PATH) {
+      _doLoad(url); return;
+    }
+    var _key = url.replace(/[^a-zA-Z0-9]/g, '_').slice(-80) + '.img';
+    var _local = wx.env.USER_DATA_PATH + '/' + _key;
+    try {
+      wx.getFileSystemManager().access({ path: _local,
+        success: function () { _imgDlCache[url] = _local; _doLoad(_local); },
+        fail: function () {
+          wx.downloadFile({ url: url,
+            success: function (res) {
+              var tmp = res.tempFilePath || res.filePath;
+              if (!tmp) { _doLoad(url); return; }
+              wx.getFileSystemManager().copyFile({ srcPath: tmp, destPath: _local,
+                success: function () { _imgDlCache[url] = _local; _doLoad(_local); },
+                fail:    function () { _imgDlCache[url] = tmp;    _doLoad(tmp); }
+              });
+            },
+            fail: function () { _doLoad(url); }
+          });
+        }
+      });
+    } catch (e) { _doLoad(url); }
+  }
+
+  function _releaseImg (url) {
+    // 非 persist 图：从 imgCache 和资源槽中移除
+    if (_persistImages[url]) return;
+    delete imgCache[url];
+    _curResources  = _curResources.filter(function(e){ return e.src !== url; });
+    _prevResources = _prevResources.filter(function(e){ return e.src !== url; });
+  }
+
+  // 以 cover 模式把图居中裁入目标正方形，保持原始宽高比不拉伸
+  function _drawImgCover (img, cx, cy, r) {
+    if (!img || !img.width || !img.height) return false;
+    try {
+      var iw = img.width, ih = img.height;
+      var side = r * 2;
+      var scale = Math.max(side / iw, side / ih);
+      var sw = side / scale, sh = side / scale;
+      var sx = (iw - sw) / 2, sy = (ih - sh) / 2;
+      ctx.drawImage(img, sx, sy, sw, sh, cx - r, cy - r, side, side);
+      return true;
+    } catch (e) { return false; }
+  }
+  var _lastframeCache = {};
+  function lastframeKeyOf (src) {
+    return src && (_REG.VIDEO_POSTERS || {})[src.split('?')[0].split('#')[0]] || null;
+  }
+  var _coverImgCache = null;  // v73.2 · 封面图缓存（lastframe 全部 miss 时兜底）
+  function _ensureCoverImg (cb) {
+    if (_coverImgCache) return cb(_coverImgCache);
+    try {
+      var src = RAW.meta.homeBackground;
+      loadImg(src, function (im) {
+        if (im) { _coverImgCache = im; _persistImages[src] = im; }
+        cb(im || null);
+      });
+    } catch (e) { cb(null); }
+  }
+  function loadLastframeFallback (src) {
+    var key = lastframeKeyOf(src);
+    if (!key) {
+      // v73.2 · 非 mp4 URL 没有 lastframe → 尝试用封面图兜底
+      if (!state.videoStarted && !state.mediaImg) {
+        _ensureCoverImg(function (im) {
+          if (im && state.videoKey === src && !state.videoStarted && !state.mediaImg) {
+            state.mediaImg = im;
+            state.mediaImgKey = '__cover_fallback__';
+            LG('LASTFRAME-COVER-FALLBACK', '🖼 封面图兜底', {});
+          }
+        });
+      }
+      return;
+    }
+    var lfPath = key;
+    // 已缓存 → 直接塞
+    if (_lastframeCache[key] && _lastframeCache[key].width && _lastframeCache[key].src) {
+      _trackImg(_lastframeCache[key], key);
+      if ((!state.mediaImg || state.mediaImgKey !== lfPath) && !state.videoStarted) {
+        state.mediaImg = _lastframeCache[key];
+        state.mediaImgKey = lfPath;
+        try { LG('LASTFRAME-CACHE-HIT', '⚡ 兜底图缓存命中', { key: key }); } catch (_) { }
+      }
+      return;
+    }
+    // 已知失败 / 已在加载中 → 不重复触发
+    if (_imageCooling(lfPath) || (state.mediaImgKey === lfPath && !_imageRetryDue(lfPath))) return;
+    // 占位：防止 render 每帧重入
+    state.mediaImgKey = lfPath;
+    try { LG('LASTFRAME-LOAD-START', '⏳ 兜底图开始加载', { path: lfPath, videoKey: state.videoKey }); } catch (_) { }
+    try {
+      var _lfGroup = 'scene_default';
+      loadImg(lfPath, function (im) {
+        if (!im) {
+          // loadImg 已记录 _failedSrcs，这里不再重复打日志（避免刷屏）
+          // v73.2 · lastframe 加载失败 → 尝试封面图兜底（至少不是纯黑屏）
+          if (!state.videoStarted && !state.mediaImg) {
+            _ensureCoverImg(function (coverIm) {
+              if (coverIm && state.videoKey === src && !state.videoStarted && !state.mediaImg) {
+                state.mediaImg = coverIm;
+                state.mediaImgKey = '__cover_fallback__';
+                LG('LASTFRAME-COVER-FALLBACK', '🖼 lastframe 失败 → 封面图兜底', { key: key });
+              }
+            });
+          }
+          return;
+        }
+        _lastframeCache[key] = im;
+        // 只在视频还没起播时塞入
+        if (state.videoKey === src && !state.videoStarted) {
+          state.mediaImg = im;
+          state.mediaImgKey = lfPath;
+          try { LG('LASTFRAME-FALLBACK', '🖼 兜底图已加载并显示', { key: key, w: im.width, h: im.height }); } catch (_) { }
+        } else {
+          try { LG('LASTFRAME-LOAD-LATE', '⌛ 兜底图加载完成但已错过（视频已 onPlay 或切走）', { key: key, videoStarted: state.videoStarted, curVideoKey: state.videoKey }); } catch (_) { }
+        }
+      }, _lfGroup);
+    } catch (e) { try { LG('LASTFRAME-LOAD-EX', e && e.message); } catch (_) { } }
+  }
+  // v71.23 · 【策略重写】婉儿登场 mp3 期间 mp4 完全暂停（不是静音播）；mp3 完 → seek 0 + unmute + play 从头带声音重播
+  function resumeVideoAfterSisterUnlock () {
+    state._pausedForMedalFirst = false;
+    try {
+      if (state.video) {
+        // ① 恢复静音（除非用户主动全局静音）
+        var wantMute = !!(state.ui && state.ui.mute);
+        try { state.video.muted = wantMute; } catch (_) { }
+        // ② seek 回 0：mp3 播的这几秒 video 是被暂停的，进度应该还是 0，但双保险
+        try { if (state.video.seek) state.video.seek(0); } catch (_) { }
+        try { state.videoCurTime = 0; } catch (_) { }
+        // ③ 复位 videoStarted，让 onPlay 重新触发，mediaImg 兜底继续显示
+        state.videoStarted = false;
+        // ④ 从头开始播
+        try { if (state.video.play) state.video.play(); } catch (_) { }
+      }
+    } catch (_e) { }
+    try { LG('SISTER-UNLOCK-RESUME', '🔊 mp3 完 → mp4 seek 0 + unmute + play（从头带声音重播）'); } catch (_) { }
+  }
+  function setVideo (src, initialTime) {
+    // v76.6 · 视频入口埋点：谁调用、什么节点、当前状态
+    // v78.6 · 优化：同一 src+状态每帧调用不重复打日志（避免刷屏）
+    var _entryKey = src + '|' + (initialTime || 0) + '|' + state.curId + '|' + (state.videoStarted ? 1 : 0) + '|' + (state.videoErrored ? 1 : 0);
+    if (LOG.lastVideoEntryKey !== _entryKey) {
+      LOG.lastVideoEntryKey = _entryKey;
+      LG('VIDEO-SETVIDEO-ENTRY', '📹 setVideo 入口', {
+        src: src, initialTime: initialTime || 0,
+        curId: state.curId,
+        curVideoKey: state.videoKey,
+        hasVideo: !!state.video,
+        videoStarted: state.videoStarted,
+        videoErrored: state.videoErrored,
+        videoEnded: state.videoEnded,
+        pausedForMedal: !!state._pausedForMedalFirst,
+        isKS: isKS,
+        hasCreateVideo: !!(wx && wx.createVideo)
+      });
+    }
+    // V31·8 · 倍速续播需要"同一 src 强制重建"，所以只有 initialTime 为空时才短路
+    if (state.videoKey === src && !initialTime) {
+      var _skipKey = src + '|' + (state.videoStarted ? 1 : 0);
+      if (LOG.lastVideoSkipKey !== _skipKey) {
+        LOG.lastVideoSkipKey = _skipKey;
+        LG('VIDEO-SKIP', '⏸ 同一个 src，不重写', { src: src, curVideoStarted: state.videoStarted });
+      }
+      // v92.7 · 【铁律】同一 src 也绝不补末帧占位：末帧 = 剧透 + 起播回跳会闪
+      return;
+    }
+    LG('VIDEO-SETSRC', '切换视频', { from: state.videoKey, to: src, initialTime: initialTime || 0, hasOldVideo: !!state.video, hasMediaImg: !!state.mediaImg, mediaImgKey: state.mediaImgKey });
+    state.videoKey = src;
+    state.videoStarted = false;  // Reset before a synchronous cached-poster callback.
+    state._lastVideoKeyForFallback = src;  // v71.17 · 即使后续 clearVideo，也保留 key 供无 media 节点 lastframe 兜底
+    // v92.7 · 【闪烁彻底根治·铁律】禁止在视频起播前展示任何末帧兜底图。
+    //   VIDEO_POSTERS 存的是「这个视频自己的最后一帧」——不是加载占位图。
+    //   拿它当占位 = ①提前剧透结局 ②onPlay 后画面从末帧跳回第 0 帧，肉眼就是闪一下。
+    //   之前保留了「真的什么都没有时用末帧防黑屏」这条例外 → 首启 / clearVideo 后每个视频都会闪。
+    //   现在的规则：
+    //     · 屏幕上还有旧视频 / 旧背景 → 原样保留，等 native onPlay 自然接上（无缝）；
+    //     · 真的什么都没有 → 走 drawBg 深棕底 + drawLoading「嫂子正在准备…」，绝不贴末帧。
+    if (!state.video && !state.mediaImg) {
+      try { LG('VIDEO-NO-POSTER', '🚫 无背景也不贴末帧占位，交给 loading 层（防闪烁+防剧透）', { src: src }); } catch (_) { }
+    } else if (!state.video) {
+      try { LG('VIDEO-KEEP-CURFRAME', '⏭ 保留当前画面作背景，跳过新视频末帧占位（防剧透）', { src: src, keep: state.mediaImgKey }); } catch (_) { }
+    } else {
+      try { LG('VIDEO-SKIP-LASTFRAME', '⏭ 旧视频仍存活，跳过末帧占位（避免闪烁）', { src: src }); } catch (_) { }
+    }
+    // 注意：不在这里立刻清 mediaImg！否则新视频未 onPlay 前会黑屏。
+    // 等到 newV.onPlay 触发后再清掉 mediaImg（新视频已出画面，无缝接上）
+    if (!src || !isKS || !wx.createVideo) {
+      // 无源：清理旧视频
+      if (state.video && state.video.destroy) { try { state.video.destroy(); } catch (e) { } }
+      state.video = null;
+      return;
+    }
+    var oldVideo = state.video;  // 保留旧视频引用，等新视频真正播了再销毁
+    // V33·2 · 黑闪根治：旧视频未销毁前，底层 native 视频仍在显示→ loading 不遮黑
+    state._oldVideoAlive = !!oldVideo;
+    state.videoStarted = false;
+    state.videoErrored = false;
+    // v79.7 · 必须随新视频复位：它记录「native 曾 onPlay 过（解码就绪，仅被我们主动按住）」，
+    //   若不清零会跨视频泄漏 → 下一个真正拉不到流的视频也被当成健康的，看门狗永久失效。
+    state._videoNativeReady = false;
+    state.videoEnded = false;      // V31·10·final · 新视频起播，清「已播完」标记
+    state.videoEndedKey = null;
+    // V31·10·final · 切视频时清纯文本自动前进定时器（避免残留 timer 越权触发）
+    if (state._autoAdvTimer) { try { clearTimeout(state._autoAdvTimer); } catch (e) { } state._autoAdvTimer = null; }
+    state._autoAdvKey = null;
+    try { prefetchAhead(state.curId, 8); } catch (e) { }  // v76.2 · 5→8，后期章节视频前置预热
+    // V41.4 · 已缓存判定：video 命中三处任一即视为无需 loading
+    //   ① BUNDLED_VIDEOS（主包内本地文件）
+    //   ② SUBPKG_VIDEOS（分包内 wxfile://）
+    //   ③ videoCache（wx.downloadFile 已落盘）
+    var _cached = !!(videoCache[src] || BUNDLED_VIDEOS[src] || SUBPKG_VIDEOS[src]);
+    // V41.4 · 关键：即使未缓存，也不显示"正在加载"—— 旧视频最后一帧仍在，
+    //         下方给 CDN 直接边下边播，等 native onPlay 触发再切；避免"我已经准备好了却还加载"的错觉
+    state.videoLoading = false;
+    LG('VIDEO-CACHE-STATUS', '缓存检查', { cached: _cached, bundled: !!BUNDLED_VIDEOS[src], subpkg: !!SUBPKG_VIDEOS[src], loading: state.videoLoading });
+    ensureVideoLocal(src, function (playSrc) {
+      if (state.videoKey !== src) { LG('VIDEO-STALE', '回调时 videoKey 已变，丢弃', { src: src, curKey: state.videoKey }); return; }
+      LG('VIDEO-CREATE', '创建 native 视频对象', { playSrc: playSrc, initialTime: initialTime || 0 });
+      var _pausedByMedal = !!state._pausedForMedalFirst;
+      var _createCfg = {
+        src: playSrc, x: 0, y: 0, width: W, height: H,
+        // v71.23 · 婉儿解锁 mp3 期间视频 autoplay:false 完全不播；mp3 完 seek 0 + play 从头带声音重播
+        autoplay: !_pausedByMedal, controls: false, objectFit: 'cover', loop: false,
+        underGameView: true, showCenterPlayBtn: false, enableProgressGesture: false,
+        muted: !!(state.ui && state.ui.mute),  // V44 · 全局静音（不再用 muted 拦 medal，改用 autoplay:false + pause）
+        playbackRate: curSpeed()  // V31·8 · 创建时就带上，最兼容
+      };
+      if (initialTime && initialTime > 0) _createCfg.initialTime = initialTime;
+      var newV = wx.createVideo(_createCfg);
+      state.video = newV;
+      // v71.23 · autoplay:false 兼容兜底：某些容器无视配置直接播 → create 后立即 pause
+      if (_pausedByMedal) {
+        try { if (newV.pause) newV.pause(); } catch (_) { }
+        try { newV.muted = true; } catch (_) { }  // 双保险，即使 pause 没生效也别漏声
+        try { LG('VIDEO-MEDAL-HOLD', '⏸ mp3 期间 mp4 强制暂停（autoplay:false + pause + muted 三重护栏）', { src: playSrc }); } catch (_) { }
+      }
+      state.videoCurTime = initialTime || 0;
+      state.videoStartAt = Date.now();  // V50 · 记录本次 create 时刻，用于"开头 3s 内静音可安全重建"判断
+      state.videoDuration = 0;          // v96.1 · 记录时长，供 onTimeUpdate 末帧兜底判断
+      state._videoEndFired = false;     // v96.1 · 每个新视频重置结束标志（否则第二个视频不再前进）
+      state._endFallbackLastPos = -1;   // v92.5-fix · 上次采样到的 position，用于判断「是否真的停滞」
+      state._endFallbackStallT0 = 0;    // v92.5-fix · 停滞开始时刻
+      state._endFallbackStallN = 0;     // v92.6 · 连续停滞采样数（>=2 才认卡死）
+      state._dragUnlockDone = false;    // v97.0 · 每个新视频重置拖拽互动触发标志
+      if (global.DragUnlock) { try { global.DragUnlock.reset(); } catch (_eR) { } }
+      // V31·8 · 监听 timeupdate 记录 currentTime，用于倍速续播
+      if (newV.onTimeUpdate) newV.onTimeUpdate(function (res) {
+        try { if (res && typeof res.position === 'number') state.videoCurTime = res.position; } catch (e) { }
+        try { if (res && typeof res.duration === 'number' && res.duration > 0) state.videoDuration = res.duration; } catch (e) { }
+        // v97.0 · 拖拽解锁互动：视频播到 interaction.pauseAt 时暂停，进入手势引导
+        try {
+          if (newV === state.video && global.DragUnlock && !global.DragUnlock.isActive() && !state._dragUnlockDone) {
+            var _curNode = getNode(state.curId);
+            var _itc = _curNode && _curNode.media && _curNode.media.interaction;
+            if (_itc && _itc.type === 'drag' && typeof _itc.pauseAt === 'number' && state.videoCurTime >= _itc.pauseAt) {
+              try { newV.pause && newV.pause(); } catch (_e1) { }
+              state._dragUnlockDone = true; // 本节点只触发一次，防止 resume 后又立刻再触发
+              // v97.2 · 埋点：引导层可见（漏斗分母）。scene 天然按启动去重 → UV 口径
+              try {
+                if (global.Telemetry) global.Telemetry.event('drag_unlock_arm', {
+                  node_id: state.curId, content_ep: (_curNode && _curNode.ep) || '',
+                  chapter_id: state.ep || '', pause_at: String(_itc.pauseAt)
+                });
+              } catch (_eT1) { }
+              global.DragUnlock.arm(_curNode, _itc, W, H, function () {
+                // 命中终点 → 解锁成功 → 恢复播放
+                try {
+                  if (global.Telemetry) global.Telemetry.event('drag_unlock_ok', {
+                    node_id: state.curId, content_ep: (_curNode && _curNode.ep) || '',
+                    chapter_id: state.ep || ''
+                  });
+                } catch (_eT2) { }
+                try { LG('DRAG-UNLOCK-OK', '✅ 拖拽解锁成功 → resume 视频', { curId: state.curId }); } catch (_e2) { }
+                try { if (state.video && state.video.play) state.video.play(); } catch (_e3) { }
+                if (typeof render === 'function') render();
+              }, {
+                // v97.2 · 拖拽过程埋点回调（由组件在对应时机触发）
+                // v93.0 · onOk：成功解锁音效（放在宿主里，才能读到全局静音状态）
+                onOk: function () { try { playUnlockSfx(); } catch (_eS) { } },
+                onTry: function () {
+                  try {
+                    if (global.Telemetry) global.Telemetry.event('drag_unlock_try', {
+                      node_id: state.curId, content_ep: (_curNode && _curNode.ep) || '',
+                      chapter_id: state.ep || ''
+                    });
+                  } catch (_eT3) { }
+                },
+                onFail: function (info) {
+                  try {
+                    if (global.Telemetry) global.Telemetry.event('drag_unlock_fail', {
+                      node_id: state.curId, content_ep: (_curNode && _curNode.ep) || '',
+                      chapter_id: state.ep || '', reason: (info && info.reason) || 'unknown'
+                    }, { max_progress: Math.round(((info && info.maxProg) || 0) * 100) });
+                  } catch (_eT4) { }
+                }
+              });
+              LG('DRAG-UNLOCK-ARM', '⏸ 视频暂停 → 进入拖拽引导', { curId: state.curId, pauseAt: _itc.pauseAt, pos: state.videoCurTime });
+              if (typeof render === 'function') render();
+            }
+          }
+        } catch (_eDrag) { }
+        // ───────────────────────────────────────────────────────────────
+        // v92.5-fix · 【末帧卡死兜底·改用「停滞」而非「逼近」判定】
+        //   之前用 position >= duration-0.35s 就判「播完」，但快手 timeupdate 采样间隔
+        //   本身就在 0.25~1s 之间，正常播放到片尾时随手就会落进这 0.35s 窗口，
+        //   等于【几乎每支视频】都会被提前 0.35~1s 打断——这正是「最后一秒被截断」的根因。
+        //   真正需要兜底的场景是：native 卡在最后一帧不再前进（position 数值不再变化），
+        //   这才是 onEnded 失效的信号。改为：position 逼近片尾 且 连续 600ms 数值原地不动
+        //   （允许 ±0.03s 抖动）才判定为「真卡死」，正常播放中途的稀疏采样不会误伤。
+        //   dedupe：_fireVideoEnd 内部有 _videoEndFired 幂等保护，绝不会和真 onEnded 双触发。
+        try {
+          if (newV === state.video && !state.ui.paused) {
+            var _dur = state.videoDuration;
+            var _pos = state.videoCurTime;
+            if (_dur > 0.5 && _pos > 0 && _pos >= _dur - 0.15) {
+              var _now = Date.now();
+              var _stalled = state._endFallbackLastPos >= 0 && Math.abs(_pos - state._endFallbackLastPos) < 0.03;
+              if (_stalled) {
+                if (!state._endFallbackStallT0) state._endFallbackStallT0 = _now;
+                state._endFallbackStallN = (state._endFallbackStallN || 0) + 1;
+              } else {
+                state._endFallbackStallT0 = 0;   // position 还在往前走 → 不是卡死，清零重新计时
+                state._endFallbackStallN = 0;
+              }
+              state._endFallbackLastPos = _pos;
+              var _stallMs = state._endFallbackStallT0 ? (_now - state._endFallbackStallT0) : 0;
+              // v92.6 · 除时长门槛外再要求「连续 2 次以上采样都原地不动」，
+              //   杜绝单次重复采样（native 偶发同值回调）被误判成卡死而提前掐断最后一帧。
+              if (_stallMs >= 600 && (state._endFallbackStallN || 0) >= 2 && !state._videoEndFired) {
+                LG('VIDEO-END-FALLBACK', '⏱ 末帧兜底触发（onEnded 未响应 · 停滞>=600ms）', { src: src, pos: _pos, dur: _dur, stallMs: _stallMs, stallN: state._endFallbackStallN });
+                _fireVideoEnd();
+              }
+            } else {
+              state._endFallbackLastPos = _pos;
+              state._endFallbackStallT0 = 0;
+              state._endFallbackStallN = 0;
+            }
+          }
+        } catch (e) { }
+      });
+      // V31 · 应用当前倍速（多种 API 都试，最兼容）
+      applyVideoRate(newV);
+      if (newV.onPlay) newV.onPlay(function () {
+        if (newV !== state.video || state.videoKey !== src) return;
+        // v71.23 · mp3 期间若 native 无视 autoplay:false 强行触发 onPlay → 立刻 pause + seek 0，避免声音溢出
+        if (state._pausedForMedalFirst) {
+          try { if (newV.pause) newV.pause(); } catch (_) { }
+          try { if (newV.seek) newV.seek(0); } catch (_) { }
+          try { newV.muted = true; } catch (_) { }
+          // v79.7 · 【关键】native onPlay 能触发 = 解码就绪、素材拿到了，只是被我们主动按住。
+          //   旧代码这里直接 return，不置 videoStarted（对，因为画面确实没在跑），
+          //   但 8s 起播看门狗只认 videoStarted，于是把【被主动按住】误判成【CDN 挂起】，
+          //   sister_unlock.mp3 长 10.5s > 8s，看门狗先到期→强制 next，s3 视频一帧都没放。
+          //   另记一个旗标证明“它真的能播”，供看门狗区分两种情况。
+          state._videoNativeReady = true;
+          try { LG('VIDEO-ONPLAY-INTERCEPT', '⛔ mp3 期间 onPlay 被拦（pause+seek 0+muted），等 mp3 完再放'); } catch (_) { }
+          return;
+        }
+        LG('VIDEO-ONPLAY', '✅ native 视频 onPlay 触发→清占位图+销旧视频', { src: src });
+        state.videoStarted = true;
+        state.videoLoading = false;
+        markStoryPlayed();
+        // onPlay 后再设一次（大部分容器只有 onPlay 后写才生效）
+        applyVideoRate(newV);
+        // v81.0 · 视频画面就绪 → 释放上一 group 图片
+        _releasePrevGroup();
+        // 新视频已出画面 → 清旧图层 + 销旧视频
+        state.mediaImg = null;
+        state.mediaImgKey = null;
+        if (oldVideo && oldVideo !== newV && oldVideo.destroy) {
+          try { oldVideo.destroy(); } catch (e) { }
+          oldVideo = null;
+        }
+        state._oldVideoAlive = false;
+      });
+      // v96.1 · 把「视频播完」逻辑抽成可复用函数，供真 onEnded 与末帧兜底共用。
+      //   幂等保护：_videoEndFired 保证同一个视频的结束流程只执行一次，
+      //   杜绝 onEnded 与 timeupdate 兜底同时触发导致的 double-next。
+      function _fireVideoEnd () {
+        // 身份校验 —— 只有当前活跃 video 才处理（V49 幽灵回调保护）。
+        if (newV !== state.video) {
+          LG('VIDEO-ONENDED-GHOST', '⛔ 幽灵 onEnded 已丢弃', { src: src });
+          return;
+        }
+        if (state._videoEndFired) return;   // 已触发过，忽略
+        state._videoEndFired = true;
+        var cur = getNode(state.curId);
+        LG('VIDEO-ONENDED', '视频播完', { src: src, next: cur && cur.next });
+        // V31·10 · BE 视频播完 → 直接进 BE 结局页，不停留看旁白
+        if (/^BE_/.test(state.curId)) {
+          try { newV.pause && newV.pause(); } catch (e) { }
+          state.beVideoEnded = true;
+          // V31·10 · 复活流程：从最后 5s 起播的 BE 视频，播完直接跳父 choice
+          if (state.reviveInProgress && state.reviveBackTo) {
+            LG('REVIVE-END', 'BE 复活视频播完 → 跳父 choice（保留最后一帧）', { backTo: state.reviveBackTo });
+            var _backTo = state.reviveBackTo;
+            state.reviveInProgress = false;
+            state.reviveBackTo = null;
+            state.curId = _backTo;
+            // v76.0 · 复活回到父 choice 时，重置该 choice 里所有广告选项的解锁状态（不能白嫖）
+            try {
+              var _revNode = getNode(_backTo);
+              if (_revNode && _revNode.options) {
+                for (var _ri = 0; _ri < _revNode.options.length; _ri++) {
+                  var _ropt = _revNode.options[_ri];
+                  if (_ropt && _ropt.ad) {
+                    _ropt._adUnlocked = false; _ropt._adWatched = 0;
+                    try { clearAdWatched(_backTo, _ri); } catch (_e) { }   // v78.8 · 同步清持久化，否则复活后 hydrate 会把解锁又灌回来
+                  }
+                }
+                LG('REVIVE-RESET-AD', '复活回 choice → 清广告解锁 flag', { backTo: _backTo });
+              }
+            } catch (_) { }
+            // V32·9 · 同 normal 分支：保留视频最后一帧作 choice 背景，不 clearVideo
+            render();
+            return;
+          }
+          if (cur && cur.next) {
+            var nextNode = getNode(cur.next);
+            if (nextNode) {
+              state.beOverlayFromId = state.curId;
+              state.curId = cur.next;
+              render();
+              return;
+            }
+          }
+          state.endInfo = { endType: cur && cur.endType, title: cur && cur.title, text: cur && cur.text, fromId: state.curId };
+          bumpBeCount(state.curId);   // V31·10 · BE 计数 +1
+          // V64 · 不立即 clearVideo，让最后一帧作为 BE 结局页背景显示（用户反馈：不该黑屏）
+          //   · 视频已 pause，keep alive；BE 页离开时（重玩/看广告）由 restart 分支清理
+          state.beKeepVideoAlive = true;
+          state.curId = '__be__';
+          render();
+          return;
+        }
+        // V31·10·final · 普通视频节点：播完自动 next()
+        //   · 下一节点若是 choice → next() 后 UI 展示选项（背景保留最后一帧）
+        //   · 下一节点若是 video/文本 → next() 后自然衔接
+        //   之前的 30s force-next（元凶）已删除，onEnded 只会在视频真结束时触发。
+        try { newV.pause && newV.pause(); } catch (e) { }
+        // V32·6 · 复活流程结束：normal 分支（上游视频 curId=s3 非 BE_）播完时，
+        //   如果 reviveInProgress=true → 必须跳回 reviveBackTo（父 choice），而不是走 node.next。
+        //   之前 V32·3 的修复错了：把 flag 清得太早，导致复活后落到 s3.next 而非 f0。
+        if (state.reviveInProgress && state.reviveBackTo) {
+          var _backTo2 = state.reviveBackTo;
+          LG('REVIVE-END-NORMAL', '✅ 复活上游视频播完 → 跳父 choice（保留视频最后一帧作背景）', { backTo: _backTo2, curId: state.curId });
+          state.reviveInProgress = false;
+          state.reviveBackTo = null;
+          state.curId = _backTo2;
+          // v76.0 · 复活回到父 choice 时，重置该 choice 里所有广告选项的解锁状态（不能白嫖）
+          try {
+            var _revNode2 = getNode(_backTo2);
+            if (_revNode2 && _revNode2.options) {
+              for (var _rj = 0; _rj < _revNode2.options.length; _rj++) {
+                var _ropt2 = _revNode2.options[_rj];
+                if (_ropt2 && _ropt2.ad) {
+                  _ropt2._adUnlocked = false; _ropt2._adWatched = 0;
+                  try { clearAdWatched(_backTo2, _rj); } catch (_e) { }   // v78.8 · 同步清持久化
+                }
+              }
+              LG('REVIVE-RESET-AD', '复活回 choice → 清广告解锁 flag', { backTo: _backTo2 });
+            }
+          } catch (_) { }
+          // V32·9 · 不 clearVideo：保留上游视频最后一帧作为 choice 背景（跟正常 s5→f_s5 流程一致）
+          //   之前 clearVideo() → f_s5 背景全黑，用户投诉"视频不见了"
+          render();
+          return;
+        }
+        LG('VIDEO-ONENDED-NEXT', '视频播完 → 自动 next', { curId: state.curId, next: cur && cur.next });
+        next();
+      }
+      if (newV.onEnded) newV.onEnded(function () {
+        // 快手实测 onEnded 可能迟到 10s+，也可能根本不触发（末帧兜底负责后者）。
+        var cur = getNode(state.curId);
+        LG('VIDEO-ONENDED', '视频播完', { src: src, next: cur && cur.next });
+        _fireVideoEnd();
+      });
+      if (newV.onError) newV.onError(function (e) {
+        // V49 · 幽灵回调保护（同 onEnded）：旧 video destroy 后 onError 也会迟到触发
+        if (newV !== state.video) {
+          LG('VIDEO-ONERROR-GHOST', '⛔ 幽灵 onError 已丢弃', { src: src });
+          return;
+        }
+        LG('VIDEO-ONERROR', '❌ 视频报错', { src: src, playSrc: playSrc, err: e && (e.errMsg || e.message) });
+        // 出错时也把旧视频清掉，避免残留
+        if (oldVideo && oldVideo.destroy) { try { oldVideo.destroy(); } catch (e) { } oldVideo = null; }
+        // V32·2 · 本地/分包视频失败 → 自动降级到原 CDN 重试一次
+        if (BUNDLED_VIDEOS[src] || SUBPKG_VIDEOS[src]) {
+          LG('VIDEO-BUNDLED-FALLBACK', '⚠️ 本地视频失败 → 降级 CDN', { url: src, badPlaySrc: playSrc });
+          try { newV.destroy && newV.destroy(); } catch (_) { }
+          state.video = null;
+          state.videoKey = null;
+          delete BUNDLED_VIDEOS[src];  // 本轮别再选本地
+          delete SUBPKG_VIDEOS[src];   // 分包也别再选
+          delete videoCache[src];       // 清缓存，让 downloadFile 走 CDN
+          setVideo(src);
+          return;
+        }
+        state.videoErrored = true;
+        state.videoLoading = false;
+        // V38 · CDN 视频 404/加载失败 → 3s 后自动 next，避免用户卡在黑屏
+        //   之前：不动，等用户点"继续"→ 用户看到黑屏无按钮以为死了
+        var _erroredId = state.curId;
+        setTimeout(function () {
+          if (state.curId === _erroredId && state.videoErrored) {
+            LG('VIDEO-ERROR-AUTO-NEXT', '⚠️ CDN 视频报错 3s → 自动跳过', { curId: _erroredId, src: src });
+            try { next(); } catch (_) { }
+          }
+        }, 3000);
+      });
+      // V31·10 · 移除 30s force-next 兜底 —— 是「选项/剧情跳太早」的元凶：
+      //   30s 到点强制 next 会打断长视频（婉儿场景等），把用户扔到下一个节点。
+      //   视频真结束由 onEnded 处理，加载失败由 onError 处理，无需时间兜底。
+      try { newV.play(); } catch (e) { }
+      // 兜底：3s 内 onPlay 没触发也要把旧视频清掉
+      setTimeout(function () {
+        if (oldVideo && oldVideo.destroy) { try { oldVideo.destroy(); } catch (e) { } oldVideo = null; }
+        state._oldVideoAlive = false;
+      }, 3000);
+      // v73.2 · 视频起播超时兜底：8s 内 onPlay 没触发 + 也没 onError → 视为加载失败，自动 next
+      //   根治新用户 CDN 完全下不来的黑屏：onError 可能不触发（CDN 挂起），用户永远卡在黑屏
+      // v79.7 · 【修复 s3 不播】这个看门狗原来只看 videoStarted，但婉儿解锁 mp3 期间我们会
+      //   【主动】按住视频（_pausedForMedalFirst），onPlay 被拦截且不置 videoStarted，
+      //   而 sister_unlock.mp3 实测 10.5s > 8s → 看门狗先到期，把一个健康视频当成 CDN 挂起
+      //   强制 next，玩家就“旁白读完直接让选择”，s3 一帧未放。
+      //   现在：① 被主动按住期间不计时，延后重查；② native onPlay 已触发过（解码就绪）
+      //   则根本不属于“拉不到流”，直接撤销看门狗。
+      var _playTimeoutId = state.curId;
+      var _watchTries = 0;
+      (function _armPlayWatchdog () {
+        setTimeout(function () {
+          // 已切节点 / 已换视频 / 已起播 / 已报错 → 看门狗无关
+          if (state.curId !== _playTimeoutId || newV !== state.video) return;
+          if (state.videoStarted || state.videoErrored) return;
+          // ② native 已经 onPlay 过（只是被我们 pause 住）→ 素材健康，不该走失败分支
+          if (state._videoNativeReady) {
+            try { LG('VIDEO-PLAY-WATCHDOG-CANCEL', '✅ native 已就绪（仅被主动按住）→ 撤销起播超时', { curId: _playTimeoutId }); } catch (_) { }
+            return;
+          }
+          // ① 正被主动按住（mp3 / 成就弹窗）→ 不计时，延后重查（最多再等 6×2s=12s）
+          if (state._pausedForMedalFirst || state.sisterUnlockAudioCtx) {
+            if (++_watchTries <= 6) {
+              try { LG('VIDEO-PLAY-WATCHDOG-HOLD', '⏸ 视频被主动按住，起播超时顺延', { curId: _playTimeoutId, tries: _watchTries }); } catch (_) { }
+              setTimeout(_armPlayWatchdog, 0);
+              return;
+            }
+          }
+          LG('VIDEO-PLAY-TIMEOUT', '⏰ 视频起播 8s 超时 → 自动 next（CDN 可能挂起）', { curId: _playTimeoutId, src: src });
+          state.videoErrored = true;
+          state.videoLoading = false;
+          try { next(); } catch (_) { }
+        }, _watchTries === 0 ? 8000 : 2000);
+      })();
+    }, true);  // V33 · 高优先级：用户正等的这个视频，插到下载队首
+  }
+  function clearVideo () {
+    if (state.video && state.video.destroy) { try { state.video.destroy(); } catch (e) { } }
+    state.video = null; state.videoKey = null;
+    state._oldVideoAlive = false;
+  }
+  var imgCache = {};
+  // V36 · 图片全量进主包（sp2 分包取消 · 主包 ~17MB 在 20MB 限内）
+  //   ① 主包内（BUNDLED_IMAGES · 秒开）：EP01/EP02/EP03 全 28 张剧情图 + 反应图（4.3MB）
+  //   ② CDN 兜底：其余（end_be、be7/be9/be11 结局图）
+  //   —— 所有映射 key 都是 CDN 完整 URL；story.js 里 URL 不用改
+  var CDN_PREFIX_P4 = 'https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/';
+  var CDN_PREFIX_P5 = 'https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/';
+  function _mkImgMap (base, names) {
+    var m = {};
+    for (var i = 0; i < names.length; i++) {
+      var pair = names[i];  // [ 'p4'|'p5', 'frames/foo.png' ]
+      var pref = pair[0] === 'p4' ? CDN_PREFIX_P4 : CDN_PREFIX_P5;
+      var cdnPath = pair[1];
+      var basename = cdnPath.replace(/^.*\//, '');
+      var localName = basename.replace(/\.png$/i, '.jpg');
+      m[pref + cdnPath] = base + localName;
+    }
+    return m;
+  }
+  // v73.0 · 从 content/assets.registry.json 派生（编辑 registry 后跑 `npm run build:registry`）
+  var _REG = (typeof window !== 'undefined' && window.WEIHUNQI_REGISTRY) || {};
+  var BUNDLED_IMAGES = _REG.BUNDLED_IMAGES || {};
+  var SUBPKG_IMAGES = {};  // V36 · 空对象保底（已合入主包，兼容旧代码分支）
+  function _resolveImgSrc (src, cb) {
+    cb((_REG.IMAGE_ALIASES || {})[src] || BUNDLED_IMAGES[src] || src);
+  }
+  // v72.3 · 扩展名不匹配兜底：URL 写 .png 但 CDN 只有 .jpg（或反之）→ 自动换扩展重试
+  //   踩坑案例 v72.2：story.js 里 k_side_after.png / s2.png..s10.png 全 404，
+  //                   但 CDN 有对应 .jpg —— 之前直接黑屏 6s timeout。
+  // v72.5 · 主动预取下一节点的媒体图（choice 各分支 + text 节点的 next.media.file）
+  //         避免用户点「继续 ▸」后才冷加载 2MB+ 的 PNG，切换时黑屏空窗期
+  // v76.2 · 优化：预取深度 2 层 + 视频节点 poster + 兄弟节点 lastframe
+  function _prefetchNextMedia (node) {
+    if (!node) return;
+    // { url, group } 对
+    var targets = [];
+    var seen = {};
+    function _pushId (id, depth) {
+      if (!id || seen[id] || depth > 2) return;
+      seen[id] = 1;
+      var n = getNode(id);
+      if (!n) return;
+      var _g = _groupForNode(n, id);
+      if (n.media && n.media.file) {
+        // 图片：预下载源文件
+        if (n.media.kind === 'image' || /\.(jpg|jpeg|png|webp)$/i.test(n.media.file)) {
+          targets.push({ url: n.media.file, group: _g });
+        }
+        // 视频：预下载 poster（作为首帧兜底 + 加载态背景）
+        if (n.media.kind === 'video' && n.media.poster) {
+          targets.push({ url: n.media.poster, group: _g });
+        }
+      }
+      // 继续向下爬 next / options
+      if (depth < 2) {
+        if (n.type === 'choice' && n.options && n.options.length) {
+          n.options.forEach(function (o) { _pushId(o.next, depth + 1); });
+        } else if (n.next) {
+          _pushId(n.next, depth + 1);
+        }
+      }
+    }
+    if (node.type === 'choice' && node.options && node.options.length) {
+      node.options.forEach(function (o) { _pushId(o.next, 1); });
+    } else if (node.next) {
+      _pushId(node.next, 1);
+    }
+    targets.forEach(function (t) {
+      try { loadImg(t.url, function () { /* silent prefetch */ }, null, true/*noTrack*/); } catch (e) { }
+    });
+  }
+
+  // ── group 相关工具函数（保留接口兼容，功能已由资源槽取代）──────
+  // _segRootOf / _groupForNode：保留接口防止旧调用报错（功能已由资源槽取代）
+  var _nodeSegCache = {};
+  function _segRootOf (nodeId) { return nodeId; }
+  function _groupForNode (node, nodeId) { return nodeId || 'default'; }
+
+  // A decoding/network failure is not proof of HTTP 404. Retry once, then cool down.
+  var _failedSrcs = {};
+  var _imgInflight = {};
+  function _imageCooling(src) { return !!(_failedSrcs[src] && Date.now() < _failedSrcs[src]); }
+  function _imageRetryDue(src) { return !!(_failedSrcs[src] && !_imageCooling(src) && !_imgInflight[src]); }
+  function loadImg (src, cb, group, noTrack) {
+    function notify(fn, im) { try { fn(im); } catch (e) { LG('IMG-CALLBACK-ERROR', String(e)); } }
+    if (imgCache[src] && imgCache[src].width && imgCache[src].src) {
+      if (!noTrack) _trackImg(imgCache[src], src);
+      return notify(cb, imgCache[src]);
+    }
+    if (_imageCooling(src)) return notify(cb, null);
+    if (_imgInflight[src]) { _imgInflight[src].push({ cb: cb, noTrack: noTrack }); return; }
+    var queue = _imgInflight[src] = [{ cb: cb, noTrack: noTrack }];
+    var completed = false, attempt = 0;
+    function finish(im, reason) {
+      if (completed) return;
+      completed = true;
+      delete _imgInflight[src];
+      if (im) {
+        delete _failedSrcs[src]; imgCache[src] = im;
+        if (queue.some(function(e) { return !e.noTrack; })) _trackImg(im, src);
+      } else {
+        _failedSrcs[src] = Date.now() + 30000;
+        LG('IMG-LOAD-FAIL', '图片加载失败，30秒后允许重试', { src: src, reason: reason, attempts: attempt });
+      }
+      queue.forEach(function(e) { notify(e.cb, im); });
+    }
+    _resolveImgSrc(src, function(resolvedSrc) {
+      function start() {
+        var im, timer, settled = false;
+        attempt++;
+        function done(ok, reason) {
+          if (settled || completed) return;
+          settled = true; clearTimeout(timer);
+          if (im) { im.onload = null; im.onerror = null; }
+          if (ok) return finish(im);
+          if (im) { try { im.src = ''; } catch (_) {} }
+          if (attempt < 2) setTimeout(start, 350);
+          else finish(null, reason);
+        }
+        try {
+          im = wx && wx.createImage ? wx.createImage() : new Image();
+          im.onload = function() { done(!!(im.width && im.height), 'empty_image'); };
+          im.onerror = function() { done(false, 'image_error'); };
+          timer = setTimeout(function() { done(false, 'timeout'); }, 8000);
+          im.src = resolvedSrc;
+        } catch (e) { done(false, 'exception'); }
+      }
+      start();
+    });
+  }
+
+  function roundRect (x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+  function wrapText (text, maxW, font) {
+    ctx.font = font;
+    var lines = [], line = '';
+    for (var i = 0; i < text.length; i++) {
+      var ch = text[i];
+      var t = line + ch;
+      if (ctx.measureText(t).width > maxW && line) { lines.push(line); line = ch; }
+      else line = t;
+    }
+    if (line) lines.push(line);
+    return lines;
+  }
+
+  function drawBg (hasVideo) {
+    ctx.clearRect(0, 0, W, H);
+    // v77.1 修复：视频节点且已起播时 canvas 必须保持透明，
+    //   否则会盖住 underGameView 的 native 视频层导致「视频完全看不见」。
+    //   仅在「无视频」或「有视频但还没 onPlay」时铺深棕渐变兜底避免黑闪。
+    if (hasVideo && state.videoStarted) return;
+    var g = ctx.createLinearGradient(0, 0, 0, H);
+    g.addColorStop(0, '#2a1a10');
+    g.addColorStop(0.5, '#1a0f08');
+    g.addColorStop(1, '#0a0604');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, W, H);
+  }
+
+  // 加载中 Loading 层（视频未就绪时显示，不黑屏）
+  // V33·2 · dim 参数：true=遮暗（无背景时用）；false=只画角落 spinner（切换阶段保留旧视频，不闪黑）
+  function drawLoading (dim) {
+    if (dim !== false) {
+      // 半透明图层：真的没背景时才铺
+      ctx.fillStyle = 'rgba(0,0,0,.55)';
+      ctx.fillRect(0, 0, W, H);
+    }
+    // dim=false 时挪到右下角画小 spinner，不打扰旧视频画面
+    var cx = (dim === false) ? (W - 44) : (W / 2);
+    var cy = (dim === false) ? (H - 84) : (H / 2 - 20);
+    var t = Date.now() / 1000;
+    var spinR = (dim === false) ? 10 : 18;
+    var dotR = (dim === false) ? 2 : 3.5;
+    for (var i = 0; i < 8; i++) {
+      var ang = t * 2 + i * (Math.PI * 2 / 8);
+      var x = cx + Math.cos(ang) * spinR;
+      var y = cy + Math.sin(ang) * spinR;
+      var alpha = 0.2 + (i / 8) * 0.8;
+      ctx.fillStyle = 'rgba(230,190,110,' + alpha + ')';
+      ctx.beginPath(); ctx.arc(x, y, dotR, 0, Math.PI * 2); ctx.fill();
+    }
+    // 文字：只在遮暗态显示；小 spinner 态不打文字避免遮画面
+    if (dim !== false) {
+      ctx.fillStyle = '#ffcf5c';
+      ctx.font = '600 14px sans-serif';
+      ctx.textAlign = 'center';
+      var _tip = '嫂子正在准备…';
+      try {
+        var _u = state.videoKey;
+        if (_u && dlProgress[_u] && dlProgress[_u] < 100) _tip = '嫂子正在准备 ' + Math.floor(dlProgress[_u]) + '%';
+      } catch (_) { }
+      ctx.fillText(_tip, cx, cy + 46);
+      ctx.textAlign = 'left';
+    }
+  }
+
+  // V31·3 · 折叠/展开动画状态
+  // state.statsExpandT0: 展开开始时间戳；null=折叠态
+  // 时序：0~1000ms 展开 → 1000~4000ms 保持展开 → 4000~5000ms 收回 → 5000ms+ 折叠
+  function getStatsExpandRatioRow (row) {
+    // V64 · 移除『成就浮层期间强制折叠』的旧逻辑，让胶囊在勋章解锁时也照常显示
+    var t0 = state.statsExpandRows && state.statsExpandRows[row];
+    if (!t0) return 0;
+    var age = Date.now() - t0;
+    if (age < 0) return 0;
+    if (age < 1000) {
+      var u = age / 1000; return u < 0.5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2;
+    }
+    if (age < 4000) return 1;
+    if (age < 5000) {
+      var u2 = (age - 4000) / 1000;
+      var eu = u2 < 0.5 ? 2 * u2 * u2 : 1 - Math.pow(-2 * u2 + 2, 2) / 2;
+      return 1 - eu;
+    }
+    delete state.statsExpandRows[row];
+    return 0;
+  }
+  function triggerStatsExpand (rows) {
+    state.statsExpandRows = state.statsExpandRows || {};
+    if (!rows || !rows.length) return;
+    var now = Date.now();
+    for (var i = 0; i < rows.length; i++) {
+      state.statsExpandRows[rows[i]] = now;
+    }
+  }
+
+  // 右侧竖排 3 个数值胶囊
+  function drawStatsRight () {
+    // v92.4 · 引导浮层删除后三胶囊无前置门槛：进剧情即亮相
+    if (!state.statsRevealed) {
+      state.statsRevealed = true;
+      state.statsRevealT = Date.now() - 2000;
+    }
+    // v92.8 · 【全局取消「先隐藏再展示」】三个数值胶囊一律常驻，不再把「嫂子好感」
+    //   gate 在 sisterUnlocked——否则开局只有 2 枚、婉儿登场后突然插入第 3 枚，
+    //   下方成就胶囊 / 免广胶囊会整体下移一格，视觉上是一次跳变。
+    //   sisterUnlocked 仍保留原追溯逻辑（其他玩法门槛依赖它），只是不再影响胶囊显隐。
+    if (!state.sisterUnlocked) {
+      try {
+        var _cid = state.curId;
+        // v92.3 · 白名单改为复用 registry 派生的 EARLY_NODES_BEFORE_SISTER，
+        //   避免新增早期节点（如 s1 拆分出的 s1b / 白日梦分支）漏进硬编码列表 → 嫂子 UI 提前解锁
+        if (_cid && !/^__/.test(_cid) && !EARLY_NODES_BEFORE_SISTER[_cid]) {
+          state.sisterUnlocked = true;
+          try { LG('SISTER-UNLOCK-FALLBACK', '👩 drawStatsRight 兜底解锁', { id: _cid }); } catch (_) { }
+        }
+      } catch (e) { }
+    }
+    var items = [];
+    items.push({ label: '嫂子好感', val: state.stats.wei, color: '#e04c6a', key: 'wei' });
+    items.push({ label: '村里威望', val: state.stats.qing, color: '#d4a03a', key: 'qing' });
+    items.push({ label: '家里存粮', val: state.stats.liang, color: '#7fb069', key: 'liang' });
+    var phFixed = 40, gap = 10;
+    // v71.9 · 胶囊居中对齐 + 缩紧折叠态空缺：icon(24) + 数值居中，宽度 82→72
+    // v72.3 · 折叠态宽度暴露到 GameGlobal.CAPSULE_W_FOLDED，供 achievements.js 保持一致
+    var pwExpanded = 152, pwFolded = 80;
+    try { (typeof GameGlobal !== 'undefined' ? GameGlobal : global).CAPSULE_W_FOLDED = pwFolded; } catch (e) { }
+    var sx = 10;
+    var sy = 80;
+    var now = Date.now();
+    // V31·1 · icon 图加载（懒加载，加载完成后 drawImage）
+    state.iconImgs = state.iconImgs || {};
+    for (var k = 0; k < items.length; k++) {
+      var ik = items[k].key;
+      if (state.iconImgs[ik] === undefined) {
+        state.iconImgs[ik] = null;  // 占位，防止重复触发
+        _loadImgPersist(_iconUrl(ik), (function (kk) {
+          return function (im) { state.iconImgs[kk] = im || false; };
+        })(ik));
+      }
+    }
+    for (var i = 0; i < items.length; i++) {
+      var it = items[i], y = sy + i * (phFixed + gap);
+      // V31·10 · 按行展开：只有本行数值变化才展开
+      var expandRatio = getStatsExpandRatioRow(i);
+      var pw = pwFolded + (pwExpanded - pwFolded) * expandRatio;
+      var ph = phFixed;
+      var pulseKey = 'row_' + i;
+      var pt = state.pulses[pulseKey];
+      var scale = 1;
+      if (pt) {
+        var pAge = now - pt;
+        if (pAge < 500) {
+          var pu = pAge / 500;
+          scale = 1 + (1 - pu) * 0.25 * Math.sin(pu * Math.PI);
+        } else {
+          delete state.pulses[pulseKey];
+        }
+      }
+      var dw = pw * scale, dh = ph * scale;
+      var dx = sx - (dw - pw) / 2, dy = y - (dh - ph) / 2;
+      ctx.fillStyle = 'rgba(0,0,0,.80)';
+      roundRect(dx, dy, dw, dh, dh / 2); ctx.fill();
+      ctx.strokeStyle = scale > 1.01 ? it.color : 'rgba(200,155,80,.55)';
+      ctx.lineWidth = scale > 1.01 ? 2 : 1; ctx.stroke();
+      // V31·1 · icon 图（左侧圆位），放大到 28×28；未加载时画放大版彩色圆做占位
+      var iconR = 14 * scale;               // 原 6 → 14（直径 28）
+      var iconCX = dx + iconR + 8 * scale;
+      var iconCY = dy + dh / 2;
+      var iconImg = state.iconImgs[it.key];
+      if (iconImg && iconImg !== false) {
+        if (!_drawImgCover(iconImg, iconCX, iconCY, iconR)) {
+          ctx.fillStyle = it.color;
+          ctx.beginPath(); ctx.arc(iconCX, iconCY, iconR, 0, Math.PI * 2); ctx.fill();
+        }
+      } else {
+        // 占位圆：比原来更大，更明显
+        ctx.fillStyle = it.color;
+        ctx.beginPath(); ctx.arc(iconCX, iconCY, iconR, 0, Math.PI * 2); ctx.fill();
+        // 内侧描高光
+        ctx.fillStyle = 'rgba(255,255,255,0.35)';
+        ctx.beginPath(); ctx.arc(iconCX - iconR * 0.3, iconCY - iconR * 0.3, iconR * 0.35, 0, Math.PI * 2); ctx.fill();
+      }
+      // v71.9 · 数值与 label 都改为居中对齐（右对齐+右缘 padding 太丑，跟成就胶囊左对齐更不齐）
+      //   折叠态：只显示居中数值；展开态：icon 左侧固定 + label+数值 拼接后整块居中
+      ctx.fillStyle = it.color;
+      ctx.font = '800 ' + Math.round(14 * scale) + 'px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      // v71.5 · 数字从 0 lerp 到真实值
+      var _shownVal = it.val;
+      if (state.statsRevealT) {
+        var _rAge = Date.now() - state.statsRevealT;
+        if (_rAge < 1200) {
+          var _rt = _rAge / 1200;
+          var _re = 1 - Math.pow(1 - _rt, 3);
+          _shownVal = Math.round(it.val * _re);
+        }
+      }
+      // 折叠态：数值居中在 icon 右侧空间正中；展开态：数值靠右
+      if (expandRatio < 0.02) {
+        // 折叠：数值居中显示（icon 右边到胶囊右缘的正中）
+        var _numCX = iconCX + iconR + (dx + dw - (iconCX + iconR)) / 2;
+        ctx.fillText(_shownVal, _numCX, dy + dh / 2);
+      } else {
+        // 展开：数值右侧
+        ctx.textAlign = 'right';
+        ctx.fillText(_shownVal, dx + dw - 10 * scale, dy + dh / 2);
+        // label 白字紧跟 icon
+        ctx.fillStyle = '#fff';
+        ctx.font = '600 ' + Math.round(12 * scale) + 'px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.globalAlpha = expandRatio;
+        ctx.fillText(it.label, dx + iconR * 2 + 10 * scale, dy + dh / 2);
+        ctx.globalAlpha = 1;
+      }
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'alphabetic';
+    }
+  }
+
+  // ───────────────────────────────────────────────────────────────────────────
+  // v92.8 · 免广告通行证胶囊（左侧，紧贴成就胶囊下方）
+  //   入口从底部栏搬到这里：icon + 文案「免广」。
+  //   · 未解锁（今日未看满 AD_PASS_NEED 个激励视频）→ 闭锁 icon + 「免广」
+  //   · 已解锁（adPassActive()）              → 开锁 icon + 「免广」+ 绿色小点（生效中）
+  //   状态严格跟 adPassActive() 走 —— 它读的是 weihunqi_ad_pass_v1，跨自然天自动失效，
+  //   所以第二天回来会自动退回未解锁态，无需额外处理。
+  //   点击交互不变：仍然调起 _unlockAllOpen 那个浮层。
+  var _AD_PASS_CAP = { x: 0, y: 0, w: 0, h: 0, on: false };
+  function getAdPassCapsuleRect () {
+    // 位置 = 成就胶囊正下方一格（沿用同一套 y = 80 + N*(40+10) 网格）
+    var w = 72, h = 40, x = 10;
+    try {
+      var G = (typeof GameGlobal !== 'undefined' ? GameGlobal : global);
+      if (G && typeof G.CAPSULE_W_FOLDED === 'number') w = G.CAPSULE_W_FOLDED;
+    } catch (e) { }
+    // v93.0 · 【宽度全部对齐】此前生效态为塞绿点把胶囊加宽了 20px，导致这一枚比上面
+    //   四枚都长、右边缘突出去一截（用户："免广后那个胶囊也超了！不要这样"）。
+    //   现在宽度恒等于 CAPSULE_W_FOLDED，绿点改画在胶囊右上角当角标，不占文字排布空间。
+    // 三个数值胶囊(3) + 成就胶囊(1) = 第 5 格
+    var y = 80 + 4 * (40 + 10);
+    return { x: x, y: y, w: w, h: h };
+  }
+  function drawAdPassCapsule () {
+    var active = adPassActive();
+    var r = getAdPassCapsuleRect();
+    var dx = r.x, dy = r.y, dw = r.w, dh = r.h;
+    ctx.save();
+    // 底 + 描边（与成就胶囊同一视觉规格）
+    ctx.fillStyle = 'rgba(0,0,0,.80)';
+    roundRect(dx, dy, dw, dh, dh / 2); ctx.fill();
+    ctx.strokeStyle = active ? 'rgba(126,242,164,.80)' : 'rgba(245,198,90,.75)';
+    ctx.lineWidth = 1.2;
+    roundRect(dx, dy, dw, dh, dh / 2); ctx.stroke();
+    // icon（切图；未就绪时画矢量锁兜底，不留空洞）
+    // v92.9 · iconR 与成就胶囊严格一致（achievements.drawEntry 用 12，之前误写 13）
+    var iconR = 12;
+    var iconCX = dx + 20;
+    var iconCY = dy + dh / 2;
+    var _ico = active
+      ? getUiImage('_iconAdPassActive', 'images/icons/icon_adpass_active.png')
+      : getUiImage('_iconAdPassLocked', 'images/icons/icon_adpass_locked.png');
+    if (_ico) {
+      ctx.drawImage(_ico, iconCX - iconR, iconCY - iconR, iconR * 2, iconR * 2);
+    } else {
+      // 兜底：简版锁形（锁体 + 锁梁）
+      ctx.fillStyle = active ? '#7ef2a4' : '#f5c65a';
+      var _bw = 13, _bh = 10;
+      roundRect(iconCX - _bw / 2, iconCY + 0.5, _bw, _bh, 2.2); ctx.fill();
+      ctx.strokeStyle = active ? '#7ef2a4' : '#f5c65a';
+      ctx.lineWidth = 2.2;
+      ctx.beginPath();
+      if (active) ctx.arc(iconCX - 2.5, iconCY - 2.5, 4.6, Math.PI, Math.PI * 2.1);
+      else ctx.arc(iconCX, iconCY - 1.5, 4.6, Math.PI, Math.PI * 2);
+      ctx.stroke();
+    }
+    // 文案「免广」
+    // v92.9 · 字号/字重/对齐方式必须与成就胶囊「成就」完全一致：
+    //   achievements.drawEntry 用 '800 15px sans-serif' + textAlign='center'，
+    //   且文字中心 = icon 右缘到胶囊右缘的正中（_txtCX 公式）。
+    //   之前这里写成 14px + left 对齐 + 手动 +3px 偏移，所以字更小、位置也偏——用户一眼看出来。
+    ctx.font = '800 15px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    var _label = '免广';
+    // v93.0 · 宽度已与其它胶囊完全一致，居中口径也就和「成就」完全同一套公式，不再有 EXTRA 修正。
+    var _txtCX = iconCX + iconR + (dx + dw - (iconCX + iconR)) / 2;
+    ctx.fillStyle = active ? '#c8ffd9' : '#ffd97a';
+    ctx.fillText(_label, _txtCX, iconCY);
+    // v93.0 · 已生效 → 右上角一个绿色小圆点角标（呼吸），只做「正在生效」的标记，
+    //   画在胶囊描边上，不占内部横向空间，所以胶囊宽度和上面几枚严格齐平。
+    if (active) {
+      var _dotX = dx + dw - 7;
+      var _dotY = dy + 7;
+      var _pul = 0.72 + 0.28 * Math.sin(Date.now() / 320);
+      ctx.fillStyle = 'rgba(126,242,164,' + (0.38 * _pul).toFixed(3) + ')';
+      ctx.beginPath(); ctx.arc(_dotX, _dotY, 6.2, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#4ade80';
+      ctx.beginPath(); ctx.arc(_dotX, _dotY, 3.4, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = 'rgba(0,0,0,.55)';
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(_dotX, _dotY, 3.4, 0, Math.PI * 2); ctx.stroke();
+    }
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'alphabetic';
+    ctx.restore();
+    // 热区（比胶囊外扩 4px，跟成就胶囊一致好点）
+    _AD_PASS_CAP = { x: dx - 4, y: dy - 4, w: dw + 8, h: dh + 8, on: true };
+    state.hitZones.push({ x: _AD_PASS_CAP.x, y: _AD_PASS_CAP.y, w: _AD_PASS_CAP.w, h: _AD_PASS_CAP.h, action: 'ctrl:unlock_all' });
+  }
+
+  // UI 切图只创建一次；未加载与加载失败均使用绘制兜底。
+  function getUiImage (key, url) {
+    var cache = state._uiImages || (state._uiImages = {});
+    if (cache[key]) return cache[key].ready ? cache[key].image : null;
+    var item = cache[key] = { ready: false, failed: false, image: null };
+    try {
+      var im = (typeof wx !== 'undefined' && wx.createImage) ? wx.createImage() : new Image();
+      item.image = im;
+      im.onload = function () { item.ready = true; };
+      im.onerror = function () { item.failed = true; };
+      im.src = url;
+    } catch (_) { item.failed = true; }
+    return null;
+  }
+
+  // 底部：3 行竖排选项按钮
+  function drawChoiceBottom (node) {
+    // v78.8 · 渲染前先回灌持久化解锁状态，保证冷启后锁/已解锁标记显示正确
+    try { hydrateAdUnlock(state.curId, node); } catch (_e) { }
+    var n = node.options.length;
+    var rowH = 52, gap = 14, sx = 10;
+    var _titleFont = '800 17px sans-serif';
+    var _titleMaxW = W - sx * 2 - 16;
+    var _titleLineCount = node.title ? wrapText(node.title, _titleMaxW, _titleFont).filter(function(l) {
+      return l.replace(/[\s.…．。、，。！？·]+/g, '').length > 0;
+    }).length : 0;
+    var titleH = _titleLineCount > 0 ? (_titleLineCount * 22 + 16) : 0;  // 每行22px + 16px底部间距（与原38px单行保持一致）
+    var totalH = titleH + n * rowH + (n - 1) * gap + 20;
+    var sy = H - totalH - 66;  // 上抬 66px 给底部控制栏留位（选区整体下移 6px）
+
+    // V31·8 · 顶部渐变遮罩：整体加暗（让描边字幕在浅背景也可见）
+    var maskTop = sy - 34;
+    var g = ctx.createLinearGradient(0, maskTop, 0, H);
+    g.addColorStop(0, 'rgba(0,0,0,0)');
+    g.addColorStop(.35, 'rgba(0,0,0,.72)');
+    g.addColorStop(1, 'rgba(0,0,0,.88)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, maskTop, W, H - maskTop);
+
+    if (node.title) {
+      // V84 · 标题折行：超出宽度时拆成多行向上扩展，不截断打点；过滤只含标点的孤行
+      ctx.save();
+      ctx.font = '800 17px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'alphabetic';
+      var _titleMaxW = W - sx * 2 - 16;
+      var _titleLines = wrapText(node.title, _titleMaxW, '800 17px sans-serif').filter(function(l) {
+        return l.replace(/[\s.…．。、，。！？·]+/g, '').length > 0;
+      });
+      var _lineH = 22;
+      var _totalTitleH = _titleLines.length * _lineH;
+      for (var _li = 0; _li < _titleLines.length; _li++) {
+        var _ly = sy + 20 + _li * _lineH;
+        // 底层黑描边（粗）
+        ctx.lineWidth = 5;
+        ctx.strokeStyle = 'rgba(0,0,0,0.92)';
+        ctx.lineJoin = 'round';
+        ctx.miterLimit = 2;
+        ctx.strokeText(_titleLines[_li], W / 2, _ly);
+        // 内层深棕
+        ctx.lineWidth = 2.5;
+        ctx.strokeStyle = 'rgba(80,40,10,0.85)';
+        ctx.strokeText(_titleLines[_li], W / 2, _ly);
+        // 阴影 + 主色
+        ctx.shadowColor = 'rgba(0,0,0,0.85)';
+        ctx.shadowBlur = 6;
+        ctx.shadowOffsetY = 1;
+        ctx.fillStyle = '#ffe28a';
+        ctx.fillText(_titleLines[_li], W / 2, _ly);
+      }
+      ctx.restore();
+      ctx.textAlign = 'left';
+    }
+
+    var bx = sx, bw = W - sx * 2;
+    for (var i = 0; i < n; i++) {
+      var opt = node.options[i];
+      var y = sy + titleH + i * (rowH + gap);
+      // V31 · 更协调的按钮：暗琥珀纵向渐变（不再纯黑）+ 双层金色描边
+      var btnG = ctx.createLinearGradient(bx, y, bx, y + rowH);
+      btnG.addColorStop(0, 'rgba(58, 32, 12, 0.82)');    // 顶部暖褐
+      btnG.addColorStop(1, 'rgba(28, 14, 6, 0.88)');     // 底部深棕
+      ctx.fillStyle = btnG;
+      roundRect(bx, y, bw, rowH, 14); ctx.fill();
+      // 外描边：温暖琥珀金
+      ctx.strokeStyle = 'rgba(212, 168, 92, 0.9)';
+      ctx.lineWidth = 1.4; ctx.stroke();
+      // 内描边：浅金反光（增加质感）
+      ctx.strokeStyle = 'rgba(255, 230, 168, 0.20)';
+      ctx.lineWidth = 1;
+      roundRect(bx + 3, y + 3, bw - 6, rowH - 6, 11); ctx.stroke();
+      // 文字：温暖米金（避开纯白与背景冲突）+ 淡阴影强化可读性
+      ctx.save();
+      ctx.shadowColor = 'rgba(0,0,0,0.6)';
+      ctx.shadowBlur = 3;
+      ctx.shadowOffsetY = 1;
+      ctx.fillStyle = '#f5d99a';  // 温暖米金
+      ctx.font = '700 17px sans-serif';
+      ctx.textAlign = 'center';
+      var t = opt.text || '';
+      while (ctx.measureText(t).width > bw - 40 && t.length > 2) t = t.slice(0, -1);
+      if (t !== (opt.text || '')) t = t.slice(0, -1) + '…';
+      // 手动加字间距（每个字 +2px）
+      var chars = t.split('');
+      var totalW = 0;
+      for (var c = 0; c < chars.length; c++) totalW += ctx.measureText(chars[c]).width + 2;
+      totalW -= 2;
+      var cx = bx + bw / 2 - totalW / 2;
+      for (var c2 = 0; c2 < chars.length; c2++) {
+        var cw = ctx.measureText(chars[c2]).width;
+        ctx.textAlign = 'left';
+        ctx.fillText(chars[c2], cx, y + rowH / 2 + 6);
+        cx += cw + 2;
+      }
+      ctx.restore();
+      ctx.textAlign = 'left';
+      state.hitZones.push({ x: bx, y: y, w: bw, h: rowH, action: 'choose:' + i });
+
+      // 广告锁标记（右上角胶囊）
+      // v78.8 · 修复「看完广告回来还显示锁」：之前只判 opt.ad 不判 _adUnlocked，
+      //   导致解锁后 🔒 和「看广告解锁」胶囊照旧画出来 —— 这是用户体感『没解锁』的直接原因之一。
+      //   现在：已解锁 → 画绿色「已解锁」；多次广告进度中 → 画「还需 N 个」。
+      if (opt.ad && opt._adUnlocked) {
+        // V84 · Figma: 60×16, borderRadius TL:12 TR:12 BL:12 BR:0, 切图 btn_tag_unlock.png + icon_unlock.png
+        var okW = 60, okH = 16;
+        var okX = bx + bw - okW + 1;         // 右对齐按钮右边 +1
+        var okY = y - okH / 2 + 4;           // 中线对齐按钮顶部 +4
+        ctx.save();
+        // 背景切图（不再预填色，避免圆角不一致时背景色漏出）
+        state._btnTagUnlockImg = getUiImage('_btnTagUnlockImg', 'images/icons/btn_tag_unlock.png');
+        if (state._btnTagUnlockImg && state._btnTagUnlockImg !== false) {
+          ctx.drawImage(state._btnTagUnlockImg, okX, okY, okW, okH);
+        } else {
+          ctx.fillStyle = '#b9d18a'; roundRect(okX, okY, okW, okH, 7); ctx.fill();
+        }
+        // icon_unlock.png (11×12)
+        state._iconUnlockImg = getUiImage('_iconUnlockImg', 'images/icons/icon_unlock.png');
+        var _icoW = 11, _icoH = 12;
+        ctx.font = '500 10px sans-serif';
+        var _txtW = ctx.measureText('已解锁').width;
+        var _contentTotalW = _icoW + 1 + _txtW;
+        var _cx = okX + (okW - _contentTotalW) / 2;
+        var _cy = okY + okH / 2;
+        if (state._iconUnlockImg && state._iconUnlockImg !== false) {
+          ctx.drawImage(state._iconUnlockImg, _cx, _cy - _icoH / 2, _icoW, _icoH);
+        }
+        ctx.fillStyle = '#193A00';
+        ctx.font = '700 10px sans-serif';
+        ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+        ctx.fillText('已解锁', _cx + _icoW + 1, _cy);
+        ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+        ctx.restore();
+      } else if (opt.ad) {
+        // V84 · 使用切图 btn_tag.png 作背景，叠加文字
+        var tagW = 68, tagH = 18;
+        var tagX = bx + bw - tagW + 1;        // 右侧对齐按钮右边 +1px
+        var tagY = y - tagH / 2 + 4;          // 标签垂直中线对齐按钮顶部，再向下4px
+        ctx.save();
+        // 背景切图（不再预填色，避免圆角不一致时背景色漏出）
+        state._btnTagImg = getUiImage('_btnTagImg', 'images/icons/btn_tag.png');
+        if (state._btnTagImg && state._btnTagImg !== false) {
+          ctx.drawImage(state._btnTagImg, tagX, tagY, tagW, tagH);
+        } else {
+          ctx.fillStyle = '#f2cf83'; roundRect(tagX, tagY, tagW, tagH, 7); ctx.fill();
+        }
+        ctx.font = '800 12px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        // v78.8 · 多次广告显示进度（1/2），让用户知道已看过一个、不是白看
+        var _need = opt.adCount || 1;
+        var _got = opt._adWatched || 0;
+        ctx.fillStyle = '#000000';
+        ctx.font = '700 10px sans-serif';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText(_need > 1 ? ('看广告 ' + _got + '/' + _need) : '看广告解锁', tagX + tagW / 2, tagY + tagH / 2);
+        ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+        ctx.restore();
+
+        // 小锁图标（选项文本前）— V84 · 改用本地 icon_lock.png
+        state._lockIconImg = getUiImage('_lockIconImg', 'images/icons/icon_lock.png');
+        var _lockS = 22;
+        var _lockX = bx + 12, _lockY = y + rowH / 2 - _lockS / 2 - 2;
+        if (state._lockIconImg && state._lockIconImg !== false) {
+          ctx.drawImage(state._lockIconImg, _lockX, _lockY, _lockS, _lockS);
+        } else {
+          ctx.fillStyle = 'rgba(255,215,120,.85)';
+          ctx.font = '900 14px sans-serif';
+          ctx.textAlign = 'left';
+          ctx.fillText('🔒', bx + 12, y + rowH / 2 + 5);
+        }
+      }
+    }
+  }
+
+  // ---- 底部控制栏 5 个圆形按钮 ----
+  // 左：📖 剧情日志、👁 沉浸式（隐藏UI）
+  // 右：×1 倍速、⏸/▶ 暂停、⏭ 快进下一幕
+  state.ui = { immersive: false, logOpen: false, speedIdx: 0, paused: false, mute: false };  // V47 · 默认有声（用户投诉：默认静音很傻）
+  // v92.4 · 引导浮层已删除，三胶囊无门槛直接亮相（不再读 weihunqi_tutorial_seen）
+  state.statsRevealed = true;
+  state.statsRevealT = Date.now() - 2000;  // 提前 2s，让缓动 lerp 直接跳到终值
+  var SPEEDS = [1, 1.5, 2];
+  function drawControlBar (hasChoice) {
+    if (state.ui.immersive) {
+      // 沉浸模式只留一个眼睛按钮
+      state._ctrlCircleGap = 999;   // v93.0 · 只有一枚按钮，热区不受相邻间距限制
+      drawCircleBtn(34, H - 41.5, 'eye_off', false);
+      return;
+    }
+    var r = 21.5;
+    var by = H - 41.5;
+    // v97.3 · 底部栏改为「章节药丸 + N 个圆按钮」整行等间距分布（合入桌面包 UI 方案）。
+    //   原方案左侧四枚定位在 28/80/132/184、右侧三枚贴右边缘，中间留一大片空白；
+    //   现按元素边缘在可用宽度内均分间距，视觉重心均衡。
+    // v92.8 · 免广告通行证入口从底部栏移到左侧成就胶囊下方（drawAdPassCapsule），
+    //   底部栏恢复 5 枚圆按钮，与桌面包一致。
+    var edgeM = 12;          // 屏幕左右边距 12px
+    var pillW = 78, pillH = 43;
+    var pillX = edgeM;       // 药丸左边缘
+    var circleN = 5;         // eye / share / mute / fwd5 / pause
+    var itemGap = Math.max(8, (W - edgeM * 2 - pillW - r * 2 * circleN) / circleN);
+    var firstCircleX = pillX + pillW + itemGap + r;
+    var circleGap = r * 2 + itemGap;
+    // v93.0 · 供 drawCircleBtn 算「永不重叠」的圆形热区半径（= 圆心间距的一半为上界）
+    state._ctrlCircleGap = circleGap;
+
+    drawChapterPill(pillX, by, pillW, pillH);
+
+    drawCircleBtn(firstCircleX, by, 'eye', false);
+    drawCircleBtn(firstCircleX + circleGap, by, 'share', false);
+    drawCircleBtn(firstCircleX + circleGap * 2, by, state.ui.mute ? 'mute_on' : 'mute_off', state.ui.mute);
+    drawCircleBtn(firstCircleX + circleGap * 3, by, 'fwd5', false);  // v76.2 · 全局快进 5 秒
+    drawCircleBtn(firstCircleX + circleGap * 4, by, state.ui.paused ? 'play' : 'pause', state.ui.paused);
+  }
+  // v97.3 · 章节入口改为药丸形（合入桌面包 UI 方案）：全圆角 + 书本切图 + 左对齐文字。
+  //   lx = 左边缘 x（不是圆心），pw/ph = 药丸宽高。
+  function drawChapterPill (lx, cy, pw, ph) {
+    var pressedAt = state._btnPress && state._btnPress['ctrl:log'];
+    var press = pressedAt ? Math.max(0, 1 - (Date.now() - pressedAt) / 180) : 0;
+    var active = state.ui.logOpen;
+    var cx = lx + pw / 2;
+    ctx.save();
+    ctx.translate(cx, cy);
+    var scale = 1 - press * 0.06;
+    ctx.scale(scale, scale);
+    var hw = pw / 2, hh = ph / 2, cr = hh;  // 全圆角
+    var fill = ctx.createLinearGradient(0, -hh, 0, hh);
+    fill.addColorStop(0, active ? '#ecd19a' : 'rgba(20,14,6,0.92)');
+    fill.addColorStop(1, active ? '#c49a58' : 'rgba(10,7,3,0.92)');
+    ctx.fillStyle = fill;
+    ctx.strokeStyle = active ? '#fff2c9' : 'rgba(230,190,110,.7)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(-hw + cr, -hh);
+    ctx.lineTo(hw - cr, -hh);
+    ctx.arcTo(hw, -hh, hw, -hh + cr, cr);
+    ctx.lineTo(hw, hh - cr);
+    ctx.arcTo(hw, hh, hw - cr, hh, cr);
+    ctx.lineTo(-hw + cr, hh);
+    ctx.arcTo(-hw, hh, -hw, hh - cr, cr);
+    ctx.lineTo(-hw, -hh + cr);
+    ctx.arcTo(-hw, -hh, -hw + cr, -hh, cr);
+    ctx.closePath();
+    ctx.fill(); ctx.stroke();
+    // 按压亮环
+    if (press > 0) {
+      ctx.globalAlpha = press * 0.45;
+      ctx.strokeStyle = '#ffe6a8'; ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(-hw + cr, -hh - 3);
+      ctx.lineTo(hw - cr, -hh - 3);
+      ctx.arcTo(hw + 3, -hh - 3, hw + 3, -hh + cr, cr + 3);
+      ctx.lineTo(hw + 3, hh - cr);
+      ctx.arcTo(hw + 3, hh + 3, hw - cr, hh + 3, cr + 3);
+      ctx.lineTo(-hw + cr, hh + 3);
+      ctx.arcTo(-hw - 3, hh + 3, -hw - 3, hh - cr, cr + 3);
+      ctx.lineTo(-hw - 3, -hh + cr);
+      ctx.arcTo(-hw - 3, -hh - 3, -hw + cr, -hh - 3, cr + 3);
+      ctx.closePath(); ctx.stroke();
+      ctx.globalAlpha = 1;
+    }
+    // 书本切图图标（本包 getUiImage 未就绪时返回 null，故判 truthy 即可）
+    var _icoS = 24;  // 图标尺寸 24×24
+    var _icoX = -30, _icoY = -_icoS / 2;
+    var _bookImg = getUiImage('_iconBookImg', 'images/icons/icon_book.png');
+    if (_bookImg) {
+      ctx.drawImage(_bookImg, _icoX, _icoY, _icoS, _icoS);
+    } else {
+      // fallback：手绘书本（切图未就位/加载失败也不缺图标）
+      var col = active ? '#2a1a08' : '#ffe6a8';
+      ctx.strokeStyle = col; ctx.fillStyle = col;
+      ctx.lineWidth = 1.8; ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(_icoX, _icoY); ctx.lineTo(_icoX, _icoY + _icoS);
+      ctx.moveTo(_icoX, _icoY); ctx.lineTo(_icoX + _icoS, _icoY);
+      ctx.moveTo(_icoX, _icoY + _icoS / 2); ctx.lineTo(_icoX + _icoS, _icoY + _icoS / 2);
+      ctx.moveTo(_icoX, _icoY + _icoS); ctx.lineTo(_icoX + _icoS, _icoY + _icoS);
+      ctx.moveTo(_icoX + _icoS, _icoY); ctx.lineTo(_icoX + _icoS, _icoY + _icoS);
+      ctx.stroke();
+      ctx.lineCap = 'butt';
+    }
+    // 文字（左对齐，紧跟图标）
+    ctx.fillStyle = active ? '#2a1a08' : '#ffe6a8';
+    ctx.font = 'bold 15px "Songti SC", "STSong", serif';
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.fillText('章节', _icoX + _icoS + 6, 1);
+    ctx.restore();
+    ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+    // 热区：按药丸真实矩形（不再外扩 6px —— 外扩后右边缘会伸进第一枚圆按钮的热区，
+    //   窄屏上二者本来只差 3.4px，是「点 eye 结果开章节」这类错位的来源之一）
+    state.hitZones.push({ x: lx, y: cy - ph / 2 - 4, w: pw, h: ph + 8, action: 'ctrl:log' });
+  }
+  function drawCircleBtn (cx, cy, kind, active, label) {
+    var r = 21.5;
+    // v76.5 · 按压反馈：最近 180ms 内被按过 → 半径缩到 0.86，外圈亮环
+    var pressT = 0;
+    try {
+      var _action = _btnPressKey('ctrl:' + kind);   // v93.0 · 双态按钮归一化，否则翻转后查不到时间戳
+      if (state._btnPress && state._btnPress[_action]) {
+        var _dt = Date.now() - state._btnPress[_action];
+        if (_dt < 180) pressT = 1 - _dt / 180;
+      }
+    } catch (_) { }
+    var drawR = r * (1 - pressT * 0.14);
+    if (pressT > 0) {
+      ctx.save();
+      ctx.globalAlpha = pressT * 0.55;
+      ctx.strokeStyle = '#ffe6a8';
+      ctx.lineWidth = 3 + pressT * 3;
+      ctx.beginPath(); ctx.arc(cx, cy, r + 4 + pressT * 4, 0, Math.PI * 2); ctx.stroke();
+      ctx.restore();
+    }
+    ctx.fillStyle = active ? 'rgba(230,190,110,.85)' : (pressT > 0 ? 'rgba(50,30,10,.9)' : 'rgba(0,0,0,.55)');
+    ctx.beginPath(); ctx.arc(cx, cy, drawR, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = active ? '#fff2c9' : 'rgba(230,190,110,.7)';
+    ctx.lineWidth = 1.5; ctx.stroke();
+    ctx.fillStyle = active ? '#2a1a08' : '#ffe6a8';
+    ctx.textAlign = 'center';
+    if (label) {
+      ctx.font = '800 13px sans-serif';
+      ctx.fillText(label, cx, cy + 4);
+    } else {
+      ctx.font = '700 16px sans-serif';
+      var glyph = { log: '☰', eye: '◉', eye_off: '◎', speed: '▸', pause: '❚❚', play: '▶', skip: '▸▸' }[kind] || '·';
+      // 用简单几何画图标（emoji 在部分设备不渲染）
+      drawGlyph(kind, cx, cy, active);
+    }
+    ctx.textAlign = 'left';
+    // v93.0 · 【热区错位根治 · 圆按钮改用圆形命中判定】
+    //   旧写法把圆按钮的命中区写成边长 (r+6)*2 = 55px 的【正方形】，
+    //   而相邻按钮圆心间距在窄屏上只有 r*2+itemGap = 51.6px（W=360）→
+    //   两枚相邻按钮的方形热区【实际互相重叠 3.4px】，W=375 也重叠 0.4px，
+    //   章节药丸和第一枚 eye 同样重叠。落在重叠带里的点击归谁，全凭数组顺序，
+    //   肉眼看就是「点 a 生效 b」。方形的四个角更离谱：角点离本按钮圆心 38.9px，
+    //   比到隔壁圆心的 51.6px 只近一点，指腹稍偏就跨界。
+    //   改为圆形判定（半径 r+7），圆心间距 ≥ 51.6 > 2*(21.5+7)=57 → 仍可能相切，
+    //   故 hitR 取 min(r+7, 间距/2)，从数学上保证【任意两枚热区永不重叠】。
+    var _gapHalf = (state._ctrlCircleGap || 999) / 2;
+    var _hitR = Math.min(r + 7, _gapHalf);
+    state.hitZones.push({
+      shape: 'circle', cx: cx, cy: cy, r: _hitR,
+      // x/y/w/h 仍填上，兼容任何按矩形读 zone 的旧代码路径
+      x: cx - _hitR, y: cy - _hitR, w: _hitR * 2, h: _hitR * 2,
+      action: 'ctrl:' + kind
+    });
+  }
+  function drawGlyph (kind, cx, cy, active) {
+    var col = active ? '#2a1a08' : '#ffe6a8';
+    ctx.strokeStyle = col; ctx.fillStyle = col;
+    ctx.lineWidth = 2; ctx.lineCap = 'round';
+    ctx.beginPath();
+    if (kind === 'log') {
+      // 书本
+      ctx.moveTo(cx - 8, cy - 8); ctx.lineTo(cx - 8, cy + 8);
+      ctx.moveTo(cx - 8, cy - 8); ctx.lineTo(cx + 8, cy - 8);
+      ctx.moveTo(cx - 8, cy); ctx.lineTo(cx + 8, cy);
+      ctx.moveTo(cx - 8, cy + 8); ctx.lineTo(cx + 8, cy + 8);
+      ctx.moveTo(cx + 8, cy - 8); ctx.lineTo(cx + 8, cy + 8);
+      ctx.stroke();
+    } else if (kind === 'eye') {
+      ctx.ellipse(cx, cy, 10, 6, 0, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath(); ctx.arc(cx, cy, 3, 0, Math.PI * 2); ctx.fill();
+    } else if (kind === 'eye_off') {
+      ctx.ellipse(cx, cy, 10, 6, 0, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(cx - 10, cy - 6); ctx.lineTo(cx + 10, cy + 6); ctx.stroke();
+    } else if (kind === 'pause') {
+      ctx.fillRect(cx - 6, cy - 8, 4, 16);
+      ctx.fillRect(cx + 2, cy - 8, 4, 16);
+    } else if (kind === 'play') {
+      ctx.moveTo(cx - 5, cy - 8); ctx.lineTo(cx + 7, cy); ctx.lineTo(cx - 5, cy + 8); ctx.closePath(); ctx.fill();
+    } else if (kind === 'skip') {
+      // 两个三角 +竖线
+      ctx.moveTo(cx - 9, cy - 7); ctx.lineTo(cx - 1, cy); ctx.lineTo(cx - 9, cy + 7); ctx.closePath(); ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(cx - 1, cy - 7); ctx.lineTo(cx + 7, cy); ctx.lineTo(cx - 1, cy + 7); ctx.closePath(); ctx.fill();
+    } else if (kind === 'fwd5') {
+      // v76.2 · 快进 5 秒：双三角 + 5 数字
+      ctx.fillStyle = col;
+      ctx.beginPath();
+      ctx.moveTo(cx - 11, cy - 7); ctx.lineTo(cx - 3, cy); ctx.lineTo(cx - 11, cy + 7); ctx.closePath(); ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(cx - 3, cy - 7); ctx.lineTo(cx + 5, cy); ctx.lineTo(cx - 3, cy + 7); ctx.closePath(); ctx.fill();
+      ctx.font = 'bold 9px sans-serif';
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('5s', cx + 6, cy + 1);
+      ctx.textBaseline = 'alphabetic';
+    } else if (kind === 'mute_on') {
+      // V47 · 静音态：饱满喇叭 + 醒目大红斜叉
+      ctx.fillStyle = col;
+      ctx.beginPath();
+      // 喇叭主体（整体左移 2px，给右侧禁止斜杠留位）
+      ctx.moveTo(cx - 11, cy - 3);
+      ctx.lineTo(cx - 5, cy - 3);
+      ctx.lineTo(cx + 1, cy - 8);
+      ctx.lineTo(cx + 1, cy + 8);
+      ctx.lineTo(cx - 5, cy + 3);
+      ctx.lineTo(cx - 11, cy + 3);
+      ctx.closePath();
+      ctx.fill();
+      // 红色禁止斜杠（左下→右上，加长 2px 完整盖过喇叭）
+      ctx.strokeStyle = '#ff5a5a';
+      ctx.lineWidth = 2.4;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(cx - 12, cy + 10);
+      ctx.lineTo(cx + 8, cy - 10);
+      ctx.stroke();
+      ctx.lineCap = 'butt';
+    } else if (kind === 'mute_off') {
+      // V47 · 有声态：饱满喇叭 + 三条清晰声波弧（整体左移 2px）
+      ctx.fillStyle = col;
+      ctx.beginPath();
+      ctx.moveTo(cx - 11, cy - 3);
+      ctx.lineTo(cx - 5, cy - 3);
+      ctx.lineTo(cx + 1, cy - 8);
+      ctx.lineTo(cx + 1, cy + 8);
+      ctx.lineTo(cx - 5, cy + 3);
+      ctx.lineTo(cx - 11, cy + 3);
+      ctx.closePath();
+      ctx.fill();
+      ctx.strokeStyle = col;
+      ctx.lineWidth = 1.6;
+      ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.arc(cx + 2, cy, 3, -0.6, 0.6); ctx.stroke();
+      ctx.beginPath(); ctx.arc(cx + 2, cy, 6, -0.7, 0.7); ctx.stroke();
+      ctx.beginPath(); ctx.arc(cx + 2, cy, 9, -0.75, 0.75); ctx.stroke();
+      ctx.lineCap = 'butt';
+    } else if (kind === 'share') {
+      // V31·8 分享图标：三个圆 + 连线，整体向右旋转 90°
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.rotate(Math.PI / 2);   // 顺时针 90°
+      ctx.strokeStyle = '#e8c47a'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(-6, -5, 3.5, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath(); ctx.arc(6, -5, 3.5, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath(); ctx.arc(0, 7, 3.5, 0, Math.PI * 2); ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(-3.5, -3); ctx.lineTo(-2, 4);
+      ctx.moveTo(3.5, -3); ctx.lineTo(2, 4);
+      ctx.stroke();
+      ctx.restore();
+    } else if (kind === 'unlock_all') {
+      // v92.5-fix · 真锁样式 · 一体化绘制：锁梁的整条 U 形带（外弧 + 两条直腿 + 内弧，
+      //   手动拼成一个闭合多边形）只用一次 fill() 画完，不是"先描边腿、再描边弧"两次
+      //   独立操作拼接——物理上不会有缝，因为它是一整块形状。锁体同理整块 fill，
+      //   且与锁梁腿重叠，杜绝两次 fill 之间因抗锯齿产生的缝隙。
+      //   active（今日已看满 3 个广告）→ 开锁态（锁梁绕左脚锚点转开）；否则闭合态。
+      ctx.save();
+      ctx.fillStyle = col;
+      var _lbw = 15, _lbh = 11;
+      var _lbx = cx - _lbw / 2, _lby = cy + 0.5;
+      var _lt = 2.6;
+      var _lro = 5.6;
+      var _lri = _lro - _lt;
+      var _lOverlap = 2;
+      var _lLegLen = 7;
+      var _ly0 = _lby + _lOverlap;
+      var _lyArc = _ly0 - _lLegLen;
+      var _drawLockBand = function (x0, yy0, yyArc) {
+        ctx.beginPath();
+        ctx.moveTo(x0 + _lro, yy0);
+        ctx.lineTo(x0 + _lro, yyArc);
+        ctx.arc(x0, yyArc, _lro, 0, Math.PI, true);
+        ctx.lineTo(x0 - _lro, yy0);
+        ctx.lineTo(x0 - _lri, yy0);
+        ctx.lineTo(x0 - _lri, yyArc);
+        ctx.arc(x0, yyArc, _lri, Math.PI, Math.PI * 2, false);
+        ctx.lineTo(x0 + _lri, yy0);
+        ctx.closePath();
+        ctx.fill();
+      };
+      if (active) {
+        var _lPivot = _lro - _lt / 2;
+        ctx.save();
+        ctx.translate(cx - _lPivot, _ly0);
+        ctx.rotate(-0.85);
+        _drawLockBand(_lPivot, 0, -_lLegLen);
+        ctx.restore();
+      } else {
+        _drawLockBand(cx, _ly0, _lyArc);
+      }
+      roundRect(_lbx, _lby, _lbw, _lbh, 2.6);
+      ctx.fill();
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.beginPath(); ctx.arc(cx, _lby + _lbh * 0.42, 1.5, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(cx - 1.1, _lby + _lbh * 0.42);
+      ctx.lineTo(cx + 1.1, _lby + _lbh * 0.42);
+      ctx.lineTo(cx + 0.6, _lby + _lbh - 2);
+      ctx.lineTo(cx - 0.6, _lby + _lbh - 2);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+      ctx.restore();
+      // 右上角进度角标：未享特权时显示今日还需几个广告；已生效显示 ✓
+      var _remain = adPassRemain();
+      ctx.save();
+      var _bx = cx + 12, _by = cy - 12, _br = 7.5;
+      ctx.fillStyle = _remain > 0 ? '#c4462f' : '#4f8f3a';
+      ctx.beginPath(); ctx.arc(_bx, _by, _br, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = 'rgba(255,230,168,0.85)'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(_bx, _by, _br, 0, Math.PI * 2); ctx.stroke();
+      ctx.fillStyle = '#fff6e2';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      if (_remain > 0) {
+        ctx.font = '800 10px sans-serif';
+        ctx.fillText(String(_remain), _bx, _by + 0.5);
+      } else {
+        ctx.font = '800 9px sans-serif';
+        ctx.fillText('✓', _bx, _by + 0.5);
+      }
+      ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+      ctx.restore();
+    }
+  }
+
+  // 剧情日志面板（V36 已废弃，由 drawStoryChapterDrawer 替代）
+  function drawLogPanel () { return; /* deprecated */ }
+
+  // ============== v92.4 · 「解锁全部章节」弹窗 ==============
+  //   展示今日免广告通行证进度：看满 3 个广告 → 全部章节解锁 + 当天不再出广告。
+  //   每看完 1 个，文案实时变为「还需看 N 个」；满 3 个后变为已生效态。
+  function drawUnlockAllModal () {
+    var now = Date.now();
+    state._unlockModalT0 = state._unlockModalT0 || now;
+    var t = Math.min(1, (now - state._unlockModalT0) / 220);
+    var e = 1 - Math.pow(1 - t, 3);
+    var remain = adPassRemain();
+    var done = remain <= 0;
+
+    ctx.fillStyle = 'rgba(0,0,0,' + (0.66 * e) + ')';
+    ctx.fillRect(0, 0, W, H);
+
+    var boxW = Math.min(W - 56, 320);
+    var boxH = 226;
+    var boxX = (W - boxW) / 2;
+    var boxY = (H - boxH) / 2 + (1 - e) * 24;
+
+    // 卡片：暖褐渐变 + 琥珀金描边（对齐底部栏与选项按钮）
+    var g = ctx.createLinearGradient(0, boxY, 0, boxY + boxH);
+    g.addColorStop(0, 'rgba(58,32,12,0.98)');
+    g.addColorStop(1, 'rgba(28,14,6,0.99)');
+    ctx.fillStyle = g;
+    roundRect(boxX, boxY, boxW, boxH, 16); ctx.fill();
+    ctx.strokeStyle = 'rgba(212,168,92,0.92)'; ctx.lineWidth = 1.4;
+    roundRect(boxX, boxY, boxW, boxH, 16); ctx.stroke();
+    ctx.strokeStyle = 'rgba(255,230,168,0.18)'; ctx.lineWidth = 1;
+    roundRect(boxX + 4, boxY + 4, boxW - 8, boxH - 8, 13); ctx.stroke();
+
+    ctx.textAlign = 'center';
+    // 标题
+    ctx.fillStyle = '#f7dfa6';
+    ctx.font = '800 19px "Songti SC", "STSong", serif';
+    ctx.fillText(done ? '今日已全部解锁' : '解锁全部章节', W / 2, boxY + 42);
+
+    // 主文案
+    ctx.fillStyle = '#e8cfa0';
+    ctx.font = '500 13px sans-serif';
+    if (done) {
+      ctx.fillText('今天剩下的时间里，看剧不再有广告', W / 2, boxY + 72);
+    } else {
+      ctx.fillText('今日看满 ' + AD_PASS_NEED + ' 个广告，即可解锁全部剧集', W / 2, boxY + 72);
+    }
+
+    // 进度点：3 颗，已完成填金
+    var watched = AD_PASS_NEED - remain;
+    var dotR = 7, dotGap = 30;
+    var dotY = boxY + 104;
+    var dotX0 = W / 2 - dotGap * (AD_PASS_NEED - 1) / 2;
+    for (var i = 0; i < AD_PASS_NEED; i++) {
+      var dx = dotX0 + i * dotGap;
+      var filled = i < watched;
+      ctx.beginPath(); ctx.arc(dx, dotY, dotR, 0, Math.PI * 2);
+      ctx.fillStyle = filled ? '#e6be6e' : 'rgba(255,230,168,0.14)';
+      ctx.fill();
+      ctx.strokeStyle = filled ? '#fff2c9' : 'rgba(230,190,110,0.55)';
+      ctx.lineWidth = 1.2; ctx.stroke();
+      if (filled) {
+        ctx.strokeStyle = '#3a2410'; ctx.lineWidth = 1.8; ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(dx - 3, dotY); ctx.lineTo(dx - 0.8, dotY + 2.6); ctx.lineTo(dx + 3.2, dotY - 2.4);
+        ctx.stroke(); ctx.lineCap = 'butt';
+      }
+    }
+
+    // 进度文案
+    ctx.fillStyle = done ? '#9ad17a' : '#d8b878';
+    ctx.font = '700 13px sans-serif';
+    ctx.fillText(done ? '免广告特权已生效（当日有效）' : ('还需看 ' + remain + ' 个'), W / 2, boxY + 136);
+
+    // 主按钮
+    var btnW = boxW - 56, btnH = 42;
+    var btnX = boxX + 28, btnY = boxY + boxH - 66;
+    if (done) {
+      ctx.fillStyle = 'rgba(120,150,96,0.32)';
+      roundRect(btnX, btnY, btnW, btnH, 12); ctx.fill();
+      ctx.strokeStyle = 'rgba(154,209,122,0.8)'; ctx.lineWidth = 1.2;
+      roundRect(btnX, btnY, btnW, btnH, 12); ctx.stroke();
+      ctx.fillStyle = '#c8e5b0';
+      ctx.font = '800 15px sans-serif';
+      ctx.fillText('知道了', W / 2, btnY + 27);
+      state.hitZones.push({ x: btnX, y: btnY, w: btnW, h: btnH, action: 'unlock_all_close' });
+    } else {
+      var bg = ctx.createLinearGradient(0, btnY, 0, btnY + btnH);
+      bg.addColorStop(0, '#e8c47a');
+      bg.addColorStop(1, '#c49a58');
+      ctx.fillStyle = bg;
+      roundRect(btnX, btnY, btnW, btnH, 12); ctx.fill();
+      ctx.strokeStyle = '#fff2c9'; ctx.lineWidth = 1.2;
+      roundRect(btnX, btnY, btnW, btnH, 12); ctx.stroke();
+      ctx.fillStyle = '#2a1a08';
+      ctx.font = '800 15px sans-serif';
+      ctx.fillText('看广告解锁（' + watched + '/' + AD_PASS_NEED + '）', W / 2, btnY + 27);
+      state.hitZones.push({ x: btnX, y: btnY, w: btnW, h: btnH, action: 'unlock_all_ad' });
+    }
+
+    // 右上角关闭
+    var cR = 13, cX = boxX + boxW - 22, cY = boxY + 22;
+    ctx.fillStyle = 'rgba(0,0,0,0.42)';
+    ctx.beginPath(); ctx.arc(cX, cY, cR, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = 'rgba(230,190,110,0.7)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(cX, cY, cR, 0, Math.PI * 2); ctx.stroke();
+    ctx.strokeStyle = '#ffe6a8'; ctx.lineWidth = 1.8; ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.moveTo(cX - 4.5, cY - 4.5); ctx.lineTo(cX + 4.5, cY + 4.5);
+    ctx.moveTo(cX + 4.5, cY - 4.5); ctx.lineTo(cX - 4.5, cY + 4.5);
+    ctx.stroke(); ctx.lineCap = 'butt';
+    state.hitZones.push({ x: cX - cR - 6, y: cY - cR - 6, w: (cR + 6) * 2, h: (cR + 6) * 2, action: 'unlock_all_close' });
+
+    // 遮罩区点击关闭（放最后注册，优先级低于卡片内控件）
+    ctx.textAlign = 'left';
+  }
+
+  // V36 · 剧情章节抽屉（样式对齐成就 drawDrawer · 非全屏卡片式）
+  // 展示：所有节点按顺序，标题=node.title || node.epTitle || node.label；
+  //   已发生（visited）· 当前（current）· 未发生（future） 三态样式区分
+  state._visitedNodes = state._visitedNodes || {};
+  state._storyDrawerScrollY = 0;
+  function _collectChapters () {
+    // 从 STORY.nodes 中筛"关键关卡"：有 title（choice/关卡说明）或有 epTitle（EP 开篇 s1/s2...）
+    var NODES_ = (typeof NODES !== 'undefined' && NODES) || (RAW && RAW.nodes) || {};
+    // 稳定排序：按节点在 story.js 定义中的插入顺序
+    var order = Object.keys(NODES_);
+    var arr = [];
+    // V44 · EP → 中文序号 & 幕计数
+    var CH_NUM = { 1: '一', 2: '二', 3: '三', 4: '四', 5: '五', 6: '六', 7: '七', 8: '八', 9: '九', 10: '十', 99: '终' };
+    var epActCounter = {};  // ep -> 已用幕数
+    for (var i = 0; i < order.length; i++) {
+      var id = order[i];
+      var n = NODES_[id];
+      if (!n) continue;
+      var isBE = /^BE_/.test(id) || n.isEnd || (n.type === 'end');
+      var t = n.title || n.epTitle;
+      // 视频节点无 title 但可以用 media.label 作简要标题
+      if (!t && n.media && n.media.label) t = n.media.label;
+      if (!t) continue;
+      // V44 · 生成 "第X集 第Y幕" 标签
+      var epLabel = '';
+      if (n.ep) {
+        var m = /^EP0?(\d+)$/i.exec(n.ep);
+        if (m) {
+          var epNum = parseInt(m[1], 10);
+          var cn = CH_NUM[epNum] || epNum;
+          epActCounter[n.ep] = (epActCounter[n.ep] || 0) + 1;
+          var actNum = epActCounter[n.ep];
+          var actCn = CH_NUM[actNum] || actNum;
+          epLabel = isBE ? '结局' : ('第' + cn + '集·第' + actCn + '幕');
+        }
+      }
+      arr.push({ id: id, title: t, ep: n.ep || '', epLabel: epLabel, isChoice: n.type === 'choice', isBE: isBE });
+    }
+    return arr;
+  }
+  function drawStoryChapterDrawer () {
+    var now = Date.now();
+    state._storyDrawerT0 = state._storyDrawerT0 || now;
+    var t = Math.min(1, (now - state._storyDrawerT0) / 260);
+    var e = 1 - Math.pow(1 - t, 3);
+
+    // 半透明遮罩
+    ctx.fillStyle = 'rgba(0,0,0,' + (0.62 * e) + ')';
+    ctx.fillRect(0, 0, W, H);
+
+    // 卡片主体：V70.2 · 严格对齐成就浮层 drawDrawer 尺寸（boxY=100 / boxH=H-boxY-90）
+    //   之前 boxY=70 / boxH=H-140 太高，关闭按钮会与 iOS 灵动岛/系统 X 重叠
+    var pad = 20;
+    var boxW = W - pad * 2;
+    var boxX = pad;
+    var boxY = 100 + (1 - e) * 30;
+    var boxH = H - 100 - 90;
+
+    // 卡片底
+    ctx.save();
+    ctx.fillStyle = 'rgba(24,14,6,0.96)';
+    roundRect(boxX, boxY, boxW, boxH, 18); ctx.fill();
+    ctx.strokeStyle = 'rgba(245,198,90,.6)';
+    ctx.lineWidth = 1.5; ctx.stroke();
+    ctx.restore();
+
+    // 标题栏
+    ctx.fillStyle = '#ffd97a';
+    ctx.font = '800 18px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('剧情章节', boxX + boxW / 2, boxY + 30);
+    ctx.strokeStyle = 'rgba(245,198,90,.35)';
+    ctx.beginPath(); ctx.moveTo(boxX + 16, boxY + 46); ctx.lineTo(boxX + boxW - 16, boxY + 46); ctx.stroke();
+
+    // 关闭 X
+    var closeR = 14;
+    var cxX = boxX + boxW - 24;
+    var cyY = boxY + 24;
+    ctx.fillStyle = 'rgba(255,255,255,0.08)';
+    ctx.beginPath(); ctx.arc(cxX, cyY, closeR, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = '#ffd97a'; ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(cxX - 5, cyY - 5); ctx.lineTo(cxX + 5, cyY + 5);
+    ctx.moveTo(cxX + 5, cyY - 5); ctx.lineTo(cxX - 5, cyY + 5);
+    ctx.stroke();
+    state.hitZones.push({ x: cxX - closeR - 4, y: cyY - closeR - 4, w: closeR * 2 + 8, h: closeR * 2 + 8, action: 'ctrl:log_close' });
+
+    // 章节列表 · V46 · 只展示已阅 + 当前章节（未阅不显示）
+    var _allChapters = _collectChapters();
+    var chapters = [];
+    for (var _ci = 0; _ci < _allChapters.length; _ci++) {
+      var _cc = _allChapters[_ci];
+      if (_cc.id === state.curId || state._visitedNodes[_cc.id]) chapters.push(_cc);
+    }
+    var contentTop = boxY + 60;
+    var contentBottom = boxY + boxH - 20;
+    var viewH = contentBottom - contentTop;
+    // V44 · 两行版：EP 标签 + 标题 分行，行高加大
+    var rowH = 62;
+    var contentH = chapters.length * rowH + 10;
+    var maxScroll = Math.max(0, contentH - viewH);
+    if (state._storyDrawerScrollY > maxScroll) state._storyDrawerScrollY = maxScroll;
+    if (state._storyDrawerScrollY < 0) state._storyDrawerScrollY = 0;
+
+    // 剪裁
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(boxX + 8, contentTop, boxW - 16, viewH);
+    ctx.clip();
+
+    var yCur = contentTop - state._storyDrawerScrollY;
+    var _curId = state.curId;
+    // V46 · 空态：一条都没阅（极端 case，理论上当前节点会占一条）
+    if (chapters.length === 0) {
+      ctx.fillStyle = 'rgba(200,155,80,0.6)';
+      ctx.font = '600 13px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('还没有已阅章节，继续往下走吧～', boxX + boxW / 2, contentTop + 40);
+      ctx.textAlign = 'left';
+    }
+    for (var i = 0; i < chapters.length; i++) {
+      var c = chapters[i];
+      // 只画在视口内的
+      if (yCur + rowH < contentTop || yCur > contentBottom) { yCur += rowH; continue; }
+      var isCur = c.id === _curId;
+      var isVisited = !!state._visitedNodes[c.id];
+      var status = isCur ? 'current' : (isVisited ? 'visited' : 'future');
+      // 行底
+      var rx = boxX + 14, ry = yCur + 4, rw = boxW - 28, rh = rowH - 8;
+      if (status === 'current') {
+        ctx.fillStyle = 'rgba(245,198,90,0.22)';
+        roundRect(rx, ry, rw, rh, 10); ctx.fill();
+        ctx.strokeStyle = 'rgba(255,217,122,0.9)';
+        ctx.lineWidth = 1.5; ctx.stroke();
+      } else if (status === 'visited') {
+        ctx.fillStyle = 'rgba(255,255,255,0.05)';
+        roundRect(rx, ry, rw, rh, 10); ctx.fill();
+      } else {
+        ctx.fillStyle = 'rgba(255,255,255,0.02)';
+        roundRect(rx, ry, rw, rh, 10); ctx.fill();
+      }
+      // 前面小圆点
+      var dotX = rx + 14, dotY = ry + rh / 2;
+      ctx.beginPath();
+      if (status === 'current') { ctx.fillStyle = '#ff9a3c'; ctx.arc(dotX, dotY, 5, 0, Math.PI * 2); ctx.fill(); }
+      else if (status === 'visited') { ctx.fillStyle = '#7fd48f'; ctx.arc(dotX, dotY, 4, 0, Math.PI * 2); ctx.fill(); }
+      else { ctx.strokeStyle = 'rgba(200,200,200,0.4)'; ctx.lineWidth = 1.5; ctx.arc(dotX, dotY, 4, 0, Math.PI * 2); ctx.stroke(); }
+      // V44 · 上行：第X集·第Y幕
+      ctx.font = '600 11px sans-serif';
+      ctx.textAlign = 'left';
+      if (c.epLabel) {
+        ctx.fillStyle = status === 'future' ? 'rgba(200,155,80,0.4)' : '#c98b28';
+        ctx.fillText(c.epLabel, rx + 28, ry + 18);
+      }
+      // V44 · 下行：标题（自动换行，最多 2 行）
+      var titleColor = status === 'current' ? '#ffd97a' : (status === 'visited' ? '#fff' : 'rgba(255,255,255,0.35)');
+      ctx.fillStyle = titleColor;
+      ctx.font = (status === 'current' ? '800 13px' : '600 12px') + ' sans-serif';
+      var displayTitle = status === 'future' ? '？？？' : c.title;
+      var titleX = rx + 28;
+      var maxTitleW = rx + rw - titleX - 96;   // v76.1 · 右侧留 96px 给"🎁 看广告重看"文案，防重叠
+      // 逐字换行
+      var lines = [];
+      var curLine = '';
+      for (var ci = 0; ci < displayTitle.length; ci++) {
+        var ch = displayTitle.charAt(ci);
+        var testL = curLine + ch;
+        if (ctx.measureText(testL).width > maxTitleW && curLine.length > 0) {
+          lines.push(curLine);
+          curLine = ch;
+          if (lines.length >= 2) break;
+        } else {
+          curLine = testL;
+        }
+      }
+      if (curLine && lines.length < 2) lines.push(curLine);
+      // 超出 2 行截断末行加 …
+      if (lines.length === 2 && (ci < displayTitle.length)) {
+        var last = lines[1];
+        while (last.length > 1 && ctx.measureText(last + '…').width > maxTitleW) last = last.slice(0, -1);
+        lines[1] = last + '…';
+      }
+      for (var li = 0; li < lines.length; li++) {
+        ctx.fillText(lines[li], titleX, ry + 36 + li * 14);
+      }
+      // 右侧状态
+      ctx.textAlign = 'right';
+      ctx.font = '700 11px sans-serif';
+      if (status === 'current') { ctx.fillStyle = '#ff9a3c'; ctx.fillText('▶ 当前', rx + rw - 12, ry + rh / 2 + 4); }
+      else if (status === 'visited') { ctx.fillStyle = '#ffd876'; ctx.fillText('🎁 看广告重看', rx + rw - 12, ry + rh / 2 + 4); }
+      else { ctx.fillStyle = 'rgba(200,200,200,0.4)'; ctx.fillText('未解锁', rx + rw - 12, ry + rh / 2 + 4); }
+      ctx.textAlign = 'left';
+      // V46 · 已阅章节可点击跳转：整行做成 hitZone → ctrl:jump_chapter:<id>
+      // v78.10 · BUG FIX（v90.1 同步）：滚动时行被 clip 但 hitZone 仍注册在视口外坐标，
+      //   会覆盖关闭 X 按钮（cyY≈boxY+24）触发误触广告。
+      //   修复：只在整行完全在 contentTop~contentBottom 视口内时才注册 hitZone。
+      if (status === 'visited' && ry >= contentTop && ry + rh <= contentBottom) {
+        state.hitZones.push({ x: rx, y: ry, w: rw, h: rh, action: 'ctrl:jump_chapter:' + c.id });
+      }
+      yCur += rowH;
+    }
+    ctx.restore();
+    // 进度统计
+    var visited = 0;
+    for (var vk in state._visitedNodes) if (state._visitedNodes[vk]) visited++;
+    ctx.fillStyle = 'rgba(200,155,80,0.65)';
+    ctx.font = '600 11px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('进度 ' + visited + ' / ' + _allChapters.length + '  ·  已阅可点击回顾', boxX + boxW / 2, boxY + boxH - 6);
+    ctx.textAlign = 'left';
+
+    // 暴露 box 供 touchmove 滚动
+    state._storyDrawerBox = { x: boxX, y: contentTop, w: boxW, h: viewH, maxScroll: maxScroll };
+
+    // 点击外部关闭
+    state.hitZones.push({ x: 0, y: 0, w: W, h: boxY, action: 'ctrl:log_close' });
+    state.hitZones.push({ x: 0, y: boxY + boxH, w: W, h: H - boxY - boxH, action: 'ctrl:log_close' });
+  }
+  function drawWrappedText (text, x, y, maxW, lh) {
+    var words = text.split('');
+    var line = '';
+    for (var i = 0; i < words.length; i++) {
+      var test = line + words[i];
+      if (ctx.measureText(test).width > maxW) {
+        ctx.fillText(line, x, y); y += lh; line = words[i];
+      } else line = test;
+    }
+    ctx.fillText(line, x, y);
+  }
+
+  // 台词条（普通节点）—— 台词 + 继续按钮 同行高度
+  // V28：反应图节点字幕从"贴底"改为"居中偏下"，让下沉市场用户在竖屏下能一眼看到
+  //       并且开启逐字打字机效果
+  // V31·10·final · 普通视频节点播完 → 画一个居中偏下的「继续 ▸」按钮
+  function drawVideoContinueButton () {
+    var btnW = 140, btnH = 46;
+    var btnX = (W - btnW) / 2;
+    var btnY = H - 130;   // 高于底部控制栏（H-62 ~ H-18）
+    // 半透明遮罩底衬（可选：让按钮在亮画面上也清晰）
+    ctx.save();
+    ctx.fillStyle = 'rgba(0,0,0,0.36)';
+    roundRect(btnX - 8, btnY - 6, btnW + 16, btnH + 12, (btnH + 12) / 2); ctx.fill();
+    ctx.restore();
+    // 按钮
+    var bg = ctx.createLinearGradient(btnX, btnY, btnX, btnY + btnH);
+    bg.addColorStop(0, 'rgba(230,190,110,.98)');
+    bg.addColorStop(1, 'rgba(200,155,80,.98)');
+    ctx.fillStyle = bg;
+    roundRect(btnX, btnY, btnW, btnH, btnH / 2); ctx.fill();
+    ctx.strokeStyle = 'rgba(255,220,140,1)';
+    ctx.lineWidth = 1.5; ctx.stroke();
+    ctx.fillStyle = '#2a1a08';
+    ctx.font = '700 16px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('继续 ▸', btnX + btnW / 2, btnY + btnH / 2 + 6);
+    ctx.textAlign = 'left';
+    state.hitZones.push({ x: btnX, y: btnY, w: btnW, h: btnH, action: 'next' });
+  }
+
+  // V40 · 视频字幕（FunASR 字级时间戳 · 逐字高亮）
+  //   数据源：js/subtitles.js（36 段视频 · Paraformer-zh 识别）
+  //   卡拉 OK 风格：当前 sentence 全显 + 已播过的字染亮金 + 当前字加圈 + 未播的字灰白
+  // V42 · 智能断句 + 说话人头像 + 气泡样式：
+  //   · 断句按 SOFT/HARD 两级标点，累积到 MIN 才断
+  //   · 字幕框改为 "对话气泡" 样式（左下三角尾巴指向头像）
+  //   · 头像下方挂昵称标签（原来是上方）
+  //   · S4/多角色视频支持 per-clause speaker 覆盖
+  function speakerStyle (spKey) {
+    // spKey: 'aotian' | 'wanerh' | 'waner' | 'narrator' | 'system' | node
+    var ch = '';
+    var sp = '';
+    if (typeof spKey === 'string') { ch = spKey; }
+    else if (spKey) { ch = spKey.char || ''; sp = spKey.speaker || ''; }
+    // V66 · NPC 说话人识别（很多剧本节点 char="aotian" 但 speaker 是"粮贩子/赵铁牛/李老憨/王婆/村民/副主任"等 NPC）
+    //        以 speaker 文本前缀强判定，避免头像/昵称错配成傲天
+    if (sp) {
+      if (/^粮贩子/.test(sp)) return { avatar: '粮', name: '粮贩子', bg: '#6a4a2a', fg: '#fff', imgKey: 'vendor' };
+      if (/^赵铁牛/.test(sp)) return { avatar: '赵', name: '赵铁牛', bg: '#5b2323', fg: '#fff', imgKey: 'zhao' };
+      if (/^李老憨/.test(sp)) return { avatar: '李', name: '李老憨', bg: '#3d5a3d', fg: '#fff', imgKey: 'laohan' };
+      if (/^王婆/.test(sp)) return { avatar: '王', name: '王婆', bg: '#6a4a6a', fg: '#fff', imgKey: 'wangpo' };
+      if (/^村民/.test(sp)) return { avatar: '村', name: '村民', bg: '#5a5a5a', fg: '#fff', imgKey: 'villager' };
+      if (/^副主任/.test(sp)) return { avatar: '副', name: '副主任', bg: '#33475a', fg: '#fff', imgKey: 'fuzhuren' };
+      if (/^嫂子/.test(sp) || /^沈婉儿/.test(sp)) return { avatar: '婉', name: '沈婉儿', bg: '#e85a8c', fg: '#fff', imgKey: 'wanr' };
+      // v79.5 · 【修复①补全】梦中女主播（开局第一个视频 op1）。
+      //   registry 里 speakerPrefixes 是 ["梦中女主播","周味周"]，这里必须同步，
+      //   否则走到最后的 fallback 只能画「梦」字圈。
+      if (/^梦中女主播/.test(sp) || /^周味周/.test(sp)) return { avatar: '梦', name: '梦中女主播', bg: '#b45ac8', fg: '#fff', imgKey: 'dreammj' };
+    }
+    if (ch === 'aotian') return { avatar: '傲', name: '傲天', bg: '#4a90ff', fg: '#fff', imgKey: 'aotian' };
+    if (ch === 'wanerh' || ch === 'waner') return { avatar: '婉', name: '沈婉儿', bg: '#e85a8c', fg: '#fff', imgKey: 'wanr' };
+    if (ch === 'narrator') return { avatar: '旁', name: '说书人', bg: '#7a6a4a', fg: '#fff', imgKey: 'narrator' };
+    // v79.5 · 【修复①真正的根因】上一版只改了 project.config.json 的 ignore 裸 glob，
+    //   让 assets/avatars/ 重新进包，但 speakerStyle 里 13 个角色独缺 dreammj 分支 ——
+    //   没有 imgKey，getSpeakerAvatarImg 就拿不到 key，头像永远画不出来。
+    //   ignore 那条是必要但不充分，我却提前宣布修好了，这是武断。
+    if (ch === 'dreammj') return { avatar: '梦', name: '梦中女主播', bg: '#b45ac8', fg: '#fff', imgKey: 'dreammj' };
+    if (ch === 'system') return { avatar: '系', name: '系统', bg: '#e6be6e', fg: '#111' };
+    // V67 · 直接引用的 NPC char key（clause override 用）
+    // V68 · 已接入抠图后的半身立绘 imgKey
+    if (ch === 'vendor') return { avatar: '粮', name: '粮贩子', bg: '#6a4a2a', fg: '#fff', imgKey: 'vendor' };
+    if (ch === 'zhao') return { avatar: '赵', name: '赵铁牛', bg: '#5b2323', fg: '#fff', imgKey: 'zhao' };
+    if (ch === 'shopwoman') return { avatar: '布', name: '布铺老板娘', bg: '#8a4a6a', fg: '#fff', imgKey: 'shopwoman' };
+    if (ch === 'laohan') return { avatar: '李', name: '李老憨', bg: '#3d5a3d', fg: '#fff', imgKey: 'laohan' };
+    if (ch === 'wangpo') return { avatar: '王', name: '王婆', bg: '#6a4a6a', fg: '#fff', imgKey: 'wangpo' };
+    if (ch === 'villager') return { avatar: '村', name: '村民', bg: '#5a5a5a', fg: '#fff', imgKey: 'villager' };
+    if (ch === 'fuzhuren') return { avatar: '副', name: '副主任', bg: '#33475a', fg: '#fff', imgKey: 'fuzhuren' };
+    // fallback：从 speaker 文本抓第一个中文字
+    var initial = '·';
+    for (var k = 0; k < sp.length; k++) {
+      var c = sp.charAt(k);
+      if (/[\u4e00-\u9fa5]/.test(c)) { initial = c; break; }
+    }
+    return { avatar: initial, name: sp || '？', bg: '#555', fg: '#fff' };
+  }
+
+  // V42 · 视频 clause 说话人映射表（覆盖 node.char）
+  //   S4 = 婉儿劝慢 + 傲天问 "你是我什么人" + 婉儿答 "义兄没过门的嫂子"
+  //   V67 · EP02 系列多说话人视频 + 幻想舞蹈视频（婉儿说话）
+  //   其他视频保持节点默认 speaker
+  var CLAUSE_SPEAKER_OVERRIDE = {
+    'S6': [{ pattern: /技能激活|一亩好地|^叮/, char: 'system' }],
+    'e3s5': [
+      { pattern: /婉儿|想清楚/, char: 'aotian' },
+      { pattern: /傲天哥|你的人/, char: 'wanerh' }
+    ],
+    'be4_witch_hunt': [
+      { pattern: /不是妖怪|放开她/, char: 'aotian' },
+      { pattern: /妖怪|烧了/, char: 'villager' }
+    ],
+    // EP05 n5s3 · 屋顶塌 —— 傲天喊「婉儿！退后！」在前，婉儿惊呼「顶要塌了…」在后
+    //   ASR 把两人台词糊成「退后王家就是这么塌的」，已在 verified/n5s3.json 人工订正为完整双句
+    'n5s3': [
+      { pattern: /婉儿|退后/, char: 'aotian', name: '傲天' },
+      { pattern: /顶要塌|去年|王家|塌的/, char: 'wanerh', name: '沈婉儿' }
+    ],
+    'r_f_e7s2_a': [{ pattern: /乡亲们|不能再等/, char: 'aotian' }],
+    'r_f_e7s2_d': [
+      { pattern: /^我回屋/, char: 'aotian' },
+      { pattern: /咱家粮囤/, char: 'wanerh' }
+    ],
+    'S4': [
+      { pattern: /慢点|喝了病|好三分/, char: 'wanerh', name: '沈婉儿' },
+      { pattern: /你是我什么人/, char: 'aotian', name: '傲天' },
+      { pattern: /义兄|没过门|嫂子啊/, char: 'wanerh', name: '沈婉儿' }
+    ],
+    // e2s3 · 粮贩子压价 + 傲天硬顶回怼
+    'e2s3': [
+      { pattern: /玉米潮|八毛|拉倒|不想卖/, char: 'vendor', name: '粮贩子' },
+      { pattern: /精选|一块二|少一分/, char: 'aotian', name: '傲天' }
+    ],
+    'video_e2s3': [
+      { pattern: /玉米潮|八毛|拉倒|不想卖/, char: 'vendor', name: '粮贩子' },
+      { pattern: /精选|一块二|少一分/, char: 'aotian', name: '傲天' }
+    ],
+    // e2s5 · 布铺·老板娘问 + 傲天买布
+    'e2s5': [
+      { pattern: /小哥要几丈/, char: 'shopwoman', name: '老板娘' },
+      { pattern: /棉布|裁|三丈|米白/, char: 'aotian', name: '傲天' },
+      { pattern: /婉儿|穿新的/, char: 'aotian', name: '傲天' }
+    ],
+    'video_e2s5': [
+      { pattern: /小哥要几丈/, char: 'shopwoman', name: '老板娘' },
+      { pattern: /棉布|裁|三丈|米白/, char: 'aotian', name: '傲天' },
+      { pattern: /婉儿|穿新的/, char: 'aotian', name: '傲天' }
+    ],
+    // e2s6 · 赵铁牛拦路 + 傲天硬顶
+    'e2s6': [
+      { pattern: /哥们|过路费|十块/, char: 'zhao', name: '赵铁牛' },
+      { pattern: /不认识|让开/, char: 'aotian', name: '傲天' }
+    ],
+    'video_e2s6': [
+      { pattern: /哥们|过路费|十块/, char: 'zhao', name: '赵铁牛' },
+      { pattern: /不认识|让开/, char: 'aotian', name: '傲天' }
+    ],
+    // 幻想舞蹈视频里说"傲天，我跳的好看吗？"—— 是婉儿说的，不是傲天内心
+    'side05_jazz': [{ pattern: /./, char: 'wanerh', name: '沈婉儿' }],
+    'side06_dunhuang': [{ pattern: /./, char: 'wanerh', name: '沈婉儿' }],
+    'side04_kongque': [{ pattern: /./, char: 'wanerh', name: '沈婉儿' }],
+    'side07_cailian': [{ pattern: /./, char: 'wanerh', name: '沈婉儿' }]
+  };
+
+  // V67 · 视频字幕黑名单：纯叙事视频（画面自说话，不需要说书人字幕遮挡）
+  //   EP02 e2s1 山路赶集 + e2s2 集市空镜，node 挂了 narrator/aotian 的旁白 text，
+  //   但视频本身没有对白，字幕反而喧宾夺主，用户明确要求"不要出说书人字幕"
+  // V69 · 用户第二轮全局审计：所有挂了 char='narrator'/speaker='旁白'/内心 的视频节点
+  //   都进入黑名单，不再在视频上方假造说书人字幕遮画面
+  // v72.1 · 已清空：铁律「视频只按 ASR 走字幕，node.text 不上视频」
+  //         之前的黑名单是为了防止 node.text 叠 ASR 上双字幕；现在 node.text 在 video 100% 不叠，ASR 全放开
+  var SUBTITLE_HIDE_KEYS = {};
+  function pickClauseSpeaker (videoKey, clauseText, nodeSp) {
+    var rules = CLAUSE_SPEAKER_OVERRIDE[videoKey];
+    if (rules && rules.length) {
+      for (var i = 0; i < rules.length; i++) {
+        if (rules[i].pattern.test(clauseText)) return speakerStyle(rules[i].char);
+      }
+    }
+    return nodeSp;
+  }
+
+  // V42 · 加载角色半身像（傲天、沈婉儿）— 用于字幕左侧大头像，允许溢出到字幕条上方
+  function getSpeakerAvatarImg (key) {
+    if (!key) return null;
+    state.avatarImgs = state.avatarImgs || {};
+    if (state.avatarImgs[key] !== undefined) {
+      return state.avatarImgs[key] || null;
+    }
+    state.avatarImgs[key] = null;
+    _loadImgPersist(_CDN_AVATARS + key + '.png', function (im) {
+      state.avatarImgs[key] = im || false;
+      if (im) { try { if (global.Telemetry) global.Telemetry.onAssetLoad('avatar', key, true, { nodeId: state.curId }); } catch (_) { } }
+      else {
+        LG('AVATAR-LOAD-FAIL', '❌ 头像加载失败', { key: key, path: _CDN_AVATARS + key + '.png' });
+        try { if (global.Telemetry) global.Telemetry.onAssetLoad('avatar', key, false, { nodeId: state.curId, src: _CDN_AVATARS + key + '.png' }); } catch (_) { }
+      }
+    });
+    return null;
+  }
+
+  // V43 · 加载昵称艺术字 PNG（透明底）— 傲天/婉儿等主要角色，放在头像下沿代替蓝/粉胶囊
+  function getNicknameImg (key) {
+    // No nickname art exists for this character; the text label below is the fallback.
+    if (!key || key === 'dreammj') return null;
+    state.nickImgs = state.nickImgs || {};
+    if (state.nickImgs[key] !== undefined) {
+      return state.nickImgs[key] || null;
+    }
+    state.nickImgs[key] = null;
+    _loadImgPersist(_CDN_AVATARS + 'nick-' + key + '.png', function (im) {
+      state.nickImgs[key] = im || false;
+    });
+    return null;
+  }
+
+  function drawVideoSubtitle (fileUrl, node) {
+    if (!global.SUBTITLES || !fileUrl) return;
+    // V67 · 纯叙事视频不出字幕（用户反馈说书人字幕遮挡视频）
+    var _hideKey = global.SUBTITLES && global.SUBTITLES.keyFromUrl ? global.SUBTITLES.keyFromUrl(fileUrl) : null;
+    if (_hideKey && SUBTITLE_HIDE_KEYS[_hideKey]) return;
+    var entry = global.SUBTITLES.get(fileUrl);
+    // 无对白/无已核验字幕时保持空白；不能把剧本动作描写合成为台词。
+    if (!entry || !entry.s || !entry.s.length) return;
+    // 沉浸模式不画（用户按眼睛后隐藏所有 UI）
+    if (state.ui && state.ui.immersive) return;
+
+    var t = state.videoCurTime || 0;
+
+    // V40·3 · 智能断句：SOFT/HARD 两级，累积够 MIN 字才断
+    //   HARD (。！？) 无条件断
+    //   SOFT (，、；：,;:…) 只有当 buf 长度 ≥ MIN 才断
+    //   末尾无断也强制成句
+    //   最后剥掉尾部温和标点
+    if (!entry._clauses) {
+      var HARD = '。！？!?';
+      var SOFT = '，、；：,;:…';
+      var STRIP_TRAIL = '，、；：,;:…。.';
+      var MIN_LEN = 10;   // 至少 10 个字才允许 SOFT 断
+      var MAX_LEN = 22;   // 超过 22 字强制在下一个 SOFT 处断
+      entry._clauses = [];
+      for (var si = 0; si < entry.s.length; si++) {
+        var _s = entry.s[si], _text = _s[2], _cts = _s[3] || [];
+        var buf = '', bufTs = [];
+        // 计算 "有效字数"（去掉标点后的长度），用于 MIN/MAX 判断
+        var textLenNoPunct = 0;
+        for (var ci = 0; ci < _text.length; ci++) {
+          var _ch = _text.charAt(ci);
+          buf += _ch;
+          bufTs.push(_cts[ci] || null);
+          if (HARD.indexOf(_ch) < 0 && SOFT.indexOf(_ch) < 0) textLenNoPunct++;
+          var isEnd = (ci === _text.length - 1);
+          var isHard = HARD.indexOf(_ch) >= 0;
+          var isSoft = SOFT.indexOf(_ch) >= 0;
+          var shouldBreak = false;
+          if (isHard) shouldBreak = true;
+          else if (isSoft && textLenNoPunct >= MIN_LEN) shouldBreak = true;
+          else if (textLenNoPunct >= MAX_LEN && (isSoft || isHard)) shouldBreak = true;
+          else if (isEnd) shouldBreak = true;
+          if (shouldBreak) {
+            var timed = bufTs.filter(function (x) { return x && x[0] != null; });
+            if (timed.length) {
+              // 剥掉尾部温和/句号标点（视觉更干净；保留 ！？）
+              var trimText = buf, trimTs = bufTs.slice();
+              while (trimText.length > 1 && STRIP_TRAIL.indexOf(trimText.charAt(trimText.length - 1)) >= 0) {
+                trimText = trimText.slice(0, -1);
+                trimTs.pop();
+              }
+              entry._clauses.push({
+                text: trimText,
+                start: timed[0][0],
+                end: timed[timed.length - 1][1],
+                chars: trimTs
+              });
+            }
+            buf = ''; bufTs = []; textLenNoPunct = 0;
+          }
+        }
+      }
+    }
+
+    // 找到当前 clause：t ∈ [start-0.1, end+0.30]，clause 间隙 → 字幕消失
+    var cur = null;
+    var clauses = entry._clauses;
+    for (var ii = 0; ii < clauses.length; ii++) {
+      var cl = clauses[ii];
+      if (t >= cl.start - 0.1 && t <= cl.end + 0.30) { cur = cl; break; }
+    }
+    if (!cur) return;
+    var text = cur.text;
+    var charTs = cur.chars;
+
+    // V42 · 说话人：先尝试 clause 级 override（多角色视频如 S4），再回落到 node
+    var videoKey = entry.speakerRuleKey || global.SUBTITLES.keyFromUrl(fileUrl);
+    var nodeSp = speakerStyle(entry.speakerKey || node);
+    var sp = pickClauseSpeaker(videoKey, text, nodeSp);
+    var avatarImg = sp.imgKey ? getSpeakerAvatarImg(sp.imgKey) : null;
+    var nickImg = sp.imgKey ? getNicknameImg(sp.imgKey) : null;
+
+    // V43 · 布局：头像左下贴角（无描边框）+ 气泡自动换行 + 昵称艺术字压在头像下沿
+    ctx.save();
+    var padH = 14, padV = 9;
+    var AV_SIZE = 84;
+    var LEFT_MARGIN = 12;
+    var RIGHT_MARGIN = 16;
+    var GAP_AV_BUBBLE = 10;
+    var maxBubbleW = W - LEFT_MARGIN - AV_SIZE - GAP_AV_BUBBLE - RIGHT_MARGIN;
+
+    // V43 · 台词自动换行（先固定字号 16，超宽则拆多行；单行最多 ~14 汉字）
+    var fontSize = 16;
+    var lineH = fontSize + 8;
+    var textFont = '700 ' + fontSize + 'px sans-serif';
+    var textAreaW = maxBubbleW - padH * 2;
+    var lines = wrapText(text, textAreaW, textFont);
+    if (lines.length > 3) {
+      // 超过 3 行再缩字号到 14
+      fontSize = 14; lineH = fontSize + 8; textFont = '700 14px sans-serif';
+      lines = wrapText(text, textAreaW, textFont);
+    }
+    // 计算行内每行覆盖的字符 index 范围（用于卡拉 OK 高亮）
+    var lineRanges = [];
+    (function () {
+      var idx = 0;
+      for (var li = 0; li < lines.length; li++) {
+        var s = idx, e = idx + lines[li].length;
+        lineRanges.push([s, e]);
+        idx = e;
+      }
+    })();
+
+    // 气泡尺寸：宽=最长行 + padH*2，高=行数*行高 + padV*2
+    ctx.font = textFont;
+    var longestW = 0;
+    for (var li = 0; li < lines.length; li++) {
+      var lw = ctx.measureText(lines[li]).width;
+      if (lw > longestW) longestW = lw;
+    }
+    var barW = Math.min(longestW + padH * 2, maxBubbleW);
+    var barH = lines.length * lineH + padV * 2;
+
+    // 底部布局锚点：气泡底与头像底对齐在 baseY 上
+    var baseY = H - 90;
+    var avX = LEFT_MARGIN;
+    var avY = baseY - AV_SIZE;
+    var barX = avX + AV_SIZE + GAP_AV_BUBBLE;
+    var barY = baseY - barH;
+
+    // ============== 半身像（无框无描边，圆角裁剪即可） ==============
+    if (avatarImg) {
+      try {
+        ctx.save();
+        roundRect(avX, avY, AV_SIZE, AV_SIZE, 12);
+        ctx.clip();
+        ctx.drawImage(avatarImg, avX, avY, AV_SIZE, AV_SIZE);
+        ctx.restore();
+      } catch (e) { avatarImg = null; }
+    }
+    if (!avatarImg) {
+      // fallback：圆头 + 首字（旁白/系统/未加载完）
+      var avR = AV_SIZE / 2;
+      var avCX = avX + avR;
+      var avCY = avY + avR;
+      ctx.beginPath();
+      ctx.arc(avCX, avCY, avR - 2, 0, Math.PI * 2);
+      ctx.fillStyle = sp.bg; ctx.fill();
+      ctx.font = '800 30px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillStyle = sp.fg;
+      ctx.fillText(sp.avatar, avCX, avCY + 1);
+      ctx.textBaseline = 'alphabetic';
+      ctx.textAlign = 'left';
+    }
+
+    // ============== 昵称：优先艺术字 PNG（无胶囊底），fallback 才用小胶囊 ==============
+    if (nickImg && nickImg.width) {
+      try {
+        // V44 · 昵称压在头像下沿 + 向右微调（视觉居中，覆盖头像底部约 40%）
+        var nickH = 34;
+        var iw = nickImg.width, ih = nickImg.height;
+        var nickW = ih > 0 ? Math.min(AV_SIZE + 10, nickH * iw / ih) : (AV_SIZE - 8);
+        // 水平：以头像水平中心为准 + 向右 4px 修正艺术字左侧留白
+        var nickX = avX + (AV_SIZE - nickW) / 2 + 4;
+        // 垂直：压进头像底部 40%（原来 -8，现在 -nickH*0.55 ≈ -18，更往上）
+        var nickY = avY + AV_SIZE - Math.round(nickH * 0.55);
+        // 阴影让金字在深色视频上看得清
+        ctx.save();
+        ctx.shadowColor = 'rgba(0,0,0,.75)';
+        ctx.shadowBlur = 4;
+        ctx.drawImage(nickImg, nickX, nickY, nickW, nickH);
+        ctx.restore();
+      } catch (e) { nickImg = null; }
+    }
+    if (!nickImg || !nickImg.width) {
+      // fallback：老胶囊（旁白/系统等 fallback 角色）
+      ctx.font = '700 12px sans-serif';
+      var nameW = ctx.measureText(sp.name).width;
+      var nameChipW = Math.max(nameW + 16, AV_SIZE - 8);
+      var nameChipH = 20;
+      var nameChipX = avX + (AV_SIZE - nameChipW) / 2;
+      var nameChipY = avY + AV_SIZE - nameChipH / 2;
+      ctx.fillStyle = 'rgba(0,0,0,0.65)';
+      roundRect(nameChipX, nameChipY, nameChipW, nameChipH, nameChipH / 2); ctx.fill();
+      ctx.strokeStyle = 'rgba(230,190,110,.75)';
+      ctx.lineWidth = 1;
+      roundRect(nameChipX + 0.5, nameChipY + 0.5, nameChipW - 1, nameChipH - 1, (nameChipH - 1) / 2); ctx.stroke();
+      ctx.font = '800 12px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillStyle = '#ffe27a';
+      ctx.fillText(sp.name, nameChipX + nameChipW / 2, nameChipY + nameChipH / 2 + 0.5);
+      ctx.textBaseline = 'alphabetic';
+      ctx.textAlign = 'left';
+    }
+
+    // ============== 对话气泡（半透明深底 + 上下金线 + 左右卷轴竖线 + 四角） ==============
+    // V55 · 干净版气泡：深底 + 圆角 + 一根金细边 + 左侧指向头像的小尖角（微信/QQ 气泡感）
+    // 1) 深底
+    ctx.fillStyle = 'rgba(24,14,6,0.78)';
+    roundRect(barX, barY, barW, barH, 12); ctx.fill();
+
+    // 2) 左侧尖角（指向头像那一侧）
+    var tailY = barY + Math.min(28, barH / 2);
+    ctx.beginPath();
+    ctx.moveTo(barX, tailY - 8);
+    ctx.lineTo(barX - 8, tailY);
+    ctx.lineTo(barX, tailY + 8);
+    ctx.closePath();
+    ctx.fill();
+
+    // 3) 细金边（整体气泡 + 尖角）
+    ctx.strokeStyle = 'rgba(230,190,110,.7)';
+    ctx.lineWidth = 1;
+    roundRect(barX, barY, barW, barH, 12); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(barX, tailY - 8);
+    ctx.lineTo(barX - 8, tailY);
+    ctx.lineTo(barX, tailY + 8);
+    ctx.stroke();
+
+    // ============== 逐字绘制（多行 + 卡拉 OK 高亮） ==============
+    ctx.font = textFont;
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
+    for (var ln = 0; ln < lines.length; ln++) {
+      var lineText = lines[ln];
+      var lineStart = lineRanges[ln][0];
+      var y = barY + padV + lineH * ln + lineH / 2;
+      var x = barX + padH;
+      for (var jj = 0; jj < lineText.length; jj++) {
+        var globalIdx = lineStart + jj;
+        var ch = lineText.charAt(jj);
+        var cts = charTs[globalIdx];
+        var isPlayed = false, isCurrent = false;
+        if (cts) {
+          var cs = cts[0], ce = cts[1];
+          if (t >= cs && t <= ce + 0.05) isCurrent = true;
+          else if (t > ce) isPlayed = true;
+        } else if (globalIdx > 0 && charTs[globalIdx - 1] && t > charTs[globalIdx - 1][1]) {
+          isPlayed = true;
+        }
+        if (isCurrent) {
+          ctx.shadowColor = 'rgba(255,215,110,.9)';
+          ctx.shadowBlur = 6;
+          ctx.fillStyle = '#ffe27a';
+        } else if (isPlayed) {
+          ctx.shadowBlur = 0;
+          ctx.fillStyle = '#ffd76a';
+        } else {
+          ctx.shadowBlur = 0;
+          ctx.fillStyle = 'rgba(255,255,255,.72)';
+        }
+        ctx.fillText(ch, x, y);
+        x += ctx.measureText(ch).width;
+      }
+    }
+    ctx.shadowBlur = 0;
+    ctx.textBaseline = 'alphabetic';
+    ctx.textAlign = 'left';
+    ctx.restore();
+  }
+
+  function drawCaptionBottom (node, opts) {
+    if (!node) { LG('CAPTION-SKIP', '\u65e0 node，跳过字幕'); return; }
+    opts = opts || {};
+    var HIDE_BTN = !!opts.hideContinueBtn;   // V31·10·final · 纯文本子节点不画「继续 ▸」
+    var AUTO_ADV = !!opts.autoAdvance;       // V31·10·final · 纯文本子节点打字完自动前进
+
+    // 是否图片节点（反应图） vs 纯文本子节点
+    var node0 = getNode(state.curId);
+    var isImg = node0 && node0.media && node0.media.kind === 'image';
+    // V31·10 · BE 旁白不再叠加到视频上（直接进 __be__ 结局页），只保留图片反应节点的台词卡
+    // V31·10 · BE 视频播完后叠加旁白：当 beOverlayFromId 有值时开启
+    var isBEOverlay = /^BE_/.test(state.curId) && state.beOverlayFromId;
+
+    // 初始化/切换打字机
+    if (state.tw.key !== state.curId) {
+      LG('CAPTION-DRAW', '📝 绘制字幕', { id: state.curId, speaker: node.speaker, text: node.text ? node.text.slice(0, 30) + '…' : null, isImg: !!isImg });
+      resetTypewriter(state.curId);
+    }
+
+    // V31·5/·10 · 所有节点都走高度自适应：先算行数（含按钮预留右侧宽度），再决定 box 高度
+    //   之前的 bug：纯文本节点固定 BAR_H=130（2 行），文字超过 2 行时会被按钮遮住 / 按钮盖文字。
+    var _btnW_pre = 96;
+    var _btnPad_pre = 22;
+    var _textAreaW_img = W - 52;                            // 图片/BE：文本占满盒宽（按钮在右下角）
+    var _textAreaW_txt = W - 28 - _btnW_pre - _btnPad_pre;  // 纯文本：文本要给右侧按钮留位
+    var _font = '600 16px sans-serif';
+    var textAreaW_pre = (isImg || isBEOverlay) ? _textAreaW_img : _textAreaW_txt;
+    var _wrapLines = node.text ? wrapText(node.text, textAreaW_pre, _font) : [];
+    var _maxLines = Math.max(2, Math.min(_wrapLines.length, 6));   // 全节点 2~6 行
+    var lineH = 22;
+
+    // BAR_H = 标题(24) + speaker 到 text 间距(10) + 文本(maxLines*lineH) + 下边距
+    // V32 · 有「继续 ▸」按钮时下边距=50（按钮高42+间距8），避免按钮盖文字第二行
+    var _bottomPad = HIDE_BTN ? 20 : 60;
+    var BAR_H = 24 + 10 + _maxLines * lineH + _bottomPad;
+    BAR_H = Math.max(120, BAR_H);
+    // 抬高留出底部控制栏（H-62 ~ H-18）：图片节点抬 100，纯文本节点抬 90
+    var y0 = (isImg || isBEOverlay) ? (H - 100 - BAR_H) : (H - 90 - BAR_H);
+    // V31·5 · 暴露给点赞按钮定位使用
+    state._captionTopY = y0;
+    state._captionShown = true;
+
+    // 遮罩
+    if (isImg || isBEOverlay) {
+      var boxX = 14, boxY = y0, boxW = W - 28, boxH = BAR_H;
+      ctx.save();
+      ctx.fillStyle = 'rgba(0,0,0,0.72)';
+      roundRect(boxX, boxY, boxW, boxH, 14); ctx.fill();
+      ctx.strokeStyle = 'rgba(230,190,110,.55)';
+      ctx.lineWidth = 1.2;
+      roundRect(boxX + 0.6, boxY + 0.6, boxW - 1.2, boxH - 1.2, 13.4); ctx.stroke();
+      ctx.restore();
+    } else {
+      var g = ctx.createLinearGradient(0, y0 - 30, 0, y0 + BAR_H);
+      g.addColorStop(0, 'rgba(0,0,0,0)');
+      g.addColorStop(.3, 'rgba(0,0,0,.6)');
+      g.addColorStop(1, 'rgba(0,0,0,.9)');
+      ctx.fillStyle = g;
+      ctx.fillRect(0, y0 - 30, W, BAR_H + 30);
+    }
+
+    // V31·10 · 按钮统一放在对白框右下角，避免与文本冲叠
+    var btnW = 96, btnH = 42;
+    var btnX = W - btnW - ((isImg || isBEOverlay) ? 22 : 14);
+    var btnY = y0 + BAR_H - btnH - 8;
+    // V31·10·final · 纯文本连接节点不画「继续 ▸」按钮
+    if (!HIDE_BTN) {
+      var bg = ctx.createLinearGradient(btnX, btnY, btnX, btnY + btnH);
+      bg.addColorStop(0, 'rgba(230,190,110,.98)');
+      bg.addColorStop(1, 'rgba(200,155,80,.98)');
+      ctx.fillStyle = bg;
+      roundRect(btnX, btnY, btnW, btnH, btnH / 2); ctx.fill();
+      ctx.strokeStyle = 'rgba(255,220,140,1)';
+      ctx.lineWidth = 1.5; ctx.stroke();
+      ctx.fillStyle = '#2a1a08';
+      ctx.font = '700 15px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(isBEOverlay ? '继续 ▸' : '继续 ▸', btnX + btnW / 2, btnY + btnH / 2 + 5);
+      ctx.textAlign = 'left';
+      state.hitZones.push({ x: btnX, y: btnY, w: btnW, h: btnH, action: isBEOverlay ? 'be_to_endpage' : 'next' });
+      // v94.1 · 节点级广告标记：继续按钮右上角画金色「看广告」角标
+      if (node.ad) {
+        var adTagW = 44, adTagH = 18;
+        var adTagX = btnX + btnW - adTagW / 2;
+        var adTagY = btnY - adTagH / 2;
+        ctx.save();
+        var adG2 = ctx.createLinearGradient(adTagX, adTagY, adTagX, adTagY + adTagH);
+        adG2.addColorStop(0, '#ffd876');
+        adG2.addColorStop(1, '#c98b28');
+        ctx.fillStyle = adG2;
+        roundRect(adTagX, adTagY, adTagW, adTagH, adTagH / 2); ctx.fill();
+        ctx.strokeStyle = 'rgba(255,240,190,.9)'; ctx.lineWidth = 1; ctx.stroke();
+        ctx.fillStyle = '#3a1d05';
+        ctx.beginPath();
+        ctx.moveTo(adTagX + 7, adTagY + 4);
+        ctx.lineTo(adTagX + 7, adTagY + adTagH - 4);
+        ctx.lineTo(adTagX + 13, adTagY + adTagH / 2);
+        ctx.closePath(); ctx.fill();
+        ctx.font = '800 11px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('广告', adTagX + 16, adTagY + adTagH / 2 + 1);
+        ctx.textBaseline = 'alphabetic';
+        ctx.restore();
+      }
+    }
+
+    // 台词：左侧
+    var textX = (isImg || isBEOverlay) ? 26 : 14;
+    var textAreaW = ((isImg || isBEOverlay) ? (W - 52) : (HIDE_BTN ? (W - 28) : (btnX - 26)));
+    if (node.speaker) {
+      ctx.fillStyle = '#ffcf5c';
+      ctx.font = '700 14px sans-serif';
+      ctx.textAlign = 'left';
+      ctx.fillText(node.speaker, textX, y0 + 24);
+    }
+    if (node.text) {
+      // V28：图片和文本节点都走打字机（图片节点不再强制全显）
+      var total = node.text.length;
+      var shown;
+      var elapsed = Date.now() - state.tw.startT;
+      shown = Math.floor(elapsed / (TYPE_SPEED / curSpeed()));
+      if (shown >= total) { shown = total; state.tw.done = true; }
+      state.tw.chars = shown;
+      var visibleText = node.text.substring(0, shown);
+
+      ctx.fillStyle = '#fff';
+      var font = _font;
+      var lines = wrapText(visibleText, textAreaW, font);
+      ctx.font = font;
+      var textStartY = y0 + 24 + 24;   // speaker 下方
+      // V31·10 · 全节点使用动态行数（与 _maxLines 一致），不再区分图片/文本节点
+      var maxLines = _maxLines;
+      for (var k = 0; k < Math.min(lines.length, maxLines); k++) {
+        ctx.fillText(lines[k], textX, textStartY + k * lineH);
+      }
+
+      // 光标闪烁（未打完时显示）
+      if (!state.tw.done && lines.length > 0) {
+        var blink = Math.floor(Date.now() / 400) % 2 === 0;
+        if (blink) {
+          var lastLine = lines[Math.min(lines.length, maxLines) - 1];
+          var lx = textX + ctx.measureText(lastLine).width + 2;
+          var ly = textStartY + (Math.min(lines.length, maxLines) - 1) * lineH;
+          ctx.fillRect(lx, ly - 12, 8, 14);
+        }
+      }
+      // V31·10·final · 纯文本子节点自动前进：打字机完成后 1.2s 自动 next()
+      if (AUTO_ADV && state.tw.done) {
+        if (!state._autoAdvKey || state._autoAdvKey !== state.curId) {
+          state._autoAdvKey = state.curId;
+          state._autoAdvTimer = setTimeout(function () {
+            if (state._autoAdvKey === state.curId) {
+              LG('AUTO-ADV', '纯文本节点自动前进', { id: state.curId });
+              next();
+            }
+          }, 1200);
+        }
+      }
+    }
+  }
+
+  // 技能卡（canvas 手绘金光卡）
+  function drawSkillCard (m) {
+    var cw = Math.min(300, W - 60), ch = 200;
+    var cx = (W - cw) / 2, cy = (H - ch) / 2;
+
+    // 外发光
+    ctx.save();
+    ctx.shadowColor = 'rgba(255,215,100,.9)';
+    ctx.shadowBlur = 40;
+    var g = ctx.createLinearGradient(cx, cy, cx, cy + ch);
+    g.addColorStop(0, '#fff1c2');
+    g.addColorStop(.5, '#f5c65a');
+    g.addColorStop(1, '#a06818');
+    ctx.fillStyle = g;
+    roundRect(cx, cy, cw, ch, 18); ctx.fill();
+    ctx.restore();
+
+    // 内框
+    ctx.strokeStyle = 'rgba(255,255,255,.85)';
+    ctx.lineWidth = 2;
+    roundRect(cx + 8, cy + 8, cw - 16, ch - 16, 12); ctx.stroke();
+
+    // 顶部小字
+    ctx.fillStyle = '#5a3a10';
+    ctx.font = '600 13px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('★ 技能觉醒 ★', cx + cw / 2, cy + 34);
+
+    // 主名
+    ctx.fillStyle = '#2a1a04';
+    ctx.font = '900 26px sans-serif';
+    ctx.fillText(m.name || '一亩好地·Lv1', cx + cw / 2, cy + 78);
+
+    // 分隔线
+    ctx.strokeStyle = 'rgba(90,58,16,.5)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(cx + 30, cy + 100);
+    ctx.lineTo(cx + cw - 30, cy + 100);
+    ctx.stroke();
+
+    // 描述
+    ctx.fillStyle = '#3a2810';
+    ctx.font = '600 15px sans-serif';
+    var descLines = wrapText(m.desc || '精耕沙地，产量+50%', cw - 60, '600 15px sans-serif');
+    for (var i = 0; i < descLines.length; i++) {
+      ctx.fillText(descLines[i], cx + cw / 2, cy + 128 + i * 22);
+    }
+    ctx.textAlign = 'left';
+  }
+
+  function drawMediaImg () {
+    // v76.0 · 加载中 → 一律画纯黑 + 转圈，禁止展示旧图（用户炸裂：不能接受错误的图画）
+    if (state.mediaImgLoading) {
+      ctx.fillStyle = '#000';
+      ctx.fillRect(0, 0, W, H);
+      drawLoadingSpinner();
+      return;
+    }
+    // 无图直接 return
+    if (!state.mediaImg) return;
+    // 视频已 play（native 层已出画面）→ 不再盖图
+    if (state.video && state.videoStarted) return;
+    // 其它情况均画图（包括：图片节点 / 视频未 play 前的占位保底）
+    var im = state.mediaImg;
+    var iw = im.width || W, ih = im.height || H;
+    var s = Math.max(W / iw, H / ih);
+    var dw = iw * s, dh = ih * s;
+    var dx = (W - dw) / 2, dy = (H - dh) / 2;
+    try { ctx.drawImage(im, dx, dy, dw, dh); } catch (e) { LG('DRAW-IMG-ERR', 'drawImage 异常', { err: String(e) }); }
+  }
+  // v76.0 · 加载中转圈 UI（居中）
+  function drawLoadingSpinner () {
+    var cx = W / 2, cy = H / 2;
+    var t = Date.now() * 0.006;
+    var r = 22;
+    ctx.save();
+    // 转圈
+    for (var i = 0; i < 12; i++) {
+      var ang = t + i * Math.PI / 6;
+      var alpha = 0.15 + (i / 12) * 0.75;
+      ctx.strokeStyle = 'rgba(255,220,140,' + alpha.toFixed(2) + ')';
+      ctx.lineWidth = 3;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(cx + Math.cos(ang) * (r - 8), cy + Math.sin(ang) * (r - 8));
+      ctx.lineTo(cx + Math.cos(ang) * r, cy + Math.sin(ang) * r);
+      ctx.stroke();
+    }
+    // 加载中文字
+    ctx.fillStyle = 'rgba(255,230,168,0.9)';
+    ctx.font = '600 14px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    ctx.fillText('加载中…', cx, cy + r + 12);
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'alphabetic';
+    ctx.restore();
+    // 触发下一帧刷新（转圈动画持续）
+    try { if (state.mediaImgLoading) setTimeout(function () { render(); }, 60); } catch (_) { }
+  }
+  // V31·10 · BE 结局搞笑总结（按 fromId 精确匹配，兜底按 endType）
+  // v71.9 · 【全局重写】结局总标题 + 死因鉴定 分离；死因鉴定改为『尸检报告风』搞笑
+  //   · 结局标题：一句话概括『你走的是哪条路 · 落到了啥地步』
+  //   · 死因鉴定：搞笑总结『你怎么把自己作没的』 · 与结局标题不重复 · 视角切换（尸检官/村口大爷视角）
+  var BE_TITLE = {
+    'BE_STARVE': '结局 · 独吞粮 · 冻死嫂',
+    'BE_KICKED': '结局 · 一嘴毒 · 卷铺盖',
+    'BE_KICKED_END': '结局 · 冷了她 · 断了缘',
+    'BE_SLAP': '结局 · 手不老实 · 三巴掌',
+    'BE_GOD': '结局 · 喊神仙 · 掉下山',
+    'BE_MONSTER': '结局 · 装神弄鬼 · 送上山',
+    'BE_LOSE_HER': '结局 · 卖嫂子 · 一场空',
+    'BE_RUNAWAY': '结局 · 腿一跑 · 命全没',
+    'BE_RUNAWAY_BRIDE': '结局 · 洞房怂 · 婉儿走',
+    'BE_DRUNK': '结局 · 酿烧酒 · 断片汉',
+    'BE_KILL': '结局 · 锄头挥 · 蹲大牢',
+    'BE_PARTNER': '结局 · 认贼兄 · 反被吞',
+    'BE_KARMA': '结局 · 抢人碗 · 天不容',
+    'BE_ALLIANCE_KILLED': '结局 · 找错人 · 反被绑',
+    'BE_ROOF': '结局 · 爬房顶 · 摔断命',
+    'BE_DROUGHT': '结局 · 种玉米 · 遭大旱',
+    'BE_ALONE': '结局 · 顾自家 · 嫂子走',
+    'BE_RUB_ALONE': '结局 · 嫌麻烦 · 老光棍',
+    'BE_BEATEN': '结局 · 空手护她 · 被打死'
+  };
+  // 尸检官视角搞笑死因鉴定（跟 BE_TITLE 不重复，视角/信息量都不一样）
+  var BE_ROAST = {
+    'BE_STARVE': '死者最后一顿饭：满仓玉米。案发现场发现嫂子冻僵在灶边，手里还攥着替他缝的棉袄。法医结论：饿死的是嫂子，蠢死的是他。',
+    'BE_KICKED': '案发时受害人（傲天）当着嫂子面点评她跳舞难看——三巴掌落定后，被人从被窝里连夜卷出雪地。附近村民证词：他嚎的声比嫂子哭得还惨。',
+    'BE_KICKED_END': '尸检未见外伤，心口温度低于常温 12℃。经查最后一次开口是『随你吧』——嫂子听完当晚打包走人。冷死的不是天，是他自己那张嘴。',
+    'BE_SLAP': '现场指纹显示：三次巴掌，均为右手，均为嫂子。结论：这一巴掌，打没了你的婚事。',
+    'BE_GOD': '死因：坠崖。起因：村口大喊自己是神仙。村民负责送上山，你负责掉下去。',
+    'BE_MONSTER': '死因：坠崖。起因：把本事拿来装神弄鬼。村民举火把送你上山，山崖没给你留台阶。',
+    'BE_LOSE_HER': '案卷记录：受害人亲手把嫂子推给隔壁老王。嫁妆当天，隔壁放炮，他放屁。心理评估：这个逼装的很值。值一辈子。',
+    'BE_RUNAWAY': '案发时受害人处于满速逃跑状态。抛下嫂子、地契、脸面。三日后被发现蜷在岔路口，怀里只剩一只跑掉的鞋。',
+    'BE_RUNAWAY_BRIDE': '洞房前 1 秒，受害人口出『再议』二字。婉儿摔簪，一去不回。案发地遗留：一床未展开的红被子，一个未拆开的自己。',
+    'BE_DRUNK': '现场：42 只空酒坛，1 个断片汉。经查所有玉米被酿成了烧酒。醒来时家没了、嫂子没了、酒也没了——只剩他躺在自己的呕吐物里数月亮。',
+    'BE_KILL': '死因：不是死，是入狱。案由锄头一挥打死赵铁牛，爽感持续 30 秒，牢饭吃了 30 年。附近石头缝里的蚂蚁：跟他一起数的。',
+    'BE_PARTNER': '受害人生前跟坏人称兄道弟三个月，三个月后被『兄弟』把地契拿走。经查：他才是被称的兄弟——一个被吃干抹净的兄弟。',
+    'BE_KARMA': '死因：半山腰猝死。起因：踢翻乞丟破碗抢干饼。天收人不需要理由，只需要你先动手。',
+    'BE_ALLIANCE_KILLED': '死因：绑杀。起因：找老憨联盟，老憨反手把你绑了。结论：敌人的敌人不一定是朋友，可能是敌人的合伙人。',
+    'BE_BEATEN': '现场勘验：受害人把嫂子往身后一拉，自己两手空空迎上五个壮汉。法医结论：护人的心是真的，打不过也是真的。婉儿是踩着他的血跑出院门喊人的——喊回来的时候，只剩一口气。'
+  };
+  function getRoast () {
+    var info = state.endInfo || {};
+    // V32·12 · 优先使用选项自带的 roast（跟具体动作 1:1 匹配）
+    if (state.lastBEOptRoast) return state.lastBEOptRoast;
+    var fromId = info.fromId || '';
+    if (BE_ROAST[fromId]) return BE_ROAST[fromId];
+    var m = fromId.match(/^(BE_[A-Z_]+?)(?:_END)?$/);
+    if (m && BE_ROAST[m[1]]) return BE_ROAST[m[1]];
+    return '死因不详。唯一目击者婉儿在你身上看到了三个字：不值得。';
+  }
+  function getBETitle () {
+    var info = state.endInfo || {};
+    var fromId = info.fromId || '';
+    if (BE_TITLE[fromId]) return BE_TITLE[fromId];
+    var m = fromId.match(/^(BE_[A-Z_]+?)(?:_END)?$/);
+    if (m && BE_TITLE[m[1]]) return BE_TITLE[m[1]];
+    return info.title || '结局 · 未竟';
+  }
+  // v71.9 · xxx% 快手老铁同结局：每个 fromId 一个稳定的基准 %（保守/常见结局高、极端选择低）
+  //   同一 fromId 每次进 BE 页会围绕基准值 ±3% 抖动一次（Date.now() 作种子避免每帧闪跳）
+  var BE_SAME_PCT = {
+    'BE_STARVE': 68,   // 独吞粮 · 最常见的『自私一小步』
+    'BE_KICKED': 54,
+    'BE_KICKED_END': 47,
+    'BE_SLAP': 73,   // 手不老实 · 三巴掌是全民踩坑（v73.3 修错别字）
+    'BE_GOD': 12,   // 村口喊神仙 · 极端路线
+    'BE_MONSTER': 12,   // 装神弄鬼 · 极端路线
+    'BE_LOSE_HER': 22,   // 卖嫂子 · 少数人才走
+    'BE_RUNAWAY': 58,
+    'BE_RUNAWAY_BRIDE': 38,
+    'BE_DRUNK': 44,
+    'BE_KILL': 9,   // 锄头杀人 · 极少
+    'BE_PARTNER': 31
+  };
+  function getSamePct () {
+    var info = state.endInfo || {};
+    var fromId = info.fromId || '';
+    var m = fromId.match(/^(BE_[A-Z_]+?)(?:_END)?$/);
+    var key = BE_SAME_PCT[fromId] ? fromId : (m && BE_SAME_PCT[m[1]] ? m[1] : null);
+    var base = key ? BE_SAME_PCT[key] : 42;
+    // 每次进 BE 页锁一次抖动，同一 fromId 不同 session 略有差异
+    var seed = (state.endInfo && state.endInfo._pctSeed);
+    if (!seed) {
+      seed = base + Math.floor(Math.random() * 7) - 3;
+      if (seed < 3) seed = 3; if (seed > 96) seed = 96;
+      if (state.endInfo) state.endInfo._pctSeed = seed;
+    }
+    return seed;
+  }
+  // V42 · BE 旁白（纯 TTS，无 BGM）— V41 曾用 ffmpeg 混音，用户反馈 BGM 太吵，改回纯 TTS
+  //   · 进入 BE 页时按 fromId 匹配播放
+  //   · 离开（点广告/点重玩/render 换页）时立即销毁
+  var beAudioCtx = null, beAudioKey = null, beAudioStopped = false;
+  // v92.4 · 新手引导浮层已整体删除（用户反馈：阻断感太强）
+  //   浮层本体、卷轴底图 tutorial_bg.jpg、旁白 tutorial_intro.mp3 一并下线。
+  //   三数值胶囊改为进入剧情即亮相，不再依赖引导收起这个门槛。
+
+  function applyGlobalMute () {
+    // V56 · 参考老铁找茬王 feedback.js 的多路径封杀：
+    //   ① 属性热改（试）+ 视频强制重建（保底）
+    //   ② wx.setInnerAudioOption 全局降噪（如果容器支持）
+    //   ③ BE 旁白强 stop+destroy
+    var mute = !!(state.ui && state.ui.mute);
+    // 1) 视频属性热改（部分容器支持热静音）
+    if (state.video) {
+      try { state.video.muted = mute; } catch (e) { }
+      try { if (typeof state.video.volume === 'number') state.video.volume = mute ? 0 : 1; } catch (e) { }
+    }
+    // 2) 强制重建视频（快手容器实测 muted/volume 热改无效，必须重建才真静）
+    //    保留旧视频到新 onPlay 才 destroy → 无黑闪
+    if (mute && state.video && state.videoKey) {
+      var _src = state.videoKey;
+      var _t = (typeof state.videoCurTime === 'number' && state.videoCurTime > 0) ? state.videoCurTime : 0;
+      state.videoKey = null;   // 绕过 setVideo 同源短路
+      try { setVideo(_src, _t); } catch (e) { LG('MUTE-REBUILD-EX', e && e.message); }
+    } else if (!mute && state.video && state.videoKey) {
+      // 取消静音也要重建，否则残留 muted
+      var _src2 = state.videoKey;
+      var _t2 = (typeof state.videoCurTime === 'number' && state.videoCurTime > 0) ? state.videoCurTime : 0;
+      state.videoKey = null;
+      try { setVideo(_src2, _t2); } catch (e) { LG('MUTE-UNMUTE-EX', e && e.message); }
+    }
+    // 3) 全局音频 API（快手支持 setInnerAudioOption 关闭混音）
+    try {
+      if (isKS && wx.setInnerAudioOption) {
+        wx.setInnerAudioOption({ mixWithOther: false, obeyMuteSwitch: mute });
+      }
+    } catch (e) { }
+    // 4) BE 旁白：静音立刻 stop+destroy；取消静音不重启（下次进 BE 会重建）
+    if (beAudioCtx) {
+      if (mute) {
+        try { beAudioCtx.stop(); } catch (e) { }
+        try { beAudioCtx.destroy(); } catch (e) { }
+        beAudioCtx = null; beAudioKey = null;
+      } else {
+        try { if (typeof beAudioCtx.volume === 'number') beAudioCtx.volume = 1; } catch (e) { }
+      }
+    }
+    // V64 · 旁白/内心 OS 音频：静音立刻销毁
+    if (narrAudioCtx) {
+      if (mute) { stopNarrAudio(); }
+      else { try { if (typeof narrAudioCtx.volume === 'number') narrAudioCtx.volume = 1; } catch (e) { } }
+    }
+    LG('MUTE-APPLY', 'V56 静音切换 mute=' + mute + '（重建视频+音频降噪）');
+    // V75 · BGM 同步随全局静音开关
+    try { bgmApplyMute(); } catch (_) { }
+  }
+
+  // ============== V75 · 场景 BGM 引擎 ==============
+  // 4 首场景 bgm，只在非 mp4 节点播放（视频节点自带音轨），音量 0.15，随 state.ui.mute。
+  // 规则：
+  //   · 当前节点 media.kind === 'video' → 关掉 BGM
+  //   · BE 页 / __end__ / __be__ → 关掉 BGM（BE 有专门旁白 mp3）
+  //   · 其他情况按 EP + endType 选曲：
+  //       HE (aotian_return / marry / stay 大调温暖) → bgm-he
+  //       BE 前的紧张节点（有 lastBEStatDelta / 复活流程）→ bgm-tension
+  //       感情线（sisterUnlocked && 无广告/无 BE）→ bgm-warm
+  //       其他 → bgm-huangnian（默认荒年苦闷）
+  var BGM_CDN = 'https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/audio/bgm/';
+  var BGM_TRACKS = {
+    huangnian: BGM_CDN + 'bgm-huangnian.mp3',
+    warm: BGM_CDN + 'bgm-warm.mp3',
+    tension: BGM_CDN + 'bgm-tension.mp3',
+    he: BGM_CDN + 'bgm-he.mp3'
+  };
+  var BGM_VOL = 0.15;
+  var bgmCtx = null, bgmKey = null, bgmDesired = null;
+  function bgmPickTrack () {
+    // v77 · BGM 只在「首页/加载页」+「HE 通关页」放，剧情页/视频页/BE 页全部停
+    //       避免和视频/旁白 mp3 抢通道，也符合"看剧情要沉浸"的体验
+    if (state.splash && state.splash.active) return 'huangnian';  // 首页/加载页 → 荒年主题
+    if (state.curId === '__end__') return 'he';                    // HE 通关 → 温暖曲
+    return null;                                                    // 其他一律停（剧情/视频/BE/复活/选项）
+  }
+  function bgmSwitchTo (key) {
+    if (bgmKey === key && bgmCtx) return;
+    // 停旧
+    if (bgmCtx) {
+      try { bgmCtx.stop(); } catch (_) { }
+      try { bgmCtx.destroy(); } catch (_) { }
+      bgmCtx = null;
+    }
+    bgmKey = key;
+    if (!key) return;
+    var url = BGM_TRACKS[key];
+    if (!url) return;
+    var mute = !!(state.ui && state.ui.mute);
+    if (mute) { LG('BGM-SKIP-MUTE', '全局静音，不启动 BGM'); return; }
+    try {
+      if (!isKS || !wx.createInnerAudioContext) return;
+      var a = wx.createInnerAudioContext();
+      a.src = url;
+      a.loop = true;
+      try { a.volume = BGM_VOL; } catch (_) { }
+      a.onError && a.onError(function (e) { LG('BGM-ERR', key, { err: e && (e.errMsg || e.errCode) }); });
+      a.onPlay && a.onPlay(function () { LG('BGM-PLAY', key); });
+      try { a.play(); } catch (_) { }
+      bgmCtx = a;
+      LG('BGM-START', key, url);
+    } catch (e) { LG('BGM-EX', e && e.message); }
+  }
+  function bgmTick () {
+    // 每次 render 后由外部调用，做期望切换
+    var want = bgmPickTrack();
+    if (want !== bgmDesired) {
+      bgmDesired = want;
+      bgmSwitchTo(want);
+    } else if (want && !bgmCtx && !(state.ui && state.ui.mute)) {
+      // 想放但没在放（比如刚从静音切回来）
+      bgmSwitchTo(want);
+    } else if (!want && bgmCtx) {
+      // 期望停但还在放（例如切到视频节点）
+      bgmSwitchTo(null);
+    }
+  }
+  function bgmApplyMute () {
+    var mute = !!(state.ui && state.ui.mute);
+    if (mute && bgmCtx) {
+      try { bgmCtx.stop(); } catch (_) { }
+      try { bgmCtx.destroy(); } catch (_) { }
+      bgmCtx = null;
+      // bgmKey 保留，取消静音后 bgmTick 会重启
+    } else if (!mute) {
+      // 取消静音 → 下次 bgmTick 会自动拉起
+      bgmDesired = null;   // 触发重放
+    }
+  }
+  // 暴露给需要的地方
+  global._weihunqiBGM = { tick: bgmTick, mute: bgmApplyMute, pick: bgmPickTrack };
+  // ============ v93.0 · 拖拽解锁成功音效 ============
+  // 走本地包内 audio/sfx/unlock_ok.mp3（24KB，1.5s），不进 CDN：
+  //   ① 太小，一次请求的握手成本比文件本身还大；
+  //   ② 成功那一瞬间必须立刻响，CDN 首次拉取会迟到，爽感就没了。
+  // 每次播放都新建 ctx（短音效不复用，避免上一次没播完就被 seek 打断）。
+  function playUnlockSfx () {
+    if (state.ui && state.ui.mute) {
+      try { LG('UNLOCK-SFX-MUTE', '全局静音，跳过解锁音效'); } catch (_) { }
+      return;
+    }
+    if (!isKS || !wx.createInnerAudioContext) return;
+    try {
+      var a = wx.createInnerAudioContext();
+      a.src = 'audio/sfx/unlock_ok.mp3';
+      try { a.volume = 1.0; } catch (_) { }
+      a.onError && a.onError(function (e) {
+        try { LG('UNLOCK-SFX-ERR', '❌ 解锁音效播放失败', { err: e && (e.errMsg || e.errCode) }); } catch (_) { }
+        try { a.destroy && a.destroy(); } catch (_) { }
+      });
+      a.onEnded && a.onEnded(function () { try { a.destroy && a.destroy(); } catch (_) { } });
+      a.play();
+      try { LG('UNLOCK-SFX-PLAY', '🔊 播放拖拽解锁成功音效'); } catch (_) { }
+    } catch (e) {
+      try { LG('UNLOCK-SFX-EX', e && e.message); } catch (_) { }
+    }
+  }
+  function stopBEAudio () {
+    beAudioStopped = true;   // V45 · 标记本次 BE 会话已终结，drawBE 幂等循环不再重启（修复：点看广告后 mp3 会再播一次）
+    if (!beAudioCtx) return;
+    try { beAudioCtx.stop(); } catch (e) { }
+    try { beAudioCtx.destroy(); } catch (e) { }
+    beAudioCtx = null; beAudioKey = null;
+  }
+  function getBEAudioKey () {
+    // v71.16 · 优先用选项自带 roastKey → 每个 BE 选项一段独立音频，跟死因鉴定 1:1 对齐
+    if (state.lastBEOptRoastKey) return state.lastBEOptRoastKey;
+    var info = state.endInfo || {};
+    var fromId = info.fromId || '';
+    // 命中主 key
+    if (BE_ROAST[fromId]) return fromId;
+    // 前缀提取
+    var m = fromId.match(/^(BE_[A-Z_]+?)(?:_END)?$/);
+    if (m && BE_ROAST[m[1]]) return m[1];
+    return null;
+  }
+  function playBEAudio () {
+    if (!isKS || !wx.createInnerAudioContext) return;
+    if (beAudioStopped) return;   // V45 · 本次 BE 会话已被显式 stop（例如点看广告），禁止 drawBE 循环再拉起
+    var key = getBEAudioKey();
+    if (!key) return;
+    if (beAudioKey === key && beAudioCtx) return;   // 已在播同一段，别重启
+    // 主动 play 前不走 stopBEAudio（避免把 stopped 标志误置）——直接销毁旧 ctx
+    if (beAudioCtx) { try { beAudioCtx.stop(); } catch (e) { } try { beAudioCtx.destroy(); } catch (e) { } beAudioCtx = null; beAudioKey = null; }
+    try {
+      var ctxA = wx.createInnerAudioContext();
+      // v75.5 · BE 音频也在旧桶 ks712131693858878897，NARR_CDN 已含 audio/narr/，
+      //   BE 音频需用同桶但换成 audio/be/ 前缀
+      var _BE_CDN = 'https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks712131693858878897/audio/be/';
+      var _beSrc = _BE_CDN + key + '.mp3';
+      ctxA.src = _beSrc;
+      ctxA.volume = (state.ui && state.ui.mute) ? 0 : 1.0;  // V44 · 全局静音
+      ctxA.loop = false;
+      // V41.1 · 完整生命周期日志，排查"只播一声"问题
+      ctxA.onCanplay && ctxA.onCanplay(function () { console.log('[be-audio] canplay', key, 'dur=', ctxA.duration); });
+      ctxA.onPlay && ctxA.onPlay(function () { console.log('[be-audio] onPlay', key); });
+      ctxA.onEnded && ctxA.onEnded(function () { console.log('[be-audio] onEnded', key); });
+      ctxA.onPause && ctxA.onPause(function () { console.log('[be-audio] onPause', key); });
+      ctxA.onStop && ctxA.onStop(function () { console.log('[be-audio] onStop', key); });
+      ctxA.onError && ctxA.onError(function (e) { console.log('[be-audio] ❌ ERROR', key, JSON.stringify(e)); });
+      ctxA.onWaiting && ctxA.onWaiting(function () { console.log('[be-audio] waiting', key); });
+      ctxA.play();
+      beAudioCtx = ctxA;
+      beAudioKey = key;
+      console.log('[be-audio] play() called for', key, ' src=', ctxA.src);
+    } catch (e) { console.log('[be-audio] EX', e && e.message); }
+  }
+
+  // ══════════════════════════════════════════════════════════════════
+  // V64 · 旁白/内心 OS 音频（Minimax Humorous_Elder · 说书大爷升级版）
+  //   · EP01 的 14 条放主包 assets/audio/narr/，EP02+ 的 38 条走 CDN
+  //   · 进入旁白节点自动播 → 切下一节点立即 stop+destroy
+  //   · 静音开关 state.ui.mute 尊重
+  // ══════════════════════════════════════════════════════════════════
+  // v75.5 · CRITICAL FIX：旁白 mp3 全部在**旧桶** ks712131693858878897，
+  //   之前 v72.14/v72.15 CDN-first 重构错误地把 NARR_CDN 改为当前 AppID 桶导致全量 404。
+  //   现在恢复旧桶前缀，含 audio/narr/ 完整路径。
+  var NARR_CDN = 'https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks712131693858878897/audio/narr/';
+  // v80.0 · assets/ 目录已完全移除，所有旁白走 CDN（NARR_CDN 含 audio/narr/ 前缀）
+  var narrAudioCtx = null, narrAudioKey = null;
+  var narrPlayedFor = null; // V64.2 · 记录当前节点已播过，静音→取消静音不再从头重放
+  // V69 · EP02+ 但本地也放了 mp3 的旁白节点（因为 CDN 上没有），强制走主包本地
+  // v73.0 · 从 content/assets.registry.json 派生（新增旁白节点请改 registry.narrLocalForce）
+  // v72.15 · CDN-first 重构：所有旁白走 CDN（audio/narr/ 前缀已上传）。
+  //   v92.4 · tutorial_intro 随新手引导浮层一并下线，启动阶段硬编码路径只剩 sister_unlock。
+  var NARR_LOCAL_FORCE = (_REG && _REG.NARR_LOCAL_FORCE) || {
+    // v80.0 · assets/audio/narr/ 目录已不在主包，全部走 CDN，NARR_LOCAL_FORCE 清空
+  };
+  // v72 · 全局 pause/play 单入口 —— 避免 state.ui.paused 与 native video 状态漂移
+  function setPaused (paused) {
+    state.ui.paused = !!paused;
+    if (state.video) {
+      try {
+        if (state.ui.paused) { state.video.pause && state.video.pause(); }
+        else { state.video.play && state.video.play(); }
+      } catch (e) { }
+    }
+    // 图片节点也支持暂停：暂停时清 imgAdvKey 定时器，恢复时让 render 循环重启
+    try { LG('UI-PAUSE-TOGGLE', paused ? '⏸ 用户主动暂停' : '▶ 用户主动播放', { curId: state.curId }); } catch (_) { }
+  }
+
+  function isNarrationNode (n) {
+    if (!n || !n.text) return false;
+    var sp = n.speaker || '';
+    return n.char === 'narrator' || sp === '旁白' || sp.indexOf('内心') >= 0;
+  }
+  // V64.3 · 扩到全量：所有非视频、非 choice/end、有 text 的节点都念 —— 大爷说书全程带路
+  // v72.12 · 例外白名单：narrator/OS 视频节点若 mp4 无音轨（kling 默认静音），必须补旁白
+  // v73.0 · 从 content/assets.registry.json 派生
+  var NARR_VIDEO_ALLOW = (_REG && _REG.NARR_VIDEO_ALLOW) || { 'e3s3': 1, 's_stone_video': 1, 's_weather_video': 1 };
+  function shouldPlayNarr (n) {
+    if (!n || !n.text) return false;
+    // v79.4 · 【修复①】原来这里把 type==='end' 一律挡掉，导致 BE/结局节点的旁白从不朗读。
+    //   用户实测 BE_ALLIANCE_KILLED（山寨对饮那一屏）满屏旁白文字却没有人声；
+    //   实际 CDN 上 audio/narr/BE_ALLIANCE_KILLED.mp3 是存在的（curl 206），纯粹被这行拦死。
+    //   choice 节点仍然不朗读（选项屏本来就不该有旁白音），只放开 end/BE。
+    if (n.type === 'choice') return false;
+    if (n.media && n.media.kind === 'video' && !NARR_VIDEO_ALLOW[state.curId]) return false;
+    return true;
+  }
+  // v72.14 · CDN-first 旁白路由：所有旁白走 CDN（audio/narr/ 前缀），
+  // 仅 NARR_LOCAL_FORCE 白名单走本地 assets/audio/narr/（预下载/离线保障）
+  function narrSrcFor (id) {
+    var n = getNode(id);
+    if (!n) return null;
+    if (NARR_LOCAL_FORCE[id]) return 'assets/audio/narr/' + id + '.mp3';
+    return NARR_CDN + id + '.mp3';   // v75.5 · NARR_CDN 已含 audio/narr/ 前缀
+  }
+  function stopNarrAudio () {
+    if (!narrAudioCtx) return;
+    try { narrAudioCtx.stop(); } catch (e) { }
+    try { narrAudioCtx.destroy(); } catch (e) { }
+    narrAudioCtx = null; narrAudioKey = null;
+  }
+  function playNarrAudio (id) {
+    if (!isKS || !wx.createInnerAudioContext) {
+      // v79.4 · 埋点：环境不支持 → 旁白直接丢了，这种静默失败以前完全看不到
+      try { if (global.Telemetry) global.Telemetry.onNarr('skip', { nodeId: id, ep: state.ep, reason: 'no_audio_api' }); } catch (_) { }
+      return;
+    }
+    if (narrAudioKey === id && narrAudioCtx) return; // 同一段不重播
+    if (narrAudioCtx) stopNarrAudio();
+    var src = narrSrcFor(id);
+    if (!src) {
+      try { if (global.Telemetry) global.Telemetry.onNarr('skip', { nodeId: id, ep: state.ep, reason: 'no_src' }); } catch (_) { }
+      return;
+    }
+    // v79.4 · 埋点：旁白开播（配合下方 onError 的 fail 埋点算成功率）
+    try { if (global.Telemetry) global.Telemetry.onNarr('play', { nodeId: id, ep: state.ep, src: src }); } catch (_) { }
+    try {
+      var ctxN = wx.createInnerAudioContext();
+      ctxN.src = src;
+      ctxN.volume = (state.ui && state.ui.mute) ? 0 : 1.0;
+      ctxN.loop = false;
+      ctxN.onError && ctxN.onError(function (e) {
+        console.log('[narr-audio] ❌', id, JSON.stringify(e));
+        // v79.4 · 埋点：旁白播放失败（CDN 404 / 解码失败），线上覆盖率靠这条统计
+        LG('NARR-AUDIO-FAIL', '❌ 旁白播放失败', { id: id, src: src, err: e && (e.errMsg || e.errCode) });
+        try { if (global.Telemetry) global.Telemetry.onNarr('fail', { nodeId: id, ep: state.ep, src: src, reason: (e && (e.errMsg || e.errCode)) || 'unknown' }); } catch (_) { }
+      });
+      // v71.13 · 用户反馈：旁白 mp3 播完不允许自动 next —— 必须手动点「继续 ▸」！
+      //   之前 v71.4 加的 stay 节点音频播完自动前进被吐槽"根本没时间反应就跳走了"。
+      //   现在 onEnded 只打日志，不再触发 next()，交互权归还用户。
+      ctxN.onEnded && ctxN.onEnded(function () {
+        console.log('[narr-audio] ended', id);
+        try { LG('NARR-AUDIO-END', '旁白播完（等待用户点继续）', { id: id }); } catch (_e) { }
+      });
+      ctxN.play();
+      narrAudioCtx = ctxN;
+      narrAudioKey = id;
+      console.log('[narr-audio] play', id, src);
+    } catch (e) { console.log('[narr-audio] EX', e && e.message); }
+  }
+
+  // V31 · BE 结局页
+  // v92.7 · BE 结局页插屏广告（广告位 2300058116_03）
+  //   触发时机：进入任意 BE 结局页（drawBE 检测到新一次 BE 会话）。
+  //   幂等：同一次 BE 会话（_curKey）只触发一次；下一个不同的 BE 结局会再触发。
+  //   频控：完全交给 KwaiAd.showInterstitial —— 官方规则是冷启动 30s 内禁展示、
+  //     距上次任意广告（含激励视频）60s 内禁插屏，适配层已按 32s/62s 留缓冲。
+  //     不满足时它立即回调放行，不阻塞任何流程；所以这里不重复判频控。
+  //   管理员跳过（AdminAdControl）也由适配层内部处理。
+  function beInterstitial (sessionKey) {
+    if (!sessionKey) return;
+    if (state._beItstShown === sessionKey) return;   // 本次 BE 会话已插播过
+    state._beItstShown = sessionKey;
+    if (typeof KwaiAd === 'undefined' || !KwaiAd.showInterstitial) return;
+    LG('BE-INTERSTITIAL-TRY', '📺 BE 结局页 → 尝试插屏广告', { session: sessionKey, unit: '2300058116_03' });
+    try { if (global.Telemetry) global.Telemetry.event('be_interstitial_try', { node_id: (state.endInfo && state.endInfo.fromId) || '', chapter_id: state.ep || '' }); } catch (_) { }
+    try {
+      KwaiAd.showInterstitial(function () {
+        LG('BE-INTERSTITIAL-CLOSE', '📺 BE 插屏结束/跳过 → 回到结局页', { session: sessionKey });
+        try { if (global.Telemetry) global.Telemetry.event('be_interstitial_close', { node_id: (state.endInfo && state.endInfo.fromId) || '', chapter_id: state.ep || '' }); } catch (_) { }
+        // 广告是原生浮层，关闭后补一帧，避免部分设备残留脏画面
+        try { if (typeof render === 'function') render(); } catch (_e) { }
+      });
+    } catch (e) {
+      LG('BE-INTERSTITIAL-ERR', '插屏调用异常，已忽略（不阻塞结局页）', { msg: e && e.message });
+    }
+  }
+  function drawBE () {
+    // V66 · 只清『陈旧』的 adLoading（age > 18s，说明回调彻底丢失才清）。
+    //   之前 V65 无条件清导致：BE 页『看广告·重选一次』刚点就被清光，用户以为按钮没反应。
+    //   现在保留活跃的 loading 蒙层，drawAdLoading 会在下方最顶层绘制。
+    if (state.adLoading && state.adLoading.active) {
+      var _bAge = Date.now() - (state.adLoading.t0 || 0);
+      if (_bAge > 18000 && !(typeof KwaiAd !== 'undefined' && KwaiAd.isRewardedPending && KwaiAd.isRewardedPending())) {
+        state.adLoading.active = false;
+        LG('BE-ADLOAD-STALE-CLEAR', '🔧 进 BE 页清陈旧 adLoading', { age: _bAge });
+      }
+    }
+    // V45 · 当 endInfo.fromId 变化（新一次 BE 会话）时重置 stopped 标志，允许播新音频
+    // v71.16 · 也把 roastKey 拼进去，同 fromId 不同选项进入 BE 页要重播对应音频
+    var _curKey = ((state.endInfo && state.endInfo.fromId) || '') + '|' + (state.lastBEOptRoastKey || '');
+    if (drawBE._lastFromId !== _curKey) {
+      drawBE._lastFromId = _curKey;
+      beAudioStopped = false;
+      // v92.7 · 【BE 结局页插屏广告】每进入一次新的 BE 结局页插播一次（广告位 2300058116_03）。
+      //   为什么挂在这里：全局有 4 处 `state.curId = '__be__'` 赋值（视频播完 / 选项直达 /
+      //   复活失败 / 续玩落点），逐处插必然漏；而 drawBE 的这个「_curKey 变化」判定是所有
+      //   路径进入新 BE 会话的唯一汇聚点，挂一次即全覆盖。
+      //   频控由 KwaiAd.showInterstitial 内部把关（冷启 32s + 距上次广告 62s），未满足时
+      //   它会立即回调放行、绝不阻塞——所以这里不需要也不应该再自己判一次。
+      //   注意：不能 await 它再绘制。BE 页必须先画出来（插屏是盖在上面的原生浮层），
+      //   否则广告关闭后会看到一帧黑屏。所以只管触发，绘制照常继续。
+      try { beInterstitial(_curKey); } catch (_eBI) { }
+    }
+    // V41 · 每次绘制都尝试拉起（幂等：同 key 不重启；stopped=true 时不再重启）
+    playBEAudio();
+    // V64 · 若有 keep-alive 视频帧，只叠加半透明暗色晕影而不是纯黑，让画面透出来
+    if (state.beKeepVideoAlive && state.video) {
+      ctx.fillStyle = 'rgba(0,0,0,0.55)';
+      ctx.fillRect(0, 0, W, H);
+      var vg2 = ctx.createRadialGradient(W / 2, H * 0.3, 20, W / 2, H * 0.3, W * 0.9);
+      vg2.addColorStop(0, 'rgba(128,20,30,0.35)');
+      vg2.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = vg2; ctx.fillRect(0, 0, W, H);
+    } else {
+      ctx.fillStyle = '#0a0602'; ctx.fillRect(0, 0, W, H);
+      var vg = ctx.createRadialGradient(W / 2, H * 0.3, 20, W / 2, H * 0.3, W * 0.9);
+      vg.addColorStop(0, 'rgba(128,20,30,0.4)');
+      vg.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = vg; ctx.fillRect(0, 0, W, H);
+    }
+    var info = state.endInfo || { title: '结局 · 未竟', text: '故事在此戛然而止。' };
+    ctx.fillStyle = '#8b1a2a'; ctx.font = '700 14px sans-serif'; ctx.textAlign = 'center';
+    ctx.fillText('◆ 结局 ◆', W / 2, H * 0.14);
+    ctx.fillStyle = '#f5d99a'; ctx.font = '900 24px sans-serif';
+    // v71.9 · 结局标题全局改用 getBETitle（"结局 · 一句话概括"）
+    ctx.fillText(getBETitle(), W / 2, H * 0.14 + 42);
+    ctx.strokeStyle = 'rgba(200,140,80,0.35)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(W * 0.2, H * 0.14 + 70); ctx.lineTo(W * 0.8, H * 0.14 + 70); ctx.stroke();
+    ctx.fillStyle = '#e8c47a'; ctx.font = '600 16px sans-serif';
+    var lines = wrapText(info.text || '', W - 80, '600 16px sans-serif');
+    var startY = H * 0.14 + 105;
+    for (var i = 0; i < lines.length; i++) ctx.fillText(lines[i], W / 2, startY + i * 26);
+    // V31·10 · 搞笑总结区（下方空白）
+    var roast = getRoast();
+    ctx.strokeStyle = 'rgba(200,140,80,0.25)'; ctx.lineWidth = 1;
+    var sepY = startY + lines.length * 26 + 26;
+    ctx.beginPath(); ctx.moveTo(W * 0.15, sepY); ctx.lineTo(W * 0.85, sepY); ctx.stroke();
+    ctx.fillStyle = '#ff9d6f'; ctx.font = '800 13px sans-serif';
+    ctx.fillText('◇ 死因鉴定 ◇', W / 2, sepY + 26);
+    ctx.fillStyle = 'rgba(255,220,170,0.88)'; ctx.font = '500 14px sans-serif';
+    var rlines = wrapText(roast, W - 68, '500 14px sans-serif');
+    var rStartY = sepY + 52;
+    for (var j = 0; j < rlines.length; j++) ctx.fillText(rlines[j], W / 2, rStartY + j * 22);
+    // v71.9 · 追加『xx% 快手老铁和你同样结局』一行（灰金小字）
+    var _pctY = rStartY + rlines.length * 22 + 20;
+    ctx.fillStyle = 'rgba(245,198,90,0.75)'; ctx.font = '700 12px sans-serif';
+    ctx.fillText(getSamePct() + '% 快手老铁 和你同样结局', W / 2, _pctY);
+
+    // V75 · 数值反馈闭环：显示 wei/qing/liang 当前值 + 本次 BE 触发的关键 delta 高亮
+    (function drawBEStatCard () {
+      var delta = state.lastBEStatDelta || {};
+      // 找到"最致命"那个 key（负 delta 绝对值最大）
+      var killerKey = null, killerVal = 0;
+      var kk;
+      for (kk in delta) {
+        if (delta[kk] < killerVal) { killerVal = delta[kk]; killerKey = kk; }
+      }
+      // v77 · 布局重构：加高到 90px，标题和三胶囊分层，致命标记改到最下面，不再溢出叠字
+      var cardY = _pctY + 16;
+      var cardH = 90;
+      var cardX = 30, cardW = W - 60;
+      // 卡片背景
+      ctx.save();
+      ctx.fillStyle = 'rgba(20,10,4,0.55)';
+      roundRect(cardX, cardY, cardW, cardH, 10); ctx.fill();
+      ctx.strokeStyle = 'rgba(200,140,80,0.35)'; ctx.lineWidth = 1;
+      ctx.stroke();
+      // 标题（顶部居中，不再左对齐）
+      ctx.fillStyle = 'rgba(255,220,170,0.7)';
+      ctx.font = '700 11px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('◇ 数值一览 ◇', cardX + cardW / 2, cardY + 16);
+      // 三条数值胶囊
+      var items = [
+        { key: 'wei', label: '嫂子好感', color: '#e04c6a' },
+        { key: 'qing', label: '村里威望', color: '#d4a03a' },
+        { key: 'liang', label: '家里存粮', color: '#7fb069' }
+      ];
+      var col = cardW / 3;
+      for (var i2 = 0; i2 < items.length; i2++) {
+        var it = items[i2];
+        var cx = cardX + col * i2 + col / 2;
+        var cy = cardY + 44;   // 值位置（标题下 28）
+        var val = (state.stats && state.stats[it.key]) || 0;
+        var d = delta[it.key] || 0;
+        var isKiller = (killerKey === it.key);
+        // 值 · 大字居中
+        ctx.font = '900 20px sans-serif';
+        ctx.fillStyle = isKiller ? '#ff6a6a' : it.color;
+        ctx.textAlign = 'center';
+        ctx.fillText(String(val), cx - 14, cy);
+        // 变化标签 -N（值右侧同基线）
+        if (d) {
+          ctx.font = '700 11px sans-serif';
+          ctx.fillStyle = d < 0 ? '#ff5a5a' : '#7fe07f';
+          ctx.textAlign = 'left';
+          ctx.fillText((d > 0 ? '+' : '') + d, cx + 4, cy);
+        }
+        // 标签
+        ctx.font = '500 10px sans-serif';
+        ctx.fillStyle = isKiller ? 'rgba(255,120,120,0.9)' : 'rgba(255,220,170,0.6)';
+        ctx.textAlign = 'center';
+        ctx.fillText(it.label, cx, cy + 16);
+        // 致命标记（挪到标签下面，独立一行不挤）
+        if (isKiller) {
+          ctx.font = '700 9px sans-serif';
+          ctx.fillStyle = '#ff6a6a';
+          ctx.fillText('◆ 致命 ◆', cx, cy + 30);
+        }
+      }
+      ctx.textAlign = 'left';
+      ctx.restore();
+    })();
+    // 背景层已暗化，正文绘制后不再叠加整屏黑色遮罩。
+    ctx.textAlign = 'left';
+    var bw = W - 60, bh = 52, bx = 30;
+    // v75.5 · 移除「重玩一次」按钮 —— 用户要求仅保留「看广告·重选一次」
+    var by1 = H - 165;
+    var mg = ctx.createLinearGradient(bx, by1, bx, by1 + bh);
+    mg.addColorStop(0, '#ffd876'); mg.addColorStop(1, '#c98b28');
+    ctx.fillStyle = mg; roundRect(bx, by1, bw, bh, bh / 2); ctx.fill();
+    ctx.strokeStyle = 'rgba(255,240,190,.9)'; ctx.lineWidth = 1.5; ctx.stroke();
+    ctx.fillStyle = '#2a1608'; ctx.font = '900 17px sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('▶ 看广告 · 重选一次', bx + bw / 2, by1 + bh / 2 + 1);
+    ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+    state.hitZones.push({ x: bx, y: by1 - 6, w: bw, h: bh + 12, action: 'be_ad_retry' });
+  }
+
+  // ============== v78.8 · 结局判定（routes）==============
+  // story.js 的 k8 节点带 routes:[{ending:"HE1"},...]，但 v78.7 及之前代码里 grep routes = 0 match
+  //   → 主线通关直接掉进 drawEnd() 纯黑兜底，HE1/HE3/HE4/HE5 文案永远显示不出来。
+  // 阈值口径按 ENDINGS[].subtitle 的字面描述实现（stats 区间 0~100，初值 50）：
+  //   HE1 三项 MAX（>=85）· HE3 存粮>60 且 爱意>70 · HE4 威望>80 且 爱意>50 · HE5 兜底（主线通关不作死）
+  function resolveEnding (node) {
+    try {
+      var st = (state && state.stats) || {};
+      var wei = st.wei || 0, qing = st.qing || 0, liang = st.liang || 0;
+      var allow = {};
+      var hasRoutes = false;
+      if (node && node.routes && node.routes.length) {
+        hasRoutes = true;
+        for (var i = 0; i < node.routes.length; i++) {
+          var r = node.routes[i];
+          if (r && r.ending) allow[r.ending] = 1;
+        }
+      }
+      var ok = function (k) { return hasRoutes ? !!allow[k] : true; };
+      var pick = null;
+      if (ok('HE1') && wei >= 85 && qing >= 85 && liang >= 85) pick = 'HE1';
+      else if (ok('HE3') && liang > 60 && wei > 70) pick = 'HE3';
+      else if (ok('HE4') && qing > 80 && wei > 50) pick = 'HE4';
+      else if (ok('HE5')) pick = 'HE5';
+      // routes 里若只给了 BE（低数值线），按最短板兜一个
+      if (!pick && hasRoutes) {
+        if (allow['BE1'] && wei < 15) pick = 'BE1';
+        else if (allow['BE2'] && liang < 5) pick = 'BE2';
+        else if (allow['BE3'] && qing < 5) pick = 'BE3';
+      }
+      if (!pick) pick = 'HE5';
+      var meta = (ENDINGS && ENDINGS[pick]) || null;
+      LG('ENDING-RESOLVE', '🏁 结局判定', { pick: pick, wei: wei, qing: qing, liang: liang, hasRoutes: hasRoutes });
+      return { key: pick, meta: meta };
+    } catch (e) {
+      try { LG('ENDING-RESOLVE-ERR', '结局判定异常', { err: e && e.message }); } catch (_) { }
+      return { key: 'HE5', meta: (ENDINGS && ENDINGS['HE5']) || null };
+    }
+  }
+
+  function drawEnd () {
+    // V66 · 同 drawBE，只清陈旧 loading；活跃 loading 保留（下方 render 会 drawAdLoading）
+    if (state.adLoading && state.adLoading.active) {
+      var _eAge = Date.now() - (state.adLoading.t0 || 0);
+      if (_eAge > 18000) {
+        state.adLoading.active = false;
+        LG('END-ADLOAD-STALE-CLEAR', '🔧 进 __end__ 页清陈旧 adLoading', { age: _eAge });
+      }
+    }
+    // v79.4 · 【修复②】结局页此前只有文案没有背景图，进 __end__ 前又 clearVideo()，
+    //   于是整屏纯黑（用户实测「本集完」那屏只有文字漂在黑底上）。
+    //   这里把来源节点的剧情图铺满作背景再压暗，保证有画面。
+    var _endBg = null;
+    try {
+      var _ebf = state.endPageInfo && state.endPageInfo.bgFile;
+      if (_ebf) {
+        _endBg = imgCache[_ebf] || null;
+        if (!_endBg && !state._endBgLoading) {
+          state._endBgLoading = true;
+          loadImg(_ebf, function (im) {
+            state._endBgLoading = false;
+            if (im) { LG('END-BG-OK', '🖼 结局页背景图已加载', { url: _ebf }); render(); }
+            else LG('END-BG-FAIL', '❌ 结局页背景图加载失败', { url: _ebf });
+          });
+        }
+      }
+    } catch (_) { }
+    if (_endBg) {
+      try {
+        // cover 铺满：按比例放大到盖住整屏，居中裁切
+        var _sr = _endBg.width / _endBg.height, _dr = W / H;
+        var _dw, _dh;
+        if (_sr > _dr) { _dh = H; _dw = H * _sr; } else { _dw = W; _dh = W / _sr; }
+        ctx.drawImage(_endBg, (W - _dw) / 2, (H - _dh) / 2, _dw, _dh);
+      } catch (_) { }
+      ctx.fillStyle = 'rgba(0,0,0,.72)'; ctx.fillRect(0, 0, W, H);
+    } else {
+      ctx.fillStyle = 'rgba(0,0,0,.92)'; ctx.fillRect(0, 0, W, H);
+    }
+    // v79.4 · 【修复①下半段】结局页朗读旁白：__end__ 是虚拟 id，getNode 返回 null，
+    //   shouldPlayNarr 那条路走不到，必须用 endPageInfo.fromId 显式点播来源节点的旁白。
+    try {
+      var _efid = state.endPageInfo && state.endPageInfo.fromId;
+      if (_efid && narrPlayedFor !== _efid) {
+        narrPlayedFor = _efid;
+        LG('END-NARR-PLAY', '🔊 结局页朗读旁白', { fromId: _efid });
+        playNarrAudio(_efid);
+      }
+      // v79.4 · 埋点：结局页曝光，带上有没有背景图/有没有旁白，线上直接能看黑屏率
+      if (drawEnd._lastTrack !== _efid) {
+        drawEnd._lastTrack = _efid;
+        var _ei = state.endPageInfo || {};
+        if (global.Telemetry) global.Telemetry.onEndPage({
+          fromId: _efid, ep: state.ep, kind: _ei.kind,
+          endingKey: _ei.endingKey, hasBg: !!_ei.bgFile, hasNarr: !!_efid
+        });
+      }
+    } catch (_) { }
+
+    // v78.8 · 铁律：结局页绝不允许纯黑。三种来源都必须有标题+正文
+    //   ① epContinue（第四幕 to_be_continued）→「未完待续」
+    //   ② HE / 大结局（k8 的 routes）→ ENDINGS 里的 title/subtitle/body
+    //   ③ 其他 type:'end' 或 !next 的兜底 → 至少画出 node.title / node.text
+    var info = state.endPageInfo || {};
+    var kind = info.kind || 'end';        // 'continue' | 'he' | 'end'
+    var title = info.title || '本集完';
+    var subtitle = info.subtitle || '';
+    var body = info.text || '';
+
+    ctx.save();
+    ctx.textAlign = 'center';
+    // 顶部装饰线
+    var _topY = Math.max(120, H * 0.22);
+    ctx.strokeStyle = 'rgba(200,150,90,0.35)';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(W / 2 - 60, _topY - 44); ctx.lineTo(W / 2 + 60, _topY - 44); ctx.stroke();
+    // 主标题
+    ctx.fillStyle = (kind === 'continue') ? '#f5d98a' : '#ffd876';
+    ctx.font = '900 26px sans-serif';
+    ctx.textBaseline = 'alphabetic';
+    ctx.fillText(title, W / 2, _topY);
+    // 副标题（HE 的达成条件）
+    var _y = _topY + 30;
+    if (subtitle) {
+      ctx.fillStyle = 'rgba(245,198,90,0.7)';
+      ctx.font = '700 12px sans-serif';
+      ctx.fillText(subtitle, W / 2, _y);
+      _y += 24;
+    }
+    // 分隔线
+    ctx.strokeStyle = 'rgba(200,150,90,0.28)';
+    ctx.beginPath(); ctx.moveTo(W / 2 - 80, _y); ctx.lineTo(W / 2 + 80, _y); ctx.stroke();
+    _y += 30;
+    // 正文（自动折行）
+    if (body) {
+      ctx.fillStyle = 'rgba(255,246,230,0.9)';
+      ctx.font = '15px sans-serif';
+      var maxW = W - 76;
+      var lines = [];
+      var cur = '';
+      for (var ci = 0; ci < body.length; ci++) {
+        var ch = body.charAt(ci);
+        if (ch === '\n') { lines.push(cur); cur = ''; continue; }
+        if (ctx.measureText(cur + ch).width > maxW) { lines.push(cur); cur = ch; }
+        else cur += ch;
+      }
+      if (cur) lines.push(cur);
+      for (var li = 0; li < lines.length; li++) ctx.fillText(lines[li], W / 2, _y + li * 24);
+      _y += lines.length * 24 + 14;
+    }
+    // 数值一览（让玩家看到自己这一局的养成结果）
+    if (state.stats) {
+      ctx.fillStyle = 'rgba(255,220,170,0.55)';
+      ctx.font = '700 12px sans-serif';
+      ctx.fillText('嫂子好感 ' + (state.stats.wei || 0)
+        + '　·　村里威望 ' + (state.stats.qing || 0)
+        + '　·　家里存粮 ' + (state.stats.liang || 0), W / 2, _y);
+    }
+    ctx.textAlign = 'left';
+    ctx.restore();
+    // 背景层已暗化，正文绘制后不再叠加整屏黑色遮罩。
+
+    // 「▶ 重玩一遍」主 CTA
+    // v79.1 · 底部整体上移，给「加桌面」引导腾出一行（原 rby = H-196 / by = H-130）
+    var rbw = Math.min(W - 60, 260), rbh = 52;
+    var rbx = (W - rbw) / 2, rby = H - 222;
+    ctx.save();
+    var _rg = ctx.createLinearGradient(rbx, rby, rbx, rby + rbh);
+    _rg.addColorStop(0, '#ffd876'); _rg.addColorStop(1, '#c98b28');
+    ctx.fillStyle = _rg;
+    roundRect(rbx, rby, rbw, rbh, rbh / 2); ctx.fill();
+    ctx.strokeStyle = 'rgba(255,240,190,.9)'; ctx.lineWidth = 1.5; ctx.stroke();
+    ctx.fillStyle = '#2a1608';
+    ctx.font = '900 17px sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('▶ 重玩一遍', rbx + rbw / 2, rby + rbh / 2 + 1);
+    ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+    ctx.restore();
+    state.hitZones.push({ x: rbx, y: rby - 6, w: rbw, h: rbh + 12, action: 'restart' });
+
+    // V31.7 · 已移除"游戏圈"（未开通）· 只保留一个"分享给朋友"按钮
+    var bw = Math.min(W - 60, 260), bh = 46;
+    var bx1 = (W - bw) / 2, by = H - 160;
+    ctx.save();
+    ctx.fillStyle = '#e8c47a';
+    roundRect(bx1, by, bw, bh, bh / 2); ctx.fill();
+    ctx.fillStyle = '#2a1608';
+    ctx.font = '700 16px sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('分享给朋友', bx1 + bw / 2, by + bh / 2 + 1);
+    ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+    ctx.restore();
+    state.hitZones.push({ x: bx1, y: by - 6, w: bw, h: bh + 12, action: 'ctrl:share' });
+
+    // v79.1 · 【加桌引导】大结局页最后一屏引导加桌面，告诉用户后续每日有新内容。
+    //   放在分享按钮下方、全屏重玩命中区【之外】（重玩区只到 by-20）。
+    //   注意：命中测试是倒序遍历（后 push 先命中），所以这条最后 push，最稳。
+    var _adw = Math.min(W - 48, 300), _adh = 44;
+    var _adx = (W - _adw) / 2, _ady = H - 100;
+    ctx.save();
+    // 虚线描边胶囊 · 弱化视觉不抢「重玩」主 CTA
+    ctx.fillStyle = 'rgba(255,216,118,0.10)';
+    roundRect(_adx, _ady, _adw, _adh, _adh / 2); ctx.fill();
+    ctx.strokeStyle = 'rgba(255,216,118,0.55)'; ctx.lineWidth = 1.2;
+    roundRect(_adx, _ady, _adw, _adh, _adh / 2); ctx.stroke();
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillStyle = '#ffd876';
+    ctx.font = '700 14px sans-serif';
+    ctx.fillText('🏠 加到桌面 · 每天回来看新剧情', _adx + _adw / 2, _ady + _adh / 2 + 1);
+    ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+    ctx.restore();
+
+    // 重播命中区放在底层：点击画面上半屏即可
+    state.hitZones.push({ x: 0, y: 0, w: W, h: by - 20, action: 'restart' });
+    // 加桌命中区最后 push → 倒序遍历时优先于任何底层区域
+    state.hitZones.push({ x: _adx, y: _ady - 6, w: _adw, h: _adh + 12, action: 'add_desktop' });
+  }
+
+  // ============ 启动页 splash ============
+  var SPLASH_TRIES = [
+    'https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/cover-text.png'
+  ];
+  function tryLoadCover () {
+    if (state.splash.img) return;
+    if (state.splash.loading) return;
+    if (state.splash.tried >= SPLASH_TRIES.length) return;
+    var src = SPLASH_TRIES[state.splash.tried];
+    state.splash.loading = true;
+    state.splash.imgKey = src;
+    // console.log('[splash] try', state.splash.tried, src);  // V31·7 · 静默
+    if (!isKS || !wx.createImage) { state.splash.loading = false; return; }
+    try {
+      var im = wx.createImage();
+      var done = false;
+      im.onload = function () { if (done) return; done = true; state.splash.loading = false; state.splash.img = im; console.log('[splash] OK', src, im.width, im.height); };
+      im.onerror = function (e) { if (done) return; done = true; state.splash.loading = false; state.splash.tried++; console.log('[splash] ERR', src, JSON.stringify(e || {})); tryLoadCover(); };
+      im.src = src;
+    } catch (e) { state.splash.loading = false; state.splash.tried++; console.log('[splash] EX', e && e.message); }
+  }
+  var chapterHome = null, chapterTransition = null;
+  function isFailureNode (id, node) {
+    return /^BE_/.test(id || '') || !!(node && (node.isEnd || node.ep === 'EP99'));
+  }
+  function currentChapter () {
+    if (!chapterHome) return null;
+    return chapterHome.find(state._activeChapter) || chapterHome.find((getNode(state.curId) || {}).ep) || chapterHome.find('EP01');
+  }
+  function showChapterTransition (from, to, targetId) {
+    if (state.chapterTransition || !from || !to) return;
+    if (global.Telemetry) {
+      global.Telemetry.pause('chapter_complete');
+      global.Telemetry.event('chapter_complete:' + from.id, { chapter_id: from.id });
+    }
+    var sourceId = state._chapterLastNode || from.start;
+    state.curId = sourceId; saveProgress();
+    stopChapterMedia();
+    state.curId = '__chapter_end__'; state.splash.active = false;
+    state.chapterTransition = { from: from, to: to, targetId: targetId || to.start, sourceId: sourceId, notice: '' };
+    render();
+  }
+  function transitionAction (action) {
+    var info = state.chapterTransition;
+    if (!info || (state.adLoading && state.adLoading.active)) return;
+    if (global.Telemetry) global.Telemetry.event('preview_' + action + ':' + info.to.id, { chapter_id: info.to.id, from_chapter: info.from.id });
+    if (action === 'home') { showChapterHome(info.to.id); return; }
+    if (action === 'replay') { restart(); return; }
+    if (action !== 'next') return;
+    info.notice = '';
+    chapterHome.unlock(info.to.id, function (chapter) {
+      if (state.chapterTransition !== info) return;
+      var carry = { stats: state.stats, visitedNodes: state._visitedNodes };
+      enterHomeChapter(chapter, null, carry);
+    }, function (err) {
+      if (state.chapterTransition !== info) return;
+      info.notice = err && err.reason === 'not_finished' ? '未看完广告，本章尚未解锁' : '广告暂时不可用，请稍后重试';
+      render();
+    });
+  }
+  function drawSplash () {
+    state.hitZones = [];
+    _AD_PASS_CAP.on = false;   // v92.8 · 首页无免广胶囊，清热区
+    if (chapterHome) chapterHome.draw();
+    if (state._privacyOpen) drawPrivacyOverlay();
+  }
+
+  function stopChapterMedia () {
+    if (global.Telemetry) global.Telemetry.pause('stop_media');
+    if (state._autoAdvTimer) clearTimeout(state._autoAdvTimer);
+    state._autoAdvTimer = null; state._autoAdvKey = null;
+    clearVideo(); stopNarrAudio(); stopBEAudio(); stopLikeHold();
+    if (state.sisterUnlockAudioCtx) {
+      try { state.sisterUnlockAudioCtx.stop(); state.sisterUnlockAudioCtx.destroy(); } catch (_) {}
+      state.sisterUnlockAudioCtx = null;
+    }
+    state._pausedForMedalFirst = false;
+    if (global.Achievements && global.Achievements._debugState) {
+      var achievements = global.Achievements._debugState();
+      if (achievements) achievements.popup = null;
+    }
+    state.mediaImg = null; state.mediaImgKey = null; state.imgAdvKey = null;
+    state.mediaImgLoading = false; state._telemetryImageReadyKey = null;
+    state._lastVideoKeyForFallback = null;
+    state.ui.logOpen = false; state.ui.paused = false;
+    state.beKeepVideoAlive = false; state.beOverlayFromId = null;
+    state.beVideoEnded = false; state.beSourceFromId = null;
+    state.reviveInProgress = false; state.reviveBackTo = null;
+    state.endPageInfo = null; state._nodeAdUnlocked = {};
+    state.tw = { key: null, chars: 0, startT: 0, done: false };
+    state.toasts = []; state.hitZones = [];
+    _AD_PASS_CAP.on = false;   // v92.8
+  }
+
+  function showChapterHome (focusId) {
+    if (!chapterHome || (state.adLoading && state.adLoading.active)) return;
+    saveProgress();
+    stopChapterMedia();
+    state.chapterTransition = null;
+    state.splash.active = true; state._privacyOpen = false;
+    chapterHome.show(focusId);
+    try { if (global.Telemetry) global.Telemetry.onPageExpose('chapter_home', { ep: focusId || '' }); } catch (_) {}
+    render();
+  }
+
+  // targetNode：直通到某个具体剧情节点（成就卡「看广告·直通该章」用）。
+  //   不传则维持原行为——从章节起点或存档点进入。
+  function enterHomeChapter (chapter, saved, carry, entrySource, targetNode) {
+    if (!chapterHome.isUnlocked(chapter.id)) return false;
+    stopChapterMedia();
+    state.chapterTransition = null;
+    var resume = saved && saved.ep === chapter.id && getNode(saved.curId) ? saved : null;
+    if (resume && resume.hasPlayedStory !== false) state.hasPlayedStory = true;
+    // 指定了目标节点且该节点真实存在并属于本章 → 直接落到那一帧，不再从头重播。
+    var jumpNode = null;
+    if (targetNode) {
+      var tn = getNode(targetNode);
+      if (tn && (tn.ep === chapter.id || !tn.ep)) jumpNode = targetNode;
+      else LG('DIRECT-NODE-REJECT', '⚠️ 直通目标节点无效或跨章，回退章节起点', { node: targetNode, ep: tn && tn.ep, chapter: chapter.id });
+    }
+    state.curId = jumpNode || (resume ? resume.curId : chapter.start);
+    if (jumpNode) { state.hasPlayedStory = true; LG('DIRECT-NODE-GO', '🎯 直通到指定节点', { node: jumpNode, chapter: chapter.id }); }
+    state._activeChapter = chapter.id; state.ep = chapter.id; state.epTitle = chapter.title;
+    var sourceStats = resume && resume.stats || carry && carry.stats;
+    state.stats = sourceStats ? {
+      wei: sourceStats.wei, qing: sourceStats.qing, liang: sourceStats.liang
+    } : { wei: 50, qing: 50, liang: 50 };
+    state._visitedNodes = resume && resume.visitedNodes || carry && carry.visitedNodes || {};
+    state._chapterLastNode = state.curId;
+    state.beCount = resume && resume.beCount || state.beCount || 0;
+    state.sisterUnlocked = chapter.id !== 'EP01' || !!(resume && resume.sisterUnlocked);
+    state._resumedFromSave = !!resume;
+    state.statsRevealed = true;   // v92.4 · 引导删除后无门槛
+    state.statsRevealT = Date.now() - 2000;
+    state.achvRevealed = state.sisterUnlocked;
+    state.ui.immersive = false;
+    state.splash.active = false;
+    state.playSessionT0 = Date.now();
+    var target = getNode(state.curId);
+    if (target && target.type === 'end' && isFailureNode(state.curId, target)) {
+      state.endInfo = { endType: target.endType || target.ending, title: target.title, text: target.text, fromId: state.curId };
+      state.curId = '__be__';
+    } else if (target && target.type === 'end') {
+      state.endPageInfo = { kind: 'end', title: target.title || '本章完', subtitle: '', text: target.text || '', fromId: state.curId };
+      if (target.routes && target.routes.length) {
+        var ending = resolveEnding(target), info = ending.meta || {};
+        state.endPageInfo = { kind: 'he', endingKey: ending.key, title: info.title || '荒年记 · 通关', subtitle: info.subtitle || '', text: info.body || '', fromId: state.curId };
+      }
+      state.curId = '__end__';
+    }
+    try { if (global.Telemetry) global.Telemetry.onChapterEnter(chapter.id, entrySource || (resume ? 'resume' : carry ? 'transition' : 'chapter_home')); } catch (_) {}
+    saveProgress();
+    render();
+    if (!profileRequested) requestPlayerProfile();
+    return true;
+  }
+
+  function openInitialExperience (saved) {
+    // Old valid checkpoints predate this field. Explicit false takes priority
+    // over visitedNodes, which can be populated before a video is ready.
+    state.hasPlayedStory = !!saved && saved.hasPlayedStory !== false;
+    // v93.1 · 所有人（新老用户）都直接进剧情，不再经过章节首页。
+    //   老用户：带着存档续播（enterHomeChapter 内部 resume 分支会落回 saved.curId）；
+    //   新用户：从 EP01 起点开播。
+    if (state.hasPlayedStory && saved && saved.ep) {
+      chapterHome.record(saved);
+      var _resumeCh = chapterHome.find(saved.ep);
+      if (_resumeCh && chapterHome.isUnlocked(_resumeCh.id) && enterHomeChapter(_resumeCh, saved, null, 'resume_direct') !== false) return;
+      // 存档章节已失效 → 兜底从 EP01 起播（不回首页）
+      enterHomeChapter(chapterHome.find('EP01'), null, null, 'resume_fallback');
+      return;
+    }
+    chapterHome.clearProgress();
+    enterHomeChapter(chapterHome.find('EP01'), null, null, 'first_visit');
+  }
+
+  // v76 · 添加到桌面（快手小游戏原生 API）
+  // v79.6 · 【修复④根因】此前调的是 ks.saveAppToDesktop —— 这个 API 根本不存在。
+  //   官方接口是 ks.addShortcut（见 agw-work-mode/skills/agw-scaffold/shortcut/shortcut.md），
+  //   全项目 grep "addShortcut" 命中 0 次，说明从来没接过真的加桌通道。
+  //   typeof 判断永远 false → 每次都只落到最后那句「请从右上角菜单」的兜底 toast，
+  //   用户点下去在视觉上「毫无反应」。现在按官方文档真实调用。
+  function addToDesktop () {
+    try {
+      var host = (typeof ks !== 'undefined' && ks) ? ks
+        : (typeof wx !== 'undefined' && wx) ? wx : null;
+      // 兼容顺序：官方 addShortcut → 历史误用的 saveAppToDesktop（万一某容器真有）
+      var fn = null, fnName = '';
+      if (host && typeof host.addShortcut === 'function') { fn = host.addShortcut; fnName = 'addShortcut'; }
+      else if (host && typeof host.saveAppToDesktop === 'function') { fn = host.saveAppToDesktop; fnName = 'saveAppToDesktop'; }
+
+      if (!fn) {
+        state.addDeskBusy = false;
+        if (state.toasts) state.toasts.push({ text: '当前版本不支持一键加桌 · 请用右上角「···」添加', color: '#ffbb55', t0: Date.now(), life: 2400 });
+        try { LG('ADD-DESKTOP-NOAPI', '⚠️ 容器无加桌 API'); } catch (_) { }
+        if (typeof render === 'function') render();
+        return;
+      }
+
+      // 防连点 + loading 反馈（用户反馈「点了没反应」，先给即时视觉响应）
+      if (state.addDeskBusy) return;
+      state.addDeskBusy = true;
+      if (state.toasts) state.toasts.push({ text: '正在添加到桌面…', color: '#ffe6b0', t0: Date.now(), life: 1400 });
+      if (typeof render === 'function') render();
+      try { LG('ADD-DESKTOP-CALL', '🏠 调用加桌 API', { api: fnName }); } catch (_) { }
+
+      fn.call(host, {
+        success: function (res) {
+          state.addDeskBusy = false;
+          if (state.toasts) state.toasts.push({ text: '已添加到桌面 · 下次一键进入', color: '#ffe6b0', t0: Date.now(), life: 2200 });
+          try { LG('ADD-DESKTOP-OK', '✅ 加桌成功', { code: res && res.code }); } catch (_) { }
+          try { if (global.Telemetry) global.Telemetry.track('add_desktop_ok', { api: fnName }); } catch (_) { }
+          if (typeof render === 'function') render();
+        },
+        fail: function (e) {
+          state.addDeskBusy = false;
+          var code = e && e.code;
+          var msg = (e && (e.msg || e.errMsg)) || '';
+          // -10005 = 官方文档明确的「暂不支持该功能」（iOS / 低版本容器）
+          var friendly = '添加失败，请从右上角「···」选择添加到桌面';
+          if (code === -10005) friendly = '当前设备暂不支持一键加桌 · 请用右上角「···」';
+          else if (/exist|already/i.test(msg)) friendly = '已在桌面 · 无需重复添加';
+          if (state.toasts) state.toasts.push({ text: friendly, color: '#ffbb55', t0: Date.now(), life: 2400 });
+          try { LG('ADD-DESKTOP-FAIL', '❌ 加桌失败', { code: code, msg: msg }); } catch (_) { }
+          try { if (global.Telemetry) global.Telemetry.track('add_desktop_fail', { code: code }); } catch (_) { }
+          if (typeof render === 'function') render();
+        },
+        complete: function () { state.addDeskBusy = false; }
+      });
+    } catch (e) {
+      state.addDeskBusy = false;
+      console.warn('[addToDesktop] err', e);
+      try { LG('ADD-DESKTOP-EX', '💥 加桌异常', { err: e && e.message }); } catch (_) { }
+    }
+  }
+
+  // V75.2 · 隐私政策浮层（完整版·可滚动）
+  var _privacyScrollY = 0;  // 滚动偏移
+  function drawPrivacyOverlay () {
+    ctx.save();
+    ctx.fillStyle = 'rgba(0,0,0,.72)';
+    ctx.fillRect(0, 0, W, H);
+    // v76.0 · 用户要求再缩 20%：宽 420→336，高 94%→75.2%
+    var pw = Math.min(W - 16, 336);
+    var ph = Math.min(H - 32, H * 0.752);
+    var px = (W - pw) / 2, py = (H - ph) / 2;
+    // 卡片背景
+    ctx.fillStyle = 'rgba(28,20,14,.99)';
+    if (ctx.roundRect) { ctx.beginPath(); ctx.roundRect(px, py, pw, ph, 14); ctx.fill(); } else { ctx.fillRect(px, py, pw, ph); }
+    ctx.strokeStyle = 'rgba(230,192,120,.55)';
+    ctx.lineWidth = 1.5;
+    if (ctx.roundRect) { ctx.beginPath(); ctx.roundRect(px, py, pw, ph, 14); ctx.stroke(); }
+    // 标题栏（不随内容滚动）
+    ctx.fillStyle = '#f2d79a';
+    ctx.font = '700 17px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('隐私政策', px + pw / 2, py + 28);
+    ctx.fillStyle = 'rgba(230,192,120,.45)';
+    ctx.font = '11px sans-serif';
+    ctx.fillText('生效日期：2026年8月13日', px + pw / 2, py + 46);
+    // 内容区裁切
+    var contentTop = py + 56;
+    var btnH = 52;
+    var contentH = ph - 56 - btnH;
+    ctx.save();
+    ctx.beginPath(); ctx.rect(px, contentTop, pw, contentH); ctx.clip();
+    ctx.fillStyle = 'rgba(240,225,200,.90)';
+    var _pFont = '12px sans-serif';
+    ctx.font = _pFont;
+    ctx.textAlign = 'left';
+    // v75.8 · 段落 + wrapText 动态换行，铺满卡片宽度 —— 修复"文字只占一半"
+    var _pad = 14;
+    var _wrapW = pw - _pad * 2;
+    var _paras = [
+      '北京慕远科技有限公司及其关联公司（以下简称"我们"）深知个人信息对您的重要性，我们将按照法律法规的规定，保护您的个人信息及隐私安全。我们制定本《隐私政策》并特别提示：希望您在使用我们的小游戏前仔细阅读并理解本《隐私政策》，以便做出适当的选择。',
+      '',
+      '【特别提示】请您仔细阅读本《隐私政策》，尤其是加粗、划线的内容，以充分理解我们对您个人信息的处理规则。如您在阅读或使用小游戏过程中有任何疑问，可通过本隐私政策预留的联系方式与我们沟通。如您经沟通后仍不同意本隐私政策的条款，有权立即停止访问和使用。',
+      '',
+      '一、我们如何收集和使用您的个人信息',
+      '',
+      '1. 账号登录',
+      '当您登录我们的小游戏时，我们将申请使用您的快手账号信息（包括快手昵称、头像及您授权的其他信息），以完成账号登录、标识您的游戏身份并展示游戏内个人信息。',
+      '',
+      '2. 支付服务',
+      '当您在游戏内进行充值、购买服务或虚拟资产时，部分支付服务由我们的合作方及第三方支付机构向您提供，我们、我们的合作方及第三方支付机构可能会获取您的订单信息（如订单流水号、支付金额、优惠券信息、商品信息、银行信息等），这些信息是支付功能所必需的信息，拒绝提供将导致您无法使用该功能，但不影响其他功能的正常使用。',
+      '',
+      '3. 分享',
+      '（1）我们支持您将游戏内容分享至快手聊天、朋友圈或外部平台。分享功能由您主动触发，我们不会未经您的操作自动分享您的信息。',
+      '（2）我们在游戏中向您提供榜单功能，如游戏排行榜，在榜单中我们会对信息内容、用户等进行自动化排序展示，您的昵称、头像等账号公开信息、我们根据您在游戏内的行为情况形成的统计数据等将在榜单中公开展示。',
+      '',
+      '4. 运营安全保障与统计分析',
+      '（1）为了向用户提供优质而可靠的内容、服务，维护产品及功能的正常稳定运行，更好地预防恶意程序、钓鱼网站、网络漏洞、计算机病毒、网络攻击、网络侵入安全风险，更准确地识别违反法律法规或平台相关规则的情况，我们需收集、使用和整合终端用户的设备信息、操作日志信息、传感器信息以及用户授权的信息，用于分析服务的稳定性、判断账号安全、进行身份验证、识别违法违规情况、检测及防范安全事件，依法采取必要的记录、分析、处置措施。',
+      '（2）设备信息：设备标识信息（OAID、IDFA、IDFV、AndroidID及其他综合设备参数和系统信息形成的设备标识符）、网络相关信息（蓝牙、IP地址、网络状态、类型、接入方式、网络质量数据）、设备参数信息（设备名称、设备型号）、硬件操作系统信息（操作系统、语言、分辨率）。',
+      '（3）为了提升运营质量与效率而进行研究、统计分析时，我们可能会收集您在游戏中的游戏行为数据以及其他根据上述场景收集的个人信息，用于优化游戏体验和改进游戏功能。上述数据均为去标识化后的统计数据分析，我们不会将其用于识别您的特定身份。',
+      '',
+      '5. 征得同意的例外',
+      '根据法律法规规定，在下列情形中，处理您的个人信息无需征得您的同意：',
+      '（1）为订立、履行您作为一方当事人的合同所必需，或者按照依法制定的劳动规章制度和依法签订的集体合同实施人力资源管理所必需；',
+      '（2）为履行法定职责或者法定义务所必需；',
+      '（3）为应对突发公共卫生事件，或者紧急情况下为保护自然人的生命健康和财产安全所必需；',
+      '（4）为公共利益实施新闻报道、舆论监督行为，在合理的范围内处理您的个人信息；',
+      '（5）依照《个人信息保护法》规定在合理范围内处理您自行公开或者其他已经合法公开的个人信息；',
+      '（6）法律行政法规规定的其他情形。',
+      '',
+      '二、我们如何委托处理、共享、转移、公开披露您的个人信息',
+      '',
+      '1. 委托处理',
+      '为了向您提供更完善、更优质的产品和/或服务，某些功能可能由我们的技术服务合作方提供，我们可能会委托合作方处理您的某些个人信息。我们会与受托处理您个人信息的合作方依据法律规定签署相关协议，并对其个人信息处理活动进行约束和监督。',
+      '',
+      '2. 共享',
+      '为实现本隐私政策中声明的目的，我们需与关联公司或第三方合作伙伴共享您的个人信息。我们将遵守合法、正当、必要的原则，审慎评估合作伙伴的处理目的、安全保障能力，并根据法律规定签署相关协议。同时，我们会对合作伙伴进行严格的监督与管理，一旦发现其存在违规违约行为，将立即停止合作并追究其法律责任。',
+      '',
+      '3. 合作场景',
+      '（1）为实现本隐私政策中声明的目的，我们的某些服务将由我们和授权合作伙伴共同提供或者委托处理，如第三方支付机构、活动合作方等。我们可能会与合作伙伴共享您的某些个人信息，以提供更好的客户服务和用户体验。我们仅会出于合法、正当、必要的目的共享您的个人信息，并且只会提供服务所必要的个人信息。',
+      '（2）在法定情形下的共享。我们可能会根据法律法规规定、诉讼争议解决需要，或按行政、司法机关依法提出的强制性要求，共享您的个人信息。',
+      '（3）在获取您同意的情况下共享：获得您的同意后，我们可能与第三方共享您的个人信息。',
+      '（4）为提升相关领域的科研能力，促进科技发展水平，我们在确保数据安全与目的正当的前提下，可能会与合作的科研院所、高校等机构使用去标识化或匿名化的数据。',
+      '（5）为保障游戏功能的实现与应用的稳定运行，我们需与快手平台共享，并从快手平台处使用您快手账号内的相关信息（如基本账号信息、身份认证信息、设备信息、行为数据、支付交易数据等），以实现账号登录、广告、支付等对应功能及目的。关于快手平台如何收集、使用您的个人信息，您可以参考快手平台的服务协议及隐私政策。',
+      '',
+      '4. 转移',
+      '如我们因合并、分立、解散、被宣告破产需要转移个人信息的，会向您告知接收方的名称或者姓名和联系方式。我们会要求接收方继续履行本隐私政策约定义务。接收方变更原先的处理目的、处理方式的，其将重新向您征求同意。',
+      '',
+      '5. 公开披露',
+      '我们不会主动公开您未自行公开的信息，除非遵循国家法律法规规定或者获得您的同意。',
+      '',
+      '三、我们如何存储和保护您的个人信息',
+      '',
+      '1. 存储地点',
+      '我们会按照法律法规的规定，将在中国境内运营过程中收集和产生的个人信息存储于中国境内。',
+      '',
+      '2. 存储期限',
+      '我们仅在为实现目的所必需的时间及法律法规所规定的保存期限内保留您的个人信息，超出上述存储期限后，我们会对您的个人信息进行删除或匿名化处理。',
+      '',
+      '3. 安全保护措施',
+      '我们已采取符合业界标准、合理可行的安全防护措施保护您的信息，防止个人信息遭到未经授权访问、公开披露、使用、修改、损坏或丢失，包括数据加密传输、访问权限控制、安全审计等。',
+      '',
+      '四、您的权利',
+      '在您使用我们的游戏期间，您可以通过以下方式行使相关权利，我们会在符合法律法规要求的情形下响应您的请求。',
+      '',
+      '1. 查询与更正',
+      '您可以在游戏内【我的】页面查看您的昵称、头像等账户信息。如您需要更正您的快手账号信息，您可以通过快手APP-左上角【≡】-【设置】以及APP-【我】更正您的快手昵称等账号信息。',
+      '',
+      '2. 删除',
+      '您可以通过本政策公示的联系方式向我们提出删除您个人信息的请求。',
+      '',
+      '3. 撤回同意',
+      '您可以通过快手APP设置页面关闭相应权限，即视为撤回对相应信息收集的同意。',
+      '',
+      '4. 注销账号',
+      '您可以通过快手APP左上角【≡】-【设置】-【账号与安全】-【注销账号】注销您的快手账号，注销后我们将在合理期限内删除您的个人信息或进行匿名化处理；因适用的法律和安全技术限制必须留存的，我们将停止除存储和采取必要的安全保护措施之外的处理。',
+      '',
+      '请注意，当您撤回同意或删除信息后，我们可能无法继续为您提供相应的游戏功能和服务。',
+      '',
+      '五、未成年人保护',
+      '我们非常重视对未成年人个人信息的保护。我们的游戏不面向未满14周岁的未成年人。如果您是未满14周岁的未成年人，请勿使用我们的游戏或向我们提供个人信息。如果我们发现在未获得监护人同意的情况下收集了未满14周岁未成年人的个人信息，我们将尽快删除相关信息。',
+      '',
+      '六、本政策的更新',
+      '我们可能适时修订本政策。当政策条款发生变更时，我们会在游戏内或以其他适当方式向您展示变更后的政策。对于重大变更，我们会以更为显著的方式通知您。',
+      '',
+      '七、如何联系我们',
+      '如果您对本政策有任何疑问、意见或建议，可以通过【ksxyxpt@kuaishou.com】与我们联系。我们将尽快审核所涉问题，并在验证您的身份后及时予以回复。一般情况下，我们将在十五个工作日内回复您的请求。'
+    ];
+    // 段落 → 逐段 wrapText，空段落保留为一行空白
+    var _PL = [];
+    for (var _pi = 0; _pi < _paras.length; _pi++) {
+      var _seg = _paras[_pi];
+      if (_seg === '') { _PL.push(''); continue; }
+      var _wrapped = wrapText(_seg, _wrapW, _pFont);
+      for (var _wi = 0; _wi < _wrapped.length; _wi++) _PL.push(_wrapped[_wi]);
+    }
+    // wrapText 会切 ctx.font，需要重置回本浮层 font
+    ctx.font = _pFont;
+    // 计算内容总高度 & 裁切滚动
+    var lineH = 18;
+    var totalContentH = _PL.length * lineH;
+    var maxScroll = Math.max(0, totalContentH - contentH);
+    if (_privacyScrollY < 0) _privacyScrollY = 0;
+    if (_privacyScrollY > maxScroll) _privacyScrollY = maxScroll;
+    var ly = contentTop + 14 - _privacyScrollY;
+    for (var i = 0; i < _PL.length; i++) {
+      if (ly + lineH > contentTop && ly < contentTop + contentH) {
+        ctx.fillText(_PL[i], px + _pad, ly);
+      }
+      ly += lineH;
+    }
+    // 滚动条
+    if (totalContentH > contentH) {
+      var barH = Math.max(24, contentH * contentH / totalContentH);
+      var barY = contentTop + (_privacyScrollY / maxScroll) * (contentH - barH);
+      ctx.fillStyle = 'rgba(230,192,120,.25)';
+      if (ctx.roundRect) { ctx.beginPath(); ctx.roundRect(px + pw - 6, barY, 3, barH, 2); ctx.fill(); }
+      else { ctx.fillRect(px + pw - 6, barY, 3, barH); }
+    }
+    ctx.restore(); // 裁切 restore
+    // 底部按钮（不随内容滚动）
+    var bw = 120, bh = 36;
+    var bx = px + (pw - bw) / 2, by = py + ph - bh - 10;
+    ctx.fillStyle = 'rgba(230,192,120,.92)';
+    if (ctx.roundRect) { ctx.beginPath(); ctx.roundRect(bx, by, bw, bh, 18); ctx.fill(); } else { ctx.fillRect(bx, by, bw, bh); }
+    ctx.fillStyle = '#2a1608';
+    ctx.font = '700 14px sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('我知道了', bx + bw / 2, by + bh / 2 + 1);
+    ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+    ctx.restore();
+    state.hitZones.push({ x: bx - 6, y: by - 6, w: bw + 12, h: bh + 12, action: 'splash_privacy_close' });
+    state.hitZones.push({ x: 0, y: 0, w: W, h: py, action: 'splash_privacy_close' });
+    state.hitZones.push({ x: 0, y: py + ph, w: W, h: H - (py + ph), action: 'splash_privacy_close' });
+    state.hitZones.push({ x: 0, y: py, w: px, h: ph, action: 'splash_privacy_close' });
+    state.hitZones.push({ x: px + pw, y: py, w: W - (px + pw), h: ph, action: 'splash_privacy_close' });
+    // 内容区触摸滚动
+    state.hitZones.push({ x: px, y: contentTop, w: pw, h: contentH, action: 'privacy_scroll_area' });
+  }
+  // ============== V75 · 存档系统 · saveProgress / loadProgress ==============
+  // 存 {curId, stats, sisterUnlocked, visitedNodes, beCount, savedAt, ver}
+  // 不存 __be__ / __end__ 这类临时页
+  var _SAVE_KEY = 'weihunqi_save_v1';
+  var _SAVE_VER = 1;
+  var _LEGACY_CHAPTER_PROGRESS_KEY = 'weihunqi_chapter_progress_v1';
+  // ============== v78.8 · 广告解锁持久化 ==============
+  // 对齐老铁眼真尖 `laotie_level_ad_unlocked_v1` 的成熟模式（那边线上零问题）：
+  //   ① 独立 storage key，与主存档完全解耦 —— 主存档失效/版本不匹配不会连带丢解锁
+  //   ② 广告 onReward 回调里【当场落盘】，不等 next()/saveProgress()
+  //   ③ 存的是「已看广告次数」，支持 adCount 多次广告的中途进度
+  // 根因回顾（v78.7 及之前的 bug）：解锁只写内存 opt._adUnlocked，而 opt 来自 story.js 字面量；
+  //   激励视频会把小游戏切后台，快手侧内存紧张时冷启重载 story.js → 所有 flag 归零 → 回来还是锁。
+  var _AD_UNLOCK_KEY = 'weihunqi_ad_unlocks_v1';
+  function _adKey (nodeId, idx) { return String(nodeId) + '#' + idx; }
+  function _readAdUnlockSet () {
+    try {
+      var raw = (typeof KwaiStorage !== 'undefined') ? KwaiStorage.getSync(_AD_UNLOCK_KEY)
+        : (typeof localStorage !== 'undefined' ? localStorage.getItem(_AD_UNLOCK_KEY) : '');
+      if (!raw) return {};
+      var o = (typeof raw === 'string') ? JSON.parse(raw) : raw;
+      return o || {};
+    } catch (_e) { return {}; }
+  }
+  function _writeAdUnlockSet (m) {
+    try {
+      var v = JSON.stringify(m || {});
+      if (typeof KwaiStorage !== 'undefined') KwaiStorage.setSync(_AD_UNLOCK_KEY, v);
+      else if (typeof localStorage !== 'undefined') localStorage.setItem(_AD_UNLOCK_KEY, v);
+    } catch (_e) { }
+  }
+  // 已看广告次数（兼容老数据里存的 1 = 已解锁）
+  function getAdWatched (nodeId, idx) {
+    var v = _readAdUnlockSet()[_adKey(nodeId, idx)];
+    if (typeof v === 'number') return v;
+    return v ? 999 : 0;
+  }
+  function setAdWatched (nodeId, idx, n) {
+    var m = _readAdUnlockSet();
+    m[_adKey(nodeId, idx)] = n;
+    _writeAdUnlockSet(m);
+    LG('AD-UNLOCK-SAVE', '💾 广告解锁已落盘', { key: _adKey(nodeId, idx), watched: n });
+  }
+  function clearAdWatched (nodeId, idx) {
+    var m = _readAdUnlockSet();
+    delete m[_adKey(nodeId, idx)];
+    _writeAdUnlockSet(m);
+    LG('AD-UNLOCK-CLEAR', '🔧 清广告解锁', { key: _adKey(nodeId, idx) });
+  }
+  function clearAllAdUnlocks () { _writeAdUnlockSet({}); }
+  // ============== v92.4 · 今日免广告通行证 ==============
+  //   底部栏「解锁全部章节」按钮：当天累计看满 3 个激励视频 →
+  //     ① 一次性解锁全部章节（永久保留，与 weihunqi_chapter_unlocks_v1 语义一致）
+  //     ② 当天剩余时间内全局免广告（章节解锁 + 剧情选项都不再弹激励视频）
+  //   跨自然天后免广告特权失效，需重新看满 3 个；已解锁的章节不回收。
+  var _AD_PASS_KEY = 'weihunqi_ad_pass_v1';
+  var AD_PASS_NEED = 3;
+  function _todayStamp () {
+    var d = new Date();
+    return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+  }
+  function readAdPass () {
+    try {
+      var raw = (typeof KwaiStorage !== 'undefined') ? KwaiStorage.getSync(_AD_PASS_KEY)
+        : (typeof localStorage !== 'undefined' ? localStorage.getItem(_AD_PASS_KEY) : '');
+      var o = raw ? ((typeof raw === 'string') ? JSON.parse(raw) : raw) : null;
+      // 跨自然天：计数与特权一起作废
+      if (!o || o.day !== _todayStamp()) return { day: _todayStamp(), watched: 0 };
+      return { day: o.day, watched: o.watched || 0 };
+    } catch (_e) { return { day: _todayStamp(), watched: 0 }; }
+  }
+  function writeAdPass (p) {
+    try {
+      var v = JSON.stringify(p);
+      if (typeof KwaiStorage !== 'undefined') KwaiStorage.setSync(_AD_PASS_KEY, v);
+      else if (typeof localStorage !== 'undefined') localStorage.setItem(_AD_PASS_KEY, v);
+    } catch (_e) { }
+  }
+  // 今日是否已享免广告特权
+  function adPassActive () { return readAdPass().watched >= AD_PASS_NEED; }
+  // 今日还需看几个广告
+  function adPassRemain () { return Math.max(0, AD_PASS_NEED - readAdPass().watched); }
+  // 记一次通行证广告，返回记账后的最新状态
+  function bumpAdPass () {
+    var p = readAdPass();
+    p.watched = Math.min(AD_PASS_NEED, (p.watched || 0) + 1);
+    writeAdPass(p);
+    LG('AD-PASS-BUMP', '🎟 今日免广告进度', { watched: p.watched, need: AD_PASS_NEED });
+    return p;
+  }
+  // ───────────────────────────────────────────────────────────────────────────
+  // v92.6 · 【P0 修复：免广告特权只挡住了两条路，其余全漏】
+  //   原实现把 adPassActive() 判定手写在 choose()（选项广告）和 chapter-home.unlock()
+  //   （章节解锁）两处，而全局一共有 5 个 KwaiAd.showRewarded 调起点：
+  //     ① choose 选项广告          → 已挡
+  //     ② chapter-home 章节解锁    → 已挡
+  //     ③ BE/大结局页「看广告复活重选」→ 【漏】← 用户在大结局页照样被弹广告的直接原因
+  //     ④ 节点级 node.ad 拦截      → 【漏】
+  //     ⑤ 成就「看广告直通该章」   → 【漏】
+  //   散点判定必然继续漏，改为【单一真值源】：所有激励视频统一走 showRewardedGated，
+  //   内部先查通行证——今日已看满 3 个则「零延迟直接发奖」，绝不调起 native 广告。
+  //   除通行证记账自身（doUnlockAllAd）外，任何地方都不得再直接调 KwaiAd.showRewarded。
+  function showRewardedGated (onOk, onFail, slot) {
+    if (adPassActive()) {
+      LG('AD-PASS-SKIP', '🎟 今日免广告特权生效 → 直接发奖，不调起激励视频', { slot: slot || 'unknown' });
+      try { if (global.Telemetry) global.Telemetry.event('ad_pass_skip', { ad_slot: slot || 'unknown', node_id: state.curId || '', chapter_id: state.ep || '' }); } catch (_) { }
+      // 异步化：与 native 回调时序一致，避免调用方还没设好状态就被同步回调打穿
+      if (typeof setTimeout === 'function') setTimeout(function () { try { onOk && onOk(); } catch (_e) { } }, 0);
+      else { try { onOk && onOk(); } catch (_e2) { } }
+      return true;
+    }
+    if (typeof KwaiAd !== 'undefined' && KwaiAd.showRewarded) { KwaiAd.showRewarded(onOk, onFail); return true; }
+    try { onFail && onFail({ reason: 'no_ad_instance' }); } catch (_e3) { }
+    return false;
+  }
+  // v92.4 · 弹窗内「看广告解锁」：零阻断，点击立即调起激励视频
+  function doUnlockAllAd () {
+    if (state.adLoading && state.adLoading.active) return;
+    if (adPassActive()) { state._unlockAllOpen = true; render(); return; }
+    var _done = false;   // 幂等锁：adapter 可能补发迟到奖励
+    try { saveProgress(); } catch (_) { }   // 铁律 107：拉广告前先落盘
+    state.adLoading = { active: true, t0: Date.now(), text: '正在加载广告…' };
+    render();
+    var _clear = function () { if (state.adLoading) state.adLoading.active = false; };
+    var onOk = function () {
+      if (_done) { LG('AD-PASS-DUP', '⚠ 通行证奖励回调重复，已忽略'); return; }
+      _done = true;
+      _clear();
+      var p = bumpAdPass();
+      state.toasts = state.toasts || [];
+      if (p.watched >= AD_PASS_NEED) {
+        var n = 0;
+        try { n = (chapterHome && chapterHome.grantAll) ? chapterHome.grantAll() : 0; } catch (_) { }
+        state.toasts.push({ text: '🎉 全部章节已解锁，今日免广告', color: '#8bd47a', t0: Date.now(), life: 2200 });
+        LG('AD-PASS-DONE', '🎟 今日免广告生效', { chapters: n });
+      } else {
+        state.toasts.push({ text: '还需看 ' + adPassRemain() + ' 个广告', color: '#8bd47a', t0: Date.now(), life: 1800 });
+      }
+      try { if (typeof KwaiDataAnalysis !== 'undefined') KwaiDataAnalysis.reportAnalytics('ad_reward_ok', { slot: 'unlock_all', watched: p.watched, need: AD_PASS_NEED }); } catch (_) { }
+      try { if (global.Telemetry) global.Telemetry.onAdResult('unlock_all', 'ok', { watched: p.watched, need: AD_PASS_NEED, adSlot: 'unlock_all', adScene: 'game_story', adUnitId: '2300058116_01' }); } catch (_) { }
+      state._unlockModalT0 = Date.now();
+      render();
+    };
+    var onFail = function (reason) {
+      if (_done) return;
+      _done = true;
+      _clear();
+      var _rs = (reason && reason.reason) || '未看完';
+      var _msg = '未看完广告，进度未增加';
+      if (_rs === 'timeout') _msg = '广告加载超时，请稍后重试';
+      else if (_rs === 'load_fail' || _rs === 'no_load') _msg = '广告加载失败，请检查网络';
+      else if (_rs === 'show_fail' || _rs === 'show_throw') _msg = '广告播放失败，请稍后重试';
+      else if (_rs === 'no_ad_instance') _msg = '广告服务未就绪，请稍后重试';
+      state.toasts = state.toasts || [];
+      state.toasts.push({ text: _msg, color: '#ffbb55', t0: Date.now(), life: 1800 });
+      LG('AD-PASS-FAIL', '通行证广告失败', { reason: _rs });
+      try { if (global.Telemetry) global.Telemetry.onAdResult('unlock_all', 'fail', { failReason: _rs, adSlot: 'unlock_all', adScene: 'game_story', adUnitId: '2300058116_01' }); } catch (_) { }
+      render();
+    };
+    try { if (global.Telemetry) global.Telemetry.onAdClick('unlock_all', { nodeId: state.curId, adSlot: 'unlock_all', adScene: 'game_story', adUnitId: '2300058116_01' }); } catch (_) { }
+    if (typeof KwaiAd !== 'undefined' && KwaiAd.showRewarded) KwaiAd.showRewarded(onOk, onFail);
+    else onFail({ reason: 'no_ad_instance' });
+  }
+  // 把持久化的解锁进度回灌到 story 内存对象（choose 入口 + 存档载入时调用）
+  // v79.6 · 【修复①「看她跳支新舞」假的✔已解锁角标】
+  //   原实现只会把 _adUnlocked 置 true，从不置回 false。而 story 里同一个 option
+  //   对象会被多个节点共享引用（典型：k_side_dress 同时挂在 EP01 和 EP03 的 gate 下），
+  //   一旦在 A 节点看广告解锁过，_adUnlocked 就永久留在这个共享对象上，
+  //   切到 B 节点渲染时 drawChoiceBottom 只判 `opt.ad && opt._adUnlocked`，
+  //   于是显示成「✔已解锁」—— 但真实存储 key 是 nodeId#idx，B 节点其实没解锁，
+  //   点下去照样弹广告。这就是用户看到的「角标是假的」。
+  //   现在改为：每次回灌都以【当前 nodeId 的持久化记录】为唯一真相，
+  //   写 true 也写 false，杜绝跨节点串味。
+  function hydrateAdUnlock (nodeId, node) {
+    try {
+      if (!node || !node.options) return;
+      for (var i = 0; i < node.options.length; i++) {
+        var o = node.options[i];
+        if (!o || !o.ad) continue;
+        var need = o.adCount || 1;
+        var w = getAdWatched(nodeId, i) || 0;
+        o._adWatched = w;                 // 以本节点记录为准，不再取 max
+        o._adUnlocked = (w >= need);       // 关键：不满足就显式置 false
+      }
+    } catch (_e) { }
+  }
+  function markStoryPlayed () {
+    if (state.hasPlayedStory || state.splash.active || state.chapterTransition || !getNode(state.curId)) return;
+    state.hasPlayedStory = true;
+    saveProgress();
+  }
+  function saveProgress () {
+    try {
+      if (!state || !state.curId || state.splash.active || state.chapterTransition) return;
+      if (state.curId === '__be__' || state.curId === '__end__') return;
+      var saveNode = getNode(state.curId);
+      if (!saveNode) return;
+      var saveEp = !isFailureNode(state.curId, saveNode) && chapterHome && chapterHome.find(saveNode.ep) ? saveNode.ep : (state._activeChapter || state.ep);
+      if (chapterHome && (!chapterHome.find(saveEp) || !chapterHome.isUnlocked(saveEp))) return;
+      var data = {
+        ver: _SAVE_VER,
+        chapterLayout: RAW.meta.chapterLayoutVersion || 1,
+        hasPlayedStory: !!state.hasPlayedStory,
+        curId: state.curId,
+        stats: {
+          wei: state.stats.wei || 0,
+          qing: state.stats.qing || 0,
+          liang: state.stats.liang || 0
+        },
+        sisterUnlocked: !!state.sisterUnlocked,
+        visitedNodes: state._visitedNodes || {},
+        beCount: state.beCount || 0,
+        ep: saveEp || 'EP01',
+        savedAt: Date.now()
+      };
+      var str = JSON.stringify(data);
+      if (chapterHome) chapterHome.record(data);
+      if (typeof KwaiStorage !== 'undefined') KwaiStorage.setSync(_SAVE_KEY, str);
+      else if (typeof localStorage !== 'undefined') localStorage.setItem(_SAVE_KEY, str);
+      LG('SAVE-OK', '💾 存档', { curId: data.curId, size: str.length });
+    } catch (e) { try { LG('SAVE-ERR', '存档异常', { err: e && e.message }); } catch (_) { } }
+  }
+  function loadProgress () {
+    try {
+      function readSave(key) {
+        try {
+          var raw = typeof KwaiStorage !== 'undefined' ? KwaiStorage.getSync(key) : localStorage.getItem(key);
+          return typeof raw === 'string' ? JSON.parse(raw) : raw;
+        } catch (_) { return null; }
+      }
+      function validSave(value) {
+        if (!value || value.ver !== _SAVE_VER || !value.curId) return null;
+        value = chapterHome && chapterHome.migrateSave ? chapterHome.migrateSave(value) : value;
+        var node = getNode(value.curId);
+        if (!node) return null;
+        var ep = !isFailureNode(value.curId, node) && chapterHome && chapterHome.find(node.ep) ? node.ep : value.ep;
+        if (!chapterHome || !chapterHome.find(ep) || !chapterHome.isUnlocked(ep)) return null;
+        value.ep = ep;
+        return value;
+      }
+      var d = validSave(readSave(_SAVE_KEY));
+      var legacy = readSave(_LEGACY_CHAPTER_PROGRESS_KEY);
+      // Collapse the old per-chapter saves into the newest valid global checkpoint.
+      if (legacy && typeof legacy === 'object' && !Array.isArray(legacy)) {
+        Object.keys(legacy).forEach(function (id) {
+          var candidate = validSave(legacy[id]);
+          if (candidate && (!d || Number(candidate.savedAt || 0) > Number(d.savedAt || 0))) d = candidate;
+        });
+        try {
+          if (d) {
+            if (typeof KwaiStorage !== 'undefined') KwaiStorage.setSync(_SAVE_KEY, JSON.stringify(d));
+            else localStorage.setItem(_SAVE_KEY, JSON.stringify(d));
+          }
+          if (typeof KwaiStorage !== 'undefined') KwaiStorage.removeSync(_LEGACY_CHAPTER_PROGRESS_KEY);
+          else localStorage.removeItem(_LEGACY_CHAPTER_PROGRESS_KEY);
+        } catch (migrationError) {
+          LG('SAVE-MIGRATE', '旧记录清理稍后重试', { err: migrationError && migrationError.message });
+        }
+      }
+      if (!d) return null;
+      // Persist normalized IDs/chapters so a later launch cannot resurrect deleted scenes.
+      if (typeof KwaiStorage !== 'undefined') KwaiStorage.setSync(_SAVE_KEY, JSON.stringify(d));
+      else localStorage.setItem(_SAVE_KEY, JSON.stringify(d));
+      // v78.8 · 载入存档后立刻回灌广告解锁（独立 key，不受主存档版本影响）
+      try { hydrateAdUnlock(d.curId, getNode(d.curId)); } catch (_e) { }
+      return d;
+    } catch (e) { return null; }
+  }
+  function clearProgress () {
+    try {
+      if (typeof KwaiStorage !== 'undefined') KwaiStorage.removeSync(_SAVE_KEY);
+      else if (typeof localStorage !== 'undefined') localStorage.removeItem(_SAVE_KEY);
+      if (typeof KwaiStorage !== 'undefined') KwaiStorage.removeSync(_LEGACY_CHAPTER_PROGRESS_KEY);
+      else if (typeof localStorage !== 'undefined') localStorage.removeItem(_LEGACY_CHAPTER_PROGRESS_KEY);
+      if (chapterHome) chapterHome.clearProgress();
+      LG('SAVE-CLEAR', '清空存档');
+    } catch (_) { }
+  }
+  // 暴露给外部（restart / chapter jump 时用）
+  global._weihunqiSave = { save: saveProgress, load: loadProgress, clear: clearProgress };
+
+  // V74 · 实际进入游戏（已获授权）· V75 · 支持从存档续玩
+  function _enterGameAfterAuth () {
+    if (!state.splash.active) return;
+    state.splash.active = false;
+    state.splash.img = null;
+    if (!state.playSessionT0) state.playSessionT0 = Date.now();
+    try { if (global.Telemetry) global.Telemetry.startSession(state._resumedFromSave ? 'resume' : 'fresh'); } catch (_) { } // TELEMETRY
+    try { bootPrefetch(); } catch (e) { }
+    // V75 · 尝试读存档
+    var save = loadProgress();
+    if (save && save.curId && save.curId !== (RAW.start || 's1')) {
+      LG('SAVE-RESUME', '🎬 从存档续玩', { curId: save.curId });
+      state.curId = save.curId;
+      if (save.stats) {
+        state.stats.wei = save.stats.wei || state.stats.wei;
+        state.stats.qing = save.stats.qing || state.stats.qing;
+        state.stats.liang = save.stats.liang || state.stats.liang;
+      }
+      state.sisterUnlocked = !!save.sisterUnlocked;
+      state._visitedNodes = save.visitedNodes || {};
+      state.beCount = save.beCount || state.beCount || 0;
+      state.ep = save.ep || state.ep || 'EP01';
+      state._resumedFromSave = true;   // 用于跳过教程动画等
+      // 若续玩点在婉儿之后，胶囊 & 成就入口直接展示
+      state.statsRevealed = true;
+      state.statsRevealT = Date.now() - 2000;
+      if (state.sisterUnlocked) state.achvRevealed = true;
+      // v82.1 · 续玩落点是 type:'end' 节点（如 k8）时，直接补组装 endPageInfo 并跳 __end__
+      //   正常流程走 goToNext() 时才组装，续玩跳过了这段，导致结局页黑屏
+      try {
+        var _resumeNode = getNode(save.curId);
+        if (_resumeNode && (_resumeNode.type === 'end' || (!_resumeNode.next && _resumeNode.type !== 'choice'))) {
+          if (_resumeNode.routes && _resumeNode.routes.length) {
+            var _rr = resolveEnding(_resumeNode);
+            var _rm = _rr.meta || {};
+            state.endPageInfo = { kind: 'he', endingKey: _rr.key, title: _rm.title || '荒年记 · 通关', subtitle: _rm.subtitle || '', text: _rm.body || '' };
+          } else {
+            state.endPageInfo = { kind: 'end', title: _resumeNode.title || '本集完', subtitle: '', text: _resumeNode.text || '' };
+          }
+          state.endPageInfo.fromId = save.curId;
+          state.curId = '__end__';
+          LG('RESUME-END-PAGE', '🏁 续玩落点为结局节点，直接进结局页', { fromId: save.curId, kind: state.endPageInfo.kind });
+        }
+      } catch (_resumeE) {}
+    } else {
+      console.log('[splash] START -> s1 (fresh)');
+      state.curId = RAW.start || 's1';
+    }
+    render();
+  }
+
+  // V74 · 点击「立即解锁」后的入口：先拉起授权弹窗，成功才真正进入
+  function startFromSplash () {
+    if (!state.splash.active) return;
+    if (state.user && state.user.nickName && !state.user.logging) {
+      return _enterGameAfterAuth();
+    }
+    if (state.user && state.user.logging) {
+      LG('SPLASH-CLICK', '授权中，忽略重复点击');
+      return;
+    }
+    try {
+      ksLogin(function () { _enterGameAfterAuth(); }, function (err) {
+        state.toasts = state.toasts || [];
+        state.toasts.push({ text: '需要完成登录喔～', color: '#ffbb55', t0: Date.now(), life: 1800 });
+        LG('AUTH-CANCEL', '用户取消授权，展示 toast', { err: err && (err.errMsg || err) });
+        render();
+      });
+    } catch (e) {
+      console.log('[login] error', e && e.message);
+      state.toasts = state.toasts || [];
+      state.toasts.push({ text: '需要完成登录喔～', color: '#ffbb55', t0: Date.now(), life: 1800 });
+      render();
+    }
+  }
+
+  // 资料加载不再依赖已经移除的登录按钮，也不阻断章节进入。
+  var playerProfile = null, profileRequested = false;
+  function getPlayerProfile () {
+    if (!playerProfile) playerProfile = global.UserProfile.create({
+      api: typeof ks !== 'undefined' ? ks : (isKS && sys.platform !== 'web' ? wx : null),
+      onChange: function (user) {
+        state.user = user;
+        if (user.avatarUrl && wx && wx.createImage) {
+          var avatar = wx.createImage();
+          avatar.onload = function () {
+            if (state.user !== user) return;
+            user.avatarImg = avatar;
+            render();
+          };
+          avatar.onerror = function () { LG('AVATAR-ERR', '头像加载失败，保留默认头像'); };
+          avatar.src = user.avatarUrl;
+        }
+        render();
+      }
+    });
+    return playerProfile;
+  }
+  function ksLogin (onSuccess, onFail) {
+    getPlayerProfile().load(true, onSuccess, onFail);
+  }
+  function requestPlayerProfile () {
+    profileRequested = true;
+    ksLogin(null, function () {
+      // 拒绝或接口异常仍可继续剧情；成就面板提供明确的重试入口。
+      render();
+    });
+  }
+
+  // v73.2 · 全局左下角版本号水印
+  var _verStr = (RAW.version || 'v?') + ' · ' + (RAW.updatedAt || '');
+  function drawVersionWatermark () {
+    ctx.save();
+    ctx.globalAlpha = 0.28;
+    ctx.fillStyle = '#c8a660';
+    ctx.font = '10px sans-serif';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'bottom';
+    ctx.fillText(_verStr, 8, H - 6);
+    ctx.restore();
+  }
+
+  // ============== v76.6 · 屏幕日志面板 ==============
+  // 用户炸："我现在都看不到日志啊！！！草泥马的！！"
+  // 方案：右上角常驻 🐛 按钮 —— 点开屏幕日志抽屉（内存 ring buffer 里 300 条 LG）
+  state._dbgLogOpen = false;
+  state._dbgLogScrollY = 0;
+  state._dbgLogFilter = '';   // 可选 tag 过滤（预留）
+  function drawDbgLogBtn () {
+    // v78.6 · 上线态：不显示 🐛 调试按钮（DBG_LOG_UI=false）
+    // 开发时想看日志：js/telemetry.js 顶部改 DEBUG_CONSOLE=true 或临时在此处置 DBG_LOG_UI=true
+    if (!global.__DBG_LOG_UI__) return;
+    var r = 20;
+    var cx = W - r - 12;
+    var cy = 44 + r;  // 顶部安全区下方
+    ctx.save();
+    ctx.globalAlpha = state._dbgLogOpen ? 0.95 : 0.72;
+    ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.fillStyle = state._dbgLogOpen ? '#ff6b3d' : 'rgba(20,10,4,0.82)';
+    ctx.fill();
+    ctx.strokeStyle = '#ffd97a'; ctx.lineWidth = 1.6; ctx.stroke();
+    ctx.font = '600 18px sans-serif';
+    ctx.fillStyle = '#ffd97a';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText('🐛', cx, cy + 1);
+    // 未读日志计数
+    var n = LG_RING.length;
+    if (n > 0) {
+      ctx.font = '600 10px sans-serif';
+      ctx.fillStyle = '#0e0';
+      ctx.fillText(String(n), cx, cy + r + 12);
+    }
+    ctx.restore();
+    state.hitZones.push({ x: cx - r - 8, y: cy - r - 8, w: r * 2 + 16, h: r * 2 + 16, action: 'ctrl:dbg_log_toggle' });
+  }
+  function drawDbgLogPanel () {
+    if (!global.__DBG_LOG_UI__) return; // v78.6 · 上线态：抽屉也一起关
+    if (!state._dbgLogOpen) return;
+    var pad = 12;
+    var boxX = pad, boxY = 80, boxW = W - pad * 2, boxH = H - boxY - 120;
+    ctx.save();
+    // 遮罩
+    ctx.fillStyle = 'rgba(0,0,0,0.72)';
+    ctx.fillRect(0, 0, W, H);
+    // 主体
+    ctx.fillStyle = 'rgba(10,6,2,0.98)';
+    roundRect(boxX, boxY, boxW, boxH, 12); ctx.fill();
+    ctx.strokeStyle = '#ffd97a'; ctx.lineWidth = 1.2; ctx.stroke();
+    // 标题栏
+    ctx.fillStyle = '#ffd97a'; ctx.font = '700 14px sans-serif';
+    ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+    ctx.fillText('🐛 日志 (' + LG_RING.length + '/' + LG_RING_MAX + ')', boxX + 12, boxY + 10);
+    // 操作按钮：清空 / 复制 / 关闭
+    var btnY = boxY + 8, btnH = 24;
+    function _drawBtn (label, x, w, act, color) {
+      ctx.fillStyle = color || 'rgba(255,217,122,0.18)';
+      roundRect(x, btnY, w, btnH, 6); ctx.fill();
+      ctx.strokeStyle = '#ffd97a'; ctx.lineWidth = 1; ctx.stroke();
+      ctx.fillStyle = '#ffd97a'; ctx.font = '600 12px sans-serif';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(label, x + w / 2, btnY + btnH / 2);
+      state.hitZones.push({ x: x - 4, y: btnY - 4, w: w + 8, h: btnH + 8, action: act });
+    }
+    var bx = boxX + boxW - 12;
+    _drawBtn('关闭', bx - 44, 44, 'ctrl:dbg_log_close'); bx -= 52;
+    _drawBtn('复制', bx - 44, 44, 'ctrl:dbg_log_copy'); bx -= 52;
+    _drawBtn('清空', bx - 44, 44, 'ctrl:dbg_log_clear', 'rgba(255,80,60,0.2)');
+    // 日志正文：单行紧凑显示，倒序（最新在顶）
+    var listY0 = boxY + 42;
+    var listH = boxH - 42 - 8;
+    var lineH = 13;
+    ctx.font = '10px monospace';
+    ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+    // 裁剪
+    ctx.save();
+    ctx.beginPath(); ctx.rect(boxX + 6, listY0, boxW - 12, listH); ctx.clip();
+    var lines = [];
+    for (var i = LG_RING.length - 1; i >= 0; i--) {
+      var it = LG_RING[i];
+      var line = '[' + it.ts.slice(0, 8) + '][' + it.tag + '] ' + (it.curId ? it.curId + ' ' : '') + (it.msg || '');
+      if (it.data !== undefined) { try { line += ' ' + JSON.stringify(it.data); } catch (_) { } }
+      lines.push({ line: line, tag: it.tag });
+    }
+    var maxScroll = Math.max(0, lines.length * lineH - listH);
+    if (state._dbgLogScrollY > maxScroll) state._dbgLogScrollY = maxScroll;
+    if (state._dbgLogScrollY < 0) state._dbgLogScrollY = 0;
+    var yStart = listY0 - state._dbgLogScrollY;
+    for (var k = 0; k < lines.length; k++) {
+      var yy = yStart + k * lineH;
+      if (yy + lineH < listY0 || yy > listY0 + listH) continue;
+      var tag = lines[k].tag;
+      // tag 类型着色
+      var color = '#ddd';
+      if (/ERR|FAIL|GHOST|TIMEOUT/.test(tag)) color = '#ff7373';
+      else if (/VIDEO/.test(tag)) color = '#7ad4ff';
+      else if (/IMG/.test(tag)) color = '#f5c66a';
+      else if (/RENDER|NEXT|GOTO/.test(tag)) color = '#8dff7a';
+      else if (/AUDIO|NARR/.test(tag)) color = '#c9a2ff';
+      ctx.fillStyle = color;
+      // 折断很长的行（简单：只画一行，超出裁剪掉）
+      var s = lines[k].line;
+      if (s.length > 100) s = s.slice(0, 100) + '…';
+      ctx.fillText(s, boxX + 10, yy);
+    }
+    ctx.restore();
+    // 滚动条
+    if (maxScroll > 0) {
+      var barX = boxX + boxW - 5;
+      var barTrackH = listH;
+      var barH = Math.max(20, listH * (listH / (lines.length * lineH)));
+      var barTop = listY0 + (barTrackH - barH) * (state._dbgLogScrollY / maxScroll);
+      ctx.fillStyle = 'rgba(255,217,122,0.4)';
+      ctx.fillRect(barX, barTop, 3, barH);
+    }
+    // 内容区注册滚动热区
+    state.hitZones.push({ x: boxX, y: listY0, w: boxW, h: listH, action: 'dbg_log_scroll_area' });
+    ctx.restore();
+  }
+
+  // 节点切换时资源槽管理（取代 AM group 机制）
+  //   _swapResources()：节点变化时，把当前槽移到待销毁槽
+  //   _releasePrevResources()：新内容（图/视频）就绪后，销毁待销毁槽
+  //   调用时机与原 _markGroupChange / _releasePrevGroup 相同
+
+  // 兼容旧代码中仍引用 _sceneGroup 的地方（group 参数已无实际作用）
+  var _sceneGroup = null;
+  var _prevSceneGroup = null;
+  var _jumpGroup = null;
+
+  var _lastSwapId = null;  // 防止同一节点多次 swap
+
+  function _markGroupChange (newGroup) {
+    // 仅保留接口兼容，实际用 _swapResources 驱动
+    void newGroup;
+  }
+
+  function _releasePrevGroup () {
+    _releasePrevResources();
+  }
+
+  function render () {
+    try {
+      renderGame();
+      if (global.Telemetry) {
+        var achv = global.Achievements && global.Achievements._debugState && global.Achievements._debugState();
+        global.Telemetry.onRenderTick(state, getNode, { height: H, achievements: !!(achv && (achv.popup || achv.drawerOpen || achv.detailId)) });
+      }
+    }
+    finally { if (global.AdminAdControl) global.AdminAdControl.draw(); }
+  }
+  function renderGame () {
+    if (state.chapterTransition && chapterTransition) {
+      state.hitZones = [];
+      _AD_PASS_CAP.on = false;   // v92.8 · 章节过渡页无免广胶囊，清热区
+      chapterTransition.draw(state.chapterTransition, !!(state.adLoading && state.adLoading.active), state.chapterTransition.notice);
+      if (state.adLoading && state.adLoading.active) drawAdLoading();
+      drawVersionWatermark();
+      return;
+    }
+    // All routes, including choices and saved positions, must honor chapter access.
+    var accessNode = getNode(state.curId);
+    if (!state.splash.active && chapterHome && accessNode && !isFailureNode(state.curId, accessNode)) {
+      var fromChapter = currentChapter(), toChapter = chapterHome.find(accessNode.ep);
+      if (fromChapter && toChapter && fromChapter.id !== toChapter.id && Number(toChapter.id.slice(2)) > Number(fromChapter.id.slice(2))) {
+        showChapterTransition(fromChapter, toChapter, state.curId);
+        return;
+      }
+      if (!chapterHome.isUnlocked(accessNode.ep)) {
+        showChapterHome(accessNode.ep);
+        return;
+      }
+      if (chapterHome.find(accessNode.ep)) {
+        state._activeChapter = accessNode.ep;
+        state._chapterLastNode = state.curId;
+      }
+    }
+    // V75 · BGM 引擎每帧检查目标曲目
+    try { bgmTick(); } catch (_) { }
+    // 节点变化时 swap 资源槽（新内容就绪后在 video onPlay / loadImg 回调里调 _releasePrevResources）
+    if (_lastSwapId !== state.curId) {
+      _lastSwapId = state.curId;
+      _swapResources();
+    }
+    // V41 · 离开 BE 页时销毁旁白音频（切到 splash / 广告复活后的视频节点 / restart 等）
+    if (state.curId !== '__be__' && beAudioCtx) { stopBEAudio(); }
+    // V64 · 旁白/内心 OS 音频：curId 变化时先 stop 旧的；下面拿到节点后再决定是否播新的
+    if (narrAudioKey && narrAudioKey !== state.curId) { stopNarrAudio(); }
+    // V64.2 · 节点变了才重置"已播标记"，静音切换/重画不会误判
+    // v82.1 · __end__ 页 fromId 不等于 '__end__'，跳过清除，否则每帧清掉 narrPlayedFor 导致旁白无限重播
+    if (narrPlayedFor && narrPlayedFor !== state.curId && state.curId !== '__end__') { narrPlayedFor = null; }
+    // v71.7 · medal_first popup 关闭后自动 resume s3 视频
+    if (state._pausedForMedalFirst && !isAchvBusy() && !state.sisterUnlockAudioCtx) {
+      resumeVideoAfterSisterUnlock();
+    }
+    if (state.splash && state.splash.active) {
+      drawSplash();
+      // V66 · splash 阶段也可能弹 loading（如预加载时触发）——全局总入口
+      if (state.adLoading && state.adLoading.active) drawAdLoading();
+      // v73.2 · splash 页也画版本水印
+      drawVersionWatermark();
+      drawDbgLogBtn(); drawDbgLogPanel();
+      try { if (global.Telemetry) global.Telemetry.drawDebugOverlay(ctx, canvas); } catch (_) { } // TELEMETRY
+      return;
+    }
+    // V32·8·final · 【铁律】除 BE_ 节点外，所有"无 media 的字幕中转节点"（不管是旁白还是角色对白）
+    //         一律自动 next() 跳过，绝不显字幕。台词卡只在大结局 BE 页保留。
+    //         例：s5→s5b(沈婉儿"就这大半碗面了…")→s5c(沈婉儿"再撑三天…")→f_s5(选择)
+    //             之前会一路弹字幕卡；现在 render 入口一律跳到 f_s5。
+    //         允许保留的字幕：BE_ 节点、choice 节点、video/image 节点自身、end 节点。
+    //   v71 · 新增 stay:true 白名单：过渡旁白 / 换装/跳舞求赞回应 / bridge 桥段必须显示。
+    var _n = getNode(state.curId);
+    if (_n && !/^BE_/.test(state.curId) && !_n.media && _n.next && _n.type !== 'choice' && _n.type !== 'end' && !_n.isEnd && !_n.stay) {
+      LG('AUTO-SKIP-CAPTION', '⏭ render 入口跳过纯文本字幕中转', { id: state.curId, speaker: _n.speaker, to: _n.next });
+      state.curId = _n.next;
+      setTimeout(render, 0);
+      return;
+    }
+    // V31·5 · 每帧重置 caption 位置探测
+    state._captionShown = false;
+    state._captionTopY = 0;
+    state.hitZones = [];
+    _AD_PASS_CAP.on = false;   // v92.8 · 与 hitZones 同生命周期，防提前 return 的帧残留旧热区
+    logCurrent();
+    var node = getNode(state.curId);
+    // V64 · 旁白/内心 OS 节点：进入时播放对应音频（下一帧节点切换会自动 stop）
+    // V64.1 · 视频节点自带音轨，跳过；只对 image/null-media 的旁白节点播 TTS
+    // V64.2 · 同一节点已播过一次就不再重启（静音切换/重画时不复播）
+    if (shouldPlayNarr(node) && narrPlayedFor !== state.curId) {
+      playNarrAudio(state.curId);
+      narrPlayedFor = state.curId;
+    }
+    // 只在节点真切换时打一次 RENDER-NODE
+    if (LOG.lastRenderKey !== state.curId) {
+      LOG.lastRenderKey = state.curId;
+      LG('RENDER-NODE', '→ 渲染新节点', {
+        id: state.curId,
+        type: node && node.type,
+        mediaKind: node && node.media && node.media.kind,
+        mediaFile: node && node.media && node.media.file,
+        hasText: !!(node && node.text),
+        text: node && node.text ? node.text.slice(0, 20) + '…' : null,
+        next: node && node.next
+      });
+    }
+    drawBg(!!state.video);
+    if (state.curId === '__be__') {
+      // V64 · 若 BE 视频已 pause 但被 keep-alive，保留其最后一帧作背景（drawBg 已画）；
+      //       否则（image 型 BE / choice→BE 未有视频）清视频走纯色背景。
+      if (!state.beKeepVideoAlive) clearVideo();
+      drawBE();
+      // v92.7 · BE 页也必须绘制解锁弹窗：底栏 unlock_all 按钮在 BE 页同样可见，
+      //   若这里不画，弹窗 state 已置 true 但屏幕上什么都没有 → 用户点「看广告解锁」
+      //   自然毫无反应。层级：低于广告 loading，高于 BE 内容。
+      if (state._unlockAllOpen) drawUnlockAllModal();
+      // V32·10 · BE 页也要显示广告 loading（复活按钮点击后需要立即反馈）
+      if (state.adLoading && state.adLoading.active) drawAdLoading();
+      // v73.2 · BE 页也画版本水印
+      drawVersionWatermark();
+      drawDbgLogBtn(); drawDbgLogPanel();
+      try { if (global.Telemetry) global.Telemetry.drawDebugOverlay(ctx, canvas); } catch (_) { } // TELEMETRY
+      return;
+    }
+    if (!node) {
+      clearVideo();
+      // v78.8 · 兜底路径也不能黑屏：节点丢失（存档失效/story 改版）时给个可读文案
+      if (!state.endPageInfo) {
+        state.endPageInfo = { kind: 'end', title: '本集完', subtitle: '', text: '这一段告一段落了 · 点「重玩一遍」再试试别的选择？' };
+      }
+      drawEnd();
+      // v92.7 · __end__ 页同理，必须绘制解锁弹窗（否则点了没反应）
+      if (state._unlockAllOpen) drawUnlockAllModal();
+      // V66 · __end__ 页也要展示广告 loading（全局铁律）
+      if (state.adLoading && state.adLoading.active) drawAdLoading();
+      // v73.2 · __end__ 页也画版本水印
+      drawVersionWatermark();
+      drawDbgLogBtn(); drawDbgLogPanel();
+      try { if (global.Telemetry) global.Telemetry.drawDebugOverlay(ctx, canvas); } catch (_) { } // TELEMETRY
+      return;
+    }
+    if (node.ep) state.ep = node.ep;
+    if (node.epTitle) state.epTitle = node.epTitle;
+
+    var isChoice = node.type === 'choice';
+    var m = node.media;
+    var mediaKind = m && m.kind;
+
+    // v71.13 · 无 media 节点（stay 过渡 / choice 无 media）兜底：
+    //   如果前一段视频已 pause 但容器不留最后一帧 → 主动把 lastframe 塞成 mediaImg 作背景，
+    //   避免 f_dress_a / k_side_after / k0 等节点纯黑屏"没有素材图"。
+    // v71.17 · 【永久兜底】即使 videoKey 被 clearVideo 清掉，用 state._lastVideoKeyForFallback（永久记住）作 lastframe key
+    if (!m && !state.mediaImg) {
+      var _lfKey = lastframeKeyOf(state.videoKey || state._lastVideoKeyForFallback) || (_REG.NODE_POSTERS || {})[state.curId] || RAW.meta.homeBackground;
+      var _lfPath = _lfKey;
+      if (_lfKey && _lastframeCache[_lfKey]) {
+        _trackImg(_lastframeCache[_lfKey], _lfKey);
+        state.mediaImg = _lastframeCache[_lfKey];
+        state.mediaImgKey = _lfPath;
+        try { LG('STAY-FALLBACK-CACHE', '🖼 stay/choice 节点用视频 lastframe 兜底', { id: state.curId, key: _lfKey }); } catch (_) { }
+      } else if (_lfPath && !_imageCooling(_lfPath) && (state.mediaImgKey !== _lfPath || _imageRetryDue(_lfPath))) {
+        // 已知 404 或已在加载中 → 跳过，不重复触发
+        state.mediaImgKey = _lfPath;  // 占位：防止 render 每帧重入
+        try { LG('STAY-FALLBACK-ASYNC', '⏳ stay/choice 节点触发 lastframe 异步兜底', { id: state.curId, path: _lfPath }); } catch (_) { }
+        try {
+          var _curId = state.curId;
+          var _stayLfGroup = _sceneGroup || 'scene_default';
+          loadImg(_lfPath, function (im) {
+            if (!im) return;  // _failedSrcs 已记录，不打日志
+            _lastframeCache[_lfKey] = im;
+            // 只要节点没换走，就塞进去（stay/choice 都可能是新的 curId）
+            if (state.curId === _curId) {
+              state.mediaImg = im;
+              state.mediaImgKey = _lfPath;
+              try { LG('STAY-FALLBACK-OK', '✅ stay 兜底图加载完成', { id: _curId, key: _lfKey }); } catch (_) { }
+              render();
+            }
+          }, _stayLfGroup);
+        } catch (_) { }
+      }
+      // 视频已经 onEnded，可以清掉了（避免继续挂在 state.video 上占资源）
+      if (state.video && state.mediaImg) {
+        try { state.video.destroy && state.video.destroy(); } catch (_) { }
+        state.video = null; state.videoKey = null; state._oldVideoAlive = false;
+      }
+    }
+
+    if (!isChoice && m && (mediaKind === 'skillcard')) {
+      // V31·8 · 方案 A：技能卡走成就浮层，保留上一帧视频背景（不 clearVideo）
+      if (state.video && state.video.pause) { try { state.video.pause(); } catch (e) { } }
+      state.mediaImg = null;
+      if (state.imgAdvKey !== state.curId) {
+        state.imgAdvKey = state.curId;
+        // 触发成就系统的技能解锁浮层（3s 展示 + 缩小飞向右上）
+        var skillId = m.achvId || 'skill_land';   // s6b 默认解锁 skill_land
+        if (global.Achievements && global.Achievements.unlock) {
+          // 历史存档已解锁时也补展示一次技能浮层，避免只留下 already unlocked 日志。
+          try { global.Achievements.unlock(skillId, { forcePopup: true }); } catch (e) { LG('SKILLCARD-ERR', String(e)); }
+        }
+        // V45 · 停顿修复：成就浮层动画共 320(in)+2000(stay)+600(shrink)=2920ms
+        //   之前默认 3500ms → 浮层 shrink 完还要多等 0.6s 黑屏 → 用户感受"说完话愣 3 秒"
+        //   现在改成 2300ms：等浮层 in+stay 结束的瞬间就 next() 到 f_s6，
+        //   浮层 shrink 缩飞的同时选项已经画出来 → 无缝衔接，仪式感也没丢
+        // 不按倍速缩短仪式时长；技能浮层需完整展示后才能进入章节过渡页。
+        var dur = Math.max(2200, Math.round((m.duration || 3000) / curSpeed()));
+        var skillNodeId = state.curId;
+        if (state._autoAdvTimer) clearTimeout(state._autoAdvTimer);
+        var skillWaitT0 = Date.now();
+        var waitSkillPopup = function () {
+          if (state.splash.active || state.chapterTransition || state.curId !== skillNodeId || state.imgAdvKey !== skillNodeId) {
+            state._autoAdvTimer = null;
+            return;
+          }
+          var age = Date.now() - skillWaitT0;
+          var busy = isAchvBusy();
+          // 等待 popup shrink 完成；异常时 8 秒兜底，避免阻塞剧情。
+          if ((age >= dur && !busy) || age >= 8000) {
+            state._autoAdvTimer = null;
+            next();
+          } else {
+            state._autoAdvTimer = setTimeout(waitSkillPopup, 100);
+          }
+        };
+        state._autoAdvTimer = setTimeout(waitSkillPopup, dur);
+      }
+    } else if (!isChoice && m && m.file) {
+      var f = m.file;
+      var isVideo = mediaKind === 'video' || /\.mp4$/i.test(f);
+      // V65 · 只对 "bare filename"(不含 /) 才补 CDN 前缀；以 assets/ 开头的相对路径保留本包读取。
+      //   之前 BUG：任何不以 http 开头的一律干掉中间目录拼 CDN，导致 assets/ui/s10c_dusk.jpg 被拼成
+      //   https://p4-ad.adkwai.com/.../s10c_dusk.jpg → CDN 上根本没有 → 6s timeout → 黑屏。
+      if (!/^https?:\/\//.test(f) && f.indexOf('/') < 0) {
+        f = 'https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/' + f;
+      }
+      // V31·5 · BE 叠加模式：底层保留 BE 视频最后一帧，不切换到 image
+      if (state.beOverlayFromId && !isVideo && state.video) {
+        LG('BE-OVERLAY-KEEP', 'BE 叠加：保留视频不切图', { curId: state.curId, keptVideo: state.beOverlayFromId });
+        // 不做任何 setVideo / setImg，只画字幕（下面会走）
+      } else if (isVideo) {
+        setVideo(f);
+      } else {
+        // V35·2 · 图片黑屏根治：不立刻 clearVideo / 清 mediaImg
+        //   之前：clearVideo() → 视频消失黑底 → mediaImg=null → drawBg 渲染深棕渐变 → 等 loadImg 回调 → 才有图
+        //   现在：保留旧视频/旧图作过渡背景 → 新图 loadImg 回调 ready 后才切换
+        if (state.mediaImgKey !== f || _imageRetryDue(f)) {
+          LG('IMG-LOAD-START', '🖼  开始加载图片（保留过渡帧）', { url: f, hadVideo: !!state.video, hadImg: !!state.mediaImg });
+          state.mediaImgKey = f;
+          // v76.0 · 「加载中」占位：显示旧图 or 黑底 + 转圈 UI（用户不再看到错图）
+          state.mediaImgLoading = true;
+          state.mediaImgLoadingT0 = Date.now();
+          // 关键：state.mediaImg 不清零；state.video 不 clearVideo；两者之一继续画着
+          var _imgGroup = _sceneGroup || 'scene_default';
+          loadImg(f, function (im) {
+            if (state.mediaImgKey === f) {
+              // v72.5 · 关键护栏：im=null（超时/加载失败）时保留旧图，禁止把 mediaImg 抹成 null 造成黑屏
+              if (im) {
+                // v81.0 · 新图就绪 → 释放旧 group（与当前 group 不同）
+                _releasePrevGroup();
+                state.mediaImg = im;
+                state._telemetryImageReadyKey = f;
+                state.mediaImgLoading = false;
+                LG('IMG-LOAD-OK', '✅ 图片加载完成 → 切换背景', { url: f, w: im.width, h: im.height });
+                if (state.video) { try { state.video.destroy && state.video.destroy(); } catch (e) { } state.video = null; state.videoKey = null; state._oldVideoAlive = false; }
+                render();
+              } else {
+                LG('IMG-LOAD-KEEP', '⚠️ 加载失败 · 保留旧图不黑屏', { url: f });
+                // Keep the attempted key: known failed URLs complete synchronously in
+                // loadImg(), so clearing it here recursively re-enters render forever.
+                state.mediaImgLoading = false;
+                render();
+              }
+            } else {
+              LG('IMG-LOAD-STALE', '回调时 mediaImgKey 已变，丢弃', { url: f, curKey: state.mediaImgKey });
+            }
+          }, _imgGroup);
+        } else if (state.mediaImg && state.video) {
+          // 同一张图但视频还在（BE 叠加边界情况）→ 补一次销毁
+          try { state.video.destroy && state.video.destroy(); } catch (e) { }
+          state.video = null; state.videoKey = null; state._oldVideoAlive = false;
+        }
+        if (state.imgAdvKey !== state.curId) {
+          state.imgAdvKey = state.curId;
+          // V30：取消图片自动前进，完全改为用户点「继续 ▸」才翻页
+          LG('IMG-NO-AUTOADV', '🖌 图片节点等待用户手动点继续', { curId: state.curId });
+        }
+      }
+    } else if (isChoice) {
+      // 选择节点：保留上一帧的视频/图片作为背景，只改叠加 UI
+      // v72.3 · 修复 f1 类图片选项黑屏：choice 节点若自带 media.file(image)，必须主动加载
+      //         之前只在 CHAPTER-JUMP 路径处理，正常流点选项进入 choice 时图片不显示
+      if (m && m.file && (mediaKind === 'image' || /\.(jpg|jpeg|png|webp)$/i.test(m.file))) {
+        var _cf = m.file;
+        if (!/^https?:\/\//.test(_cf) && _cf.indexOf('/') < 0) {
+          _cf = 'https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/' + _cf;
+        }
+        if (state.mediaImgKey !== _cf || _imageRetryDue(_cf)) {
+          LG('CHOICE-IMG-START', '🖼  choice 节点带图 · 主动加载（不黑屏，保留上一帧）', { url: _cf, curId: state.curId });
+          state.mediaImgKey = _cf;
+          // v90.1 · 【修复引导弹窗消失后黑屏+loading】
+          //   choice 节点始终有上一帧画面兜底（lastframe 或视频帧），
+          //   不需要 mediaImgLoading=true 触发 drawMediaImg 的纯黑占位，
+          //   否则 tutorial overlay 遮住黑屏 → 点掉引导后黑屏暴露。
+          // state.mediaImgLoading = true;  ← 故意不设，choice 用上一帧过渡
+          var _choiceGroup = _sceneGroup || 'scene_default';
+          loadImg(_cf, function (im) {
+            if (state.mediaImgKey === _cf) {
+              // v72.5 · choice 图同样保留旧图护栏
+              if (im) {
+                _releasePrevGroup();
+                state.mediaImg = im;
+                LG('CHOICE-IMG-OK', '✅ choice 图片加载完成', { url: _cf });
+                if (state.video) { try { state.video.destroy && state.video.destroy(); } catch (e) { } state.video = null; state.videoKey = null; state._oldVideoAlive = false; }
+                render();
+              } else {
+                LG('CHOICE-IMG-KEEP', '⚠️ choice 加载失败 · 保留旧图', { url: _cf });
+                // Keep the attempted key: cached failures complete synchronously.
+                render();
+              }
+            }
+          }, _choiceGroup);
+        }
+      }
+    } else {
+      // 子节点（无 media）：保持上一帧视频/图片，只换台词
+      // V30：不 3s 自动前进，等用户手动点「继续 ▸」
+      if (state.imgAdvKey !== state.curId) {
+        state.imgAdvKey = state.curId;
+      }
+    }
+
+    // v72.5 · 主动预取下一节点的图片，避免用户点「继续 ▸」后才冷加载
+    try { _prefetchNextMedia(node); } catch (e) { }
+
+    drawMediaImg();
+    // V40 · 视频字幕（FunASR 字级时间戳 · 逐字高亮）
+    if (mediaKind === 'video' && state.video && state.videoStarted && global.SUBTITLES) {
+      try { drawVideoSubtitle(m && m.file, node); } catch (e) { /* silent */ }
+    }
+    // V31·8 · 技能卡不再自绘，由 Achievements.unlock() 弹浮层展示
+
+    // 右侧数值（沉浸模式隐藏）
+    // v71.22 · 【门槛纠正】用户点名 v71.17 写反了：
+    //   ✅ 三个数值胶囊 wei/qing/liang → 新手引导收起（第一个 choice 出现后）就出，跟婉儿登场无关
+    //   ✅ 成就胶囊 → 婉儿登场（sisterUnlocked）且解锁音频播完（_pausedForMedalFirst=false）后才出
+    //   之前把三胶囊也 gate 在 sisterUnlocked，导致婉儿没登场时三胶囊永远不出、婉儿刚登场那几秒也空
+    // v72.3 · 【永久守卫】两个门槛必须独立、不允许合并，加断言防再回归
+    var _immersive = state.ui && state.ui.immersive;
+    // v92.8 · 【全局取消「先隐藏再展示」】用户要求：几个胶囊默认全部展示在侧边。
+    //   原成就胶囊被 gate 在 sisterUnlocked && !_pausedForMedalFirst，导致开局左侧
+    //   只有三个数值胶囊、婉儿登场后成就胶囊才「凭空冒出来」，视觉上是突兀的弹入。
+    //   现在两者都只受沉浸模式影响：非沉浸态 → 数值胶囊 + 成就胶囊 + 免广胶囊全在。
+    var _statsVisible = !_immersive;
+    var _achvVisible = !_immersive;
+    if (_statsVisible) drawStatsRight();
+
+    // V33·2 · 视频切换的黑闪根治：
+    //   · 有 mediaImg 或 上一帧视频仍显示 → 用 dim=false（右下角小 spinner，不遮黑）
+    //   · 完全无背景（首次进入 / clearVideo 后） → dim=true（居中大 spinner + 半透明黑幕）
+    var loadingShown = false;
+    var _hasBg = !!state.mediaImg || (!!state.video && state.videoStarted) || !!state._oldVideoAlive;
+    // V41.4 · 起播延迟宽容：native onPlay 通常 200-500ms，用户会看到"正在加载"闪一下
+    //         → 有背景时永远不遮罩；无背景时给宽容期后再画 loading
+    // v92.7 · 宽容期 800→320ms：既然不再贴末帧占位，无背景时就是深棕底，
+    //         干等 800ms 什么都没有反而更像卡住，早点出「嫂子正在准备…」更稳。
+    if (!state._videoStartT0 || state._videoStartKey !== state.curId) {
+      state._videoStartT0 = Date.now();
+      state._videoStartKey = state.curId;
+    }
+    var _startingElapsed = Date.now() - state._videoStartT0;
+    var _showLoading = false;
+    if (state.videoLoading) _showLoading = true;
+    else if (mediaKind === 'video' && state.video && !state.videoStarted) {
+      if (!_hasBg && _startingElapsed > 320) _showLoading = true;
+    }
+    if (_showLoading) { drawLoading(_hasBg ? false : true); loadingShown = true; }
+    // V35·2 · 图片加载中也画 loading（有过渡背景就用小 spinner，无背景才画大黑幕）
+    else if (!isChoice && mediaKind === 'image' && state.mediaImgKey && !state.mediaImg) {
+      drawLoading(_hasBg ? false : true); loadingShown = true;
+    }
+
+    // 每帧渲染状态摘要（只在【状态跳变】时打，避免打字机 chars 每帧刷屏）
+    //   ⚠️ 不能带 tw.chars（每帧+1 → key 每帧变 → 每帧打）
+    var drawKey = state.curId + '|' + (state.video ? 'V' : '_') + (state.videoStarted ? 'p' : '_') + (state.videoLoading ? 'L' : '_') + '|img=' + (state.mediaImg ? '1' : '0') + '|load=' + (loadingShown ? '1' : '0') + '|tw=' + (state.tw && state.tw.done ? 'D' : 'P');
+    if (LOG.lastDrawState !== drawKey) {
+      LOG.lastDrawState = drawKey;
+      LG('DRAW-STATE', '🎨 当帧绘制状态', {
+        video: !!state.video, videoStarted: state.videoStarted, videoLoading: state.videoLoading,
+        mediaImg: !!state.mediaImg, mediaImgKey: state.mediaImgKey,
+        loadingLayer: loadingShown,
+        twDone: state.tw && state.tw.done, twChars: state.tw && state.tw.chars,
+        drewCaption: !isChoice && node.text && (!m || mediaKind !== 'video')
+      });
+    }
+
+    if (isChoice) {
+      markStoryPlayed();
+      drawChoiceBottom(node);
+    } else if (node.text && (!m || mediaKind !== 'video') && !(m && m.kind === 'skillcard')) {
+      // v72.1 · 铁律：视频节点【100% 不叠 node.text 字幕】——一律让 ASR 字幕（drawVideoSubtitle）接管
+      //         forceCaption:true 已废弃在 video 上的效果，避免"旁白/内心 OS" 字幕与视频真人对白 ASR 字幕互撞
+      //         只有反应图（kind:image）和纯文本子节点（无 media）才画台词条
+      // V37·1 · 技能卡节点：完全不画字幕框（成就 popup 自带讲述），由 setTimeout 3.5s 自动前进
+      // v71.4 · stay:true 节点是真台词（婉儿求赞回应/内心 OS/bridge 旁白），需保留继续按钮 + 不自动 1.2s 前进，等旁白音频播完再前进
+      var _isPlainText = !m;   // 无 media = 纯文本连接节点（例：s2b "她来了"）
+      var _isStay = !!node.stay;  // v71.4 · stay 节点走"手动/音频完成"节奏
+      var _isReactionImg = m && m.kind === 'image';
+      markStoryPlayed();
+      drawCaptionBottom(node, {
+        hideContinueBtn: _isPlainText && !_isStay,
+        autoAdvance: _isPlainText && !_isStay
+      });
+    } else if (/^BE_/.test(state.curId) && mediaKind === 'video') {
+      // V31·10 · BE 视频节点不在这里画台词（视频播完会直接进 __be__ 结局页）
+    }
+
+    // v97.0 · 拖拽解锁互动层：视频暂停等待手势时叠加在最上层
+    if (global.DragUnlock && global.DragUnlock.isActive()) {
+      try { global.DragUnlock.draw(ctx, W, H); } catch (_eDrawDrag) { }
+    }
+
+    // 底部控制栏（5 按钮）—— 沉浸模式下只保留一个眼睛
+    if (!state.hasPlayedStory && mediaKind === 'video' && !state.videoStarted) {
+      ctx.save();
+      ctx.fillStyle = 'rgba(20,18,13,0.80)'; ctx.fillRect(0, H - 142, W, 70);
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.font = '11px serif'; ctx.fillStyle = '#d3c3a3';
+      ctx.fillText('本故事纯属虚构', W / 2, H - 124);
+      ctx.font = '10px sans-serif'; ctx.fillStyle = '#b0a18a';
+      ctx.fillText('著作权人：北京慕远科技有限公司', W / 2, H - 107);
+      ctx.fillText('认证号：2026SA0124642', W / 2, H - 90);
+      ctx.restore();
+    }
+    drawControlBar(isChoice);
+    // V36 · 老剧情日志面板由 drawStoryChapterDrawer 替代 · 在顶层区块 draw
+
+    // V32 · 别碰我反馈（波纹 + 贴纸），画在数值 toast 之下
+    drawTapFx();
+    // 选项反馈：toast + 飞行粒子（绘于最顶层）
+    if (!isAchvBusy()) drawFeedback();
+    // V36 · 成就入口胶囊：与 stats 胶囊同层级，画在 like 按钮之前，防止入口遮挡 like
+    // v71.22 · 成就胶囊走 _achvVisible（婉儿登场+音频完）；不再复用 _uiUnlocked
+    if (global.Achievements && global.Achievements.setEntryVisible) {
+      global.Achievements.setEntryVisible(!!_achvVisible);
+    }
+    state._achvEntryVisible = !!_achvVisible;
+    if (global.Achievements && global.Achievements.drawEntryOnly && _achvVisible) {
+      global.Achievements.drawEntryOnly();
+    }
+    // v92.8 · 免广告通行证胶囊：紧贴成就胶囊下方，与其同显隐（沉浸态一起隐藏）
+    if (_achvVisible) { try { drawAdPassCapsule(); } catch (_eap) { } }
+    else { _AD_PASS_CAP.on = false; }
+    // 直播间点赞按钮（视频/图片节点显示，choice 节点隐藏）
+    drawLikeButton(isChoice);
+    // 成就系统 overlay（drawer/detail/popup/toast）：最顶层，不含入口胶囊
+    if (global.Achievements) {
+      if (state.ui && state.ui.immersive) {
+        global.Achievements.drawPopupOnly && global.Achievements.drawPopupOnly();
+      } else if (global.Achievements.drawOverlaysOnly) {
+        global.Achievements.drawOverlaysOnly();
+      } else {
+        global.Achievements.draw();
+      }
+    }
+    // V36 · 剧情浮层（对齐成就抽屉样式）—— 顶层
+    if (state.ui && state.ui.logOpen) drawStoryChapterDrawer();
+    // v92.4 · 新手引导浮层已删除（原在此处于首个 choice 节点顶层弹出）
+    // v92.4 · 「解锁全部章节」弹窗：层级高于抽屉，低于广告 loading
+    if (state._unlockAllOpen) drawUnlockAllModal();
+    // V31·8 · 广告加载中蒙层：最顶层
+    if (state.adLoading && state.adLoading.active) drawAdLoading();
+    // v73.2 · 全局左下角版本号水印（最顶层，半透明不影响体验）
+    drawVersionWatermark();
+    // v76.6 · 🐛 日志按钮 + 抽屉（最顶层，任何页面都能看日志）
+    drawDbgLogBtn();
+    drawDbgLogPanel();
+    try { if (global.Telemetry) global.Telemetry.drawDebugOverlay(ctx, canvas); } catch (_) { } // TELEMETRY
+  }
+
+  // V31·8 · 广告加载中蒙层
+  function drawAdLoading () {
+    var now = Date.now();
+    var age = now - (state.adLoading.t0 || now);
+    // 全屏半透明黑遮罩
+    ctx.save();
+    ctx.fillStyle = 'rgba(0,0,0,0.72)';
+    ctx.fillRect(0, 0, W, H);
+    // 中央卡片
+    var cw = 240, ch = 150;
+    var cx = (W - cw) / 2, cy = (H - ch) / 2;
+    // 卡片背景
+    ctx.fillStyle = 'rgba(20,10,4,0.92)';
+    roundRect(cx, cy, cw, ch, 16); ctx.fill();
+    ctx.strokeStyle = 'rgba(230,190,110,0.65)';
+    ctx.lineWidth = 1.5;
+    roundRect(cx + 0.75, cy + 0.75, cw - 1.5, ch - 1.5, 15.4); ctx.stroke();
+    // 旋转圆环 loading
+    var spinCX = cx + cw / 2, spinCY = cy + 50;
+    var spinR = 20;
+    var rot = (age / 900) * Math.PI * 2;   // 每 900ms 转一圈
+    ctx.save();
+    ctx.translate(spinCX, spinCY);
+    ctx.rotate(rot);
+    // 底环
+    ctx.strokeStyle = 'rgba(230,190,110,0.18)';
+    ctx.lineWidth = 3.5;
+    ctx.beginPath(); ctx.arc(0, 0, spinR, 0, Math.PI * 2); ctx.stroke();
+    // 弧段（3/4 圆）
+    ctx.strokeStyle = '#ffd876';
+    ctx.lineWidth = 3.5;
+    ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.arc(0, 0, spinR, -Math.PI / 2, Math.PI); ctx.stroke();
+    ctx.restore();
+    // 主文案
+    ctx.fillStyle = '#ffd876';
+    ctx.font = '700 16px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    var dots = '';
+    var dotN = Math.floor((age / 400) % 4);
+    for (var _d = 0; _d < dotN; _d++) dots += '·';
+    ctx.fillText((state.adLoading.text || '正在加载广告') + dots, cx + cw / 2, cy + 100);
+    // 副文案
+    ctx.fillStyle = 'rgba(255,220,140,0.65)';
+    ctx.font = '11px sans-serif';
+    ctx.fillText('请稍候，广告即将播放', cx + cw / 2, cy + 124);
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'alphabetic';
+    ctx.restore();
+  }
+
+  function next () {
+    if (state.splash.active || state.chapterTransition) return;
+    var node = getNode(state.curId);
+    // v76.6 · next() 入口全埋点：谁调用（stack） / 当前节点 / 目标节点
+    LG('NEXT-ENTRY', '➡️ next() 入口', {
+      curId: state.curId,
+      curType: node && node.type,
+      curMediaKind: node && node.media && node.media.kind,
+      curMediaFile: node && node.media && node.media.file,
+      nextTarget: node && node.next,
+      hasVideo: !!state.video,
+      videoStarted: state.videoStarted,
+      videoEnded: state.videoEnded
+    });
+    if (!node) { LG('NEXT-NOOP', '❌ 无当前节点，忽略 next'); return; }
+    if (node.type === 'choice') { LG('NEXT-BLOCK', '⛔ choice 节点不能自动 next'); return; }
+    // v94.1 · 节点级广告拦截：node.ad=true 且未看完 → 弹广告，看完再 next
+    // v95.1 · 修复：_adUnlocked 不能挂在 node 对象上（共享引用，首次解锁后永久免广告）
+    //   改为挂在 state._nodeAdUnlocked[nodeId] 上，由 restart() 统一清零
+    state._nodeAdUnlocked = state._nodeAdUnlocked || {};
+    if (node.ad && !state._nodeAdUnlocked[state.curId]) {
+      var _adNodeId2 = state.curId;
+      try { saveProgress(); } catch (_) { }
+      state.adLoading = { active: true, t0: Date.now(), text: '正在加载广告…' };
+      render();
+      var _clearAdLoading2 = function () { if (state.adLoading) state.adLoading.active = false; };
+      var doReward2 = function () {
+        _clearAdLoading2();
+        if (state._nodeAdUnlocked[_adNodeId2]) return;
+        state._nodeAdUnlocked[_adNodeId2] = true;
+        LG('NODE-AD-OK', '✅ 节点广告已看完，放行 next', { nodeId: _adNodeId2 });
+        next();
+      };
+      var doFail2 = function (reason) {
+        _clearAdLoading2();
+        if (state._nodeAdUnlocked[_adNodeId2]) return;
+        var _rs = (reason && reason.reason) || '未看完';
+        var _msg = '未看完广告，未解锁';
+        if (_rs === 'timeout') _msg = '广告加载超时，请稍后重试';
+        else if (_rs === 'load_fail' || _rs === 'no_load') _msg = '广告加载失败，请检查网络';
+        state.toasts = state.toasts || [];
+        state.toasts.push({ text: _msg, color: '#ffbb55', t0: Date.now(), life: 1800 });
+        render();
+      };
+      try {
+        if (typeof KwaiDataAnalysis !== 'undefined') KwaiDataAnalysis.reportAnalytics('ad_click', { node: _adNodeId2, unit: node.adUnitId || '2300058116_01' });
+      } catch (e) { }
+      // v92.6 · 走统一闸门：今日免广告特权生效时直接放行，不调起激励视频
+      showRewardedGated(doReward2, doFail2, 'node_ad');
+      return;
+    }
+    // V75 · 每次推进前持久化存档
+    try { saveProgress(); } catch (_) { }
+    // V31·4 · 成就浮层展示期间，禁止 next 推进（等浮层播完/被点掉再走）
+    if (isAchvBusy()) {
+      LG('NEXT-WAIT-ACHV', '成就浮层播放中，延迟推进');
+      setTimeout(next, 500);
+      return;
+    }
+    // V31 · BE 结局节点：进入 BE 页
+    if (node.isEnd || (isFailureNode(state.curId, node) && (node.type === 'end' || !node.next))) {
+      LG('NEXT-BE', 'BE 结局', { endType: node.endType, curId: state.curId });
+      state.endInfo = { endType: node.endType, title: node.title, text: node.text, fromId: state.curId };
+      bumpBeCount(state.curId);   // V31·10 · BE 计数 +1
+      state.curId = '__be__'; clearVideo(); render(); return;
+    }
+    if (node.type === 'end' || !node.next) {
+      var completedChapter = currentChapter();
+      var nextChapter = completedChapter && (RAW.meta.homeChapters || []).filter(function (chapter) {
+        return !chapter.hidden && Number(chapter.id.slice(2)) === Number(completedChapter.id.slice(2)) + 1;
+      })[0];
+      if (!isFailureNode(state.curId, node) && nextChapter) {
+        showChapterTransition(completedChapter, nextChapter, nextChapter.start); return;
+      }
+      LG('NEXT-END', '到结尾', { type: node.type, next: node.next });
+      // v78.8 · 铁律：结局页绝不黑屏。进 __end__ 前必须把文案备齐（三种来源）
+      try {
+        if (node.epContinue) {
+          // ① 第四幕 to_be_continued —— v78.0 changelog 写了但代码里 grep epContinue = 0
+          state.endPageInfo = {
+            kind: 'continue',
+            title: node.title || '未完待续',
+            subtitle: '',
+            text: node.text || '第四幕完 · 荒年记的故事，还在继续……'
+          };
+        } else if (node.routes && node.routes.length) {
+          // ② 主线通关 k8 —— routes 之前完全没人解析，直接掉纯黑
+          var _res = resolveEnding(node);
+          var _m = _res.meta || {};
+          state.endPageInfo = {
+            kind: 'he',
+            endingKey: _res.key,
+            title: _m.title || node.title || '荒年记 · 通关',
+            subtitle: _m.subtitle || '',
+            text: _m.body || node.text || ''
+          };
+        } else {
+          // ③ 其他 type:'end' / 无 next —— 至少把节点自带文案画出来
+          state.endPageInfo = {
+            kind: 'end',
+            title: node.title || '本集完',
+            subtitle: '',
+            text: node.text || '这一段告一段落了 · 再来一遍试试别的选择？'
+          };
+        }
+        // v79.4 · 【修复②】结局页此前只有文案没有背景图，进 __end__ 又立刻 clearVideo()，
+        //   于是整屏纯黑（用户实测「本集完」那屏只有文字）。这里把来源节点的图片带过去，
+        //   drawEnd 会加载并压暗后作背景。同时记下 fromId，供结局页朗读旁白用（修复①的下半段：
+        //   __end__ 是虚拟 id，getNode 返回 null，shouldPlayNarr 拿不到节点，必须显式指定来源）。
+        try {
+          state.endPageInfo.fromId = state.curId;
+          var _em = node.media;
+          if (_em && _em.file && (_em.kind === 'image' || /\.(jpg|jpeg|png|webp)$/i.test(_em.file))) {
+            var _ef = _em.file;
+            if (!/^https?:\/\//.test(_ef) && _ef.indexOf('/') < 0) _ef = CDN_PREFIX_P4 + _ef;
+            state.endPageInfo.bgFile = _ef;
+          }
+        } catch (_) { }
+        LG('END-PAGE-INFO', '🏁 结局页文案已备好', {
+          kind: state.endPageInfo.kind,
+          title: state.endPageInfo.title,
+          endingKey: state.endPageInfo.endingKey || null,
+          fromId: state.endPageInfo.fromId || null,
+          bgFile: state.endPageInfo.bgFile || null,
+          hasBg: !!state.endPageInfo.bgFile
+        });
+      } catch (_e) {
+        state.endPageInfo = { kind: 'end', title: '本集完', subtitle: '', text: '再来一遍试试别的选择？' };
+      }
+      state.curId = '__end__'; clearVideo(); render(); return;
+    }
+    LG('NEXT-GO', '→ 下一节点', { from: state.curId, to: node.next });
+    // V32·6 · 视频节点后如果紧跟一个 "narrator 中转字幕节点"（有 char:narrator 且无 media），
+    //         自动继续 next 一层，防止在互动前显示"旁白：xxx"的字幕卡。
+    //         规则：当前是 video 节点 → 下一节点是 narrator 且无 media 且有 next → 直接透传
+    var _wasVideo = node.media && node.media.kind === 'video';
+    var _nextNode = getNode(node.next);
+    if (_wasVideo && _nextNode && _nextNode.char === 'narrator' && !_nextNode.media && _nextNode.next) {
+      LG('NEXT-SKIP-NARR', '⏭ 跳过 video 后的 narrator 旁白中转节点', { skip: node.next, to: _nextNode.next });
+      state.curId = _nextNode.next;
+      render();
+      return;
+    }
+    state.curId = node.next;
+    render();
+  }
+  function choose (idx, rewardedContinuation) {
+    if (state.splash.active || state.chapterTransition) return;
+    var node = getNode(state.curId);
+    if (!node || !node.options || !node.options[idx]) return;
+    markStoryPlayed();
+    // v78.8 · 先从持久化存储回灌解锁进度（对齐老铁 _isLvAdUnlocked 前置校验模式）
+    //   冷启重载 story.js 后内存 flag 归零，这里补回来 → 看完广告回来不会再显示锁
+    hydrateAdUnlock(state.curId, node);
+    var opt = node.options[idx];
+    try { if (global.Telemetry && !rewardedContinuation) { global.Telemetry.onChoiceClick(state.curId, node.ep || state.ep, idx, opt, node.title || ''); } } catch (_) { } // TELEMETRY v91.1
+
+    // v76.0 · 用户主动选新分支 → 立即清复活标志，避免后续视频 onEnded 走 REVIVE-END-NORMAL 分支被跳回上一屏
+    if (state.reviveInProgress) {
+      LG('CHOOSE-CLEAR-REVIVE', '用户主动选择 → 清 reviveInProgress/reviveBackTo', { hadBackTo: state.reviveBackTo });
+      state.reviveInProgress = false;
+      state.reviveBackTo = null;
+    }
+
+    LG('CHOOSE-CLICK', '波里就选中了', { idx: idx, opt: opt && opt.text, next: opt && opt.next, ad: !!(opt && opt.ad), unlocked: !!(opt && opt._adUnlocked), adCount: (opt && opt.adCount) || 1, watched: (opt && opt._adWatched) || 0 });
+
+    // 广告解锁：未看广告先弹广告，看完才继续（v72 · 支持 adCount 多次广告）
+    // v92.4 · 今日免广告通行证生效时直接放行，不弹激励视频（口径：全局免广告）
+    if (opt.ad && !opt._adUnlocked && adPassActive()) {
+      LG('AD-PASS-SKIP', '🎟 今日免广告特权生效 → 选项直接放行', { node: state.curId, opt: idx });
+      opt._adWatched = opt.adCount || 1;
+      opt._adUnlocked = true;
+    }
+    if (opt.ad && !opt._adUnlocked) {
+      var _needAds = opt.adCount || 1;
+      opt._adWatched = opt._adWatched || 0;
+      // v78.8 · 快照当前 nodeId：广告是异步回调，回来时 state.curId 可能已变，不能现取
+      var _adNodeId = state.curId;
+      // v79.2 · 【P0 · 铁律 107】弹广告【之前】先把当前位置落盘。
+      //   激励视频全屏播放时小游戏进后台，长广告（真机实测 1 分 55 秒）足以让容器回收冷启。
+      //   若此刻进度没存，重启后读到的 curId 是更早的位置 → 玩家被退回广告前那一屏，
+      //   即使解锁已写入 weihunqi_ad_unlocks_v1，人也回不到该解锁的那一屏，体感就是"没解锁"。
+      try { saveProgress(); } catch (_) { }
+      // V31·8 · 立即显示"正在加载广告"loading 层（避免用户以为按钮没反应）
+      state.adLoading = { active: true, t0: Date.now(), text: (_needAds > 1 ? ('正在加载广告 ' + (opt._adWatched + 1) + '/' + _needAds + '…') : '正在加载广告…') };
+      render();  // 立刻重绘一次让 loading 出现
+      var _clearAdLoading = function () {
+        if (state.adLoading) state.adLoading.active = false;
+      };
+      var doReward = function () {
+        _clearAdLoading();
+        // v78.9 · 幂等保护：adapter 现在允许「超时误判后迟到的真实奖励」补发，
+        //   这里可能被调用两次（一次误判 fail 后、一次真实 onClose），必须防重复计数。
+        if (opt._adRewardDone) {
+          LG('AD-REWARD-DUP', '⚠ 奖励回调重复到达，已忽略（幂等）', { node: _adNodeId, opt: idx, watched: opt._adWatched });
+          return;
+        }
+        opt._adRewardDone = true;
+        opt._adWatched = (opt._adWatched || 0) + 1;
+        var _needAds = opt.adCount || 1;
+        console.log('[ad] reward ok', opt._adWatched, '/', _needAds);
+        // v78.8 · 【当场落盘】对齐老铁 _markLvAdUnlocked：不等 next()/saveProgress()
+        //   激励视频回来后可能冷启重载，必须在回调里立刻写 storage，否则解锁必丢
+        try { setAdWatched(_adNodeId, idx, opt._adWatched); } catch (_) { }
+        // 上报
+        try { if (typeof KwaiDataAnalysis !== 'undefined') KwaiDataAnalysis.reportAnalytics('ad_reward_ok', { node: state.curId, opt: idx, unit: opt.adUnitId || '2300058116_01', watched: opt._adWatched, need: _needAds }); } catch (e) { }
+        try { if (global.Telemetry) global.Telemetry.onAdResult('choice_unlock', 'ok', { nodeId: state.curId, ep: node.ep || state.ep, optIdx: idx, watched: opt._adWatched, need: _needAds, adUnitId: opt.adUnitId || '2300058116_01', adSlot: 'choice_unlock', adScene: 'game_choice', adEp: node.ep || state.ep, adNodeId: _adNodeId, adNodeTitle: (node.text || node.title || '').slice(0, 16) }); } catch (_) { } // TELEMETRY v91.0
+        if (opt._adWatched >= _needAds) {
+          opt._adUnlocked = true;
+          opt._adRewardDone = false;   // v78.9 · 重置幂等锁，供下次广告轮次使用
+          choose(idx, true);   // 递归一次，跃过广告分支
+        } else {
+          // 还需要看更多广告
+          state.toasts = state.toasts || [];
+          state.toasts.push({ text: '再看 ' + (_needAds - opt._adWatched) + ' 个广告即可解锁', color: '#8bd47a', t0: Date.now(), life: 1800 });
+          render();
+          opt._adRewardDone = false;   // v78.9 · 下一个广告是新一轮，解锁幂等锁
+          // 继续弹下一个广告
+          setTimeout(function () { choose(idx, true); }, 800);
+        }
+      };
+      var doFail = function (reason) {
+        _clearAdLoading();
+        // v78.9 · 如果奖励其实已经发过（adapter 迟到奖励优先），就不要再报失败误导用户
+        if (opt._adRewardDone || opt._adUnlocked) {
+          LG('AD-FAIL-IGNORED', '⚠ 已发过奖励，忽略这条失败回调', { node: _adNodeId, opt: idx, reason: reason });
+          return;
+        }
+        LG('AD-FAIL', '选项广告失败/未看完', { node: state.curId, opt: idx, reason: reason });
+        try { if (global.Telemetry) global.Telemetry.onAdResult('choice_unlock', 'fail', { nodeId: state.curId, ep: node.ep || state.ep, optIdx: idx, failReason: (reason && reason.reason) || 'unknown', watched: opt._adWatched || 0, need: opt.adCount || 1, adUnitId: opt.adUnitId || '2300058116_01', adSlot: 'choice_unlock', adScene: 'game_choice', adEp: node.ep || state.ep, adNodeId: _adNodeId, adNodeTitle: (node.text || node.title || '').slice(0, 16) }); } catch (_) { } // TELEMETRY v91.0
+
+        state.toasts = state.toasts || [];
+        var _rs = (reason && reason.reason) || '未看完';
+        var _msg = '未看完广告，未解锁';
+        if (_rs === 'timeout') _msg = '广告加载超时，请稍后重试';
+        else if (_rs === 'load_fail' || _rs === 'no_load') _msg = '广告加载失败，请检查网络';
+        else if (_rs === 'show_fail' || _rs === 'show_throw') _msg = '广告播放失败，请稍后重试';
+        else if (_rs === 'no_ad_instance') _msg = '广告服务未就绪，请稍后重试';
+        state.toasts.push({ text: _msg, color: '#ffbb55', t0: Date.now(), life: 1800 });
+        render();
+      };
+      try { if (typeof KwaiDataAnalysis !== 'undefined') KwaiDataAnalysis.reportAnalytics('ad_click', { node: state.curId, opt: idx, unit: opt.adUnitId || '2300058116_01' }); } catch (e) { }
+      try { if (global.Telemetry) global.Telemetry.onAdClick('choice_unlock', { nodeId: state.curId, ep: node.ep || state.ep, optIdx: idx, adUnitId: opt.adUnitId || '2300058116_01', adSlot: 'choice_unlock', adScene: 'game_choice', adEp: node.ep || state.ep, adNodeId: state.curId, adNodeTitle: (node.text || node.title || '').slice(0, 16) }); } catch (_) { } // TELEMETRY v91.0
+      // v92.6 · 走统一闸门（choose 顶部已有 adPassActive 放行，这里是第二道保险）
+      showRewardedGated(doReward, doFail, 'choice_unlock');
+      return;
+    }
+
+    if (global.Telemetry) global.Telemetry.onChoiceCommit(state.curId, node.ep || state.ep, idx, opt);
+    if (opt.stat) {
+      // 触发 toast + 飞行动画
+      var deltas = [];
+      var STAT_META = {
+        wei: { label: '嫂子好感', color: '#e04c6a', row: 0 },
+        qing: { label: '村里威望', color: '#d4a03a', row: 1 },
+        liang: { label: '家里存粮', color: '#7fb069', row: 2 }
+      };
+      var keys = ['wei', 'qing', 'liang'];
+      var weiZeroTriggered = false;
+      // V64 · BE 选项特判：走 BE_ 的选项不 clamp，让全额扣分动画可见
+      var _isBEOpt = !!(opt.next && /^BE_/.test(opt.next));
+      // V32·11 · 记录本次选项的原始 delta，供复活时回退
+      var _reviveDeltaSnapshot = {};
+      for (var i = 0; i < keys.length; i++) {
+        var k = keys[i];
+        if (typeof opt.stat[k] === 'number' && opt.stat[k] !== 0) {
+          var _before = state.stats[k];
+          var _after = _before + opt.stat[k];
+          // V36 · 三个数值 clamp 到 [0, 100]（之前只做下限，正向可溢出到 130+）
+          // V64 · 但 BE 选项不 clamp，让『扣爆到 0』的视觉反馈完整播放
+          var _actualDelta;
+          if (_isBEOpt) {
+            _actualDelta = opt.stat[k];  // 全额显示
+            if (_after < 0) _after = 0;
+            if (_after > 100) _after = 100;
+          } else {
+            if (_after < 0) _after = 0;
+            if (_after > 100) _after = 100;
+            _actualDelta = _after - _before;
+          }
+          state.stats[k] = _after;
+          if (_actualDelta !== 0) {
+            deltas.push({ key: k, delta: _actualDelta, meta: STAT_META[k] });
+            _reviveDeltaSnapshot[k] = _actualDelta;
+          }
+          // V31·2 · 嫂子好感变为 0 → 直接触发 BE_KICKED 大结局
+          //   触发条件：本次操作导致 wei 到 0（无论 _before 是否 > 0）
+          if (k === 'wei' && _after === 0 && opt.stat[k] < 0) {
+            weiZeroTriggered = true;
+          }
+        }
+      }
+      // V32·11 · 若本选项通向 BE_ 或触发好感清零 BE_KICKED，保存 delta 快照给复活回滚用
+      if ((opt.next && /^BE_/.test(opt.next)) || weiZeroTriggered) {
+        state.lastBEStatDelta = _reviveDeltaSnapshot;
+        LG('SAVE-REVIVE-DELTA', '💾 保存 BE 数值快照供复活回滚', _reviveDeltaSnapshot);
+      }
+      // 触发 UI 反馈
+      if (deltas.length) showStatFeedback(deltas);
+      // V31·10 · 如果选项本身已指定了 BE_ 结局，不要反复覆盖为 BE_KICKED
+      if (weiZeroTriggered && !(opt.next && /^BE_/.test(opt.next))) {
+        LG('WEI-ZERO-BE', '好感清零 → BE_KICKED');
+        clearVideo();
+        // V31·4 · 记录来源台词（用当前选项的 label 作为触发台词）
+        state.beSourceLabel = opt.label || opt.tip || '';
+        state.beSourceFromId = state.curId;
+        // V32·12 · 保存自定义死因鉴定
+        state.lastBEOptRoast = opt.roast || null;
+        state.lastBEOptRoastKey = opt.roastKey || null;
+        state.curId = 'BE_KICKED';
+        // v79.2 · 同铁律 107：这条分支改了 curId 后直接 return，绕过了函数末尾的存档，必须自己落盘
+        try { saveProgress(); } catch (_) { }
+        // 延迟一点让反馈动画先播
+        setTimeout(function () { render(); }, 500);
+        return;
+      }
+    }
+    // V31·4 · 如果本次选项直接跳到 BE_ 视频节点，同样保存来源台词
+    if (opt.next && /^BE_/.test(opt.next)) {
+      state.beSourceLabel = opt.label || opt.tip || '';
+      state.beSourceFromId = state.curId;
+      // V32·12 · 保存选项自定义死因鉴定（与该点击动作 1:1 匹配）
+      state.lastBEOptRoast = opt.roast || null;
+      state.lastBEOptRoastKey = opt.roastKey || null;
+    } else {
+      // V31·5 · 离开 BE 区域 → 清叠加状态
+      state.beOverlayFromId = null; state.beVideoEnded = false;
+    }
+    clearVideo();
+    // V31·10 · 无 delta 时清除所有折叠残留
+    if (!(opt.stat) || !Object.keys(opt.stat || {}).some(function (k) { return typeof opt.stat[k] === 'number' && opt.stat[k] !== 0; })) {
+      state.statsExpandRows = {};
+    }
+    state.curId = opt.next || state.curId;
+    // v76.0 · 切节点时，若目标节点有图且未缓存 → 立刻标记 loading，避免第一帧还画着旧图
+    try {
+      var _tn = getNode(state.curId);
+      if (_tn && _tn.media && _tn.media.file && (_tn.media.kind === 'image' || /\.(jpg|jpeg|png|webp)$/i.test(_tn.media.file))) {
+        var _tf = _tn.media.file;
+        if (!/^https?:\/\//.test(_tf) && _tf.indexOf('/') < 0) {
+          _tf = 'https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/' + _tf;
+        }
+        if (!imgCache[_tf]) {
+          state.mediaImg = null;  // 直接清掉旧图，避免"错图"
+          state.mediaImgKey = null;
+          state.mediaImgLoading = true;
+          state.mediaImgLoadingT0 = Date.now();
+          LG('CHOOSE-IMG-PRELOAD', '🎯 切节点即时 loading', { next: state.curId, url: _tf });
+        }
+      }
+    } catch (_) { }
+    // v72 · 切场景强制复位 paused=false（新视频/图片肯定要播）
+    if (state.ui && state.ui.paused) { state.ui.paused = false; try { LG('UI-PAUSE-RESET', '🔄 切场景自动复位 paused=false', { newId: state.curId }); } catch (_) { } }
+    // v79.2 · 【P0 · 真机血泪】choose() 切完节点必须【立刻】存档。
+    //   现象：k2 看完广告（真机实测跑了 1 分 55 秒），解锁确实落盘了
+    //   （AD-UNLOCK-SAVE k2#3 + CHOOSE-CLICK unlocked:true 都在日志里），
+    //   但玩家回来还是停在 k2 那一屏、选项还是一排锁。
+    //   根因：saveProgress() 此前【只】在 next() 里调用，choose() 全程没有。
+    //   激励视频全屏播放期间小游戏在后台，长广告足以让快手容器回收并冷启重启；
+    //   重启后读存档，curId 仍是进 k2 之前的位置 → 玩家被退回广告前那一屏。
+    //   解锁 key（weihunqi_ad_unlocks_v1）和进度存档是两套独立存储，
+    //   只落盘解锁、不落盘进度，等于"钥匙给了但人被送回门外"。
+    //   → 铁律 107：任何改写 state.curId 的路径都必须紧跟持久化，不能只靠 next()。
+    try { saveProgress(); } catch (_) { }
+    render();
+  }
+
+  // ---- 数值反馈动画：底部居中 toast + 粒子飞向右上角胶囊 + 胶囊脉冲 ----
+  // toasts: [{text, color, t0, life}]
+  // particles: [{fromX,fromY,toX,toY,color,label,t0,life,delta}]
+  // pulses: { wei:t0, qing:t0, liang:t0 }
+  state.toasts = [];
+  state.particles = [];
+  state.pulses = {};
+
+  function getCapsuleCenter (row) {
+    // V31·3 · 粒子始终飞向"展开态"的胶囊中心（触发时正在展开中）
+    var pw = 130, ph = 40, gap = 10;
+    var sx = 10, sy = 80;
+    return { x: sx + pw / 2, y: sy + row * (ph + gap) + ph / 2 };
+  }
+  function showStatFeedback (deltas) {
+    var now = Date.now();
+    // V31·10 · 只展开 delta 非零的行
+    var rows = [];
+    for (var _di = 0; _di < deltas.length; _di++) {
+      if (deltas[_di].delta !== 0 && deltas[_di].meta && typeof deltas[_di].meta.row === 'number') {
+        rows.push(deltas[_di].meta.row);
+      }
+    }
+    triggerStatsExpand(rows);
+    // 从屏幕中心飞出（选项点击时的视觉焦点）
+    var fromX = W / 2, fromY = H * 0.55;
+    // V41 · 合并成一条 toast，内含 items 列表：每一项对应一个胶囊图标 + 标签 + delta
+    // 样式与左侧数值胶囊一致（黑底描边圆角胶囊 · 左圆 icon · 右侧文字 · delta 高亮）
+    var items = [];
+    for (var i = 0; i < deltas.length; i++) {
+      var d = deltas[i];
+      // iconKey：优先 meta.iconKey，其次 meta.row 反推（0=wei,1=qing,2=liang），最后 fallback wei
+      var iconKey = d.meta.iconKey;
+      if (!iconKey) iconKey = ['wei', 'qing', 'liang'][d.meta.row] || 'wei';
+      items.push({
+        iconKey: iconKey,
+        label: d.meta.label,
+        delta: d.delta,
+        color: d.meta.color
+      });
+      var target = getCapsuleCenter(d.meta.row);
+      state.particles.push({
+        fromX: fromX, fromY: fromY,
+        toX: target.x, toY: target.y,
+        color: d.meta.color, label: (d.delta > 0 ? '+' : '') + d.delta,
+        t0: now + i * 100, life: 1400, row: d.meta.row
+      });
+    }
+    if (items.length) {
+      state.toasts.push({
+        items: items, t0: now, life: 3200
+      });
+    }
+  }
+  function drawFeedback () {
+    var now = Date.now();
+    // toasts —— V41 · 胶囊风格：黑底金描边 · 每 item：圆 icon + 标签 + delta（数值高亮）
+    for (var i = state.toasts.length - 1; i >= 0; i--) {
+      var t = state.toasts[i];
+      var age = now - t.t0;
+      if (age < 0) continue;
+      if (age > t.life) { state.toasts.splice(i, 1); continue; }
+      var p = age / t.life;
+      var alpha = p < 0.15 ? p / 0.15 : (p > 0.7 ? (1 - p) / 0.3 : 1);
+      var yOff = -p * 40;
+      // 兼容旧格式：{ text, color }
+      if (!t.items && t.text) {
+        var cx0 = W / 2, cy0 = H * 0.42 + yOff;
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, Math.min(1, alpha));
+        ctx.font = '800 18px sans-serif';
+        var tw0 = ctx.measureText(t.text).width;
+        var padX0 = 16, padY0 = 8;
+        ctx.fillStyle = 'rgba(0,0,0,.72)';
+        roundRect(cx0 - tw0 / 2 - padX0, cy0 - 14 - padY0, tw0 + padX0 * 2, 28 + padY0 * 2, 18);
+        ctx.fill();
+        ctx.strokeStyle = t.color || '#ffd876'; ctx.lineWidth = 2; ctx.stroke();
+        ctx.fillStyle = t.color || '#ffd876';
+        ctx.textAlign = 'center';
+        ctx.fillText(t.text, cx0, cy0 + 6);
+        ctx.textAlign = 'left';
+        ctx.restore();
+        continue;
+      }
+      // 新格式：items
+      var items = t.items || [];
+      if (!items.length) continue;
+      // 估算每 item 宽度（icon 28 + gap 6 + labelW + gap 8 + deltaW），然后累加 + item 间距 12
+      var padX = 14, padY = 8, iconR = 12, itemGap = 14, innerGap = 6;
+      ctx.font = '700 13px sans-serif';
+      var itemWs = [];
+      var totalW = 0;
+      for (var ii = 0; ii < items.length; ii++) {
+        var it = items[ii];
+        var labW = ctx.measureText(it.label).width;
+        var deltaStr = (it.delta > 0 ? '+' : '') + it.delta;
+        ctx.font = '900 15px sans-serif';
+        var dW = ctx.measureText(deltaStr).width;
+        ctx.font = '700 13px sans-serif';
+        var wItem = iconR * 2 + innerGap + labW + 8 + dW;
+        itemWs.push({ w: wItem, deltaStr: deltaStr, labW: labW, dW: dW });
+        totalW += wItem;
+      }
+      totalW += (items.length - 1) * itemGap;
+      var barH = 36;
+      var cx = W / 2, cy = H * 0.42 + yOff;
+      var bx = cx - totalW / 2 - padX;
+      var by = cy - barH / 2 - padY;
+      var bw = totalW + padX * 2;
+      var bh = barH + padY * 2;
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, Math.min(1, alpha));
+      // 底
+      ctx.fillStyle = 'rgba(0,0,0,.72)';
+      roundRect(bx, by, bw, bh, bh / 2); ctx.fill();
+      // 描边（多个 item 混合色时用暖金；单 item 用它自己的 color）
+      var borderColor;
+      if (items.length === 1) borderColor = items[0].color;
+      else {
+        var allPos = items.every(function (x) { return x.delta > 0; });
+        var allNeg = items.every(function (x) { return x.delta < 0; });
+        borderColor = allPos ? '#7fd48f' : (allNeg ? '#ff8080' : '#ffd876');
+      }
+      ctx.strokeStyle = borderColor; ctx.lineWidth = 1.6;
+      roundRect(bx, by, bw, bh, bh / 2); ctx.stroke();
+      // 画各 item
+      var curX = cx - totalW / 2;
+      for (var ij = 0; ij < items.length; ij++) {
+        var it2 = items[ij];
+        var m = itemWs[ij];
+        var iconCX = curX + iconR;
+        var iconCY = cy;
+        // 与胶囊使用同一张 icon
+        state.iconImgs = state.iconImgs || {};
+        var iconImg = state.iconImgs[it2.iconKey];
+        if (iconImg === undefined) {
+          state.iconImgs[it2.iconKey] = null;
+          _loadImgPersist(_iconUrl(it2.iconKey), (function (kk) {
+            return function (im) { state.iconImgs[kk] = im || false; };
+          })(it2.iconKey));
+        }
+        if (iconImg && iconImg !== false) {
+          if (!_drawImgCover(iconImg, iconCX, iconCY, iconR)) {
+            ctx.fillStyle = it2.color; ctx.beginPath(); ctx.arc(iconCX, iconCY, iconR, 0, Math.PI * 2); ctx.fill();
+          }
+        } else {
+          ctx.fillStyle = it2.color;
+          ctx.beginPath(); ctx.arc(iconCX, iconCY, iconR, 0, Math.PI * 2); ctx.fill();
+          ctx.fillStyle = 'rgba(255,255,255,0.35)';
+          ctx.beginPath(); ctx.arc(iconCX - iconR * 0.3, iconCY - iconR * 0.3, iconR * 0.35, 0, Math.PI * 2); ctx.fill();
+        }
+        // label（白色）
+        ctx.fillStyle = '#fff';
+        ctx.font = '700 13px sans-serif';
+        ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+        ctx.fillText(it2.label, iconCX + iconR + innerGap, cy);
+        // delta（着色 + 大字）
+        ctx.fillStyle = it2.color;
+        ctx.font = '900 15px sans-serif';
+        ctx.fillText(m.deltaStr, iconCX + iconR + innerGap + m.labW + 8, cy);
+        ctx.textBaseline = 'alphabetic';
+        curX += m.w + itemGap;
+      }
+      ctx.restore();
+    }
+    // particles（贝塞尔飞行）
+    for (var j = state.particles.length - 1; j >= 0; j--) {
+      var pa = state.particles[j];
+      var pAge = now - pa.t0;
+      if (pAge < 0) continue;
+      if (pAge > pa.life) {
+        // 触发胶囊脉冲
+        state.pulses['row_' + pa.row] = now;
+        state.particles.splice(j, 1);
+        continue;
+      }
+      var u = pAge / pa.life;
+      // easeOutCubic
+      var eu = 1 - Math.pow(1 - u, 3);
+      // 控制点：飞行弧线（向上鼓起）
+      var ctrlX = (pa.fromX + pa.toX) / 2;
+      var ctrlY = Math.min(pa.fromY, pa.toY) - 80;
+      var mx = (1 - eu) * (1 - eu) * pa.fromX + 2 * (1 - eu) * eu * ctrlX + eu * eu * pa.toX;
+      var my = (1 - eu) * (1 - eu) * pa.fromY + 2 * (1 - eu) * eu * ctrlY + eu * eu * pa.toY;
+      var scale = 1 - u * 0.4;
+      ctx.save();
+      ctx.globalAlpha = u < 0.85 ? 1 : (1 - u) / 0.15;
+      // 光晕
+      ctx.fillStyle = pa.color;
+      ctx.beginPath(); ctx.arc(mx, my, 14 * scale, 0, Math.PI * 2); ctx.fill();
+      ctx.globalAlpha *= 0.35;
+      ctx.beginPath(); ctx.arc(mx, my, 22 * scale, 0, Math.PI * 2); ctx.fill();
+      ctx.globalAlpha = u < 0.85 ? 1 : (1 - u) / 0.15;
+      // 数字
+      ctx.fillStyle = '#fff';
+      ctx.font = '800 ' + Math.round(15 * scale) + 'px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(pa.label, mx, my + 5 * scale);
+      ctx.textAlign = 'left';
+      ctx.restore();
+    }
+  }
+
+  // ============ 直播间点赞按钮 + 飞心粒子 ============
+  // 位置：底部控制栏正上方，靠右
+  function getLikeBtnPos () {
+    // V31·5 · 动态：如果当前帧有台词框显示，爱心贴到台词框上方 12px；否则回退默认位置
+    if (state._captionShown && state._captionTopY) {
+      return { cx: W - 40, cy: state._captionTopY - 30, r: 26 };
+    }
+    var cur = getNode(state.curId);
+    var isImg = cur && cur.media && cur.media.kind !== 'video' && !cur.type;
+    var isVideo = cur && cur.media && cur.media.kind === 'video';
+    if (isImg || isVideo) {
+      return { cx: W - 40, cy: (H - 250) - 40, r: 26 };
+    }
+    return { cx: W - 40, cy: H - 40 - 62, r: 26 };
+  }
+  function drawLikeButton (isChoice) {
+    // 互动选项环节隐藏
+    if (isChoice) return;
+    if (state.ui && state.ui.immersive) return;
+    if (state.curId === '__end__') return;
+    // V36 · 嫂子未登场（未解锁）之前隐藏点赞按钮（点赞=给嫂子加好感，逻辑上必须先见到嫂子）
+    if (!state.sisterUnlocked) return;
+    var p = getLikeBtnPos();
+    var now = Date.now();
+    // 按钮脉冲缩放（每次点赞后 200ms 弹一下）
+    var pulseAge = now - state.like.btnPulseT;
+    var scale = 1;
+    if (pulseAge >= 0 && pulseAge < 260) {
+      var pu = pulseAge / 260;
+      scale = 1 + (1 - pu) * 0.28 * Math.sin(pu * Math.PI);
+    }
+    // V31·4 · 复用嫂子好感的爱心 icon (icon_wei.png)
+    var breathe = 0.6 + 0.4 * Math.sin(now / 700);
+    ctx.save();
+    ctx.shadowColor = state.like.count > 0 ? 'rgba(255,80,120,0.60)' : 'rgba(255,150,175,0.40)';
+    ctx.shadowBlur = 10 + breathe * 6;
+    var weiIcon = state.iconImgs && state.iconImgs.wei;
+    if (weiIcon && weiIcon !== false) {
+      var s = 44 * scale;   // icon 显示尺寸 44px（与原心形视觉大小相当）
+      if (!_drawImgCover(weiIcon, p.cx, p.cy, s / 2)) {
+        drawFancyHeart(p.cx, p.cy, 1.65 * scale, state.like.count > 0 ? '#ff2f5e' : '#ff5a80');
+      }
+    } else {
+      // fallback：老的 canvas 心形
+      drawFancyHeart(p.cx, p.cy, 1.65 * scale, state.like.count > 0 ? '#ff2f5e' : '#ff5a80');
+    }
+    ctx.restore();
+    // V28：不显示外显数量（用户明确要求）
+    // 命中区（比视觉稍大，好点）
+    state.hitZones.push({ x: p.cx - p.r - 12, y: p.cy - p.r - 12, w: p.r * 2 + 24, h: p.r * 2 + 24, action: 'like' });
+    // 飞心粒子
+    drawHearts();
+  }
+  // V31 · 爱心 C · 玻璃拟态（清晰版：消毛边、精确 fill/stroke）
+  function drawFancyHeart (cx, cy, s, mainColor) {
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.scale(s, s);
+    // 主体路径
+    ctx.beginPath();
+    ctx.moveTo(0, 8);
+    ctx.bezierCurveTo(-19, -6, -17, -23, 0, -14);
+    ctx.bezierCurveTo(17, -23, 19, -6, 0, 8);
+    ctx.closePath();
+    // 纵向半透渐变填充（玻璃拟态感）
+    var mc = mainColor || '#ff5a80';
+    var g = ctx.createLinearGradient(0, -15, 0, 10);
+    g.addColorStop(0, mc);
+    g.addColorStop(1, '#8a0a20');
+    ctx.fillStyle = g;
+    ctx.fill();
+    // 单条清晰白描边（不叠加多层，避免毛边）
+    ctx.strokeStyle = 'rgba(255,255,255,0.92)';
+    ctx.lineWidth = 1.2;
+    ctx.lineJoin = 'round';
+    ctx.stroke();
+    // 顶部弧形高光（clip 在心内，避免溢出）
+    ctx.save();
+    ctx.clip();
+    ctx.beginPath();
+    ctx.moveTo(-14, -8);
+    ctx.bezierCurveTo(-14, -16, -6, -19, 0, -12);
+    ctx.bezierCurveTo(6, -19, 14, -16, 14, -8);
+    ctx.strokeStyle = 'rgba(255,255,255,0.55)';
+    ctx.lineWidth = 1.4;
+    ctx.stroke();
+    ctx.restore();
+    ctx.restore();
+  }
+  // 心形路径（画在 canvas 上，不用 emoji）
+  function drawHeart (cx, cy, s, color, filled) {
+    // s: 缩放（1 ≈ 20px 高）
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.scale(s, s);
+    ctx.beginPath();
+    // 经典心形贝塞尔
+    ctx.moveTo(0, 4);
+    ctx.bezierCurveTo(-14, -8, -12, -18, 0, -10);
+    ctx.bezierCurveTo(12, -18, 14, -8, 0, 4);
+    ctx.closePath();
+    if (filled !== false) {
+      ctx.fillStyle = color;
+      ctx.fill();
+    }
+    // 高光
+    ctx.fillStyle = 'rgba(255,255,255,.35)';
+    ctx.beginPath();
+    ctx.ellipse(-4, -8, 2.2, 3.4, -0.4, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+  function spawnHearts (n) {
+    var p = getLikeBtnPos();
+    var now = Date.now();
+    var colors = ['#ff4d6d', '#ff86a2', '#ffb6c1', '#ff7391', '#ffd166'];
+    for (var i = 0; i < n; i++) {
+      var driftX = (Math.random() - 0.5) * 90;  // 左右漂移
+      var wobbleFreq = 2 + Math.random() * 2;
+      var wobbleAmp = 8 + Math.random() * 14;
+      state.hearts.push({
+        x0: p.cx + (Math.random() - 0.5) * 10,
+        y0: p.cy - p.r + 4,
+        driftX: driftX,
+        wobbleFreq: wobbleFreq,
+        wobbleAmp: wobbleAmp,
+        rise: 160 + Math.random() * 90,   // 上升距离
+        size: 0.55 + Math.random() * 0.55,
+        color: colors[(Math.random() * colors.length) | 0],
+        t0: now + i * 55,
+        life: 1400 + Math.random() * 500
+      });
+    }
+    // 上限保护
+    if (state.hearts.length > 60) state.hearts.splice(0, state.hearts.length - 60);
+  }
+  function drawHearts () {
+    var now = Date.now();
+    for (var i = state.hearts.length - 1; i >= 0; i--) {
+      var h = state.hearts[i];
+      var age = now - h.t0;
+      if (age < 0) continue;
+      if (age > h.life) { state.hearts.splice(i, 1); continue; }
+      var u = age / h.life;
+      // easeOutQuad
+      var eu = 1 - (1 - u) * (1 - u);
+      var y = h.y0 - h.rise * eu;
+      var x = h.x0 + h.driftX * eu + Math.sin(u * Math.PI * h.wobbleFreq) * h.wobbleAmp;
+      // 生命周期：先放大再缩小
+      var sc = h.size * (u < 0.15 ? (u / 0.15) : (u > 0.75 ? Math.max(0, (1 - u) / 0.25) : 1));
+      var alpha = u < 0.1 ? u / 0.1 : (u > 0.7 ? Math.max(0, (1 - u) / 0.3) : 1);
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      // 外发光
+      ctx.shadowColor = h.color;
+      ctx.shadowBlur = 8;
+      drawHeart(x, y, sc, h.color, true);
+      ctx.restore();
+    }
+  }
+  // 处理点赞：每次 +1，每满 100 → 嫂子好感 +1；带触感 + 粒子 + 按钮弹一下
+  function doLike () {
+    state.like.count += 1;
+    state.like.btnPulseT = Date.now();
+    // 触感：连点越多越强（快手 API 支持 light/medium/heavy）
+    var now = Date.now();
+    var gap = now - (state.like.lastTap || 0);
+    if (gap < 400) state.like.streak = Math.min(state.like.streak + 1, 20); else state.like.streak = 0;
+    state.like.lastTap = now;
+    var strong = state.like.streak >= 6;
+    hapticTap(strong ? 'medium' : 'light');
+    // 粒子：连点越多，每次冒出的心越多
+    var hearts = 1 + Math.min(3, Math.floor(state.like.streak / 3));
+    spawnHearts(hearts);
+    // V28 · 每 100 赞 → 嫂子好感 +1 · 飘 "爱情 +1"（改用简洁大字）
+    if (state.like.count % 100 === 0) {
+      state.stats.wei = Math.min(100, (state.stats.wei || 0) + 1);
+      hapticTap('heavy');
+      // 借用现有反馈通道：向 wei 胶囊飞一发数值粒子，样式与胶囊一致（icon+"嫂子好感"+ +1）
+      showStatFeedback([{ delta: 1, meta: { label: '嫂子好感', row: 0, color: '#e04c6a', iconKey: 'wei' } }]);
+    }
+  }
+  // V28 · 长按连点：手指按住 → 每 90ms 触发一次 doLike，直到抬起
+  // 由 onTouchStart(记录) + wx.onTouchEnd(清除) + setInterval 驱动
+  state._likeHold = { active: false, timerId: null };
+  function startLikeHold () {
+    if (state._likeHold.active) return;
+    state._likeHold.active = true;
+    // 首点已经调过 doLike，这里从 200ms 后开启连击
+    state._likeHold.timerId = setInterval(function () {
+      if (!state._likeHold.active) return;
+      doLike();
+    }, 90);
+  }
+  function stopLikeHold () {
+    state._likeHold.active = false;
+    if (state._likeHold.timerId) { clearInterval(state._likeHold.timerId); state._likeHold.timerId = null; }
+  }
+
+  function restart () {
+    // v79.6 · 【修复⑤】用户反馈「重玩点了很久才有反应」。根因不是逻辑慢，而是
+    //   顺序错了：clearVideo()（销毁 native 视频组件）+ clearProgress()（写存储）
+    //   都是同步阻塞，全做完才 render()，这中间画面完全不动 —— 用户以为没点上。
+    //   现在改成：先给即时视觉反馈并 render 一帧，重活放到下一 tick 做。
+    if (state.restartBusy || (state.adLoading && state.adLoading.active)) return;
+    var replayChapter = currentChapter();
+    state.restartBusy = true;
+    try {
+      state.toasts = state.toasts || [];
+      state.toasts.push({ text: '正在重新开始…', color: '#ffe6b0', t0: Date.now(), life: 1000 });
+      render();                             // 立刻出一帧，让用户看到点击生效了
+    } catch (_) { }
+
+    var _doRestart = function () {
+      try {
+        state.beKeepVideoAlive = false;   // V64 · 清 BE 保帧标志
+        // v86.1 · 重玩时清 adLoading（广告流程若中途异常退出，active 会残留并拦截后续所有点击）
+        state.adLoading = null;
+        try { if (global.Telemetry) global.Telemetry.markRestart(); } catch (_) { } // TELEMETRY
+        try { clearVideo(); } catch (e) { }
+        // 重玩：销毁所有非 persist 图片，清空资源槽和 imgCache
+        try {
+          // 销毁 _prevResources / _curResources 里的图（非 persist）
+          var _allRes = _prevResources.concat(_curResources);
+          _allRes.forEach(function (entry) {
+            try { if (entry && entry.img) entry.img.src = ''; } catch (e) {}
+          });
+          _curResources  = [];
+          _prevResources = [];
+          _lastSwapId    = null;
+          _releasedTotal = 0;   // restart 时重置释放计数
+          _releasedLog   = [];  // restart 时重置释放日志
+          _failedSrcs    = {};  // 重玩时允许重试，清掉 404 记录
+          // imgCache 保留 persist 图，清掉其余
+          Object.keys(imgCache).forEach(function (k) {
+            if (!_persistImages[k]) delete imgCache[k];
+          });
+        } catch (_) { }
+        state.curId = replayChapter ? replayChapter.start : RAW.start || 's1';
+        state.stats = (RAW.meta && RAW.meta.initStat) ? {
+          wei: RAW.meta.initStat.wei || 50,
+          qing: RAW.meta.initStat.qing || 50,
+          liang: RAW.meta.initStat.liang || 50
+        } : { wei: 50, qing: 50, liang: 50 };
+        state.imgAdvKey = null; state.mediaImgKey = null; state.mediaImg = null;
+        state.beOverlayFromId = null; state.beVideoEnded = false; state.beSourceLabel = null;
+        // V32·3 · 重玩时同样清复活遗留状态
+        state.reviveInProgress = false;
+        state.reviveBackTo = null;
+        state.beSourceFromId = null;
+        state.lastBEStatDelta = null;   // V32·11 · 重玩清 BE 数值快照
+        state.lastBEOptRoast = null;    // V32·12 · 重玩清 BE 死因鉴定
+        state.lastBEOptRoastKey = null;
+        state.sisterUnlocked = false;   // V36 · 重玩时收回嫂子胶囊/点赞按钮
+        state.endPageInfo = null;       // v78.8 · 清结局页文案，避免下一局串用上一局结局
+        state._nodeAdUnlocked = {};     // v95.1 · 重玩清节点级广告解锁状态
+        // v78.8 · 注意：这里【故意不清】广告解锁（weihunqi_ad_unlocks_v1）。
+        //   对齐老铁眼真尖「已看广告解锁过的关卡永久免广告」口径 —— 用户花时间看过的广告不能因重玩作废，
+        //   否则又会变成用户体感的「看了广告没解锁」。防白嫖只在 BE 复活链路上生效（见 REVIVE-RESET-AD）。
+        // V75 · 重玩清存档（防止下次进入还从 BE 前节点续玩）
+        try { clearProgress(); } catch (_) { }
+        state._visitedNodes = {};
+        if (replayChapter) enterHomeChapter(replayChapter, null);
+        else { clearVideo(); render(); }
+      } finally {
+        state.restartBusy = false;
+      }
+    };
+
+    // 下一 tick 执行重活，保证上面那帧已经画出去了
+    if (typeof setTimeout === 'function') setTimeout(_doRestart, 0);
+    else _doRestart();
+  }
+
+  function onTouch (e) {
+    var t = e && e.touches && e.touches[0] || e && e.changedTouches && e.changedTouches[0] || e;
+    if (!t) return;
+    var x = t.clientX != null ? t.clientX : (t.pageX != null ? t.pageX : t.x || 0);
+    var y = t.clientY != null ? t.clientY : (t.pageY != null ? t.pageY : t.y || 0);
+    if (global.AdminAdControl && global.AdminAdControl.touchStart(x, y)) return;
+    // v97.2 · 【修复弹窗点不动】拖拽互动的事件吞噬必须让位于更高层的模态浮层。
+    //   复现：在解锁全部章节弹窗里看完一个激励视频，回到游戏时后台的 op1 视频
+    //   已走到 pauseAt=10s → DragUnlock 进入 armed 且 isActive()=true，
+    //   而它原先排在 _unlockAllOpen 判定之前 → 弹窗按钮的点击被整个吞掉，完全没反应。
+    //   规则：任何模态层（解锁弹窗 / 广告 loading / 隐私 / 日志面板）打开时，
+    //   拖拽互动一律不接管触摸，等模态关掉再恢复。
+    var _modalOver = !!(state._unlockAllOpen || (state.adLoading && state.adLoading.active)
+      || state._privacyOpen || state._dbgLogOpen || (state.ui && state.ui.logOpen));
+    // v97.0 · 拖拽解锁互动激活时，优先吞掉触摸事件（起点命中才进入拖拽，其余区域忽略）
+    if (!_modalOver && global.DragUnlock && global.DragUnlock.isActive()) {
+      global.DragUnlock.touchStart(x, y);
+      if (typeof render === 'function') render();
+      return;
+    }
+    if (state.chapterTransition && chapterTransition) {
+      if (!(state.adLoading && state.adLoading.active)) chapterTransition.touchStart(x, y);
+      return;
+    }
+    if (state.splash.active && chapterHome && !state._privacyOpen) {
+      chapterHome.touchStart(x, y);
+      return;
+    }
+    // v92.4 · 「解锁全部章节」弹窗为模态：只认自己的两个热区，其余一律吞掉
+    if (state._unlockAllOpen) {
+      if (state.adLoading && state.adLoading.active) return;
+      // v92.7 · 【修复「点看广告解锁没反应、反而把浮层收起了」】
+      //   根因：hitZones 由 renderGame 每帧重建，而 RAF 循环在 choice 页是 20fps（50ms/帧）。
+      //   若本次触摸落在「弹窗刚被打开、但承载弹窗热区的那一帧还没画出去」的窗口内，
+      //   hitZones 里就没有任何 unlock_all_* 项 → for 循环一个都匹配不到 →
+      //   直接走到最后的「点遮罩关闭」→ 表现为：点按钮毫无反应，浮层却收起了。
+      //   修复：命中判定不再依赖 hitZones 这个渲染副产物，改为【用与绘制完全相同的公式
+      //   现场计算按钮矩形】。绘制与命中同一套坐标来源，不存在时序窗口。
+      var _mBoxW = Math.min(W - 56, 320), _mBoxH = 226;
+      var _mBoxX = (W - _mBoxW) / 2, _mBoxY = (H - _mBoxH) / 2;   // 命中用稳定终态，不含入场位移
+      var _mBtnW = _mBoxW - 56, _mBtnH = 42;
+      var _mBtnX = _mBoxX + 28, _mBtnY = _mBoxY + _mBoxH - 66;
+      var _mHitPad = 8;   // 主按钮给 8px 外扩，指腹偏一点也能点到
+      var _inMainBtn = x >= _mBtnX - _mHitPad && x <= _mBtnX + _mBtnW + _mHitPad
+        && y >= _mBtnY - _mHitPad && y <= _mBtnY + _mBtnH + _mHitPad;
+      var _mCR = 13, _mCX = _mBoxX + _mBoxW - 22, _mCY = _mBoxY + 22;
+      var _inCloseBtn = Math.abs(x - _mCX) <= _mCR + 8 && Math.abs(y - _mCY) <= _mCR + 8;
+      var _inCard = x >= _mBoxX && x <= _mBoxX + _mBoxW && y >= _mBoxY && y <= _mBoxY + _mBoxH;
+      if (_inCloseBtn) {
+        hapticTap('light');
+        LG('UNLOCK-MODAL-CLOSE', '✕ 关闭解锁弹窗', { x: x, y: y });
+        state._unlockAllOpen = false; render(); return;
+      }
+      if (_inMainBtn) {
+        hapticTap('light');
+        if (adPassRemain() <= 0) {
+          LG('UNLOCK-MODAL-DONE', '已解锁完毕 → 点「知道了」关闭', {});
+          state._unlockAllOpen = false; render(); return;
+        }
+        LG('UNLOCK-MODAL-AD', '📺 点击「看广告解锁」→ 调起激励视频', { x: x, y: y, remain: adPassRemain() });
+        doUnlockAllAd(); return;
+      }
+      if (_inCard) {
+        // 落在卡片内的空白处：什么都不做，绝不能关闭（防误触把浮层收掉）
+        LG('UNLOCK-MODAL-INERT', '点在卡片空白处，忽略', { x: x, y: y });
+        return;
+      }
+      // 只有真的点在卡片【外面】的遮罩上才关闭
+      LG('UNLOCK-MODAL-DISMISS', '点遮罩关闭解锁弹窗', { x: x, y: y });
+      state._unlockAllOpen = false; render();
+      return;
+    }
+    // v92.4 · 新手引导浮层已删除，原「点任意处 dismiss」拦截一并移除
+    // console.log('[touch]', ...);  // V31·7 · 静默
+    // V31·6 · 通知成就抽屉记录起点（供 touchmove 滚动使用）
+    if (global.Achievements && global.Achievements.onTouchStart) global.Achievements.onTouchStart(x, y);
+    // V36 · 剧情浮层滚动起点
+    if (state.ui && state.ui.logOpen) {
+      state._storyDrawerTouch = { startX: x, startY: y, lastY: y, moved: false };
+    }
+    // V75.2 · 隐私政策浮层滚动起点
+    if (state._privacyOpen) {
+      state._prevTouchY = y;
+    }
+    if (global.Achievements && global.Achievements.onTouch(x, y)) {
+      hapticTap('light');
+      return;
+    }
+    // v71.17 · 婉儿解锁音频未播完时用户点击画面 → 立即停 mp3 + resume 视频（不再重叠）
+    if (state._pausedForMedalFirst) {
+      try {
+        if (state.sisterUnlockAudioCtx && state.sisterUnlockAudioCtx.stop) {
+          state.sisterUnlockAudioCtx.stop();
+          try { state.sisterUnlockAudioCtx.destroy && state.sisterUnlockAudioCtx.destroy(); } catch (_) { }
+          state.sisterUnlockAudioCtx = null;
+        }
+      } catch (_) { }
+      resumeVideoAfterSisterUnlock();
+      try { LG('SISTER-UNLOCK-AUDIO-SKIP', '👆 用户点击 → 提前结束 mp3 + resume s3 视频'); } catch (_) { }
+      hapticTap('light');
+      return;
+    }
+    // V36 · 剧情浮层打开时：优先命中浮层内部按钮（关闭 X / 跳章 / 外部关闭），命中就 return
+    if (state.ui && state.ui.logOpen) {
+      // V57 · CRITICAL FIX：旧逻辑 touchStart 立即 jump_chapter → 手指一碰章节行就跳；
+      //   新逻辑：只立即处理 log_close，jump_chapter 改为挂起 → 在 onTouchEnd 里判断未发生滑动才真执行
+      state._storyPendingJump = null;
+      for (var _sz = state.hitZones.length - 1; _sz >= 0; _sz--) {
+        var _z2 = state.hitZones[_sz];
+        if (!_hitZone(_z2, x, y)) continue;   // v93.0 · 统一命中判定
+        if (_z2.action === 'ctrl:log_close') {
+          hapticTap('light');
+          handleCtrl('log_close');
+          return;
+        }
+        if (_z2.action && _z2.action.indexOf('ctrl:jump_chapter:') === 0) {
+          state._storyPendingJump = _z2.action.substring('ctrl:jump_chapter:'.length);
+          return;
+        }
+      }
+      // 剧情浮层打开时其他区域点击不响应（避免误触底层选项）
+      return;
+    }
+    // V32 · 记录：本次触摸未命中任何 hitZone / achievement 时，走 tapFx（"别碰我"反馈）
+    var _tapConsumed = false;
+    var _tapX = x, _tapY = y;
+    if (state.splash && state.splash.active) {
+      for (var si = state.hitZones.length - 1; si >= 0; si--) {
+        var sz = state.hitZones[si];
+        if (_hitZone(sz, x, y)) {   // v93.0 · 统一命中判定
+          if (sz.action === 'game_club') {
+            // V31.7 · 游戏圈未开通，直接忽略
+            return;
+          }
+          if (sz.action === 'splash_start') {
+            if (state._privacyOpen) return;
+            hapticTap('medium');
+            try { if (global.Telemetry) global.Telemetry.onButtonClick('btn_splash_start', 'splash', null); } catch (_) {} // TELEMETRY v91.0
+            return startFromSplash();
+          }
+          if (sz.action === 'splash_privacy') {
+            hapticTap('light'); state._privacyOpen = true; if (typeof render === 'function') render(); return;
+          }
+          if (sz.action === 'splash_add_desktop') {
+            hapticTap('light'); if (typeof addToDesktop === 'function') addToDesktop(); return;
+          }
+          if (sz.action === 'splash_privacy_close') {
+            hapticTap('light'); state._privacyOpen = false; _privacyScrollY = 0; if (typeof render === 'function') render(); return;
+          }
+          if (sz.action === 'privacy_scroll_area') {
+            // 只记录 touchStart 位置，不做任何跳转，滚动由 wx.onTouchMove 处理
+            return;
+          }
+        }
+      }
+      // V31·9 · 只有点击"立即解锁"按钮才能进入，其他区域点了没反应
+      return;
+    }
+    if (!state.tw.done && state.tw.key === state.curId) {
+      state.tw.startT = 0; state.tw.done = true; return;
+    }
+    // V36 · 广告 loading 期间拦截所有点击（防止用户在 15s 加载窗口内乱点导致 choose 并发）
+    // v86.1 · 防呆：adLoading 超过 30s 未清（广告 SDK 回调丢失 / App 切后台 / restart 遗留）→ 强制清除
+    if (state.adLoading && state.adLoading.active) {
+      var _tapBlockAge = Date.now() - (state.adLoading.t0 || 0);
+      if (_tapBlockAge > 30000 && !(typeof KwaiAd !== 'undefined' && KwaiAd.isRewardedPending && KwaiAd.isRewardedPending())) {
+        LG('TAP-ADLOAD-STALE-FORCE', '⚠ adLoading 超30s未清（SDK丢回调?），强制解除', { age: _tapBlockAge });
+        state.adLoading.active = false;
+      } else {
+        LG('TAP-BLOCK-ADLOAD', '广告加载中，屏蔽点击', { x: x, y: y });
+        return;
+      }
+    }
+    // v92.1 · 【P0 · 铁律 108】成就胶囊矩形保护区。
+    //   选项按钮热区是【整行满宽】(bw = W - 20)，横向完整覆盖了左侧成就胶囊所在的 x=10~90。
+    //   一旦成就系统那条独立通道漏判（不可见/S.hits 残留/时序竞态），点击就会穿透到
+    //   底层选项行 → 命中带 ad 的选项 → 零确认拉起激励视频。
+  //   这里做最后一道闸：落在胶囊矩形内的点击，永不允许命中 choose:* 选项。
+    if (state._achvEntryVisible && global.Achievements && global.Achievements.getEntryRect) {
+      try {
+var _er = global.Achievements.getEntryRect();
+      var _pad = 6;
+        if (x >= _er.x - _pad && x <= _er.x + _er.w + _pad &&
+    y >= _er.y - _pad && y <= _er.y + _er.h + _pad) {
+       LG('ACHV-ENTRY-SHIELD', '🛡 点击落在成就胶囊区 → 拦截，不透传到选项', { x: x, y: y });
+      hapticTap('light');
+  if (global.Achievements.setEntryVisible) global.Achievements.setEntryVisible(true);
+    global.Achievements.onTouch(x, y);
+  return;
+        }
+      } catch (_) { }
+    }
+    // v92.8 · 【同款保护区】免广胶囊也在左侧、也被整行满宽的选项热区横向覆盖，
+    //   同样必须先拦截，绝不允许穿透到 choose:* 触发带广告的选项。
+    if (_AD_PASS_CAP.on &&
+      x >= _AD_PASS_CAP.x && x <= _AD_PASS_CAP.x + _AD_PASS_CAP.w &&
+      y >= _AD_PASS_CAP.y && y <= _AD_PASS_CAP.y + _AD_PASS_CAP.h) {
+      LG('ADPASS-CAP-SHIELD', '🛡 点击落在免广胶囊区 → 直接开浮层，不透传到选项', { x: x, y: y });
+      hapticTap('medium');
+      handleCtrl('unlock_all');
+      return;
+    }
+    // v93.0 · 统一命中判定：zone.shape==='circle' 走圆形，否则矩形。
+    //   圆形热区解决了底部圆按钮方形热区互相重叠导致的「点 a 生效 b」。
+    function _hitZone (z, px, py) {
+      if (!z) return false;
+      if (z.shape === 'circle') {
+        var _ddx = px - z.cx, _ddy = py - z.cy;
+        return (_ddx * _ddx + _ddy * _ddy) <= z.r * z.r;
+      }
+      return px >= z.x && px <= z.x + z.w && py >= z.y && py <= z.y + z.h;
+    }
+    // v93.0 · 【底部控制栏最近命中裁决】即使热区数学上不重叠，指腹落在两枚按钮的空隙里
+    //   仍可能因为遍历顺序（倒序 = 后画的先赢）而随机归属，用户体验上就是「点错了」。
+    //   这里在通用派发之前先做一次专门裁决：若点击落在底部控制栏这条带子里，
+    //   就在所有【圆形 ctrl 热区】中挑【圆心距离最近】的那一枚，绝不让顺序说话。
+    var _ctrlPick = null, _ctrlBestD2 = Infinity;
+    for (var _ci = 0; _ci < state.hitZones.length; _ci++) {
+      var _cz = state.hitZones[_ci];
+      if (!_cz || _cz.shape !== 'circle' || !_cz.action || _cz.action.indexOf('ctrl:') !== 0) continue;
+      if (!_hitZone(_cz, x, y)) continue;
+      var _cdx = x - _cz.cx, _cdy = y - _cz.cy;
+      var _cd2 = _cdx * _cdx + _cdy * _cdy;
+      if (_cd2 < _ctrlBestD2) { _ctrlBestD2 = _cd2; _ctrlPick = _cz; }
+    }
+    if (_ctrlPick) {
+      LG('CTRL-HIT-NEAREST', '🎯 底部按钮按圆心最近裁决命中', {
+        x: Math.round(x), y: Math.round(y), action: _ctrlPick.action,
+        cx: Math.round(_ctrlPick.cx), dist: Math.round(Math.sqrt(_ctrlBestD2))
+      });
+      hapticTap('medium');
+      pulseBtnPress(_ctrlPick.action);
+      return handleCtrl(_ctrlPick.action.split(':')[1]);
+    }
+    for (var i = state.hitZones.length - 1; i >= 0; i--) {
+      var z = state.hitZones[i];
+      if (_hitZone(z, x, y)) {
+        try { if (global.Telemetry && z.action && z.action.indexOf('choose:') !== 0) { var _nn = getNode(state.curId); var _ep2 = (_nn && _nn.ep) || state.ep; global.Telemetry.onBtnClick(z.action, state.curId, _ep2); global.Telemetry.onButtonClick(z.action, state._curPageNameForTel || 'game_story', null); } } catch (_) { } // TELEMETRY v91.0
+        if (z.action === 'like') { doLike(); startLikeHold(); return; }
+        // v79.1 · 结局页「加桌面」引导入口（此前 addToDesktop 只挂在 splash 分支，通用派发里没有）
+        if (z.action === 'add_desktop') {
+          hapticTap('light');
+          LG('END-ADD-DESKTOP', '🏠 结局页点击加桌面');
+          if (typeof addToDesktop === 'function') addToDesktop();
+          return;
+        }
+        if (z.action === 'restart') { hapticTap('medium'); stopBEAudio(); return restart(); }
+        if (z.action === 'be_restart') { hapticTap('medium'); stopBEAudio(); return restart(); }
+        if (z.action === 'be_to_endpage') {
+          // V31·10 · BE 旁白页点继续 → 进大结局页（看广告复活 + 重来）
+          hapticTap('medium');
+          var _fromId = state.beOverlayFromId || state.curId;
+          var _fromNode = getNode(_fromId) || {};
+          var _endNode = getNode(state.curId) || {};
+          state.endInfo = {
+            endType: _endNode.ending || _fromNode.ending || 'BE',
+            title: _endNode.title || _fromNode.title || '结局 · 未竟',
+            text: _endNode.text || _fromNode.text || '',
+            fromId: _fromId
+          };
+          state.beOverlayFromId = null;
+          bumpBeCount(_fromId);       // V31·10 · BE 计数 +1（旁白页→继续→结局页）
+          state.curId = '__be__';
+          clearVideo();
+          render();
+          return;
+        }
+        if (z.action === 'be_ad_retry') {
+          hapticTap('medium');
+          state.beKeepVideoAlive = false;   // V64 · 复活流程走新视频，清 BE 保帧
+          stopBEAudio();   // V41 · 点看广告立即销毁旁白+BGM
+          // V31·10·final · 反查父 choice 节点顺序（三级 fallback）：
+          //   1) state.beSourceFromId —— wei 清零 / 显式跳 BE_ 时保存的真实父 choice（最准）
+          //   2) 遍历 STORY.nodes.options.next 反查（对于显式 opt.next="BE_XXX" 的情况）
+          //   3) 硬编码 'f_dance_react' 兜底
+          var findParentChoice = function (targetId) {
+            var STORY_NODES = (typeof NODES !== 'undefined' && NODES) || (global.STORY && global.STORY.nodes) || {};
+            for (var nid in STORY_NODES) {
+              var n = STORY_NODES[nid];
+              if (n && n.type === 'choice' && n.options) {
+                for (var oi = 0; oi < n.options.length; oi++) {
+                  if (n.options[oi] && n.options[oi].next === targetId) return nid;
+                }
+              }
+            }
+            return null;
+          };
+          var fromId = state.endInfo && state.endInfo.fromId;
+          var savedFrom = state.beSourceFromId;   // 优先用这个（wei 清零场景唯一正确源）
+          var parentChoice = null;
+          if (savedFrom) {
+            // beSourceFromId 记录的就是"玩家点选项时的 curId"，本身就是 choice 节点
+            var _n = getNode(savedFrom);
+            if (_n && _n.type === 'choice') {
+              parentChoice = savedFrom;
+              LG('REVIVE-USE-SAVED', '使用 beSourceFromId 直接回父 choice', { savedFrom: savedFrom });
+            }
+          }
+          if (!parentChoice) {
+            var seek = fromId;
+            var hops = 0;
+            while (seek && hops < 8) {
+              parentChoice = findParentChoice(seek);
+              if (parentChoice) break;
+              var noEnd = seek.replace(/_END$/, '');
+              if (noEnd !== seek) { seek = noEnd; hops++; continue; }
+              break;
+            }
+          }
+          var backTo = parentChoice || 'f_dance_react';
+          LG('REVIVE-BACK-DECIDE', '复活目标决定', { fromId: fromId, savedFrom: savedFrom, backTo: backTo });
+          // V31·10·final · 复活流程：重放"通向 parentChoice 的上游视频"的最后 5s
+          //   · 举例：f0 (choice) 的上游视频是 s3（婉儿端糊糊）
+          //   · 用户选 BE_STARVE → 广告复活 → 应该回放 S3.mp4 最后 5s → 落到 f0
+          //   · 而不是回放 BE 视频（那样等于让玩家再看一遍死亡画面，很怪）
+          // V32·12 · 【黑屏根治】原实现只查 1-2 级，f_s5 这种链路（s5→s5b→s5c→f_s5，中间 2 层无 media 文本）
+          //         找不到上游视频 → clearVideo → 用户复活后没背景。改为多级链式回溯，最多 6 层
+          //         从 targetChoiceId 反向逐层找"能指向它的 next 节点"，直到碰到 video 节点或到头。
+          var findUpstreamVideo = function (targetChoiceId) {
+            var STORY_NODES = (typeof NODES !== 'undefined' && NODES) || (global.STORY && global.STORY.nodes) || {};
+            // Step 1: 建 reverse index —— next → [ids that .next===target]
+            var revIdx = {};
+            for (var nid in STORY_NODES) {
+              var n = STORY_NODES[nid];
+              if (!n || !n.next) continue;
+              (revIdx[n.next] = revIdx[n.next] || []).push(nid);
+            }
+            // Step 2: BFS 反向遍历，找第一个有 video media 的节点
+            var q = [targetChoiceId];
+            var visited = {}; visited[targetChoiceId] = 1;
+            var depth = {}; depth[targetChoiceId] = 0;
+            while (q.length) {
+              var cur = q.shift();
+              if (depth[cur] > 6) continue;
+              var parents = revIdx[cur] || [];
+              for (var i = 0; i < parents.length; i++) {
+                var pid = parents[i];
+                if (visited[pid]) continue;
+                visited[pid] = 1;
+                var pn = STORY_NODES[pid];
+                if (pn && pn.media && pn.media.kind === 'video' && pn.media.file) {
+                  LG('REVIVE-UPSTREAM-BFS', '✅ BFS 找到上游视频', { target: targetChoiceId, upstream: pid, depth: depth[cur] + 1 });
+                  return pid;
+                }
+                depth[pid] = depth[cur] + 1;
+                q.push(pid);
+              }
+            }
+            LG('REVIVE-UPSTREAM-BFS-FAIL', '❌ BFS 未找到上游视频', { target: targetChoiceId, searched: Object.keys(visited).length });
+            return null;
+          };
+          var doAdRetry = function () {
+            LG('AD-RETRY-BACK', '广告观看完毕，回放上游视频最后 5s', { fromId: fromId, backTo: backTo });
+            // 状态复位
+            state.endInfo = null;
+            state.beOverlayFromId = null;
+            state.beVideoEnded = false;
+            state.beSourceLabel = null;
+            // V32·11 · 复活时回滚上次选项的数值扣除（把当时扣的加回来）
+            if (state.lastBEStatDelta && state.stats) {
+              var _rd = state.lastBEStatDelta;
+              var _rollback = {};
+              var _statMeta = {
+                wei: { label: '嫂子好感', color: '#e04c6a', row: 0 },
+                qing: { label: '村里威望', color: '#d4a03a', row: 1 },
+                liang: { label: '家里存粮', color: '#7fb069', row: 2 }
+              };
+              var _deltas = [];
+              ['wei', 'qing', 'liang'].forEach(function (k) {
+                if (typeof _rd[k] === 'number' && _rd[k] !== 0) {
+                  var _rev = -_rd[k];   // 反向 delta
+                  var _before = state.stats[k] || 0;
+                  var _after = Math.max(0, Math.min(999, _before + _rev));
+                  state.stats[k] = _after;
+                  _rollback[k] = _after - _before;
+                  if (_after - _before !== 0) {
+                    _deltas.push({ key: k, delta: _after - _before, meta: _statMeta[k] });
+                  }
+                }
+              });
+              LG('REVIVE-STAT-ROLLBACK', '↩️ 复活回滚数值', { rollback: _rollback, saved: _rd, statsNow: state.stats });
+              // 触发数值飞行动画反馈
+              if (_deltas.length && typeof showStatFeedback === 'function') {
+                try { showStatFeedback(_deltas); } catch (e) { }
+              }
+              state.lastBEStatDelta = null;
+            }
+            if (state.stats && state.stats.wei === 0) state.stats.wei = 1;
+            if (state.stats && state.stats.liang === 0) state.stats.liang = 1;
+            if (state.stats && state.stats.qing === 0) state.stats.qing = 1;
+            // 反查上游视频节点
+            var upVideoId = findUpstreamVideo(backTo);
+            LG('REVIVE-UPSTREAM', '找到上游视频节点', { upVideoId: upVideoId, backTo: backTo });
+            if (!upVideoId) {
+              // 兜底：找不到上游视频 → 保留当前 BE 视频最后一帧作为背景（不 clearVideo）
+              // 直接跳父 choice，画面上还有 BE 死亡视频的最后一帧兜底，不会全黑
+              LG('REVIVE-NO-UPSTREAM', '无上游视频，保留当前视频背景直接跳父 choice', { backTo: backTo });
+              state.curId = backTo;
+              // v76.0 · 复活回到父 choice 时，重置该 choice 里所有广告选项的解锁状态
+              try {
+                var _revNode3 = getNode(backTo);
+                if (_revNode3 && _revNode3.options) {
+                  for (var _rk = 0; _rk < _revNode3.options.length; _rk++) {
+                    var _ropt3 = _revNode3.options[_rk];
+                    if (_ropt3 && _ropt3.ad) {
+                      _ropt3._adUnlocked = false; _ropt3._adWatched = 0;
+                      try { clearAdWatched(backTo, _rk); } catch (_e) { }   // v78.8 · 同步清持久化
+                    }
+                  }
+                }
+              } catch (_) { }
+              // 不 clearVideo！让上一段视频（BE 或复活前视频）留在底层作背景
+              render();
+              return;
+            }
+            var upNode = getNode(upVideoId);
+            var upSrc = upNode && upNode.media && upNode.media.file;
+            var upDur = (upNode && upNode.media && upNode.media.duration) || 10;
+            if (!upSrc) {
+              state.curId = backTo;
+              clearVideo();
+              render();
+              return;
+            }
+            // 切到上游视频节点，用 initialTime 从最后 5s 开始播；播完自动跳 parentChoice
+            state.curId = upVideoId;
+            state.reviveBackTo = backTo;
+            state.reviveInProgress = true;
+            // V48 · 广告复活：固定到视频最后 1s（之前是最后 5s），直接展示互动选项
+            var startAt = Math.max(0, upDur - 1);
+            LG('REVIVE-PLAY', '从上游视频 initialTime=' + startAt + 's 起播（最后 1s）', { src: upSrc, upVideoId: upVideoId, backTo: backTo });
+            setVideo(upSrc, startAt);
+            render();
+          };
+          var doAdFail = function (reason) {
+            _clearAdLoadingBE();
+            // v78.9 · 奖励已发过（adapter 迟到奖励优先）就不再报失败
+            if (_beAdRewarded) {
+              LG('BE-AD-FAIL-IGNORED', '⚠ 已发过复活奖励，忽略失败回调', { reason: reason });
+              return;
+            }
+            LG('BE-AD-FAIL', 'BE 广告失败/未看完', { reason: reason });
+            state.toasts = state.toasts || [];
+            var _reasonStr = (reason && reason.reason) || '未看完';
+            var _msg = '广告未看完，无法重选';
+            if (_reasonStr === 'timeout') _msg = '广告加载超时，请稍后重试';
+            else if (_reasonStr === 'load_fail' || _reasonStr === 'no_load') _msg = '广告加载失败，请检查网络';
+            else if (_reasonStr === 'show_fail' || _reasonStr === 'show_throw') _msg = '广告播放失败，请稍后重试';
+            else if (_reasonStr === 'no_ad_instance') _msg = '广告服务未就绪，请稍后重试';
+            state.toasts.push({ text: _msg, color: '#ffbb55', t0: Date.now(), life: 2000 });
+            render();
+          };
+          // V32·7 · 立即显示"正在加载广告"loading 层（BE 复活也需要，跟正常选项广告一致）
+          state.adLoading = { active: true, t0: Date.now(), text: '正在加载广告…' };
+          render();
+          var _beAdRewarded = false;
+          var _clearAdLoadingBE = function () {
+            if (state.adLoading) state.adLoading.active = false;
+          };
+          // 包装 doAdRetry 也要清 loading（+ v78.9 幂等：防迟到奖励重复复活）
+          var _origDoAdRetry = doAdRetry;
+          doAdRetry = function () {
+            if (_beAdRewarded) {
+              LG('BE-AD-REWARD-DUP', '⚠ BE 复活奖励重复到达，已忽略', {});
+              return;
+            }
+            _beAdRewarded = true;
+            _clearAdLoadingBE();
+            _origDoAdRetry();
+          };
+          try { if (typeof KwaiDataAnalysis !== 'undefined') KwaiDataAnalysis.reportAnalytics('be_ad_retry_click', { fromId: fromId, backTo: backTo }); } catch (e) { }
+          try { if (global.Telemetry) global.Telemetry.onButtonClick('btn_be_retry_ad', 'end_page', { isAd: true, adSlot: 'be_revive', adScene: 'end_page', adEp: (getNode(fromId) || {}).ep || state.ep, adNodeId: fromId, adNodeTitle: '' }); } catch (_) {} // TELEMETRY v91.0
+          // v92.6 · 走统一闸门（此前是漏网点：大结局页免广告特权完全失效）
+          showRewardedGated(doAdRetry, doAdFail, 'be_revive');
+          return;
+        }
+        if (z.action === 'share_gc' || z.action === 'jump_gc') {
+          // V31.7 · 游戏圈未开通，一律走 ctrl:share 降级
+          hapticTap('light');
+          return handleCtrl('share');
+        }
+        if (z.action.indexOf('choose:') === 0) { hapticTap('medium'); return choose(+z.action.split(':')[1]); }
+        if (z.action === 'next') { hapticTap('light'); return next(); }
+        if (z.action.indexOf('ctrl:') === 0) { hapticTap('medium'); pulseBtnPress(z.action); return handleCtrl(z.action.split(':')[1]); }
+      }
+    }
+    if (state.curId === '__end__') return restart();
+    // V32 · 走到这里说明没击中任何交互元素 → 触发"别碰我"反馈（水波纹 + 贴纸 + 轻震）
+    triggerDontTouch(_tapX, _tapY);
+  }
+
+  // ============== V32 · 别碰我反馈 · 水波纹 + 贴纸 ==============
+  function loadDontTouchImg () {
+    if (state.tapFx.imgKey === 'loading' || state.tapFx.img) return;
+    state.tapFx.imgKey = 'loading';
+    try {
+      var im = (isKS && wx.createImage) ? wx.createImage() : (typeof Image !== 'undefined' ? new Image() : null);
+      if (!im) { state.tapFx.imgKey = 'fail'; return; }
+      im.onload = function () { state.tapFx.img = im; state.tapFx.imgKey = 'ok'; };
+      im.onerror = function () { state.tapFx.imgKey = 'fail'; };
+      im.src = 'images/fx/dont-touch.png';
+    } catch (e) { state.tapFx.imgKey = 'fail'; }
+  }
+  function triggerDontTouch (x, y) {
+    var now = Date.now();
+    if (now - state.tapFx.lastAt < 500) return; // 冷却 500ms
+    state.tapFx.lastAt = now;
+    // 波纹（画布是 DPR 倍逻辑分辨率，x/y 已是逻辑像素）
+    state.tapFx.ripples.push({ x: x, y: y, t0: now, life: 650 });
+    // 贴纸（真机 40x40 逻辑像素，图片按 dpr 缩放绘制）
+    state.tapFx.stickers.push({ x: x, y: y, t0: now, life: 900 });
+    // 轻震
+    hapticTap('light');
+    // 懒加载图
+    if (!state.tapFx.img && state.tapFx.imgKey !== 'fail') loadDontTouchImg();
+  }
+  function drawTapFx () {
+    var fx = state.tapFx;
+    if (!fx || (!fx.ripples.length && !fx.stickers.length)) return;
+    var now = Date.now();
+    // 波纹
+    for (var i = fx.ripples.length - 1; i >= 0; i--) {
+      var r = fx.ripples[i];
+      var age = now - r.t0;
+      if (age > r.life) { fx.ripples.splice(i, 1); continue; }
+      var u = age / r.life;
+      var eu = 1 - Math.pow(1 - u, 2); // easeOutQuad
+      var rad = 6 + eu * 80;
+      var alpha = (1 - u) * 0.75;
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, alpha);
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 2 * (1 - u * 0.6);
+      ctx.beginPath();
+      ctx.arc(r.x, r.y, rad, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.restore();
+    }
+    // 贴纸
+    for (var j = fx.stickers.length - 1; j >= 0; j--) {
+      var s = fx.stickers[j];
+      var sAge = now - s.t0;
+      if (sAge > s.life) { fx.stickers.splice(j, 1); continue; }
+      var su = sAge / s.life;
+      // 弹出上飘：0~0.25 从小到大出现；0.25~0.6 上飘；0.6~1 淡出
+      var yOff, scale, alpha2;
+      if (su < 0.25) {
+        var k = su / 0.25;
+        scale = 0.4 + 0.7 * (1 - Math.pow(1 - k, 3)); // 0.4→1.1
+        yOff = -k * 8;
+        alpha2 = k;
+      } else if (su < 0.6) {
+        var k2 = (su - 0.25) / 0.35;
+        scale = 1.1 - 0.1 * k2; // 1.1→1.0
+        yOff = -8 - k2 * 22;    // -8→-30
+        alpha2 = 1;
+      } else {
+        var k3 = (su - 0.6) / 0.4;
+        scale = 1.0 - 0.15 * k3;
+        yOff = -30 - k3 * 20;   // -30→-50
+        alpha2 = 1 - k3;
+      }
+      var base = 40; // 真机基础尺寸 40x40 逻辑像素
+      var dw = base * scale;
+      var dh = base * scale;
+      var dx = s.x - dw / 2;
+      var dy = s.y - dh / 2 + yOff;
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, Math.min(1, alpha2));
+      if (fx.img) {
+        try { ctx.drawImage(fx.img, dx, dy, dw, dh); } catch (e) { }
+      } else {
+        // 图未加载完的兜底：粉底 + "别碰我" 文字
+        ctx.fillStyle = '#ff6a9c';
+        roundRect(dx, dy, dw, dh, 8);
+        ctx.fill();
+        ctx.fillStyle = '#fff';
+        ctx.font = '800 12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('别碰我', s.x, dy + dh / 2 + 4 + yOff * 0);
+        ctx.textAlign = 'left';
+      }
+      ctx.restore();
+    }
+  }
+
+  function handleCtrl (k, arg) {
+    if (k === 'log') { showChapterHome(state._activeChapter); return; }
+    // console.log('[ctrl]', k);  // V31·7 · 静默
+    try { if (global.Telemetry) {
+      var _cn = getNode(state.curId); var _cep = (_cn && _cn.ep) || state.ep;
+      global.Telemetry.onBtnClick('ctrl:' + k, state.curId, _cep);
+      // v91.0 · 精细按钮映射
+      var _btnId = 'ctrl:' + k;
+      if (k === 'log')        _btnId = 'btn_chapter_open';
+      if (k === 'log_close')  _btnId = 'btn_chapter_close'; // v90.1 修复：关闭X不再误触广告
+      if (k === 'share')      _btnId = 'btn_share';
+      if (k === 'mute' || k === 'unmute') _btnId = 'btn_mute';
+      var _curPage = state._curPageNameForTel || 'game_story';
+      global.Telemetry.onButtonClick(_btnId, _curPage, null);
+      // v91.0 · 章节面板打开时打曝光
+      if (k === 'log') { try { global.Telemetry.onPageExpose('chapter_panel', { nodeId: state.curId, ep: _cep }); } catch (_) {} }
+    } } catch (_) { } // TELEMETRY v91.0
+    if (k === 'log') {
+      state.ui.logOpen = true; state._storyDrawerT0 = Date.now();
+      // v71.14 · 打开章节抽屉自动定位到当前章节：算出当前 idx * rowH，让它在视口中间
+      try {
+        var _all = _collectChapters();
+        var _visible = [];
+        for (var _ii = 0; _ii < _all.length; _ii++) {
+          var _cc2 = _all[_ii];
+          if (_cc2.id === state.curId || (state._visitedNodes && state._visitedNodes[_cc2.id])) _visible.push(_cc2);
+        }
+        var _idx = -1;
+        for (var _jj = 0; _jj < _visible.length; _jj++) if (_visible[_jj].id === state.curId) { _idx = _jj; break; }
+        if (_idx < 0) _idx = Math.max(0, _visible.length - 1); // 兜底：最后一条
+        var _rowH = 62;
+        // 让当前项位于视口中间：scrollY = idx*rowH - viewH/2 + rowH/2
+        var _viewH = 460; // 抽屉视口大致高度
+        var _targetScroll = Math.max(0, _idx * _rowH - _viewH / 2 + _rowH / 2);
+        state._storyDrawerScrollY = _targetScroll;
+        LG('CHAPTER-DRAWER-OPEN', '打开章节抽屉·自动定位当前', { idx: _idx, total: _visible.length, scrollY: _targetScroll });
+      } catch (_e) { state._storyDrawerScrollY = 0; }
+      return;
+    }
+    if (k === 'log_close') { state.ui.logOpen = false; return; }
+    // v92.4 · 底部栏「解锁全部章节」入口
+    if (k === 'unlock_all') {
+      state._unlockAllOpen = true;
+      state._unlockModalT0 = Date.now();
+      render();
+      return;
+    }
+    // v76.6 · 屏幕日志抽屉
+    if (k === 'dbg_log_toggle') {
+      state._dbgLogOpen = !state._dbgLogOpen;
+      state._dbgLogScrollY = 0;
+      LG('DBG-LOG-TOGGLE', '日志面板 ' + (state._dbgLogOpen ? '打开' : '关闭'));
+      render();
+      return;
+    }
+    if (k === 'dbg_log_close') { state._dbgLogOpen = false; render(); return; }
+    if (k === 'dbg_log_clear') { LG_RING.length = 0; LG('DBG-LOG-CLEAR', '日志已清空'); render(); return; }
+    if (k === 'dbg_log_copy') {
+      try {
+        var _all = LG_RING.map(function (x) { return x.line; }).join('\n');
+        if (wx && wx.setClipboardData) {
+          wx.setClipboardData({
+            data: _all, success: function () {
+              state.toasts = state.toasts || [];
+              state.toasts.push({ text: '✅ 已复制 ' + LG_RING.length + ' 条日志', color: '#7aff7a', t0: Date.now(), life: 1800 });
+              render();
+            }
+          });
+        }
+      } catch (e) { LG('DBG-LOG-COPY-EX', String(e)); }
+      return;
+    }
+    // All chapter entry points share permanent chapter access and start at its opening.
+    if (k === 'jump_chapter') {
+      if (state.adLoading && state.adLoading.active) return;
+      var targetChapter = chapterHome.find(arg) || chapterHome.find((getNode(arg) || {}).ep);
+      if (!targetChapter) return;
+      state.ui.logOpen = false;
+      chapterHome.unlock(targetChapter.id, function (chapter) { enterHomeChapter(chapter, null); }, function (err) {
+        state.toasts.push({ text: err && err.reason === 'not_finished' ? '未看完广告，章节尚未解锁' : '广告暂时不可用，请稍后重试', color: '#ffbb55', t0: Date.now(), life: 2000 });
+        render();
+      });
+      return;
+    }
+    if (k === 'mute_on' || k === 'mute_off') {  // V44 · 全局静音切换
+      state.ui.mute = !state.ui.mute;
+      try { applyGlobalMute(); } catch (e) { }
+      return;
+    }
+    if (k === 'eye') { state.ui.immersive = true; return; }
+    if (k === 'eye_off') { state.ui.immersive = false; return; }
+    if (k === 'speed') {
+      state.ui.speedIdx = (state.ui.speedIdx + 1) % SPEEDS.length;
+      // V31·8 · 三重兜底：① API 直接设置 ② onPlay 再设 ③ 销毁重建 + initialTime 无缝续播
+      applyVideoRate(state.video);
+      setTimeout(function () { applyVideoRate(state.video); }, 200);
+      setTimeout(function () { applyVideoRate(state.video); }, 600);
+      // V31·8 · 关键：如果是视频节点，销毁重建（用 initialTime 从当前进度继续播）
+      // 这是终极兜底 —— 快手容器 playbackRate 全部忽略时，重建时带 playbackRate 才能真正生效
+      try {
+        var _cur = getNode(state.curId);
+        var _isVid = _cur && _cur.media && (_cur.media.kind === 'video' || /\.mp4$/i.test(_cur.media.file || ''));
+        if (_isVid && state.video && state.videoKey) {
+          var _resumeAt = Math.max(0, (state.videoCurTime || 0) - 0.2); // 回退 0.2s 补黑帧
+          var _srcNow = state.videoKey;
+          LG('VIDEO-RATE-REBUILD', '销毁重建视频以应用新倍速', { rate: SPEEDS[state.ui.speedIdx], resumeAt: _resumeAt });
+          if (state.video && state.video.destroy) { try { state.video.destroy(); } catch (e) { } }
+          state.video = null;
+          state.videoKey = null;   // 让 setVideo 不走 SKIP
+          setVideo(_srcNow, _resumeAt);
+        }
+      } catch (e) { LG('VIDEO-RATE-REBUILD-ERR', 'err', { msg: e && e.message }); }
+      // V29 · 切倍速时：如果当前是图片/文本节点，立刻重置定时器让新速度生效
+      var _cur2 = getNode(state.curId);
+      var _isMedia = _cur2 && _cur2.media && _cur2.media.kind !== 'video';
+      var _isTextSub = _cur2 && !_cur2.media && _cur2.text;
+      if (_isMedia || _isTextSub) {
+        state.imgAdvKey = null;  // render() 循环会重新 set 定时器
+      }
+      // toast 提示当前倍速
+      state.toasts = state.toasts || [];
+      state.toasts.push({ text: '播放 ×' + SPEEDS[state.ui.speedIdx], color: '#ffd876', t0: Date.now(), life: 1000 });
+      return;
+    }
+    if (k === 'pause' || k === 'play') {
+      // v97.1 · 拖拽互动进行中：禁止手动恢复播放（否则可绕过互动）
+      if (global.DragUnlock && global.DragUnlock.isActive()) {
+        try { state.toasts.push({ text: '先帮她脱下外套吧～', color: '#ffbb55', t0: Date.now(), life: 1400 }); } catch (_) { }
+        return;
+      }
+      // v72 · 单入口 setPaused，避免 state.ui.paused 与 native video 状态漂移
+      setPaused(!state.ui.paused);
+      return;
+    }
+    if (k === 'share') {
+      // V31.7 · 分享按钮（游戏圈未开通）：wx.shareAppMessage → showShareMenu 降级
+      // v79.6 · 【修复⑤】用户反馈「点了很慢才出来，没反应」。两个原因：
+      //   ① imageUrl 指向 CDN 大图，容器要先把图拉下来才弹面板，期间毫无反馈；
+      //   ② 原来在 API 返回前就 push 了「已唤起分享面板」，属于假成功提示。
+      //   现在：点击即给 loading toast + 防连点，成功/失败都在回调里如实反馈。
+      state.toasts = state.toasts || [];
+      if (state.shareBusy) return;          // 防连点：慢的时候用户会狂点
+      state.shareBusy = true;
+      state.toasts.push({ text: '正在唤起分享…', color: '#ffd876', t0: Date.now(), life: 1500 });
+      if (typeof render === 'function') render();
+      // 兜底：部分容器 shareAppMessage 不回调，2.5s 后自动解锁，避免永久卡 busy
+      try {
+        if (state._shareTimer) clearTimeout(state._shareTimer);
+        state._shareTimer = setTimeout(function () { state.shareBusy = false; }, 2500);
+      } catch (_) { }
+
+      var shared = false;
+      try {
+        if (typeof KwaiShare !== 'undefined' && KwaiShare.share) {
+          KwaiShare.share({
+            title: '荒年开局·我的未婚妻——快来陪嫂子撑起这个家',
+            imageUrl: 'https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/cover-text.png',
+          });
+          state.shareBusy = false;
+          LG('SHARE-OK', '分享成功');
+          try { if (global.Telemetry) global.Telemetry.track('share_ok', {}); } catch (_) { }
+          shared = true;
+        } else if (isKS && wx && wx.showShareMenu) {
+          wx.showShareMenu({ withShareTicket: false });
+          shared = true;
+          state.shareBusy = false;
+        }
+      } catch (e) {
+        state.shareBusy = false;
+        LG('SHARE-EX', '分享异常', { err: e && e.message });
+      }
+      if (!shared) {
+        state.shareBusy = false;
+        state.toasts.push({ text: '当前环境暂不支持分享', color: '#ff8a5c', t0: Date.now(), life: 1500 });
+      }
+      return;
+    }
+    if (k === 'fwd5') {
+      // v97.1 · 拖拽互动进行中：禁用快进，必须真拖完才能继续
+      if (global.DragUnlock && global.DragUnlock.isActive()) {
+        try { state.toasts.push({ text: '先帮她脱下外套吧～', color: '#ffbb55', t0: Date.now(), life: 1400 }); } catch (_) { }
+        return;
+      }
+      // v76.2 · 全局快进 5 秒：视频节点 seek+5，非视频节点直接 next()
+      if (state.video && typeof state.videoCurTime === 'number') {
+        var _tgt = state.videoCurTime + 5;
+        try { state.video.seek && state.video.seek(_tgt); } catch (e) { }
+        state.videoCurTime = _tgt;
+        try { state.toasts.push({ text: '⏩ +5s', color: '#ffd876', t0: Date.now(), life: 800 }); } catch (_) { }
+        try { hapticTap && hapticTap('medium'); } catch (_) { }
+        try { pulseBtnPress && pulseBtnPress('ctrl:fwd5'); } catch (_) { }
+        try { LG && LG('FWD5', '快进 5s', { from: _tgt - 5, to: _tgt }); } catch (_) { }
+      } else {
+        // 非视频节点：直接 next（图像节点用 duration 定时前进，快进无意义 → 直接翻页）
+        try { state.toasts.push({ text: '⏩ 已跳过', color: '#ffd876', t0: Date.now(), life: 800 }); } catch (_) { }
+        try { next(); } catch (_) { }
+      }
+      return;
+    }
+    if (k === 'skip') {
+      // v97.1 · 拖拽互动进行中：禁用跳过下一幕
+      if (global.DragUnlock && global.DragUnlock.isActive()) {
+        try { state.toasts.push({ text: '先帮她脱下外套吧～', color: '#ffbb55', t0: Date.now(), life: 1400 }); } catch (_) { }
+        return;
+      }
+      // 快进到下一幕：如果当前视频有 choice 跟随，跳到 choice；否则调用 next()
+      if (state.video) {
+        var cur = getNode(state.curId);
+        var scanId = cur && cur.next, hops = 0, choiceId = null;
+        while (scanId && hops < 6) {
+          var sn = getNode(scanId);
+          if (!sn) break;
+          if (sn.type === 'choice') { choiceId = scanId; break; }
+          if (sn.media) break;
+          scanId = sn.next; hops++;
+        }
+        try { state.video.pause && state.video.pause(); } catch (e) { }
+        if (choiceId) { state.curId = choiceId; return; }
+      }
+      next();
+      return;
+    }
+  }
+  // 记录每次节点变化到剧情日志
+  state.storyLog = state.storyLog || [];
+  var _lastLogId = null;
+  function logCurrent () {
+    if (_lastLogId === state.curId) return;
+    _lastLogId = state.curId;
+    try { checkNodeUnlock(state.curId); } catch (e) { }
+    // V36 · 记录 visited（供剧情章节抽屉展示 ✓ 已经过）
+    if (state.curId && state.curId !== '__end__' && state.curId !== '__be__') {
+      state._visitedNodes = state._visitedNodes || {};
+      state._visitedNodes[state.curId] = true;
+    }
+    var n = getNode(state.curId);
+    if (!n || !n.text) return;
+    state.storyLog.push({ id: state.curId, who: n.char || '', speaker: n.speaker || '', text: n.text });
+    if (state.storyLog.length > 200) state.storyLog.shift();
+  }
+  // V31·10 · BE 计数（每次进 __be__ 结局页 +1，同一 BE 节点连续触发不重复计数）
+  function bumpBeCount (fromId) {
+    try {
+      var key = String(fromId || '') + '@' + Date.now();  // 时间戳去重，防同帧多次调用
+      if (state._lastBeStamp && (Date.now() - state._lastBeStamp) < 500 && state._lastBeFromId === fromId) return;
+      state._lastBeStamp = Date.now();
+      state._lastBeFromId = fromId;
+      state.beCount = (state.beCount || 0) + 1;
+      // 持久化
+      try {
+        if (typeof KwaiStorage !== 'undefined') KwaiStorage.setSync('weihunqi_be_count', state.beCount);
+        else if (typeof localStorage !== 'undefined') localStorage.setItem('weihunqi_be_count', String(state.beCount));
+      } catch (e) { }
+      LG('BE-COUNT', 'BE 次数 +1', { fromId: fromId, total: state.beCount });
+      try { if (typeof KwaiDataAnalysis !== 'undefined') KwaiDataAnalysis.reportAnalytics('be_count_inc', { fromId: fromId, total: state.beCount }); } catch (e) { }
+      try { if (global.Telemetry) { var _fn = getNode(fromId) || {}; var _ei = state.endInfo || {}; global.Telemetry.onBEReached(_ei.endType || _fn.ending || _fn.endType || 'unknown', fromId, _fn.ep || state.ep); } } catch (_) { } // TELEMETRY
+    } catch (e) { }
+  }
+  // 启动时读回持久化的 beCount
+  try {
+    var _bcSaved = 0;
+    if (typeof KwaiStorage !== 'undefined') _bcSaved = parseInt(KwaiStorage.getSync('weihunqi_be_count') || 0, 10) || 0;
+    else if (typeof localStorage !== 'undefined') _bcSaved = parseInt(localStorage.getItem('weihunqi_be_count') || 0, 10) || 0;
+    if (_bcSaved > 0) state.beCount = _bcSaved;
+  } catch (e) { }
+  // ============ 成就系统接入 ============
+  try {
+    if (global.Achievements && global.Achievements.init) {
+      global.Achievements.init({
+        canvas: canvas, ctx: ctx, W: W, H: H, isKS: isKS, wx: isKS ? wx : null,
+        getUser: function () { return state.user || null; },
+        onRequestUser: requestPlayerProfile,
+        getPlayT0: function () { return state.playSessionT0 || 0; },
+        getBeCount: function () { return state.beCount || 0; },
+        onSessionAdBypass: function () {
+          state.sessionAdBypass = true;
+          try { LG('SESSION-AD-BYPASS', '头像长按 4 秒 → 本次启动免广告'); } catch (_) {}
+          try { if (global.Telemetry) global.Telemetry.event('session_ad_bypass', { source: 'achievement_avatar' }); } catch (_) {}
+          render();
+        },
+        onDirectChapter: function (card) {
+          // v90.21 · 「看广告 · 直通该章」必须做到：点了 → 看完 → 真的进到那张卡对应的那一帧。
+          //   目标章节/节点一律取自 card.jump（由 registry 的 CARD_JUMP_MAP 注入，构建期从剧本推导），
+          //   不再信任任何手写字段。任何提前返回都要给可见反馈，不允许静默吞掉广告。
+          function _tip (msg, color) {
+            state.toasts = state.toasts || [];
+            state.toasts.push({ text: msg, color: color || '#ffbb55', t0: Date.now(), life: 2000 });
+            render();
+          }
+          var jump = card && card.jump;
+          var targetEp = jump && jump.ep;
+          var targetNode = jump && jump.node;
+          var chapter = targetEp ? (RAW.meta.homeChapters || []).filter(function (c) { return c.id === targetEp; })[0] : null;
+          if (!chapter || !chapter.start) {
+            try { if (global.Telemetry) global.Telemetry.event('achievement_direct_fail', { card_id: (card && card.id) || '', target_chapter: targetEp || '', reason: 'chapter_missing' }); } catch (_) {}
+            return _tip('该剧情即将上线，敬请期待');
+          }
+          // 目标节点在剧本里不存在 → 退化为「从本章开头进」，但要记 fail 便于观测。
+          if (targetNode && !getNode(targetNode)) {
+            LG('DIRECT-NODE-MISSING', '⚠️ 直通节点不存在，退化为章节起点', { node: targetNode, ep: chapter.id });
+            try { if (global.Telemetry) global.Telemetry.event('achievement_direct_fail', { card_id: (card && card.id) || '', target_chapter: chapter.id, reason: 'node_missing' }); } catch (_) {}
+            targetNode = null;
+          }
+          if (state.adLoading && state.adLoading.active) return;
+          state.adLoading = { active: true, t0: Date.now(), text: '正在加载剧情直通广告…' };
+          try { if (global.Telemetry) global.Telemetry.onAdClick('achievement_direct:' + chapter.id); } catch (_) {}
+          var settled = false;
+          var finish = function () {
+            if (settled) return; settled = true;
+            state.adLoading = null; state.chapterTransition = null;
+            // 广告已看完 → 先落盘解锁，再进章节；否则 enterHomeChapter 的 isUnlocked 闸门会把人挡回去。
+            if (chapterHome && chapterHome.grant) chapterHome.grant(chapter.id);
+            var entered = enterHomeChapter(chapter, null, null, 'achievement_direct', targetNode) === true;
+            // 真正有效的校验：以「是否切到了目标节点」为准，而不是看解锁位（grant 之后必然为真，判了等于没判）。
+            var landed = entered && (!targetNode || state.curId === targetNode);
+            try {
+              if (global.Telemetry) global.Telemetry.event(landed ? 'achievement_direct_ok' : 'achievement_direct_fail', {
+                card_id: (card && card.id) || '', target_chapter: chapter.id,
+                target_node: targetNode || '', landed_node: state.curId || '',
+                reason: landed ? 'entered' : (entered ? 'node_fallback' : 'enter_blocked')
+              });
+            } catch (_) {}
+            if (!entered) {
+              LG('DIRECT-CHAPTER-BLOCK', '⚠️ 广告已看完但没能进入章节', { ep: chapter.id });
+              return _tip('已为你解锁「' + (chapter.title || chapter.id) + '」，请在章节列表点击进入', '#8bd47a');
+            }
+            if (!landed) LG('DIRECT-NODE-FALLBACK', '⚠️ 已进章节但未落到目标节点', { want: targetNode, got: state.curId });
+          };
+          var fail = function (reason) {
+            if (settled) return; settled = true;
+            state.adLoading = null;
+            try { if (global.Telemetry) global.Telemetry.event('achievement_direct_fail', { card_id: (card && card.id) || '', target_chapter: chapter.id, reason: reason || 'ad_cancel' }); } catch (_) {}
+            _tip('广告没看完，直通未生效');
+          };
+          try {
+            // v92.6 · 走统一闸门（此前是漏网点）
+            if (!showRewardedGated(finish, function () { fail('ad_cancel'); }, 'achievement_direct')) fail('ad_unavailable');
+          } catch (_) { fail('ad_exception'); }
+        },
+        // V31·9 · 清除缓存：清掉所有本地存储 + 用户 + 成就 + 剧情进度，回到第一帧
+        onClearCache: function () {
+          try {
+            if (typeof KwaiStorage !== 'undefined') {
+              try { KwaiStorage.clearSync(); } catch (e) { }
+            } else if (typeof localStorage !== 'undefined') {
+              try { localStorage.clear(); } catch (e) { }
+            }
+          } catch (e) { }
+          LG('CLEAR-CACHE', 'V57 · 用户清除缓存 → 重置所有状态（含新手引导记录）');
+          // 清空 user / playT0 / beCount / achievements
+          state.user = null;
+          state.sessionAdBypass = false;
+          profileRequested = false;
+          if (playerProfile) playerProfile.reset();
+          state.playSessionT0 = 0;
+          state.beCount = 0;
+          state.storyLog = [];
+          state.hasPlayedStory = false;
+          _lastLogId = null;
+          clearAllAdUnlocks();
+          // v75.7 · 清空章节解锁进度（_visitedNodes 是已解锁章节的真源）+ 章节广告门票
+          state._visitedNodes = {};
+          state._chapterAdPass = null;
+          if (chapterHome) chapterHome.resetUnlocks();
+          state._activeChapter = 'EP01'; state.chapterTransition = null;
+          // v75.7 · 显式清存档文件（saveProgress 写的 _SAVE_KEY），双保险
+          try { if (typeof clearProgress === 'function') clearProgress(); } catch (_) { }
+          // V57 · 兜底：显式移除本游戏所有 storage key（clearStorage 已做，双保险）
+          try {
+            var _KEYS = ['weihunqi_tutorial_seen', 'weihunqi_chapter_guide_seen', 'weihunqi_be_count', 'weihunqi_chapter_unlocks_v1', 'weihunqi_chapter_progress_v1', 'weihunqi_ad_pass_v1'];
+            if (typeof KwaiStorage !== 'undefined') {
+              _KEYS.forEach(function (k) { try { KwaiStorage.removeSync(k); } catch (e) { } });
+            } else if (typeof localStorage !== 'undefined') {
+              _KEYS.forEach(function (k) { try { localStorage.removeItem(k); } catch (e) { } });
+            }
+          } catch (e) { }
+          // 清空 achievement unlocked（Achievements 侧也已清）
+          try { if (global.Achievements && global.Achievements._debugState) { var _s = global.Achievements._debugState(); if (_s) _s.unlocked = {}; } } catch (e) { }
+          // 停视频 + 重置剧情
+          try { clearVideo(); } catch (e) { }
+          state.imgAdvKey = null; state.mediaImgKey = null; state.mediaImg = null;
+          state.beOverlayFromId = null; state.beVideoEnded = false; state.beSourceLabel = null;
+          state.stats = (RAW.meta && RAW.meta.initStat) ? {
+            wei: RAW.meta.initStat.wei || 50,
+            qing: RAW.meta.initStat.qing || 50,
+            liang: RAW.meta.initStat.liang || 50
+          } : { wei: 50, qing: 50, liang: 50 };
+          // Clearing progress uses the same immediate first-video entry as a new player.
+          state.splash = { active: true, img: null, imgKey: null, t0: Date.now(), tried: 0, loading: false };
+          state._splashPrefetched = false;
+          state._splashT0 = Date.now();  // V41.2 · 重置 8s 兜底计时器
+          state.curId = RAW.start || 's1';
+          if (chapterHome) openInitialExperience(null);
+          // 延迟 800ms 让 toast 显示
+          setTimeout(function () { try { render(); } catch (e) { } }, 800);
+          try { render(); } catch (e) { }
+        }
+      });
+    }
+  } catch (e) { console.log('[achv-init-err]', e && e.message); }
+  // V31·4 · 剧情节点 → 成就 id 映射（根据实际剧本对齐）
+  //   s3       → 初见婉儿（婉儿第一次开口喊"傲天你终于醒了"）
+  //   s6b      → 一亩好地（系统提示技能激活）
+  //   r_side01 → 粗布荆衣  · r_side02 → 青衫小袄 · r_side03 → 红妆待归
+  //   r_side04 → 孔雀开屏  · r_side05 → 小兔乖乖 · r_side06 → 草原之夜
+  //   BE_SLAP  → 三巴掌
+  // v73.0 · 从 content/assets.registry.json 派生（新增解锁映射请改 registry.nodeUnlockMap）
+  var NODE_UNLOCK_MAP = (_REG && _REG.NODE_UNLOCK_MAP) || {
+    's3': 'medal_first',
+    's6b': 'skill_land',
+    's_stone': 'skill_stone',
+    's_muscle': 'skill_muscle',
+    'r_side01': 'medal_cloth1',
+    'r_side02': 'medal_cloth2',
+    'r_side03': 'medal_cloth3',
+    'r_side04': 'medal_peacock',
+    'r_side05': 'medal_bunny',
+    'r_side06': 'medal_mongol',
+    'BE_SLAP': 'medal_slap'
+  };
+  // V52 · s3 之前的"早期节点"白名单：嫂子未登场
+  //   任何不在这个集合里的节点 → 追溯解锁 sisterUnlocked
+  //   修复：章节抽屉跳章节 / 广告复活到 s3 之后的节点 时 wei 胶囊消失的偶现 bug
+  // v73.0 · 从 content/assets.registry.json 派生
+  var EARLY_NODES_BEFORE_SISTER = (_REG && _REG.EARLY_NODES_BEFORE_SISTER) || {
+    's1': 1, 's2': 1,
+    'f0': 1, 'r_f0_a': 1, 'r_f0_b': 1, 'r_f0_c': 1, 'r_f0_d': 1
+  };
+  function checkNodeUnlock (id) {
+    // V36 · 到 s3（婉儿第一次登场）时解锁嫂子相关 UI（好感胶囊 + 点赞按钮）
+    // V52 · 追溯解锁：只要 curId 不在"嫂子登场之前"白名单里，一律置 true
+    //   覆盖：① 剧情抽屉跳章节到 s3 之后 ② 广告复活到 s3 之后 ③ 任何未来分支入口
+    if (!state.sisterUnlocked && id && !EARLY_NODES_BEFORE_SISTER[id] && !/^__/.test(id)) {
+      state.sisterUnlocked = true;
+      LG('SISTER-UNLOCK', '👩 嫂子登场（含追溯），解锁 wei 胶囊 + 点赞按钮', { id: id });
+      // v71.7 · mp3 播放迁移到 medal_first 分支（下方），此处只做 UI 解锁
+    }
+    var aid = NODE_UNLOCK_MAP[id];
+    if (aid && global.Achievements) {
+      // \u2728 \u89e3\u9501\u524d\u6e05\u7a7a\u53f3\u4fa7\u80f6\u56ca\u7684\u6240\u6709\u52a8\u753b\u72b6\u6001
+      state.pulses = {};
+      state.particles = [];
+      state.toasts = [];
+      state.statsExpandRows = {};
+      global.Achievements.unlock(aid);
+      // v71.10 · 婉儿首次登场音频/护栏必须无条件跑（老存档 medal_first 已 unlocked 时，
+      //   Achievements.unlock 会 early-return 不弹 popup，之前逻辑就整个跳过；这里改为
+      //   即使已解锁也强制补触发 popup + 播音频 + 暂停视频，保证用户能听到解锁音效）
+      if (aid === 'medal_first' && !state._sisterUnlockAudioPlayed) {
+        state._sisterUnlockAudioPlayed = true;  // 每 session 只播一次
+        // v71.17 · 【关键护栏】立即置 flag，让本次 setVideo 里新建的 s3 视频 onPlay 也被拦下（避免视频与 mp3 重叠）
+        state._pausedForMedalFirst = true;
+        try { if (state.video && state.video.pause) state.video.pause(); } catch (_) { }
+        // v76.5 · 【问题 3 修复】立即清残留的旧节点 mediaImg（打巴掌图/摸脉图等），
+        // 强制用 s3.mp4 的 lastframe 兜底图当占位，避免弹窗期间背景还是上一节点的图
+        try {
+          state.mediaImg = null;
+          state.mediaImgKey = null;
+          var _lfS3 = (_REG.IMAGE_ALIASES || {})['https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/lastframe/S3.jpg'];
+          if (typeof loadImg === 'function') {
+            loadImg(_lfS3, function (_im) {
+              if (_im && state._pausedForMedalFirst) {
+                state.mediaImg = _im;
+                state.mediaImgKey = _lfS3;
+                try { LG('SISTER-UNLOCK-BG', '🖼 弹窗期间显示 S3.jpg lastframe'); } catch (_) { }
+                try { render(); } catch (_) { }
+              }
+            });
+          }
+        } catch (_) { }
+        try {
+          var _SS0 = global.Achievements._debugState && global.Achievements._debugState();
+          // 若 unlock 因老存档 early-return 没弹 popup，强制补一个
+          if (_SS0 && !_SS0.popup) {
+            _SS0.popup = { id: 'medal_first', phase: 'in', t0: Date.now() };
+            try { LG('SISTER-UNLOCK-POPUP-FORCE', '💫 老存档已解锁，强制补 popup'); } catch (_) { }
+          }
+          if (_SS0 && _SS0.popup) { _SS0.popup.stayInf = true; }
+        } catch (e) { }
+        // 播说书大爷『你已解锁新人物 沈婉儿…』
+        // v71.10 · 挂到 state.sisterUnlockAudioCtx 防被 GC；也支持非快手 wx 环境降级
+        try {
+          var _makeAudio = (isKS && wx && wx.createInnerAudioContext) ? function () { return wx.createInnerAudioContext(); }
+            : (typeof wx !== 'undefined' && wx.createInnerAudioContext) ? function () { return wx.createInnerAudioContext(); }
+              : null;
+          if (_makeAudio) {
+            var ctxU = _makeAudio();
+            ctxU.src = NARR_CDN + 'sister_unlock.mp3';  // v80.0 · 走 CDN（本地 assets/ 目录已移除）
+            ctxU.volume = (state.ui && state.ui.mute) ? 0 : 1.0;
+            ctxU.loop = false;
+            try { LG('SISTER-UNLOCK-AUDIO', '▶ create sister_unlock.mp3'); } catch (_) { }
+            ctxU.onError && ctxU.onError(function (e) { try { LG('SISTER-UNLOCK-AUDIO-ERR', JSON.stringify(e)); } catch (_) { } });
+            ctxU.onPlay && ctxU.onPlay(function () { try { LG('SISTER-UNLOCK-AUDIO-PLAY', 'sister mp3 onPlay'); } catch (_) { } });
+            ctxU.onEnded && ctxU.onEnded(function () {
+              try { LG('SISTER-UNLOCK-AUDIO-END', 'sister mp3 播完 → popup shrink'); } catch (_) { }
+              try {
+                var _SS = global.Achievements && global.Achievements._debugState && global.Achievements._debugState();
+                if (_SS && _SS.popup && (_SS.popup.phase === 'in' || _SS.popup.phase === 'stay')) {
+                  _SS.popup.phase = 'shrink';
+                  _SS.popup.t0 = Date.now();
+                }
+              } catch (_e) { }
+              // 音频播完立即 unmute + resume 视频（护栏解除）
+              state.sisterUnlockAudioCtx = null;
+              resumeVideoAfterSisterUnlock();
+            });
+            ctxU.play();
+            state.sisterUnlockAudioCtx = ctxU;  // 挂 state 防 GC
+          } else {
+            try { LG('SISTER-UNLOCK-AUDIO-SKIP', '❌ 环境无 wx.createInnerAudioContext'); } catch (_) { }
+          }
+        } catch (e) { try { LG('SISTER-UNLOCK-AUDIO-EX', e && e.message); } catch (_) { } }
+        // 暂停 s3 视频（可能是旧视频，setVideo 里 onPlay 有二次护栏）
+        try {
+          if (state.video && state.video.pause) state.video.pause();
+          state._pausedForMedalFirst = true;
+        } catch (e) { }
+      }
+    }
+  }
+  // V31·4 · 判断成就浮层是否正在播（in/stay/shrink 期间禁止 next 推进）
+  function isAchvBusy () {
+    try {
+      var S = global.Achievements && global.Achievements._debugState && global.Achievements._debugState();
+      return !!(S && S.popup);
+    } catch (e) { return false; }
+  }
+  if (isKS && wx.onTouchStart) wx.onTouchStart(onTouch);
+  // V31·6 · 成就抽屉滚动支持（touchmove / touchend 转发到 Achievements）
+  // V36 · 额外支持剧情浮层滚动
+  function _storyDrawerHandleMove (x, y) {
+    if (!state.ui || !state.ui.logOpen) return;
+    var box = state._storyDrawerBox;
+    var st = state._storyDrawerTouch;
+    if (!box || !st) return;
+    var dy = y - st.lastY;
+    st.lastY = y;
+    // V57 · 记录总位移，超阈值则取消挂起的 jump
+    if (typeof st.startY === 'number') {
+      var totalDy = Math.abs(y - st.startY);
+      if (totalDy > 8) {
+        st.moved = true;
+        state._storyPendingJump = null;   // 滑动取消跳章
+      }
+    }
+    state._storyDrawerScrollY = Math.max(0, Math.min(box.maxScroll, state._storyDrawerScrollY - dy));
+  }
+  try {
+    if (isKS && wx.onTouchMove) {
+      wx.onTouchMove(function (e) {
+        var t = e && e.touches && e.touches[0] || e && e.changedTouches && e.changedTouches[0];
+        if (!t) return;
+        var x = t.clientX != null ? t.clientX : (t.pageX != null ? t.pageX : t.x || 0);
+        var y = t.clientY != null ? t.clientY : (t.pageY != null ? t.pageY : t.y || 0);
+        if (global.AdminAdControl && global.AdminAdControl.touchMove(x, y)) return;
+        // v97.2 · 模态浮层打开时，拖拽互动不接管（与 onTouch 同一条门控规则）
+        var _mvModal = !!(state._unlockAllOpen || (state.adLoading && state.adLoading.active)
+          || state._privacyOpen || state._dbgLogOpen || (state.ui && state.ui.logOpen));
+        // v97.0 · 拖拽解锁互动激活时，优先处理拖尾跟随
+        if (!_mvModal && global.DragUnlock && global.DragUnlock.isActive()) {
+          if (global.DragUnlock.getPhase() === 'dragging') {
+            global.DragUnlock.touchMove(x, y);
+            // v93.0 · 【不跟手根治 · 之二】这里【不再】同步 render()。
+            //   touchMove 在真机上可能一帧内连来 2~3 次（合并前的原始事件），
+            //   每次都整帧重绘 = 一帧画三遍，白烧 CPU 反而掉帧、跟手更差。
+            //   pickInterval 在拖拽期间已返回 0（每个 rAF 必画），交给 loop 与
+            //   屏幕刷新同相地画一次即可：延迟更低、节奏更稳。
+          }
+          return;
+        }
+        if (state.chapterTransition && chapterTransition) { chapterTransition.touchMove(x, y); return; }
+        if (state.splash.active && chapterHome && !state._privacyOpen) { chapterHome.touchMove(x, y); return; }
+        if (global.Achievements && global.Achievements.onTouchMove) global.Achievements.onTouchMove(x, y);
+        _storyDrawerHandleMove(x, y);
+        // v76.6 · 日志面板滚动
+        if (state._dbgLogOpen && state._prevTouchY != null) {
+          var _ldy = y - state._prevTouchY;
+          state._dbgLogScrollY -= _ldy * 1.4;
+          state._prevTouchY = y;
+          if (typeof render === 'function') render();
+        }
+        // V75.2 · 隐私政策浮层滚动
+        // v76.0 · 提升灵敏度：1.5× 增益 + rAF 合并渲染（避免每 touchmove 都 render 拖累）
+        if (state._privacyOpen && state._prevTouchY != null) {
+          var _pdy = y - state._prevTouchY;
+          _privacyScrollY = Math.max(0, _privacyScrollY - _pdy * 1.5);
+          state._prevTouchY = y;
+          if (!state._privacyRafPending) {
+            state._privacyRafPending = true;
+            var _dorender = function () {
+              state._privacyRafPending = false;
+              if (typeof render === 'function') render();
+            };
+            if (typeof requestAnimationFrame === 'function') requestAnimationFrame(_dorender);
+            else setTimeout(_dorender, 16);
+          }
+        }
+      });
+    }
+    // 浏览器降级：如果有 canvas 且能挂 addEventListener（web 预览）
+    if (!isKS && canvas && canvas.addEventListener) {
+      canvas.addEventListener('touchstart', function (e) {
+        var t = e.touches && e.touches[0]; if (!t) return;
+        if (global.Achievements && global.Achievements.onTouchStart) global.Achievements.onTouchStart(t.clientX, t.clientY);
+        // v97.0 · 浏览器降级预览：拖拽解锁也要能测（复用 onTouch 的坐标换算）
+        if (global.DragUnlock && global.DragUnlock.isActive()) { onTouch(e); }
+      }, { passive: true });
+      canvas.addEventListener('touchmove', function (e) {
+        var t = e.touches && e.touches[0]; if (!t) return;
+        if (global.Achievements && global.Achievements.onTouchMove) global.Achievements.onTouchMove(t.clientX, t.clientY);
+        _storyDrawerHandleMove(t.clientX, t.clientY);
+        if (global.DragUnlock && global.DragUnlock.isActive() && global.DragUnlock.getPhase() === 'dragging') {
+          global.DragUnlock.touchMove(t.clientX, t.clientY);
+          if (typeof render === 'function') render();
+        }
+      }, { passive: true });
+      canvas.addEventListener('touchend', function (e) {
+        var t = e.changedTouches && e.changedTouches[0]; if (!t) return;
+        if (global.Achievements && global.Achievements.onTouchEnd) global.Achievements.onTouchEnd(t.clientX, t.clientY);
+        if (global.DragUnlock && global.DragUnlock.isActive() && global.DragUnlock.getPhase() === 'dragging') {
+          global.DragUnlock.touchEnd(t.clientX, t.clientY);
+          if (typeof render === 'function') render();
+        }
+      }, { passive: true });
+      // 鼠标模拟
+      var mDown = false, mLastY = 0;
+      canvas.addEventListener('mousedown', function (e) {
+        mDown = true; mLastY = e.clientY;
+        if (global.Achievements && global.Achievements.onTouchStart) global.Achievements.onTouchStart(e.clientX, e.clientY);
+        if (global.DragUnlock && global.DragUnlock.isActive()) { onTouch(e); }
+      });
+      canvas.addEventListener('mousemove', function (e) {
+        if (!mDown) return;
+        if (global.Achievements && global.Achievements.onTouchMove) global.Achievements.onTouchMove(e.clientX, e.clientY);
+        if (global.DragUnlock && global.DragUnlock.isActive() && global.DragUnlock.getPhase() === 'dragging') {
+          global.DragUnlock.touchMove(e.clientX, e.clientY);
+          if (typeof render === 'function') render();
+        }
+      });
+      canvas.addEventListener('mouseup', function (e) {
+        mDown = false;
+        if (global.Achievements && global.Achievements.onTouchEnd) global.Achievements.onTouchEnd(e.clientX, e.clientY);
+        if (global.DragUnlock && global.DragUnlock.isActive() && global.DragUnlock.getPhase() === 'dragging') {
+          global.DragUnlock.touchEnd(e.clientX, e.clientY);
+          if (typeof render === 'function') render();
+        }
+      });
+    }
+  } catch (e) { }
+  // 手指抬起/离开画布 → 停止长按连点 + 通知抽屉滚动结束
+  try {
+    if (isKS && wx.onTouchEnd) wx.onTouchEnd(function (e) {
+      stopLikeHold();
+      // V75.2 · 清除隐私政策滚动追踪
+      if (state._prevTouchY != null) { state._prevTouchY = null; }
+      var t = e && e.changedTouches && e.changedTouches[0];
+      if (t && global.AdminAdControl && global.AdminAdControl.touchEnd(t.clientX != null ? t.clientX : t.x || 0, t.clientY != null ? t.clientY : t.y || 0)) return;
+      // v97.2 · 模态浮层打开时，拖拽互动不接管（与 onTouch 同一条门控规则）
+      var _teModal = !!(state._unlockAllOpen || (state.adLoading && state.adLoading.active)
+        || state._privacyOpen || state._dbgLogOpen || (state.ui && state.ui.logOpen));
+      // v97.0 · 拖拽解锁互动激活时，判定命中/未命中
+      if (!_teModal && t && global.DragUnlock && global.DragUnlock.isActive()) {
+        var _dux = t.clientX != null ? t.clientX : t.x || 0;
+        var _duy = t.clientY != null ? t.clientY : t.y || 0;
+        if (global.DragUnlock.getPhase() === 'dragging') {
+          global.DragUnlock.touchEnd(_dux, _duy);
+          if (typeof render === 'function') render();
+        }
+        return;
+      }
+      if (t && state.chapterTransition && chapterTransition) {
+        chapterTransition.touchEnd(t.clientX != null ? t.clientX : t.x || 0, t.clientY != null ? t.clientY : t.y || 0); return;
+      }
+      if (state.splash.active && chapterHome && !state._privacyOpen && t) {
+        chapterHome.touchEnd(t.clientX != null ? t.clientX : t.x || 0, t.clientY != null ? t.clientY : t.y || 0);
+        return;
+      }
+      if (t && global.Achievements && global.Achievements.onTouchEnd) global.Achievements.onTouchEnd(t.clientX || 0, t.clientY || 0);
+      // V57 · 剧情浮层挂起的跳章：仅当未发生滑动时才真执行
+      try {
+        if (state.ui && state.ui.logOpen && state._storyPendingJump) {
+          var _st = state._storyDrawerTouch;
+          if (!_st || !_st.moved) {
+            var _target = state._storyPendingJump;
+            state._storyPendingJump = null;
+            hapticTap('medium');
+            handleCtrl('jump_chapter', _target);
+          } else {
+            state._storyPendingJump = null;
+          }
+        }
+      } catch (err) { }
+    });
+    if (isKS && wx.onTouchCancel) wx.onTouchCancel(function (e) {
+      if (global.AdminAdControl) global.AdminAdControl.cancelTouch();
+      if (chapterTransition) chapterTransition.cancelTouch();
+      if (chapterHome) chapterHome.cancelTouch();
+      stopLikeHold();
+      var t = e && e.changedTouches && e.changedTouches[0];
+      if (t && global.Achievements && global.Achievements.onTouchEnd) global.Achievements.onTouchEnd(t.clientX || 0, t.clientY || 0);
+    });
+  } catch (e) { }
+
+  console.log('[main] === V43-BE_GOD-SPLIT ' + Date.now() + ' === nodes=' + Object.keys(NODES).length);
+  // 全局错误监听：任何 JS 异常都要看得到，不能静默黑屏
+  try {
+    if (isKS && wx.onError) {
+      wx.onError(function (e) { LG('WX-ONERROR', '❌ 未捕获异常', { err: e && (e.message || e.errMsg || String(e)) }); });
+    }
+    if (isKS && wx.onUnhandledRejection) {
+      wx.onUnhandledRejection(function (e) { LG('WX-UNHANDLED', '❌ Promise reject', { reason: e && String(e.reason) }); });
+    }
+  } catch (e) { }
+  chapterHome = global.ChapterHome.create({
+    progressMigration: RAW.meta.progressMigration,
+    ctx: ctx, width: W, height: H, chapters: RAW.meta.homeChapters,
+    background: RAW.meta.homeBackground,
+    titleArt: RAW.meta.homeTitleArt,
+    reducedMotion: typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches,
+    safeTop: Math.max(24, sys.safeArea && sys.safeArea.top || 0),
+    safeBottom: Math.max(12, sys.safeArea ? H - sys.safeArea.bottom : 12),
+    render: render, onEnter: enterHomeChapter,
+    // v92.4 · 今日免广告通行证：生效时章节解锁不再弹激励视频
+    adPassActive: adPassActive,
+    onPrivacy: function () { state._privacyOpen = true; render(); },
+    onBusy: function (busy) { state.adLoading = busy ? { active: true, t0: Date.now(), text: '正在加载章节解锁广告…' } : null; },
+    onCardExpose: function (chapter, locked) {
+      if (!state._privacyOpen && !(state.adLoading && state.adLoading.active) && global.Telemetry)
+        global.Telemetry.event('card_view:' + chapter.id, { chapter_id: chapter.id, locked: locked ? '1' : '0' });
+    },
+    onAdRequest: function (chapter) {
+      if (!global.Telemetry) return;
+      global.Telemetry.onAdClick('chapter_unlock');
+      global.Telemetry.event('chapter_ad_request:' + chapter.id, { chapter_id: chapter.id, source: state.chapterTransition ? 'transition' : 'chapter_home' });
+    },
+    onAdResult: function (chapter, result, error) {
+      if (!global.Telemetry) return;
+      global.Telemetry.onAdResult('chapter_unlock', result);
+      global.Telemetry.event('chapter_ad_' + result + ':' + chapter.id, { chapter_id: chapter.id, source: state.chapterTransition ? 'transition' : 'chapter_home', reason: error && error.reason || '' });
+    },
+    onSelect: function (chapter, locked) {
+      if (global.Telemetry) global.Telemetry.event('card_click:' + chapter.id, { chapter_id: chapter.id, locked: locked ? '1' : '0' });
+      if (!locked && !profileRequested) requestPlayerProfile();
+      hapticTap('medium');
+      try { if (global.Telemetry) global.Telemetry.onButtonClick('btn_home_' + chapter.id, 'chapter_home', locked ? { isAd: true, adSlot: 'chapter_unlock', adScene: 'chapter_home', adEp: chapter.id, adNodeId: chapter.start, adNodeTitle: chapter.title } : null); } catch (_) {}
+    },
+    onUnlock: function (chapter) {
+      try { if (typeof KwaiDataAnalysis !== 'undefined') KwaiDataAnalysis.reportAnalytics('home_chapter_unlocked', { ep: chapter.id }); } catch (_) {}
+    }
+  });
+  var previousProgress = loadProgress();
+  chapterTransition = global.ChapterTransition.create({
+    ctx: ctx, width: W, height: H, safeTop: Math.max(24, sys.safeArea && sys.safeArea.top || 0), safeBottom: Math.max(12, sys.safeArea ? H - sys.safeArea.bottom : 12),
+    render: render, isUnlocked: chapterHome.isUnlocked, onAction: transitionAction
+  });
+  // Identity initialization can redraw synchronously; select the entry first.
+  openInitialExperience(previousProgress);
+  if (global.AdminAdControl) global.AdminAdControl.init({
+    ctx: ctx, width: W, height: H,
+    safeTop: Math.max(24, sys.safeArea && sys.safeArea.top || 0),
+    safeBottom: Math.max(12, sys.safeArea ? H - sys.safeArea.bottom : 12),
+    render: render,
+    isBusy: function () { return !!(state.adLoading && state.adLoading.active); }
+  });
+  getPlayerProfile().load(false);
+  function saveBeforeHide() { saveProgress(); chapterHome.cancelTouch(); }
+  if (typeof ks !== 'undefined' && ks.onHide) ks.onHide(saveBeforeHide);
+  else if (isKS && wx.onHide) wx.onHide(saveBeforeHide);
+  if (typeof window !== 'undefined' && window.addEventListener) window.addEventListener('pagehide', saveBeforeHide);
+  if (typeof document !== 'undefined' && document.addEventListener) document.addEventListener('visibilitychange', function () {
+    if (document.hidden) saveBeforeHide();
+  });
+  if (canvas.addEventListener) canvas.addEventListener('wheel', function (e) {
+    if (!state.splash.active || state._privacyOpen) return;
+    e.preventDefault(); chapterHome.wheel(e.deltaY * (e.deltaMode === 1 ? 18 : e.deltaMode === 2 ? H : 1));
+  }, { passive: false });
+
+  // ============ V31.6 · 低功耗渲染控制器（脏帧驱动 · 不影响任何视觉效果） ============
+  // 思路：rAF 保持 60Hz 心跳，但根据当前状态节流实际的 render() 调用次数。
+  // - splash 静态页：5fps 就够
+  // - 视频播放 + 打字机 done：15fps（只有液柱呼吸/hitZone 更新）
+  // - 视频加载 / 打字机进行 / 动画：30fps
+  // - BE overlay 静态：5fps 兜底
+  // 全局兜底：最长 200ms 必画一帧，避免任何遗漏 markDirty() 导致卡住
+  var RENDER_STATE = { lastDrawT: 0 };
+  function pickInterval () {
+    try {
+      // v93.0 · 【拖拽不跟手根治 · 之一】原来给 22ms（≈45fps）看着够，但 loop 里是
+      //   「now - lastDrawT >= interval」的时间片节流，与 touchMove 的到达时刻不同相，
+      //   实际手指位置最多要等 22ms 才上屏，加上 render 本身的耗时（整帧重绘 = 视频层
+      //   + 字幕 + 5 胶囊 + 底部栏 + 40 次贝塞尔采样），肉眼就是一顿一顿。
+      //   拖拽是唯一「必须逐帧跟手」的交互，这里直接放到 0 = 每个 rAF 都画。
+      if (global.DragUnlock && global.DragUnlock.isActive()) return 0;
+      if (state.chapterTransition) return 33; // 转场 CTA 扫光/呼吸动画
+      if (state.splash && state.splash.active) return 40;       // V31·8 · splash：25fps（呼吸+扫光动画）
+      if (state.adLoading && state.adLoading.active) return 33;  // V31·8 · 广告 loading：30fps（旋转动画）
+      if (state.curId === '__be__') return 200;                  // BE overlay 静态
+      var node = getNode(state.curId);
+      var isVideo = node && node.media && (node.media.kind === 'video' || /\.mp4$/i.test(node.media.file || ''));
+      var twDone = !state.tw || state.tw.done;
+      // like 弹字动画 → 30fps
+      if (state.likeFloats && state.likeFloats.length) return 33;
+      // 成就动画 → 30fps
+      if (global.Achievements && typeof global.Achievements.isAnimating === 'function' && global.Achievements.isAnimating()) return 33;
+      // 视频播放稳态（已 onPlay + 打字机结束）→ 15fps
+      if (isVideo && state.videoStarted && twDone && !state.videoLoading) return 66;
+      // 视频 loading 或 打字机进行中 → 30fps
+      if (state.videoLoading || !twDone) return 33;
+      // 选择支/静态图片 → 20fps
+      return 50;
+    } catch (e) { return 33; }
+  }
+  function loop () {
+    var now = Date.now();
+    var interval = pickInterval();
+    var homeActive = state.splash && state.splash.active && chapterHome;
+    var homeDirty = homeActive && !state._privacyOpen && chapterHome.update(now);
+    // Home motion uses every display frame; a resting menu keeps its low-power heartbeat.
+    if (homeActive && !state._privacyOpen && !(state.adLoading && state.adLoading.active)) interval = 200;
+    if (homeDirty || now - RENDER_STATE.lastDrawT >= interval) {
+      try { render(); } catch (e) { console.log('[loop] render err', e && e.message); }
+      RENDER_STATE.lastDrawT = now;
+    }
+    if (isKS && wx.requestAnimationFrame) wx.requestAnimationFrame(loop);
+    else if (typeof requestAnimationFrame !== 'undefined') requestAnimationFrame(loop);
+    else setTimeout(loop, 33);
+  }
+  // 只启动一次 loop（原本有 render() + 两次 rAF 启动，全部合并为一处）
+  loop();
+
+  // ══════════════════════════════════════════════════════
+  // v80.1 · 运存检查工具 — DevTools console 直接调用：
+  //   MEM_INSPECT()          → 打印 + 返回完整报告对象
+  //   MEM_INSPECT('video')   → 只看视频
+  //   MEM_INSPECT('image')   → 只看图片
+  //   MEM_INSPECT('audio')   → 只看音频
+  // ══════════════════════════════════════════════════════
+  try {
+    global.MEM_INSPECT = function (filter) {
+      var lines = [];
+      var report = {};
+
+      // ── 1. 图片：资源槽统计 ──────────────────────────────
+      report.resources = {
+        cur:     _curResources.length,
+        prev:    _prevResources.length,
+        persist: Object.keys(_persistImages).length,
+        failed:  Object.keys(_failedSrcs).length,
+        released: _releasedTotal,
+      };
+
+      // ── 2. 图片：imgCache（仅 CDN 图，排除 assets/ 本地包 + persist）─────────────
+      var imgCacheKeys = Object.keys(imgCache || {}).filter(function (k) {
+        return !/^assets\//.test(k) && !_persistImages[k];
+      });
+      report.imgCache = imgCacheKeys.map(function (k) {
+        var im = imgCache[k];
+        return { src: k, w: im && im.width, h: im && im.height };
+      });
+
+      // ── 3. 图片：_imgDlCache（持久 downloadFile 缓存）────
+      var dlCacheKeys = Object.keys(_imgDlCache || {});
+      report.imgDlCache = dlCacheKeys.map(function (k) {
+        return { cdnUrl: k, localPath: _imgDlCache[k] };
+      });
+
+      // ── 4. 视频：videoCache（已缓存到本地的视频）──────────
+      var vcKeys = Object.keys(videoCache || {});
+      report.videoCache = vcKeys.map(function (k) {
+        return { url: k, localPath: videoCache[k] };
+      });
+
+      // ── 5. 视频：当前播放视频 ─────────────────────────────
+      report.currentVideo = {
+        key: state.videoKey || null,
+        started: !!state.videoStarted,
+        loading: !!state.videoLoading,
+        hasCtx: !!state.video
+      };
+
+      // ── 6. 音频：各 AudioContext 状态 ─────────────────────
+      report.audio = {
+        bgm:          { key: bgmKey || null,      active: !!bgmCtx,              desired: bgmDesired || null },
+        narr:         { key: narrAudioKey || null, active: !!narrAudioCtx },
+        be:           { key: beAudioKey || null,   active: !!beAudioCtx,          stopped: !!beAudioStopped },
+        sisterUnlock: { active: !!(state.sisterUnlockAudioCtx) }
+      };
+
+      // ── 7. 格式化输出（极简版：只输出有内容的行，中文标签）──
+      var sep = '─────────────────────────────';
+      // 把数组压成单行，空则返回 null（调用方跳过）
+      function _row(label, arr, toStr) {
+        if (!arr || !arr.length) return null;
+        var shown = arr.slice(0, 20).map(toStr);
+        var tail = arr.length > 20 ? (' +' + (arr.length - 20) + '条') : '';
+        return label + '(' + arr.length + ') [' + shown.join(', ') + ']' + tail;
+      }
+      function _bn(k) { return (k||'').split('/').pop(); }
+
+      lines.push(sep);
+      lines.push('内存快照 ' + new Date().toLocaleTimeString()
+        + ' | 当前:' + _curResources.length
+        + ' 待释放:' + _prevResources.length
+        + ' 持久:' + Object.keys(_persistImages).length
+        + ' 已释放:' + _releasedTotal
+        + ' 失败:' + Object.keys(_failedSrcs).length);
+
+      if (!filter || filter === 'image') {
+        var r;
+        r = _row('📦当前图', _curResources, function(e){ return _bn(e.src); });
+        if (r) lines.push(r);
+        r = _row('🗑待释放', _prevResources, function(e){ return _bn(e.src); });
+        if (r) lines.push(r);
+        var pKeys = Object.keys(_persistImages);
+        r = _row('🔒持久图', pKeys, _bn);
+        if (r) lines.push(r);
+        r = _row('🖼缓存', imgCacheKeys, _bn);
+        if (r) lines.push(r);
+        r = _row('✅已释放', _releasedLog, _bn);
+        if (r) lines.push(r);
+        var fKeys = Object.keys(_failedSrcs);
+        r = _row('❌失败', fKeys, _bn);
+        if (r) lines.push(r);
+        r = _row('💾本地化', dlCacheKeys, _bn);
+        if (r) lines.push(r);
+      }
+
+      if (!filter || filter === 'video') {
+        var cv = report.currentVideo;
+        if (cv.key || cv.started || cv.hasCtx) {
+          lines.push('🎬视频 ' + (cv.key||'-')
+            + (cv.started ? ' 播放中' : '') + (cv.loading ? ' 加载中' : '') + (!cv.hasCtx ? ' 无ctx' : ''));
+        }
+        var r2 = _row('📼已缓存视频', vcKeys, _bn);
+        if (r2) lines.push(r2);
+      }
+
+      if (!filter || filter === 'audio') {
+        var au = report.audio;
+        var aParts = [];
+        if (au.bgm.key)  aParts.push('BGM:' + _bn(au.bgm.key) + (au.bgm.active?'▶':'⏸'));
+        if (au.narr.key) aParts.push('旁白:' + _bn(au.narr.key) + (au.narr.active?'▶':'⏸'));
+        if (au.be.key)   aParts.push('BE:' + _bn(au.be.key) + (au.be.active?'▶':'⏸'));
+        if (au.sisterUnlock.active) aParts.push('婉儿解锁▶');
+        if (aParts.length) lines.push('🔊' + aParts.join('  '));
+      }
+
+      lines.push(sep);
+      var out = lines.join('\n');
+      console.log(out);
+      return report;
+    };
+    try { LG('MEM-INSPECT-READY', '🔧 MEM_INSPECT() 已挂载到 global，可在 DevTools 直接调用'); } catch (_) {}
+  } catch (e) {}
+
+})(typeof GameGlobal !== 'undefined' ? GameGlobal : this);

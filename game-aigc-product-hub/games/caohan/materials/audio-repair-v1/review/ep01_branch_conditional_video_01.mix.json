@@ -1,0 +1,36 @@
+{
+  "videoId": "ep01_branch_conditional_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep01_branch_conditional_video_01__l01",
+      "speaker": "贺星冉",
+      "text": "什么？",
+      "heard": "什么",
+      "start": 2.315,
+      "end": 2.845,
+      "alignmentScore": 1.0
+    },
+    {
+      "lineId": "ep01_branch_conditional_video_01__l02",
+      "speaker": "贺铭",
+      "text": "爸不是不信你，只是……",
+      "heard": "爸不是不信你只是",
+      "start": 6.875,
+      "end": 8.765,
+      "alignmentScore": 1.0
+    },
+    {
+      "lineId": "ep01_branch_conditional_video_01__l03",
+      "speaker": "贺星冉",
+      "text": "爸，我是你女儿。我跑进来跟你们说有人要杀我——你问我有没有证据。",
+      "heard": "爸我是你女儿我跑进来跟你们说有人要杀我你问我有没有证据",
+      "start": 14.375,
+      "end": 23.885,
+      "alignmentScore": 1.0
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 24.14875283446712,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.628936767578125
+}

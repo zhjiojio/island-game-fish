@@ -1,0 +1,10 @@
+{
+  "node": "e4_escape_bridge",
+  "speakerKey": "narrator",
+  "speakerName": "旁白",
+  "asrText": "",
+  "asrTextRaw": "你拉着碗儿一路到后菜地 跃过两道土地 一脚上那道金锦子 还在往下滴血 到家推开门的那一瞬间 碗儿守得了 他先拉你坐到抗衙 回目取了头 一酒于喜不",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 7
+}

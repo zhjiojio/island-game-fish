@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "definitions": 3,
+  "uniqueOptions": 44,
+  "clickableOptionComponents": 71,
+  "lockedOptionComponentsWithoutValues": 9,
+  "adChoiceComponents": 20,
+  "mediaGraphAndEndingConditionsUnchanged": true,
+  "nonChoiceComponentsWithoutValues": true,
+  "settlementRuntimeTest": "not_run_requires_engine",
+  "configSha256": "cf12a7851a080c889e0de17facbb90f98b5e0491ccdc4c7420913f190aa43c4c"
+}

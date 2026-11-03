@@ -1,0 +1,16 @@
+{
+  "name": "zhaocha-game",
+  "version": "2.0.0",
+  "private": true,
+  "description": "找茬类小游戏模板（v2.0.0 重写版），仅用于框架核心模块单测",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  },
+  "dependencies": {
+    "@kcdn/multi-upload": "^1.0.66"
+  }
+}

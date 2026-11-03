@@ -1,0 +1,28 @@
+{
+  "videoId": "ending_boss",
+  "voiceWindows": [
+    {
+      "lineId": "ending_boss__l01",
+      "speaker": "贺星冉",
+      "text": "这次我雇的不是保镖，是合伙人。",
+      "heard": "这次我顾的不是保镖是合伙人",
+      "start": 12.24,
+      "end": 15.745,
+      "alignmentScore": 0.9231
+    }
+  ],
+  "newVoice": [
+    {
+      "lineId": "ending_boss__l02",
+      "speaker": "画外叙述者",
+      "kind": "narration",
+      "text": "她买下了整个工地。",
+      "audioFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/audio/ending_boss__l02.mp3",
+      "start": 0.4,
+      "end": 2.6
+    }
+  ],
+  "durationSec": 18.088344671201813,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.549468994140625
+}

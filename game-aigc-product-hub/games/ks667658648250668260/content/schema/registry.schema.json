@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weihunqi/schema/registry.json",
+  "title": "assets.registry.json 白名单单一权威源",
+  "type": "object",
+  "required": ["cdn", "chars", "narrLocalForce", "narrVideoAllow", "bundledImages", "nodeUnlockMap"],
+  "properties": {
+    "$comment": { "type": ["string","array"] },
+    "cdn": {
+      "type": "object",
+      "required": ["prefixP4","prefixP5","narr"],
+      "properties": {
+        "prefixP4": { "type": "string", "format": "uri" },
+        "prefixP5": { "type": "string", "format": "uri" },
+        "narr":     { "type": "string", "format": "uri" }
+      }
+    },
+    "chars": {
+      "type": "object",
+      "description": "角色白名单：key=char id，value={displayName,speakerPrefixes}",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["displayName","speakerPrefixes"],
+        "properties": {
+          "displayName":     { "type": "string" },
+          "speakerPrefixes": { "type": "array", "items": {"type":"string"} }
+        }
+      }
+    },
+    "narrLocalForce": {
+      "type": "array", "description": "强制走本地 mp3 的节点 id 列表",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "narrVideoAllow": {
+      "type": "array", "description": "video 节点允许旁白覆盖的白名单",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "subtitleHideKeys": { "type": "array", "items": {"type":"string"} },
+    "bundledImages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["cdn","path"],
+        "properties": {
+          "cdn":  { "type": "string", "enum": ["p4","p5"] },
+          "path": { "type": "string" },
+          "localOverride": { "type": "string" }
+        }
+      }
+    },
+    "nodeUnlockMap": {
+      "type": "object",
+      "description": "节点触发解锁映射 { nodeId: achievementId }",
+      "additionalProperties": { "type": "string" }
+    },
+    "earlyNodesBeforeSister": {
+      "type": "array", "items": {"type":"string"}
+    }
+  }
+}

@@ -1,0 +1,49 @@
+# ============================================================
+# 正式环境（阿里云 ACK）非敏感配置
+# ------------------------------------------------------------
+# 内容应与 deploy/env/prod.env 保持一致，可由该文件生成：
+#
+#   kubectl -n ddz create configmap ddz-prod-config \
+#     --from-env-file=deploy/env/prod.env \
+#     --dry-run=client -o yaml | kubectl apply -f -
+#
+# 手工维护时注意：prod.env 改动后必须同步本文件并重新 apply。
+# 禁止在此放入任何密钥，敏感项见 deploy/aliyun/secret.example.yaml。
+# ============================================================
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ddz-prod-config
+  namespace: ddz
+data:
+  PORT: "8080"
+  DDZ_AUTH_MODE: "strict"
+
+  DDZ_MYSQL_HOST: ""
+  DDZ_MYSQL_PORT: "3306"
+  DDZ_MYSQL_USER: ""
+  DDZ_MYSQL_DATABASE: ""
+  DDZ_MYSQL_SSL: "true"
+  DDZ_MYSQL_CONNECT_TIMEOUT_MS: "5000"
+  DDZ_MYSQL_CONNECTION_LIMIT: "20"
+  DDZ_MYSQL_CREATE_DATABASE: "false"
+
+  DDZ_TRUSTED_PROXY_IPS: ""
+
+  DDZ_KWAI_CODE2SESSION_URL: "https://open.kuaishou.com/game/minigame/jscode2session"
+  DDZ_KWAI_TIMEOUT_MS: "5000"
+
+  DDZ_VOICE_CHAT_ENABLED: "true"
+  DDZ_VOICE_TRADE_ENABLED: "false"
+
+  DDZ_HAND_STRENGTH_MODE: "lite"
+  DDZ_DOUZERO_MODE: "active"
+  DDZ_DOUZERO_URL: "http://ddz-douzero:2021"
+  DDZ_DOUZERO_TIMEOUT_MS: "800"
+  DDZ_DOUZERO_MAX_CONCURRENT: "4"
+
+  DOUZERO_MAX_CONCURRENT: "4"
+  DOUZERO_AUTO_DOWNLOAD: "false"
+  DOUZERO_ALLOW_HUGGINGFACE_DOWNLOAD: "false"
+  DOUZERO_MODEL_DOWNLOAD_URL_TEMPLATE: ""
+  DOUZERO_REQUIRE_APPROVED_MANIFEST_SHA256: "true"

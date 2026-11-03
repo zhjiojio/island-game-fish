@@ -1,0 +1,10 @@
+{
+  "node": "e4_shangyao",
+  "speakerKey": "narrator",
+  "speakerName": "旁白",
+  "asrText": "她跪在炕边，把烧酒往布上倒了一点，手很轻。伤口一碰就抽，他没躲。这是他挨的第一顿打，也是第一次有人给他上药。",
+  "asrTextRaw": "他跪在抗边把烧酒往布上倒了一点 手很轻 伤口一碰就抽 他没躲 这是他挨的第一顿打 也是第一次有人给他上药",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 6
+}

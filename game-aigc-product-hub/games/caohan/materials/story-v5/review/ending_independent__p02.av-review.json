@@ -1,0 +1,11 @@
+{
+  "partId": "ending_independent__p02",
+  "sourceSha256": "b2eb4df2f0a285b5c86729e2e1a2788aa3466fde191474fc345a6ff01b4b3f94",
+  "model": "google/gemini-2.5-flash",
+  "review": {
+    "utterances": [],
+    "nonverbal": "0.00-0.01s: 咔哒声\n0.01-0.02s: 咔哒声\n0.02-0.03s: 咔哒声\n0.03-0.04s: 汽车启动声\n0.04-0.06s: 汽车行驶声",
+    "issues": [],
+    "uncertain": []
+  }
+}

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>拼豆 · 关卡数值模型建模可视化</title>
+<style>
+  :root{
+    --bg:#0E1117; --panel:#161B25; --line:#232A38; --ink:#E6EAF2; --dim:#8B96AA;
+    --ok:#3DD68C; --warn:#FFB84D; --bad:#FF5C7A; --acc:#5B9DFF; --pur:#B980FF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font:14px/1.7 -apple-system,"PingFang SC",system-ui,sans-serif;padding:32px 24px 80px}
+  .wrap{max-width:1180px;margin:0 auto}
+  h1{font-size:26px;font-weight:700;letter-spacing:-.3px;margin-bottom:6px}
+  h1 small{font-size:13px;color:var(--dim);font-weight:400;margin-left:10px}
+  h2{font-size:17px;font-weight:650;margin:34px 0 14px;display:flex;align-items:center;gap:9px}
+  h2::before{content:'';width:3px;height:16px;background:var(--acc);border-radius:2px}
+  h3{font-size:14px;font-weight:600;color:var(--dim);margin:18px 0 10px;text-transform:uppercase;letter-spacing:.6px;font-size:12px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:14px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:860px){.grid2,.grid3{grid-template-columns:1fr}}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line)}
+  th{color:var(--dim);font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:.5px}
+  td.num{font-variant-numeric:tabular-nums;text-align:right}
+  .tag{display:inline-block;padding:2px 8px;border-radius:5px;font-size:11px;font-weight:600}
+  .t-bad{background:rgba(255,92,122,.15);color:var(--bad)}
+  .t-ok{background:rgba(61,214,140,.15);color:var(--ok)}
+  .t-warn{background:rgba(255,184,77,.15);color:var(--warn)}
+  .t-acc{background:rgba(91,157,255,.15);color:var(--acc)}
+  .t-pur{background:rgba(185,128,255,.15);color:var(--pur)}
+  .lead{color:var(--dim);font-size:13.5px;margin-bottom:16px;max-width:860px}
+  .kpi{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+  .kpi div{flex:1;min-width:150px;background:#111621;border:1px solid var(--line);border-radius:10px;padding:14px}
+  .kpi b{display:block;font-size:28px;font-variant-numeric:tabular-nums;line-height:1.15}
+  .kpi span{font-size:11.5px;color:var(--dim);display:block;margin-top:3px}
+  .bar{height:8px;background:#0B0F16;border-radius:5px;overflow:hidden;margin-top:5px}
+  .bar i{display:block;height:100%;border-radius:5px}
+  code{background:#0B0F16;padding:2px 6px;border-radius:4px;font-size:12.5px;color:#9FD0FF;font-family:ui-monospace,Menlo,monospace}
+  pre{background:#0B0F16;border:1px solid var(--line);border-radius:9px;padding:14px;overflow-x:auto;font-size:12.5px;font-family:ui-monospace,Menlo,monospace;color:#B9C6DA;line-height:1.65}
+  .note{border-left:3px solid var(--warn);background:rgba(255,184,77,.06);padding:11px 14px;border-radius:0 8px 8px 0;font-size:13px;margin:12px 0}
+  .note.bad{border-color:var(--bad);background:rgba(255,92,122,.06)}
+  .note.ok{border-color:var(--ok);background:rgba(61,214,140,.06)}
+  svg{display:block;width:100%;height:auto;overflow:visible}
+  .lgd{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--dim);margin-top:10px}
+  .lgd i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:middle}
+  ul{margin:8px 0 8px 18px}li{margin:5px 0}
+  .layer{border:1px solid var(--line);border-radius:10px;padding:14px;background:#111621}
+  .layer h4{font-size:13px;margin-bottom:6px;display:flex;align-items:center;gap:7px}
+  .dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+</style>
+</head>
+<body><div class="wrap">
+
+<h1>拼豆 · 关卡数值模型<small>Sort/装车消除类 · 建模与实测</small></h1>
+<p class="lead">本页所有数字来自 <code>tools/measure-td.js</code> 用真求解器实测，非估算。工具已通过黑白分辨自检（原关卡判可解 / 人为破坏后判不可解）。</p>
+
+<!-- ═══ 0. 结论前置 ═══ -->
+<div class="card" style="border-color:rgba(255,92,122,.4)">
+  <h3 style="margin-top:0;color:var(--bad)">实测结论</h3>
+  <div class="kpi">
+    <div><b style="color:var(--bad)">1.000</b><span>容错率 T（实测，L1/2/5/10 全部）</span></div>
+    <div><b style="color:var(--bad)">S=2 仍 1.000</b><span>车位砍到 2 格也无难度</span></div>
+    <div><b style="color:var(--bad)">不可达</b><span>失败状态</span></div>
+    <div><b style="color:var(--warn)">40% → 假</b><span>上一轮上报的胜率</span></div>
+  </div>
+  <div class="note bad"><b>T = 1.000 意味着：每个决策点上，所有可选的车放下去之后局面都仍可解 —— 即「不存在错误选择」。</b>
+  这不是参数没调好，而是失败状态在机制层面不可达，所以调 ghost 剂量、壳层都不可能造出难度。</div>
+  <div class="note"><b>但要说清一个关键细节：分支差异是真实存在的。</b>实测 L2 开局四个分支：
+  <table style="margin-top:8px">
+    <thead><tr><th>放哪辆车</th><th class="num">实际装进</th><th>车的结局</th><th>后果</th></tr></thead>
+    <tbody>
+      <tr><td>queue[0] green/cap13</td><td class="num" style="color:var(--bad)">0 颗</td><td>仍在车位 (left 13)</td><td><span class="tag t-bad">变僵尸，白占一个坑</span></td></tr>
+      <tr><td>queue[1] green/cap12</td><td class="num" style="color:var(--bad)">0 颗</td><td>仍在车位 (left 12)</td><td><span class="tag t-bad">变僵尸，白占一个坑</span></td></tr>
+      <tr style="background:rgba(61,214,140,.07)"><td>queue[2] cyan/cap13</td><td class="num" style="color:var(--ok)">13 颗</td><td>装满离场</td><td><span class="tag t-ok">唯一的正确选择</span></td></tr>
+      <tr><td>queue[3] yellow/cap13</td><td class="num" style="color:var(--bad)">0 颗</td><td>仍在车位 (left 13)</td><td><span class="tag t-bad">变僵尸，白占一个坑</span></td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:8px">4 个分支里只有 1 个是「好棋」，其余 3 个都会白占坑位 —— <b>这正是你校准的「过早放上去浪费坑位」，机制本身是做对了的。</b>
+  但 T 仍然等于 1，因为浪费坑位<b>不导致失败</b>：车位可以空着等、僵尸车能无限 tow 拖走。<b>惩罚存在，但代价为零。</b></p></div>
+</div>
+
+<!-- ═══ 1. 为什么旧方法是错的 ═══ -->
+<h2>一、为什么「跑模拟算胜率」是错的</h2>
+<div class="card">
+  <p class="lead" style="margin-bottom:12px">同一批关卡，只换玩家策略，胜率从 40% 摆到 0%。这说明那个数字量的不是关卡属性。</p>
+  <div class="grid2">
+    <div>
+      <table>
+        <thead><tr><th>关</th><th class="num">casual<br><span style="font-weight:400;text-transform:none">20% 手滑</span></th><th class="num">patient<br><span style="font-weight:400;text-transform:none">只放确定能装</span></th><th class="num">sequential<br><span style="font-weight:400;text-transform:none">一辆一辆放</span></th></tr></thead>
+        <tbody>
+          <tr><td>2</td><td class="num" style="color:var(--warn)">40%</td><td class="num" style="color:var(--bad)">3%</td><td class="num" style="color:var(--bad)">0%</td></tr>
+          <tr><td>5</td><td class="num" style="color:var(--warn)">43%</td><td class="num" style="color:var(--bad)">0%</td><td class="num" style="color:var(--bad)">0%</td></tr>
+          <tr><td>10</td><td class="num" style="color:var(--warn)">38%</td><td class="num" style="color:var(--bad)">0%</td><td class="num" style="color:var(--bad)">0%</td></tr>
+          <tr><td>25</td><td class="num" style="color:var(--warn)">53%</td><td class="num" style="color:var(--bad)">3%</td><td class="num" style="color:var(--bad)">0%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <svg viewBox="0 0 340 200">
+        <text x="0" y="12" fill="#8B96AA" font-size="11">胜率随策略剧烈摆动 → 量的不是难度</text>
+        <line x1="34" y1="170" x2="330" y2="170" stroke="#232A38"/>
+        <line x1="34" y1="30" x2="34" y2="170" stroke="#232A38"/>
+        <text x="8" y="34" fill="#8B96AA" font-size="10">60%</text>
+        <text x="14" y="174" fill="#8B96AA" font-size="10">0</text>
+        <!-- casual -->
+        <polyline points="70,77 140,72 210,81 300,54" fill="none" stroke="#FFB84D" stroke-width="2.5"/>
+        <circle cx="70" cy="77" r="3.5" fill="#FFB84D"/><circle cx="140" cy="72" r="3.5" fill="#FFB84D"/>
+        <circle cx="210" cy="81" r="3.5" fill="#FFB84D"/><circle cx="300" cy="54" r="3.5" fill="#FFB84D"/>
+        <!-- patient -->
+        <polyline points="70,163 140,170 210,170 300,163" fill="none" stroke="#FF5C7A" stroke-width="2.5"/>
+        <circle cx="70" cy="163" r="3.5" fill="#FF5C7A"/><circle cx="140" cy="170" r="3.5" fill="#FF5C7A"/>
+        <circle cx="210" cy="170" r="3.5" fill="#FF5C7A"/><circle cx="300" cy="163" r="3.5" fill="#FF5C7A"/>
+        <!-- 摆动区 -->
+        <rect x="62" y="72" width="246" height="98" fill="#FF5C7A" opacity=".07"/>
+        <text x="150" y="120" fill="#FF5C7A" font-size="11" font-weight="600">摆动 40 个百分点</text>
+        <text x="62" y="188" fill="#8B96AA" font-size="10">L2</text><text x="132" y="188" fill="#8B96AA" font-size="10">L5</text>
+        <text x="202" y="188" fill="#8B96AA" font-size="10">L10</text><text x="290" y="188" fill="#8B96AA" font-size="10">L25</text>
+      </svg>
+      <div class="lgd"><span><i style="background:#FFB84D"></i>casual（我调参用的）</span><span><i style="background:#FF5C7A"></i>patient（真人策略）</span></div>
+    </div>
+  </div>
+  <div class="note bad">casual 策略里有一行 <code>rnd() &lt; 0.8</code> —— 即 20% 概率随便乱拖。
+  <b>我调的其实是「手滑率 20% 的人有多大概率手滑到死」。</b>真人不手滑 → 永远不输 → 你在真机上「随便就能过关」。</div>
+</div>
+
+<!-- ═══ 2. 三层模型 ═══ -->
+<h2>二、正确的模型：三层分离</h2>
+<div class="card">
+  <p class="lead">旧做法把「可行性 / 难度 / 体验」揉成一个胜率数字，导致旋钮互相污染。必须分层。</p>
+  <div class="grid3">
+    <div class="layer">
+      <h4><span class="dot" style="background:var(--ok)"></span>A 层 · 可行性 Feasibility</h4>
+      <p style="font-size:12.5px;color:var(--dim)">布尔量，不是概率。<br><code>∃π 使 π 能清空</code></p>
+      <p style="font-size:12.5px;margin-top:8px">不可解 = <b>bug</b>，不是「很难」。<br>生成器唯一必须保证的事。</p>
+      <div style="margin-top:10px"><span class="tag t-ok">当前正确</span></div>
+    </div>
+    <div class="layer">
+      <h4><span class="dot" style="background:var(--acc)"></span>B 层 · 难度 Difficulty</h4>
+      <p style="font-size:12.5px;color:var(--dim)">决策树的宽度与深度，与策略无关。</p>
+      <p style="font-size:12.5px;margin-top:8px"><b>T</b> 容错率 = 安全步/可选步<br><b>D</b> 陷阱深度 = 犯错到暴露的延迟<br><b>M*</b> 最优步数（只管时长）</p>
+      <div style="margin-top:10px"><span class="tag t-bad">当前 T≡1 无难度</span></div>
+    </div>
+    <div class="layer">
+      <h4><span class="dot" style="background:var(--pur)"></span>C 层 · 体验 Experience</h4>
+      <p style="font-size:12.5px;color:var(--dim)">才是概率层，且必须跨策略稳定。</p>
+      <p style="font-size:12.5px;margin-top:8px">自检红线：<br><code>max(策略) − min(策略) &lt; 15%</code></p>
+      <div style="margin-top:10px"><span class="tag t-bad">上轮缺此自检</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 3. T 与 D 的几何含义 ═══ -->
+<div class="grid2">
+  <div class="card">
+    <h3 style="margin-top:0">T · 容错率的几何含义</h3>
+    <svg viewBox="0 0 360 210">
+      <!-- T=1 -->
+      <text x="0" y="12" fill="#FF5C7A" font-size="11.5" font-weight="600">T = 1.0　当前状态：所有分支都通</text>
+      <circle cx="30" cy="42" r="6" fill="#5B9DFF"/>
+      <line x1="36" y1="42" x2="110" y2="24" stroke="#3DD68C" stroke-width="2"/>
+      <line x1="36" y1="42" x2="110" y2="42" stroke="#3DD68C" stroke-width="2"/>
+      <line x1="36" y1="42" x2="110" y2="60" stroke="#3DD68C" stroke-width="2"/>
+      <circle cx="114" cy="24" r="5" fill="#3DD68C"/><circle cx="114" cy="42" r="5" fill="#3DD68C"/><circle cx="114" cy="60" r="5" fill="#3DD68C"/>
+      <text x="128" y="46" fill="#8B96AA" font-size="10.5">无论选哪个都可解 → 没有「想」的必要</text>
+      <!-- T=0.5 -->
+      <text x="0" y="104" fill="#3DD68C" font-size="11.5" font-weight="600">T = 0.5　目标：一半分支是陷阱</text>
+      <circle cx="30" cy="134" r="6" fill="#5B9DFF"/>
+      <line x1="36" y1="134" x2="110" y2="116" stroke="#3DD68C" stroke-width="2"/>
+      <line x1="36" y1="134" x2="110" y2="134" stroke="#FF5C7A" stroke-width="2" stroke-dasharray="4 3"/>
+      <line x1="36" y1="134" x2="110" y2="152" stroke="#FF5C7A" stroke-width="2" stroke-dasharray="4 3"/>
+      <line x1="36" y1="134" x2="110" y2="170" stroke="#3DD68C" stroke-width="2"/>
+      <circle cx="114" cy="116" r="5" fill="#3DD68C"/><circle cx="114" cy="170" r="5" fill="#3DD68C"/>
+      <path d="M110 130l8 8M118 130l-8 8" stroke="#FF5C7A" stroke-width="2"/>
+      <path d="M110 148l8 8M118 148l-8 8" stroke="#FF5C7A" stroke-width="2"/>
+      <text x="132" y="138" fill="#8B96AA" font-size="10.5">必须判断 → 产生「玩」的行为</text>
+    </svg>
+  </div>
+  <div class="card">
+    <h3 style="margin-top:0">D · 陷阱深度＝用户校准的语义</h3>
+    <div class="note" style="margin-top:0">「他如果过早的放上去 可能就浪费了一个坑位<br>他是有关联关系的 比如在某些颜色移除后才出现」</div>
+    <svg viewBox="0 0 360 130">
+      <text x="0" y="12" fill="#8B96AA" font-size="11">D=1 即时惩罚（无深度）</text>
+      <circle cx="20" cy="32" r="5" fill="#FFB84D"/>
+      <line x1="26" y1="32" x2="52" y2="32" stroke="#FF5C7A" stroke-width="2"/>
+      <path d="M52 27l8 10M60 27l-8 10" stroke="#FF5C7A" stroke-width="2.5"/>
+      <text x="72" y="36" fill="#8B96AA" font-size="10.5">立刻知道错了 → 不痛苦，也不深刻</text
+      >
+      <text x="0" y="72" fill="#3DD68C" font-size="11">D=8 延迟暴露（有深度）</text>
+      <circle cx="20" cy="92" r="5" fill="#FFB84D"/>
+      <line x1="26" y1="92" x2="240" y2="92" stroke="#B980FF" stroke-width="2"/>
+      <circle cx="60" cy="92" r="3" fill="#B980FF"/><circle cx="95" cy="92" r="3" fill="#B980FF"/>
+      <circle cx="130" cy="92" r="3" fill="#B980FF"/><circle cx="165" cy="92" r="3" fill="#B980FF"/>
+      <circle cx="200" cy="92" r="3" fill="#B980FF"/><circle cx="235" cy="92" r="3" fill="#B980FF"/>
+      <path d="M244 87l8 10M252 87l-8 10" stroke="#FF5C7A" stroke-width="2.5"/>
+      <text x="26" y="116" fill="#8B96AA" font-size="10">这一步错了，但要 8 步之后才暴露</text>
+    </svg>
+    <p style="font-size:12.5px;color:var(--dim);margin-top:6px">D 越大越难，但太大会让玩家觉得「莫名其妙就输了」 —— 洋葱壳的作用就是让 D <b>可预见</b>。</p>
+  </div>
+</div>
+
+<!-- ═══ 4. 因子清单 ═══ -->
+<h2>三、影响因子清单：按「影响哪一层」归类</h2>
+<div class="card">
+  <div class="note">之前最大的混乱：<b>把只影响「时长」的旋钮（豆数）当成影响「难度」的在调。</b>豆数 180→620 只让一关变长，不会变难。</div>
+  <table>
+    <thead><tr><th>因子</th><th>当前值</th><th>影响层</th><th>数学角色</th></tr></thead>
+    <tbody>
+      <tr><td>豆数 <code>N</code></td><td>180→620</td><td><span class="tag t-warn">时长</span></td><td>M* ≈ N/平均cap。<b>只影响时长</b></td></tr>
+      <tr><td>车位 <code>S</code></td><td>5 或 6</td><td><span class="tag t-acc">T（最强）</span></td><td>缓冲区维度，<b>指数级</b>影响搜索空间</td></tr>
+      <tr><td>色数 <code>C</code></td><td>4→6（封顶）</td><td><span class="tag t-acc">T</span></td><td>分支数 ≈ min(C, 队列前4)</td></tr>
+      <tr><td>车容量 <code>cap</code></td><td>9~14</td><td><span class="tag t-acc">T</span> <span class="tag t-pur">D</span></td><td>cap &gt; 该色剩豆 → 永远装不满 → 僵尸</td></tr>
+      <tr><td>冗余率 <code>S_color</code></td><td>0</td><td><span class="tag t-acc">T</span></td><td>=0 时每车必须精确装满，容错为零</td></tr>
+      <tr><td>队列可见 <code>Q</code></td><td>4</td><td><span class="tag t-acc">T</span></td><td>前瞻信息量，Q↑ → 有效 T↑</td></tr>
+      <tr><td>壳层 <code>sh</code></td><td>0→4</td><td><span class="tag t-pur">D 可读</span></td><td>制造「看得懂的依赖顺序」</td></tr>
+      <tr><td>ghost 剂量 <code>d</code></td><td>4.0~5.15</td><td><span class="tag t-pur">D 不可读</span></td><td>制造「不可挽回的代价」</td></tr>
+      <tr><td>几何形状</td><td>爱心/西瓜…</td><td><span class="tag t-acc">T</span></td><td>决定 pathOut 连通性</td></tr>
+      <tr style="background:rgba(255,92,122,.07)"><td><b>广告道具</b></td><td>9 个</td><td><span class="tag t-bad">摧毁 B 层</span></td><td><code>tow</code>/<code>clear</code>/<code>refresh</code> 让错误可撤销 → <b>T 恒为 1</b></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══ 5. 核心公式 ═══ -->
+<h2>四、难度的唯一真实来源：缓冲区压力 P</h2>
+<div class="card">
+  <p class="lead">这类游戏的数学本质是<b>受限缓冲区调度</b>（bin packing + 拓扑排序）。难度只来自一个比值：</p>
+  <pre>P = (同时需要在场的颜色数) / (可用车位数)
+
+P &lt; 1  →  所有需要的颜色都能同时在场  →  必胜，零难度
+P = 1  →  正好在必胜边界
+P &gt; 1  →  必须排序，排错就浪费坑位  →  有难度</pre>
+  <div class="grid2" style="margin-top:16px">
+    <div>
+      <h3 style="margin-top:0">当前处境</h3>
+      <div class="kpi"><div><b>C = 6</b><span>色数（我上轮封顶）</span></div><div><b>S = 6</b><span>车位（第6格广告解锁）</span></div></div>
+      <div style="margin-top:10px">
+        <div style="display:flex;justify-content:space-between;font-size:12px"><span>P = 6/6</span><b style="color:var(--bad)">1.00</b></div>
+        <div class="bar"><i style="width:50%;background:linear-gradient(90deg,#3DD68C,#FF5C7A)"></i></div>
+        <p style="font-size:12px;color:var(--dim);margin-top:6px">正好压在必胜边界上 —— 这是「随便就能过」的数学根因。</p>
+      </div>
+    </div>
+    <div>
+      <h3 style="margin-top:0">P 与难度的关系</h3>
+      <svg viewBox="0 0 340 150">
+        <line x1="30" y1="120" x2="330" y2="120" stroke="#232A38"/>
+        <line x1="30" y1="16" x2="30" y2="120" stroke="#232A38"/>
+        <rect x="30" y="16" width="105" height="104" fill="#FF5C7A" opacity=".08"/>
+        <rect x="135" y="16" width="195" height="104" fill="#3DD68C" opacity=".07"/>
+        <path d="M30 118 L100 116 L135 110 L175 78 L225 46 L280 30 L330 24" fill="none" stroke="#5B9DFF" stroke-width="2.5"/>
+        <line x1="135" y1="16" x2="135" y2="120" stroke="#FFB84D" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <text x="139" y="28" fill="#FFB84D" font-size="10.5">P=1 边界</text>
+        <circle cx="135" cy="110" r="5" fill="#FF5C7A"/>
+        <text x="44" y="112" fill="#FF5C7A" font-size="10.5">必胜区</text>
+        <text x="240" y="112" fill="#3DD68C" font-size="10.5">有难度区</text>
+        <text x="0" y="20" fill="#8B96AA" font-size="10">难度</text>
+        <text x="120" y="136" fill="#FFB84D" font-size="10">当前</text>
+        <text x="300" y="136" fill="#8B96AA" font-size="10">P=1.5</text>
+      </svg>
+    </div>
+  </div>
+  <div class="note bad"><b>色数必须显著超过车位数才有难度。</b>而我上一轮把色数封顶在 6，恰恰锁死了唯一有效的难度旋钮 —— 当时我以为「ghost 需要一个场上没有的颜色」是硬约束，现在看这个约束本身就是设计缺陷：它把 C 和 ghost 机制耦合了。</div>
+</div>
+
+<!-- ═══ 6. 失败不可达 ═══ -->
+<h2>五、为什么失败状态不可达（机制层证明）</h2>
+<div class="card">
+  <div class="note ok" style="margin-top:0"><b>先说清楚：惩罚机制是做对了的。</b>实测确认「车装不满就永远占位」真实生效（4/4 分支里 3 个会变僵尸）。
+  问题不在「没有惩罚」，而在「惩罚可以无代价撤销」。</div>
+  <div class="grid2">
+    <div>
+      <h3 style="margin-top:0">真机判死条件</h3>
+      <pre>function checkStuck() {
+  if (anyMovable()) return;               // 有豆能走 → 活
+  if (freeSlots() &gt; 0 &amp;&amp; queueCount())
+      return;   <span style="color:#FF5C7A">// ← 有空位就不死</span>
+  S.phase = 'dead';
+}</pre>
+      <p style="font-size:12.5px;color:var(--dim);margin-top:8px">必输的唯一路径：<b>车位全满 且 全是僵尸 且 队列还有车</b>。</p>
+    </div>
+    <div>
+      <h3 style="margin-top:0">三道免死闸</h3>
+      <ul style="font-size:13px">
+        <li><b>闸 1</b>：玩家可主动不填满车位 → 第一条 if 永不通过</li>
+        <li><b>闸 2</b>：<code>tow</code> 广告可拖走<b>任意</b>僵尸车（无限次）</li>
+        <li><b>闸 3</b>：<code>clear</code> 消除 / <code>refresh</code> 刷新 / <code>revive</code> 复活</li>
+      </ul>
+      <pre style="margin-top:10px">rewardAd('tow', function(){
+  departCar(i);            <span style="color:#FF5C7A">// 无限次撤销</span>
+  toast('僵尸车已拖走！');
+});</pre>
+    </div>
+  </div>
+  <h3>车位砍到 2 格的对照实验（证明不是“车位太多”的错）</h3>
+  <table>
+    <thead><tr><th>车位 S</th><th class="num">L2 的 T</th><th class="num">L10 的 T</th><th>解读</th></tr></thead>
+    <tbody>
+      <tr><td>6（当前）</td><td class="num">1.000</td><td class="num">1.000</td><td style="font-size:12px;color:var(--dim)">无难度</td></tr>
+      <tr><td>4</td><td class="num">1.000</td><td class="num">1.000</td><td style="font-size:12px;color:var(--dim)">仍无难度</td></tr>
+      <tr><td>3</td><td class="num">1.000</td><td class="num">1.000</td><td style="font-size:12px;color:var(--dim)">仍无难度</td></tr>
+      <tr><td>2</td><td class="num">1.000</td><td class="num">1.000</td><td style="font-size:12px;color:var(--bad)">砍到 2 格依然无难度</td></tr>
+    </tbody>
+  </table>
+  <div class="note bad" style="margin-bottom:0"><b>结论：当前机制下「输」在数学上不可达。</b>
+  车位从 6 砍到 2，T 始终是 1.000 —— 说明瓶颈不在任何<b>数值</b>旋钮上，而在「只要留一个空位就永不判死 + 僵尸车无限拖走」这两条规则。
+  这是我上一轮最该发现却没发现的事。</div>
+</div>
+
+<!-- ═══ 7. 方案 ═══ -->
+<h2>六、这份数据为何可信（工具自检）</h2>
+<div class="card">
+  <p class="lead">上一轮的教训是「先出数字后自我论证」。所以这次先证明工具能分辨黑白，不过就拒绝输出任何 T 值。</p>
+  <pre>工具自检：原关卡可解=true  人为破坏后可解=false  → ✅ 能分辨黑白</pre>
+  <table style="margin-top:12px">
+    <thead><tr><th>已捕获并修正的工具 bug</th><th>影响</th></tr></thead>
+    <tbody>
+      <tr><td>读错字段：<code>r.ok</code> → 应为 <code>r.solvable</code></td><td>永远 undefined → 全判不可解 → <b>T 恒为 0</b>（工具 bug 冒充难度极高）</td></tr>
+      <tr><td>怀疑 <code>pathOut</code> 与真机 <code>canWalkFast</code> 口径不一</td><td>实测 <b>68 = 68</b>，口径一致，虚惊一场</td></tr>
+    </tbody>
+  </table>
+  <div class="note" style="margin-bottom:0"><b>还遗留一个已知局限：</b>当前只测前 10 个决策点，且因为每个分支都要跑一次完整求解（380~470 豆），
+  单关要 1~2 分钟。后续要加増量求解才能做到全局扫描。此外 D 没有样本（因为不存在不安全步），需等机制修完才能量。</div>
+</div>
+
+<h2>七、三个方案（需你定）</h2>
+<div class="grid3">
+  <div class="card" style="border-color:rgba(61,214,140,.4)">
+    <h4 style="font-size:14px;margin-bottom:8px">方案 1 <span class="tag t-ok">推荐</span></h4>
+    <p style="font-size:13px;font-weight:600;margin-bottom:8px">车位是唯一资源，不可无损回收</p>
+    <ul style="font-size:12.5px;color:var(--dim)">
+      <li>判死改为：无豆可走 且 队列有车 → 死（<b>去掉「有空位就不死」</b>）</li>
+      <li><code>tow</code> 保留但<b>每关限 1 次</b></li>
+      <li>T 立刻从 1.0 掉到真实值</li>
+    </ul>
+    <p style="font-size:12px;color:var(--dim);margin-top:8px">代价：手感变紧，需重调所有关卡</p>
+  </div>
+  <div class="card">
+    <h4 style="font-size:14px;margin-bottom:8px">方案 2</h4>
+    <p style="font-size:13px;font-weight:600;margin-bottom:8px">放车次数上限</p>
+    <ul style="font-size:12.5px;color:var(--dim)">
+      <li>每关给 <code>M_max = M* + k</code></li>
+      <li>用完还有豆 → 输</li>
+      <li>语义<b>完全对应</b>「过早放上去浪费坑位」</li>
+    </ul>
+    <p style="font-size:12px;color:var(--dim);margin-top:8px">改动最小；缺点是暴露最优步数信息</p>
+  </div>
+  <div class="card">
+    <h4 style="font-size:14px;margin-bottom:8px">方案 3</h4>
+    <p style="font-size:13px;font-weight:600;margin-bottom:8px">不做失败，改做星级</p>
+    <ul style="font-size:12.5px;color:var(--dim)">
+      <li>保留必胜，难度体现在 3 星门槛</li>
+      <li>最符合休闲 IAA，不卡人、广告位全保留</li>
+    </ul>
+    <p style="font-size:12px;color:var(--bad);margin-top:8px">与你「目标就是要难」可能不符</p>
+  </div>
+</div>
+
+<!-- ═══ 8. 契约 ═══ -->
+<h2>八、新的难度契约：按 (T, D) 定义</h2>
+<div class="card">
+  <p class="lead">生成器的工作变成「给定 (T, D)，搜出满足的关卡」。T 和 D 由求解器精确计算，<b>不含随机性</b> —— 不会再出现「换个策略数字就变」。</p>
+  <table>
+    <thead><tr><th>关</th><th class="num">T 容错率</th><th>可视化</th><th class="num">D 陷阱深度</th><th class="num">豆数（时长）</th><th>手感</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td class="num">1.00</td><td><div class="bar" style="width:120px"><i style="width:100%;background:#3DD68C"></i></div></td><td class="num">0</td><td class="num">60</td><td style="font-size:12px;color:var(--dim)">教学，随便过</td></tr>
+      <tr><td>2</td><td class="num">0.85</td><td><div class="bar" style="width:120px"><i style="width:85%;background:#7BD68C"></i></div></td><td class="num">2</td><td class="num">120</td><td style="font-size:12px;color:var(--dim)">开始要看一眼</td></tr>
+      <tr><td>5</td><td class="num">0.60</td><td><div class="bar" style="width:120px"><i style="width:60%;background:#C9C46B"></i></div></td><td class="num">4</td><td class="num">200</td><td style="font-size:12px;color:var(--dim)">需要规划</td></tr>
+      <tr><td>10</td><td class="num">0.45</td><td><div class="bar" style="width:120px"><i style="width:45%;background:#FFB84D"></i></div></td><td class="num">6</td><td class="num">280</td><td style="font-size:12px;color:var(--dim)">会开始输</td></tr>
+      <tr><td>25</td><td class="num">0.30</td><td><div class="bar" style="width:120px"><i style="width:30%;background:#FF5C7A"></i></div></td><td class="num">8</td><td class="num">380</td><td style="font-size:12px;color:var(--dim)">要认真算</td></tr>
+    </tbody>
+  </table>
+  <div class="note ok" style="margin-bottom:0">配套自检红线（上一轮缺失，这次强制）：<b>同一关跨策略胜率极差必须 &lt; 15%</b>，否则数字判为无效、拒绝上报。</div>
+</div>
+
+<h2>九、待你决策</h2>
+<div class="card">
+  <ol style="margin-left:18px;font-size:13.5px">
+    <li style="margin-bottom:10px"><b>失败状态怎么做？</b>方案 1（车位不可无损回收）／方案 2（放车次数上限）／方案 3（只做星级）</li>
+    <li><b>难度上限定在哪？</b>我建议 <b>L2 起 60~70% 通关率 + 3 星只有 15% 能拿</b>（难在「拿三星」而非「过不去」）；还是坚持之前定的 40%？</li>
+  </ol>
+  <div class="note" style="margin-bottom:0">定完这两条，我会<b>先用 measure-td 量出改动后的真实 T 值给你看</b>，再动生成器 —— 不重犯「先调参再自我论证」的错误。</div>
+</div>
+
+</div></body></html>

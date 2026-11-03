@@ -1,0 +1,54 @@
+{
+ "schemaVersion": 1,
+ "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S1a.dream.mp4",
+ "sha256": "613c64874a287d7be2040de4cf0e8285d58d0f689700e828576844cd16148c40",
+ "duration": 5.417,
+ "nodes": [
+  "s1"
+ ],
+ "status": "speech",
+ "transcript": "哦，原来是做梦啊。",
+ "rawText": "哦原来是做梦啊",
+ "asrChars": [
+  [
+   2.7,
+   2.94,
+   "哦"
+  ],
+  [
+   3.64,
+   3.82,
+   "原"
+  ],
+  [
+   3.82,
+   3.94,
+   "来"
+  ],
+  [
+   3.94,
+   4.12,
+   "是"
+  ],
+  [
+   4.12,
+   4.28,
+   "做"
+  ],
+  [
+   4.28,
+   4.52,
+   "梦"
+  ],
+  [
+   4.56,
+   5.005,
+   "啊"
+  ]
+ ],
+ "timingEngine": "FunASR-paraformer-zh",
+ "crossCheckText": "哦，原来是做梦啊。",
+ "speakerKey": null,
+ "speakerRuleKey": "S1a",
+ "reviewMethod": "Local file byte-identical to CDN upload, hashed; FunASR paraformer-zh + fsmn-vad + ct-punc character timestamps."
+}

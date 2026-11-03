@@ -1,0 +1,104 @@
+{
+ "schemaVersion": 1,
+ "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_fix_b_grand.mp4",
+ "sha256": "20eb597081b27d1bcc1231a24300a0efb013f0b12cc823a0e2bb51d632ae4d69",
+ "duration": 10.042,
+ "nodes": [
+  "r_fix_b_grand"
+ ],
+ "status": "speech",
+ "transcript": "傲天，你太牛了吧！房子直接变成大豪宅了！",
+ "rawText": "傲天你太牛了吧房子直接变成大豪宅了",
+ "asrChars": [
+  [
+   4.38,
+   4.62,
+   "傲"
+  ],
+  [
+   4.62,
+   4.86,
+   "天"
+  ],
+  [
+   5.4,
+   5.64,
+   "你"
+  ],
+  [
+   5.66,
+   5.9,
+   "太"
+  ],
+  [
+   6.0,
+   6.24,
+   "牛"
+  ],
+  [
+   6.28,
+   6.4,
+   "了"
+  ],
+  [
+   6.4,
+   6.64,
+   "吧"
+  ],
+  [
+   7.14,
+   7.38,
+   "房"
+  ],
+  [
+   7.42,
+   7.62,
+   "子"
+  ],
+  [
+   7.62,
+   7.76,
+   "直"
+  ],
+  [
+   7.76,
+   7.94,
+   "接"
+  ],
+  [
+   7.94,
+   8.06,
+   "变"
+  ],
+  [
+   8.06,
+   8.24,
+   "成"
+  ],
+  [
+   8.24,
+   8.48,
+   "大"
+  ],
+  [
+   8.48,
+   8.7,
+   "豪"
+  ],
+  [
+   8.7,
+   8.94,
+   "宅"
+  ],
+  [
+   9.06,
+   9.565,
+   "了"
+  ]
+ ],
+ "timingEngine": "asr-anchor(funasr-paraformer)",
+ "crossCheckText": "沈婉儿(惊喜):傲天，你太牛了吧！房子直接变成大豪宅了！",
+ "speakerKey": "wanerh",
+ "speakerRuleKey": null,
+ "reviewMethod": "ASR clean single-speaker (沈婉儿); Kling native audio matches script exactly."
+}

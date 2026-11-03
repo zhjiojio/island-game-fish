@@ -1,0 +1,580 @@
+{
+ "e5s0a": {
+  "epTitle": "房倒屋塌，如何致富？",
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s0a.mp4",
+   "duration": 5,
+   "label": "村口后手炸雷·赵铁牛被架走",
+   "poster": "images/lastframes/n5s0a.jpg"
+  },
+  "char": "aotian",
+  "speaker": "你（冷眼）",
+  "text": "跟我斗？你还嫩了点。",
+  "lines": [
+   "赵铁牛的后手还没使出来，就先栽了——栽在傲天早埋好的那步棋上。",
+   "傲天（负手而立，冷眼看赵铁牛被架走）：跟我斗？你还嫩了点。"
+  ],
+  "next": "e5s0b",
+  "ep": "EP05",
+  "scene": "village"
+ },
+ "e5s0b": {
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s0b.mp4",
+   "duration": 5,
+   "label": "村口封神·揣钱回家",
+   "poster": "images/lastframes/n5s0b.jpg"
+  },
+  "char": "aotian",
+  "speaker": "你（揣钱回家）",
+  "text": "粮卖完了，钱揣热了。婉儿还在家等我呢。",
+  "lines": [
+   "这一遭下来，李家沟三百口人算是看明白了——李傲天这三个字，往后没人敢再轻。",
+   "傲天（拍拍腰间票子，咧嘴一笑）：粮卖完了，钱揣热了。婉儿还在家等我呢。"
+  ],
+  "next": "e5s1",
+  "ep": "EP05",
+  "scene": "village"
+ },
+ "e5s1": {
+  "epTitle": "房倒屋塌，如何致富？",
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s1.mp4",
+   "duration": 10,
+   "label": "半坛酒进门",
+   "poster": "images/lastframes/n5s1.jpg"
+  },
+  "char": "aotian",
+  "speaker": "你（推门）",
+  "text": "今年的粮卖完了。剩下这点钱我打了半坛酒。婉儿——今晚谁也不许睡早了。",
+  "next": "e5s2",
+  "ep": "EP05",
+  "scene": "house"
+ },
+ "e5s2": {
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s2.mp4",
+   "duration": 10,
+   "label": "划拳·她赢了三把",
+   "poster": "images/lastframes/n5s2.jpg"
+  },
+  "char": "wanerh",
+  "speaker": "沈婉儿（笑）",
+  "text": "五魁首！哥俩好！——你又输了！",
+  "next": "f5_drink",
+  "ep": "EP05",
+  "scene": "house"
+ },
+ "f5_drink": {
+  "ep": "EP05",
+  "epTitle": "半坛酒与一场雨",
+  "scene": "house",
+  "type": "choice",
+  "title": "她连赢三把，脸都红了，还举着空碗——你？",
+  "options": [
+   {
+    "text": "「再来一杯，我陪你」",
+    "icon": "say",
+    "stat": {
+     "qing": 12
+    },
+    "next": "r_drink_a",
+    "id": "f5_drink_opt_0"
+   },
+   {
+    "text": "教她摇骰子",
+    "icon": "fight",
+    "stat": {
+     "qing": 8,
+     "liang": 5
+    },
+    "next": "r_drink_b",
+    "id": "f5_drink_opt_1",
+    "ad": true,
+    "adUnitId": "2300058116_01"
+   },
+   {
+    "text": "把酒收了，「你喝多了」",
+    "icon": "hide",
+    "stat": {
+     "qing": -8
+    },
+    "next": "r_drink_c",
+    "id": "f5_drink_opt_2"
+   }
+  ]
+ },
+ "r_drink_a": {
+  "ep": "EP05",
+  "scene": "house",
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_drink_a.mp4",
+   "duration": 10,
+   "label": "再来一杯·她话多了",
+   "poster": "images/lastframes/n5_drink_a.jpg"
+  },
+  "char": "wanerh",
+  "speaker": "沈婉儿（醉眼）",
+  "text": "我在那边……也没人陪我喝过酒。",
+  "next": "e5s2c"
+ },
+ "r_drink_b": {
+  "ep": "EP05",
+  "scene": "house",
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_drink_b.mp4",
+   "duration": 10,
+   "label": "教她摇骰子·手叠着手",
+   "poster": "images/lastframes/n5_drink_b.jpg"
+  },
+  "char": "wanerh",
+  "speaker": "沈婉儿（凑近）",
+  "text": "这么摇？——你手别动，我自己来。",
+  "next": "e5s2c"
+ },
+ "r_drink_c": {
+  "ep": "EP05",
+  "scene": "house",
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_drink_c.mp4",
+   "duration": 10,
+   "label": "她把碗抢回去",
+   "poster": "images/lastframes/n5_drink_c.jpg"
+  },
+  "char": "wanerh",
+  "speaker": "沈婉儿（仰头）",
+  "text": "谁喝多了？我沈婉儿今天，就是要喝到你趴下。",
+  "next": "e5s2c"
+ },
+ "e5s2c": {
+  "ep": "EP05",
+  "scene": "house",
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_drink_peak.mp4",
+   "duration": 10,
+   "label": "喝正嗨·顶上有块湿印子",
+   "poster": "images/lastframes/n5_drink_peak.jpg"
+  },
+  "char": "aotian",
+  "speaker": "你（回想）",
+  "text": "那一晚是我穿过来以后，笑得最痛快的一晚。谁也没抬头看一眼房顶。",
+  "next": "e5s3"
+ },
+ "e5s3": {
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s3.mp4",
+   "duration": 10,
+   "label": "屋顶塌了",
+   "poster": "images/lastframes/n5s3.jpg"
+  },
+  "char": "wanerh",
+  "speaker": "沈婉儿（惊）",
+  "text": "顶要塌了——去年王家就是这么塌的！",
+  "next": "f5_fix",
+  "ep": "EP05",
+  "scene": "house"
+ },
+ "f5_fix": {
+  "type": "choice",
+  "title": "泥水正往炕上灌，房梁在响——你怎么办？",
+  "options": [
+   {
+    "text": "冒雨爬上房顶去堵",
+    "icon": "fight",
+    "stat": {
+     "wei": 10,
+     "qing": -5
+    },
+    "next": "BE_ROOF",
+    "id": "f5_fix_opt_0",
+    "roastKey": "roast_roof_fall",
+    "roast": "你踩着湿泥往房顶爬，雷一闪，脚下一滑——七尺高的土坯房，落地那声闷响，婉儿在院里听得清清楚楚。"
+   },
+   {
+    "text": "翻翻技能库，看看有没有能用的",
+    "icon": "say",
+    "stat": {
+     "liang": 15,
+     "wei": 5
+    },
+    "next": "r_fix_b",
+    "id": "f5_fix_opt_1",
+    "ad": true,
+    "adUnitId": "2300058116_01"
+   },
+   {
+    "text": "抱着她躲墙角硬扛一夜",
+    "icon": "hide",
+    "stat": {
+     "qing": 10,
+     "wei": -5
+    },
+    "next": "r_fix_c",
+    "id": "f5_fix_opt_2"
+   }
+  ],
+  "ep": "EP05",
+  "scene": "house"
+ },
+ "r_fix_b": {
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_fix_b.mp4",
+   "duration": 10,
+   "label": "点石成屋",
+   "poster": "images/lastframes/n5_fix_b.jpg"
+  },
+  "char": "aotian",
+  "speaker": "你（低声）",
+  "text": "点石成屋。",
+  "unlockSkill": "skill_house",
+  "next": "r_fix_b_grand",
+  "ep": "EP05",
+  "scene": "house"
+ },
+ "r_fix_b_grand": {
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_fix_b_grand.mp4",
+   "duration": 10,
+   "label": "土屋化豪宅",
+   "poster": "images/lastframes/n5_fix_b_grand.jpg"
+  },
+  "char": "wanerh",
+  "speaker": "沈婉儿（惊喜）",
+  "text": "傲天，你太牛了吧！房子直接变成大豪宅了！",
+  "next": "e5s4",
+  "ep": "EP05",
+  "scene": "house"
+ },
+ "r_fix_c": {
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_fix_c.mp4",
+   "duration": 10,
+   "label": "湿被子里挨到天亮",
+   "poster": "images/lastframes/n5_fix_c.jpg"
+  },
+  "char": "wanerh",
+  "speaker": "沈婉儿（发抖）",
+  "text": "有你在，这屋漏就漏吧。",
+  "next": "e5_bridge",
+  "ep": "EP05",
+  "scene": "house"
+ },
+ "e5_bridge": {
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_bridge.mp4",
+   "duration": 10,
+   "label": "天亮·雨停·屋还得修",
+   "poster": "images/lastframes/n5_bridge.jpg"
+  },
+  "char": "narrator",
+  "speaker": "旁白",
+  "text": "天亮雨停了。可这屋，还是得修。",
+  "next": "f5_fix2",
+  "ep": "EP05",
+  "scene": "house"
+ },
+ "f5_fix2": {
+  "type": "choice",
+  "title": "天亮了。这屋还是得修——现在再想想？",
+  "options": [
+   {
+    "text": "还是爬房顶",
+    "icon": "fight",
+    "stat": {
+     "wei": 5,
+     "qing": -5
+    },
+    "next": "BE_ROOF",
+    "id": "f5_fix2_opt_0",
+    "roastKey": "roast_roof_fall2",
+    "roast": "天亮了你还是不信邪，踩着湿瓦往上爬。一脚踏空，七尺高的房檐——这回婉儿连尖叫都没来得及。"
+   },
+   {
+    "text": "翻技能库·点石成屋",
+    "icon": "say",
+    "stat": {
+     "liang": 15,
+     "wei": 5
+    },
+    "next": "r_fix_b",
+    "id": "f5_fix2_opt_1",
+    "ad": true,
+    "adUnitId": "2300058116_01"
+   }
+  ],
+  "ep": "EP05",
+  "scene": "house"
+ },
+ "e5s4": {
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s4.mp4",
+   "duration": 10,
+   "label": "大平层·地是热的",
+   "poster": "images/lastframes/n5s4.jpg"
+  },
+  "char": "wanerh",
+  "speaker": "沈婉儿（怔住）",
+  "text": "傲天，这地是热的。这屋子……不漏了。",
+  "next": "e5s5",
+  "ep": "EP05",
+  "scene": "house"
+ },
+ "e5s5": {
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s5.mp4",
+   "duration": 10,
+   "label": "她的请求",
+   "poster": "images/lastframes/n5s5.jpg"
+  },
+  "char": "wanerh",
+  "speaker": "沈婉儿（认真）",
+  "text": "咱一家富了，那不叫富。",
+  "next": "f5_biz",
+  "ep": "EP05",
+  "scene": "house"
+ },
+ "f5_biz": {
+  "type": "choice",
+  "title": "她想让你带全村人一起干——你选哪条路？",
+  "options": [
+   {
+    "text": "种玉米，稳当",
+    "icon": "hide",
+    "stat": {
+     "liang": -10,
+     "wei": -5
+    },
+    "next": "BE_DROUGHT",
+    "id": "f5_biz_opt_0",
+    "roastKey": "roast_drought",
+    "roast": "三个月没下一滴雨。三百亩玉米全烤成了柴火，村里人蹲在地头看着你，谁也没说话。"
+   },
+   {
+    "text": "养猪，来钱快",
+    "icon": "fight",
+    "stat": {
+     "liang": 15,
+     "wei": 10
+    },
+    "next": "r_biz_b",
+    "id": "f5_biz_opt_1",
+    "ad": true,
+    "adUnitId": "2300058116_01"
+   },
+   {
+    "text": "拒绝——先顾好自己家",
+    "icon": "say",
+    "stat": {
+     "qing": -99,
+     "liang": -30
+    },
+    "next": "BE_ALONE",
+    "id": "f5_biz_opt_2",
+    "roastKey": "roast_alone",
+    "roast": "她一句话没说，第二天早上人就不见了。桌上留着一根木簪。七十里山路，她走了一天一夜。"
+   }
+  ],
+  "ep": "EP05",
+  "scene": "house"
+ },
+ "r_biz_b": {
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_biz_b.mp4",
+   "duration": 10,
+   "label": "分猪仔·全村都来了",
+   "poster": "images/lastframes/n5_biz_b.jpg"
+  },
+  "char": "wanerh",
+  "speaker": "沈婉儿（记账）",
+  "text": "张家两头、李家两头——年底还猪不还钱！",
+  "next": "e5s6",
+  "ep": "EP05",
+  "scene": "house"
+ },
+ "e5s6": {
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s6.mp4",
+   "duration": 10,
+   "label": "三个月·猪长到二百斤",
+   "poster": "images/lastframes/n5s6.jpg"
+  },
+  "char": "narrator",
+  "speaker": "旁白",
+  "text": "三个月，猪长到二百斤。她天天守着那排猪圈，谁劝都不听。",
+  "next": "e5s7",
+  "ep": "EP05",
+  "scene": "house"
+ },
+ "e5s7": {
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s7.mp4",
+   "duration": 10,
+   "label": "她直不起腰",
+   "poster": "images/lastframes/n5s7.jpg"
+  },
+  "char": "wanerh",
+  "speaker": "沈婉儿（趴在栏上）",
+  "text": "傲天。我腰，直不起来了。",
+  "next": "f5_rub",
+  "ep": "EP05",
+  "scene": "house"
+ },
+ "f5_rub": {
+  "type": "choice",
+  "title": "她趴在猪圈栏杆上起不来——你？",
+  "options": [
+   {
+    "text": "就在这儿给她揉揉腰",
+    "icon": "say",
+    "stat": {
+     "qing": 15
+    },
+    "next": "r_rub_a",
+    "id": "f5_rub_opt_0",
+    "ad": true,
+    "adUnitId": "2300058116_01"
+   },
+   {
+    "text": "抱回去泡个热水澡",
+    "icon": "fight",
+    "stat": {
+     "qing": 18,
+     "wei": 5
+    },
+    "next": "r_rub_b",
+    "id": "f5_rub_opt_1",
+    "ad": true,
+    "adUnitId": "2300058116_01"
+   },
+   {
+    "text": "「歇会儿就好了」",
+    "icon": "hide",
+    "stat": {
+     "qing": -20
+    },
+    "next": "r_rub_c",
+    "id": "f5_rub_opt_2",
+    "roastKey": "roast_rub_alone",
+    "roast": "你嫌麻烦，没给她揉那下腰。日子一天天过，她的腰再没直起来过——落下了病根。开春她娘家来人把她接走了，你守着这座新屋，成了十里八乡有名的老光棍。"
+   }
+  ],
+  "ep": "EP05",
+  "scene": "house"
+ },
+ "r_rub_a": {
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_rub_a.mp4",
+   "duration": 10,
+   "label": "猪圈边·揉腰",
+   "poster": "images/lastframes/n5_rub_a.jpg"
+  },
+  "char": "wanerh",
+  "speaker": "沈婉儿（长出一口气）",
+  "text": "……再往上一点。",
+  "next": "r_rub_a2",
+  "ep": "EP05",
+  "scene": "house"
+ },
+ "r_rub_a2": {
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_rub_a2.mp4",
+   "duration": 10,
+   "label": "她转过身来",
+   "poster": "images/lastframes/n5_rub_a2.jpg"
+  },
+  "char": "wanerh",
+  "speaker": "沈婉儿（很轻）",
+  "text": "傲天。你说……咱这算成家了吗？",
+  "next": "e5s8",
+  "ep": "EP05",
+  "scene": "house"
+ },
+ "r_rub_b": {
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_rub_b.mp4",
+   "duration": 10,
+   "label": "浴室·热水",
+   "poster": "images/lastframes/n5_rub_b.jpg"
+  },
+  "char": "wanerh",
+  "speaker": "沈婉儿（怔）",
+  "text": "这水……是热的？一直是热的？",
+  "next": "r_rub_b2",
+  "ep": "EP05",
+  "scene": "house"
+ },
+ "r_rub_b2": {
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_rub_b2.mp4",
+   "duration": 10,
+   "label": "以后天天都有热水",
+   "poster": "images/lastframes/n5_rub_b2.jpg"
+  },
+  "char": "aotian",
+  "speaker": "你（低）",
+  "text": "以后天天都有热水。",
+  "next": "e5s8",
+  "ep": "EP05",
+  "scene": "house"
+ },
+ "r_rub_c": {
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_rub_c.mp4",
+   "duration": 10,
+   "label": "她自己走了",
+   "poster": "images/lastframes/n5_rub_c.jpg"
+  },
+  "char": "wanerh",
+  "speaker": "沈婉儿（平淡）",
+  "text": "歇会儿就好了。你去忙吧。",
+  "next": "BE_RUB_ALONE",
+  "ep": "EP05",
+  "scene": "house"
+ },
+ "e5s8": {
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s8.mp4",
+   "duration": 10,
+   "label": "碗底下两个鸡蛋",
+   "poster": "images/lastframes/n5s8.jpg"
+  },
+  "char": "aotian",
+  "speaker": "你（心里）",
+  "text": "屋子是我变的，猪是全村的。可这两个蛋是她剥的。",
+  "next": "e5_end",
+  "ep": "EP05",
+  "scene": "house"
+ },
+ "e5_end": {
+  "ep": "EP05",
+  "scene": "trans",
+  "type": "end",
+  "epContinue": true,
+  "title": "敬请期待",
+  "text": "第五幕完 · 后续章节，敬请期待……"
+ }
+}

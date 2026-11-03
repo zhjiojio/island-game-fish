@@ -1,0 +1,17 @@
+{
+  "transcript": "150万。好。",
+  "utterances": [
+    {
+      "speaker": "speaker1",
+      "text": "150万。"
+    },
+    {
+      "speaker": "speaker1",
+      "text": "好。"
+    }
+  ],
+  "nonverbal": [],
+  "issues": [],
+  "uncertain": "",
+  "reviewModel": "mistralai/voxtral-small-24b-2507"
+}

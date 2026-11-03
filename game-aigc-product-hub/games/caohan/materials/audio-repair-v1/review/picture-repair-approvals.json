@@ -1,0 +1,58 @@
+[
+  {
+    "partId": "ending_streamer__p01",
+    "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/video/ending_streamer__p01.silent-picture-r2.mp4",
+    "sha256": "425559716fe07620b8ac4ce4fe05a37b0b3e56abbbfd84429b69619233e71458",
+    "approved": true,
+    "evidence": "streamer-r2.jpg",
+    "note": "第二版抽帧检查嘴唇闭合、人物场景保持，采用第二版。"
+  },
+  {
+    "partId": "ending_streamer__p02",
+    "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/video/ending_streamer__p02.silent-picture.mp4",
+    "sha256": "33320b1bc707f675f43f87c4ed0a2046b476c553a846fdf8f9f5eec4dff790f9",
+    "approved": true,
+    "evidence": "picture-candidates.jpg / picture-candidates-rest.jpg",
+    "note": "抽帧检查嘴唇保持自然闭合，人物与场景符合参考；仍需最终混音后检查衔接。"
+  },
+  {
+    "partId": "ending_terrace__p02",
+    "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/video/ending_terrace__p02.silent-picture.mp4",
+    "sha256": "83f40c1412b44d6cbdfcb69e7c4b1228e56ad509976e449b5b9290864ef09599",
+    "approved": true,
+    "evidence": "picture-candidates.jpg / picture-candidates-rest.jpg",
+    "note": "抽帧检查嘴唇保持自然闭合，人物与场景符合参考；仍需最终混音后检查衔接。"
+  },
+  {
+    "partId": "ending_empire__p01",
+    "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/video/ending_empire__p01.silent-picture.mp4",
+    "sha256": "9c4c92ff402a56427104ea71de33c366f6a79d81eeb87d1931c6d15b31ab6da2",
+    "approved": true,
+    "evidence": "picture-candidates.jpg / picture-candidates-rest.jpg",
+    "note": "抽帧检查嘴唇保持自然闭合，人物与场景符合参考；仍需最终混音后检查衔接。"
+  },
+  {
+    "partId": "ending_independent__p01",
+    "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/video/ending_independent__p01.silent-picture.mp4",
+    "sha256": "7d160793758a4ca487884bd6b33b6ae054e8951713baf81e3df91648d2eef290",
+    "approved": true,
+    "evidence": "picture-candidates.jpg / picture-candidates-rest.jpg",
+    "note": "抽帧检查嘴唇保持自然闭合，人物与场景符合参考；仍需最终混音后检查衔接。"
+  },
+  {
+    "partId": "ending_revenge__p01",
+    "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/video/ending_revenge__p01.silent-picture.mp4",
+    "sha256": "f00a37e99b2b916375360d754464f105d3b791d15c6885f2150bcf092d12eb1a",
+    "approved": true,
+    "evidence": "picture-candidates.jpg / picture-candidates-rest.jpg",
+    "note": "抽帧检查嘴唇保持自然闭合，人物与场景符合参考；仍需最终混音后检查衔接。"
+  },
+  {
+    "partId": "ep06_scene_00_video_01__p01",
+    "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/video/ep06_scene_00_video_01__p01.silent-picture.mp4",
+    "sha256": "06ce96643487e8f2bc2eaec200e516052362cc72ea97d8b49ea81b58f2b49544",
+    "approved": true,
+    "evidence": "picture-candidates.jpg / picture-candidates-rest.jpg",
+    "note": "抽帧检查嘴唇保持自然闭合，人物与场景符合参考；仍需最终混音后检查衔接。"
+  }
+]

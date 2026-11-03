@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e6s1_v82.mp4",
+  "sha256": "001eeb62ddb4de17363d73e620fc35897cc5d70af458f2e3fe483ff6027b18e4",
+  "duration": 10.042,
+  "nodes": [
+    "e6s1"
+  ],
+  "status": "speech",
+  "transcript": "水烧好了，趁热洗。",
+  "rawText": "水烧好了趁热洗",
+  "asrChars": [
+    [
+      0.52,
+      0.74,
+      "水"
+    ],
+    [
+      0.74,
+      0.9,
+      "烧"
+    ],
+    [
+      0.9,
+      1.08,
+      "好"
+    ],
+    [
+      1.08,
+      1.32,
+      "了"
+    ],
+    [
+      2.08,
+      2.32,
+      "趁"
+    ],
+    [
+      2.32,
+      2.48,
+      "热"
+    ],
+    [
+      2.48,
+      2.835,
+      "洗"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "水烧好了,趁热洗。",
+  "speakerKey": "wanerh",
+  "speakerRuleKey": "e6s1",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

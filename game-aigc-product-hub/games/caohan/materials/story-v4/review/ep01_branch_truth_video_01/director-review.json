@@ -1,0 +1,8 @@
+{
+  "visualIdentity": "五点抽帧人工比对通过，脸型、短发、服装及工地场景连续，无明显换脸。",
+  "content": "俯身伸手动作与原镜头一致。",
+  "audio": "独立模型转写与原文台词、旁白相符（标点差异忽略）；同为男声，未作声纹或逐帧口型精确测量。",
+  "result": "visual_pass_audio_transcript_pass",
+  "videoId": "ep01_branch_truth_video_01",
+  "sha256": "4865cd4c88860dc26c8ddd6a4192d7e0c67139280f569a5067de80a2fbe6685e"
+}

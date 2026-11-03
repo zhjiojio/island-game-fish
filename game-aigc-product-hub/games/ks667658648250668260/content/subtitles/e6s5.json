@@ -1,0 +1,10 @@
+{
+  "node": "e6s5",
+  "speakerKey": "narrator",
+  "speakerName": "傲天",
+  "asrText": "以后，你就是我明媒正娶的正房。",
+  "asrTextRaw": "你就是我明媒正娶的正坊",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 1
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "partId": "ending_regret__p01",
+    "videoId": "ending_regret",
+    "nodeId": "ending_regret",
+    "shotId": "ending_regret_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ending_regret__p01.json",
+    "requestSha256": "3702bf8dd489ed19d31c39f053cf51c171e65598fb9075677e82d16ea45ddd64",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ending_regret__p01.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ending_regret__p01.json",
+    "durationSec": 6,
+    "expectedSpeech": [],
+    "requiredSound": {
+      "ambient": "工地路口自然环境声",
+      "music": "无配乐，以现场声为主",
+      "sfx": [],
+      "vocalizations": []
+    },
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ending_regret__p01.png",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_regret.mp4",
+    "reuseSourceFrame": true
+  }
+]

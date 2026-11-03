@@ -1,0 +1,282 @@
+{
+  "partId": "ep07_branch_counterattack_video_01",
+  "sourceSha256": "29ef973d48c13e99294cabe49c4afed9ab4092c35210bd197c12b813282bfeb4",
+  "model": "google/gemini-2.5-flash",
+  "review": {
+    "transcript": [
+      {
+        "startSec": 1.36,
+        "endSec": 3.48,
+        "text": "贺家这条船要沉了。",
+        "audibleVoice": "手机里男声",
+        "visibleSpeaker": "手机",
+        "mouthSyncEvidence": []
+      },
+      {
+        "startSec": 3.76,
+        "endSec": 4.88,
+        "text": "我不陪你。",
+        "audibleVoice": "手机里男声",
+        "visibleSpeaker": "手机",
+        "mouthSyncEvidence": []
+      },
+      {
+        "startSec": 6.08,
+        "endSec": 6.48,
+        "text": "爸。",
+        "audibleVoice": "画面中年轻女性",
+        "visibleSpeaker": "画面中年轻女性，穿白衬衫黑裤子，站在画面中间",
+        "mouthSyncEvidence": [
+          {
+            "startSec": 6.08,
+            "endSec": 6.48,
+            "frame": "00006.080.jpg"
+          }
+        ]
+      },
+      {
+        "startSec": 7.68,
+        "endSec": 8.98,
+        "text": "听清楚了吗？",
+        "audibleVoice": "画面中年轻女性",
+        "visibleSpeaker": "画面中年轻女性，穿白衬衫黑裤子，站在画面中间",
+        "mouthSyncEvidence": [
+          {
+            "startSec": 7.68,
+            "endSec": 8.98,
+            "frame": "00007.680.jpg"
+          }
+        ]
+      }
+    ],
+    "nonverbal": [
+      {
+        "startSec": 0.0,
+        "endSec": 0.2,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 0.2,
+        "endSec": 0.4,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 0.4,
+        "endSec": 0.6,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 0.6,
+        "endSec": 0.8,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 0.8,
+        "endSec": 1.0,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 1.0,
+        "endSec": 1.2,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 1.2,
+        "endSec": 1.4,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 1.4,
+        "endSec": 1.6,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 1.6,
+        "endSec": 1.8,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 1.8,
+        "endSec": 2.0,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 2.0,
+        "endSec": 2.2,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 2.2,
+        "endSec": 2.4,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 2.4,
+        "endSec": 2.6,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 2.6,
+        "endSec": 2.8,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 2.8,
+        "endSec": 3.0,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 3.0,
+        "endSec": 3.2,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 3.2,
+        "endSec": 3.4,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 3.4,
+        "endSec": 3.6,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 3.6,
+        "endSec": 3.8,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 3.8,
+        "endSec": 4.0,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 4.0,
+        "endSec": 4.2,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 4.2,
+        "endSec": 4.4,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 4.4,
+        "endSec": 4.6,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 4.6,
+        "endSec": 4.8,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 4.8,
+        "endSec": 5.0,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 5.0,
+        "endSec": 5.2,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 5.2,
+        "endSec": 5.4,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 5.4,
+        "endSec": 5.6,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 5.6,
+        "endSec": 5.8,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 5.8,
+        "endSec": 6.0,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 6.0,
+        "endSec": 6.2,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 6.2,
+        "endSec": 6.4,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 6.4,
+        "endSec": 6.6,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 6.6,
+        "endSec": 6.8,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 6.8,
+        "endSec": 7.0,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 7.0,
+        "endSec": 7.2,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 7.2,
+        "endSec": 7.4,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 7.4,
+        "endSec": 7.6,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 7.6,
+        "endSec": 7.8,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 7.8,
+        "endSec": 8.0,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 8.0,
+        "endSec": 8.2,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 8.2,
+        "endSec": 8.4,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 8.4,
+        "endSec": 8.6,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 8.6,
+        "endSec": 8.8,
+        "event": "环境音：轻微的嗡嗡声"
+      },
+      {
+        "startSec": 8.8,
+        "endSec": 9.0,
+        "event": "环境音：轻微的嗡嗡声"
+      }
+    ],
+    "issues": [],
+    "uncertain": []
+  }
+}

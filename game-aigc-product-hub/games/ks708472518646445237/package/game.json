@@ -1,0 +1,16 @@
+{
+    "deviceOrientation": "portrait",
+    "showStatusBar": false,
+    "runtimeVersion": "3.3.0",
+    "subpackages": [],
+    "preloadDataList": [
+        "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks654429322415476022/video/opening.mp4",
+        "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks654429322415476022/video/shot-02-opening-v3.mp4",
+        "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks654429322415476022/keyframes/opening.png",
+        "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks654429322415476022/keyframes/shot-02-curtain-realistic-v1.png",
+        "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks654429322415476022/image/avatar-pijiu.png",
+        "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks654429322415476022/image/avatar-tiaojiu.png",
+        "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks654429322415476022/image/avatar-zhuchang.png",
+        "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks654429322415476022/image/avatar-lingwu.png"
+    ]
+}

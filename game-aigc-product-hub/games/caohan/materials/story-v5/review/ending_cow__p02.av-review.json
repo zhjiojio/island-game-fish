@@ -1,0 +1,29 @@
+{
+  "partId": "ending_cow__p02",
+  "sourceSha256": "cfdb1d890ce1880b30a1ffa3da8d8c5586d6d2fbf3ec083cd3b7290450ef7a45",
+  "model": "google/gemini-2.5-flash",
+  "review": {
+    "transcript": [
+      {
+        "startSec": 4.68,
+        "endSec": 5.94,
+        "text": "嗯",
+        "audibleVoice": "牛",
+        "visibleSpeaker": "画面中央的黑白奶牛",
+        "mouthSyncEvidence": "牛张嘴发出声音",
+        "speakerAge": "成年",
+        "speakerClothes": "无"
+      }
+    ],
+    "nonverbal": [
+      {
+        "startSec": 0.0,
+        "endSec": 6.04,
+        "text": "持续的鸟鸣声和风声",
+        "type": "环境音"
+      }
+    ],
+    "issues": [],
+    "uncertain": []
+  }
+}

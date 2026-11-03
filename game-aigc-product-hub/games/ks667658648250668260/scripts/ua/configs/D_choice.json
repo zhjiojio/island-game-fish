@@ -1,0 +1,42 @@
+{
+  "name": "wq_D_h1_c1_10s_v1",
+  "_desc": "赛道D · 抉择焦虑 · 主打「选错一个，故事直接完」· 卖互动掌控欲",
+  "source": "/Users/fat/weihunqi-large-assets/side-videos/videos/e2s1.mp4",
+  "width": 1080,
+  "height": 1920,
+  "duration": 10.0,
+  "outdir": "/Users/fat/weihunqi/build-ua",
+
+  "hook": "选错一个，故事直接完",
+
+  "options": [
+    "接过那碗糊糊",
+    "让她先喝",
+    "问她家里还剩多少"
+  ],
+
+  "stats": [
+    ["嫂子好感", 10, [224, 76, 106, 255]],
+    ["村里威望", 50, [212, 160, 58, 255]],
+    ["家里存粮", 20, [127, 176, 105, 255]]
+  ],
+
+  "hit_stat_idx": 0,
+  "hit_delta": "+12",
+  "toast": "嫂子好感 +12",
+
+  "cta": "18 个结局，你走哪个？",
+  "cta_sub": "点击进入 · 荒年开局",
+
+  "timeline": {
+    "hook_at": 0.3,
+    "card_in_at": 2.5,
+    "card_stagger": 0.17,
+    "finger_in_at": 4.4,
+    "press_at": 5.5,
+    "release_at": 5.8,
+    "fly_at": 5.85,
+    "cta_at": 7.1,
+    "target_idx": 1
+  }
+}

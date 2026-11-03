@@ -1,0 +1,10 @@
+{
+  "node": "e9s8",
+  "speakerKey": "narrator",
+  "speakerName": "王婆",
+  "asrText": "吉时到！新娘子进门喽！",
+  "asrTextRaw": "好 即时到 新娘子见门了",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 2
+}

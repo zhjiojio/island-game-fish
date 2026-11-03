@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side06_dunhuang.hd.mp4",
+  "sha256": "ce12d9f8c3c33865a6766433dcfdad654b14dc9fbbe523f8c7db66fe05bcd4e9",
+  "duration": 10.042,
+  "nodes": [
+    "r_side06",
+    "r_side06_e7",
+    "r_side06_e2"
+  ],
+  "status": "speech",
+  "transcript": "傲天，我跳得好看吗？",
+  "rawText": "傲天我跳的好看吗",
+  "asrChars": [
+    [
+      6.8,
+      7.04,
+      "傲"
+    ],
+    [
+      7.1,
+      7.34,
+      "天"
+    ],
+    [
+      8.46,
+      8.7,
+      "我"
+    ],
+    [
+      8.7,
+      8.86,
+      "跳"
+    ],
+    [
+      8.86,
+      8.98,
+      "的"
+    ],
+    [
+      8.98,
+      9.14,
+      "好"
+    ],
+    [
+      9.14,
+      9.32,
+      "看"
+    ],
+    [
+      9.32,
+      9.705,
+      "吗"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "李家沟は沟发懸念＃模稜ツ時,点光牲客泰國工教授。郑馥儿。ーヽ必协助。",
+  "speakerKey": null,
+  "speakerRuleKey": "side06_dunhuang",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

@@ -1,0 +1,25 @@
+{
+  "id": "ending_revenge",
+  "type": "ending",
+  "episodeId": "ep11",
+  "title": "正式结局：许家覆灭",
+  "isEnding": true,
+  "category": "revenge",
+  "tone": [
+    "复仇",
+    "清算"
+  ],
+  "rarity": "uncommon",
+  "isCanonical": false,
+  "unlock": {
+    "requiredFlags": [
+      "ep11_counterattack"
+    ],
+    "requiredEndingTags": []
+  },
+  "description": "完整证据链公开，许家精心维持的体面一夜崩塌。",
+  "closing": "她没有推任何人下楼，只把真相推到了所有人面前。",
+  "achievement": "ending_revenge",
+  "chapterId": "ch5",
+  "chapterTitle": "第五章：让他再动一次手"
+}

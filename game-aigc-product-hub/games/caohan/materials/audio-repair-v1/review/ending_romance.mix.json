@@ -1,0 +1,18 @@
+{
+  "videoId": "ending_romance",
+  "voiceWindows": [
+    {
+      "lineId": "ending_romance__l01",
+      "speaker": "陈劲",
+      "text": "回家吧。",
+      "heard": "回家吧",
+      "start": 15.255,
+      "end": 16.385,
+      "alignmentScore": 1.0
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 24.125532879818593,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.23223876953125
+}

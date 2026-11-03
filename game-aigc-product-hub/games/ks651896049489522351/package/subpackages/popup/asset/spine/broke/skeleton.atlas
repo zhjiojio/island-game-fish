@@ -1,0 +1,104 @@
+
+skeleton.png
+size: 1684,646
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bean
+  rotate: false
+  xy: 1576, 265
+  size: 34, 34
+  orig: 34, 34
+  offset: 0, 0
+  index: -1
+chan
+  rotate: true
+  xy: 1482, 201
+  size: 98, 92
+  orig: 98, 92
+  offset: 0, 0
+  index: -1
+ground 2
+  rotate: true
+  xy: 1482, 301
+  size: 343, 200
+  orig: 812, 200
+  offset: 0, 0
+  index: -1
+po
+  rotate: false
+  xy: 1482, 109
+  size: 98, 90
+  orig: 98, 90
+  offset: 0, 0
+  index: -1
+wing light
+  rotate: false
+  xy: 1576, 242
+  size: 26, 21
+  orig: 26, 21
+  offset: 0, 0
+  index: -1
+wing right
+  rotate: true
+  xy: 1576, 222
+  size: 18, 28
+  orig: 20, 28
+  offset: 0, 0
+  index: -1
+xulie/1
+  rotate: true
+  xy: 1112, 6
+  size: 316, 368
+  orig: 320, 368
+  offset: 0, 0
+  index: -1
+xulie/2
+  rotate: true
+  xy: 2, 324
+  size: 320, 368
+  orig: 320, 368
+  offset: 0, 0
+  index: -1
+xulie/3
+  rotate: true
+  xy: 372, 324
+  size: 320, 368
+  orig: 320, 368
+  offset: 0, 0
+  index: -1
+xulie/4
+  rotate: true
+  xy: 742, 324
+  size: 320, 368
+  orig: 320, 368
+  offset: 0, 0
+  index: -1
+xulie/5
+  rotate: true
+  xy: 1112, 324
+  size: 320, 368
+  orig: 320, 368
+  offset: 0, 0
+  index: -1
+xulie/6
+  rotate: true
+  xy: 2, 2
+  size: 320, 368
+  orig: 320, 368
+  offset: 0, 0
+  index: -1
+xulie/7
+  rotate: true
+  xy: 372, 2
+  size: 320, 368
+  orig: 320, 368
+  offset: 0, 0
+  index: -1
+xulie/8
+  rotate: true
+  xy: 742, 2
+  size: 320, 368
+  orig: 320, 368
+  offset: 0, 0
+  index: -1

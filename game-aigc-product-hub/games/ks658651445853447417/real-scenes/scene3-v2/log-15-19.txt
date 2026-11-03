@@ -1,0 +1,33 @@
+▶ Lv15 · 苏州 · 平江路小桥 · 6 物：苏州折扇、评弹琵琶、苏绣绷架、碧螺春盖碗、小笼蒸屉、油纸伞
+   ✅ Lv15 → ./generated/lv15.jpg (4895286 B)
+▶ Lv16 · 杭州 · 河坊街茶庄 · 6 物：龙井茶饼、臭豆腐一碟、胡庆余堂药方、绸伞、金丝片糖、雕花木牌
+   ✅ Lv16 → ./generated/lv16.jpg (4335072 B)
+▶ Lv17 · 南京 · 夫子庙秦淮 · 6 物：秦淮花灯、鸭血粉丝、云锦织片、金陵折页地图、雨花石一枚、重阳糕
+   ✅ Lv17 → ./generated/lv17.jpg (4113895 B)
+▶ Lv18 · 青岛 · 八大关洋楼 · 6 物：青岛啤酒瓶、哈利路亚教堂顶、海螺号、欧式路灯、绿石栏杆、海鲜壳堆
+   ✅ Lv18 → ./generated/lv18.jpg (4014702 B)
+▶ Lv19 · 武汉 · 户部巷早点街 · 7 物：热干面碗、三鲜豆皮、面窝、武汉煎饼、长江大桥模型、蔡林记招牌、辣椒罐
+   ✅ Lv19 → ./generated/lv19.jpg (4709557 B)
+
+=== 汇总 ===
+total 156400
+drwxr-xr-x@ 20 fat  staff      640  8  9 03:10 .
+drwxr-xr-x@ 19 fat  staff      608  8  9 03:06 ..
+-rw-r--r--@  1 fat  staff  4566881  8  9 03:06 lv10.jpg
+-rw-r--r--@  1 fat  staff  4120180  8  9 03:06 lv11.jpg
+-rw-r--r--@  1 fat  staff  4563869  8  9 03:07 lv12.jpg
+-rw-r--r--@  1 fat  staff  4615745  8  9 03:08 lv13.jpg
+-rw-r--r--@  1 fat  staff  4480261  8  9 03:09 lv14.jpg
+-rw-r--r--@  1 fat  staff  4895286  8  9 03:06 lv15.jpg
+-rw-r--r--@  1 fat  staff  4335072  8  9 03:07 lv16.jpg
+-rw-r--r--@  1 fat  staff  4113895  8  9 03:08 lv17.jpg
+-rw-r--r--@  1 fat  staff  4014702  8  9 03:09 lv18.jpg
+-rw-r--r--@  1 fat  staff  4709557  8  9 03:10 lv19.jpg
+-rw-r--r--@  1 fat  staff  4322587  8  9 03:06 lv20.jpg
+-rw-r--r--@  1 fat  staff  4379681  8  9 03:07 lv21.jpg
+-rw-r--r--@  1 fat  staff  4266027  8  9 03:08 lv22.jpg
+-rw-r--r--@  1 fat  staff  4386366  8  9 03:06 lv25.jpg
+-rw-r--r--@  1 fat  staff  4070831  8  9 03:06 lv26.jpg
+-rw-r--r--@  1 fat  staff  4043489  8  9 03:07 lv27.jpg
+-rw-r--r--@  1 fat  staff  4093190  8  9 03:08 lv28.jpg
+-rw-r--r--@  1 fat  staff  4392577  8  9 03:09 lv29.jpg

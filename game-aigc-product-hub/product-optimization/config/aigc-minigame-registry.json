@@ -1,0 +1,71 @@
+{
+  "$schema": "./aigc-minigame-registry.schema.json",
+  "version": "1.0.0",
+  "description": "AIGC 小游戏 AppID ↔ 项目 skill 映射表。由 aigc-minigame-orchestrator subagent 与 hook 脚本共同消费。",
+  "projects": {
+    "ks658651445853447417": {
+      "name": "老铁眼真尖",
+      "aliases": ["老铁找茬王", "找茬王", "laotie-zhaocha", "眼真尖"],
+      "repo_path_patterns": ["games/ks658651445853447417"],
+      "skills": [
+        "laotie-zhaocha-game",
+        "laotie-zhaocha-coord-workflow",
+        "laotie-zhaocha-scene-image"
+      ],
+      "build_subagent": "laotie-build-guard",
+      "notes": "主 AppID。含 ks693835817972937121 分包 AppID 混用 CDN。"
+    },
+    "ks708472518646445237": {
+      "name": "提艾默酒吧·店长争夺战",
+      "aliases": ["提艾默", "tiaimo", "tiaimo-bar", "店长争夺战"],
+      "repo_path_patterns": ["games/ks708472518646445237", "tiaimo"],
+      "skills": ["tiaimo-bar-game"],
+      "build_subagent": null,
+      "notes": "旧 AppID ks654429322415476022 仍存于 hub 但停用。"
+    },
+    "ks667658648250668260": {
+      "name": "我的未婚妻",
+      "aliases": ["未婚妻", "荒年开局", "婉儿", "weihunqi", "荒年记"],
+      "repo_path_patterns": ["games/ks667658648250668260", "weihunqi"],
+      "skills": ["wo-de-weihunqi-interactive-drama"],
+      "build_subagent": null,
+      "notes": "剧改游 · 互动剧情。"
+    },
+    "ks654429322415476022": {
+      "name": "提艾默酒吧（旧 AppID · 停用）",
+      "aliases": [],
+      "repo_path_patterns": [],
+      "skills": ["tiaimo-bar-game"],
+      "build_subagent": null,
+      "deprecated": true,
+      "notes": "已迁至 ks708472518646445237，仅审计用。"
+    },
+    "ks693835817972937121": {
+      "name": "老铁眼真尖（分包 AppID）",
+      "aliases": [],
+      "repo_path_patterns": [],
+      "skills": ["laotie-zhaocha-game", "laotie-zhaocha-coord-workflow"],
+      "build_subagent": "laotie-build-guard",
+      "notes": "老铁眼真尖 CDN 分包 AppID，不独立发版。"
+    }
+  },
+  "guest_mode": {
+    "enabled": true,
+    "load_skills": ["agw-work-mode"],
+    "warning": "检测到未注册 AppID，进入游客模式：仅加载 agw-work-mode。如需完整能力，请补充 AppID 到 registry。"
+  },
+  "trigger_keywords": [
+    "AIGC 小游戏", "aigc小游戏", "aigc 小游戏",
+    "快手小游戏", "小游戏", "剧游",
+    "老铁眼真尖", "老铁找茬王", "找茬王",
+    "提艾默", "tiaimo", "店长争夺战",
+    "未婚妻", "荒年开局", "婉儿",
+    "ksmg upload", "ksmg preview", "ksmg-preview",
+    "agw-start", "agw-work-mode", "agw-video-adaptation"
+  ],
+  "path_patterns": [
+    "games/ks[0-9]{18,20}",
+    "game-aigc-product-hub",
+    "game-aigc-workflow"
+  ]
+}

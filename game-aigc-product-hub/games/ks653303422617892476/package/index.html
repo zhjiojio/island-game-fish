@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>帮她们匹配穿搭</title>
+</head>
+<body style="margin:0;background:#000;overflow:hidden;touch-action:none">
+<canvas id="game" style="display:block"></canvas>
+<script>window.canvas = document.getElementById('game');</script>
+<!-- m3-init.js 必须最先加载，初始化 M3 命名空间和 M3.Layout 基础字段 -->
+<script src="js/m3-init.js?v=1"></script>
+<script src="js/kwai-event-bus.js?v=1"></script>
+<script src="js/kwai-ad-config.js?v=1"></script>
+<script src="api/kwai-login.js?v=1"></script>
+<script src="api/kwai-ad.js?v=1"></script>
+<script src="api/kwai-share.js?v=1"></script>
+<script src="js/layout.js?v=4"></script>
+<script src="js/compliance.js?v=1"></script>
+<!-- 换装匹配玩法层（v6，H5 按依赖顺序加载） -->
+<script src="js/scene.js?v=4"></script>  <!-- 关卡数据 + 程序化绘制 -->
+<script src="js/board.js?v=5"></script>  <!-- 选题状态机 -->
+<script src="js/game.js?v=6"></script>   <!-- 流程控制 + 广告 -->
+<script src="js/render.js?v=11"></script> <!-- 渲染 -->
+<script src="js/input.js?v=5"></script>  <!-- 输入（点击 + 拖拽） -->
+<!-- main.js 保持最后 -->
+<script src="js/main.js?v=3"></script>
+</body>
+</html>

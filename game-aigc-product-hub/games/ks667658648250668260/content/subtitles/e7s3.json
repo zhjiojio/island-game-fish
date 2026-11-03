@@ -1,0 +1,10 @@
+{
+  "node": "e7s3",
+  "speakerKey": "aotian",
+  "speakerName": "你（洪亮）",
+  "asrText": "三天后申时，有大暴雨！信我的，今天就回家挖沟、垒埂、把粮囤垫高三寸！不信的，你就等着看",
+  "asrTextRaw": "三天后身世 有大鲍鱼 信我的 今天就回家挖钩 雷杆 把两吞垫高三寸 不信的 你就等着看",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 4
+}

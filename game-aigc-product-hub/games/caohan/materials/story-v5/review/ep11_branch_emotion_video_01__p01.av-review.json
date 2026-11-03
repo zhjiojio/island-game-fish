@@ -1,0 +1,1742 @@
+{
+  "partId": "ep11_branch_emotion_video_01__p01",
+  "sourceSha256": "f31f1ad7bc11872266421c016803a368d33bc9f9ea72e843a2651b961909b7ef",
+  "model": "google/gemini-2.5-flash",
+  "review": {
+    "transcript": [
+      {
+        "startSec": 2.76,
+        "endSec": 3.06,
+        "text": "走吧。",
+        "audibleVoice": "female adult",
+        "visibleSpeaker": "woman in white jacket",
+        "mouthSyncEvidence": [
+          {
+            "startSec": 2.76,
+            "endSec": 3.06,
+            "speaker": "woman in white jacket"
+          }
+        ]
+      },
+      {
+        "startSec": 4.96,
+        "endSec": 5.56,
+        "text": "一起回家。",
+        "audibleVoice": "female adult",
+        "visibleSpeaker": "woman in white jacket",
+        "mouthSyncEvidence": [
+          {
+            "startSec": 4.96,
+            "endSec": 5.56,
+            "speaker": "woman in white jacket"
+          }
+        ]
+      }
+    ],
+    "nonverbal": [
+      {
+        "startSec": 0.0,
+        "endSec": 0.08,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 0.12,
+        "endSec": 0.2,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 0.24,
+        "endSec": 0.32,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 0.36,
+        "endSec": 0.44,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 0.48,
+        "endSec": 0.56,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 0.6,
+        "endSec": 0.68,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 0.72,
+        "endSec": 0.8,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 0.84,
+        "endSec": 0.92,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 0.96,
+        "endSec": 1.04,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 1.08,
+        "endSec": 1.16,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 1.2,
+        "endSec": 1.28,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 1.32,
+        "endSec": 1.4,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 1.44,
+        "endSec": 1.52,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 1.56,
+        "endSec": 1.64,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 1.68,
+        "endSec": 1.76,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 1.8,
+        "endSec": 1.88,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 1.92,
+        "endSec": 2.0,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 2.04,
+        "endSec": 2.12,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 2.16,
+        "endSec": 2.24,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 2.28,
+        "endSec": 2.36,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 2.4,
+        "endSec": 2.48,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 2.52,
+        "endSec": 2.6,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 2.64,
+        "endSec": 2.72,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 3.08,
+        "endSec": 3.16,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 3.2,
+        "endSec": 3.28,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 3.32,
+        "endSec": 3.4,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 3.44,
+        "endSec": 3.52,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 3.56,
+        "endSec": 3.64,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 3.68,
+        "endSec": 3.76,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 3.8,
+        "endSec": 3.88,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 3.92,
+        "endSec": 4.0,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 4.04,
+        "endSec": 4.12,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 4.16,
+        "endSec": 4.24,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 4.28,
+        "endSec": 4.36,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 4.4,
+        "endSec": 4.48,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 4.52,
+        "endSec": 4.6,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 4.64,
+        "endSec": 4.72,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 4.76,
+        "endSec": 4.84,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 4.88,
+        "endSec": 4.96,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 5.58,
+        "endSec": 5.66,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 5.7,
+        "endSec": 5.78,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 5.82,
+        "endSec": 5.9,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 5.94,
+        "endSec": 6.02,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 6.06,
+        "endSec": 6.14,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 6.18,
+        "endSec": 6.26,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 6.3,
+        "endSec": 6.38,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 6.42,
+        "endSec": 6.5,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 6.54,
+        "endSec": 6.62,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 6.66,
+        "endSec": 6.74,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 6.78,
+        "endSec": 6.86,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 6.9,
+        "endSec": 6.98,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 7.02,
+        "endSec": 7.1,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 7.14,
+        "endSec": 7.22,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 7.26,
+        "endSec": 7.34,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 7.38,
+        "endSec": 7.46,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 7.5,
+        "endSec": 7.58,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 7.62,
+        "endSec": 7.7,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 7.74,
+        "endSec": 7.82,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 7.86,
+        "endSec": 7.94,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 7.98,
+        "endSec": 8.06,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 8.1,
+        "endSec": 8.18,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 8.22,
+        "endSec": 8.3,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 8.34,
+        "endSec": 8.42,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 8.46,
+        "endSec": 8.54,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 8.58,
+        "endSec": 8.66,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 8.7,
+        "endSec": 8.78,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 8.82,
+        "endSec": 8.9,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 8.94,
+        "endSec": 9.02,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 9.06,
+        "endSec": 9.14,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 9.18,
+        "endSec": 9.26,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 9.3,
+        "endSec": 9.38,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 9.42,
+        "endSec": 9.5,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 9.54,
+        "endSec": 9.62,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 9.66,
+        "endSec": 9.74,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 9.78,
+        "endSec": 9.86,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 9.9,
+        "endSec": 9.98,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 10.02,
+        "endSec": 10.1,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 10.14,
+        "endSec": 10.22,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 10.26,
+        "endSec": 10.34,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 10.38,
+        "endSec": 10.46,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 10.5,
+        "endSec": 10.58,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 10.62,
+        "endSec": 10.7,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 10.74,
+        "endSec": 10.82,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 10.86,
+        "endSec": 10.94,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 10.98,
+        "endSec": 11.06,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 11.1,
+        "endSec": 11.18,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 11.22,
+        "endSec": 11.3,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 11.34,
+        "endSec": 11.42,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 11.46,
+        "endSec": 11.54,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 11.58,
+        "endSec": 11.66,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 11.7,
+        "endSec": 11.78,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 11.82,
+        "endSec": 11.9,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 11.94,
+        "endSec": 12.02,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 12.06,
+        "endSec": 12.14,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 12.18,
+        "endSec": 12.26,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 12.3,
+        "endSec": 12.38,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 12.42,
+        "endSec": 12.5,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 12.54,
+        "endSec": 12.62,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 12.66,
+        "endSec": 12.74,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 12.78,
+        "endSec": 12.86,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 12.9,
+        "endSec": 12.98,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 13.02,
+        "endSec": 13.1,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 13.14,
+        "endSec": 13.22,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 13.26,
+        "endSec": 13.34,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 13.38,
+        "endSec": 13.46,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 13.5,
+        "endSec": 13.58,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 13.62,
+        "endSec": 13.7,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 13.74,
+        "endSec": 13.82,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 13.86,
+        "endSec": 13.94,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 13.98,
+        "endSec": 14.06,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 14.1,
+        "endSec": 14.18,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 14.22,
+        "endSec": 14.3,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 14.34,
+        "endSec": 14.42,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 14.46,
+        "endSec": 14.54,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 14.58,
+        "endSec": 14.66,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 14.7,
+        "endSec": 14.78,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 14.82,
+        "endSec": 14.9,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 14.94,
+        "endSec": 15.02,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 15.06,
+        "endSec": 15.14,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 15.18,
+        "endSec": 15.26,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 15.3,
+        "endSec": 15.38,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 15.42,
+        "endSec": 15.5,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 15.54,
+        "endSec": 15.62,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 15.66,
+        "endSec": 15.74,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 15.78,
+        "endSec": 15.86,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 15.9,
+        "endSec": 15.98,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 16.02,
+        "endSec": 16.1,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 16.14,
+        "endSec": 16.22,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 16.26,
+        "endSec": 16.34,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 16.38,
+        "endSec": 16.46,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 16.5,
+        "endSec": 16.58,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 16.62,
+        "endSec": 16.7,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 16.74,
+        "endSec": 16.82,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 16.86,
+        "endSec": 16.94,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 16.98,
+        "endSec": 17.06,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 17.1,
+        "endSec": 17.18,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 17.22,
+        "endSec": 17.3,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 17.34,
+        "endSec": 17.42,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 17.46,
+        "endSec": 17.54,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 17.58,
+        "endSec": 17.66,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 17.7,
+        "endSec": 17.78,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 17.82,
+        "endSec": 17.9,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 17.94,
+        "endSec": 18.02,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 18.06,
+        "endSec": 18.14,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 18.18,
+        "endSec": 18.26,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 18.3,
+        "endSec": 18.38,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 18.42,
+        "endSec": 18.5,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 18.54,
+        "endSec": 18.62,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 18.66,
+        "endSec": 18.74,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 18.78,
+        "endSec": 18.86,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 18.9,
+        "endSec": 18.98,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 19.02,
+        "endSec": 19.1,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 19.14,
+        "endSec": 19.22,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 19.26,
+        "endSec": 19.34,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 19.38,
+        "endSec": 19.46,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 19.5,
+        "endSec": 19.58,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 19.62,
+        "endSec": 19.7,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 19.74,
+        "endSec": 19.82,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 19.86,
+        "endSec": 19.94,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 19.98,
+        "endSec": 20.06,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 20.1,
+        "endSec": 20.18,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 20.22,
+        "endSec": 20.3,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 20.34,
+        "endSec": 20.42,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 20.46,
+        "endSec": 20.54,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 20.58,
+        "endSec": 20.66,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 20.7,
+        "endSec": 20.78,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 20.82,
+        "endSec": 20.9,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 20.94,
+        "endSec": 21.02,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 21.06,
+        "endSec": 21.14,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 21.18,
+        "endSec": 21.26,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 21.3,
+        "endSec": 21.38,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 21.42,
+        "endSec": 21.5,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 21.54,
+        "endSec": 21.62,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 21.66,
+        "endSec": 21.74,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 21.78,
+        "endSec": 21.86,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 21.9,
+        "endSec": 21.98,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 22.02,
+        "endSec": 22.1,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 22.14,
+        "endSec": 22.22,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 22.26,
+        "endSec": 22.34,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 22.38,
+        "endSec": 22.46,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 22.5,
+        "endSec": 22.58,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 22.62,
+        "endSec": 22.7,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 22.74,
+        "endSec": 22.82,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 22.86,
+        "endSec": 22.94,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 22.98,
+        "endSec": 23.06,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 23.1,
+        "endSec": 23.18,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 23.22,
+        "endSec": 23.3,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 23.34,
+        "endSec": 23.42,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 23.46,
+        "endSec": 23.54,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 23.58,
+        "endSec": 23.66,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 23.7,
+        "endSec": 23.78,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 23.82,
+        "endSec": 23.9,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 23.94,
+        "endSec": 24.02,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 24.06,
+        "endSec": 24.14,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 24.18,
+        "endSec": 24.26,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 24.3,
+        "endSec": 24.38,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 24.42,
+        "endSec": 24.5,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 24.54,
+        "endSec": 24.62,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 24.66,
+        "endSec": 24.74,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 24.78,
+        "endSec": 24.86,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 24.9,
+        "endSec": 24.98,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 25.02,
+        "endSec": 25.1,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 25.14,
+        "endSec": 25.22,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 25.26,
+        "endSec": 25.34,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 25.38,
+        "endSec": 25.46,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 25.5,
+        "endSec": 25.58,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 25.62,
+        "endSec": 25.7,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 25.74,
+        "endSec": 25.82,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 25.86,
+        "endSec": 25.94,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 25.98,
+        "endSec": 26.06,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 26.1,
+        "endSec": 26.18,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 26.22,
+        "endSec": 26.3,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 26.34,
+        "endSec": 26.42,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 26.46,
+        "endSec": 26.54,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 26.58,
+        "endSec": 26.66,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 26.7,
+        "endSec": 26.78,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 26.82,
+        "endSec": 26.9,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 26.94,
+        "endSec": 27.02,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 27.06,
+        "endSec": 27.14,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 27.18,
+        "endSec": 27.26,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 27.3,
+        "endSec": 27.38,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 27.42,
+        "endSec": 27.5,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 27.54,
+        "endSec": 27.62,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 27.66,
+        "endSec": 27.74,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 27.78,
+        "endSec": 27.86,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 27.9,
+        "endSec": 27.98,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 28.02,
+        "endSec": 28.1,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 28.14,
+        "endSec": 28.22,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 28.26,
+        "endSec": 28.34,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 28.38,
+        "endSec": 28.46,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 28.5,
+        "endSec": 28.58,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 28.62,
+        "endSec": 28.7,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 28.74,
+        "endSec": 28.82,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 28.86,
+        "endSec": 28.94,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 28.98,
+        "endSec": 29.06,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 29.1,
+        "endSec": 29.18,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 29.22,
+        "endSec": 29.3,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 29.34,
+        "endSec": 29.42,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 29.46,
+        "endSec": 29.54,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 29.58,
+        "endSec": 29.66,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 29.7,
+        "endSec": 29.78,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 29.82,
+        "endSec": 29.9,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      },
+      {
+        "startSec": 29.94,
+        "endSec": 30.02,
+        "text": "衣服摩擦声",
+        "audibleVoice": "no speech",
+        "visibleSpeaker": "no one"
+      }
+    ],
+    "issues": [],
+    "uncertain": []
+  }
+}

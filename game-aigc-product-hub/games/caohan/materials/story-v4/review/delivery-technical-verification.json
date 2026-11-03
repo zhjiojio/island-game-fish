@@ -1,0 +1,558 @@
+{
+  "checkedAt": "2026-09-06T17:08:34.459958+00:00",
+  "sourceSha256": "77cee12ed8c5f8a99e49c6ec00ef31136fa64c03eb09995732b91220ca491ec7",
+  "expectedCount": 55,
+  "passedCount": 55,
+  "files": [
+    {
+      "videoId": "ep01_scene_00_video_01",
+      "sha256": "40c02ce50b2c6db4cfa5129f63851d77e29ed0d98efeb1c74352beb3bd6d673e",
+      "status": "pass",
+      "durationSec": 9.041667,
+      "width": 1088,
+      "height": 1904,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep01_branch_emotion_video_01",
+      "sha256": "f4d9c74fc79e28935128ecafc43b47800f66c38e2136565179c674023e51500a",
+      "status": "pass",
+      "durationSec": 10.041667,
+      "width": 1088,
+      "height": 1904,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep01_branch_truth_video_01",
+      "sha256": "4865cd4c88860dc26c8ddd6a4192d7e0c67139280f569a5067de80a2fbe6685e",
+      "status": "pass",
+      "durationSec": 8.041667,
+      "width": 1088,
+      "height": 1904,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep01_branch_counterattack_video_01",
+      "sha256": "522841d720a506bc944ced98a21e7f6162bd44ac52dcf9431768f27f08811a2e",
+      "status": "pass",
+      "durationSec": 27.126009,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep01_branch_conditional_video_01",
+      "sha256": "444825a1295dd7c15b569bf28aeb387ec324a092a4b120574f1f8f228100580e",
+      "status": "pass",
+      "durationSec": 24.126009,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep02_scene_00_video_01",
+      "sha256": "ae09dc70a07d8a9621fa908680ec293c0bc83128298aa8f182834fb84eb27271",
+      "status": "pass",
+      "durationSec": 7.041667,
+      "width": 1088,
+      "height": 1904,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep02_branch_emotion_video_01",
+      "sha256": "ee9205df2c9a8208f3524e1b47c929afde314fa8bd0c25b256b9dbde871353a9",
+      "status": "pass",
+      "durationSec": 20.083333,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep02_branch_truth_video_01",
+      "sha256": "25fcd3e16f1daeb1eef630d703b445869d9fad2c5f5a48a6121af328b42479d3",
+      "status": "pass",
+      "durationSec": 11.125,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep02_branch_counterattack_video_01",
+      "sha256": "5e517d60c4c96ead9c3647d5734239bb73a98310760ad6b01062a70636508d16",
+      "status": "pass",
+      "durationSec": 12.041995,
+      "width": 1088,
+      "height": 1904,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep02_branch_conditional_video_01",
+      "sha256": "55689fc4ba188ad18a56e4161894c187fcc0c443e7ad36522f84de4ee032b298",
+      "status": "pass",
+      "durationSec": 20.126009,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep03_scene_00_video_01",
+      "sha256": "f3d8ed413237b1f038faa0c6da3d307463b673d9a4edce825b9fa6c41f644c9d",
+      "status": "pass",
+      "durationSec": 3.041995,
+      "width": 1088,
+      "height": 1904,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep03_branch_emotion_video_01",
+      "sha256": "41f741e72472ba6e8285db7fc1f075ba51bd378a552caa1464520d8d5b0ac5a7",
+      "status": "pass",
+      "durationSec": 18.083333,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep03_branch_truth_video_01",
+      "sha256": "a2536cb2d350929614f7f83b8bace95c373273bb37a0f3fd0a29c89b28a5da2a",
+      "status": "pass",
+      "durationSec": 8.041667,
+      "width": 1088,
+      "height": 1904,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep03_branch_counterattack_video_01",
+      "sha256": "17af3a581d722d0042354a93beefdd36552d57708bff6b14ce9fa0a9be6a49fa",
+      "status": "pass",
+      "durationSec": 28.125,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep03_branch_conditional_video_01",
+      "sha256": "fbd5fa2ecc2e90fee4125895632c440936af6830e62b7a8c7a57f548dfa0a1d1",
+      "status": "pass",
+      "durationSec": 7.041667,
+      "width": 1088,
+      "height": 1904,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep04_scene_00_video_01",
+      "sha256": "0991ca39d472b679c59215c2778a7adfd103f64db116731592eeb5b00ce6c0d8",
+      "status": "pass",
+      "durationSec": 10.041667,
+      "width": 1088,
+      "height": 1904,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep04_branch_emotion_video_01",
+      "sha256": "7e672d693ae507ec84e91347f81df2f4994d748dfd22483cce3dbba8c79a9aaf",
+      "status": "pass",
+      "durationSec": 10.041667,
+      "width": 1088,
+      "height": 1904,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep04_branch_truth_video_01",
+      "sha256": "fe9f8366055c8ee392a7201b4ca3870dd1361538782e27157ef798ef312459a5",
+      "status": "pass",
+      "durationSec": 10.083333,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep04_branch_counterattack_video_01",
+      "sha256": "7d936fee8a8f09dca3a665dc8c44a7581ecd7e5ff17366154a76a1da14e02507",
+      "status": "pass",
+      "durationSec": 10.125,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep04_branch_conditional_video_01",
+      "sha256": "0fc88697c21074f4293fa85ffa37dc90fa6a884e85b7dcb67176db83a0a80c94",
+      "status": "pass",
+      "durationSec": 11.041995,
+      "width": 1088,
+      "height": 1904,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep05_scene_00_video_01",
+      "sha256": "3a9257b96b501b8e39f2e9462b53a76fdb11501faaec4fa5e4234b1d43f40d5e",
+      "status": "pass",
+      "durationSec": 4.041667,
+      "width": 1088,
+      "height": 1904,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep05_branch_emotion_video_01",
+      "sha256": "d8cd4f4fd876e67715e66e24879f8e32fb1d293c368db1a47b04cbbd942b2098",
+      "status": "pass",
+      "durationSec": 12.083333,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep05_branch_truth_video_01",
+      "sha256": "b5545c1d48a81366be9a01f65e3a063f970ac5034955da022129fc75d7254e92",
+      "status": "pass",
+      "durationSec": 17.125,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep05_branch_counterattack_video_01",
+      "sha256": "2f65910ff368293f1eb167bdce97ad5ba2e4d10bffb9dcf566e4b1f207dccd23",
+      "status": "pass",
+      "durationSec": 13.083333,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep05_branch_conditional_video_01",
+      "sha256": "6eb242398a91bde6b4b2d71899dca8081416bc65ff7e3783d2df9b278727f0e0",
+      "status": "pass",
+      "durationSec": 8.083333,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep06_scene_00_video_01",
+      "sha256": "1ae6b105f70531d2f42cdef71167ca785b5e50cbdfd59abe12078b974e8a8c64",
+      "status": "pass",
+      "durationSec": 6.041667,
+      "width": 1088,
+      "height": 1904,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep06_branch_emotion_video_01",
+      "sha256": "b3b3ec0736e6ecdb7c167db1d23aa4d29589ee47ef6e143db16f0b0c9d9be7de",
+      "status": "pass",
+      "durationSec": 20.083991,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep06_branch_truth_video_01",
+      "sha256": "696486feab623e6b9a49b05ea3340d5986a613d1677a732e1a65ee6164b76caa",
+      "status": "pass",
+      "durationSec": 17.125,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep06_branch_counterattack_video_01",
+      "sha256": "16cfa3af94ba907165ea53f7780197e20f0821efdf84fab381b9760daa8ce2b9",
+      "status": "pass",
+      "durationSec": 25.125,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep06_branch_conditional_video_01",
+      "sha256": "b6b32284bb4b1cf4463abbb8f3fec8282e61b298e6b97b3092dfa2217c50e358",
+      "status": "pass",
+      "durationSec": 20.083333,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep07_scene_00_video_01",
+      "sha256": "a30728253ae6e5dc748e76935a45a6d9e2c70e8a79db7e6de838610c47cfe71e",
+      "status": "pass",
+      "durationSec": 3.041995,
+      "width": 1088,
+      "height": 1904,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep07_branch_emotion_video_01",
+      "sha256": "df8fcd75547afcea07bc1ff710f85a7424f438acb64812e1291d11f836b020ba",
+      "status": "pass",
+      "durationSec": 16.125,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep07_branch_truth_video_01",
+      "sha256": "2e31ccb657073f4076df39b6472bfbbe997a8158f6b1833ec3da74bbe36224b3",
+      "status": "pass",
+      "durationSec": 28.126009,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep07_branch_counterattack_video_01",
+      "sha256": "73aa57a91a0980dcf8b686a6def8703894a536da344588fbfbb3cfb0b8046d32",
+      "status": "pass",
+      "durationSec": 37.167007,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep07_branch_conditional_video_01",
+      "sha256": "4dc8cf794edd1ea32097209029c39675b3cc8981d307d71702b7029a202eddae",
+      "status": "pass",
+      "durationSec": 7.041667,
+      "width": 1088,
+      "height": 1904,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep08_scene_00_video_01",
+      "sha256": "26ced2299850a26c2939b8d6709f3c44bcda742c6e1a5aa2e34597a685716b5c",
+      "status": "pass",
+      "durationSec": 3.041995,
+      "width": 1088,
+      "height": 1904,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep08_branch_emotion_video_01",
+      "sha256": "8ba8bbb488443a92b7ff1d28bdcf4d22f21bc65f9e42a21691148a9d605d0044",
+      "status": "pass",
+      "durationSec": 18.083333,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep08_branch_truth_video_01",
+      "sha256": "5743ed5ce36b97d9cd4670b0ca60e6ab3afc4f6e845ec26a712c69852f188bbd",
+      "status": "pass",
+      "durationSec": 20.083333,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep08_branch_counterattack_video_01",
+      "sha256": "c379b59575586be0e3389abd87faebaf00d09b5bb39813c13f11148cf45c1bb3",
+      "status": "pass",
+      "durationSec": 3.041995,
+      "width": 1088,
+      "height": 1904,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep08_branch_conditional_video_01",
+      "sha256": "eb764101f330c2d3085dbfaacce4a5bed57efb827b79e817652598435cdfcd67",
+      "status": "pass",
+      "durationSec": 8.041667,
+      "width": 1088,
+      "height": 1904,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep09_scene_00_video_01",
+      "sha256": "e8dde67a8a79f402e50c9a02c2581aa7d4dabf86701bd3378bbb230851197abe",
+      "status": "pass",
+      "durationSec": 7.041667,
+      "width": 1088,
+      "height": 1904,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep09_branch_emotion_video_01",
+      "sha256": "419434b983861b3d1b3a5be0142066cecda5f8e3b19aec2d4127b5256012b0ab",
+      "status": "pass",
+      "durationSec": 22.083333,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep09_branch_truth_video_01",
+      "sha256": "eff1397405b286e9efb0ef842beddc67e4cc7ae82142c291fc29b0cc6c83a17a",
+      "status": "pass",
+      "durationSec": 10.041667,
+      "width": 1088,
+      "height": 1904,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep09_branch_counterattack_video_01",
+      "sha256": "3951673085ce48204c7371bdae57b175d86f1035780fb058fecdeb6d684d30d1",
+      "status": "pass",
+      "durationSec": 18.083333,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep09_branch_conditional_video_01",
+      "sha256": "3672fab172fe35bc3a8cc6542c8b8e39abc00cdf647619829852648dcf1e40e0",
+      "status": "pass",
+      "durationSec": 19.125,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep10_scene_00_video_01",
+      "sha256": "b3a8d771cb7656ef860bc6d29dcbed0433815254d8dee4ee31e27912d03d650b",
+      "status": "pass",
+      "durationSec": 8.041667,
+      "width": 1088,
+      "height": 1904,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep10_branch_emotion_video_01",
+      "sha256": "486a5e298deba12880ba107e405f1a3f6035d467e3cd072a8803c58e9614e339",
+      "status": "pass",
+      "durationSec": 17.125,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep10_branch_truth_video_01",
+      "sha256": "aa9aef3c3725ad94de5ce8c90793100787e8554457620a52587b9f0d1323fdf5",
+      "status": "pass",
+      "durationSec": 17.125,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep10_branch_counterattack_video_01",
+      "sha256": "c5c67881ed98d7258c1802d16e34a9e6c7a7cfb18a7dd2f6a7167e9d96d146ef",
+      "status": "pass",
+      "durationSec": 24.125,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep10_branch_conditional_video_01",
+      "sha256": "79e9dd6774a70cb6adac57e8f00eb8f267996d711a23e28a8fc9166155fcdb74",
+      "status": "pass",
+      "durationSec": 9.041667,
+      "width": 1088,
+      "height": 1904,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep11_scene_00_video_01",
+      "sha256": "e01822e271de1b295df5e4851fb26431710e93df79e9d86031e27bd2d0a52ad5",
+      "status": "pass",
+      "durationSec": 7.041667,
+      "width": 1088,
+      "height": 1904,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep11_branch_emotion_video_01",
+      "sha256": "63d504bbdf391120642978d8fe005738eae9dbb8ff06700b994724b0a95041d0",
+      "status": "pass",
+      "durationSec": 20.083333,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep11_branch_truth_video_01",
+      "sha256": "43365ff8d62c8b7bae946a5c830815d44b137dfbe5e40fc603a10ca81de80009",
+      "status": "pass",
+      "durationSec": 3.041995,
+      "width": 1088,
+      "height": 1904,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep11_branch_counterattack_video_01",
+      "sha256": "58b5095fcdfc0838660da2e666986e7119e969b385f8ca035abcf7d776cf0ef1",
+      "status": "pass",
+      "durationSec": 15.083333,
+      "width": 1080,
+      "height": 1920,
+      "audioCodec": "aac",
+      "decodeError": ""
+    },
+    {
+      "videoId": "ep11_branch_conditional_video_01",
+      "sha256": "7ef3a160209d9a8ee542787da5762b40238bac751db673fce216c6dd484b8ed8",
+      "status": "pass",
+      "durationSec": 7.041667,
+      "width": 1088,
+      "height": 1904,
+      "audioCodec": "aac",
+      "decodeError": ""
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e5s5_v82.mp4",
+  "sha256": "874b20c0c19e1d18a11c976f51f000eea68922fc0833308b58ee047524e51573",
+  "duration": 10.042,
+  "nodes": [
+    "e5s5"
+  ],
+  "status": "speech",
+  "transcript": "啊，坏了，中圈了！谁，谁他娘的在这儿下的夹子！",
+  "rawText": "啊坏了中圈了谁谁他娘的在这下的夹子",
+  "asrChars": [
+    [
+      0.11,
+      0.35,
+      "啊"
+    ],
+    [
+      1.33,
+      1.57,
+      "坏"
+    ],
+    [
+      1.75,
+      1.99,
+      "了"
+    ],
+    [
+      2.27,
+      2.51,
+      "中"
+    ],
+    [
+      2.57,
+      2.81,
+      "圈"
+    ],
+    [
+      2.85,
+      3.235,
+      "了"
+    ],
+    [
+      5.21,
+      5.45,
+      "谁"
+    ],
+    [
+      7.85,
+      8.09,
+      "谁"
+    ],
+    [
+      8.17,
+      8.27,
+      "他"
+    ],
+    [
+      8.27,
+      8.45,
+      "娘"
+    ],
+    [
+      8.45,
+      8.57,
+      "的"
+    ],
+    [
+      8.57,
+      8.67,
+      "在"
+    ],
+    [
+      8.67,
+      8.79,
+      "这"
+    ],
+    [
+      8.79,
+      8.97,
+      "下"
+    ],
+    [
+      8.97,
+      9.09,
+      "的"
+    ],
+    [
+      9.09,
+      9.25,
+      "夹"
+    ],
+    [
+      9.25,
+      9.665,
+      "子"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "啊? 坏了! 中圈了!谁?谁他娘子在这儿杀的家子?",
+  "speakerKey": null,
+  "speakerRuleKey": "e5s5",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

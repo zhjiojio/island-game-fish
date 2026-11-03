@@ -1,0 +1,27 @@
+{
+  "videoId": "ending_streamer",
+  "voiceWindows": [],
+  "newVoice": [
+    {
+      "lineId": "ending_streamer__l01",
+      "speaker": "画外叙述者",
+      "kind": "narration",
+      "text": "那场意外直播，让她成了连麦鉴渣的主播。",
+      "audioFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/audio/ending_streamer__l01.mp3",
+      "start": 0.4,
+      "end": 4.6
+    },
+    {
+      "lineId": "ending_streamer__l02",
+      "speaker": "画外叙述者",
+      "kind": "narration",
+      "text": "榜一大哥只留下一句话：下播，吃饭。",
+      "audioFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/audio/ending_streamer__l02.mp3",
+      "start": 8.442,
+      "end": 12.642
+    }
+  ],
+  "durationSec": 16.091428571428573,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.5621185302734375
+}

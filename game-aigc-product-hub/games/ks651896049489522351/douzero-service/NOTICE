@@ -1,0 +1,7 @@
+DouZero compatibility notice
+
+This directory contains an independently implemented interoperability service for DouZero-compatible ONNX models. No source code was copied from the GPL-3.0 fight-the-landlord-main repository.
+
+Compatibility behavior and tensor layout were checked against the original DouZero project published by Kwai under the Apache License 2.0. The implementation in this directory was written independently. If upstream DouZero source is later incorporated, add its complete license text and preserve its copyright, NOTICE, and modification records.
+
+Model weights are not included. Their source, license, redistribution permission, and SHA-256 must be reviewed separately. This notice does not grant rights to any model weights.

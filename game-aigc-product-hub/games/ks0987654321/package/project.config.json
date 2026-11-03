@@ -1,0 +1,9 @@
+{
+    "description": "快手小游戏项目配置文件",
+    "projectname": "configurable-merge-defense",
+    "appid": "ks0987654321",
+    "setting": {
+        "es6": false
+    },
+    "engine_type": "frog"
+}

@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>斗地主 · 本地后台</title>
+<style>
+  :root {
+    --bg: #12141a; --panel: #1b1e26; --line: #2a2e3a;
+    --text: #e6e8ee; --muted: #878ea3; --accent: #4d7cfe;
+    --ok: #3fb950; --warn: #d29922; --danger: #f85149;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 13px/1.6 -apple-system, "PingFang SC", sans-serif;
+  }
+  header {
+    display: flex; align-items: center; gap: 12px; padding: 12px 16px;
+    background: var(--panel); border-bottom: 1px solid var(--line);
+    position: sticky; top: 0; z-index: 10;
+  }
+  header h1 { font-size: 15px; margin: 0; font-weight: 600; }
+  .grow { flex: 1; }
+  input, select, button {
+    font: inherit; color: var(--text); background: #22262f;
+    border: 1px solid var(--line); border-radius: 5px; padding: 5px 9px;
+  }
+  input:focus, select:focus { outline: none; border-color: var(--accent); }
+  button { cursor: pointer; background: #2b3140; }
+  button:hover { border-color: var(--accent); }
+  button.primary { background: var(--accent); border-color: var(--accent); }
+  button.danger { background: #3a2226; border-color: #5c2f33; color: #ff9d96; }
+  button:disabled { opacity: .45; cursor: not-allowed; }
+  main { display: grid; grid-template-columns: 400px 1fr; gap: 14px; padding: 14px; align-items: start; }
+  main.cfg { grid-template-columns: 1fr; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; margin-bottom: 14px; }
+  .card > h2 {
+    font-size: 12px; margin: 0; padding: 9px 12px; color: var(--muted);
+    border-bottom: 1px solid var(--line); font-weight: 600; letter-spacing: .5px;
+  }
+  .card > .body { padding: 12px; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 500; font-size: 12px; }
+  tbody tr { cursor: pointer; }
+  tbody tr:hover { background: #222732; }
+  tbody tr.active { background: #26304a; }
+  .mono { font-family: "SF Mono", Menlo, monospace; font-size: 12px; }
+  .muted { color: var(--muted); }
+  /* 昵称是玩家自报值，与 accountId 同字号但正常字体，避免看起来像 ID */
+  .nick { font-size: 12px; color: #e8e8e8; }
+  .row { display: flex; align-items: center; gap: 8px; margin-bottom: 9px; flex-wrap: wrap; }
+  .row > label { width: 84px; color: var(--muted); flex-shrink: 0; }
+  .row > input { width: 150px; }
+  .tag { padding: 1px 7px; border-radius: 3px; font-size: 11px; }
+  .tag.on { background: #1c3a22; color: var(--ok); }
+  .tag.off { background: #3a2226; color: var(--danger); }
+  .tag.warn { background: #3a3222; color: var(--warn); }
+  #toast {
+    position: fixed; right: 16px; bottom: 16px; padding: 9px 14px;
+    border-radius: 6px; background: #2b3140; border: 1px solid var(--line);
+    opacity: 0; transition: opacity .2s; pointer-events: none; max-width: 380px;
+  }
+  #toast.show { opacity: 1; }
+  #toast.err { background: #3a2226; border-color: #5c2f33; }
+  .scroll { max-height: 340px; overflow: auto; }
+  .empty { padding: 24px; text-align: center; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>斗地主 · 本地后台</h1>
+  <span class="muted" id="conn">未连接</span>
+  <button id="navUsers" class="primary">用户管理</button>
+  <button id="navConfig">游戏配置</button>
+  <span class="grow"></span>
+  <input id="token" type="password" placeholder="ADMIN_TOKEN" style="width:200px">
+  <button class="primary" id="connect">连接</button>
+</header>
+
+<main>
+  <section id="userList">
+    <div class="card">
+      <h2>用户列表</h2>
+      <div class="body">
+        <div class="row">
+          <input id="search" placeholder="搜索 昵称 / account_id / device_id" style="width:100%">
+        </div>
+        <div class="row">
+          <button id="prev">上一页</button>
+          <button id="next">下一页</button>
+          <span class="muted" id="page"></span>
+        </div>
+      </div>
+      <div class="scroll">
+        <table>
+          <thead><tr><th>账号</th><th>豆子</th><th>状态</th></tr></thead>
+          <tbody id="users"><tr><td colspan="3" class="empty">请先连接</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="detail">
+    <div class="card"><div class="empty">选择左侧用户查看详情</div></div>
+  </section>
+
+  <section id="config" hidden>
+    <div class="card"><div class="empty">加载中…</div></div>
+  </section>
+</main>
+
+<div id="toast"></div>
+
+<script>
+'use strict';
+
+const $ = sel => document.querySelector(sel);
+const state = { token: '', offset: 0, limit: 50, total: 0, keyword: '', current: null };
+
+function toast (msg, isError) {
+  const el = $('#toast');
+  el.textContent = msg;
+  el.className = 'show' + (isError ? ' err' : '');
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => { el.className = ''; }, 2600);
+}
+
+async function api (path, options = {}) {
+  const res = await fetch(path, {
+    ...options,
+    headers: {
+      'X-Admin-Token': state.token,
+      ...(options.body ? { 'Content-Type': 'application/json' } : {}),
+      ...(options.headers || {}),
+    },
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error ? data.error.message : `HTTP ${res.status}`);
+  return data;
+}
+
+function post (path, body) {
+  return api(path, { method: 'POST', body: JSON.stringify(body || {}) });
+}
+
+const fmtTime = ms => (ms ? new Date(Number(ms)).toLocaleString('zh-CN', { hour12: false }) : '-');
+const fmtNum = n => (n == null ? '-' : Number(n).toLocaleString('en-US'));
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+// ── 用户列表 ─────────────────────────────────────────────────
+async function loadUsers () {
+  const params = new URLSearchParams({ limit: state.limit, offset: state.offset });
+  if (state.keyword) params.set('q', state.keyword);
+  const data = await api('/admin/api/users?' + params);
+  state.total = data.total;
+
+  $('#page').textContent = `${data.offset + 1}-${Math.min(data.offset + data.limit, data.total)} / ${data.total}`;
+  $('#prev').disabled = state.offset <= 0;
+  $('#next').disabled = state.offset + state.limit >= state.total;
+
+  const tbody = $('#users');
+  if (!data.items.length) {
+    tbody.innerHTML = '<tr><td colspan="3" class="empty">无匹配用户</td></tr>';
+    return;
+  }
+  tbody.innerHTML = data.items.map(u => `
+    <tr data-id="${esc(u.accountId)}" class="${state.current === u.accountId ? 'active' : ''}">
+      <td class="mono" title="${esc(u.accountId)}">${esc(u.accountId.slice(0, 22))}${u.accountId.length > 22 ? '…' : ''}<br>
+        ${u.nickname ? `<span class="nick">${esc(u.nickname)}</span><br>` : ''}
+        <span class="muted">${esc(u.loginType)} · ${fmtTime(u.lastLoginAt)}</span></td>
+      <td class="mono">${fmtNum(u.beans)}${Number(u.frozenBeans) > 0 ? `<br><span class="muted">冻 ${fmtNum(u.frozenBeans)}</span>` : ''}</td>
+      <td>${u.banned ? '<span class="tag off">封禁</span>' : '<span class="tag on">正常</span>'}</td>
+    </tr>
+  `).join('');
+
+  tbody.querySelectorAll('tr[data-id]').forEach(tr => {
+    tr.onclick = () => selectUser(tr.dataset.id);
+  });
+}
+
+// ── 用户详情 ─────────────────────────────────────────────────
+async function selectUser (accountId) {
+  state.current = accountId;
+  document.querySelectorAll('#users tr').forEach(tr => {
+    tr.classList.toggle('active', tr.dataset.id === accountId);
+  });
+  const [detail, ledger, orders] = await Promise.all([
+    api(`/admin/api/users/${accountId}`),
+    api(`/admin/api/users/${accountId}/ledger?limit=50`),
+    api(`/admin/api/users/${accountId}/orders`),
+  ]);
+  renderDetail(detail, ledger, orders);
+}
+
+function refresh () {
+  if (state.current) return selectUser(state.current).then(loadUsers);
+  return loadUsers();
+}
+
+function renderDetail (d, ledger, orders) {
+  const a = d.account;
+  const w = d.wallet || {};
+  const s = d.stats || {};
+
+  $('#detail').innerHTML = `
+    <div class="card">
+      <h2>账号信息</h2>
+      <div class="body">
+        <div class="row"><label>账号</label><span class="mono">${esc(a.accountId)}</span></div>
+        <div class="row"><label>昵称</label><span class="nick">${esc(a.nickname || '-')}</span></div>
+        <div class="row"><label>类型</label><span>${esc(a.accountType)} / ${esc(a.loginType)}</span></div>
+        <div class="row"><label>设备</label><span class="mono muted">${esc(a.deviceId || '-')}</span></div>
+        <div class="row"><label>登录</label><span>${a.loginCount} 次 · 最后 ${fmtTime(a.lastLoginAt)}</span></div>
+        <div class="row"><label>创建</label><span>${fmtTime(a.createdAt)}</span></div>
+        <div class="row">
+          <label>封禁</label>
+          ${a.banned ? '<span class="tag off">已封禁</span>' : '<span class="tag on">正常</span>'}
+          <input id="banReason" placeholder="封禁原因" value="${esc(a.banReason)}" style="width:180px">
+          <button id="doBan" class="${a.banned ? '' : 'danger'}">${a.banned ? '解封' : '封禁'}</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>钱包</h2>
+      <div class="body">
+        <div class="row">
+          <label>豆子</label>
+          <input id="beans" class="mono" value="${esc(w.beans || '0')}">
+          <label style="width:auto">冻结</label>
+          <input id="frozenBeans" class="mono" value="${esc(w.frozenBeans || '0')}" style="width:110px">
+          <button class="primary" id="doBeans">应用</button>
+        </div>
+        <div class="row">
+          <label>快捷</label>
+          ${[200, 2000, 5000, 50000, 1000000].map(n => `<button data-beans="${n}">${fmtNum(n)}</button>`).join('')}
+        </div>
+        <div class="row">
+          <label>钻石</label>
+          ${d.diamonds.editable
+            ? `<input id="diamonds" class="mono" value="${esc(d.diamonds.balance || '0')}">
+               <button class="primary" id="doDiamonds">应用</button>
+               <span class="muted">mock 内存余额，重启重置</span>`
+            : '<span class="muted">由快手平台托管，不可修改</span>'}
+        </div>
+        <div class="row muted">
+          累计赚 ${fmtNum(w.totalEarned)} · 花 ${fmtNum(w.totalSpent)} · 赢 ${fmtNum(w.totalWon)} · 输 ${fmtNum(w.totalLost)}
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>资格与状态</h2>
+      <div class="body">
+        <div class="row">
+          <label>新手礼包</label>
+          ${d.newcomerGift.claimed ? '<span class="tag warn">已领取</span>' : '<span class="tag on">未领取</span>'}
+          <button id="doNewcomerReset">重置为未领</button>
+          <button id="doNewcomerClaim">标记已领</button>
+        </div>
+        <div class="row">
+          <label>加桌奖励</label>
+          ${d.shortcutReward.claimed ? '<span class="tag warn">已领取</span>' : '<span class="tag on">未领取</span>'}
+          ${d.shortcutReward.claimed ? `<span class="muted">累计 ${fmtNum(d.shortcutReward.totalAmount)} 豆</span>` : ''}
+          <button id="doShortcutReset">重置为未领</button>
+          <span class="muted">从桌面启动自动发放</span>
+        </div>
+        <div class="row">
+          <label>每日奖励</label>
+          <button id="doResetDaily">清今日记录</button>
+          <button id="doResetDailyAll" class="danger">清全部记录</button>
+          <span class="muted">登录日期 ${esc(w.dailyLoginDate || '-')} / 分享 ${esc(w.shareRewardDate || '-')}</span>
+        </div>
+        <div class="row">
+          <label>破产补助</label>
+          ${d.bankruptRelief.claimable ? '<span class="tag on">今日可领</span>' : '<span class="tag warn">今日不可领</span>'}
+          ${d.bankruptRelief.claimable ? '' : `<span class="muted">今日记录 ${d.bankruptRelief.todayClaimCount} 次 / ${Number(d.bankruptRelief.todayTotalAmount) > 0 ? '已真实领取' : '已禁领'}（${esc(d.bankruptRelief.date)}）</span>`}
+          <button id="doBankruptReliefEnable">允许今日领取</button>
+          <button id="doBankruptReliefDisable" class="danger">禁止今日领取</button>
+        </div>
+        <div class="row">
+          <label>看广告次数</label>
+          <span class="muted">今日已看 ${d.adReward.todayClaimCount} / ${d.adReward.maxPerDay}（剩 ${d.adReward.remaining}）</span>
+          <input id="adCount" type="number" min="0" value="0" style="width:5em" />
+          <button id="doAdCount">设为已看 N 次</button>
+          <span class="muted">0=恢复全部次数；≥${d.adReward.maxPerDay}=今日看完不再引导</span>
+        </div>
+        ${d.firstCharge.map(f => `
+          <div class="row">
+            <label>首充</label>
+            <span class="mono">${esc(f.exchangeSkuId)}</span>
+            ${f.claimed ? '<span class="tag warn">已用</span>' : '<span class="tag on">可用</span>'}
+            <span class="muted">${fmtNum(f.costBalance)}钻 → ${fmtNum(f.grantBeans)} + 赠 ${fmtNum(f.bonusBeans)}</span>
+            <button data-reset-sku="${esc(f.exchangeSkuId)}">重置资格</button>
+          </div>
+        `).join('')}
+        <div class="row">
+          <label>人机陪练</label>
+          <span class="muted">今日 ${d.botQuota.matchCount}/${d.botQuota.maxMatches} 局 · 赢豆 ${fmtNum(d.botQuota.positiveGainTotal + d.botQuota.reservedPositiveGain)}/${fmtNum(d.botQuota.maxPositiveGain)}（净 ${fmtNum(d.botQuota.netGain)} · ${d.botQuota.winCount}胜${d.botQuota.loseCount}负）</span>
+          <button id="doBotQuotaReset">重置今日额度</button>
+          <span class="muted">赢豆到上限后不再匹配人机，重置后可继续</span>
+        </div>
+        <div class="row">
+          <label>战绩</label>
+          <span class="muted">${s.totalGames || 0} 局 / ${s.totalWins || 0} 胜 · 连胜 ${s.curStreak || 0}（最高 ${s.maxStreak || 0}）· 炸 ${s.bombCount || 0} · 春 ${s.springCount || 0}</span>
+          <button id="doResetStats" class="danger">清零</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>语音包权益</h2>
+      <div class="body">
+        ${(d.voicePacks || []).map(p => `
+          <div class="row">
+            <label>${esc(p.packName)}</label>
+            ${p.expired
+              ? '<span class="tag off">已到期</span>'
+              : (p.expiresAt > 0 ? '<span class="tag on">生效中</span>' : '<span class="tag on">永久</span>')}
+            <span class="muted">${p.expiresAt > 0 ? '到期 ' + fmtTime(p.expiresAt) : '永久有效'} · 购于 ${fmtTime(p.grantedAt)}</span>
+            <input data-vp-d="${esc(p.sku)}" type="number" min="0" max="3650" value="7" style="width:4.5em">天
+            <input data-vp-h="${esc(p.sku)}" type="number" min="0" max="23" value="0" style="width:4em">时
+            <input data-vp-m="${esc(p.sku)}" type="number" min="0" max="59" value="0" style="width:4em">分
+            <input data-vp-s="${esc(p.sku)}" type="number" min="0" max="59" value="0" style="width:4em">秒
+            <button data-vp-set="${esc(p.sku)}">设置</button>
+            <button data-vp-perm="${esc(p.sku)}">永久</button>
+            <button class="danger" data-vp-expire="${esc(p.sku)}">立即过期</button>
+          </div>`).join('') || '<div class="empty">该用户暂无语音包权益</div>'}
+        <div class="muted">改期即时落库；该用户下次刷新权益后生效，到期会自动切回默认语音包</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>流水（最近 ${ledger.items.length} 条）</h2>
+      <div class="scroll">
+        <table>
+          <thead><tr><th>时间</th><th>类型</th><th>变动</th><th>余额</th></tr></thead>
+          <tbody>${ledger.items.length ? ledger.items.map(t => `
+            <tr>
+              <td class="muted">${fmtTime(t.createdAt)}</td>
+              <td>${esc(t.type)}</td>
+              <td class="mono" style="color:${Number(t.amount) >= 0 ? 'var(--ok)' : 'var(--danger)'}">${Number(t.amount) >= 0 ? '+' : ''}${fmtNum(t.amount)}</td>
+              <td class="mono muted">${fmtNum(t.balanceAfter)}</td>
+            </tr>
+          `).join('') : '<tr><td colspan="4" class="empty">无流水</td></tr>'}</tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>订单（兑换 ${orders.exchangeOrders.length} · 充值 ${orders.iapOrders.length}）</h2>
+      <div class="scroll">
+        <table>
+          <thead><tr><th>时间</th><th>类型</th><th>SKU</th><th>状态</th></tr></thead>
+          <tbody>${(orders.exchangeOrders.length + orders.iapOrders.length) ? [
+            ...orders.exchangeOrders.map(o => ({ t: o.createdAt, kind: '兑换', sku: o.skuId, extra: `${fmtNum(o.cost)}钻→${fmtNum(o.grantBeans)}豆`, status: o.status })),
+            ...orders.iapOrders.map(o => ({ t: o.createdAt, kind: '充值', sku: o.skuId, extra: `${fmtNum(o.priceFen)}分→${fmtNum(o.grantDiamonds)}钻`, status: o.status })),
+          ].sort((x, y) => y.t - x.t).map(o => `
+            <tr>
+              <td class="muted">${fmtTime(o.t)}</td>
+              <td>${o.kind}</td>
+              <td class="mono">${esc(o.sku)}<br><span class="muted">${esc(o.extra)}</span></td>
+              <td>${esc(o.status)}</td>
+            </tr>
+          `).join('') : '<tr><td colspan="4" class="empty">无订单</td></tr>'}</tbody>
+        </table>
+      </div>
+    </div>
+  `;
+
+  bindDetailActions(d);
+}
+
+function bindDetailActions (d) {
+  const id = d.account.accountId;
+  const act = async (fn, msg) => {
+    try { await fn(); toast(msg); await refresh(); }
+    catch (err) { toast(err.message, true); }
+  };
+
+  $('#doBan').onclick = () => act(
+    () => post(`/admin/api/users/${id}/ban`, { banned: !d.account.banned, reason: $('#banReason').value }),
+    d.account.banned ? '已解封' : '已封禁');
+
+  $('#doBeans').onclick = () => act(
+    () => post(`/admin/api/users/${id}/beans`, { beans: $('#beans').value, frozenBeans: $('#frozenBeans').value }),
+    '豆子已更新');
+
+  document.querySelectorAll('[data-beans]').forEach(btn => {
+    btn.onclick = () => act(
+      () => post(`/admin/api/users/${id}/beans`, { beans: btn.dataset.beans, frozenBeans: '0' }),
+      `豆子设为 ${fmtNum(btn.dataset.beans)}`);
+  });
+
+  const diamondBtn = $('#doDiamonds');
+  if (diamondBtn) {
+    diamondBtn.onclick = () => act(
+      () => post(`/admin/api/users/${id}/diamonds`, { diamonds: $('#diamonds').value }),
+      '钻石已更新');
+  }
+
+  $('#doNewcomerReset').onclick = () => act(
+    () => post(`/admin/api/users/${id}/newcomer`, { claimed: false }), '新手礼包已重置');
+  $('#doNewcomerClaim').onclick = () => act(
+    () => post(`/admin/api/users/${id}/newcomer`, { claimed: true }), '已标记为领取过');
+  $('#doShortcutReset').onclick = () => act(
+    () => post(`/admin/api/users/${id}/shortcut-reward`, { claimed: false }), '加桌奖励已重置为未领');
+
+  $('#doResetDaily').onclick = () => act(
+    () => post(`/admin/api/users/${id}/reset-daily`, { scope: 'today' }), '每日奖励记录已清');
+  $('#doResetDailyAll').onclick = () => act(
+    () => post(`/admin/api/users/${id}/reset-daily`, { scope: 'all' }), '全部领奖记录已清');
+
+  $('#doBankruptReliefEnable').onclick = () => act(
+    () => post(`/admin/api/users/${id}/bankrupt-relief`, { enabled: true }), '破产补助已允许今日领取');
+  $('#doBankruptReliefDisable').onclick = () => act(
+    () => post(`/admin/api/users/${id}/bankrupt-relief`, { enabled: false }), '破产补助已禁止今日领取');
+
+  $('#doAdCount').onclick = () => act(
+    () => post(`/admin/api/users/${id}/ad-claims`, { count: Number($('#adCount').value) }),
+    `看广告次数已设为已看 ${$('#adCount').value} 次`);
+
+  $('#doResetStats').onclick = () => act(
+    () => post(`/admin/api/users/${id}/reset-stats`, {}), '战绩已清零');
+
+  $('#doBotQuotaReset').onclick = () => act(
+    () => post(`/admin/api/users/${id}/reset-bot-quota`, { scope: 'today' }), '人机陪练今日额度已清零，可继续匹配 AI');
+
+  const vpExpiry = (sku, duration) =>
+    () => post(`/admin/api/users/${id}/voice-pack-expiry`, { sku, ...duration });
+  document.querySelectorAll('[data-vp-set]').forEach(btn => {
+    btn.onclick = () => {
+      const sku = btn.dataset.vpSet;
+      const field = unit => {
+        const n = parseInt(document.querySelector(`[data-vp-${unit}="${sku}"]`).value, 10);
+        return Number.isInteger(n) ? n : NaN;
+      };
+      const duration = { days: field('d'), hours: field('h'), minutes: field('m'), seconds: field('s') };
+      const total = Object.values(duration);
+      if (total.some(Number.isNaN) || total.some(v => v < 0)
+          || duration.days > 3650 || duration.hours > 23
+          || duration.minutes > 59 || duration.seconds > 59) {
+        return toast('时长需为非负整数（天≤3650，时≤23，分/秒≤59）', true);
+      }
+      const label = total.every(v => v === 0) ? '已立即过期'
+        : `已设为 ${duration.days}天${duration.hours}时${duration.minutes}分${duration.seconds}秒`;
+      act(vpExpiry(sku, duration), label);
+    };
+  });
+  document.querySelectorAll('[data-vp-perm]').forEach(btn => {
+    btn.onclick = () => act(vpExpiry(btn.dataset.vpPerm, { days: -1 }), '语音包已设为永久');
+  });
+  document.querySelectorAll('[data-vp-expire]').forEach(btn => {
+    btn.onclick = () => act(vpExpiry(btn.dataset.vpExpire, { days: 0, hours: 0, minutes: 0, seconds: 0 }), '语音包已立即过期');
+  });
+
+  document.querySelectorAll('[data-reset-sku]').forEach(btn => {
+    btn.onclick = () => act(
+      () => post(`/admin/api/users/${id}/reset-first-charge`, { exchangeSkuId: btn.dataset.resetSku }),
+      '首充资格已重置（豆子未退，如需请另行调整）');
+  });
+}
+
+// ── 游戏配置一览 ─────────────────────────────────────────────
+const cfgCard = (title, inner) => `<div class="card"><h2>${title}</h2><div class="body">${inner}</div></div>`;
+
+function kvTable (rows) {
+  return `<table><tbody>${rows.map(([k, v]) => `
+    <tr><td class="muted" style="width:220px">${esc(k)}</td><td class="mono">${v}</td></tr>
+  `).join('')}</tbody></table>`;
+}
+
+const yesNo = b => (b ? '<span class="tag on">开</span>' : '<span class="tag off">关</span>');
+const yuan = fen => `¥${(Number(fen) / 100).toFixed(2)}`;
+
+// ── 游戏配置（按业务域直接展示最终配置值；后台后续加减配置项自动跟随展示） ──
+function renderConfigCenter (cc, guestTypes) {
+  if (!cc || !cc.items) {
+    return cfgCard('游戏配置', '<div class="empty">未启用（服务端未接入数值配置中心）</div>');
+  }
+  const items = cc.items;
+  const total = Object.keys(items).length;
+  const modified = Object.values(items).filter(it => !it.isDefault).length;
+
+  // 值展示：比例键转百分比；json/数组紧凑化；数值千分位
+  const RATIO_KEYS = ['entry_fee_rate', 'tax_rate', 'win_rate', 'win_rate_adjust_range'];
+  const fmtItemVal = (key, v) => {
+    if (Array.isArray(v) || (v && typeof v === 'object')) return esc(JSON.stringify(v));
+    if (typeof v === 'number' && RATIO_KEYS.some(k => key.endsWith('.' + k))) {
+      return `${Math.round(v * 1000) / 10}%`;
+    }
+    return esc(typeof v === 'number' ? v.toLocaleString('en-US') : String(v));
+  };
+  const modTag = it => (it.isDefault ? '' : ' <span class="tag warn">已改</span>');
+  // 无中文描述的配置项用友好名称兜底
+  const FALLBACK_LABELS = {
+    'meta.gray_version': '灰度版本号（0=无灰度）',
+    'meta.gray_percentage': '灰度百分比（0-100）',
+    'meta.gray_whitelist': '灰度白名单（accountId）',
+    'client_text.settle_col_nickname': '结算表列名 · 昵称',
+    'client_text.settle_col_base': '结算表列名 · 底分',
+    'client_text.settle_col_multiplier': '结算表列名 · 倍数',
+    'client_text.settle_col_beans': '结算表列名 · 铁豆',
+    'client_text.settle_title_win': '结算标题 · 胜利',
+    'client_text.settle_title_fail': '结算标题 · 惜败',
+    'client_text.settle_title_broke': '结算标题 · 破产',
+  };
+  const labelOf = (key, it) => esc(it.description || FALLBACK_LABELS[key] || key);
+
+  const byScope = {};
+  for (const [key, it] of Object.entries(items)) {
+    (byScope[it.scope] = byScope[it.scope] || []).push([key, it]);
+  }
+  const GROUPS = [
+    ['global', '经济与奖励'],
+    ['tier', '场次配置'],
+    ['welfare', '福利'],
+    ['charge', '充值'],
+    ['bot', '机器人'],
+    ['timeout', '对局操作超时'],
+    ['meta', '灰度发布'],
+    ['client_text', '客户端文案'],
+  ];
+  // 未知分组兜底追加，未来新增分组不会被静默吞掉
+  for (const s of Object.keys(byScope)) {
+    if (!GROUPS.some(([id]) => id === s)) GROUPS.push([s, s]);
+  }
+
+  const cards = [];
+  for (const [scope, title] of GROUPS) {
+    const list = byScope[scope];
+    if (!list) continue;
+    if (scope === 'global') {
+      // 经济组把派生出的奖励数字一并展示（不区分参数/派生，全部是游戏里的实际数值）
+      const d = cc.derived || {};
+      const e = cc.economy || {};
+      const adOnce = (e.adRewardTiers && e.adRewardTiers[0]) ? e.adRewardTiers[0].amount : null;
+      const rows = list.map(([key, it]) => [
+        labelOf(key, it),
+        `${fmtItemVal(key, it.value)}${modTag(it)}`,
+      ]).concat([
+        ['单次看广告奖励', fmtNum(adOnce)],
+        ['广告日封顶', fmtNum(d.adDailyCapBeans)],
+        ['休闲玩法日收入上限', fmtNum(d.leisureDailyIncomeCapBeans)],
+        ['语音包钻石价', fmtNum(d.voicePackDiamondPrice)],
+      ]);
+      cards.push(cfgCard(`${title} · ${rows.length} 项`, kvTable(rows)));
+      continue;
+    }
+    if (scope === 'tier') {
+      // 场次直接展示最终数值：门票/门槛/输赢上限等全部是实际生效值
+      const tiers = cc.tiers || {};
+      const dt = (cc.derived && cc.derived.tiers) || {};
+      const rows = Object.keys(tiers).map(t => {
+        const r = tiers[t];
+        const dd = dt[t] || {};
+        const touched = Object.keys(items).some(k => k.startsWith('tier.' + t + '.') && !items[k].isDefault);
+        return `<tr>
+          <td>${esc(r.name)} <span class="muted mono">${esc(t)}</span>${touched ? ' <span class="tag warn">已改</span>' : ''}</td>
+          <td class="mono">${fmtNum(r.baseBet)}</td>
+          <td class="mono">${fmtNum(r.entryFeeBeans)}</td>
+          <td class="mono">${fmtNum(r.freezeBeans)}</td>
+          <td class="mono">${fmtNum(r.minBeansToMatch)}</td>
+          <td class="mono">${r.maxMultiplier}</td>
+          <td class="mono">${r.botMaxMultiplier == null ? '-' : r.botMaxMultiplier}</td>
+          <td class="mono">${(Number(r.taxRate) * 100).toFixed(1)}%</td>
+          <td class="mono">${r.matchAssetRange == null ? '-' : r.matchAssetRange}</td>
+          <td class="mono">${fmtNum(dd.maxLossBeans)}</td>
+          <td class="mono">${fmtNum(dd.maxGainBeans)}</td>
+        </tr>`;
+      }).join('');
+      cards.push(cfgCard(`场次配置 · ${Object.keys(tiers).length} 个`, `<table>
+        <thead><tr><th>场次</th><th>底分</th><th>门票</th><th>冻结豆</th><th>验资门槛</th><th>倍数上限</th><th>人机倍数上限</th><th>税率</th><th>资产区间</th><th>单局最大输</th><th>单局最大赢</th></tr></thead>
+        <tbody>${rows}</tbody></table>
+        <div class="muted" style="margin-top:8px">游客可进入场次：${(guestTypes || []).map(esc).join('、') || '-'}</div>`));
+      continue;
+    }
+    cards.push(cfgCard(`${title} · ${list.length} 项`, kvTable(list.map(([key, it]) => [
+      labelOf(key, it),
+      `${fmtItemVal(key, it.value)}${modTag(it)}`,
+    ]))));
+  }
+
+  return cfgCard(`游戏配置 · 版本 v${cc.version}（共 ${total} 项，${modified} 项已调整）`,
+    '<div class="muted">黄色「已改」= 与代码默认值不同；保存接口 /admin/api/config/save，保存后下一局生效。</div>')
+    + cards.join('');
+}
+
+function renderConfig (c) {
+  const bm = c.botMatch || {};
+  const vc = c.voiceChat || {};
+  const sec = c.security || {};
+  const crl = c.commandRateLimits || {};
+  const t = c.timeouts || {};
+
+  $('#config').innerHTML = `
+    ${renderConfigCenter(c.configCenter, c.guestAllowedRoomTypes)}
+
+    ${cfgCard('机器人匹配与语音', `${kvTable([
+      ['跟牌超时（未出过牌）', `${t.playResponse} ms`],
+      ['托管出牌延迟', `${t.managedDelay} ms`],
+    ])}
+    <div style="height:10px"></div>
+    ${kvTable([
+      ['机器人匹配', yesNo(bm.enabled)],
+      ['单人匹配等待', `${bm.soloMinMs} ~ ${bm.soloMaxMs} ms`],
+      ['双人匹配等待', `${bm.duoMinMs} ~ ${bm.duoMaxMs} ms`],
+      ['加入票据有效期', `${bm.joinTicketTtlMs} ms`],
+      ['每房间最大局数', bm.maxRoundsPerRoom],
+      ['房间寿命', `${fmtNum(bm.roomLifetimeMs)} ms`],
+      ['资金池最低保留', fmtNum(bm.treasuryMinReserve)],
+    ])}
+    <div style="height:10px"></div>
+    ${kvTable([
+      ['语音聊天', yesNo(vc.enabled)],
+      ['语音包交易', yesNo(vc.tradeEnabled)],
+      ['语音冷却', `${vc.cooldownMs} ms`],
+      ['语音缓冲上限', `${fmtNum(vc.maxBufferedBytes)} 字节`],
+    ])}`)}
+
+    ${cfgCard(`安全与命令限流（SECURITY · ${Object.keys(crl).length} 条命令）`, `${kvTable([
+      ['单帧字节上限', fmtNum(sec.maxMessageBytes)],
+      ['单连接违规次数上限（超即断开）', sec.maxViolationsPerConnection],
+      ['新建连接窗口', `${fmtNum(sec.connectionWindowMs)} ms`],
+      ['窗口内最大消息数', sec.maxMessagesPerWindow],
+      ['单帧对象字段数上限', sec.maxObjectKeys],
+      ['单次出牌张数上限', sec.maxCardIdsPerPlay],
+    ])}
+    <div style="height:10px"></div>
+    <div class="scroll"><table>
+      <thead><tr><th>命令</th><th>窗口</th><th>次数上限</th></tr></thead>
+      <tbody>${Object.entries(crl).map(([cmd, r]) => `<tr>
+        <td class="mono">${esc(cmd)}</td>
+        <td class="mono">${fmtNum(r.windowMs)} ms</td>
+        <td class="mono">${r.max}</td>
+      </tr>`).join('')}</tbody></table></div>`)}
+
+    ${cfgCard(`充值档位（iap_products · ${c.iapProducts.length} 项）`, `<table>
+      <thead><tr><th>SKU</th><th>名称</th><th>价格</th><th>钻石</th><th>安卓</th><th>iOS</th><th>排序</th></tr></thead>
+      <tbody>${c.iapProducts.map(p => `<tr>
+        <td class="mono">${esc(p.skuId)}</td>
+        <td>${esc(p.displayName)}</td>
+        <td class="mono">${yuan(p.priceFen)}</td>
+        <td class="mono">${fmtNum(p.platformCoinAmount)}</td>
+        <td>${yesNo(p.enabledAndroid)}</td>
+        <td>${yesNo(p.enabledIos)}</td>
+        <td class="mono">${p.displayOrder}</td>
+      </tr>`).join('')}</tbody></table>`)}
+
+    ${cfgCard(`钻石兑换铁豆档位（platform_exchange_products · ${c.exchangeProducts.length} 项）`, `<table>
+      <thead><tr><th>SKU</th><th>钻石</th><th>铁豆</th><th>标签</th><th>首充</th><th>启用</th><th>排序</th></tr></thead>
+      <tbody>${c.exchangeProducts.map(p => `<tr>
+        <td class="mono">${esc(p.exchangeSkuId)}</td>
+        <td class="mono">${fmtNum(p.costBalance)}</td>
+        <td class="mono">${fmtNum(p.grantBeans)}</td>
+        <td>${p.productTag === 'normal' ? '<span class="muted">normal</span>' : `<span class="tag warn">${esc(p.productTag)}</span>`}</td>
+        <td>${p.isFirstCharge ? `<span class="tag on">赠 ${fmtNum(p.firstChargeBonusBeans)}</span>` : '<span class="muted">-</span>'}</td>
+        <td>${yesNo(p.enabled)}</td>
+        <td class="mono">${p.displayOrder}</td>
+      </tr>`).join('')}</tbody></table>`)}
+
+    ${cfgCard(`语音包商品（trade/catalog · ${c.tradeItems.length} 项）`, `<table>
+      <thead><tr><th>SKU</th><th>类型</th><th>售价（铁豆）</th><th>角标</th><th>在售</th></tr></thead>
+      <tbody>${c.tradeItems.map(p => `<tr>
+        <td class="mono">${esc(p.sku)}</td>
+        <td>${esc(p.type)}</td>
+        <td class="mono">${fmtNum(p.priceBeans)}</td>
+        <td>${p.promoLabel ? `<span class="tag warn">${esc(p.promoLabel)}</span>` : '<span class="muted">-</span>'}</td>
+        <td>${yesNo(p.saleEnabled)}</td>
+      </tr>`).join('')}</tbody></table>`)}`;
+}
+
+let currentView = 'users';
+
+function switchView (view) {
+  currentView = view;
+  const isCfg = view === 'config';
+  $('main').classList.toggle('cfg', isCfg);
+  $('#userList').hidden = isCfg;
+  $('#detail').hidden = isCfg;
+  $('#config').hidden = !isCfg;
+  $('#navUsers').className = isCfg ? '' : 'primary';
+  $('#navConfig').className = isCfg ? 'primary' : '';
+  if (isCfg) loadConfig().catch(err => toast(err.message, true));
+  else refresh().catch(err => toast(err.message, true));
+}
+
+let configCache = null;
+async function loadConfig (force) {
+  if (!configCache || force) configCache = await api('/admin/api/config');
+  renderConfig(configCache);
+}
+
+$('#navUsers').onclick = () => switchView('users');
+$('#navConfig').onclick = () => switchView('config');
+
+// ── 初始化 ───────────────────────────────────────────────────
+async function connect () {
+  state.token = $('#token').value.trim();
+  if (!state.token) return toast('请输入 ADMIN_TOKEN', true);
+  try {
+    await loadUsers();
+    localStorage.setItem('ddz_admin_token', state.token);
+    $('#conn').textContent = '已连接';
+    $('#conn').style.color = 'var(--ok)';
+    toast('连接成功');
+  } catch (err) {
+    $('#conn').textContent = '连接失败';
+    $('#conn').style.color = 'var(--danger)';
+    toast(err.message, true);
+  }
+}
+
+$('#connect').onclick = connect;
+$('#token').onkeydown = e => { if (e.key === 'Enter') connect(); };
+
+let searchTimer = null;
+$('#search').oninput = e => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => {
+    state.keyword = e.target.value.trim();
+    state.offset = 0;
+    loadUsers().catch(err => toast(err.message, true));
+  }, 260);
+};
+
+$('#prev').onclick = () => { state.offset = Math.max(0, state.offset - state.limit); loadUsers(); };
+$('#next').onclick = () => { state.offset += state.limit; loadUsers(); };
+
+const saved = localStorage.getItem('ddz_admin_token');
+if (saved) { $('#token').value = saved; connect(); }
+</script>
+</body>
+</html>

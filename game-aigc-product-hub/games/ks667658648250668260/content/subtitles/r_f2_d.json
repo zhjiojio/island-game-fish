@@ -1,0 +1,10 @@
+{
+  "node": "r_f2_d",
+  "speakerKey": "aotian",
+  "speakerName": "你",
+  "asrText": "（从怀里掏出一支老银簪·郑重）这是我娘留下的。今儿起——你戴上它，就是过明路了……她双手接簪，指尖直抖，眼泪一颗砸在簪身上。",
+  "asrTextRaw": "",
+  "matchScript": true,
+  "textSource": "script-authoritative (v82.0重生成全库视频后，旧ASR已失效，以剧本text为权威)",
+  "cues": 5
+}

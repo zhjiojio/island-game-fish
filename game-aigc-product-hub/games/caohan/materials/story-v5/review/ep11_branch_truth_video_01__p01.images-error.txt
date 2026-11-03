@@ -1,0 +1,24 @@
+ools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 632, in http_response
+    response = self.parent.error(
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 561, in error
+    return self._call_chain(*args)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 494, in _call_chain
+    result = func(*args)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/urllib/request.py", line 641, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 429: Too Many Requests
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/Users/kwaibear/Documents/AIGCGame/game-aigc-workflow/tools/make_images/__main__.py", line 6, in <module>
+    raise SystemExit(main())
+  File "/Users/kwaibear/Documents/AIGCGame/game-aigc-workflow/tools/make_images/image2.py", line 144, in main
+    content = edit(credentials.image2_url, request_value, credentials.image2_api_key, model)
+  File "/Users/kwaibear/Documents/AIGCGame/game-aigc-workflow/tools/make_images/image2.py", line 116, in edit
+    raise RuntimeError(f"Image2 edit request failed ({exc.code}): {detail[:1000]}") from exc
+RuntimeError: Image2 edit request failed (429): {"error":{"code":"rate_limit_error","message":"{\"code\": 429, \"message\": \"您的请求频率过高，请稍后再试。\"}"},"request_id":"req-v6081v-1788785030825286384"}

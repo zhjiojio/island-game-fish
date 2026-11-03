@@ -1,0 +1,129 @@
+# 路径：<HUB_GAMES_DIR>/<game-name>/workflow-run.yml
+# 此文件由 aigc-game-workflow 插件创建和维护
+
+game_name: "configurable-merge-defense"
+created_at: "2026-09-16T04:44:05Z"
+updated_at: "2026-09-16T05:21:29.717Z"
+
+# 游戏类型：standard（换皮/其他）| video-adaptation（剧游）
+game_type: standard
+
+# 游戏配置（由 agw-start 确认后写入，后续阶段从此处读取）
+config:
+  appid: "ks0987654321"
+  ad_units:
+    rewarded_video: ""   # 激励视频广告位 ID
+    interstitial: ""     # 插屏广告位 ID
+    banner: ""           # Banner 广告位 ID
+  share_template_id: ""
+  monetization:
+    mode: iaa             # none | iaa | iap | hybrid
+  iap:
+    enabled: false
+    wallet_authority: kwai-platform
+    platforms:
+      android: false
+      ios: false
+    currency:
+      name: ""
+      unit_price_fen: 10
+    callbacks:
+      payment_path: /api/v1/payments/kwai/notify
+      ios_refund_path: /api/v1/payments/kwai/refund
+  server:
+    enabled: true         # 用于运行期动态配置下发；具体方案在 server-design 阶段确认
+    framework: "node-http"
+    runtime: "node>=22"
+    package_manager: "npm"
+    local_start: "npm --prefix server run dev"
+    healthcheck: "http://127.0.0.1:3100/health"
+    deploy_target: "existing-config-platform-handoff"
+
+# 当前阶段，AI 每次读此字段决定执行哪个 skill
+#
+# standard 路径：
+#   scaffold → idea-collect → server-design（按需）→ iap-integration（IAP/hybrid）→ codegen
+#   → evolve-review → self-test → iap-acceptance（IAP/hybrid）→ publish → data-collect → done
+#
+# video-adaptation 路径：
+#   scaffold → video-adaptation → server-design（按需）→ iap-integration（IAP/hybrid）
+#   → evolve-review → self-test → iap-acceptance（IAP/hybrid）→ publish → data-collect → done
+stage: codegen
+
+nodes:
+  # ── 强制合规阶段 ──────────────────────────────────────────────────────────
+  privacy:
+    state: completed
+    confirm_pending: false
+    output: docs/game-privacy.md
+
+  # ── standard 路径专属阶段 ──────────────────────────────────────────────────
+  scaffold:
+    state: completed
+    confirm_pending: false
+    output: docs/scaffold.md
+
+  idea-collect:
+    state: completed
+    confirm_pending: false
+    output: docs/idea.md
+
+  idea-search:
+    state: pending
+    confirm_pending: false
+    output: docs/idea-search.md
+
+  # ── 服务端按需阶段 ────────────────────────────────────────────────────────
+  server-design:
+    state: completed
+    confirm_pending: false
+    output: docs/server.md
+
+  iap-integration:
+    state: skipped             # IAP/hybrid 时为 pending
+    confirm_pending: false
+    output: docs/iap/integration-plan.md
+
+  codegen:
+    state: completed
+    confirm_pending: true
+    output: docs/codegen-report.md
+
+  # ── video-adaptation 路径专属阶段 ─────────────────────────────────────────
+  video-adaptation:
+    state: pending
+    confirm_pending: false
+    output: docs/story-graph.md
+
+  # ── 共享路径 ──────────────────────────────────────────────────────────────
+  evolve-review:
+    state: pending
+    confirm_pending: false
+    output: EVOLUTION.md
+    latest_round: 0          # 完整历史以 EVOLUTION.md 为准
+
+  self-test:
+    state: pending
+    confirm_pending: false
+    output: docs/self-test-report.md
+
+  iap-acceptance:
+    state: skipped             # IAP/hybrid 时为 pending
+    confirm_pending: false
+    output: docs/iap/acceptance-report.md
+
+  publish:
+    state: pending
+    confirm_pending: false
+    output: docs/publish-report.md
+    version: "1.0.0"          # 每次上传后 patch +1，格式 major.minor.patch
+
+  data-collect:
+    state: pending
+    confirm_pending: false
+    output: docs/data-collect-report.md
+
+# 可选模块
+# CDN 上传已合并至 agw-self-test 内嵌步骤（Step 4.5），不再作为独立 stage
+optional_modules:
+  cdn: false

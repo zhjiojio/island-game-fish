@@ -1,0 +1,11 @@
+{
+  "human_voice_language": "not_heard",
+  "machine_operation": "heard",
+  "metal_impact": "not_heard",
+  "vehicle_horn": "not_heard",
+  "music": "heard",
+  "time_summary": {
+    "machine_operation": "throughout the audio",
+    "music": "starting around the middle and continuing to the end"
+  }
+}

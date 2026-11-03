@@ -1,0 +1,153 @@
+
+skeleton.png
+size: 1648,379
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bg
+  rotate: false
+  xy: 2, 2
+  size: 812, 375
+  orig: 812, 375
+  offset: 0, 0
+  index: -1
+ground
+  rotate: true
+  xy: 1223, 33
+  size: 344, 200
+  orig: 812, 200
+  offset: 0, 0
+  index: -1
+light
+  rotate: false
+  xy: 816, 2
+  size: 405, 375
+  orig: 407, 375
+  offset: 0, 0
+  index: -1
+mint2
+  rotate: true
+  xy: 1588, 34
+  size: 38, 44
+  orig: 40, 46
+  offset: 1, 1
+  index: -1
+orange
+  rotate: false
+  xy: 1223, 3
+  size: 38, 28
+  orig: 38, 28
+  offset: 0, 0
+  index: -1
+purple
+  rotate: false
+  xy: 1433, 6
+  size: 40, 34
+  orig: 40, 34
+  offset: 0, 0
+  index: -1
+round_blue
+  rotate: false
+  xy: 1475, 20
+  size: 19, 20
+  orig: 19, 20
+  offset: 0, 0
+  index: -1
+round_blue2
+  rotate: true
+  xy: 1296, 4
+  size: 27, 26
+  orig: 27, 28
+  offset: 0, 1
+  index: -1
+round_green
+  rotate: false
+  xy: 1496, 20
+  size: 19, 20
+  orig: 19, 20
+  offset: 0, 0
+  index: -1
+round_mint2
+  rotate: true
+  xy: 1324, 4
+  size: 27, 26
+  orig: 27, 28
+  offset: 0, 1
+  index: -1
+round_orange
+  rotate: false
+  xy: 1517, 20
+  size: 19, 20
+  orig: 19, 20
+  offset: 0, 0
+  index: -1
+round_orange2
+  rotate: true
+  xy: 1352, 4
+  size: 27, 26
+  orig: 27, 28
+  offset: 0, 1
+  index: -1
+round_orange3
+  rotate: false
+  xy: 1408, 7
+  size: 23, 24
+  orig: 23, 24
+  offset: 0, 0
+  index: -1
+round_pink
+  rotate: false
+  xy: 1538, 20
+  size: 19, 20
+  orig: 19, 20
+  offset: 0, 0
+  index: -1
+round_pink2
+  rotate: true
+  xy: 1380, 4
+  size: 27, 26
+  orig: 27, 28
+  offset: 0, 1
+  index: -1
+shengli
+  rotate: false
+  xy: 1425, 42
+  size: 161, 80
+  orig: 161, 80
+  offset: 0, 0
+  index: -1
+square
+  rotate: true
+  xy: 1425, 124
+  size: 253, 194
+  orig: 812, 194
+  offset: 43, 0
+  index: -1
+star
+  rotate: false
+  xy: 1588, 74
+  size: 48, 48
+  orig: 53, 60
+  offset: 0, 3
+  index: -1
+star1
+  rotate: false
+  xy: 1634, 55
+  size: 12, 17
+  orig: 15, 21
+  offset: 1, 2
+  index: -1
+star2
+  rotate: false
+  xy: 1634, 43
+  size: 10, 10
+  orig: 10, 10
+  offset: 0, 0
+  index: -1
+violet
+  rotate: false
+  xy: 1263, 8
+  size: 31, 23
+  orig: 31, 23
+  offset: 0, 0
+  index: -1

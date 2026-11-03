@@ -1,0 +1,25 @@
+{
+  "id": "ending_independent",
+  "type": "ending",
+  "episodeId": "ep11",
+  "title": "正式结局：自己的方向",
+  "isEnding": true,
+  "category": "independent",
+  "tone": [
+    "独立",
+    "成长"
+  ],
+  "rarity": "common",
+  "isCanonical": false,
+  "unlock": {
+    "requiredFlags": [
+      "ep11_truth"
+    ],
+    "requiredEndingTags": []
+  },
+  "description": "她拒绝旧婚约，也拒绝立刻给新关系命名。",
+  "closing": "车钥匙握在自己手里，路终于由她决定。",
+  "achievement": "ending_independent",
+  "chapterId": "ch5",
+  "chapterTitle": "第五章：让他再动一次手"
+}

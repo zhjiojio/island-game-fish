@@ -1,0 +1,10 @@
+{
+  "node": "e5s4",
+  "speakerKey": "narrator",
+  "speakerName": "旁白",
+  "asrText": "赵铁牛提着灯笼摸上田埂，左脚往前一探。这是他这辈子最错的一步。铁夹子的声音在夜里脆得像折骨头",
+  "asrTextRaw": "赵铁牛提着灯笼摸上田梗 左脚往前一探 这是他这辈子最错的一步 铁夹子的声音在夜里 翠得像蜇骨头",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 4
+}

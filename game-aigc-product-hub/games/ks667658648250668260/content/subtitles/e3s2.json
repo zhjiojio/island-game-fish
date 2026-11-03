@@ -1,0 +1,10 @@
+{
+  "node": "e3s2",
+  "speakerKey": "wanerh",
+  "speakerName": "沈婉儿",
+  "asrText": "（跪坐炕沿低头，声音哽）傲天······这匹布我不能收。你把它退了·换了钱留着过冬吧。",
+  "asrTextRaw": "",
+  "matchScript": true,
+  "textSource": "script-authoritative (v82.0重生成全库视频后，旧ASR已失效，以剧本text为权威)",
+  "cues": 2
+}

@@ -1,0 +1,63 @@
+node_modules/
+*.log
+/tmp/
+.DS_Store
+scripts/subtitles/.venv/
+assets/videos/*.mp4
+assets/frames/*.png
+assets/frames/*.jpg
+assets/bridge/*.mp4
+assets/bridge/*.mp3
+assets/bridge/*.png
+assets/refs/*.png
+
+# ── 素材原料（走 CDN，不要进仓库）─────────────────
+materials-src/
+avatars/aotian-avatar.png
+avatars/wanr-avatar.png
+
+
+# ── 构建/预览产物（可由 scripts/tools/preview-pack.js 重新生成，不入库）──
+# dist/ 历史上被误提交进仓库（171 个文件），每次重新打包都会产生
+# 大量 D + ?? 噪音，掩盖真实代码改动。改为忽略并从索引移除。
+dist/
+dist.zip
+preview/
+preview-qr/
+build-qrcodes/
+scripts/subtitles/videos/
+
+# ── AIGC 中间产物（928M · 原始视频/图片，走 CDN，不入库）──
+work/
+outputs/
+scripts/compose_output/
+*.mp4
+!package/**/*.mp4
+
+# ── 生图额度账本（每人 30 张，运行时数据，各机独立不入库）──
+demo-platform/data/shot-quota.json
+
+# ── 嵌套 git 仓库（各自独立管理，不作为 submodule 入库）──
+.deploy-jgy/
+demo-platform/
+
+# ── 本机运行时产物 ──
+.browser-shots/
+.deploy-alias/
+.myflicker/
+preview-qr-hd/
+out/
+nohup.out
+
+# ── 嵌套独立 git 仓库（各自单独管理，不作为 submodule 入库）──
+.deploy-jgy/
+demo-platform/
+
+# ── 本地临时/工具产物（不入库）──
+out/
+.browser-shots/
+.deploy-alias/
+.myflicker/
+preview-qr-hd/
+*.tgz
+concat2.txt

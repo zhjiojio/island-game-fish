@@ -1,0 +1,27 @@
+{
+  "videoId": "ep02_branch_conditional_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep02_branch_conditional_video_01__l01",
+      "speaker": "陈劲",
+      "text": "看出来了。",
+      "heard": "看出来了",
+      "start": 0.975,
+      "end": 1.925,
+      "alignmentScore": 1.0
+    },
+    {
+      "lineId": "ep02_branch_conditional_video_01__l02",
+      "speaker": "贺星冉",
+      "text": "呵呵，你还挺聪明。",
+      "heard": "你还挺聪明",
+      "start": 2.15,
+      "end": 6.085,
+      "alignmentScore": 0.8333
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 20.131700680272107,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.51654052734375
+}

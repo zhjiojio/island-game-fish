@@ -1,0 +1,25 @@
+# Media is delivered through verified CDN URLs; preserve local production files.
+/downstream/internal/.cdn-stage/
+/materials/**/video/
+/materials/**/segments/
+/materials/**/keyframes/
+/materials/**/requests/
+/materials/**/review/**/*.png
+/materials/**/review/**/*.jpg
+/materials/**/review/**/*.jpeg
+/materials/**/review/**/*.mp4
+/materials/**/review/**/*.wav
+/materials/**/review/**/*.mp3
+.DS_Store
+__pycache__/
+
+# Sound-repair working media; publish only reviewed CDN references.
+/materials/audio-repair-v1/audio/
+/materials/audio-repair-v1/stems/
+
+/downstream/internal/.cdn-stage-before-audio-repair-v1/
+
+# Versioned upload staging folders also contain CDN-delivered binary copies.
+/downstream/internal/**/.cdn-stage*/
+
+/materials/story-v5/.cache/

@@ -1,0 +1,18 @@
+{
+ "schemaVersion": 1,
+ "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/dream_zhixing.v1.mp4",
+ "sha256": "1cfa22f692a202ca1b340108288f9bd9b423ebf8b57db07b68985f388fa562e6",
+ "duration": 10.042,
+ "nodes": [
+  "s_dream_zhixing"
+ ],
+ "status": "nonverbal",
+ "transcript": "",
+ "rawText": "",
+ "asrChars": [],
+ "timingEngine": "FunASR-paraformer-zh",
+ "crossCheckText": "",
+ "speakerKey": null,
+ "speakerRuleKey": "dream_zhixing",
+ "reviewMethod": "Dance-only reference footage: background music without dialogue. Paraformer hallucinated lyrics, so transcript is intentionally empty."
+}

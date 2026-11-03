@@ -1,0 +1,18 @@
+{
+  "videoId": "ep07_branch_truth_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep07_branch_truth_video_01__l01",
+      "speaker": "许邵泽",
+      "text": "冉冉，我知道你在跟我赌气。不喜欢我没关系，我可以改。但你犯不着找一个乡下来的土包子来气我。这样……真的很伤我的心。",
+      "heard": "我知道你在跟我赌气不喜欢我没关系我可以改但你犯不着找一个乡下来的土包子来气我这样真的很伤我的心",
+      "start": 4.65,
+      "end": 16.765,
+      "alignmentScore": 0.9792
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 28.142585034013607,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.683990478515625
+}

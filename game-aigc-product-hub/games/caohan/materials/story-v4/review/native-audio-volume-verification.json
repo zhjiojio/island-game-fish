@@ -1,0 +1,166 @@
+{
+  "partsChecked": 20,
+  "failures": [],
+  "results": [
+    {
+      "videoId": "ep09_branch_conditional_video_01",
+      "partId": "ep09_branch_conditional_video_01__p01",
+      "sourceMeanDb": -34.0,
+      "finalMeanDb": -34.0,
+      "differenceDb": 0.0,
+      "pass": true
+    },
+    {
+      "videoId": "ep09_branch_conditional_video_01",
+      "partId": "ep09_branch_conditional_video_01__p02",
+      "sourceMeanDb": -26.6,
+      "finalMeanDb": -26.6,
+      "differenceDb": 0.0,
+      "pass": true
+    },
+    {
+      "videoId": "ep09_branch_conditional_video_01",
+      "partId": "ep09_branch_conditional_video_01__p03",
+      "sourceMeanDb": -23.4,
+      "finalMeanDb": -23.4,
+      "differenceDb": 0.0,
+      "pass": true
+    },
+    {
+      "videoId": "ep09_branch_counterattack_video_01",
+      "partId": "ep09_branch_counterattack_video_01__p01",
+      "sourceMeanDb": -24.4,
+      "finalMeanDb": -24.4,
+      "differenceDb": 0.0,
+      "pass": true
+    },
+    {
+      "videoId": "ep09_branch_counterattack_video_01",
+      "partId": "ep09_branch_counterattack_video_01__p02",
+      "sourceMeanDb": -28.5,
+      "finalMeanDb": -28.5,
+      "differenceDb": 0.0,
+      "pass": true
+    },
+    {
+      "videoId": "ep09_branch_emotion_video_01",
+      "partId": "ep09_branch_emotion_video_01__p01",
+      "sourceMeanDb": -25.6,
+      "finalMeanDb": -25.6,
+      "differenceDb": 0.0,
+      "pass": true
+    },
+    {
+      "videoId": "ep09_branch_emotion_video_01",
+      "partId": "ep09_branch_emotion_video_01__p02",
+      "sourceMeanDb": -25.2,
+      "finalMeanDb": -25.2,
+      "differenceDb": 0.0,
+      "pass": true
+    },
+    {
+      "videoId": "ep10_branch_counterattack_video_01",
+      "partId": "ep10_branch_counterattack_video_01__p01",
+      "sourceMeanDb": -24.0,
+      "finalMeanDb": -24.0,
+      "differenceDb": 0.0,
+      "pass": true
+    },
+    {
+      "videoId": "ep10_branch_counterattack_video_01",
+      "partId": "ep10_branch_counterattack_video_01__p02",
+      "sourceMeanDb": -23.6,
+      "finalMeanDb": -23.7,
+      "differenceDb": -0.1,
+      "pass": true
+    },
+    {
+      "videoId": "ep10_branch_counterattack_video_01",
+      "partId": "ep10_branch_counterattack_video_01__p03",
+      "sourceMeanDb": -23.9,
+      "finalMeanDb": -23.9,
+      "differenceDb": 0.0,
+      "pass": true
+    },
+    {
+      "videoId": "ep10_branch_emotion_video_01",
+      "partId": "ep10_branch_emotion_video_01__p01",
+      "sourceMeanDb": -25.0,
+      "finalMeanDb": -25.0,
+      "differenceDb": 0.0,
+      "pass": true
+    },
+    {
+      "videoId": "ep10_branch_emotion_video_01",
+      "partId": "ep10_branch_emotion_video_01__p02",
+      "sourceMeanDb": -24.4,
+      "finalMeanDb": -24.4,
+      "differenceDb": 0.0,
+      "pass": true
+    },
+    {
+      "videoId": "ep10_branch_emotion_video_01",
+      "partId": "ep10_branch_emotion_video_01__p03",
+      "sourceMeanDb": -25.2,
+      "finalMeanDb": -25.2,
+      "differenceDb": 0.0,
+      "pass": true
+    },
+    {
+      "videoId": "ep10_branch_truth_video_01",
+      "partId": "ep10_branch_truth_video_01__p01",
+      "sourceMeanDb": -28.8,
+      "finalMeanDb": -28.8,
+      "differenceDb": 0.0,
+      "pass": true
+    },
+    {
+      "videoId": "ep10_branch_truth_video_01",
+      "partId": "ep10_branch_truth_video_01__p02",
+      "sourceMeanDb": -23.5,
+      "finalMeanDb": -23.6,
+      "differenceDb": -0.1,
+      "pass": true
+    },
+    {
+      "videoId": "ep10_branch_truth_video_01",
+      "partId": "ep10_branch_truth_video_01__p03",
+      "sourceMeanDb": -24.3,
+      "finalMeanDb": -24.3,
+      "differenceDb": 0.0,
+      "pass": true
+    },
+    {
+      "videoId": "ep11_branch_counterattack_video_01",
+      "partId": "ep11_branch_counterattack_video_01__p01",
+      "sourceMeanDb": -24.6,
+      "finalMeanDb": -24.6,
+      "differenceDb": 0.0,
+      "pass": true
+    },
+    {
+      "videoId": "ep11_branch_counterattack_video_01",
+      "partId": "ep11_branch_counterattack_video_01__p02",
+      "sourceMeanDb": -26.0,
+      "finalMeanDb": -26.0,
+      "differenceDb": 0.0,
+      "pass": true
+    },
+    {
+      "videoId": "ep11_branch_emotion_video_01",
+      "partId": "ep11_branch_emotion_video_01__p01",
+      "sourceMeanDb": -24.4,
+      "finalMeanDb": -24.4,
+      "differenceDb": 0.0,
+      "pass": true
+    },
+    {
+      "videoId": "ep11_branch_emotion_video_01",
+      "partId": "ep11_branch_emotion_video_01__p02",
+      "sourceMeanDb": -24.1,
+      "finalMeanDb": -24.1,
+      "differenceDb": 0.0,
+      "pass": true
+    }
+  ]
+}

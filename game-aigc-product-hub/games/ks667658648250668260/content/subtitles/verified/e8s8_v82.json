@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e8s8_v82.mp4",
+  "sha256": "8cee83263c94f8a04848a219026d9c4b23ebbc0c0ed0ede625c617c9c1cf6400",
+  "duration": 10.042,
+  "nodes": [
+    "e8s8"
+  ],
+  "status": "speech",
+  "transcript": "全李家沟的汉子都来了，坝塌不下去。",
+  "rawText": "全李家沟的汉子都来了爸他不下去",
+  "asrChars": [
+    [
+      2.71,
+      2.95,
+      "全"
+    ],
+    [
+      2.99,
+      3.21,
+      "李"
+    ],
+    [
+      3.21,
+      3.39,
+      "家"
+    ],
+    [
+      3.39,
+      3.61,
+      "沟"
+    ],
+    [
+      3.61,
+      3.75,
+      "的"
+    ],
+    [
+      3.75,
+      3.99,
+      "汉"
+    ],
+    [
+      4.03,
+      4.17,
+      "子"
+    ],
+    [
+      4.17,
+      4.39,
+      "都"
+    ],
+    [
+      4.39,
+      4.61,
+      "来"
+    ],
+    [
+      4.61,
+      4.85,
+      "了"
+    ],
+    [
+      5.15,
+      5.39,
+      "爸"
+    ],
+    [
+      5.47,
+      5.67,
+      "他"
+    ],
+    [
+      5.67,
+      5.85,
+      "不"
+    ],
+    [
+      5.85,
+      6.03,
+      "下"
+    ],
+    [
+      6.03,
+      6.445,
+      "去"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "全李家沟的汉子都来了, 把他不下去。",
+  "speakerKey": null,
+  "speakerRuleKey": "e8s8",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

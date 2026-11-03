@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "runtimeNodes": 78,
+  "uniqueVideos": 69,
+  "endings": 14,
+  "sourceRuntimeStatesChecked": 5651,
+  "choiceStatesChecked": 838,
+  "lockedOptionStatesChecked": 527,
+  "unknownFieldPaths": [],
+  "configSha256": "0f286907e0162adca7d2a873b526f84761b04541d06755b12de4200f71402aef",
+  "sourceSha256": "130c08553def1730d3ab742b6aca64f4a4a7e7ec8950414b40e57e41207e088d",
+  "templateSha256": "4065d6e132116d3a8bc4350d59a61e4a9cdd96c274796ac3c07caf2bacf1f080",
+  "engineOrDeviceTest": "not_run",
+  "adIds": "engineering_required"
+}

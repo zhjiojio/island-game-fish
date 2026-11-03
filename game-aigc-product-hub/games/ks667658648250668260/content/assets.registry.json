@@ -1,0 +1,247 @@
+{
+  "$comment": [
+    "assets.registry.json —— 单一权威源",
+    "所有白名单从这里派生：NARR_LOCAL_FORCE / NARR_VIDEO_ALLOW / SUBTITLE_HIDE_KEYS / BUNDLED_IMAGES / NODE_UNLOCK_MAP",
+    "以及角色白名单 charInfo",
+    "编辑后跑 `npm run build:registry` 生成 js/registry.js"
+  ],
+  "cdn": {
+    "prefixP4": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/",
+    "prefixP5": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/",
+    "narr": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks712131693858878897/audio/narr/"
+  },
+  "chars": {
+    "aotian": {
+      "displayName": "傲天",
+      "speakerPrefixes": [
+        "傲天"
+      ]
+    },
+    "wanerh": {
+      "displayName": "沈婉儿",
+      "speakerPrefixes": [
+        "沈婉儿",
+        "婉儿",
+        "嫂子"
+      ]
+    },
+    "waner": {
+      "displayName": "婉儿(旧)",
+      "speakerPrefixes": []
+    },
+    "narrator": {
+      "displayName": "旁白/说书大爷",
+      "speakerPrefixes": [
+        "旁白",
+        "说书人",
+        "说书大爷"
+      ]
+    },
+    "dreammj": {
+      "displayName": "梦中女主播",
+      "speakerPrefixes": [
+        "梦中女主播",
+        "周味周"
+      ]
+    },
+    "system": {
+      "displayName": "系统",
+      "speakerPrefixes": [
+        "系统"
+      ]
+    },
+    "vendor": {
+      "displayName": "粮贩子",
+      "speakerPrefixes": [
+        "粮贩",
+        "贩子",
+        "收粮"
+      ]
+    },
+    "zhao": {
+      "displayName": "赵铁牛",
+      "speakerPrefixes": [
+        "赵铁牛"
+      ]
+    },
+    "shopwoman": {
+      "displayName": "布铺老板娘",
+      "speakerPrefixes": [
+        "布铺老板娘",
+        "老板娘"
+      ]
+    },
+    "laohan": {
+      "displayName": "李老憨",
+      "speakerPrefixes": [
+        "李老憨"
+      ]
+    },
+    "wangpo": {
+      "displayName": "王婆",
+      "speakerPrefixes": [
+        "王婆"
+      ]
+    },
+    "villager": {
+      "displayName": "村民",
+      "speakerPrefixes": [
+        "村民",
+        "老李头",
+        "张大爷",
+        "大爷",
+        "大娘"
+      ]
+    },
+    "fuzhuren": {
+      "displayName": "副主任",
+      "speakerPrefixes": [
+        "副主任",
+        "马副乡长"
+      ]
+    }
+  },
+  "_narrLocalForce_comment": "v77.0 · 主包瘦身 · 从 78 条缩至 0 · 所有旁白走 CDN（audio/narr/ 前缀）· 本地保留 2 条启动必需 mp3：op1/sister_unlock 通过硬编码路径播放不走 narrSrcFor · v92.4 tutorial_intro 随新手引导浮层一并下线 · 如需 CDN 兜底把节点 id 加回下面数组同时保留 assets/audio/narr/<id>.mp3",
+  "narrLocalForce": [],
+  "narrVideoAllow": [
+    "e3s3",
+    "e3s7",
+    "s_stone_video",
+    "s_weather_video"
+  ],
+  "subtitleHideKeys": [
+    "e3s7"
+  ],
+  "bundledImages": [],
+  "nodeUnlockMap": {
+    "s3": "medal_first",
+    "s6b": "skill_land",
+    "s_stone": "skill_stone",
+    "s_muscle": "skill_muscle",
+    "r_fix_b": "skill_house",
+    "r_side01": "medal_cloth1",
+    "r_side02": "medal_cloth2",
+    "r_side03": "medal_cloth3",
+    "r_side04": "medal_peacock",
+    "r_side05": "medal_bunny",
+    "r_side06": "medal_mongol",
+    "BE_SLAP": "medal_slap"
+  },
+  "earlyNodesBeforeSister": [
+    "s1",
+    "f_dream_more",
+    "s_dream_yujie",
+    "s_dream_xinggan",
+    "s_dream_zhixing",
+    "s1b",
+    "s2",
+    "f0",
+    "r_f0_a",
+    "r_f0_b",
+    "r_f0_c",
+    "r_f0_d"
+  ],
+  "videoPosters": {
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S1a.dream.mp4": "images/lastframes/S1a.dream.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S1b.crash.mp4": "images/lastframes/S1b.crash.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/dream_yujie.v1.mp4": "images/lastframes/dream_yujie.v1.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/dream_xinggan.v1.mp4": "images/lastframes/dream_xinggan.v1.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/dream_zhixing.v1.mp4": "images/lastframes/dream_zhixing.v1.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S2.hd.mp4": "images/lastframes/S2.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S3.hd.mp4": "images/lastframes/S3.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S4.hd.mp4": "images/lastframes/S4.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side04_kongque.hd.mp4": "images/lastframes/side04_kongque.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be5_kicked_out.hd.mp4": "images/lastframes/be5_kicked_out.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S5.hd.mp4": "images/lastframes/S5.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S6.hd.mp4": "images/lastframes/S6.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side07_cailian.hd.mp4": "images/lastframes/side07_cailian.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S8.hd.mp4": "images/lastframes/S8.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S9.hd.mp4": "images/lastframes/S9.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S10.hd.mp4": "images/lastframes/S10.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/k_bridge.hd.mp4": "images/lastframes/k_bridge.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side01_hongdudou.hd.mp4": "images/lastframes/side01_hongdudou.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side02_qipao.hd.mp4": "images/lastframes/side02_qipao.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side03_shishen.hd.mp4": "images/lastframes/side03_shishen.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side05_jazz.hd.mp4": "images/lastframes/side05_jazz.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side06_dunhuang.hd.mp4": "images/lastframes/side06_dunhuang.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s1.hd.mp4": "images/lastframes/e2s1.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s2.hd.mp4": "images/lastframes/e2s2.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s3.hd.mp4": "images/lastframes/e2s3.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/skill_stone_activate.c.mp4": "images/lastframes/skill_stone_activate.c.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s5.hd.mp4": "images/lastframes/e2s5.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s6.hd.mp4": "images/lastframes/e2s6.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/k1_zhao_encounter.c.mp4": "images/lastframes/k1_zhao_encounter.c.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s1.hd.mp4": "images/lastframes/e3s1.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s2.hd.mp4": "images/lastframes/e3s2.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f2_d.hd.mp4": "images/lastframes/r_f2_d.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s3_v2.hd.mp4": "images/lastframes/e3s3_v2.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s4.hd.mp4": "images/lastframes/e3s4.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_e3_eyes.hd.mp4": "images/lastframes/r_e3_eyes.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_e3_pull.hd.mp4": "images/lastframes/r_e3_pull.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s5.hd.mp4": "images/lastframes/e3s5.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s6.hd.mp4": "images/lastframes/e3s6.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s7.hd.mp4": "images/lastframes/e3s7.hd.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side08_shuixiu.c.mp4": "images/lastframes/side08_shuixiu.c.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s1.c.mp4": "images/lastframes/e4s1.c.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s2_v82.mp4": "images/lastframes/e4s2_v82.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s3.c.mp4": "images/lastframes/e4s3.c.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s4.c.mp4": "images/lastframes/e4s4.c.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s5_v82.mp4": "images/lastframes/e4s5_v82.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s6.c.mp4": "images/lastframes/e4s6.c.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s7_v82.mp4": "images/lastframes/e4s7_v82.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4_escape_bridge_v83.mp4": "images/lastframes/e4_escape_bridge_v83.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s8.c.mp4": "images/lastframes/e4s8.c.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4_escape_v82.mp4": "images/lastframes/e4_escape_v82.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4_bei_v82.mp4": "images/lastframes/e4_bei_v82.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4_shangyao_v82.mp4": "images/lastframes/e4_shangyao_v82.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s0a.mp4": "images/lastframes/n5s0a.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s0b.mp4": "images/lastframes/n5s0b.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s1.mp4": "images/lastframes/n5s1.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s2.mp4": "images/lastframes/n5s2.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_drink_a.mp4": "images/lastframes/n5_drink_a.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_drink_b.mp4": "images/lastframes/n5_drink_b.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_drink_c.mp4": "images/lastframes/n5_drink_c.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_drink_peak.mp4": "images/lastframes/n5_drink_peak.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s3.mp4": "images/lastframes/n5s3.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_fix_a.mp4": "images/lastframes/n5_fix_a.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_fix_b.mp4": "images/lastframes/n5_fix_b.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_fix_b_grand.mp4": "images/lastframes/n5_fix_b_grand.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_fix_c.mp4": "images/lastframes/n5_fix_c.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_bridge.mp4": "images/lastframes/n5_bridge.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s4.mp4": "images/lastframes/n5s4.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s5.mp4": "images/lastframes/n5s5.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_biz_a.mp4": "images/lastframes/n5_biz_a.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_biz_b.mp4": "images/lastframes/n5_biz_b.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_biz_c.mp4": "images/lastframes/n5_biz_c.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s6.mp4": "images/lastframes/n5s6.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s7.mp4": "images/lastframes/n5s7.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_rub_a.mp4": "images/lastframes/n5_rub_a.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_rub_a2.mp4": "images/lastframes/n5_rub_a2.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_rub_b.mp4": "images/lastframes/n5_rub_b.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_rub_b2.mp4": "images/lastframes/n5_rub_b2.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_rub_c.mp4": "images/lastframes/n5_rub_c.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s8.mp4": "images/lastframes/n5s8.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s8b.mp4": "images/lastframes/n5s8b.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be4_witch_hunt.c.mp4": "images/lastframes/be4_witch_hunt.c.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be1_she_left.c.mp4": "images/lastframes/be1_she_left.c.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be3_nowhere.c.mp4": "images/lastframes/be3_nowhere.c.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be6_lost_power_v2.c.mp4": "images/lastframes/be6_lost_power_v2.c.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be_partner_drunk.c.mp4": "images/lastframes/be_partner_drunk.c.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be2_starve_death_v2.c.mp4": "images/lastframes/be2_starve_death_v2.c.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_guanggun.mp4": "images/lastframes/n5_guanggun.jpg",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/op1_final20s.mp4": "images/lastframes/op1.v3.jpg",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/lace_confess_final.mp4": "images/lastframes/lace_confess.jpg"
+  },
+  "imageAliases": {
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/lastframe/be1_she_left.jpg": "images/lastframes/be1_she_left.c.jpg",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/lastframe/S3.jpg": "images/lastframes/S3.hd.jpg",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/lastframe/S4.jpg": "images/lastframes/S4.hd.jpg",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/lastframe/S5.jpg": "images/lastframes/S5.hd.jpg",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/lastframe/S6.jpg": "images/lastframes/S6.hd.jpg",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/lastframe/S8.jpg": "images/lastframes/S8.hd.jpg",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/lastframe/S9.jpg": "images/lastframes/S9.hd.jpg",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/lastframe/S10.jpg": "images/lastframes/S10.hd.jpg",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/lastframe/E8S9.jpg": "images/lastframes/e9s1.jpg",
+    "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/lastframe/S3.jpg": "images/lastframes/S3.hd.jpg"
+  }
+}

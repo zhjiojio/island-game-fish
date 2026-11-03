@@ -1,0 +1,28 @@
+{
+  "videoId": "ending_loop",
+  "voiceWindows": [
+    {
+      "lineId": "ending_loop__l01",
+      "speaker": "许邵泽",
+      "text": "分手吧",
+      "heard": "分手吧",
+      "start": 14.655,
+      "end": 15.865,
+      "alignmentScore": 1.0
+    }
+  ],
+  "newVoice": [
+    {
+      "lineId": "ending_loop__l02",
+      "speaker": "画外叙述者",
+      "kind": "narration",
+      "text": "每次逃婚，她都会回到最初那个夜晚。",
+      "audioFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/audio/ending_loop__l02.mp3",
+      "start": 0.4,
+      "end": 4.2
+    }
+  ],
+  "durationSec": 21.106938775510205,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.5626373291015625
+}

@@ -1,0 +1,10 @@
+{
+  "videoId": "ep11_branch_conditional_video_01",
+  "sourceParts": [
+    "ep11_branch_conditional_video_01__p01"
+  ],
+  "result": "visual_pass_audio_transcript_pass",
+  "durationSec": 7.041667,
+  "sha256": "7ef3a160209d9a8ee542787da5762b40238bac751db673fce216c6dd484b8ed8",
+  "note": "全部源片段均通过人工身份、构图与独立转写检查；按原文顺序保留原生音轨。"
+}

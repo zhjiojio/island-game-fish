@@ -1,0 +1,15 @@
+{
+ "schemaVersion": 1,
+ "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_fix_a.mp4",
+ "sha256": "0733c790b325d2040b7e346cd8e38b77ec40ed1f4416e06186a3d8799f77f7b0",
+ "duration": 10.042,
+ "nodes": [
+  "r_fix_a"
+ ],
+ "status": "no_speech",
+ "transcript": "",
+ "rawText": "",
+ "asrChars": [],
+ "timingEngine": "asr-anchor(funasr-paraformer)",
+ "reviewMethod": "batch ASR auto (needs human proof-read for punctuation/speaker)."
+}

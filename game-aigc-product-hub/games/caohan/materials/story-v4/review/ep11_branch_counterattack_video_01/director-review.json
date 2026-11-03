@@ -1,0 +1,12 @@
+{
+  "videoId": "ep11_branch_counterattack_video_01",
+  "sourceParts": [
+    "ep11_branch_counterattack_video_01__p01",
+    "ep11_branch_counterattack_video_01__p02"
+  ],
+  "result": "visual_pass_audio_transcript_pass",
+  "durationSec": 15.083333,
+  "sha256": "58b5095fcdfc0838660da2e666986e7119e969b385f8ca035abcf7d776cf0ef1",
+  "note": "全部源片段均通过人工身份、构图与独立转写检查；按原文顺序保留原生音轨。",
+  "finalSamplingNote": "合并后全时段抽帧通过，返回停车场与陈劲开口对白顺序正确。"
+}

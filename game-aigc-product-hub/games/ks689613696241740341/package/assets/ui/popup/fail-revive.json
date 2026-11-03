@@ -1,0 +1,24 @@
+{
+  "fail_ribbon": {
+    "file": "assets/ui/popup/fail_ribbon.png",
+    "px": [
+      741,
+      183
+    ],
+    "design": [
+      370.5,
+      91.5
+    ]
+  },
+  "icon_revive": {
+    "file": "assets/ui/popup/icon_revive.png",
+    "px": [
+      453,
+      285
+    ],
+    "design": [
+      226.5,
+      142.5
+    ]
+  }
+}

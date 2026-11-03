@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "mode": "diegetic_only",
+  "nodeId": "ep01_scene_00",
+  "videoId": "ep01_scene_00_video_01",
+  "spokenWhitelist": [
+    {
+      "shotId": "ep01_scene_00_video_01_shot_01",
+      "speakerId": "xushaoze",
+      "speaker": "许邵泽",
+      "delivery": "on_screen",
+      "text": "贺星冉，分手吧。贺家这条船要沉了——我不陪你。",
+      "startSec": 0.55,
+      "endSec": 9.45
+    }
+  ],
+  "nonverbalSound": [
+    {
+      "shotId": "ep01_scene_00_video_01_shot_01",
+      "audio": {
+        "ambient": "高空风声与远处城市底噪",
+        "music": "无配乐，以现场声为主",
+        "sfx": [],
+        "vocalizations": []
+      }
+    }
+  ],
+  "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+}

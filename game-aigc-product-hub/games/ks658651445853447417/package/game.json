@@ -1,0 +1,9 @@
+{
+    "deviceOrientation": "portrait",
+    "showStatusBar": false,
+    "runtimeVersion": "1.0.0",
+    "subpackages": [
+        { "name": "voice-extra", "root": "subpackages/voice-extra/" },
+        { "name": "ui-gameplay", "root": "subpackages/ui-gameplay/" }
+    ]
+}

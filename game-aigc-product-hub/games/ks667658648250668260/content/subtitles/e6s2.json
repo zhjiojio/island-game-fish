@@ -1,0 +1,10 @@
+{
+  "node": "e6s2",
+  "speakerKey": "narrator",
+  "speakerName": "旁白",
+  "asrText": "他没说谢，也没推。他把袖子撸上去，接过她手里那只瓢，自己往盆里添了半瓢凉的。一个沉默，抵一千句情话",
+  "asrTextRaw": "他没说谢也没推 他把袖子录上去 接过他手里那只嫖 自己往盆里添了半瓢凉的 一个沉默底一千句情话",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 5
+}

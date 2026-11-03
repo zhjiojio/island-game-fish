@@ -1,0 +1,27 @@
+{
+  "videoId": "ending_worker",
+  "voiceWindows": [],
+  "newVoice": [
+    {
+      "lineId": "ending_worker__l01",
+      "speaker": "画外叙述者",
+      "kind": "narration",
+      "text": "许邵泽破产了。",
+      "audioFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/audio/ending_worker__l01.mp3",
+      "start": 0.4,
+      "end": 2.4
+    },
+    {
+      "lineId": "ending_worker__l02",
+      "speaker": "画外叙述者",
+      "kind": "narration",
+      "text": "他的新工作，是在陈劲的工地搬砖。",
+      "audioFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/audio/ending_worker__l02.mp3",
+      "start": 9.442,
+      "end": 13.042
+    }
+  ],
+  "durationSec": 18.088344671201813,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.561553955078125
+}

@@ -1,0 +1,2431 @@
+[
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep01_scene_00",
+    "videoId": "ep01_scene_00_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep01_scene_00_video_01_shot_01",
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "on_screen",
+        "text": "贺星冉，分手吧。贺家这条船要沉了——我不陪你。",
+        "startSec": 0.55,
+        "endSec": 9.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep01_scene_00_video_01_shot_01",
+        "audio": {
+          "ambient": "高空风声与远处城市底噪",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep01_branch_emotion",
+    "videoId": "ep01_branch_emotion_video_01",
+    "spokenWhitelist": [],
+    "nonverbalSound": [
+      {
+        "shotId": "ep01_branch_emotion_video_01_shot_01",
+        "audio": {
+          "ambient": "高空风声与远处城市底噪",
+          "music": "无配乐，以现场声为主",
+          "sfx": [
+            "栏杆断裂和衣料掠过声"
+          ],
+          "vocalizations": [
+            {
+              "speakerId": "hexingran",
+              "kind": "scream"
+            }
+          ]
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep01_branch_truth",
+    "videoId": "ep01_branch_truth_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep01_branch_truth_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "喂。活着吗。",
+        "startSec": 0.55,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep01_branch_truth_video_01_shot_01",
+        "audio": {
+          "ambient": "高空风声与远处城市底噪",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep01_branch_counterattack",
+    "videoId": "ep01_branch_counterattack_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep01_branch_counterattack_video_01_shot_01",
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "on_screen",
+        "text": "来，喝点热的。",
+        "startSec": 0.55,
+        "endSec": 2.4
+      },
+      {
+        "shotId": "ep01_branch_counterattack_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "刚才推我的时候，你怎么不装了？",
+        "startSec": 2.65,
+        "endSec": 7.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep01_branch_counterattack_video_01_shot_01",
+        "audio": {
+          "ambient": "贺家卧室门口自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [
+            "杯子在地面碎裂、牛奶溅落声"
+          ],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep01_branch_conditional",
+    "videoId": "ep01_branch_conditional_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep01_branch_conditional_video_01_shot_01",
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "off_screen",
+        "text": "贺星冉，分手吧。",
+        "startSec": 0.55,
+        "endSec": 2.68
+      },
+      {
+        "shotId": "ep01_branch_conditional_video_01_shot_01",
+        "speakerId": "heming",
+        "speaker": "贺铭",
+        "delivery": "on_screen",
+        "text": "爸不是不信你，只是……",
+        "startSec": 2.93,
+        "endSec": 5.78
+      },
+      {
+        "shotId": "ep01_branch_conditional_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "那就听完。",
+        "startSec": 6.03,
+        "endSec": 7.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep01_branch_conditional_video_01_shot_01",
+        "audio": {
+          "ambient": "贺家主卧自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep02_scene_00",
+    "videoId": "ep02_scene_00_video_01",
+    "spokenWhitelist": [],
+    "nonverbalSound": [
+      {
+        "shotId": "ep02_scene_00_video_01_shot_01",
+        "audio": {
+          "ambient": "荒野工地路旁自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": [
+            {
+              "speakerId": "hexingran",
+              "kind": "cough"
+            }
+          ]
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep02_branch_emotion",
+    "videoId": "ep02_branch_emotion_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep02_branch_emotion_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "救援来不了。我跟你走。",
+        "startSec": 0.55,
+        "endSec": 4.35
+      },
+      {
+        "shotId": "ep02_branch_emotion_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "抓紧。",
+        "startSec": 4.6,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep02_branch_emotion_video_01_shot_01",
+        "audio": {
+          "ambient": "荒野越野车旁自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep02_branch_truth",
+    "videoId": "ep02_branch_truth_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep02_branch_truth_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "五万，现在转，转完就走。",
+        "startSec": 0.55,
+        "endSec": 4.74
+      },
+      {
+        "shotId": "ep02_branch_truth_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "行。",
+        "startSec": 4.99,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep02_branch_truth_video_01_shot_01",
+        "audio": {
+          "ambient": "摩托引擎和轻微风声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep02_branch_counterattack",
+    "videoId": "ep02_branch_counterattack_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep02_branch_counterattack_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "找她？先过我这关。",
+        "startSec": 0.55,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep02_branch_counterattack_video_01_shot_01",
+        "audio": {
+          "ambient": "工地路口自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep02_branch_conditional",
+    "videoId": "ep02_branch_conditional_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep02_branch_conditional_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "录音已经传出去了。还追？",
+        "startSec": 0.55,
+        "endSec": 4.42
+      },
+      {
+        "shotId": "ep02_branch_conditional_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "坐稳。",
+        "startSec": 4.67,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep02_branch_conditional_video_01_shot_01",
+        "audio": {
+          "ambient": "摩托引擎和轻微风声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep03_scene_00",
+    "videoId": "ep03_scene_00_video_01",
+    "spokenWhitelist": [],
+    "nonverbalSound": [
+      {
+        "shotId": "ep03_scene_00_video_01_shot_01",
+        "audio": {
+          "ambient": "乡间路边自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": [
+            {
+              "speakerId": "hexingran",
+              "kind": "gasp"
+            }
+          ]
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep03_branch_emotion",
+    "videoId": "ep03_branch_emotion_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep03_branch_emotion_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "蹲下。别站那么高看我。",
+        "startSec": 0.55,
+        "endSec": 4.04
+      },
+      {
+        "shotId": "ep03_branch_emotion_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "喝口水。",
+        "startSec": 4.29,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep03_branch_emotion_video_01_shot_01",
+        "audio": {
+          "ambient": "乡间路边自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep03_branch_truth",
+    "videoId": "ep03_branch_truth_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep03_branch_truth_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "我没事。别看我。",
+        "startSec": 0.55,
+        "endSec": 3.09
+      },
+      {
+        "shotId": "ep03_branch_truth_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "东西放这儿。",
+        "startSec": 3.34,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep03_branch_truth_video_01_shot_01",
+        "audio": {
+          "ambient": "乡间路边自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep03_branch_counterattack",
+    "videoId": "ep03_branch_counterattack_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep03_branch_counterattack_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "谢谢你。沐瑶，我安全，先别联系我爸妈。帮我查一下我的卡哪张还能用。",
+        "startSec": 0.55,
+        "endSec": 11.45
+      },
+      {
+        "shotId": "ep03_branch_counterattack_video_01_shot_02",
+        "speakerId": "muyao",
+        "speaker": "沐瑶",
+        "delivery": "on_screen",
+        "text": "除了花旗那张，其他都被挂失了。但花旗是许邵泽送的，一用他就知道你在哪。",
+        "startSec": 12.55,
+        "endSec": 23.45
+      },
+      {
+        "shotId": "ep03_branch_counterattack_video_01_shot_03",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "那就让他知道。我用这张卡，就是告诉他：我没死，我在等他。",
+        "startSec": 24.55,
+        "endSec": 33.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep03_branch_counterattack_video_01_shot_01",
+        "audio": {
+          "ambient": "摩托引擎和轻微风声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      },
+      {
+        "shotId": "ep03_branch_counterattack_video_01_shot_02",
+        "audio": {
+          "ambient": "轻微室内底噪",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      },
+      {
+        "shotId": "ep03_branch_counterattack_video_01_shot_03",
+        "audio": {
+          "ambient": "摩托引擎和轻微风声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep03_branch_conditional",
+    "videoId": "ep03_branch_conditional_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep03_branch_conditional_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "是沐瑶留的。她能找到我。",
+        "startSec": 0.55,
+        "endSec": 4.42
+      },
+      {
+        "shotId": "ep03_branch_conditional_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "收好。",
+        "startSec": 4.67,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep03_branch_conditional_video_01_shot_01",
+        "audio": {
+          "ambient": "乡间路边自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep04_scene_00",
+    "videoId": "ep04_scene_00_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep04_scene_00_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "会开吗？",
+        "startSec": 0.55,
+        "endSec": 3.34
+      },
+      {
+        "shotId": "ep04_scene_00_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "坐好。",
+        "startSec": 3.59,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep04_scene_00_video_01_shot_01",
+        "audio": {
+          "ambient": "宾利车内及路边自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep04_branch_emotion",
+    "videoId": "ep04_branch_emotion_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep04_branch_emotion_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "你开。我看看你的本事。",
+        "startSec": 0.55,
+        "endSec": 4.74
+      },
+      {
+        "shotId": "ep04_branch_emotion_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "行。",
+        "startSec": 4.99,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep04_branch_emotion_video_01_shot_01",
+        "audio": {
+          "ambient": "宾利车内自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep04_branch_truth",
+    "videoId": "ep04_branch_truth_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep04_branch_truth_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "我来。方向盘我自己握。",
+        "startSec": 0.55,
+        "endSec": 4.04
+      },
+      {
+        "shotId": "ep04_branch_truth_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "听你的。",
+        "startSec": 4.29,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep04_branch_truth_video_01_shot_01",
+        "audio": {
+          "ambient": "宾利车旁及车内自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep04_branch_counterattack",
+    "videoId": "ep04_branch_counterattack_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep04_branch_counterattack_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "钥匙给你，别磨蹭。",
+        "startSec": 0.55,
+        "endSec": 3.26
+      },
+      {
+        "shotId": "ep04_branch_counterattack_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "还真不客气。",
+        "startSec": 3.51,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep04_branch_counterattack_video_01_shot_01",
+        "audio": {
+          "ambient": "宾利车旁自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep04_branch_conditional",
+    "videoId": "ep04_branch_conditional_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep04_branch_conditional_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "抓紧。还记得吗？",
+        "startSec": 0.55,
+        "endSec": 3.09
+      },
+      {
+        "shotId": "ep04_branch_conditional_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "记得。别回头。",
+        "startSec": 3.34,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep04_branch_conditional_video_01_shot_01",
+        "audio": {
+          "ambient": "宾利车内自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep05_scene_00",
+    "videoId": "ep05_scene_00_video_01",
+    "spokenWhitelist": [],
+    "nonverbalSound": [
+      {
+        "shotId": "ep05_scene_00_video_01_shot_01",
+        "audio": {
+          "ambient": "酒店卧室自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": [
+            {
+              "speakerId": "hexingran",
+              "kind": "breath"
+            }
+          ]
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep05_branch_emotion",
+    "videoId": "ep05_branch_emotion_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep05_branch_emotion_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "别推开我。就一会儿。",
+        "startSec": 0.55,
+        "endSec": 4.27
+      },
+      {
+        "shotId": "ep05_branch_emotion_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "我在。",
+        "startSec": 4.52,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep05_branch_emotion_video_01_shot_01",
+        "audio": {
+          "ambient": "酒店卧室自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep05_branch_truth",
+    "videoId": "ep05_branch_truth_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep05_branch_truth_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "刚才是我失态了。你睡沙发吧。",
+        "startSec": 0.55,
+        "endSec": 4.84
+      },
+      {
+        "shotId": "ep05_branch_truth_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "好。",
+        "startSec": 5.09,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep05_branch_truth_video_01_shot_01",
+        "audio": {
+          "ambient": "酒店卧室自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep05_branch_counterattack",
+    "videoId": "ep05_branch_counterattack_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep05_branch_counterattack_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "我今天受了惊吓，抱着你睡有安全感。你不是我的临时男朋友吗？",
+        "startSec": 0.55,
+        "endSec": 8.69
+      },
+      {
+        "shotId": "ep05_branch_counterattack_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "临时的也得讲规矩。",
+        "startSec": 8.94,
+        "endSec": 11.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep05_branch_counterattack_video_01_shot_01",
+        "audio": {
+          "ambient": "酒店卧室自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep05_branch_conditional",
+    "videoId": "ep05_branch_conditional_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep05_branch_conditional_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "安全条款。未经允许，不准越界。",
+        "startSec": 0.55,
+        "endSec": 5.07
+      },
+      {
+        "shotId": "ep05_branch_conditional_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "记住了。",
+        "startSec": 5.32,
+        "endSec": 6.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep05_branch_conditional_video_01_shot_01",
+        "audio": {
+          "ambient": "酒店卧室自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep06_scene_00",
+    "videoId": "ep06_scene_00_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep06_scene_00_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "保镖加假男友，整整一年——三千万。",
+        "startSec": 0.55,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep06_scene_00_video_01_shot_01",
+        "audio": {
+          "ambient": "早餐桌旁自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep06_branch_emotion",
+    "videoId": "ep06_branch_emotion_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep06_branch_emotion_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "钱给你。你得保证，这一年不走。",
+        "startSec": 0.55,
+        "endSec": 4.54
+      },
+      {
+        "shotId": "ep06_branch_emotion_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "你想清楚了？",
+        "startSec": 4.79,
+        "endSec": 6.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep06_branch_emotion_video_01_shot_01",
+        "audio": {
+          "ambient": "早餐桌旁自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep06_branch_truth",
+    "videoId": "ep06_branch_truth_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep06_branch_truth_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "我跟你说一句实话。我这次回家，是有麻烦的。我未婚夫想杀我。",
+        "startSec": 0.55,
+        "endSec": 8.27
+      },
+      {
+        "shotId": "ep06_branch_truth_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "说下去。",
+        "startSec": 8.52,
+        "endSec": 9.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep06_branch_truth_video_01_shot_01",
+        "audio": {
+          "ambient": "早餐桌旁自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep06_branch_counterattack",
+    "videoId": "ep06_branch_counterattack_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep06_branch_counterattack_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "这三千万，算我们一起做生意。",
+        "startSec": 0.5,
+        "endSec": 4.5
+      },
+      {
+        "shotId": "ep06_branch_counterattack_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "行。",
+        "startSec": 4.7,
+        "endSec": 5.3
+      },
+      {
+        "shotId": "ep06_branch_counterattack_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "那就说定了。",
+        "startSec": 5.8,
+        "endSec": 8
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep06_branch_counterattack_video_01_shot_01",
+        "audio": {
+          "ambient": "早餐桌旁自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep06_branch_conditional",
+    "videoId": "ep06_branch_conditional_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep06_branch_conditional_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "这些记录我都留着。回去见我父母，顺便宣布退婚。",
+        "startSec": 0.55,
+        "endSec": 7.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep06_branch_conditional_video_01_shot_01",
+        "audio": {
+          "ambient": "宾利车内自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep07_scene_00",
+    "videoId": "ep07_scene_00_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep07_scene_00_video_01_shot_01",
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "on_screen",
+        "text": "冉冉，回来了。",
+        "startSec": 0.55,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep07_scene_00_video_01_shot_01",
+        "audio": {
+          "ambient": "贺家客厅自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep07_branch_emotion",
+    "videoId": "ep07_branch_emotion_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep07_branch_emotion_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "我累了。让开。",
+        "startSec": 0.55,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep07_branch_emotion_video_01_shot_01",
+        "audio": {
+          "ambient": "贺家客厅自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep07_branch_truth",
+    "videoId": "ep07_branch_truth_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep07_branch_truth_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "露台上推我的人，就是你。",
+        "startSec": 0.55,
+        "endSec": 3.91
+      },
+      {
+        "shotId": "ep07_branch_truth_video_01_shot_01",
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "on_screen",
+        "text": "冉冉，你犯不着找一个土包子来气我。",
+        "startSec": 4.16,
+        "endSec": 9.19
+      },
+      {
+        "shotId": "ep07_branch_truth_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "回答我。",
+        "startSec": 9.44,
+        "endSec": 10.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep07_branch_truth_video_01_shot_01",
+        "audio": {
+          "ambient": "贺家客厅自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep07_branch_counterattack",
+    "videoId": "ep07_branch_counterattack_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep07_branch_counterattack_video_01_shot_01",
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "off_screen",
+        "text": "贺家这条船要沉了——我不陪你。",
+        "startSec": 0.3,
+        "endSec": 4.7
+      },
+      {
+        "shotId": "ep07_branch_counterattack_video_01_shot_02",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "爸，听清楚了吗？",
+        "startSec": 5.5,
+        "endSec": 8.5
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep07_branch_counterattack_video_01_shot_01",
+        "audio": {
+          "ambient": "贺家客厅自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      },
+      {
+        "shotId": "ep07_branch_counterattack_video_01_shot_02",
+        "audio": {
+          "ambient": "贺家客厅自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep07_branch_conditional",
+    "videoId": "ep07_branch_conditional_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep07_branch_conditional_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "周伯，这个姓，还记得吗？",
+        "startSec": 0.55,
+        "endSec": 3.88
+      },
+      {
+        "shotId": "ep07_branch_conditional_video_01_shot_01",
+        "speakerId": "zhoubo",
+        "speaker": "周伯",
+        "delivery": "on_screen",
+        "text": "你从哪儿知道这个姓？",
+        "startSec": 4.12,
+        "endSec": 7.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep07_branch_conditional_video_01_shot_01",
+        "audio": {
+          "ambient": "贺家走廊自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep08_scene_00",
+    "videoId": "ep08_scene_00_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep08_scene_00_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "手滑？",
+        "startSec": 0.55,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep08_scene_00_video_01_shot_01",
+        "audio": {
+          "ambient": "贺家走廊装饰柜旁自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep08_branch_emotion",
+    "videoId": "ep08_branch_emotion_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep08_branch_emotion_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "没摔着就好。走吧。",
+        "startSec": 0.55,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep08_branch_emotion_video_01_shot_01",
+        "audio": {
+          "ambient": "贺家走廊装饰柜旁自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep08_branch_truth",
+    "videoId": "ep08_branch_truth_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep08_branch_truth_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "周伯，试够了吗？他是我带回来的人。",
+        "startSec": 0.55,
+        "endSec": 5.45
+      },
+      {
+        "shotId": "ep08_branch_truth_video_01_shot_01",
+        "speakerId": "zhoubo",
+        "speaker": "周伯",
+        "delivery": "on_screen",
+        "text": "是我唐突了。",
+        "startSec": 5.7,
+        "endSec": 7.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep08_branch_truth_video_01_shot_01",
+        "audio": {
+          "ambient": "贺家走廊装饰柜旁自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep08_branch_counterattack",
+    "videoId": "ep08_branch_counterattack_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep08_branch_counterattack_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "这瓶子我买了。以后别拿它试人。",
+        "startSec": 0.55,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep08_branch_counterattack_video_01_shot_01",
+        "audio": {
+          "ambient": "贺家走廊装饰柜旁自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep08_branch_conditional",
+    "videoId": "ep08_branch_conditional_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep08_branch_conditional_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "您还没递稳，就松手了？",
+        "startSec": 0.55,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep08_branch_conditional_video_01_shot_01",
+        "audio": {
+          "ambient": "贺家走廊装饰柜旁自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep09_scene_00",
+    "videoId": "ep09_scene_00_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep09_scene_00_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "一年，三千万。你连价都不看？",
+        "startSec": 0.55,
+        "endSec": 4.56
+      },
+      {
+        "shotId": "ep09_scene_00_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "看清楚要做什么就够了。",
+        "startSec": 4.81,
+        "endSec": 8.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep09_scene_00_video_01_shot_01",
+        "audio": {
+          "ambient": "贺家书桌旁自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep09_branch_emotion",
+    "videoId": "ep09_branch_emotion_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep09_branch_emotion_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "按合同办。别谈别的。",
+        "startSec": 0.55,
+        "endSec": 4.68
+      },
+      {
+        "shotId": "ep09_branch_emotion_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "好。",
+        "startSec": 4.93,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep09_branch_emotion_video_01_shot_01",
+        "audio": {
+          "ambient": "贺家书桌旁自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep09_branch_truth",
+    "videoId": "ep09_branch_truth_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep09_branch_truth_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "不算这些条款，你为什么留下？",
+        "startSec": 0.55,
+        "endSec": 4.92
+      },
+      {
+        "shotId": "ep09_branch_truth_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "因为你还需要人帮你。",
+        "startSec": 5.17,
+        "endSec": 8.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep09_branch_truth_video_01_shot_01",
+        "audio": {
+          "ambient": "贺家书桌旁自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep09_branch_counterattack",
+    "videoId": "ep09_branch_counterattack_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep09_branch_counterattack_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "没了合同，你还敢不敢留下？",
+        "startSec": 0.55,
+        "endSec": 4.81
+      },
+      {
+        "shotId": "ep09_branch_counterattack_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "敢。",
+        "startSec": 5.06,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep09_branch_counterattack_video_01_shot_01",
+        "audio": {
+          "ambient": "贺家书桌旁自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep09_branch_conditional",
+    "videoId": "ep09_branch_conditional_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep09_branch_conditional_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "周伯刚才的通话，我保存了。",
+        "startSec": 0.55,
+        "endSec": 4.99
+      },
+      {
+        "shotId": "ep09_branch_conditional_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "先留着。",
+        "startSec": 5.24,
+        "endSec": 6.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep09_branch_conditional_video_01_shot_01",
+        "audio": {
+          "ambient": "贺家走廊自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep10_scene_00",
+    "videoId": "ep10_scene_00_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep10_scene_00_video_01_shot_01",
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "on_screen",
+        "text": "跑了一圈，你不还是回来了？",
+        "startSec": 0.55,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep10_scene_00_video_01_shot_01",
+        "audio": {
+          "ambient": "贺家客厅门口自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep10_branch_emotion",
+    "videoId": "ep10_branch_emotion_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep10_branch_emotion_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "她不想见你。让开。",
+        "startSec": 0.55,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep10_branch_emotion_video_01_shot_01",
+        "audio": {
+          "ambient": "贺家客厅门口自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep10_branch_truth",
+    "videoId": "ep10_branch_truth_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep10_branch_truth_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "婚约到此为止。以后别再来找我。",
+        "startSec": 0.55,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep10_branch_truth_video_01_shot_01",
+        "audio": {
+          "ambient": "贺家客厅门口自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep10_branch_counterattack",
+    "videoId": "ep10_branch_counterattack_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep10_branch_counterattack_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "各位听清楚。推我下露台的，就是我的未婚夫。",
+        "startSec": 0.55,
+        "endSec": 6.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep10_branch_counterattack_video_01_shot_01",
+        "audio": {
+          "ambient": "贺家宴会厅自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep10_branch_conditional",
+    "videoId": "ep10_branch_conditional_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep10_branch_conditional_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "录音、流水、跟踪照片，律师已经收到了。",
+        "startSec": 0.55,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep10_branch_conditional_video_01_shot_01",
+        "audio": {
+          "ambient": "贺家客厅自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep11_scene_00",
+    "videoId": "ep11_scene_00_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep11_scene_00_video_01_shot_01",
+        "speakerId": "zhoubo",
+        "speaker": "周伯",
+        "delivery": "on_screen",
+        "text": "陈先生，原来真是您。",
+        "startSec": 0.55,
+        "endSec": 3.65
+      },
+      {
+        "shotId": "ep11_scene_00_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "你们认识？",
+        "startSec": 3.9,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep11_scene_00_video_01_shot_01",
+        "audio": {
+          "ambient": "男装店镜前自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep11_branch_emotion",
+    "videoId": "ep11_branch_emotion_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep11_branch_emotion_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "走吧。一起回家。",
+        "startSec": 0.55,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep11_branch_emotion_video_01_shot_01",
+        "audio": {
+          "ambient": "男装店门口自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep11_branch_truth",
+    "videoId": "ep11_branch_truth_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep11_branch_truth_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "我不结婚了。以后，我自己选。",
+        "startSec": 0.55,
+        "endSec": 4.81
+      },
+      {
+        "shotId": "ep11_branch_truth_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "好。",
+        "startSec": 5.06,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep11_branch_truth_video_01_shot_01",
+        "audio": {
+          "ambient": "停车场自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep11_branch_counterattack",
+    "videoId": "ep11_branch_counterattack_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep11_branch_counterattack_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "材料全部公开。我说过，要让所有人知道。",
+        "startSec": 0.55,
+        "endSec": 6.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep11_branch_counterattack_video_01_shot_01",
+        "audio": {
+          "ambient": "证据发布现场自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ep11_branch_conditional",
+    "videoId": "ep11_branch_conditional_video_01",
+    "spokenWhitelist": [
+      {
+        "shotId": "ep11_branch_conditional_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "这次，让我一个人走。",
+        "startSec": 0.55,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ep11_branch_conditional_video_01_shot_01",
+        "audio": {
+          "ambient": "停车场自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      },
+      {
+        "shotId": "ep11_branch_conditional_video_01_shot_02",
+        "audio": {
+          "ambient": "高空风声与远处城市底噪",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ending_loop",
+    "videoId": "ending_loop",
+    "spokenWhitelist": [
+      {
+        "shotId": "ending_loop_shot_01",
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "on_screen",
+        "text": "分手吧。",
+        "startSec": 0.55,
+        "endSec": 1.95
+      },
+      {
+        "shotId": "ending_loop_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "这一次，我知道了。",
+        "startSec": 2.2,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ending_loop_shot_01",
+        "audio": {
+          "ambient": "高空风声与远处城市底噪",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ending_streamer",
+    "videoId": "ending_streamer",
+    "spokenWhitelist": [
+      {
+        "shotId": "ending_streamer_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "你把聊天记录翻到那一天。",
+        "startSec": 0.55,
+        "endSec": 4.69
+      },
+      {
+        "shotId": "ending_streamer_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "下播，吃饭。",
+        "startSec": 4.94,
+        "endSec": 6.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ending_streamer_shot_01",
+        "audio": {
+          "ambient": "直播房间自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ending_cow",
+    "videoId": "ending_cow",
+    "spokenWhitelist": [],
+    "nonverbalSound": [
+      {
+        "shotId": "ending_cow_shot_01",
+        "audio": {
+          "ambient": "证据桌自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      },
+      {
+        "shotId": "ending_cow_shot_02",
+        "audio": {
+          "ambient": "牧场自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [
+            "奶牛自然哞叫一次"
+          ],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ending_terrace",
+    "videoId": "ending_terrace",
+    "spokenWhitelist": [],
+    "nonverbalSound": [
+      {
+        "shotId": "ending_terrace_shot_01",
+        "audio": {
+          "ambient": "高空风声与远处城市底噪",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": [
+            {
+              "speakerId": "xushaoze",
+              "kind": "scream"
+            }
+          ]
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ending_reality_show",
+    "videoId": "ending_reality_show",
+    "spokenWhitelist": [
+      {
+        "shotId": "ending_reality_show_shot_01",
+        "speakerId": "host",
+        "speaker": "节目主持人",
+        "delivery": "off_screen",
+        "text": "投票结果：贺星冉，独自出道！",
+        "startSec": 0.55,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ending_reality_show_shot_01",
+        "audio": {
+          "ambient": "恋爱综艺舞台自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ending_empire",
+    "videoId": "ending_empire",
+    "spokenWhitelist": [
+      {
+        "shotId": "ending_empire_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "许家、工地、婚庆公司，都签好了。",
+        "startSec": 0.55,
+        "endSec": 6.45
+      },
+      {
+        "shotId": "ending_empire_shot_02",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "贺总，轮到你敲钟了。",
+        "startSec": 7.55,
+        "endSec": 12.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ending_empire_shot_01",
+        "audio": {
+          "ambient": "公司会议室自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      },
+      {
+        "shotId": "ending_empire_shot_02",
+        "audio": {
+          "ambient": "上市敲钟台自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [
+            "铜钟被敲击后的清亮钟声"
+          ],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ending_future",
+    "videoId": "ending_future",
+    "spokenWhitelist": [
+      {
+        "shotId": "ending_future_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "到底是谁让你来救我的？",
+        "startSec": 0.55,
+        "endSec": 6.88
+      },
+      {
+        "shotId": "ending_future_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "你。未来的你，花了一千万。",
+        "startSec": 7.12,
+        "endSec": 13.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ending_future_shot_01",
+        "audio": {
+          "ambient": "未来感圆形舱门前自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ending_boss",
+    "videoId": "ending_boss",
+    "spokenWhitelist": [
+      {
+        "shotId": "ending_boss_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "这次我雇的不是保镖，是合伙人。",
+        "startSec": 0.55,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ending_boss_shot_01",
+        "audio": {
+          "ambient": "工地项目现场自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ending_crane",
+    "videoId": "ending_crane",
+    "spokenWhitelist": [
+      {
+        "shotId": "ending_crane_shot_01",
+        "speakerId": "officiant",
+        "speaker": "司仪",
+        "delivery": "off_screen",
+        "text": "谁反对？",
+        "startSec": 0.55,
+        "endSec": 4.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ending_crane_shot_01",
+        "audio": {
+          "ambient": "高空风声与远处城市底噪",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      },
+      {
+        "shotId": "ending_crane_shot_02",
+        "audio": {
+          "ambient": "高空风声与远处城市底噪",
+          "music": "无配乐，以现场声为主",
+          "sfx": [
+            "车队喇叭依次响起，随后齐鸣"
+          ],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ending_worker",
+    "videoId": "ending_worker",
+    "spokenWhitelist": [
+      {
+        "shotId": "ending_worker_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "干得不错。",
+        "startSec": 0.55,
+        "endSec": 2.62
+      },
+      {
+        "shotId": "ending_worker_shot_01",
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "on_screen",
+        "text": "明天我还来。",
+        "startSec": 2.87,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ending_worker_shot_01",
+        "audio": {
+          "ambient": "工地自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      },
+      {
+        "shotId": "ending_worker_shot_02",
+        "audio": {
+          "ambient": "工地表彰现场自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [
+            "短暂现场鼓掌"
+          ],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ending_romance",
+    "videoId": "ending_romance",
+    "spokenWhitelist": [
+      {
+        "shotId": "ending_romance_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "回家吧。",
+        "startSec": 0.55,
+        "endSec": 4.04
+      },
+      {
+        "shotId": "ending_romance_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "好。",
+        "startSec": 4.29,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ending_romance_shot_01",
+        "audio": {
+          "ambient": "工地回家路口自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ending_independent",
+    "videoId": "ending_independent",
+    "spokenWhitelist": [
+      {
+        "shotId": "ending_independent_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "婚约取消。我的事，我自己决定。",
+        "startSec": 0.55,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ending_independent_shot_01",
+        "audio": {
+          "ambient": "房间自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      },
+      {
+        "shotId": "ending_independent_shot_02",
+        "audio": {
+          "ambient": "粉色越野车驾驶位自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [
+            "安全带咔哒、汽车启动和驶离声"
+          ],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ending_revenge",
+    "videoId": "ending_revenge",
+    "spokenWhitelist": [
+      {
+        "shotId": "ending_revenge_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "证据都在这里。请查清楚。",
+        "startSec": 0.55,
+        "endSec": 5.45
+      }
+    ],
+    "nonverbalSound": [
+      {
+        "shotId": "ending_revenge_shot_01",
+        "audio": {
+          "ambient": "证据发布现场自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  },
+  {
+    "schemaVersion": 1,
+    "mode": "diegetic_only",
+    "nodeId": "ending_regret",
+    "videoId": "ending_regret",
+    "spokenWhitelist": [],
+    "nonverbalSound": [
+      {
+        "shotId": "ending_regret_shot_01",
+        "audio": {
+          "ambient": "工地路口自然环境声",
+          "music": "无配乐，以现场声为主",
+          "sfx": [],
+          "vocalizations": []
+        }
+      }
+    ],
+    "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "videoId": "ep02_branch_counterattack_video_01",
+  "sourceParts": [
+    "ep02_branch_counterattack_video_01__p01"
+  ],
+  "result": "visual_pass_audio_transcript_pass",
+  "durationSec": 12.041995,
+  "sha256": "5e517d60c4c96ead9c3647d5734239bb73a98310760ad6b01062a70636508d16",
+  "note": "全部源片段均通过人工身份、构图与独立转写检查；按原文顺序保留原生音轨。"
+}

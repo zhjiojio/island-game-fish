@@ -1,0 +1,143 @@
+[
+  {
+    "videoId": "ep01_scene_00_video_01",
+    "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep01_scene_00_video_01.mp4",
+    "sha256": "a8098354592c639c4b711edb887feb517ffa0eb0fed255dffeb15ba630e0389d",
+    "durationSec": 10.041667,
+    "bytes": 15560285,
+    "parts": [
+      "ep01_scene_00_video_01__p01"
+    ],
+    "audio": "native_kling_only",
+    "status": "pilot_ready_for_user_review",
+    "partDecisions": [
+      {
+        "partId": "ep01_scene_00_video_01__p01",
+        "sha256": "a8098354592c639c4b711edb887feb517ffa0eb0fed255dffeb15ba630e0389d",
+        "status": "approved_pilot_candidate",
+        "visualEvidence": "ep01_scene_00_video_01__p01.frames.jpg",
+        "audioEvidence": "ep01_scene_00_video_01__p01.audio-review.json",
+        "decision": "许邵泽本人说话并逼近，女主沉默退让；脸型服装场景保持，无第三人称念白。 独立复核姓名发音为 he xing ran，ASR汉字不同，未发现额外念白。",
+        "additionalAudioEvidence": "ep01_scene_00_video_01__p01.name-crosscheck.json"
+      }
+    ]
+  },
+  {
+    "videoId": "ep01_branch_emotion_video_01",
+    "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep01_branch_emotion_video_01.mp4",
+    "sha256": "2919c7ad745748ab0cb57b5f8dc1395ff41b7c2ecaf5cef4f4942581a1abd20f",
+    "durationSec": 6.041667,
+    "bytes": 5617078,
+    "parts": [
+      "ep01_branch_emotion_video_01__p01"
+    ],
+    "audio": "native_kling_only",
+    "status": "pilot_ready_for_user_review",
+    "partDecisions": [
+      {
+        "partId": "ep01_branch_emotion_video_01__p01",
+        "sha256": "2919c7ad745748ab0cb57b5f8dc1395ff41b7c2ecaf5cef4f4942581a1abd20f",
+        "status": "approved_pilot_candidate",
+        "visualEvidence": "ep01_branch_emotion_video_01__p01.frames.jpg",
+        "audioEvidence": "ep01_branch_emotion_video_01__p01.audio-review.json",
+        "decision": "坠落动作完成，许邵泽收手，人物及场景与参考一致；音轨只有非语言惊呼和撞击声，无旁白或对白。"
+      }
+    ]
+  },
+  {
+    "videoId": "ep03_branch_counterattack_video_01",
+    "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep03_branch_counterattack_video_01.mp4",
+    "sha256": "4e22bccb6cd40c84b485bfc54d98ad75dd7588ba1e686f8b561d5d911740fede",
+    "durationSec": 34.171631,
+    "bytes": 62483663,
+    "parts": [
+      "ep03_branch_counterattack_video_01__p01",
+      "ep03_branch_counterattack_video_01__p02",
+      "ep03_branch_counterattack_video_01__p03"
+    ],
+    "audio": "native_kling_only",
+    "status": "pilot_ready_for_user_review",
+    "partDecisions": [
+      {
+        "partId": "ep03_branch_counterattack_video_01__p01",
+        "sha256": "81206290b417021f0e86bc7721e1fcc37877860187f935fc5082eb15282861b5",
+        "status": "approved_pilot_candidate",
+        "visualEvidence": "ep03_branch_counterattack_video_01__p01.frames.jpg",
+        "audioEvidence": "ep03_branch_counterattack_video_01__p01.audio-review.json",
+        "decision": "女主在后座持电话说话，陈劲只驾驶不替读；对白完整无旁白。",
+        "styleReview": "女主中段表情较轻松，有短暂微笑，样片需确认是否应进一步压低情绪、增加逃亡紧迫感。"
+      },
+      {
+        "partId": "ep03_branch_counterattack_video_01__p02",
+        "sha256": "f3f9c4c99c5df877b400a0e31644ab4d403d6f12dcd25fca6edcd239f039e1bc",
+        "status": "approved_pilot_candidate",
+        "visualEvidence": "ep03_branch_counterattack_video_01__p02.r2.frames.jpg",
+        "audioEvidence": "ep03_branch_counterattack_video_01__p02.r2.audio-review.json",
+        "decision": "r2对白从“除了”开始，内容完整，无额外开场词；独立单人电话镜头，神情更认真紧迫。",
+        "additionalAudioEvidence": "ep03_branch_counterattack_video_01__p02.r2.crosscheck.json",
+        "asrNote": "两个模型均无额外开场词；Voxtral 对中文专名识别不稳定，GPT-audio 转写许少泽，与指定名同音。"
+      },
+      {
+        "partId": "ep03_branch_counterattack_video_01__p03",
+        "sha256": "dda253fe26e4ed1128f7c77fd868f89c589270628116ca360dc10de9efc1f026",
+        "status": "approved_pilot_candidate",
+        "visualEvidence": "ep03_branch_counterattack_video_01__p03.frames.jpg",
+        "audioEvidence": "ep03_branch_counterattack_video_01__p03.audio-review.json",
+        "decision": "女主在摩托后座说出完整对白，陈劲驾驶，无多余台词。中途放下电话，样片另审通话动作衔接。"
+      }
+    ]
+  },
+  {
+    "videoId": "ending_crane",
+    "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ending_crane.mp4",
+    "sha256": "b262448e59c6ebcd4e901505977f17ac8e24fe2fad0261c021e4dccb63e02d17",
+    "durationSec": 12.129313,
+    "bytes": 19710635,
+    "parts": [
+      "ending_crane__p01",
+      "ending_crane__p02"
+    ],
+    "audio": "native_kling_only",
+    "status": "pilot_ready_for_user_review",
+    "partDecisions": [
+      {
+        "partId": "ending_crane__p01",
+        "sha256": "53d8373137d5b38710f1761a784dcef78cfa2fc0150ef077b91d05b1979671f0",
+        "status": "approved_pilot_candidate",
+        "visualEvidence": "ending_crane__p01.frames.jpg",
+        "audioEvidence": "ending_crane__p01.audio-review.json",
+        "decision": "保留塔吊高空婚礼构图，音轨仅有画外询问“谁反对”；抽帧中新人倾听并相互看向。远景不能精确判定口型，留样片观看复核。"
+      },
+      {
+        "partId": "ending_crane__p02",
+        "sha256": "a064cacd6ca2d99283a6fea0ba4086b13d6a58269215380869073ddc6d772063",
+        "status": "approved_pilot_candidate",
+        "visualEvidence": "ending_crane__p02.r2.frames.jpg",
+        "audioEvidence": "ending_crane__p02.r2.audio-review.json",
+        "decision": "r2实际音轨已检出汽笛，无语言；保留夜间车阵、灯光与场景。"
+      }
+    ]
+  },
+  {
+    "videoId": "ending_future",
+    "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ending_future.mp4",
+    "sha256": "4e152225220a4b64f7bcd73a684097801eea2d0c7baf9b0abc874ca9fdf4eedf",
+    "durationSec": 14.041995,
+    "bytes": 13346201,
+    "parts": [
+      "ending_future__p01"
+    ],
+    "audio": "native_kling_only",
+    "status": "pilot_ready_for_user_review",
+    "partDecisions": [
+      {
+        "partId": "ending_future__p01",
+        "sha256": "4e152225220a4b64f7bcd73a684097801eea2d0c7baf9b0abc874ca9fdf4eedf",
+        "status": "approved_pilot_candidate",
+        "visualEvidence": "ending_future__p01.frames.jpg",
+        "audioEvidence": "ending_future__p01.audio-review.json",
+        "decision": "女主先问、陈劲回答，实际对白与白名单一致；蓝色科幻空间、人物服装与参考保持，未发现额外语言。"
+      }
+    ]
+  }
+]

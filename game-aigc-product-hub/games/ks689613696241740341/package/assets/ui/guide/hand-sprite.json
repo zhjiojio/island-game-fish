@@ -1,0 +1,8 @@
+{
+  "file": "assets/ui/guide/hand-sprite.png",
+  "frames": 21,
+  "frameW": 174,
+  "frameH": 132,
+  "durationMs": 100,
+  "note": "横向单行雪碧图。第 i 帧 = drawImage(img, i*frameW, 0, frameW, frameH, dx, dy, dw, dh)。指尖锚点约在帧的 (0.30w, 0.16h) 处，把它对齐到目标点即可。"
+}

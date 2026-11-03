@@ -1,0 +1,155 @@
+{
+  "statesExplored": 5651,
+  "allowedTransitions": 5650,
+  "lockedTransitionsRejected": 527,
+  "reachableEndings": 14,
+  "examplePaths": {
+    "ending_loop": [
+      "ep01_choice_01_conditional",
+      "ep01_ad_04_continue",
+      "ending_loop"
+    ],
+    "ending_terrace": [
+      "ep01_choice_01_counterattack",
+      "ep01_ad_03_continue",
+      "ep04_choice_01_counterattack",
+      "ep04_ad_03_continue",
+      "ending_terrace"
+    ],
+    "ending_revenge": [
+      "ep01_choice_01_counterattack",
+      "ep01_ad_03_continue",
+      "ep04_choice_01_truth",
+      "ep04_ad_02_continue",
+      "ep06_choice_01_conditional",
+      "ep06_ad_04_continue",
+      "ep09_choice_01_counterattack",
+      "ep09_ad_03_continue",
+      "ep11_choice_01_counterattack",
+      "ep11_ad_03_continue",
+      "ending_revenge"
+    ],
+    "ending_independent": [
+      "ep01_choice_01_counterattack",
+      "ep01_ad_03_continue",
+      "ep04_choice_01_truth",
+      "ep04_ad_02_continue",
+      "ep06_choice_01_conditional",
+      "ep06_ad_04_continue",
+      "ep09_choice_01_counterattack",
+      "ep09_ad_03_continue",
+      "ep11_choice_01_truth",
+      "ep11_ad_02_continue",
+      "ending_independent"
+    ],
+    "ending_romance": [
+      "ep01_choice_01_counterattack",
+      "ep01_ad_03_continue",
+      "ep04_choice_01_truth",
+      "ep04_ad_02_continue",
+      "ep06_choice_01_conditional",
+      "ep06_ad_04_continue",
+      "ep09_choice_01_counterattack",
+      "ep09_ad_03_continue",
+      "ep11_choice_01_emotion",
+      "ep11_ad_01_continue",
+      "ending_romance"
+    ],
+    "ending_worker": [
+      "ep01_choice_01_counterattack",
+      "ep01_ad_03_continue",
+      "ep04_choice_01_truth",
+      "ep04_ad_02_continue",
+      "ep06_choice_01_conditional",
+      "ep06_ad_04_continue",
+      "ep09_choice_01_truth",
+      "ep09_ad_02_continue",
+      "ep10_choice_01_conditional",
+      "ep10_ad_04_continue",
+      "ending_worker"
+    ],
+    "ending_crane": [
+      "ep01_choice_01_counterattack",
+      "ep01_ad_03_continue",
+      "ep04_choice_01_truth",
+      "ep04_ad_02_continue",
+      "ep06_choice_01_conditional",
+      "ep06_ad_04_continue",
+      "ep09_choice_01_truth",
+      "ep09_ad_02_continue",
+      "ep10_choice_01_counterattack",
+      "ep10_ad_03_continue",
+      "ending_crane"
+    ],
+    "ending_regret": [
+      "ep01_choice_01_counterattack",
+      "ep01_ad_03_continue",
+      "ep04_choice_01_truth",
+      "ep04_ad_02_continue",
+      "ep06_choice_01_conditional",
+      "ep06_ad_04_continue",
+      "ep09_choice_01_truth",
+      "ep09_ad_02_continue",
+      "ep10_choice_01_truth",
+      "ep10_ad_02_continue",
+      "ep11_choice_01_conditional",
+      "ep11_ad_04_continue",
+      "ending_regret"
+    ],
+    "ending_empire": [
+      "ep01_choice_01_counterattack",
+      "ep01_ad_03_continue",
+      "ep04_choice_01_truth",
+      "ep04_ad_02_continue",
+      "ep06_choice_01_counterattack",
+      "ep06_ad_03_continue",
+      "ending_empire"
+    ],
+    "ending_boss": [
+      "ep01_choice_01_counterattack",
+      "ep01_ad_03_continue",
+      "ep04_choice_01_truth",
+      "ep04_ad_02_continue",
+      "ep06_choice_01_truth",
+      "ep06_ad_02_continue",
+      "ep08_choice_01_counterattack",
+      "ep08_ad_03_continue",
+      "ending_boss"
+    ],
+    "ending_future": [
+      "ep01_choice_01_counterattack",
+      "ep01_ad_03_continue",
+      "ep04_choice_01_emotion",
+      "ep04_ad_01_continue",
+      "ep05_choice_01_truth",
+      "ep05_ad_02_continue",
+      "ep07_choice_01_conditional",
+      "ep07_ad_04_continue",
+      "ending_future"
+    ],
+    "ending_cow": [
+      "ep01_choice_01_truth",
+      "ep01_ad_02_continue",
+      "ep03_choice_01_conditional",
+      "ep03_ad_04_continue",
+      "ending_cow"
+    ],
+    "ending_reality_show": [
+      "ep01_choice_01_truth",
+      "ep01_ad_02_continue",
+      "ep03_choice_01_truth",
+      "ep03_ad_02_continue",
+      "ep05_choice_01_conditional",
+      "ep05_ad_04_continue",
+      "ending_reality_show"
+    ],
+    "ending_streamer": [
+      "ep01_choice_01_emotion",
+      "ep01_ad_01_continue",
+      "ep02_choice_01_counterattack",
+      "ep02_ad_03_continue",
+      "ending_streamer"
+    ]
+  },
+  "verified": true
+}

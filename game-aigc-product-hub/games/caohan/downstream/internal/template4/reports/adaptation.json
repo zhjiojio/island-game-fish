@@ -1,0 +1,89 @@
+{
+  "reference": "refer/game-config(4).json",
+  "referenceSha256": "1ad71b6b74b756a8dba6980a859747e88a8b20ad6af583270f5b6b8e12e84971",
+  "sourceConfigSha256": "0f286907e0162adca7d2a873b526f84761b04541d06755b12de4200f71402aef",
+  "runtimeNodes": 78,
+  "uniqueVideos": 69,
+  "endings": [
+    {
+      "nodeId": "ending_loop",
+      "componentType": "endingDialog_he",
+      "retryNodeId": null
+    },
+    {
+      "nodeId": "ending_streamer",
+      "componentType": "endingDialog_he",
+      "retryNodeId": null
+    },
+    {
+      "nodeId": "ending_cow",
+      "componentType": "endingDialog_he",
+      "retryNodeId": null
+    },
+    {
+      "nodeId": "ending_terrace",
+      "componentType": "endingDialog_he",
+      "retryNodeId": null
+    },
+    {
+      "nodeId": "ending_reality_show",
+      "componentType": "endingDialog_he",
+      "retryNodeId": null
+    },
+    {
+      "nodeId": "ending_empire",
+      "componentType": "endingDialog_he",
+      "retryNodeId": null
+    },
+    {
+      "nodeId": "ending_future",
+      "componentType": "endingDialog_he",
+      "retryNodeId": null
+    },
+    {
+      "nodeId": "ending_boss",
+      "componentType": "endingDialog_he",
+      "retryNodeId": null
+    },
+    {
+      "nodeId": "ending_crane",
+      "componentType": "endingDialog_he",
+      "retryNodeId": null
+    },
+    {
+      "nodeId": "ending_romance",
+      "componentType": "endingDialog_he",
+      "retryNodeId": null
+    },
+    {
+      "nodeId": "ending_independent",
+      "componentType": "endingDialog_he",
+      "retryNodeId": null
+    },
+    {
+      "nodeId": "ending_revenge",
+      "componentType": "endingDialog_he",
+      "retryNodeId": null
+    },
+    {
+      "nodeId": "ending_worker",
+      "componentType": "endingDialog_he",
+      "retryNodeId": null
+    },
+    {
+      "nodeId": "ending_regret",
+      "componentType": "endingDialog_be",
+      "retryNodeId": "ep11_scene_00__v2"
+    }
+  ],
+  "initialNodes": [
+    "ep01_scene_00",
+    "ep01_branch_emotion",
+    "ep01_branch_truth",
+    "ep01_branch_counterattack",
+    "ep01_branch_conditional"
+  ],
+  "copyright": "not_provided_blank",
+  "countdown": "not_used_by_source_story",
+  "engineDeviceTest": "not_run"
+}

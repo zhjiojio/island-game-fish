@@ -1,0 +1,90 @@
+[
+  {
+    "partId": "ep01_scene_00_video_01__p01",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/segments/ep01_scene_00_video_01__p01.mp4",
+    "referenceSha256": "40c02ce50b2c6db4cfa5129f63851d77e29ed0d98efeb1c74352beb3bd6d673e",
+    "frameTimeSec": 0.15,
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep01_scene_00_video_01__p01.png",
+    "keyframeSha256": "2384278be204bb9310ac5b4d879633e0179b3d990979b03a4139a7ada12fa183",
+    "status": "approved_for_pilot",
+    "reviewEvidence": "review/pilot-keyframes.jpg",
+    "reviewNote": "人物外观、服装、站位及场景与原片一致；第二帧为坠落中段，样片从此动作继续。"
+  },
+  {
+    "partId": "ep01_branch_emotion_video_01__p01",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/segments/ep01_branch_emotion_video_01__p01.mp4",
+    "referenceSha256": "f4d9c74fc79e28935128ecafc43b47800f66c38e2136565179c674023e51500a",
+    "frameTimeSec": 0.15,
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep01_branch_emotion_video_01__p01.png",
+    "keyframeSha256": "d921f8c772df83f1502f9200a089991b22ed827df6c4ebf98ad99cd75fb1b407",
+    "status": "approved_for_pilot",
+    "reviewEvidence": "review/pilot-keyframes.jpg",
+    "reviewNote": "人物外观、服装、站位及场景与原片一致；第二帧为坠落中段，样片从此动作继续。"
+  },
+  {
+    "partId": "ep03_branch_counterattack_video_01__p01",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/segments/ep03_branch_counterattack_video_01__p01.mp4",
+    "referenceSha256": "d0f158f6706a50c6dfa7bd37853ced680bd6675cfd0259f160b1174a4c2893fd",
+    "frameTimeSec": 0.15,
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep03_branch_counterattack_video_01__p01.png",
+    "keyframeSha256": "b7924079373bf50ee2fa4e2af03a1cf6bde0085ed0f4a9d27a2789d6826f21fc",
+    "status": "approved_for_pilot",
+    "reviewEvidence": "review/pilot-keyframes.jpg",
+    "reviewNote": "人物外观、服装、站位及场景与原片一致；第二帧为坠落中段，样片从此动作继续。"
+  },
+  {
+    "partId": "ep03_branch_counterattack_video_01__p02",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/segments/ep03_branch_counterattack_video_01__p02.mp4",
+    "referenceSha256": "03f5070143c6616d7b8916824a889dc0d6c845c419678ac266a09c26acf87327",
+    "frameTimeSec": 0.15,
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep03_branch_counterattack_video_01__p02.png",
+    "keyframeSha256": "900e07239c0b78d07872c9508ecdbcd5015c243f5f28a3c3d08801bd5d04cd68",
+    "status": "approved_for_pilot",
+    "reviewEvidence": "review/pilot-keyframes.jpg",
+    "reviewNote": "人物外观、服装、站位及场景与原片一致；第二帧为坠落中段，样片从此动作继续。"
+  },
+  {
+    "partId": "ep03_branch_counterattack_video_01__p03",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/segments/ep03_branch_counterattack_video_01__p03.mp4",
+    "referenceSha256": "4d8a6f4196cdd3bce6de22741e5fe09237fbfe243e0070f837ef179ce66321e7",
+    "frameTimeSec": 0.15,
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep03_branch_counterattack_video_01__p03.png",
+    "keyframeSha256": "97fed22f882eba4b17570ce0afb440232b699ad12d9fc4649b7b6c158b8dc5a6",
+    "status": "approved_for_pilot",
+    "reviewEvidence": "review/pilot-keyframes.jpg",
+    "reviewNote": "人物外观、服装、站位及场景与原片一致；第二帧为坠落中段，样片从此动作继续。"
+  },
+  {
+    "partId": "ending_crane__p01",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/segments/ending_crane__p01.mp4",
+    "referenceSha256": "5207648b7c5ba7e19a7553148fe3f0d51f97baa4cef9b63225d65e3d3f54801b",
+    "frameTimeSec": 0.15,
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ending_crane__p01.png",
+    "keyframeSha256": "97755afed03156feb0e1284d1d8c8d79645c0e673b8b81a429d930c59d1b78df",
+    "status": "approved_for_pilot",
+    "reviewEvidence": "review/pilot-keyframes.jpg",
+    "reviewNote": "人物外观、服装、站位及场景与原片一致；第二帧为坠落中段，样片从此动作继续。"
+  },
+  {
+    "partId": "ending_crane__p02",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/segments/ending_crane__p02.mp4",
+    "referenceSha256": "739df79dfd8525379c5b919b7557088da1d4a58758f625349db3f170efe05ede",
+    "frameTimeSec": 0.15,
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ending_crane__p02.png",
+    "keyframeSha256": "21099ffe30a58d74540046b1fc33cdeb9edeccff7c4ba3438d7d828e9c042469",
+    "status": "approved_for_pilot",
+    "reviewEvidence": "review/pilot-keyframes.jpg",
+    "reviewNote": "人物外观、服装、站位及场景与原片一致；第二帧为坠落中段，样片从此动作继续。"
+  },
+  {
+    "partId": "ending_future__p01",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/segments/ending_future__p01.mp4",
+    "referenceSha256": "ef80a9168e343ebbf578765d68fd71af76e53353705b242bf86aac63c1750398",
+    "frameTimeSec": 0.15,
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ending_future__p01.png",
+    "keyframeSha256": "5a88dbb3eb4e69e233af4bae8fb4d8c2ddc79312e3a9edae546a834813765472",
+    "status": "approved_for_pilot",
+    "reviewEvidence": "review/pilot-keyframes.jpg",
+    "reviewNote": "人物外观、服装、站位及场景与原片一致；第二帧为坠落中段，样片从此动作继续。"
+  }
+]

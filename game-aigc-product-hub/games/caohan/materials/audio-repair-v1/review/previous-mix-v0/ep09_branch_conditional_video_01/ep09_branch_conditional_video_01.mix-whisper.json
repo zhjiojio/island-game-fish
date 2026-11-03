@@ -1,0 +1,23 @@
+{
+  "text": "150万",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 0.0,
+      "end": 1.0,
+      "text": "150万",
+      "tokens": [
+        50364,
+        20120,
+        23570,
+        50414
+      ],
+      "temperature": 0,
+      "avg_logprob": -0.8904884338378907,
+      "compression_ratio": 0.42857142857142855,
+      "no_speech_prob": 0.02755969949066639
+    }
+  ],
+  "language": "zh"
+}

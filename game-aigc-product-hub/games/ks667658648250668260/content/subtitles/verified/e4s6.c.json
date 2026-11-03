@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s6.c.mp4",
+  "sha256": "efa4d49ed9bd0dcba0318631e64c920839a7060c48f6e6e0fee1743ab1e84f18",
+  "duration": 10.042,
+  "nodes": [
+    "e4s6"
+  ],
+  "status": "unclear_audio",
+  "transcript": "",
+  "rawText": "你有病啊这呃这这这",
+  "asrChars": [
+    [
+      1.77,
+      1.93,
+      "你"
+    ],
+    [
+      1.93,
+      2.03,
+      "有"
+    ],
+    [
+      2.03,
+      2.21,
+      "病"
+    ],
+    [
+      2.21,
+      2.525,
+      "啊"
+    ],
+    [
+      4.64,
+      4.82,
+      "这"
+    ],
+    [
+      4.82,
+      5.06,
+      "呃"
+    ],
+    [
+      5.38,
+      5.62,
+      "这"
+    ],
+    [
+      5.66,
+      5.86,
+      "这"
+    ],
+    [
+      5.86,
+      6.155,
+      "这"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "",
+  "speakerKey": null,
+  "speakerRuleKey": "e4s6",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration.",
+  "audioReview": {
+    "ranges": [
+      [
+        1.5,
+        6.5
+      ]
+    ],
+    "note": "打斗声背景下无可稳定识别的整句；Whisper 无文本，Paraformer 多次结果不同。暂不叠加猜测对白。"
+  }
+}

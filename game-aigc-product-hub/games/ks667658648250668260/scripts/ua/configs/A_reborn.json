@@ -1,0 +1,43 @@
+{
+  "name": "wq_A_h1_c1_10s_v1",
+  "_desc": "赛道A · 身份逆转 · 主打「穿越开局我能赢」· 量的底盘，审核最安全",
+  "source": "/Users/fat/weihunqi-large-assets/videos/op1.mp4",
+  "width": 1080,
+  "height": 1920,
+  "duration": 10.0,
+  "outdir": "/Users/fat/weihunqi/build-ua",
+
+  "hook": "睁眼回到 1980 荒年",
+
+  "options": [
+    "摸摸脉，搞清自己没死",
+    "先坐起来看四周",
+    "抽自己一巴掌试试痛"
+  ],
+
+  "stats": [
+    ["嫂子好感", 10, [224, 76, 106, 255]],
+    ["村里威望", 50, [212, 160, 58, 255]],
+    ["家里存粮", 20, [127, 176, 105, 255]]
+  ],
+
+  "hit_stat_idx": 1,
+  "hit_delta": "+5",
+  "hit_delta_num": 5,
+  "toast": "村里威望 +5",
+
+  "cta": "第一步，你先干啥？",
+  "cta_sub": "点击进入 · 荒年开局",
+
+  "timeline": {
+    "hook_at": 0.3,
+    "card_in_at": 2.4,
+    "card_stagger": 0.17,
+    "finger_in_at": 4.3,
+    "press_at": 5.4,
+    "release_at": 5.7,
+    "fly_at": 5.75,
+    "cta_at": 7.0,
+    "target_idx": 1
+  }
+}

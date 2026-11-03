@@ -1,0 +1,29 @@
+{
+  "partId": "ending_cow__p01",
+  "sourceSha256": "28086917a70ac43a3e9572e75fbb7faa515fe2c09a308a2519a68d910098c5b2",
+  "model": "google/gemini-2.5-flash",
+  "review": {
+    "transcript": [],
+    "utterances": [],
+    "nonverbal": [
+      {
+        "startSec": 0.0,
+        "endSec": 0.0,
+        "text": "持续的低沉背景音",
+        "audibleVoice": "场外声音",
+        "visibleSpeaker": "无",
+        "mouthSyncEvidence": "无"
+      },
+      {
+        "startSec": 0.0,
+        "endSec": 0.0,
+        "text": "一声类似钟声的响声",
+        "audibleVoice": "场外声音",
+        "visibleSpeaker": "无",
+        "mouthSyncEvidence": "无"
+      }
+    ],
+    "issues": [],
+    "uncertain": []
+  }
+}

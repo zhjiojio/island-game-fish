@@ -1,0 +1,14 @@
+e exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/Users/kwaibear/Documents/AIGCGame/game-aigc-workflow/tools/make_images/__main__.py", line 6, in <module>
+    raise SystemExit(main())
+  File "/Users/kwaibear/Documents/AIGCGame/game-aigc-workflow/tools/make_images/image2.py", line 144, in main
+    content = edit(credentials.image2_url, request_value, credentials.image2_api_key, model)
+  File "/Users/kwaibear/Documents/AIGCGame/game-aigc-workflow/tools/make_images/image2.py", line 116, in edit
+    raise RuntimeError(f"Image2 edit request failed ({exc.code}): {detail[:1000]}") from exc
+RuntimeError: Image2 edit request failed (400): {"error":{"message":"{\"code\":400,\"reason\":\"INVALID_REQUEST_BODY\",\"message\":\"{\\\"error\\\":{\\\"message\\\":\\\"Your request was rejected by the safety system. If you believe this is an error, contact us at Azure support ticket and include the request ID 09a5139b-6cb4-40cd-a83f-622158a5e629. (request id: 7e66b664d72b83b858ad0eda16510d9c)\\\",\\\"type\\\":\\\"image_generation_user_error\\\",\\\"code\\\":\\\"moderation_blocked\\\"}}\",\"metadata\":{\"details\":\"{\\\"error\\\":{\\\"message\\\":\\\"Your request was rejected by the safety system. If you believe this is an error, contact us at Azure support ticket and include the request ID 09a5139b-6cb4-40cd-a83f-622158a5e629. (request id: 7e66b664d72b83b858ad0eda16510d9c)\\\",\\\"type\\\":\\\"image_generation_user_error\\\",\\\"code\\\":\\\"moderation_blocked\\\"}}\",\"trace_id\":\"9c31b66e40c98463e422de96acba024a\"}}\n"},"request_id":"req-xvohgk-1788786010814053110"}

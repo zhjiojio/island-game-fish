@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weihunqi/schema/episode.json",
+  "title": "剧本单集 · EP*.json",
+  "description": "一集剧本 = 一个大字典，key 是节点 id，value 是节点定义",
+  "type": "object",
+  "patternProperties": {
+    "^[a-zA-Z_][a-zA-Z0-9_]*$": { "$ref": "#/$defs/node" }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "node": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "可选：可以省略，key 就是 id" },
+        "ep": { "type": "string", "pattern": "^EP\\d{2}$", "description": "所属集数，如 EP03" },
+        "scene": { "type": "string", "description": "场景标签（自由字符串），如 s5.reaction" },
+        "speaker": { "type": "string", "description": "说话人显示名，如 傲天 / 婉儿 / 说书大爷" },
+        "char": {
+          "type": "string",
+          "enum": ["aotian","wanerh","waner","narrator","system","vendor","zhao","shopwoman","laohan","wangpo","villager","fuzhuren"],
+          "description": "角色 key，必须在 assets.registry.json → chars 里注册"
+        },
+        "text": { "type": "string", "description": "台词/旁白正文" },
+        "next": { "type": "string", "description": "下一个节点 id；choice 类型不写这个字段" },
+        "type": {
+          "type": "string",
+          "enum": ["choice", "end"],
+          "description": "节点类型；不写就是普通剧情节点（text/image/video）"
+        },
+        "options": {
+          "type": "array",
+          "description": "type=choice 时的选项数组",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": { "type": "string", "description": "选项按钮显示文字" },
+              "next":  { "type": "string", "description": "选中后跳转的节点 id" },
+              "icon":  { "type": "string" },
+              "stat":  { "type": "object", "description": "数值奖惩，如 {wei:2, qing:-1, liang:0}" },
+              "ad":    { "type": "boolean", "description": "是否是激励视频选项" },
+              "locked": { "type": "boolean" }
+            },
+            "required": ["label", "next"],
+            "additionalProperties": true
+          }
+        },
+        "media": {
+          "type": "object",
+          "description": "画面素材",
+          "properties": {
+            "kind":  { "type": "string", "enum": ["video", "image"], "description": "video 或 image" },
+            "file":  { "type": "string", "description": "文件路径或 CDN URL；TODO_xxx 会被 assets-check 报错" },
+            "image": { "type": "string" },
+            "mute":  { "type": "boolean", "description": "视频是否静音（kling 默认 true）" }
+          },
+          "additionalProperties": true
+        },
+        "stay": { "type": "boolean", "description": "true = 需手动点继续；false/缺省 = 自动过场" },
+        "forceCaption": { "type": "boolean", "description": "video 上强制显示字幕（narrator+video 必须为 true）" },
+        "stat": { "type": "object", "description": "进入节点时的数值变化（不用选项触发）" },
+        "unlock": { "type": "string", "description": "解锁的成就 id" },
+        "skillcard": { "type": "string", "description": "skillcard id（触发技能卡）" }
+      },
+      "additionalProperties": true
+    }
+  }
+}

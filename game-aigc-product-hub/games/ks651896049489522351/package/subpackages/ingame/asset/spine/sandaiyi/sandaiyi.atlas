@@ -1,0 +1,54 @@
+sandaiyi.png
+size: 282,275
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+3dai1
+  rotate: false
+  xy: 2, 80
+  size: 199, 77
+  orig: 203, 81
+  offset: 2, 2
+  index: -1
+di
+  rotate: false
+  xy: 2, 159
+  size: 278, 114
+  orig: 287, 116
+  offset: 3, 1
+  index: -1
+di2
+  rotate: false
+  xy: 2, 7
+  size: 166, 71
+  orig: 168, 78
+  offset: 1, 6
+  index: -1
+light
+  rotate: false
+  xy: 203, 37
+  size: 53, 120
+  orig: 57, 124
+  offset: 2, 2
+  index: -1
+xing1
+  rotate: true
+  xy: 258, 136
+  size: 21, 22
+  orig: 25, 26
+  offset: 2, 2
+  index: -1
+xing2
+  rotate: false
+  xy: 170, 2
+  size: 35, 33
+  orig: 41, 41
+  offset: 3, 4
+  index: -1
+xing3
+  rotate: false
+  xy: 258, 123
+  size: 11, 11
+  orig: 13, 13
+  offset: 1, 1
+  index: -1

@@ -1,0 +1,13 @@
+{
+  "videoId": "ending_romance",
+  "sourceParts": [
+    "ending_romance__p01",
+    "ending_romance__p02",
+    "ending_romance__p03"
+  ],
+  "result": "visual_pass_audio_transcript_pass",
+  "durationSec": 24.125,
+  "sha256": "420ab186daf942b72e9572144503714a617b5445a7dd49f8da7c8d0b1901fc1e",
+  "note": "全部源片段均通过人工身份、构图与独立转写检查；按原文顺序保留原生音轨。",
+  "finalSamplingNote": "三段合并抽帧确认女主主动选择、陈劲伸手、主动牵手离开；旁白和角色对白已拆分核对。"
+}

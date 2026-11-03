@@ -1,0 +1,8 @@
+{
+  "transcript": "这次我雇的不是保镖，是合伙人。",
+  "utterances": [],
+  "nonverbal": null,
+  "issues": [],
+  "uncertain": "Dedicated STT fallback: speaker identity and nonverbal sounds require separate review.",
+  "provenance": "ending_boss__p01.stt-qwen3-asr-1.7b.json"
+}

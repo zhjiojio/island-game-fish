@@ -1,0 +1,230 @@
+
+王炸.png
+size: 1546,680
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bullet1
+  rotate: true
+  xy: 762, 2
+  size: 24, 23
+  orig: 24, 23
+  offset: 0, 0
+  index: -1
+bullet2
+  rotate: false
+  xy: 955, 7
+  size: 27, 29
+  orig: 27, 29
+  offset: 0, 0
+  index: -1
+bullet3
+  rotate: false
+  xy: 657, 212
+  size: 11, 13
+  orig: 11, 13
+  offset: 0, 0
+  index: -1
+bullet3_2
+  rotate: false
+  xy: 640, 208
+  size: 15, 17
+  orig: 15, 17
+  offset: 0, 0
+  index: -1
+fire1
+  rotate: false
+  xy: 336, 7
+  size: 241, 199
+  orig: 609, 282
+  offset: 184, 19
+  index: -1
+fire2
+  rotate: true
+  xy: 1188, 445
+  size: 175, 242
+  orig: 609, 282
+  offset: 217, 24
+  index: -1
+fire3
+  rotate: true
+  xy: 955, 38
+  size: 187, 231
+  orig: 609, 282
+  offset: 211, 26
+  index: -1
+fire4
+  rotate: false
+  xy: 579, 8
+  size: 181, 198
+  orig: 609, 282
+  offset: 214, 26
+  index: -1
+fire5
+  rotate: false
+  xy: 1188, 4
+  size: 173, 184
+  orig: 609, 282
+  offset: 223, 26
+  index: -1
+fire6
+  rotate: true
+  xy: 762, 28
+  size: 197, 191
+  orig: 609, 282
+  offset: 211, 27
+  index: -1
+images/ks_00000
+  rotate: false
+  xy: 1188, 197
+  size: 59, 38
+  orig: 160, 90
+  offset: 51, 22
+  index: -1
+images/ks_00001
+  rotate: true
+  xy: 1014, 236
+  size: 104, 70
+  orig: 160, 90
+  offset: 28, 13
+  index: -1
+images/ks_00002
+  rotate: true
+  xy: 1103, 379
+  size: 133, 81
+  orig: 160, 90
+  offset: 14, 7
+  index: -1
+images/ks_00003
+  rotate: false
+  xy: 1014, 594
+  size: 158, 84
+  orig: 160, 90
+  offset: 2, 3
+  index: -1
+images/ks_00004
+  rotate: true
+  xy: 1014, 357
+  size: 155, 87
+  orig: 160, 90
+  offset: 2, 3
+  index: -1
+images/ks_00005
+  rotate: false
+  xy: 1272, 270
+  size: 157, 83
+  orig: 160, 90
+  offset: 0, 0
+  index: -1
+images/ks_00006
+  rotate: true
+  xy: 1431, 190
+  size: 150, 78
+  orig: 160, 90
+  offset: 4, 6
+  index: -1
+images/ks_00007
+  rotate: false
+  xy: 1363, 111
+  size: 152, 77
+  orig: 160, 90
+  offset: 4, 4
+  index: -1
+images/ks_00008
+  rotate: false
+  xy: 1014, 514
+  size: 157, 78
+  orig: 160, 90
+  offset: 2, 1
+  index: -1
+images/ks_00009
+  rotate: false
+  xy: 1363, 35
+  size: 148, 74
+  orig: 160, 90
+  offset: 9, 4
+  index: -1
+light1
+  rotate: true
+  xy: 969, 242
+  size: 378, 43
+  orig: 609, 282
+  offset: 115, 119
+  index: -1
+new/ball
+  rotate: false
+  xy: 1432, 342
+  size: 106, 94
+  orig: 114, 98
+  offset: 6, 2
+  index: -1
+new/ball2
+  rotate: true
+  xy: 336, 208
+  size: 470, 302
+  orig: 490, 313
+  offset: 10, 11
+  index: -1
+new/circle light
+  rotate: false
+  xy: 1188, 355
+  size: 242, 88
+  orig: 248, 91
+  offset: 3, 1
+  index: -1
+new/fire33
+  rotate: true
+  xy: 2, 13
+  size: 665, 332
+  orig: 665, 332
+  offset: 0, 0
+  index: -1
+new/light
+  rotate: true
+  xy: 1188, 622
+  size: 56, 348
+  orig: 58, 348
+  offset: 1, 0
+  index: -1
+new/rocket
+  rotate: false
+  xy: 1432, 438
+  size: 112, 182
+  orig: 112, 182
+  offset: 0, 0
+  index: -1
+new/white ground
+  rotate: false
+  xy: 1086, 237
+  size: 184, 103
+  orig: 184, 103
+  offset: 0, 0
+  index: -1
+new/white light
+  rotate: true
+  xy: 640, 227
+  size: 451, 327
+  orig: 454, 332
+  offset: 2, 2
+  index: -1
+part
+  rotate: true
+  xy: 787, 4
+  size: 22, 33
+  orig: 24, 36
+  offset: 1, 2
+  index: -1
+particle
+  rotate: false
+  xy: 2, 6
+  size: 5, 5
+  orig: 5, 5
+  offset: 0, 0
+  index: -1
+txt
+  rotate: false
+  xy: 1272, 190
+  size: 134, 78
+  orig: 609, 282
+  offset: 238, 102
+  index: -1

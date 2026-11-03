@@ -1,0 +1,28 @@
+{
+  "videoId": "ep08_branch_truth_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep08_branch_truth_video_01__l01",
+      "speaker": "周伯",
+      "text": "小伙子……我说话直，你别介意。",
+      "heard": "小伙子我说话直你别介意",
+      "start": 16.415,
+      "end": 20.005,
+      "alignmentScore": 1.0
+    }
+  ],
+  "newVoice": [
+    {
+      "lineId": "ep08_branch_truth_video_01__l02",
+      "speaker": "画外叙述者",
+      "kind": "narration",
+      "text": "那样的反应和身手，绝不是普通工人该有的。",
+      "audioFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/audio/ep08_branch_truth_video_01__l02.mp3",
+      "start": 0.4,
+      "end": 4.7
+    }
+  ],
+  "durationSec": 20.085260770975058,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.587371826171875
+}

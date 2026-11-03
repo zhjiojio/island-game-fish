@@ -1,0 +1,10 @@
+{
+  "node": "e2s2",
+  "speakerKey": "narrator",
+  "speakerName": "旁白",
+  "asrText": "1980 年的县城——熙熙攘攘都是苦命人。他站在街口，抬眼看着满街幌子和挤挤攘攘的乡亲。这一趟，赢的是钱，输的是命。",
+  "asrTextRaw": "",
+  "matchScript": true,
+  "textSource": "script-authoritative (v82.0重生成全库视频后，旧ASR已失效，以剧本text为权威)",
+  "cues": 4
+}

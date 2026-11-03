@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4_escape_bridge_v83.mp4",
+  "sha256": "10a820d7e551eac4d32faa5c0c63eb04ce62ccda9a4656d73db0c3b8aaa9e42d",
+  "duration": 10.042,
+  "nodes": [
+    "e4_escape_bridge"
+  ],
+  "status": "speech",
+  "transcript": "你拉着婉儿翻过两道土堤，衣角还在滴血。她把你按坐在炕沿上。",
+  "rawText": "你拉着婉儿翻过两道土堤衣角还在滴血他把你按坐在炕沿上",
+  "asrChars": [
+    [
+      1.9,
+      2.12,
+      "你"
+    ],
+    [
+      2.12,
+      2.32,
+      "拉"
+    ],
+    [
+      2.32,
+      2.46,
+      "着"
+    ],
+    [
+      2.46,
+      2.62,
+      "婉"
+    ],
+    [
+      2.62,
+      2.86,
+      "儿"
+    ],
+    [
+      3.0,
+      3.22,
+      "翻"
+    ],
+    [
+      3.22,
+      3.42,
+      "过"
+    ],
+    [
+      3.42,
+      3.56,
+      "两"
+    ],
+    [
+      3.56,
+      3.76,
+      "道"
+    ],
+    [
+      3.76,
+      3.98,
+      "土"
+    ],
+    [
+      3.98,
+      4.22,
+      "堤"
+    ],
+    [
+      5.42,
+      5.66,
+      "衣"
+    ],
+    [
+      5.72,
+      5.92,
+      "角"
+    ],
+    [
+      5.92,
+      6.06,
+      "还"
+    ],
+    [
+      6.06,
+      6.26,
+      "在"
+    ],
+    [
+      6.26,
+      6.48,
+      "滴"
+    ],
+    [
+      6.48,
+      6.72,
+      "血"
+    ],
+    [
+      7.92,
+      8.16,
+      "他"
+    ],
+    [
+      8.18,
+      8.34,
+      "把"
+    ],
+    [
+      8.34,
+      8.46,
+      "你"
+    ],
+    [
+      8.46,
+      8.68,
+      "按"
+    ],
+    [
+      8.68,
+      8.86,
+      "坐"
+    ],
+    [
+      8.86,
+      9.04,
+      "在"
+    ],
+    [
+      9.04,
+      9.22,
+      "炕"
+    ],
+    [
+      9.22,
+      9.46,
+      "沿"
+    ],
+    [
+      9.46,
+      9.784,
+      "上"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "你拉着婉儿翻过两道土地,一脚还在低血。她把你按坐在抗炎上。",
+  "speakerKey": null,
+  "speakerRuleKey": "e4_escape_bridge",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

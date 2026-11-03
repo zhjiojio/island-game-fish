@@ -1,0 +1,17 @@
+{
+  "videoId": "ep02_scene_00_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep02_scene_00_video_01__l01",
+      "speaker": "贺星冉",
+      "text": "咳咳咳！",
+      "start": 4.7,
+      "end": 7.041667,
+      "confidence": "manual_cough_window"
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 7.035646258503402,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.38739013671875
+}

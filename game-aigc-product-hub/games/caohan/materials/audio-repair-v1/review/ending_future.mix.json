@@ -1,0 +1,27 @@
+{
+  "videoId": "ending_future",
+  "voiceWindows": [],
+  "newVoice": [
+    {
+      "lineId": "ending_future__l01",
+      "speaker": "画外叙述者",
+      "kind": "narration",
+      "text": "原来，陈劲来自未来。",
+      "audioFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/audio/ending_future__l01.mp3",
+      "start": 0.4,
+      "end": 3.3
+    },
+    {
+      "lineId": "ending_future__l02",
+      "speaker": "画外叙述者",
+      "kind": "narration",
+      "text": "派他回来救她的，正是未来的她自己。",
+      "audioFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/audio/ending_future__l02.mp3",
+      "start": 9.442,
+      "end": 13.342
+    }
+  ],
+  "durationSec": 18.088344671201813,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.5614166259765625
+}

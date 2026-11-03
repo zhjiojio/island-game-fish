@@ -1,0 +1,18 @@
+{
+  "transcript": "回家吧。好。",
+  "utterances": [
+    {
+      "speaker": "male",
+      "text": "回家吧。"
+    },
+    {
+      "speaker": "female",
+      "text": "好。"
+    }
+  ],
+  "nonverbal": {
+    "sound events": []
+  },
+  "issues": null,
+  "uncertain": null
+}

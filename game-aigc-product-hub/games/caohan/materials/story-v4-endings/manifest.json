@@ -1,0 +1,251 @@
+{
+  "updatedAt": "2026-09-07T04:32:24.686444+00:00",
+  "sourceSha256": "77cee12ed8c5f8a99e49c6ec00ef31136fa64c03eb09995732b91220ca491ec7",
+  "endingCount": 14,
+  "assembledCount": 14,
+  "videos": [
+    {
+      "videoId": "ending_loop",
+      "endingId": "ending_loop",
+      "title": "隐藏结局：无限逃婚",
+      "category": "secret",
+      "description": "女主每次结婚都会回到露台，只有找到真正的时间锚点才能离开。",
+      "closing": "许邵泽再次说出分手吧，她却提前接住了那只牛奶杯。",
+      "path": "video/ending_loop.mp4",
+      "parts": [
+        "ending_loop__p01",
+        "ending_loop__p02"
+      ],
+      "status": "visual_pass_audio_transcript_pass",
+      "sha256": "193159c8dc74aced7fb38ec80a7016a34f20b3daf3e3ce22f43285691ad9d985",
+      "durationSec": 21.083991,
+      "bytes": 5128513
+    },
+    {
+      "videoId": "ending_streamer",
+      "endingId": "ending_streamer",
+      "title": "荒诞结局：反渣直播一姐",
+      "category": "absurd",
+      "description": "牛奶杯证据意外直播曝光，她转行连麦鉴渣。",
+      "closing": "榜一大哥陈劲只发了一条弹幕：下播，吃饭。",
+      "path": "video/ending_streamer.mp4",
+      "parts": [
+        "ending_streamer__p01",
+        "ending_streamer__p02"
+      ],
+      "status": "visual_pass_audio_transcript_pass",
+      "sha256": "41c574263f1600a7dbf541b8858f4c9c2cb1ab398889ef2d50130cf0a184b6f3",
+      "durationSec": 16.083333,
+      "bytes": 3838441
+    },
+    {
+      "videoId": "ending_cow",
+      "endingId": "ending_cow",
+      "title": "荒诞结局：奶牛真相",
+      "category": "absurd",
+      "description": "所有阴谋线索最终都指向第一集那杯牛奶。",
+      "closing": "镜头切向牧场，一头奶牛意味深长地看向观众。",
+      "path": "video/ending_cow.mp4",
+      "parts": [
+        "ending_cow__p01",
+        "ending_cow__p02"
+      ],
+      "status": "visual_pass_audio_transcript_pass",
+      "sha256": "d482b7abaf55cd0cb99dfebb558b3cdf8fc8d4963464f312ef2b5846b69ed618",
+      "durationSec": 16.083333,
+      "bytes": 5416174
+    },
+    {
+      "videoId": "ending_terrace",
+      "endingId": "ending_terrace",
+      "title": "反转结局：露台回旋镖",
+      "category": "reversal",
+      "description": "许邵泽再次站上露台，一步步被自己的谎言逼到断裂栏杆边。",
+      "closing": "贺星冉没有动手。镜头一转，掉下去的是他。",
+      "path": "video/ending_terrace.mp4",
+      "parts": [
+        "ending_terrace__p01",
+        "ending_terrace__p02"
+      ],
+      "status": "visual_pass_audio_transcript_pass",
+      "sha256": "b2dfeef14302a54f16f6a914c9915e0bad12fdae25954bd55442758dd1518d58",
+      "durationSec": 17.083333,
+      "bytes": 3932840
+    },
+    {
+      "videoId": "ending_reality_show",
+      "endingId": "ending_reality_show",
+      "title": "荒诞结局：全员恋综",
+      "category": "absurd",
+      "description": "所有人被送进恋爱综艺，婚约改由观众投票。",
+      "closing": "最高票选项是：让女主独自出道。",
+      "path": "video/ending_reality_show.mp4",
+      "parts": [
+        "ending_reality_show__p01",
+        "ending_reality_show__p02"
+      ],
+      "status": "visual_pass_audio_transcript_pass",
+      "sha256": "300f6419963931ca0fb3ea2e8f09ba9448b0b2bc7d09dfac54b61d76b1923636",
+      "durationSec": 16.083333,
+      "bytes": 3650652
+    },
+    {
+      "videoId": "ending_empire",
+      "endingId": "ending_empire",
+      "title": "隐藏结局：一个全都要",
+      "category": "secret",
+      "description": "她拒绝爱情，收购许家、工地和婚庆公司，垄断逃婚产业链。",
+      "closing": "上市敲钟那天，她的公司代码是 RUNAWAY。",
+      "path": "video/ending_empire.mp4",
+      "parts": [
+        "ending_empire__p01",
+        "ending_empire__p02"
+      ],
+      "status": "visual_pass_audio_transcript_pass",
+      "sha256": "7d3f3e9de1127ff6a4c5872f2e01b77c382c654f40c0e1ebd6b212b70cc4980a",
+      "durationSec": 16.083333,
+      "bytes": 6340664
+    },
+    {
+      "videoId": "ending_future",
+      "endingId": "ending_future",
+      "title": "反转结局：陈劲是未来人",
+      "category": "reversal",
+      "description": "陈劲是未来的贺星冉花千万派回来拯救自己的。",
+      "closing": "他的旧手机亮起，付款人姓名只有两个字：星冉。",
+      "path": "video/ending_future.mp4",
+      "parts": [
+        "ending_future__p01",
+        "ending_future__p02"
+      ],
+      "status": "visual_pass_audio_transcript_pass",
+      "sha256": "7ecaa8093f7d1b2ca31a3e647215435385e96a31007ed4dd5dacb19275919135",
+      "durationSec": 18.083333,
+      "bytes": 3952410
+    },
+    {
+      "videoId": "ending_boss",
+      "endingId": "ending_boss",
+      "title": "反转结局：包工头女王",
+      "category": "reversal",
+      "description": "贺星冉买下整个工地，陈劲成了她的项目经理。",
+      "closing": "她戴上安全帽宣布：这次我雇的不是保镖，是合伙人。",
+      "path": "video/ending_boss.mp4",
+      "parts": [
+        "ending_boss__p01",
+        "ending_boss__p02"
+      ],
+      "status": "visual_pass_audio_transcript_pass",
+      "sha256": "d5247da895e4ece0977568042dd3b91d959fdce685b0cba78536047aeea8cb38",
+      "durationSec": 18.083333,
+      "bytes": 6387192
+    },
+    {
+      "videoId": "ending_crane",
+      "endingId": "ending_crane",
+      "title": "荒诞结局：塔吊婚礼",
+      "category": "absurd",
+      "description": "两人把婚礼办在塔吊顶端，全城工地同时鸣笛。",
+      "closing": "司仪问谁反对，三十台挖掘机一起按响喇叭。",
+      "path": "video/ending_crane.mp4",
+      "parts": [
+        "ending_crane__p01",
+        "ending_crane__p02"
+      ],
+      "status": "visual_pass_audio_transcript_pass",
+      "sha256": "8e8009793b636fe97c4816314619b64bdfff60a9ba3cc31b429d0b3eb5ff50bd",
+      "durationSec": 16.083333,
+      "bytes": 5287782
+    },
+    {
+      "videoId": "ending_worker",
+      "endingId": "ending_worker",
+      "title": "反转结局：反派转职",
+      "category": "reversal",
+      "description": "许邵泽破产后进入陈劲的工地搬砖。",
+      "closing": "三年后，他捧回了安全生产标兵的奖状。",
+      "path": "video/ending_worker.mp4",
+      "parts": [
+        "ending_worker__p01",
+        "ending_worker__p02"
+      ],
+      "status": "visual_pass_audio_transcript_pass",
+      "sha256": "0a1b5dd5ae783187c5f494d19855f11bfe446613f87dfc31a5605d00e68fcb26",
+      "durationSec": 18.083333,
+      "bytes": 4697690
+    },
+    {
+      "videoId": "ending_romance",
+      "endingId": "ending_romance",
+      "title": "正式结局：被接住之后",
+      "category": "romance",
+      "description": "贺星冉在清醒中选择了陈劲，但不再把自己交给任何人。",
+      "closing": "陈劲伸出手：回家吧。这次她自己决定回哪个家。",
+      "path": "video/ending_romance.mp4",
+      "parts": [
+        "ending_romance__p01",
+        "ending_romance__p02",
+        "ending_romance__p03"
+      ],
+      "status": "visual_pass_audio_transcript_pass",
+      "sha256": "420ab186daf942b72e9572144503714a617b5445a7dd49f8da7c8d0b1901fc1e",
+      "durationSec": 24.125,
+      "bytes": 7682042
+    },
+    {
+      "videoId": "ending_independent",
+      "endingId": "ending_independent",
+      "title": "正式结局：自己的方向",
+      "category": "independent",
+      "description": "她拒绝旧婚约，也拒绝立刻给新关系命名。",
+      "closing": "车钥匙握在自己手里，路终于由她决定。",
+      "path": "video/ending_independent.mp4",
+      "parts": [
+        "ending_independent__p01",
+        "ending_independent__p02"
+      ],
+      "status": "visual_pass_audio_transcript_pass",
+      "sha256": "ceb3cf17127b86e4707c2db292a726f2270e2acfd66750d80b99357389f51a84",
+      "durationSec": 16.083333,
+      "bytes": 3424488
+    },
+    {
+      "videoId": "ending_revenge",
+      "endingId": "ending_revenge",
+      "title": "正式结局：许家覆灭",
+      "category": "revenge",
+      "description": "完整证据链公开，许家精心维持的体面一夜崩塌。",
+      "closing": "她没有推任何人下楼，只把真相推到了所有人面前。",
+      "path": "video/ending_revenge.mp4",
+      "parts": [
+        "ending_revenge__p01",
+        "ending_revenge__p02"
+      ],
+      "status": "visual_pass_audio_transcript_pass",
+      "sha256": "fa4dd99b2bb50e3a2b57118a3a09bac9b70eacd9c4e84fd1a78c1d30133a8b81",
+      "durationSec": 16.083333,
+      "bytes": 5238279
+    },
+    {
+      "videoId": "ending_regret",
+      "endingId": "ending_regret",
+      "title": "正式结局：错过的那只手",
+      "category": "bad",
+      "description": "她赢下了清算，却在最后一次选择里松开陈劲的手。",
+      "closing": "工地燈火逐盏熄灭，那句没说出口的留下吧成了遗憾。",
+      "path": "video/ending_regret.mp4",
+      "parts": [
+        "ending_regret__p01",
+        "ending_regret__p03",
+        "ending_regret__p02"
+      ],
+      "status": "visual_pass_audio_transcript_pass",
+      "sha256": "af3dd175a3210e48b449b7aac65b1d28ef7c2840e14c0c8bf22cc390e4bfa2a1",
+      "durationSec": 22.291667,
+      "bytes": 5815766
+    }
+  ],
+  "deliveryVerified": true,
+  "verifiedCount": 14,
+  "nativeAudioVolumeMaxDifferenceDb": 0.1
+}

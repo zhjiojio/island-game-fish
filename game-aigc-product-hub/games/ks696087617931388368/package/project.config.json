@@ -1,0 +1,9 @@
+{
+	"description": "快手小游戏项目配置文件",
+	"projectname": "快手小游戏",
+	"appid": "ks696087617931388368",
+	"setting": {
+		"es6": false
+	},
+	"engine_type": "frog"
+}

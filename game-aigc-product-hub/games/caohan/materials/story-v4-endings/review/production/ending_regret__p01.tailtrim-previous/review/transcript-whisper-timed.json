@@ -1,0 +1,97 @@
+{
+  "text": "他迎下了青蒜别这",
+  "segments": [
+    {
+      "id": 0,
+      "seek": 0,
+      "start": 2.48,
+      "end": 4.1,
+      "text": "他迎下了青蒜",
+      "tokens": [
+        50364,
+        5000,
+        17699,
+        4438,
+        2289,
+        37462,
+        42356,
+        250,
+        50460
+      ],
+      "temperature": 0,
+      "avg_logprob": -1.0567782946995325,
+      "compression_ratio": 0.6857142857142857,
+      "no_speech_prob": 0.5671983361244202,
+      "words": [
+        {
+          "word": "他",
+          "start": 2.48,
+          "end": 2.98,
+          "probability": 0.5567258596420288
+        },
+        {
+          "word": "迎",
+          "start": 2.98,
+          "end": 3.28,
+          "probability": 0.4971230924129486
+        },
+        {
+          "word": "下",
+          "start": 3.28,
+          "end": 3.5,
+          "probability": 0.9399852752685547
+        },
+        {
+          "word": "了",
+          "start": 3.5,
+          "end": 3.62,
+          "probability": 0.9962345957756042
+        },
+        {
+          "word": "青",
+          "start": 3.62,
+          "end": 3.82,
+          "probability": 0.6275408267974854
+        },
+        {
+          "word": "蒜",
+          "start": 3.82,
+          "end": 4.1,
+          "probability": 0.5076218694448471
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "seek": 0,
+      "start": 4.1,
+      "end": 5.0,
+      "text": "别这",
+      "tokens": [
+        50460,
+        18453,
+        5562,
+        50512
+      ],
+      "temperature": 0,
+      "avg_logprob": -1.0567782946995325,
+      "compression_ratio": 0.6857142857142857,
+      "no_speech_prob": 0.5671983361244202,
+      "words": [
+        {
+          "word": "别",
+          "start": 4.1,
+          "end": 4.86,
+          "probability": 0.4187472462654114
+        },
+        {
+          "word": "这",
+          "start": 4.86,
+          "end": 5.0,
+          "probability": 0.1705956757068634
+        }
+      ]
+    }
+  ],
+  "language": "zh"
+}

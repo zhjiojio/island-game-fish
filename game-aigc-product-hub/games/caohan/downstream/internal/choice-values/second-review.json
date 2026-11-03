@@ -1,0 +1,26 @@
+{
+  "status": "configuration_passed_runtime_pending",
+  "definitionCount": 3,
+  "uniqueOptions": 44,
+  "clickableComponents": 71,
+  "lockedComponentsWithoutValues": 9,
+  "templateFieldPaths": "passed",
+  "graphMediaAndScoresUnchanged": "passed",
+  "configUpdatedAtRefreshed": true,
+  "conditionalReplayRiskWithoutEngineRollback": {
+    "ending": "ending_regret",
+    "returnNode": "ep11_scene_00__v2",
+    "repeatedIncrement": {
+      "favor": 0,
+      "wisdom": 1,
+      "courage": 0
+    }
+  },
+  "engineChecksRequired": [
+    "广告奖励成功才结算；失败/取消不结算",
+    "本轮同选择去重；重选先撤销旧增量",
+    "初始0/允许负数/存档恢复/重开归零",
+    "三项default图标路径由工程包提供"
+  ],
+  "engineOrDeviceRun": "not_run"
+}

@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e5s7.mp4",
+  "sha256": "d406d63d912fcd6869fe03e4ce67cda0de5932b2c0876f91cb85d067bf328249",
+  "duration": 10.042,
+  "nodes": [
+    "e5s7"
+  ],
+  "status": "speech",
+  "transcript": "听清了，再进李家沟一步，我剥了你皮！",
+  "rawText": "听清了再进李家沟一步我剥了你皮",
+  "asrChars": [
+    [
+      3.8,
+      4.04,
+      "听"
+    ],
+    [
+      4.08,
+      4.32,
+      "清"
+    ],
+    [
+      4.38,
+      4.62,
+      "了"
+    ],
+    [
+      5.78,
+      6.02,
+      "再"
+    ],
+    [
+      6.1,
+      6.3,
+      "进"
+    ],
+    [
+      6.3,
+      6.52,
+      "李"
+    ],
+    [
+      6.52,
+      6.64,
+      "家"
+    ],
+    [
+      6.64,
+      6.88,
+      "沟"
+    ],
+    [
+      6.88,
+      7.04,
+      "一"
+    ],
+    [
+      7.04,
+      7.28,
+      "步"
+    ],
+    [
+      8.2,
+      8.44,
+      "我"
+    ],
+    [
+      8.48,
+      8.7,
+      "剥"
+    ],
+    [
+      8.7,
+      8.88,
+      "了"
+    ],
+    [
+      8.88,
+      9.0,
+      "你"
+    ],
+    [
+      9.0,
+      9.535,
+      "皮"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "听清了。再进李家沟一步,我剥了你皮!",
+  "speakerKey": null,
+  "speakerRuleKey": "e5s7",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

@@ -1,0 +1,18 @@
+{
+  "videoId": "ep08_branch_emotion_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep08_branch_emotion_video_01__l01",
+      "speaker": "周伯",
+      "text": "小伙子，你当保镖当几年了？以前在哪干的？",
+      "heard": "小伙子你当保镖当几年了以前在哪干的",
+      "start": 13.895,
+      "end": 18.065,
+      "alignmentScore": 1.0
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 18.088344671201813,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.466217041015625
+}

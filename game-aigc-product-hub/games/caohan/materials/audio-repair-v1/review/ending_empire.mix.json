@@ -1,0 +1,27 @@
+{
+  "videoId": "ending_empire",
+  "voiceWindows": [],
+  "newVoice": [
+    {
+      "lineId": "ending_empire__l01",
+      "speaker": "画外叙述者",
+      "kind": "narration",
+      "text": "她收购了许家、工地和婚庆公司。",
+      "audioFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/audio/ending_empire__l01.mp3",
+      "start": 0.4,
+      "end": 4.0
+    },
+    {
+      "lineId": "ending_empire__l02",
+      "speaker": "画外叙述者",
+      "kind": "narration",
+      "text": "这一次，逃婚也成了她的生意。",
+      "audioFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/audio/ending_empire__l02.mp3",
+      "start": 8.442,
+      "end": 11.842
+    }
+  ],
+  "durationSec": 16.091428571428573,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.5803070068359375
+}

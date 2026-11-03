@@ -1,0 +1,10 @@
+{
+  "node": "e9s2",
+  "speakerKey": "narrator",
+  "speakerName": "旁白",
+  "asrText": "分粮的队排到了村口。往年这时候，一家能领半瓢就算走运。今年，他们今天，能领一整袋",
+  "asrTextRaw": "分粮的队排到了村口 往年这时候 一家能领半嫖就算走运 今年他们今天能领一整袋",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 4
+}

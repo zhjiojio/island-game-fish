@@ -1,0 +1,6694 @@
+{
+  "version": "2026.08.26.1518",
+  "publishedAt": "2026-08-26T07:18:39.818Z",
+  "themes": [
+    {
+      "id": 1,
+      "subject": "重回 80 年代",
+      "short": "重回 80 年代",
+      "full": "AIGC 找茬 · 五关递增",
+      "mode": "hidden",
+      "cover": "assets/scenes/covers/scene1.jpg",
+      "cover_full": "assets/scenes/covers/scene1.jpg",
+      "unlocked": true,
+      "stars": 2,
+      "adReq": 0,
+      "tapeLabel": "热门",
+      "tapeColor": "#f26a3b",
+      "tapeColor2": "#ff9350"
+    },
+    {
+      "id": 2,
+      "subject": "老铁眼最尖",
+      "short": "老铁眼最尖",
+      "full": "找不同 · 原图 vs AI 合成图",
+      "mode": "spot",
+      "cover": "assets/scenes/covers/scene2.jpg",
+      "cover_full": "assets/scenes/covers/scene2.jpg",
+      "unlocked": false,
+      "unlockBy": "share",
+      "stars": 3,
+      "adReq": 0,
+      "tapeLabel": "难度升级",
+      "tapeColor": "#c22b4e",
+      "tapeColor2": "#f45478"
+    },
+    {
+      "id": 4,
+      "subject": "寻找隐藏物",
+      "short": "寻找隐藏物",
+      "full": "工笔画寻物 · 打工人解压新神器",
+      "mode": "hunt",
+      "cover": "assets/scenes/covers/scene4.jpg",
+      "cover_full": "assets/scenes/covers/scene4.jpg",
+      "unlocked": false,
+      "unlockBy": "rewardedAd",
+      "dailyUnlock": true,
+      "stars": 2,
+      "adReq": 0,
+      "tapeLabel": "上新",
+      "tapeColor": "#2f7a5a",
+      "tapeColor2": "#4fb587"
+    },
+    {
+      "id": 3,
+      "subject": "帅哥靓男",
+      "short": "帅哥靓男",
+      "full": "高颜值找茬 · 敬请期待",
+      "mode": "hunt",
+      "cover": "assets/scenes/covers/scene3.jpg",
+      "cover_full": "assets/scenes/covers/scene3.jpg",
+      "unlocked": false,
+      "unlockBy": "comingsoon",
+      "comingsoon": true,
+      "stars": 3,
+      "adReq": 0,
+      "tapeLabel": "敬请期待",
+      "tapeColor": "#7a4fb5",
+      "tapeColor2": "#b587e0"
+    },
+    {
+      "id": 5,
+      "subject": "吃瓜现场",
+      "short": "吃瓜现场",
+      "full": "找线索 · 揭真相 · 大反转",
+      "mode": "story",
+      "storyRules": {
+        "timeScale": 1,
+        "hitScale": 1,
+        "penalty": 2,
+        "bonus": 0,
+        "label": "剧情"
+      },
+      "storyIntro": {
+        "style": "affair-dossier",
+        "templateAsset": "assets/ui/theme5-brief-lv1.png",
+        "sectionTitle": "本关调查方向",
+        "buttonText": "开始找线索"
+      },
+      "cover": "assets/scenes/covers/scene5.jpg",
+      "cover_full": "assets/scenes/covers/scene5.jpg",
+      "unlocked": false,
+      "unlockBy": "rewardedAd",
+      "dailyUnlock": true,
+      "stars": 2,
+      "adReq": 0,
+      "tapeLabel": "上新",
+      "tapeColor": "#e6476a",
+      "tapeColor2": "#ff7a99"
+    }
+  ],
+  "levels": [
+    {
+      "idx": 0,
+      "themeId": 1,
+      "title": "第1关 · 姥姥堂屋",
+      "scene": "assets/scenes/hidden/lv1.jpg",
+      "duration": 20,
+      "hint": "找出 1 个不属于这个年代的穿越物",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 3,
+        "bonus": 2,
+        "label": "教学",
+        "key": "easy"
+      },
+      "odds": [
+        {
+          "prop": "robot",
+          "x": 65,
+          "y": 78,
+          "w": 30,
+          "h": 18
+        }
+      ]
+    },
+    {
+      "idx": 1,
+      "themeId": 1,
+      "title": "第2关 · 老澡堂",
+      "scene": "assets/scenes/hidden/lv2.jpg",
+      "duration": 22,
+      "hint": "穿越物藏在毛巾堆里，仔细找 1 个",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 3,
+        "bonus": 2,
+        "label": "简单",
+        "key": "easy"
+      },
+      "odds": [
+        {
+          "prop": "vr",
+          "x": 59.4,
+          "y": 32.3,
+          "w": 30.9,
+          "h": 15.5
+        }
+      ]
+    },
+    {
+      "idx": 2,
+      "themeId": 1,
+      "title": "第3关 · 老炕新客",
+      "scene": "assets/scenes/hidden/lv6.jpg",
+      "duration": 26,
+      "hint": "现代妹身上藏了 3 个穿越物",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 4,
+        "bonus": 2,
+        "label": "困难",
+        "key": "hard"
+      },
+      "odds": [
+        {
+          "prop": "iphone",
+          "x": 19.8,
+          "y": 22.5,
+          "w": 12.5,
+          "h": 11.3
+        },
+        {
+          "prop": "airpods",
+          "x": 39.7,
+          "y": 31.2,
+          "w": 8.3,
+          "h": 7.5
+        },
+        {
+          "prop": "starbucks",
+          "x": 87,
+          "y": 58.1,
+          "w": 11.3,
+          "h": 16.9
+        }
+      ]
+    },
+    {
+      "idx": 3,
+      "themeId": 1,
+      "title": "第4关 · 烧烤摊",
+      "scene": "assets/scenes/hidden/lv4.jpg",
+      "duration": 28,
+      "hint": "3 个穿越物混在乱糟糟的摊子里",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 4,
+        "bonus": 2,
+        "label": "进阶",
+        "key": "normal"
+      },
+      "odds": [
+        {
+          "prop": "hover",
+          "x": 48.1,
+          "y": 37.1,
+          "w": 19.2,
+          "h": 16
+        },
+        {
+          "prop": "proj",
+          "x": 67.7,
+          "y": 47.9,
+          "w": 24.4,
+          "h": 7.5
+        },
+        {
+          "prop": "robot",
+          "x": 55.5,
+          "y": 81.5,
+          "w": 24.4,
+          "h": 12.7
+        }
+      ]
+    },
+    {
+      "idx": 4,
+      "themeId": 1,
+      "title": "第5关 · 麻将馆",
+      "scene": "assets/scenes/hidden/lv3.jpg",
+      "duration": 28,
+      "hint": "有 2 个穿越物",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 3,
+        "bonus": 2,
+        "label": "简单+",
+        "key": "easy"
+      },
+      "odds": [
+        {
+          "prop": "drone",
+          "x": 71.4,
+          "y": 1,
+          "w": 24.8,
+          "h": 8.2
+        },
+        {
+          "prop": "echo",
+          "x": 52.9,
+          "y": 18.6,
+          "w": 13.7,
+          "h": 13.3
+        }
+      ]
+    },
+    {
+      "idx": 5,
+      "themeId": 1,
+      "title": "第6关 · 绿皮火车",
+      "scene": "assets/scenes/hidden/lv14.jpg",
+      "duration": 30,
+      "hint": "咣当咣当，车厢里藏了 3 个不属于那年代的东西",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 3,
+        "bonus": 2,
+        "label": "简单+",
+        "key": "easy"
+      },
+      "odds": [
+        {
+          "prop": "bullet_ticket",
+          "x": 2.6,
+          "y": 81.6,
+          "w": 15,
+          "h": 10
+        },
+        {
+          "prop": "wheel_luggage",
+          "x": 44.7,
+          "y": 64.9,
+          "w": 19.8,
+          "h": 25.2
+        },
+        {
+          "prop": "ins_camera",
+          "x": 64,
+          "y": 52.1,
+          "w": 11.2,
+          "h": 4.9
+        }
+      ]
+    },
+    {
+      "idx": 6,
+      "themeId": 1,
+      "title": "第7关 · 饭店包厢",
+      "scene": "assets/scenes/hidden/lv15.jpg",
+      "duration": 32,
+      "hint": "圆桌上 3 个穿越物混在土菜和搪瓷缸里",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 4,
+        "bonus": 2,
+        "label": "进阶",
+        "key": "normal"
+      },
+      "odds": [
+        {
+          "prop": "sprite_can",
+          "x": 40.4,
+          "y": 62.3,
+          "w": 10,
+          "h": 12
+        },
+        {
+          "prop": "price_lcd",
+          "x": 83,
+          "y": 85.4,
+          "w": 15,
+          "h": 8
+        },
+        {
+          "prop": "e_scale",
+          "x": 83.5,
+          "y": 43.8,
+          "w": 15,
+          "h": 12
+        }
+      ]
+    },
+    {
+      "idx": 7,
+      "themeId": 1,
+      "title": "第8关 · 辫子姐",
+      "scene": "assets/scenes/hidden/lv7.jpg",
+      "duration": 32,
+      "hint": "辫子姐柜台前后藏了 3 个穿越物",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 4,
+        "bonus": 2,
+        "label": "进阶",
+        "key": "normal"
+      },
+      "odds": [
+        {
+          "prop": "olympic_poster",
+          "x": 60,
+          "y": 8,
+          "w": 32.8,
+          "h": 30.4
+        },
+        {
+          "prop": "qr_pay_stand",
+          "x": 67.3,
+          "y": 41.8,
+          "w": 14,
+          "h": 22
+        },
+        {
+          "prop": "mineral_water",
+          "x": 69.1,
+          "y": 76.1,
+          "w": 22,
+          "h": 20
+        }
+      ]
+    },
+    {
+      "idx": 8,
+      "themeId": 1,
+      "title": "第9关 · 露天电影",
+      "scene": "assets/scenes/hidden/lv8.jpg",
+      "duration": 34,
+      "hint": "银幕下藏了 3 样穿越物，仔细找",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 5,
+        "bonus": 2,
+        "label": "进阶",
+        "key": "normal"
+      },
+      "odds": [
+        {
+          "prop": "ring_light",
+          "x": 82,
+          "y": 21.1,
+          "w": 18,
+          "h": 18.3
+        },
+        {
+          "prop": "monster_plush",
+          "x": 54.5,
+          "y": 48.5,
+          "w": 11,
+          "h": 13
+        },
+        {
+          "prop": "sparkling_bot",
+          "x": 13.3,
+          "y": 83.1,
+          "w": 15,
+          "h": 15.7
+        }
+      ]
+    },
+    {
+      "idx": 9,
+      "themeId": 1,
+      "title": "第10关 · 卖布姑娘",
+      "scene": "assets/scenes/hidden/lv10.jpg",
+      "duration": 34,
+      "hint": "集市上 4 个穿越物混进传统摊子",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 4,
+        "bonus": 2,
+        "label": "进阶+",
+        "key": "normal"
+      },
+      "odds": [
+        {
+          "prop": "eggplant_toy",
+          "x": 28.8,
+          "y": 67.6,
+          "w": 9,
+          "h": 7.1
+        },
+        {
+          "prop": "snail_noodle",
+          "x": 62.4,
+          "y": 74.4,
+          "w": 26,
+          "h": 9.5
+        },
+        {
+          "prop": "phone_gimbal",
+          "x": 57.5,
+          "y": 17.9,
+          "w": 11.2,
+          "h": 10.6
+        },
+        {
+          "prop": "express_bag",
+          "x": 19.3,
+          "y": 90,
+          "w": 21.3,
+          "h": 7.3
+        }
+      ]
+    },
+    {
+      "idx": 10,
+      "themeId": 1,
+      "title": "第11关 · 弄堂冰棍",
+      "scene": "assets/scenes/hidden/lv9.jpg",
+      "duration": 36,
+      "hint": "白裙妹周围藏了 4 个穿越物",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 5,
+        "bonus": 1,
+        "label": "进阶+",
+        "key": "normal"
+      },
+      "odds": [
+        {
+          "prop": "coffee_cup",
+          "x": 50.3,
+          "y": 55.2,
+          "w": 11.8,
+          "h": 6.2
+        },
+        {
+          "prop": "qr_sign",
+          "x": 36.7,
+          "y": 68.7,
+          "w": 15.2,
+          "h": 7.1
+        },
+        {
+          "prop": "hole_clogs",
+          "x": 14.1,
+          "y": 76.1,
+          "w": 12.8,
+          "h": 6.5
+        },
+        {
+          "prop": "delivery_box",
+          "x": 0.5,
+          "y": 56.3,
+          "w": 15.8,
+          "h": 9.6
+        }
+      ]
+    },
+    {
+      "idx": 11,
+      "themeId": 1,
+      "title": "第12关 · 老式教室",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv19.jpg",
+      "duration": 36,
+      "hint": "🎒 3 样现代物混进 80 年代乡村小学教室（含拟态干扰）",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 4,
+        "bonus": 2,
+        "label": "进阶",
+        "key": "normal"
+      },
+      "odds": [
+        {
+          "prop": "smart_watch",
+          "x": 32.1,
+          "y": 43,
+          "w": 7.3,
+          "h": 5.1
+        },
+        {
+          "prop": "usb_cable",
+          "x": 36.5,
+          "y": 52.6,
+          "w": 12.7,
+          "h": 5.9
+        },
+        {
+          "prop": "cctv",
+          "x": 79,
+          "y": 6,
+          "w": 9.6,
+          "h": 8
+        }
+      ]
+    },
+    {
+      "idx": 12,
+      "themeId": 1,
+      "title": "第13关 · 筒子楼厨房",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv20.jpg",
+      "duration": 36,
+      "hint": "🍳 3 样现代物混进筒子楼公共厨房",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 4,
+        "bonus": 2,
+        "label": "进阶",
+        "key": "normal"
+      },
+      "odds": [
+        {
+          "prop": "laptop",
+          "x": 7.4,
+          "y": 69.3,
+          "w": 21,
+          "h": 7.9
+        },
+        {
+          "prop": "led_bulb",
+          "x": 48.2,
+          "y": 2.5,
+          "w": 10.6,
+          "h": 10.2
+        },
+        {
+          "prop": "wifi_router",
+          "x": 78.8,
+          "y": 27.4,
+          "w": 15.3,
+          "h": 9.7
+        }
+      ]
+    },
+    {
+      "idx": 13,
+      "themeId": 1,
+      "title": "第14关 · 化妆室",
+      "scene": "assets/scenes/hidden/lv11.jpg",
+      "duration": 38,
+      "hint": "喜庆化妆桌上藏了 5 个穿越现代小物，看仔细！",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 5,
+        "bonus": 2,
+        "label": "困难",
+        "key": "hard"
+      },
+      "odds": [
+        {
+          "prop": "ring_light",
+          "x": 48,
+          "y": 3,
+          "w": 15,
+          "h": 10
+        },
+        {
+          "prop": "selfie_phone",
+          "x": 2.7,
+          "y": 19.8,
+          "w": 13,
+          "h": 15
+        },
+        {
+          "prop": "earbud_case",
+          "x": 28.4,
+          "y": 51.2,
+          "w": 14.4,
+          "h": 9
+        },
+        {
+          "prop": "qr_hongbao",
+          "x": 19.8,
+          "y": 60.8,
+          "w": 12.7,
+          "h": 9.6
+        },
+        {
+          "prop": "lipstick_tube",
+          "x": 45.5,
+          "y": 51.3,
+          "w": 12.6,
+          "h": 7.8
+        }
+      ]
+    },
+    {
+      "idx": 18,
+      "themeId": 1,
+      "title": "第19关 · 新华书店",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv23.jpg",
+      "duration": 42,
+      "hint": "📚 4 样现代物混进新华书店",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 5,
+        "bonus": 1,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "prop": "kindle",
+          "x": 16.8,
+          "y": 47.7,
+          "w": 12,
+          "h": 10
+        },
+        {
+          "prop": "typec_cable",
+          "x": 31.9,
+          "y": 66.7,
+          "w": 15.7,
+          "h": 5.4
+        },
+        {
+          "prop": "qr_price_tag",
+          "x": 56,
+          "y": 89.5,
+          "w": 11.1,
+          "h": 7.8
+        },
+        {
+          "prop": "noise_earbud",
+          "x": 60.4,
+          "y": 32.3,
+          "w": 9.9,
+          "h": 6.7
+        }
+      ]
+    },
+    {
+      "idx": 19,
+      "themeId": 1,
+      "title": "第20关 · 修车铺",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv24.jpg",
+      "duration": 42,
+      "hint": "🔧 4 样现代物混进路边修车铺（含形似干扰）",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 5,
+        "bonus": 1,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "prop": "vacuum",
+          "x": 0.1,
+          "y": 51.1,
+          "w": 16.7,
+          "h": 30.2
+        },
+        {
+          "prop": "e_scooter",
+          "x": 76.5,
+          "y": 5.6,
+          "w": 20.2,
+          "h": 32.3
+        },
+        {
+          "prop": "helmet_smart",
+          "x": 40.6,
+          "y": 34.1,
+          "w": 17.5,
+          "h": 8.6
+        },
+        {
+          "prop": "wireless_earbud_case",
+          "x": 58.8,
+          "y": 69.5,
+          "w": 11.9,
+          "h": 7.6
+        }
+      ]
+    },
+    {
+      "idx": 20,
+      "themeId": 1,
+      "title": "第21关 · 老式小卖部",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv29.jpg",
+      "duration": 42,
+      "hint": "🕵️ 超微型现代物潜伏在 80 年代小卖部（拟态融合）",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 3,
+        "bonus": 2,
+        "label": "简单+·陷阱",
+        "key": "easy"
+      },
+      "odds": [
+        {
+          "prop": "tiny_qr",
+          "x": 55.3,
+          "y": 58.6,
+          "w": 7.9,
+          "h": 5.4
+        },
+        {
+          "prop": "fiber_end",
+          "x": 70.6,
+          "y": 2.4,
+          "w": 19.6,
+          "h": 9.5
+        }
+      ]
+    },
+    {
+      "idx": 21,
+      "themeId": 1,
+      "title": "第22关 · 老式茶馆",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv35.jpg",
+      "duration": 44,
+      "hint": "🔥🔥 2 样超微型现代物潜伏在老式茶馆",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 5,
+        "bonus": 1,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "prop": "item_1",
+          "x": 3.1,
+          "y": 56.1,
+          "w": 14.5,
+          "h": 8.7
+        },
+        {
+          "prop": "item_2",
+          "x": 70.1,
+          "y": 0,
+          "w": 14,
+          "h": 6.6
+        }
+      ]
+    },
+    {
+      "idx": 22,
+      "themeId": 1,
+      "title": "第23关 · 巡演戏班后台",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv36.jpg",
+      "duration": 44,
+      "hint": "🔥🔥 4 样超微型现代物潜伏在巡演戏班后台",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 5,
+        "bonus": 1,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "prop": "item_2",
+          "x": 68.1,
+          "y": 0.4,
+          "w": 14.6,
+          "h": 8.4
+        },
+        {
+          "prop": "item_3",
+          "x": 2,
+          "y": 46,
+          "w": 13.3,
+          "h": 7
+        },
+        {
+          "prop": "item_4",
+          "x": 67,
+          "y": 60.7,
+          "w": 11.1,
+          "h": 8.1
+        },
+        {
+          "prop": "item_4",
+          "x": 71.3,
+          "y": 87.2,
+          "w": 22.4,
+          "h": 11.9
+        }
+      ]
+    },
+    {
+      "idx": 23,
+      "themeId": 1,
+      "title": "第24关 · 乡镇面馆",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv37.jpg",
+      "duration": 44,
+      "hint": "🔥🔥🔥 4 样超微型现代物潜伏在乡镇面馆",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 5,
+        "bonus": 1,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "prop": "item_4",
+          "x": 35.2,
+          "y": 86.8,
+          "w": 14.4,
+          "h": 7.4
+        },
+        {
+          "prop": "item_3",
+          "x": 81.4,
+          "y": 42.1,
+          "w": 18.1,
+          "h": 6.1
+        },
+        {
+          "prop": "item_3",
+          "x": 37.3,
+          "y": 10.6,
+          "w": 32.2,
+          "h": 6.8
+        },
+        {
+          "prop": "item_4",
+          "x": 61.7,
+          "y": 22.4,
+          "w": 9.9,
+          "h": 7.2
+        }
+      ]
+    },
+    {
+      "idx": 24,
+      "themeId": 1,
+      "title": "第25关 · 生产大队办公室",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv38.jpg",
+      "duration": 44,
+      "hint": "🔥🔥🔥 3 样超微型现代物潜伏在生产大队办公室（终极噩梦）",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 5,
+        "bonus": 1,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "prop": "item_1",
+          "x": 3.1,
+          "y": 72.9,
+          "w": 11.4,
+          "h": 9.7
+        },
+        {
+          "prop": "item_2",
+          "x": 54.3,
+          "y": 0.3,
+          "w": 11.5,
+          "h": 6.7
+        },
+        {
+          "prop": "item_3",
+          "x": 12.4,
+          "y": 10.8,
+          "w": 15.4,
+          "h": 11.3
+        }
+      ]
+    },
+    {
+      "idx": 25,
+      "themeId": 1,
+      "title": "第26关 · 长途车站",
+      "scene": "assets/scenes/hidden/lv17.jpg",
+      "duration": 46,
+      "boss": true,
+      "hint": "🔥 中 BOSS：长途人潮里 5 个跨年代穿越物",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 6,
+        "bonus": 1,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "prop": "weave_qr",
+          "x": 14,
+          "y": 88.3,
+          "w": 12,
+          "h": 10
+        },
+        {
+          "prop": "crh_poster",
+          "x": 1.6,
+          "y": 7.6,
+          "w": 26.5,
+          "h": 15.9
+        },
+        {
+          "prop": "powerbank_rack",
+          "x": 80.3,
+          "y": 25.8,
+          "w": 12,
+          "h": 18
+        },
+        {
+          "prop": "face_gate",
+          "x": 30.4,
+          "y": 15.6,
+          "w": 17.5,
+          "h": 11.5
+        },
+        {
+          "prop": "dep_led",
+          "x": 50.6,
+          "y": 0,
+          "w": 31.7,
+          "h": 7.7
+        }
+      ]
+    },
+    {
+      "idx": 26,
+      "themeId": 1,
+      "title": "第27关 · 报刊亭",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv25.jpg",
+      "duration": 46,
+      "boss": true,
+      "hint": "🔥 5 样现代物混进街角报刊亭 · Boss 关",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 6,
+        "bonus": 1,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "prop": "e_paper_reader",
+          "x": 18.7,
+          "y": 58.1,
+          "w": 14,
+          "h": 9.9
+        },
+        {
+          "prop": "vape",
+          "x": 41.2,
+          "y": 36.1,
+          "w": 10,
+          "h": 6
+        },
+        {
+          "prop": "ring_doorbell",
+          "x": 47.5,
+          "y": 11.3,
+          "w": 10,
+          "h": 8
+        },
+        {
+          "prop": "disposable_mask",
+          "x": 63.7,
+          "y": 31.4,
+          "w": 10,
+          "h": 8
+        },
+        {
+          "prop": "airtag_key",
+          "x": 41.6,
+          "y": 50.9,
+          "w": 11.1,
+          "h": 6.6
+        }
+      ]
+    },
+    {
+      "idx": 27,
+      "themeId": 1,
+      "title": "第28关 · 老式纺织厂",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv30.jpg",
+      "duration": 46,
+      "hint": "🕵️ 5 样超微型现代物潜伏在老式纺织厂车间",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 5,
+        "bonus": 1,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "prop": "bt_tag",
+          "x": 36.9,
+          "y": 81.7,
+          "w": 13.3,
+          "h": 5.7
+        },
+        {
+          "prop": "smart_plug",
+          "x": 1.3,
+          "y": 30.5,
+          "w": 13.5,
+          "h": 10.5
+        },
+        {
+          "prop": "led_undershelf",
+          "x": 24.4,
+          "y": 1.6,
+          "w": 27.4,
+          "h": 4.7
+        },
+        {
+          "prop": "drone_prop",
+          "x": 74.2,
+          "y": 88.7,
+          "w": 10.6,
+          "h": 5.7
+        },
+        {
+          "prop": "nfc_sticker",
+          "x": 87.8,
+          "y": 63.1,
+          "w": 10.4,
+          "h": 3.7
+        }
+      ]
+    },
+    {
+      "idx": 28,
+      "themeId": 1,
+      "title": "第29关 · 上海弄堂洗衣",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv31.jpg",
+      "duration": 48,
+      "hint": "🕵️ 5 样超微型现代物潜伏在上海弄堂洗衣区",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 5,
+        "bonus": 1,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "prop": "mini_bt_speaker",
+          "x": 16.8,
+          "y": 84.6,
+          "w": 13.6,
+          "h": 5.8
+        },
+        {
+          "prop": "solar_chip",
+          "x": 71.7,
+          "y": 42.5,
+          "w": 12.6,
+          "h": 6.4
+        },
+        {
+          "prop": "lightning_cable",
+          "x": 51.5,
+          "y": 94.9,
+          "w": 16.2,
+          "h": 4.7
+        },
+        {
+          "prop": "doorbell_lens",
+          "x": 56.6,
+          "y": 25.8,
+          "w": 9,
+          "h": 6.7
+        },
+        {
+          "prop": "rgb_smart_bulb",
+          "x": 89.4,
+          "y": 5.9,
+          "w": 8.7,
+          "h": 4.7
+        }
+      ]
+    },
+    {
+      "idx": 29,
+      "themeId": 1,
+      "title": "第30关 · 老中药铺",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv26.jpg",
+      "duration": 48,
+      "boss": true,
+      "hint": "🔥🔥 5 样现代物深度融合进老中药铺 · Boss 关",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 6,
+        "bonus": 1,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "prop": "smart_lock_chest",
+          "x": 78.8,
+          "y": 13.3,
+          "w": 10,
+          "h": 8
+        },
+        {
+          "prop": "pulse_oximeter",
+          "x": 35.8,
+          "y": 56,
+          "w": 8.7,
+          "h": 6.8
+        },
+        {
+          "prop": "medicine_qr",
+          "x": 43.9,
+          "y": 69.1,
+          "w": 9.1,
+          "h": 6.3
+        },
+        {
+          "prop": "air_purifier",
+          "x": 1.8,
+          "y": 75,
+          "w": 19,
+          "h": 23.8
+        },
+        {
+          "prop": "smart_scale",
+          "x": 83,
+          "y": 49.9,
+          "w": 14,
+          "h": 8
+        }
+      ]
+    },
+    {
+      "idx": 30,
+      "themeId": 1,
+      "title": "第31关 · 工人舞会",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv27.jpg",
+      "duration": 48,
+      "boss": true,
+      "hint": "🔥🔥 5 样现代物混进工人俱乐部舞会（含形似干扰） · Boss 关",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 6,
+        "bonus": 1,
+        "label": "极地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "prop": "led_bulb_strip",
+          "x": 24.5,
+          "y": 0,
+          "w": 73.2,
+          "h": 7.7
+        },
+        {
+          "prop": "bluetooth_speaker",
+          "x": 73.6,
+          "y": 32.6,
+          "w": 10,
+          "h": 8
+        },
+        {
+          "prop": "vape_torch",
+          "x": 18,
+          "y": 29.5,
+          "w": 11.2,
+          "h": 7.4
+        },
+        {
+          "prop": "smart_ring",
+          "x": 30.7,
+          "y": 64.3,
+          "w": 8.7,
+          "h": 7.1
+        },
+        {
+          "prop": "phone_holder",
+          "x": 87,
+          "y": 20.2,
+          "w": 13,
+          "h": 21.1
+        }
+      ]
+    },
+    {
+      "idx": 31,
+      "themeId": 1,
+      "title": "第32关 · 童年游戏院",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv28.jpg",
+      "duration": 50,
+      "boss": true,
+      "hint": "🔥🔥🔥 5 样现代物混进家属院子（终极 Boss，含形似干扰）",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 6,
+        "bonus": 1,
+        "label": "极地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "prop": "power_station_stove",
+          "x": 2.5,
+          "y": 39.4,
+          "w": 12.9,
+          "h": 9.8
+        },
+        {
+          "prop": "switch_gamepad",
+          "x": 52.3,
+          "y": 47.5,
+          "w": 12,
+          "h": 8
+        },
+        {
+          "prop": "airtag_stitch",
+          "x": 46.5,
+          "y": 7.4,
+          "w": 8.9,
+          "h": 6.3
+        },
+        {
+          "prop": "smart_water_bottle",
+          "x": 77.5,
+          "y": 58.5,
+          "w": 10.8,
+          "h": 12.1
+        },
+        {
+          "prop": "qr_tissue",
+          "x": 73.3,
+          "y": 89.1,
+          "w": 10,
+          "h": 6
+        }
+      ]
+    },
+    {
+      "idx": 32,
+      "themeId": 1,
+      "title": "第33关 · 人民银行营业厅",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv32.jpg",
+      "duration": 50,
+      "hint": "🕵️ 5 样超微型现代物潜伏在人民银行营业厅",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 5,
+        "bonus": 1,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "prop": "pos_terminal",
+          "x": 1.2,
+          "y": 46.9,
+          "w": 10.7,
+          "h": 7.8
+        },
+        {
+          "prop": "finger_scan",
+          "x": 12.8,
+          "y": 51.1,
+          "w": 11.6,
+          "h": 9.8
+        },
+        {
+          "prop": "atm_keypad",
+          "x": 85.6,
+          "y": 68.6,
+          "w": 11.1,
+          "h": 5.3
+        },
+        {
+          "prop": "cam_dome",
+          "x": 42.8,
+          "y": 4.4,
+          "w": 11.2,
+          "h": 5.7
+        },
+        {
+          "prop": "banking_qr",
+          "x": 1,
+          "y": 34.4,
+          "w": 10.1,
+          "h": 8.1
+        }
+      ]
+    },
+    {
+      "idx": 33,
+      "themeId": 1,
+      "title": "第34关 · 京剧后台",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv33.jpg",
+      "duration": 50,
+      "hint": "🔍🔍 5 样超微型现代物潜伏在京剧后台化妆间",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 5,
+        "bonus": 1,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "prop": "led_mirror_ring",
+          "x": 8.2,
+          "y": 45.1,
+          "w": 21.5,
+          "h": 20.8
+        },
+        {
+          "prop": "usbc_port",
+          "x": 86.1,
+          "y": 61.1,
+          "w": 8.2,
+          "h": 5.5
+        },
+        {
+          "prop": "phone_tripod",
+          "x": 81.5,
+          "y": 71.6,
+          "w": 13,
+          "h": 13.1
+        },
+        {
+          "prop": "silicone_puff",
+          "x": 40.3,
+          "y": 73.9,
+          "w": 8.1,
+          "h": 6.6
+        },
+        {
+          "prop": "digi_stopwatch",
+          "x": 31.5,
+          "y": 24.8,
+          "w": 7.8,
+          "h": 5.7
+        }
+      ]
+    },
+    {
+      "idx": 34,
+      "themeId": 1,
+      "title": "第35关 · 县城火车站台",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv34.jpg",
+      "duration": 52,
+      "hint": "🔍🔍 5 样超微型现代物潜伏在县城火车站台",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 5,
+        "bonus": 1,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "prop": "wireless_pad",
+          "x": 28.5,
+          "y": 76.8,
+          "w": 11.2,
+          "h": 6.3
+        },
+        {
+          "prop": "digital_zip_lock",
+          "x": 5,
+          "y": 78,
+          "w": 9.4,
+          "h": 5
+        },
+        {
+          "prop": "hd_bullet_cam",
+          "x": 37.6,
+          "y": 2.5,
+          "w": 7.9,
+          "h": 5.5
+        },
+        {
+          "prop": "ticket_tablet",
+          "x": 51,
+          "y": 34.1,
+          "w": 14.8,
+          "h": 4
+        },
+        {
+          "prop": "neck_massager",
+          "x": 62.2,
+          "y": 41.7,
+          "w": 15.6,
+          "h": 7.4
+        }
+      ]
+    },
+    {
+      "idx": 35,
+      "themeId": 1,
+      "title": "第36关 · 喜宴大堂",
+      "scene": "assets/scenes/hidden/lv12.jpg",
+      "duration": 52,
+      "boss": true,
+      "hint": "🔥 婚礼喜宴上 6 个穿越现代物混进红囍里！",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 6,
+        "bonus": 1,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "prop": "drone",
+          "x": 74,
+          "y": 12,
+          "w": 22,
+          "h": 9
+        },
+        {
+          "prop": "qr_sign",
+          "x": 79.8,
+          "y": 25,
+          "w": 14,
+          "h": 12
+        },
+        {
+          "prop": "live_phone",
+          "x": 77.9,
+          "y": 54.1,
+          "w": 20,
+          "h": 24
+        },
+        {
+          "prop": "bubble_tea",
+          "x": 0.4,
+          "y": 52.7,
+          "w": 14,
+          "h": 22
+        },
+        {
+          "prop": "car_key",
+          "x": 42,
+          "y": 87,
+          "w": 14,
+          "h": 8
+        },
+        {
+          "prop": "led_lantern",
+          "x": 1.9,
+          "y": 6.7,
+          "w": 14,
+          "h": 10
+        }
+      ]
+    },
+    {
+      "idx": 36,
+      "themeId": 1,
+      "title": "第37关 · 婚车合影",
+      "scene": "assets/scenes/hidden/lv13.jpg",
+      "duration": 54,
+      "boss": true,
+      "hint": "🔥🔥 喜庆婚车队里藏了 6 个穿越现代物！",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 6,
+        "bonus": 1,
+        "label": "极地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "prop": "drone",
+          "x": 49.1,
+          "y": 7,
+          "w": 14,
+          "h": 8
+        },
+        {
+          "prop": "selfie_phone",
+          "x": 1,
+          "y": 29.6,
+          "w": 10,
+          "h": 14
+        },
+        {
+          "prop": "qr_sign",
+          "x": 0.4,
+          "y": 49.6,
+          "w": 8.6,
+          "h": 7.9
+        },
+        {
+          "prop": "green_plate",
+          "x": 18.1,
+          "y": 62.7,
+          "w": 14,
+          "h": 5
+        },
+        {
+          "prop": "modern_ev",
+          "x": 70.9,
+          "y": 60,
+          "w": 27.1,
+          "h": 17
+        },
+        {
+          "prop": "cake_box",
+          "x": 71.7,
+          "y": 46.7,
+          "w": 15.6,
+          "h": 7.5
+        }
+      ]
+    },
+    {
+      "idx": 37,
+      "themeId": 1,
+      "title": "第38关 · 年货集市",
+      "scene": "assets/scenes/hidden/lv18.jpg",
+      "duration": 55,
+      "boss": true,
+      "hint": "🔥🔥🔥 究极地狱：7 个茬横跨 90/00/10/20 四个年代，找对不回时",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 7,
+        "bonus": 0,
+        "label": "究极地狱",
+        "key": "nightmare"
+      },
+      "odds": [
+        {
+          "prop": "brick_phone_lv18",
+          "x": 81.8,
+          "y": 64.4,
+          "w": 12.3,
+          "h": 18.5
+        },
+        {
+          "prop": "mp3_player",
+          "x": 49.1,
+          "y": 35.7,
+          "w": 10.9,
+          "h": 8.3
+        },
+        {
+          "prop": "smart_speaker",
+          "x": 87.5,
+          "y": 18.6,
+          "w": 11,
+          "h": 10.7
+        },
+        {
+          "prop": "nft_poster",
+          "x": 63.8,
+          "y": 1.2,
+          "w": 14.4,
+          "h": 14.4
+        },
+        {
+          "prop": "live_ring",
+          "x": 25.3,
+          "y": 22.1,
+          "w": 12,
+          "h": 18
+        },
+        {
+          "prop": "express_label",
+          "x": 37.1,
+          "y": 89.9,
+          "w": 15.6,
+          "h": 8.9
+        },
+        {
+          "prop": "red_pkt_qr",
+          "x": 24,
+          "y": 84.5,
+          "w": 11.6,
+          "h": 10.5
+        }
+      ]
+    },
+    {
+      "idx": 7,
+      "themeId": 2,
+      "mode": "spot",
+      "layout": "v",
+      "title": "第1关 · 海边美女",
+      "duration": 80,
+      "sceneA": "assets/scenes/spot/lv2_a.jpg",
+      "sceneB": "assets/scenes/spot/lv2_b.jpg",
+      "hint": "🔥 地狱难度：60 秒内在右图里找出 7 样多出来的东西",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 5,
+        "bonus": 0,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "x": 5,
+          "y": 45,
+          "w": 15.9,
+          "h": 11.6,
+          "tag": "粉火烈鸟游泳圈"
+        },
+        {
+          "x": 64.7,
+          "y": 3.4,
+          "w": 15,
+          "h": 8,
+          "tag": "黑无人机"
+        },
+        {
+          "x": 76,
+          "y": 27,
+          "w": 14,
+          "h": 6,
+          "tag": "白纸飞机"
+        },
+        {
+          "x": 70,
+          "y": 68.2,
+          "w": 8.3,
+          "h": 4.8,
+          "tag": "黄橡皮鸭"
+        },
+        {
+          "x": 18.9,
+          "y": 86.6,
+          "w": 8.5,
+          "h": 6.4,
+          "tag": "红可乐罐"
+        },
+        {
+          "x": 24.5,
+          "y": 93.4,
+          "w": 12.3,
+          "h": 5,
+          "tag": "白色蓝牙耳机"
+        },
+        {
+          "x": 21.1,
+          "y": 54.5,
+          "w": 7.4,
+          "h": 3.6,
+          "tag": "手机"
+        }
+      ]
+    },
+    {
+      "idx": 8,
+      "themeId": 2,
+      "mode": "spot",
+      "layout": "h",
+      "title": "第2关 · 温泉少女",
+      "duration": 75,
+      "sceneA": "assets/scenes/spot/lv3_a.jpg",
+      "sceneB": "assets/scenes/spot/lv3_b.jpg",
+      "hint": "🔥 地狱难度：楼、植物、身上细节，多处不同",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 5,
+        "bonus": 0,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "x": 50.2,
+          "y": 68.5,
+          "w": 7.9,
+          "h": 7.7,
+          "tag": "白玫瑰花瓣"
+        },
+        {
+          "x": 4.8,
+          "y": 77.1,
+          "w": 6.7,
+          "h": 15.8,
+          "tag": "红可乐罐"
+        },
+        {
+          "x": 90.8,
+          "y": 77.5,
+          "w": 7.1,
+          "h": 10.7,
+          "tag": "青柠檬"
+        },
+        {
+          "x": 82.9,
+          "y": 8.2,
+          "w": 6.1,
+          "h": 9.5,
+          "tag": "窗外圆月"
+        },
+        {
+          "x": 3.3,
+          "y": 1.2,
+          "w": 16.6,
+          "h": 27.7,
+          "tag": "壁灯装饰画"
+        },
+        {
+          "x": 35.1,
+          "y": 36.3,
+          "w": 6.4,
+          "h": 7,
+          "tag": "星形吊坠"
+        }
+      ]
+    },
+    {
+      "idx": 9,
+      "themeId": 2,
+      "mode": "spot",
+      "layout": "h",
+      "title": "第3关 · 私影棚嫂",
+      "duration": 70,
+      "sceneA": "assets/scenes/spot/lv4_a.jpg",
+      "sceneB": "assets/scenes/spot/lv4_b.jpg",
+      "hint": "🔥 摄影棚里的 多处小改变",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 5,
+        "bonus": 0,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "x": 1,
+          "y": 39,
+          "w": 24.4,
+          "h": 13.8,
+          "tag": "白百合变粉牡丹"
+        },
+        {
+          "x": 13.4,
+          "y": 76.4,
+          "w": 12,
+          "h": 12,
+          "tag": "书封蓝变黄"
+        },
+        {
+          "x": 56.1,
+          "y": 43.4,
+          "w": 6.6,
+          "h": 5.1,
+          "tag": "心形吊坠"
+        },
+        {
+          "x": 23.9,
+          "y": 0.7,
+          "w": 28.7,
+          "h": 33.1,
+          "tag": "壁灯装饰画"
+        },
+        {
+          "x": 79.5,
+          "y": 44.4,
+          "w": 20.4,
+          "h": 20.7,
+          "tag": "毯子变三抱枕"
+        }
+      ]
+    },
+    {
+      "idx": 10,
+      "themeId": 2,
+      "mode": "spot",
+      "layout": "h",
+      "title": "第4关 · 咖啡师嫂",
+      "duration": 65,
+      "sceneA": "assets/scenes/spot/lv5_a.jpg",
+      "sceneB": "assets/scenes/spot/lv5_b.jpg",
+      "hint": "🔥 咖啡吧台的 多处小惊喜",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 5,
+        "bonus": 0,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "x": 9.7,
+          "y": 44.8,
+          "w": 8,
+          "h": 8,
+          "tag": "LED红变绿"
+        },
+        {
+          "x": 57.7,
+          "y": 82.9,
+          "w": 10,
+          "h": 10,
+          "tag": "草莓变蓝莓"
+        },
+        {
+          "x": 36.7,
+          "y": 74.4,
+          "w": 21.7,
+          "h": 13.2,
+          "tag": "素牛角变巧克力"
+        },
+        {
+          "x": 83.5,
+          "y": 78.6,
+          "w": 12,
+          "h": 12,
+          "tag": "黑板TODAY变FRESH"
+        },
+        {
+          "x": 65.4,
+          "y": 12.2,
+          "w": 19.1,
+          "h": 27,
+          "tag": "钟框黑变铜金"
+        },
+        {
+          "x": 38.5,
+          "y": 34.4,
+          "w": 8,
+          "h": 6,
+          "tag": "发带棕变樱桃红"
+        }
+      ]
+    },
+    {
+      "idx": 11,
+      "themeId": 2,
+      "mode": "spot",
+      "layout": "h",
+      "title": "第5关 · 瑜伽嫂",
+      "duration": 60,
+      "sceneA": "assets/scenes/spot/lv6_a.jpg",
+      "sceneB": "assets/scenes/spot/lv6_b.jpg",
+      "hint": "🔥 瑜伽室里的 多处小改变",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 5,
+        "bonus": 0,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "x": 8.3,
+          "y": 42.8,
+          "w": 8,
+          "h": 12,
+          "tag": "蜡烛熄灭"
+        },
+        {
+          "x": 59.5,
+          "y": 53.3,
+          "w": 12,
+          "h": 10,
+          "tag": "白鹅卵石变黑"
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "w": 29.2,
+          "h": 44.4,
+          "tag": "湖山图变沙漠图"
+        },
+        {
+          "x": 47.6,
+          "y": 1.2,
+          "w": 14,
+          "h": 10,
+          "tag": "中间吊灯点亮"
+        },
+        {
+          "x": 3.7,
+          "y": 84.1,
+          "w": 96.3,
+          "h": 12,
+          "tag": "瑜伽垫灰变粉"
+        },
+        {
+          "x": 72.5,
+          "y": 57.3,
+          "w": 10,
+          "h": 12,
+          "tag": "花盆白变陶土橙"
+        }
+      ]
+    },
+    {
+      "idx": 12,
+      "themeId": 2,
+      "mode": "spot",
+      "layout": "h",
+      "title": "第6关 · 花艺嫂",
+      "duration": 60,
+      "sceneA": "assets/scenes/spot/lv7_a.jpg",
+      "sceneB": "assets/scenes/spot/lv7_b.jpg",
+      "hint": "🔥 地狱难度：花店里 多处不同",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 6,
+        "bonus": 0,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "x": 18.1,
+          "y": 50.7,
+          "w": 12,
+          "h": 14,
+          "tag": "玫瑰红变桃粉"
+        },
+        {
+          "x": 51.2,
+          "y": 80.4,
+          "w": 10,
+          "h": 8,
+          "tag": "剪刀柄银变铜金"
+        },
+        {
+          "x": 47.6,
+          "y": 38.3,
+          "w": 15.1,
+          "h": 33.3,
+          "tag": "围裙绿变酒红"
+        },
+        {
+          "x": 63.4,
+          "y": 78.6,
+          "w": 31.4,
+          "h": 9.5,
+          "tag": "包装纸棕变鼠尾草绿"
+        },
+        {
+          "x": 27.9,
+          "y": 12,
+          "w": 14.4,
+          "h": 27.4,
+          "tag": "海报向日葵变薰衣草"
+        },
+        {
+          "x": 10.1,
+          "y": 30.2,
+          "w": 12,
+          "h": 14,
+          "tag": "花盒三变四"
+        },
+        {
+          "x": 41.9,
+          "y": 0.8,
+          "w": 20.1,
+          "h": 9.8,
+          "tag": "吊灯二盏变三盏"
+        }
+      ]
+    },
+    {
+      "idx": 13,
+      "themeId": 2,
+      "mode": "spot",
+      "layout": "h",
+      "title": "第7关 · 古玩地摊",
+      "duration": 65,
+      "sceneA": "assets/scenes/spot/lv13_a.jpg",
+      "sceneB": "assets/scenes/spot/lv13_b.jpg",
+      "hint": "🔥🔥 极地狱：50+ 古玩里找 多处不同",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 6,
+        "bonus": 0,
+        "label": "极地狱",
+        "key": "nightmare"
+      },
+      "odds": [
+        {
+          "x": 0.7,
+          "y": 74.2,
+          "w": 7.6,
+          "h": 11.6,
+          "tag": "玉佩绿变琥珀橙"
+        },
+        {
+          "x": 20.8,
+          "y": 30.5,
+          "w": 12,
+          "h": 12,
+          "tag": "油灯点燃"
+        },
+        {
+          "x": 55.5,
+          "y": 71.4,
+          "w": 4,
+          "h": 3.5,
+          "tag": "LED红变绿"
+        },
+        {
+          "x": 49,
+          "y": 81.3,
+          "w": 7.1,
+          "h": 6.4,
+          "tag": "扇面墨变朱砂"
+        },
+        {
+          "x": 46.3,
+          "y": 57.2,
+          "w": 13.5,
+          "h": 10.6,
+          "tag": "印章四减一"
+        },
+        {
+          "x": 85.1,
+          "y": 42.7,
+          "w": 12,
+          "h": 12,
+          "tag": "核桃二加一"
+        },
+        {
+          "x": 78.4,
+          "y": 80.1,
+          "w": 14,
+          "h": 10,
+          "tag": "黑板ANTIQUES变SALE"
+        }
+      ]
+    },
+    {
+      "idx": 20,
+      "themeId": 2,
+      "mode": "spot",
+      "layout": "h",
+      "title": "第8关 · 玫瑰泡澡嫂",
+      "duration": 60,
+      "sceneA": "assets/scenes/spot/lv8_a.jpg",
+      "sceneB": "assets/scenes/spot/lv8_b.jpg",
+      "hint": "🌹 居家 SPA · 多处小改变",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 5,
+        "bonus": 1,
+        "label": "困难",
+        "key": "hard"
+      },
+      "odds": [
+        {
+          "x": 38.4,
+          "y": 36,
+          "w": 9,
+          "h": 14,
+          "tag": "红酒变香槟"
+        },
+        {
+          "x": 32.1,
+          "y": 10.7,
+          "w": 14,
+          "h": 20.9,
+          "tag": "蜡烛熄灭"
+        },
+        {
+          "x": 66.4,
+          "y": 52.4,
+          "w": 12.9,
+          "h": 21.3,
+          "tag": "花瓣半白"
+        },
+        {
+          "x": 52.2,
+          "y": 10.8,
+          "w": 17.6,
+          "h": 15,
+          "tag": "兰花变百合"
+        }
+      ]
+    },
+    {
+      "idx": 21,
+      "themeId": 2,
+      "mode": "spot",
+      "layout": "h",
+      "title": "第9关 · 沙发追剧撸猫嫂",
+      "duration": 65,
+      "sceneA": "assets/scenes/spot/lv9_a.jpg",
+      "sceneB": "assets/scenes/spot/lv9_b.jpg",
+      "hint": "📺 追剧现场 · 多处小改变",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 5,
+        "bonus": 1,
+        "label": "困难",
+        "key": "hard"
+      },
+      "odds": [
+        {
+          "x": 0.7,
+          "y": 6.4,
+          "w": 26,
+          "h": 36,
+          "tag": "电视剧换台"
+        },
+        {
+          "x": 52,
+          "y": 60,
+          "w": 18,
+          "h": 20,
+          "tag": "橘猫变黑白猫"
+        },
+        {
+          "x": 43.4,
+          "y": 39.1,
+          "w": 12,
+          "h": 12,
+          "tag": "遥控器变色"
+        },
+        {
+          "x": 71.2,
+          "y": 55.8,
+          "w": 9.8,
+          "h": 18.9,
+          "tag": "薯片包装换"
+        }
+      ]
+    },
+    {
+      "idx": 22,
+      "themeId": 2,
+      "mode": "spot",
+      "layout": "h",
+      "title": "第10关 · 化妆镜名媛嫂",
+      "duration": 65,
+      "sceneA": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv10_a.jpg",
+      "sceneB": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv10_b.jpg",
+      "hint": "💄 梳妆台 · 多处小改变",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 5,
+        "bonus": 1,
+        "label": "困难",
+        "key": "hard"
+      },
+      "odds": [
+        {
+          "prop": "mirror_frame_color",
+          "x": 52.4,
+          "y": 40.1,
+          "w": 5.7,
+          "h": 9.2,
+          "tag": "镜框换色"
+        },
+        {
+          "prop": "lily_to_pink_rose",
+          "x": 73.6,
+          "y": 32,
+          "w": 15.5,
+          "h": 21.5,
+          "tag": "百合变粉玫瑰"
+        },
+        {
+          "prop": "pearl_to_ruby",
+          "x": 86.5,
+          "y": 54.6,
+          "w": 12.6,
+          "h": 16.7,
+          "tag": "珍珠变红宝石"
+        }
+      ]
+    },
+    {
+      "idx": 23,
+      "themeId": 2,
+      "mode": "spot",
+      "layout": "h",
+      "title": "第11关 · 厨房烹饪嫂",
+      "duration": 60,
+      "sceneA": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv11_a.jpg",
+      "sceneB": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv11_b.jpg",
+      "hint": "🍳 烟火厨房 · 多处小改变",
+      "diff": {
+        "hitScale": 1,
+        "penalty": 5,
+        "bonus": 1,
+        "label": "困难",
+        "key": "hard"
+      },
+      "odds": [
+        {
+          "prop": "fu_to_xi",
+          "x": 6.7,
+          "y": 19.8,
+          "w": 6.9,
+          "h": 13.7,
+          "tag": "福字变喜字"
+        },
+        {
+          "prop": "wing_to_drumstick",
+          "x": 53.8,
+          "y": 34.9,
+          "w": 14.6,
+          "h": 12.2,
+          "tag": "鸡翅变鸡腿"
+        },
+        {
+          "prop": "watermelon_split",
+          "x": 62,
+          "y": 60,
+          "w": 24,
+          "h": 26,
+          "tag": "西瓜切开"
+        }
+      ]
+    },
+    {
+      "idx": 24,
+      "themeId": 2,
+      "mode": "spot",
+      "layout": "h",
+      "title": "第12关 · 阳台懒卧嫂",
+      "duration": 65,
+      "boss": true,
+      "sceneA": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv12_a.jpg",
+      "sceneB": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv12_b.jpg",
+      "hint": "🌿 BOSS · 慢生活里 多处不同",
+      "diff": {
+        "hitScale": 0.9,
+        "penalty": 6,
+        "bonus": 0,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "prop": "fan_spinning",
+          "x": 27.5,
+          "y": 0,
+          "w": 35,
+          "h": 10.2,
+          "tag": "风扇转动"
+        },
+        {
+          "prop": "shadow_pattern",
+          "x": 22.3,
+          "y": 30.3,
+          "w": 12.2,
+          "h": 14.4,
+          "tag": "影子图案变化"
+        },
+        {
+          "prop": "icecoffee_half",
+          "x": 66.1,
+          "y": 68.2,
+          "w": 7.1,
+          "h": 16.7,
+          "tag": "冰咖啡少半杯"
+        },
+        {
+          "prop": "teddy_flipped",
+          "x": 78,
+          "y": 66,
+          "w": 16,
+          "h": 22,
+          "tag": "泰迪熊翻身"
+        }
+      ]
+    },
+    {
+      "idx": 25,
+      "themeId": 4,
+      "mode": "hunt",
+      "title": "第1关 · 成都",
+      "scene": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv1.jpg",
+      "duration": 60,
+      "hint": "成都茶馆里 · 找出 3 样地道成都物件",
+      "diff": {
+        "hitScale": 1.15,
+        "penalty": 0,
+        "bonus": 0,
+        "label": "解压",
+        "key": "zen"
+      },
+      "odds": [
+        {
+          "prop": "panda_plush",
+          "x": 3,
+          "y": 58.2,
+          "w": 11.7,
+          "h": 12.6,
+          "tag": "熊猫玩偶"
+        },
+        {
+          "prop": "long_spout_kettle",
+          "x": 76.8,
+          "y": 36.3,
+          "w": 10.9,
+          "h": 18.5,
+          "tag": "长嘴铜壶"
+        },
+        {
+          "prop": "sichuan_mask",
+          "x": 88.8,
+          "y": 28.7,
+          "w": 8.8,
+          "h": 10.3,
+          "tag": "川剧脸谱"
+        }
+      ]
+    },
+    {
+      "idx": 26,
+      "themeId": 4,
+      "mode": "hunt",
+      "title": "第2关 · 重庆",
+      "scene": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv2.jpg",
+      "duration": 60,
+      "hint": "山城江边 · 找出 3 样地道重庆物件",
+      "diff": {
+        "hitScale": 1.15,
+        "penalty": 0,
+        "bonus": 0,
+        "label": "解压",
+        "key": "zen"
+      },
+      "odds": [
+        {
+          "prop": "hotpot_9grid",
+          "x": 73.2,
+          "y": 82,
+          "w": 22.8,
+          "h": 10,
+          "tag": "九宫格火锅"
+        },
+        {
+          "prop": "mountain_basket",
+          "x": 27.4,
+          "y": 66.1,
+          "w": 18,
+          "h": 16.5,
+          "tag": "山货背篓"
+        },
+        {
+          "prop": "chili_string",
+          "x": 75.8,
+          "y": 40.9,
+          "w": 24.2,
+          "h": 11.7,
+          "tag": "红辣椒串"
+        }
+      ]
+    },
+    {
+      "idx": 27,
+      "themeId": 4,
+      "mode": "hunt",
+      "title": "第3关 · 西安",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv3.jpg",
+      "duration": 60,
+      "hint": "长安古街 · 找出 3 样地道西安物件",
+      "diff": {
+        "hitScale": 1.15,
+        "penalty": 0,
+        "bonus": 0,
+        "label": "解压",
+        "key": "zen"
+      },
+      "odds": [
+        {
+          "prop": "broken_bowls",
+          "x": 4.9,
+          "y": 64,
+          "w": 31.7,
+          "h": 13.6,
+          "tag": "摔碎瓷片"
+        },
+        {
+          "prop": "qinghua_bowl",
+          "x": 52.8,
+          "y": 74.4,
+          "w": 33.1,
+          "h": 10.2,
+          "tag": "青花瓷碗"
+        },
+        {
+          "prop": "qinqiang_mask",
+          "x": 84.6,
+          "y": 28,
+          "w": 13.4,
+          "h": 14.9,
+          "tag": "秦腔脸谱"
+        }
+      ]
+    },
+    {
+      "idx": 28,
+      "themeId": 4,
+      "mode": "hunt",
+      "title": "第4关 · 长沙",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv4.jpg",
+      "duration": 60,
+      "hint": "霓虹小龙虾街 · 找出 3 样地道长沙物件",
+      "diff": {
+        "hitScale": 1.15,
+        "penalty": 0,
+        "bonus": 0,
+        "label": "解压",
+        "key": "zen"
+      },
+      "odds": [
+        {
+          "prop": "chayan_sign",
+          "x": 2,
+          "y": 11.8,
+          "w": 21.1,
+          "h": 6.2,
+          "tag": "茶颜悦色招牌"
+        },
+        {
+          "prop": "stinky_tofu_sign",
+          "x": 82,
+          "y": 6,
+          "w": 16,
+          "h": 44,
+          "tag": "臭豆腐招牌"
+        },
+        {
+          "prop": "tang_you_baba",
+          "x": 74,
+          "y": 80,
+          "w": 22,
+          "h": 12,
+          "tag": "糖油粑粑"
+        }
+      ]
+    },
+    {
+      "idx": 29,
+      "themeId": 4,
+      "mode": "hunt",
+      "title": "第5关 · 天津",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv5.jpg",
+      "duration": 60,
+      "hint": "洋楼有轨电车 · 找出 3 样地道天津物件",
+      "diff": {
+        "hitScale": 1.15,
+        "penalty": 0,
+        "bonus": 0,
+        "label": "解压",
+        "key": "zen"
+      },
+      "odds": [
+        {
+          "prop": "tram_tianjin",
+          "x": 27,
+          "y": 39.6,
+          "w": 30.2,
+          "h": 16.2,
+          "tag": "天津有轨电车"
+        },
+        {
+          "prop": "jianbing_stand",
+          "x": 60,
+          "y": 81.9,
+          "w": 36.1,
+          "h": 14.1,
+          "tag": "煎饼果子摊"
+        },
+        {
+          "prop": "xiangsheng_sign",
+          "x": 3,
+          "y": 53.1,
+          "w": 9,
+          "h": 11,
+          "tag": "相声馆招牌"
+        }
+      ]
+    },
+    {
+      "idx": 30,
+      "themeId": 4,
+      "mode": "hunt",
+      "title": "第10关 · 北京",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv10.jpg",
+      "duration": 60,
+      "hint": "北京老街 · 找出 5 样地道北京物件（物件很小很藏）",
+      "diff": {
+        "hitScale": 1.15,
+        "penalty": 4,
+        "bonus": 0,
+        "label": "进阶",
+        "key": "advanced"
+      },
+      "odds": [
+        {
+          "prop": "tanghulu",
+          "x": 22.5,
+          "y": 45,
+          "w": 3,
+          "h": 6,
+          "tag": "糖葫芦"
+        },
+        {
+          "prop": "hongdenglong",
+          "x": 40,
+          "y": 35,
+          "w": 2.5,
+          "h": 5,
+          "tag": "红灯笼"
+        },
+        {
+          "prop": "shizitou",
+          "x": 10,
+          "y": 60,
+          "w": 3.5,
+          "h": 4,
+          "tag": "狮子头"
+        },
+        {
+          "prop": "xiaotui",
+          "x": 60,
+          "y": 50,
+          "w": 4,
+          "h": 5,
+          "tag": "小推车"
+        },
+        {
+          "prop": "huadeng",
+          "x": 75,
+          "y": 20,
+          "w": 3,
+          "h": 6,
+          "tag": "花灯"
+        }
+      ]
+    },
+    {
+      "idx": 31,
+      "themeId": 4,
+      "mode": "hunt",
+      "title": "第11关 · 太原",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv11.jpg",
+      "duration": 60,
+      "hint": "太原老街 · 找出 5 样地道太原物件（物件很小很藏）",
+      "diff": {
+        "hitScale": 1.15,
+        "penalty": 4,
+        "bonus": 0,
+        "label": "进阶",
+        "key": "advanced"
+      },
+      "odds": [
+        {
+          "prop": "hongdenglong",
+          "x": 6.5,
+          "y": 30,
+          "w": 3,
+          "h": 5,
+          "tag": "红灯笼"
+        },
+        {
+          "prop": "baozhu",
+          "x": 12,
+          "y": 65,
+          "w": 4,
+          "h": 6,
+          "tag": "爆竹摊位"
+        },
+        {
+          "prop": "boliqiu",
+          "x": 45,
+          "y": 60,
+          "w": 3,
+          "h": 5,
+          "tag": "玻璃球"
+        },
+        {
+          "prop": "shangdian",
+          "x": 85,
+          "y": 20,
+          "w": 4,
+          "h": 6,
+          "tag": "商店招牌"
+        },
+        {
+          "prop": "huadeng",
+          "x": 70,
+          "y": 75,
+          "w": 3,
+          "h": 5,
+          "tag": "花灯"
+        }
+      ]
+    },
+    {
+      "idx": 32,
+      "themeId": 4,
+      "mode": "hunt",
+      "title": "第12关 · 石家庄",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv12.jpg",
+      "duration": 60,
+      "hint": "石家庄老街 · 找出 5 样地道石家庄物件（物件很小很藏）",
+      "diff": {
+        "hitScale": 1.15,
+        "penalty": 4,
+        "bonus": 0,
+        "label": "进阶",
+        "key": "advanced"
+      },
+      "odds": [
+        {
+          "prop": "umbrella_table",
+          "x": 10.5,
+          "y": 65,
+          "w": 5,
+          "h": 5,
+          "tag": "遮阳伞桌"
+        },
+        {
+          "prop": "red_lanterns",
+          "x": 45,
+          "y": 20,
+          "w": 3,
+          "h": 6,
+          "tag": "红灯笼"
+        },
+        {
+          "prop": "pink_cart",
+          "x": 38,
+          "y": 50,
+          "w": 4,
+          "h": 5,
+          "tag": "粉色小推车"
+        },
+        {
+          "prop": "blue_balloon",
+          "x": 78,
+          "y": 60,
+          "w": 2,
+          "h": 4,
+          "tag": "蓝色气球"
+        },
+        {
+          "prop": "shop_sign",
+          "x": 5,
+          "y": 10,
+          "w": 3,
+          "h": 3,
+          "tag": "店铺招牌"
+        }
+      ]
+    },
+    {
+      "idx": 33,
+      "themeId": 4,
+      "mode": "hunt",
+      "title": "第13关 · 沈阳",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv13.jpg",
+      "duration": 60,
+      "hint": "沈阳老街 · 找出 5 样地道沈阳物件（物件很小很藏）",
+      "diff": {
+        "hitScale": 1.15,
+        "penalty": 4,
+        "bonus": 0,
+        "label": "进阶",
+        "key": "advanced"
+      },
+      "odds": [
+        {
+          "prop": "hongdenglong",
+          "x": 78.5,
+          "y": 52,
+          "w": 3,
+          "h": 6,
+          "tag": "红灯笼"
+        },
+        {
+          "prop": "xiaotui",
+          "x": 40,
+          "y": 65,
+          "w": 4,
+          "h": 5,
+          "tag": "小推车"
+        },
+        {
+          "prop": "shizitou",
+          "x": 85,
+          "y": 20,
+          "w": 3,
+          "h": 4,
+          "tag": "狮子头"
+        },
+        {
+          "prop": "zhaopai",
+          "x": 70,
+          "y": 10,
+          "w": 5,
+          "h": 3,
+          "tag": "招牌"
+        },
+        {
+          "prop": "huadeng",
+          "x": 15,
+          "y": 40,
+          "w": 3,
+          "h": 6,
+          "tag": "花灯"
+        }
+      ]
+    },
+    {
+      "idx": 34,
+      "themeId": 4,
+      "mode": "hunt",
+      "title": "第14关 · 哈尔滨",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv14.jpg",
+      "duration": 70,
+      "hint": "🔥 困难 · 哈尔滨老街 · 找出 6 样地道哈尔滨物件（物件很小很藏）",
+      "diff": {
+        "hitScale": 1.05,
+        "penalty": 5,
+        "bonus": 0,
+        "label": "困难",
+        "key": "hard"
+      },
+      "odds": [
+        {
+          "prop": "red_booth",
+          "x": 10.5,
+          "y": 60,
+          "w": 6,
+          "h": 8,
+          "tag": "红色摊位"
+        },
+        {
+          "prop": "ice_sculpture",
+          "x": 80,
+          "y": 40,
+          "w": 5,
+          "h": 8,
+          "tag": "冰雕"
+        },
+        {
+          "prop": "christmas_tree",
+          "x": 5,
+          "y": 20,
+          "w": 4,
+          "h": 8,
+          "tag": "圣诞树"
+        },
+        {
+          "prop": "lantern",
+          "x": 12,
+          "y": 65,
+          "w": 3,
+          "h": 5,
+          "tag": "灯笼"
+        },
+        {
+          "prop": "vendor",
+          "x": 15,
+          "y": 62,
+          "w": 3,
+          "h": 6,
+          "tag": "摊贩"
+        },
+        {
+          "prop": "ice_wall",
+          "x": 85,
+          "y": 50,
+          "w": 4,
+          "h": 8,
+          "tag": "冰墙"
+        }
+      ]
+    },
+    {
+      "idx": 35,
+      "themeId": 4,
+      "mode": "hunt",
+      "title": "第15关 · 苏州",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv15.jpg",
+      "duration": 70,
+      "hint": "🔥 困难 · 苏州老街 · 找出 6 样地道苏州物件（物件很小很藏）",
+      "diff": {
+        "hitScale": 1.05,
+        "penalty": 5,
+        "bonus": 0,
+        "label": "困难",
+        "key": "hard"
+      },
+      "odds": [
+        {
+          "prop": "hongdenglong",
+          "x": 5,
+          "y": 10,
+          "w": 3,
+          "h": 6,
+          "tag": "红灯笼"
+        },
+        {
+          "prop": "zhaopai",
+          "x": 20,
+          "y": 20,
+          "w": 4,
+          "h": 3,
+          "tag": "招牌"
+        },
+        {
+          "prop": "yusan",
+          "x": 30,
+          "y": 40,
+          "w": 3,
+          "h": 5,
+          "tag": "雨伞"
+        },
+        {
+          "prop": "xiaoqiao",
+          "x": 60,
+          "y": 40,
+          "w": 8,
+          "h": 5,
+          "tag": "小桥"
+        },
+        {
+          "prop": "huadeng",
+          "x": 80,
+          "y": 20,
+          "w": 3,
+          "h": 6,
+          "tag": "花灯"
+        },
+        {
+          "prop": "xiaotui",
+          "x": 50,
+          "y": 60,
+          "w": 4,
+          "h": 4,
+          "tag": "小推车"
+        }
+      ]
+    },
+    {
+      "idx": 36,
+      "themeId": 4,
+      "mode": "hunt",
+      "title": "第16关 · 杭州",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv16.jpg",
+      "duration": 70,
+      "hint": "🔥 困难 · 杭州老街 · 找出 6 样地道杭州物件（物件很小很藏）",
+      "diff": {
+        "hitScale": 1.05,
+        "penalty": 5,
+        "bonus": 0,
+        "label": "困难",
+        "key": "hard"
+      },
+      "odds": [
+        {
+          "prop": "hongdenglong",
+          "x": 13.5,
+          "y": 28,
+          "w": 3,
+          "h": 6,
+          "tag": "红灯笼"
+        },
+        {
+          "prop": "chazhao",
+          "x": 28,
+          "y": 38,
+          "w": 3.5,
+          "h": 7,
+          "tag": "茶招牌"
+        },
+        {
+          "prop": "lvteng",
+          "x": 10,
+          "y": 45,
+          "w": 10,
+          "h": 5,
+          "tag": "绿篷布"
+        },
+        {
+          "prop": "huangmaozi",
+          "x": 35,
+          "y": 55,
+          "w": 2.5,
+          "h": 3.5,
+          "tag": "黄帽子"
+        },
+        {
+          "prop": "lvguantong",
+          "x": 20,
+          "y": 50,
+          "w": 3,
+          "h": 6,
+          "tag": "绿罐桶"
+        },
+        {
+          "prop": "huangzhaopai",
+          "x": 45,
+          "y": 30,
+          "w": 4,
+          "h": 5,
+          "tag": "黄招牌"
+        }
+      ]
+    },
+    {
+      "idx": 37,
+      "themeId": 4,
+      "mode": "hunt",
+      "title": "第17关 · 南京",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv17.jpg",
+      "duration": 70,
+      "hint": "🔥 困难 · 南京老街 · 找出 6 样地道南京物件（物件很小很藏）",
+      "diff": {
+        "hitScale": 1.05,
+        "penalty": 5,
+        "bonus": 0,
+        "label": "困难",
+        "key": "hard"
+      },
+      "odds": [
+        {
+          "prop": "hongdenglong",
+          "x": 16.5,
+          "y": 28,
+          "w": 3,
+          "h": 6,
+          "tag": "红灯笼"
+        },
+        {
+          "prop": "tanghulu",
+          "x": 10,
+          "y": 45,
+          "w": 3.5,
+          "h": 6,
+          "tag": "糖葫芦"
+        },
+        {
+          "prop": "hongse_san",
+          "x": 50,
+          "y": 55,
+          "w": 5,
+          "h": 5,
+          "tag": "红色伞"
+        },
+        {
+          "prop": "huangchuan",
+          "x": 75,
+          "y": 65,
+          "w": 5,
+          "h": 5,
+          "tag": "黄船"
+        },
+        {
+          "prop": "shiziludeng",
+          "x": 40,
+          "y": 60,
+          "w": 2,
+          "h": 5,
+          "tag": "十字路灯"
+        },
+        {
+          "prop": "lvzhiwu",
+          "x": 60,
+          "y": 50,
+          "w": 3,
+          "h": 5,
+          "tag": "绿植物"
+        }
+      ]
+    },
+    {
+      "idx": 38,
+      "themeId": 4,
+      "mode": "hunt",
+      "title": "第18关 · 青岛",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv18.jpg",
+      "duration": 70,
+      "hint": "🔥 困难 · 青岛老街 · 找出 6 样地道青岛物件（物件很小很藏）",
+      "diff": {
+        "hitScale": 1.05,
+        "penalty": 5,
+        "bonus": 0,
+        "label": "困难",
+        "key": "hard"
+      },
+      "odds": [
+        {
+          "prop": "street_lamp",
+          "x": 23.5,
+          "y": 40.2,
+          "w": 2.5,
+          "h": 7,
+          "tag": "路灯"
+        },
+        {
+          "prop": "red_umbrella",
+          "x": 60,
+          "y": 65,
+          "w": 4,
+          "h": 5,
+          "tag": "红伞"
+        },
+        {
+          "prop": "blue_tent",
+          "x": 72.5,
+          "y": 50,
+          "w": 5,
+          "h": 4,
+          "tag": "蓝帐篷"
+        },
+        {
+          "prop": "church_tower",
+          "x": 85,
+          "y": 10,
+          "w": 4,
+          "h": 8,
+          "tag": "教堂塔"
+        },
+        {
+          "prop": "ship",
+          "x": 90,
+          "y": 20,
+          "w": 7,
+          "h": 3,
+          "tag": "轮船"
+        },
+        {
+          "prop": "green_fence",
+          "x": 10,
+          "y": 60,
+          "w": 3,
+          "h": 6,
+          "tag": "绿栅栏"
+        }
+      ]
+    },
+    {
+      "idx": 39,
+      "themeId": 4,
+      "mode": "hunt",
+      "title": "第19关 · 武汉",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv19.jpg",
+      "duration": 80,
+      "hint": "🔥 地狱 · 武汉老街 · 找出 7 样地道武汉物件（物件很小很藏）",
+      "diff": {
+        "hitScale": 0.95,
+        "penalty": 6,
+        "bonus": 0,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "prop": "cailinji_sign",
+          "x": 5,
+          "y": 10,
+          "w": 8,
+          "h": 5,
+          "tag": "蔡林记招牌"
+        },
+        {
+          "prop": "red_lanterns",
+          "x": 10,
+          "y": 20,
+          "w": 3,
+          "h": 6,
+          "tag": "红灯笼"
+        },
+        {
+          "prop": "food_stall",
+          "x": 30,
+          "y": 50,
+          "w": 6,
+          "h": 8,
+          "tag": "小吃摊"
+        },
+        {
+          "prop": "red_canopy",
+          "x": 70,
+          "y": 60,
+          "w": 6,
+          "h": 5,
+          "tag": "红色遮阳篷"
+        },
+        {
+          "prop": "tree",
+          "x": 90,
+          "y": 5,
+          "w": 8,
+          "h": 10,
+          "tag": "树"
+        },
+        {
+          "prop": "street_lamp",
+          "x": 60,
+          "y": 65,
+          "w": 3,
+          "h": 8,
+          "tag": "街灯"
+        },
+        {
+          "prop": "crowd",
+          "x": 50,
+          "y": 40,
+          "w": 8,
+          "h": 8,
+          "tag": "人群"
+        }
+      ]
+    },
+    {
+      "idx": 40,
+      "themeId": 4,
+      "mode": "hunt",
+      "title": "第20关 · 郑州",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv20.jpg",
+      "duration": 80,
+      "hint": "🔥 地狱 · 郑州老街 · 找出 7 样地道郑州物件（物件很小很藏）",
+      "diff": {
+        "hitScale": 0.95,
+        "penalty": 6,
+        "bonus": 0,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "prop": "hongdenglong",
+          "x": 80.5,
+          "y": 20.3,
+          "w": 3.5,
+          "h": 6,
+          "tag": "红灯笼"
+        },
+        {
+          "prop": "shizitou",
+          "x": 92,
+          "y": 40,
+          "w": 4,
+          "h": 4,
+          "tag": "狮子头"
+        },
+        {
+          "prop": "shaoqipai",
+          "x": 60,
+          "y": 10,
+          "w": 4.5,
+          "h": 5,
+          "tag": "烧烤牌"
+        },
+        {
+          "prop": "xiaotui",
+          "x": 45,
+          "y": 50,
+          "w": 5,
+          "h": 5,
+          "tag": "小推车"
+        },
+        {
+          "prop": "huadeng",
+          "x": 10,
+          "y": 30,
+          "w": 4,
+          "h": 6,
+          "tag": "花灯"
+        },
+        {
+          "prop": "shizilou",
+          "x": 5,
+          "y": 5,
+          "w": 4,
+          "h": 5,
+          "tag": "狮子楼"
+        },
+        {
+          "prop": "yinyueji",
+          "x": 70,
+          "y": 60,
+          "w": 3,
+          "h": 4,
+          "tag": "音乐机"
+        }
+      ]
+    },
+    {
+      "idx": 41,
+      "themeId": 4,
+      "mode": "hunt",
+      "title": "第21关 · 厦门",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv21.jpg",
+      "duration": 80,
+      "hint": "🔥 地狱 · 厦门老街 · 找出 7 样地道厦门物件（物件很小很藏）",
+      "diff": {
+        "hitScale": 0.95,
+        "penalty": 6,
+        "bonus": 0,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "prop": "hongdenglong",
+          "x": 15,
+          "y": 40,
+          "w": 3,
+          "h": 6,
+          "tag": "红灯笼"
+        },
+        {
+          "prop": "huangdeng",
+          "x": 10,
+          "y": 55,
+          "w": 2.5,
+          "h": 5,
+          "tag": "黄灯"
+        },
+        {
+          "prop": "baizhuozi",
+          "x": 20,
+          "y": 60,
+          "w": 4,
+          "h": 4,
+          "tag": "白桌子"
+        },
+        {
+          "prop": "huanghuashu",
+          "x": 25,
+          "y": 70,
+          "w": 3.5,
+          "h": 5.5,
+          "tag": "黄花束"
+        },
+        {
+          "prop": "baipeng",
+          "x": 50,
+          "y": 30,
+          "w": 5,
+          "h": 5,
+          "tag": "白棚"
+        },
+        {
+          "prop": "lvshu",
+          "x": 80,
+          "y": 10,
+          "w": 8,
+          "h": 8,
+          "tag": "绿树"
+        },
+        {
+          "prop": "hongzhaopai",
+          "x": 70,
+          "y": 40,
+          "w": 4,
+          "h": 4,
+          "tag": "红招牌"
+        }
+      ]
+    },
+    {
+      "idx": 42,
+      "themeId": 4,
+      "mode": "hunt",
+      "title": "第22关 · 潮州",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv22.jpg",
+      "duration": 80,
+      "hint": "🔥 地狱 · 潮州老街 · 找出 7 样地道潮州物件（物件很小很藏）",
+      "diff": {
+        "hitScale": 0.95,
+        "penalty": 6,
+        "bonus": 0,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "prop": "hongdenglong",
+          "x": 5,
+          "y": 30,
+          "w": 3,
+          "h": 6,
+          "tag": "红灯笼"
+        },
+        {
+          "prop": "hongzhanpeng",
+          "x": 15,
+          "y": 50,
+          "w": 5,
+          "h": 5,
+          "tag": "红帐篷"
+        },
+        {
+          "prop": "shizipai",
+          "x": 45,
+          "y": 30,
+          "w": 8,
+          "h": 8,
+          "tag": "石牌坊"
+        },
+        {
+          "prop": "xiaotui",
+          "x": 70,
+          "y": 60,
+          "w": 4,
+          "h": 4,
+          "tag": "小推车"
+        },
+        {
+          "prop": "huangdeng",
+          "x": 10,
+          "y": 80,
+          "w": 3,
+          "h": 3,
+          "tag": "黄灯光"
+        },
+        {
+          "prop": "lvshu",
+          "x": 90,
+          "y": 10,
+          "w": 5,
+          "h": 10,
+          "tag": "绿树"
+        },
+        {
+          "prop": "baifangzi",
+          "x": 0.5,
+          "y": 0.5,
+          "w": 10,
+          "h": 10,
+          "tag": "白房子"
+        }
+      ]
+    },
+    {
+      "idx": 43,
+      "themeId": 4,
+      "mode": "hunt",
+      "title": "第23关 · 桂林",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv23.jpg",
+      "duration": 80,
+      "hint": "🔥 地狱 · 桂林老街 · 找出 7 样地道桂林物件（物件很小很藏）",
+      "diff": {
+        "hitScale": 0.95,
+        "penalty": 6,
+        "bonus": 0,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "prop": "hongdenglong",
+          "x": 58.5,
+          "y": 18,
+          "w": 3,
+          "h": 6,
+          "tag": "红灯笼"
+        },
+        {
+          "prop": "tese_xiaochi",
+          "x": 85,
+          "y": 5,
+          "w": 6,
+          "h": 4,
+          "tag": "特色小吃招牌"
+        },
+        {
+          "prop": "shan_shui_hua",
+          "x": 16,
+          "y": 25,
+          "w": 5,
+          "h": 4,
+          "tag": "山水画"
+        },
+        {
+          "prop": "guangxi_tang",
+          "x": 70,
+          "y": 50,
+          "w": 4,
+          "h": 5,
+          "tag": "广西糖"
+        },
+        {
+          "prop": "cha_hu",
+          "x": 90,
+          "y": 35,
+          "w": 3,
+          "h": 4,
+          "tag": "茶壶"
+        },
+        {
+          "prop": "mian_tiao",
+          "x": 30,
+          "y": 60,
+          "w": 4,
+          "h": 5,
+          "tag": "面条"
+        },
+        {
+          "prop": "hua_deng",
+          "x": 45,
+          "y": 10,
+          "w": 3,
+          "h": 6,
+          "tag": "花灯"
+        }
+      ]
+    },
+    {
+      "idx": 44,
+      "themeId": 4,
+      "mode": "hunt",
+      "title": "第24关 · 昆明",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv24.jpg",
+      "duration": 80,
+      "hint": "🔥 地狱 · 昆明老街 · 找出 7 样地道昆明物件（物件很小很藏）",
+      "diff": {
+        "hitScale": 0.95,
+        "penalty": 6,
+        "bonus": 0,
+        "label": "地狱",
+        "key": "hell"
+      },
+      "odds": [
+        {
+          "prop": "red_lantern",
+          "x": 74.5,
+          "y": 16.5,
+          "w": 3.5,
+          "h": 6,
+          "tag": "红灯笼"
+        },
+        {
+          "prop": "flower_cart",
+          "x": 88,
+          "y": 60,
+          "w": 4,
+          "h": 5,
+          "tag": "花车"
+        },
+        {
+          "prop": "hat_stand",
+          "x": 10,
+          "y": 55,
+          "w": 4.5,
+          "h": 5.5,
+          "tag": "帽子摊"
+        },
+        {
+          "prop": "umbrella",
+          "x": 60,
+          "y": 40,
+          "w": 5,
+          "h": 5,
+          "tag": "遮阳伞"
+        },
+        {
+          "prop": "sign_board",
+          "x": 5,
+          "y": 10,
+          "w": 4,
+          "h": 5,
+          "tag": "招牌"
+        },
+        {
+          "prop": "shoe_display",
+          "x": 15,
+          "y": 30,
+          "w": 4.5,
+          "h": 5,
+          "tag": "鞋展示"
+        },
+        {
+          "prop": "food_stall",
+          "x": 50,
+          "y": 70,
+          "w": 5,
+          "h": 5,
+          "tag": "小吃摊"
+        }
+      ]
+    },
+    {
+      "idx": 45,
+      "themeId": 4,
+      "mode": "hunt",
+      "title": "第25关 · 贵阳",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv25.jpg",
+      "duration": 90,
+      "hint": "🔥🔥 极地狱 · 贵阳老街 · 找出 8 样地道贵阳物件（物件很小很藏）",
+      "diff": {
+        "hitScale": 0.85,
+        "penalty": 7,
+        "bonus": 0,
+        "label": "极地狱",
+        "key": "nightmare"
+      },
+      "odds": [
+        {
+          "prop": "hongdenglong",
+          "x": 56.5,
+          "y": 22,
+          "w": 3,
+          "h": 6,
+          "tag": "红灯笼"
+        },
+        {
+          "prop": "zhaopai",
+          "x": 70,
+          "y": 30,
+          "w": 4,
+          "h": 5,
+          "tag": "招牌"
+        },
+        {
+          "prop": "san",
+          "x": 48,
+          "y": 60,
+          "w": 4,
+          "h": 6,
+          "tag": "雨伞"
+        },
+        {
+          "prop": "xiaotui",
+          "x": 80,
+          "y": 50,
+          "w": 5,
+          "h": 5,
+          "tag": "小推车"
+        },
+        {
+          "prop": "huadeng",
+          "x": 62,
+          "y": 40,
+          "w": 3,
+          "h": 5,
+          "tag": "花灯"
+        },
+        {
+          "prop": "shizitou",
+          "x": 10,
+          "y": 70,
+          "w": 4,
+          "h": 6,
+          "tag": "石狮子"
+        },
+        {
+          "prop": "shizhuo",
+          "x": 90,
+          "y": 80,
+          "w": 4,
+          "h": 5,
+          "tag": "石桌"
+        },
+        {
+          "prop": "lupai",
+          "x": 20,
+          "y": 10,
+          "w": 3,
+          "h": 5,
+          "tag": "路牌"
+        }
+      ]
+    },
+    {
+      "idx": 46,
+      "themeId": 4,
+      "mode": "hunt",
+      "title": "第26关 · 拉萨",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv26.jpg",
+      "duration": 90,
+      "hint": "🔥🔥 极地狱 · 拉萨老街 · 找出 8 样地道拉萨物件（物件很小很藏）",
+      "diff": {
+        "hitScale": 0.85,
+        "penalty": 7,
+        "bonus": 0,
+        "label": "极地狱",
+        "key": "nightmare"
+      },
+      "odds": [
+        {
+          "prop": "colorful_flags",
+          "x": 90.5,
+          "y": 30,
+          "w": 3,
+          "h": 8,
+          "tag": "彩色旗帜"
+        },
+        {
+          "prop": "golden_pots",
+          "x": 80,
+          "y": 50,
+          "w": 4,
+          "h": 6,
+          "tag": "金色壶"
+        },
+        {
+          "prop": "hanging_lanterns",
+          "x": 5,
+          "y": 40,
+          "w": 3,
+          "h": 6,
+          "tag": "悬挂灯笼"
+        },
+        {
+          "prop": "striped_awning",
+          "x": 10,
+          "y": 20,
+          "w": 5,
+          "h": 3,
+          "tag": "条纹遮阳篷"
+        },
+        {
+          "prop": "red_cloth",
+          "x": 2,
+          "y": 60,
+          "w": 3,
+          "h": 5,
+          "tag": "红色布料"
+        },
+        {
+          "prop": "hanging_tapestry",
+          "x": 15,
+          "y": 45,
+          "w": 4,
+          "h": 7,
+          "tag": "挂毯"
+        },
+        {
+          "prop": "white_hat",
+          "x": 50,
+          "y": 70,
+          "w": 2,
+          "h": 3,
+          "tag": "白色帽子"
+        },
+        {
+          "prop": "wooden_pillar",
+          "x": 25,
+          "y": 15,
+          "w": 2,
+          "h": 8,
+          "tag": "木柱"
+        }
+      ]
+    },
+    {
+      "idx": 47,
+      "themeId": 4,
+      "mode": "hunt",
+      "title": "第27关 · 兰州",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv27.jpg",
+      "duration": 90,
+      "hint": "🔥🔥 极地狱 · 兰州老街 · 找出 8 样地道兰州物件（物件很小很藏）",
+      "diff": {
+        "hitScale": 0.85,
+        "penalty": 7,
+        "bonus": 0,
+        "label": "极地狱",
+        "key": "nightmare"
+      },
+      "odds": [
+        {
+          "prop": "hongdenglong",
+          "x": 10.5,
+          "y": 25,
+          "w": 3,
+          "h": 6,
+          "tag": "红灯笼"
+        },
+        {
+          "prop": "tiebanjiaoyu",
+          "x": 15,
+          "y": 30,
+          "w": 4,
+          "h": 5,
+          "tag": "铁板鱿鱼"
+        },
+        {
+          "prop": "shizitou",
+          "x": 22,
+          "y": 40,
+          "w": 3.5,
+          "h": 4.5,
+          "tag": "狮子头"
+        },
+        {
+          "prop": "xiaotui",
+          "x": 30,
+          "y": 60,
+          "w": 4,
+          "h": 5,
+          "tag": "小推车"
+        },
+        {
+          "prop": "huadeng",
+          "x": 45,
+          "y": 20,
+          "w": 3.5,
+          "h": 6,
+          "tag": "花灯"
+        },
+        {
+          "prop": "shousi",
+          "x": 55,
+          "y": 35,
+          "w": 3,
+          "h": 4,
+          "tag": "寿司"
+        },
+        {
+          "prop": "jiaoluo",
+          "x": 70,
+          "y": 50,
+          "w": 4,
+          "h": 5,
+          "tag": "角落摊位"
+        },
+        {
+          "prop": "shuihu",
+          "x": 85,
+          "y": 65,
+          "w": 3,
+          "h": 4,
+          "tag": "水壶"
+        }
+      ]
+    },
+    {
+      "idx": 48,
+      "themeId": 4,
+      "mode": "hunt",
+      "title": "第28关 · 乌鲁木齐",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv28.jpg",
+      "duration": 90,
+      "hint": "🔥🔥 极地狱 · 乌鲁木齐老街 · 找出 8 样地道乌鲁木齐物件（物件很小很藏）",
+      "diff": {
+        "hitScale": 0.85,
+        "penalty": 7,
+        "bonus": 0,
+        "label": "极地狱",
+        "key": "nightmare"
+      },
+      "odds": [
+        {
+          "prop": "green_umbrella",
+          "x": 40.5,
+          "y": 30,
+          "w": 5,
+          "h": 5,
+          "tag": "绿色伞"
+        },
+        {
+          "prop": "red_canopy",
+          "x": 75,
+          "y": 40,
+          "w": 8,
+          "h": 5,
+          "tag": "红色遮阳篷"
+        },
+        {
+          "prop": "hanging_lantern",
+          "x": 20,
+          "y": 20,
+          "w": 3,
+          "h": 6,
+          "tag": "悬挂灯笼"
+        },
+        {
+          "prop": "white_dome",
+          "x": 50,
+          "y": 10,
+          "w": 4,
+          "h": 4,
+          "tag": "白色圆顶"
+        },
+        {
+          "prop": "spices_stall",
+          "x": 10,
+          "y": 50,
+          "w": 6,
+          "h": 5,
+          "tag": "香料摊位"
+        },
+        {
+          "prop": "hanging_clothes",
+          "x": 30,
+          "y": 35,
+          "w": 4,
+          "h": 6,
+          "tag": "悬挂衣物"
+        },
+        {
+          "prop": "fire_pit",
+          "x": 85,
+          "y": 60,
+          "w": 3,
+          "h": 3,
+          "tag": "火炉"
+        },
+        {
+          "prop": "golden_vase",
+          "x": 90,
+          "y": 70,
+          "w": 3,
+          "h": 5,
+          "tag": "金色花瓶"
+        }
+      ]
+    },
+    {
+      "idx": 49,
+      "themeId": 4,
+      "mode": "hunt",
+      "title": "第29关 · 泉州",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv29.jpg",
+      "duration": 90,
+      "hint": "🔥🔥 极地狱 · 泉州老街 · 找出 8 样地道泉州物件（物件很小很藏）",
+      "diff": {
+        "hitScale": 0.85,
+        "penalty": 7,
+        "bonus": 0,
+        "label": "极地狱",
+        "key": "nightmare"
+      },
+      "odds": [
+        {
+          "prop": "hongdenglong",
+          "x": 40.5,
+          "y": 40.2,
+          "w": 2.5,
+          "h": 5,
+          "tag": "红灯笼"
+        },
+        {
+          "prop": "shizitou",
+          "x": 30,
+          "y": 50,
+          "w": 3,
+          "h": 5,
+          "tag": "狮子头"
+        },
+        {
+          "prop": "huadeng",
+          "x": 60,
+          "y": 55,
+          "w": 3.5,
+          "h": 6,
+          "tag": "花灯"
+        },
+        {
+          "prop": "xiaotanche",
+          "x": 25,
+          "y": 65,
+          "w": 4,
+          "h": 7,
+          "tag": "小摊车"
+        },
+        {
+          "prop": "shangdianpai",
+          "x": 45,
+          "y": 35,
+          "w": 3,
+          "h": 5,
+          "tag": "商店牌"
+        },
+        {
+          "prop": "shizideng",
+          "x": 35,
+          "y": 45,
+          "w": 2.5,
+          "h": 4.5,
+          "tag": "石子灯"
+        },
+        {
+          "prop": "huaping",
+          "x": 55,
+          "y": 60,
+          "w": 3,
+          "h": 5.5,
+          "tag": "花瓶"
+        },
+        {
+          "prop": "xiaozhuozi",
+          "x": 70,
+          "y": 70,
+          "w": 3.5,
+          "h": 6,
+          "tag": "小桌子"
+        }
+      ]
+    },
+    {
+      "idx": 200,
+      "themeId": 5,
+      "mode": "story",
+      "storySchema": "s5_affair_1808_v1",
+      "chapterTitle": "第一章 · 他没有出差",
+      "title": "第1关 · 主卧里的她",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/affair_lv01_hard_v1.jpg",
+      "duration": 60,
+      "hint": "结婚纪念日前夜，周铭说公司临时有事。你回卧室拿充电器，却发现房间里多了另一个女人的痕迹。",
+      "briefGoals": [
+        "确认陌生人是否刚来过",
+        "判断房间里是否有两人共同停留",
+        "查明反复出现的地点暗号"
+      ],
+      "epilogue": "这些东西属于同一个女人，而且她刚刚在这里待过。\n这时，周铭拿着手机躲进浴室接电话。他刻意压低声音，浴室门却没有关严。",
+      "nextHook": "苏晴听见浴室里传来一句：“她还没发现。”",
+      "epilogueTag": "🕵️ 线索开始",
+      "bossStage": -1,
+      "odds": [
+        {
+          "prop": "affair_pearl_earring",
+          "x": 63.2,
+          "y": 76.6,
+          "w": 5.4,
+          "h": 4.7,
+          "tag": "珍珠耳环",
+          "clue": "床边闪着冷光的小东西",
+          "narrative": "这不是我的耳环，而且像是刚摘下来的。"
+        },
+        {
+          "prop": "affair_rose_perfume",
+          "x": 72.7,
+          "y": 24.2,
+          "w": 5.1,
+          "h": 6,
+          "tag": "陌生玫瑰香水",
+          "clue": "梳妆台上陌生的香味",
+          "narrative": "周铭最讨厌玫瑰味，我也从不用这款香水。"
+        },
+        {
+          "prop": "affair_red_scarf",
+          "x": 70.4,
+          "y": 56.2,
+          "w": 5.8,
+          "h": 4.2,
+          "tag": "红色丝巾",
+          "clue": "椅背上不属于你的颜色",
+          "narrative": "丝巾还没叠好，主人走得很匆忙。"
+        },
+        {
+          "prop": "affair_breakfast_receipt",
+          "x": 31.5,
+          "y": 89.2,
+          "w": 17,
+          "h": 9.8,
+          "tag": "酒店双人早餐单",
+          "clue": "前景托盘上的双人痕迹",
+          "narrative": "双人早餐，送餐地点写着1808。"
+        },
+        {
+          "prop": "affair_burgundy_barrette_bed",
+          "x": 21.7,
+          "y": 41.5,
+          "w": 6.5,
+          "h": 5.2,
+          "tag": "酒红宝石发夹",
+          "clue": "枕边酒红色的小饰物",
+          "narrative": "发夹卡在枕边，床单显然刚被整理过。"
+        },
+        {
+          "prop": "affair_laundry_tag_1808",
+          "x": 90.4,
+          "y": 69.8,
+          "w": 7.5,
+          "h": 7.7,
+          "tag": "1808洗衣牌",
+          "clue": "衣柜边暴露地点的纸牌",
+          "narrative": "又是1808，这不是巧合。"
+        }
+      ],
+      "intro": {
+        "style": "affair-dossier",
+        "templateAsset": "assets/ui/theme5-brief-lv1.png",
+        "sectionTitle": "本关调查方向",
+        "buttonText": "开始找线索",
+        "chapterTitle": "第一章 · 他没有出差",
+        "title": "第1关 · 主卧里的她",
+        "body": "结婚纪念日前夜，周铭说公司临时有事。你回卧室拿充电器，却发现房间里多了另一个女人的痕迹。",
+        "goals": [
+          "确认陌生人是否刚来过",
+          "判断房间里是否有两人共同停留",
+          "查明反复出现的地点暗号"
+        ]
+      }
+    },
+    {
+      "idx": 201,
+      "themeId": 5,
+      "mode": "story",
+      "storySchema": "s5_affair_1808_v1",
+      "chapterTitle": "第一章 · 他没有出差",
+      "title": "第2关 · 浴室里的第二个人",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/affair_lv02_hard_v2.jpg?v=20260825_affair_lv02_v6",
+      "duration": 60,
+      "hint": "周铭躲进浴室接电话。这里被收拾得很干净，但越干净，留下来的东西越可疑。",
+      "briefGoals": [
+        "辨认多出来的生活用品",
+        "核对反复出现的数字暗号",
+        "判断陌生人是否长期停留"
+      ],
+      "epilogue": "浴室里的用品不是临时留下的。那个女人已经在这里生活过，而且和1808房间有关。\n周铭说司机已经在楼下，苏晴却从窗边看见他亲自开走了车。",
+      "nextHook": "第二天，周铭把车停在公司地库，车钥匙留在办公桌上。",
+      "epilogueTag": "🧩 房号出现",
+      "bossStage": -1,
+      "odds": [
+        {
+          "prop": "affair_second_skincare",
+          "x": 59.5,
+          "y": 29.4,
+          "w": 11.5,
+          "h": 7.6,
+          "tag": "第二套护肤品",
+          "clue": "镜旁多出来的一套日用品",
+          "narrative": "家里只有两个人，为什么会有第三套护肤品？"
+        },
+        {
+          "prop": "affair_strange_lipstick_bath",
+          "x": 4.2,
+          "y": 58.8,
+          "w": 6.8,
+          "h": 12.2,
+          "tag": "陌生口红",
+          "clue": "洗手台边陌生的红色",
+          "narrative": "这个色号我没买过，周铭却像见过。"
+        },
+        {
+          "prop": "affair_red_hair",
+          "x": 17.5,
+          "y": 84.6,
+          "w": 16.5,
+          "h": 7.2,
+          "tag": "红色长发",
+          "clue": "毛巾上不属于你的长发",
+          "narrative": "我没有染发，这根酒红色长发是谁的？"
+        },
+        {
+          "prop": "affair_washbag_1808",
+          "x": 46.5,
+          "y": 72.4,
+          "w": 24,
+          "h": 13.5,
+          "tag": "1808洗漱包",
+          "clue": "隔层里带数字的洗漱物",
+          "narrative": "洗漱包烫着1808，和昨晚的早餐单一致。"
+        },
+        {
+          "prop": "affair_single_pearl_stud",
+          "x": 61.3,
+          "y": 53.5,
+          "w": 6.5,
+          "h": 5.8,
+          "tag": "单只珍珠耳钉",
+          "clue": "水池边滚落的小饰品",
+          "narrative": "它和主卧里的珍珠耳环属于同一套。"
+        },
+        {
+          "prop": "affair_burgundy_barrette_shower",
+          "x": 86,
+          "y": 53.7,
+          "w": 11.5,
+          "h": 6.4,
+          "tag": "酒红发卡",
+          "clue": "淋浴区里熟悉的酒红饰物",
+          "narrative": "同样的酒红色，又一次出现在周铭身边。"
+        }
+      ],
+      "intro": {
+        "style": "affair-dossier",
+        "templateAsset": "assets/ui/theme5-brief-lv1.png",
+        "sectionTitle": "本关调查方向",
+        "buttonText": "开始找线索",
+        "chapterTitle": "第一章 · 他没有出差",
+        "title": "第2关 · 浴室里的第二个人",
+        "body": "周铭躲进浴室接电话。这里被收拾得很干净，但越干净，留下来的东西越可疑。",
+        "goals": [
+          "辨认多出来的生活用品",
+          "核对反复出现的数字暗号",
+          "判断陌生人是否长期停留"
+        ]
+      }
+    },
+    {
+      "idx": 202,
+      "themeId": 5,
+      "mode": "story",
+      "storySchema": "s5_affair_1808_v1",
+      "chapterTitle": "第一章 · 他没有出差",
+      "title": "第3关 · 副驾驶的位置",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/affair_lv03_hard_v7.jpg?v=20260825_affair_lv03_v7",
+      "duration": 55,
+      "hint": "第二天，周铭把车留在公司。副驾驶明显经常坐着同一个女人，昨晚的行程也藏在这里。",
+      "briefGoals": [
+        "检查副驾驶的常用物品",
+        "核对昨晚行程与时间",
+        "寻找被藏起来的通讯痕迹"
+      ],
+      "epilogue": "停车票的时间与昨晚完全吻合。所谓加班，其实是一场双人晚餐。\n苏晴准备离开时，发现后备箱没有关紧。里面放着一只仍然敞开的行李箱。",
+      "nextHook": "周铭忽然从电梯方向走来，一边打电话，一边说：“明天的出差不能取消。”",
+      "epilogueTag": "🚗 谎言对上了",
+      "bossStage": -1,
+      "odds": [
+        {
+          "prop": "affair_lipstick_cup",
+          "x": 19.5,
+          "y": 45.2,
+          "w": 10.5,
+          "h": 10.8,
+          "tag": "口红印纸杯",
+          "clue": "杯沿留下的痕迹",
+          "narrative": "杯口的颜色和浴室那支口红一模一样。"
+        },
+        {
+          "prop": "affair_parking_ticket",
+          "x": 49.2,
+          "y": 2.5,
+          "w": 9,
+          "h": 6.2,
+          "tag": "餐厅停车票",
+          "clue": "遮阳板下露出的行程纸",
+          "narrative": "停车时间正是周铭声称加班的时候。"
+        },
+        {
+          "prop": "affair_strange_barrette_car",
+          "x": 82,
+          "y": 62.2,
+          "w": 10,
+          "h": 8.5,
+          "tag": "陌生发夹",
+          "clue": "车门袋里卡住的饰品",
+          "narrative": "酒红宝石的样式，我已经见过两次。"
+        },
+        {
+          "prop": "affair_spare_phone_card",
+          "x": 55.5,
+          "y": 45.7,
+          "w": 6,
+          "h": 3.8,
+          "tag": "备用手机卡",
+          "clue": "手套箱托盘里的小卡片",
+          "narrative": "为什么要在车里藏一张没有登记的手机卡？"
+        },
+        {
+          "prop": "affair_womens_sunglasses",
+          "x": 12,
+          "y": 68.8,
+          "w": 21.5,
+          "h": 10,
+          "tag": "女士墨镜",
+          "clue": "安全带下压着的女士用品",
+          "narrative": "墨镜被放在最顺手的位置，她常坐这辆车。"
+        },
+        {
+          "prop": "affair_lipstick_napkin",
+          "x": 55,
+          "y": 83.5,
+          "w": 12,
+          "h": 6,
+          "tag": "带口红印的餐巾",
+          "clue": "脚垫上揉皱的纸团",
+          "narrative": "餐巾上的口红印和纸杯来自同一个人。"
+        }
+      ],
+      "intro": {
+        "style": "affair-dossier",
+        "templateAsset": "assets/ui/theme5-brief-lv1.png",
+        "sectionTitle": "本关调查方向",
+        "buttonText": "开始找线索",
+        "chapterTitle": "第一章 · 他没有出差",
+        "title": "第3关 · 副驾驶的位置",
+        "body": "第二天，周铭把车留在公司。副驾驶明显经常坐着同一个女人，昨晚的行程也藏在这里。",
+        "goals": [
+          "检查副驾驶的常用物品",
+          "核对昨晚行程与时间",
+          "寻找被藏起来的通讯痕迹"
+        ]
+      }
+    },
+    {
+      "idx": 203,
+      "themeId": 5,
+      "mode": "story",
+      "storySchema": "s5_affair_1808_v1",
+      "chapterTitle": "第一章 · 他没有出差",
+      "title": "第4关 · 并不存在的出差",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/affair_lv04_hard_v7.jpg?v=20260825_affair_lv04_v7",
+      "duration": 55,
+      "hint": "行李箱里没有会议资料，只有两个人的行程。周铭一边整理衣物，一边催你离开。",
+      "briefGoals": [
+        "核对出差行程是否真实",
+        "判断行李是否属于两人",
+        "追查反复出现的房间暗号"
+      ],
+      "epilogue": "这不是工作出差，而是周铭和另一个女人共同计划的旅行。\n珠宝取货日就在结婚纪念日当天，收件人却不是苏晴。",
+      "nextHook": "行李夹层里忽然传来一声消息提示音。里面还藏着一部手机。",
+      "epilogueTag": "🧳 出差是假的",
+      "bossStage": -1,
+      "odds": [
+        {
+          "prop": "affair_pair_train_tickets",
+          "x": 14.2,
+          "y": 32.7,
+          "w": 8.5,
+          "h": 6.3,
+          "tag": "双人车票",
+          "clue": "椅背西装口袋里的成对行程",
+          "narrative": "两张相邻座位，目的地却不是他说的城市。"
+        },
+        {
+          "prop": "affair_jewelry_receipt",
+          "x": 85.2,
+          "y": 43,
+          "w": 9.5,
+          "h": 4.8,
+          "tag": "珠宝收据",
+          "clue": "灯座下压着的昂贵凭证",
+          "narrative": "取货日是我们的结婚纪念日，收件人不是我。"
+        },
+        {
+          "prop": "affair_roomcard_sleeve_1808",
+          "x": 80.7,
+          "y": 53.2,
+          "w": 14,
+          "h": 6.2,
+          "tag": "1808房卡套",
+          "clue": "抽屉旅行夹里的房号卡套",
+          "narrative": "1808又出现了，所有线索都指向同一个房间。"
+        },
+        {
+          "prop": "affair_burgundy_nightdress",
+          "x": 48.5,
+          "y": 75.5,
+          "w": 29.5,
+          "h": 13.8,
+          "tag": "酒红女性睡衣",
+          "clue": "行李箱里不属于你的衣物",
+          "narrative": "尺码不是我的，颜色却和那条丝巾一样。"
+        },
+        {
+          "prop": "affair_makeup_pouch",
+          "x": 47.2,
+          "y": 50.8,
+          "w": 9.5,
+          "h": 6.5,
+          "tag": "女士化妆包",
+          "clue": "梳妆凳后藏着的女士包",
+          "narrative": "这不是临时出轨，她已经准备和他一起出发。"
+        },
+        {
+          "prop": "affair_pearl_necklace",
+          "x": 73.2,
+          "y": 7.5,
+          "w": 8.5,
+          "h": 10.8,
+          "tag": "珍珠项链",
+          "clue": "镜框上垂下的熟悉首饰",
+          "narrative": "珍珠耳环、耳钉和项链，属于同一个女人。"
+        },
+        {
+          "prop": "affair_strange_lipstick_case",
+          "x": 30.8,
+          "y": 76.6,
+          "w": 7.5,
+          "h": 4.5,
+          "tag": "陌生口红",
+          "clue": "床边地毯旁滚落的红色",
+          "narrative": "口红被仔细收进侧袋，主人还会回来。"
+        }
+      ],
+      "intro": {
+        "style": "affair-dossier",
+        "templateAsset": "assets/ui/theme5-brief-lv1.png",
+        "sectionTitle": "本关调查方向",
+        "buttonText": "开始找线索",
+        "chapterTitle": "第一章 · 他没有出差",
+        "title": "第4关 · 并不存在的出差",
+        "body": "行李箱里没有会议资料，只有两个人的行程。周铭一边整理衣物，一边催你离开。",
+        "goals": [
+          "核对出差行程是否真实",
+          "判断行李是否属于两人",
+          "追查反复出现的房间暗号"
+        ]
+      }
+    },
+    {
+      "idx": 204,
+      "themeId": 5,
+      "mode": "story",
+      "storySchema": "s5_affair_1808_v1",
+      "chapterTitle": "第一章 · 他没有出差",
+      "title": "第5关 · 消失的手机",
+      "scene": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/affair_lv05_hard_v7.jpg?v=20260825_affair_lv05_v7",
+      "duration": 50,
+      "hint": "这部手机没有通讯录，只有酒店、转账和一个没有姓名的聊天对象。周铭就在窗边，你只有一次机会。",
+      "briefGoals": [
+        "还原隐藏聊天对象的身份",
+        "核对酒店与转账记录",
+        "寻找指向下一地点的信息"
+      ],
+      "epilogue": "隐藏聊天对象发来一段语音。背景里响起餐厅的报号声，那是林薇最常去的餐厅。\n珍珠首饰、酒红饰物和1808终于指向了同一个人。",
+      "nextHook": "服务员看着苏晴，迟疑地问：“您也是来找周先生和林小姐的吗？”",
+      "epilogueTag": "📱 第一章完",
+      "bossStage": 5,
+      "odds": [
+        {
+          "prop": "affair_hidden_phone",
+          "x": 31,
+          "y": 82.5,
+          "w": 13.5,
+          "h": 7.2,
+          "tag": "隐藏手机",
+          "clue": "没有通讯录的第二部设备",
+          "narrative": "锁屏没有名字，只有一串爱心消息。"
+        },
+        {
+          "prop": "affair_hotel_date_card",
+          "x": 85.3,
+          "y": 13.8,
+          "w": 8.5,
+          "h": 7.5,
+          "tag": "酒店18号日期卡",
+          "clue": "公告板上被圈住的日期",
+          "narrative": "18号正是我们的结婚纪念日。"
+        },
+        {
+          "prop": "affair_transfer_slip",
+          "x": 79,
+          "y": 35.2,
+          "w": 10.5,
+          "h": 9,
+          "tag": "转账凭证",
+          "clue": "打印机吐出的资金痕迹",
+          "narrative": "这笔钱转进了一个你从没见过的账户。"
+        },
+        {
+          "prop": "affair_cropped_photo",
+          "x": 48.5,
+          "y": 64.5,
+          "w": 13,
+          "h": 7.5,
+          "tag": "裁切合照",
+          "clue": "被故意裁掉一半的合照",
+          "narrative": "照片里的女人只剩半张脸，却戴着熟悉的珍珠。"
+        },
+        {
+          "prop": "affair_note_1808",
+          "x": 22,
+          "y": 62,
+          "w": 12.5,
+          "h": 5.5,
+          "tag": "1808手写纸条",
+          "clue": "桌面反复出现的房号",
+          "narrative": "纸条上的笔迹不是周铭，却像极了林薇。"
+        },
+        {
+          "prop": "affair_double_reservation",
+          "x": 61.2,
+          "y": 11.5,
+          "w": 6.5,
+          "h": 5,
+          "tag": "双人预约卡",
+          "clue": "书架上的成对安排",
+          "narrative": "预约时间就在今晚，地点是林薇常去的餐厅。"
+        },
+        {
+          "prop": "affair_pearl_bracelet",
+          "x": 44,
+          "y": 27.2,
+          "w": 10.5,
+          "h": 9.5,
+          "tag": "陌生珍珠手链",
+          "clue": "窗帘束带上的熟悉首饰",
+          "narrative": "这套珍珠首饰我陪林薇一起挑过。"
+        },
+        {
+          "prop": "affair_spare_charging_cable",
+          "x": 55.2,
+          "y": 48,
+          "w": 15.5,
+          "h": 6.5,
+          "tag": "备用充电线",
+          "clue": "台灯底座后藏着的充电线",
+          "narrative": "这根线只给那部隐藏手机充电。"
+        }
+      ],
+      "intro": {
+        "style": "affair-dossier",
+        "templateAsset": "assets/ui/theme5-brief-lv1.png",
+        "sectionTitle": "本关调查方向",
+        "buttonText": "开始找线索",
+        "chapterTitle": "第一章 · 他没有出差",
+        "title": "第5关 · 消失的手机",
+        "body": "这部手机没有通讯录，只有酒店、转账和一个没有姓名的聊天对象。周铭就在窗边，你只有一次机会。",
+        "goals": [
+          "还原隐藏聊天对象的身份",
+          "核对酒店与转账记录",
+          "寻找指向下一地点的信息"
+        ]
+      }
+    }
+  ],
+  "props": {
+    "robot": {
+      "emoji": "🤖",
+      "name": "扫地机器人"
+    },
+    "vr": {
+      "emoji": "❓",
+      "name": "vr"
+    },
+    "drone": {
+      "emoji": "❓",
+      "name": "drone"
+    },
+    "echo": {
+      "emoji": "❓",
+      "name": "echo"
+    },
+    "hover": {
+      "emoji": "❓",
+      "name": "hover"
+    },
+    "proj": {
+      "emoji": "❓",
+      "name": "proj"
+    },
+    "tesla": {
+      "emoji": "❓",
+      "name": "tesla"
+    },
+    "iphone": {
+      "emoji": "❓",
+      "name": "iphone"
+    },
+    "airpods": {
+      "emoji": "❓",
+      "name": "airpods"
+    },
+    "starbucks": {
+      "emoji": "❓",
+      "name": "starbucks"
+    },
+    "flamingo": {
+      "emoji": "🦩",
+      "name": "火烈鸟游泳圈"
+    },
+    "plane": {
+      "emoji": "✈️",
+      "name": "纸飞机"
+    },
+    "duck": {
+      "emoji": "🦆",
+      "name": "黄橡皮鸭"
+    },
+    "coke": {
+      "emoji": "🥤",
+      "name": "可乐罐"
+    },
+    "phone": {
+      "emoji": "📱",
+      "name": "手机"
+    },
+    "olympic_poster": {
+      "emoji": "❓",
+      "name": "olympic poster"
+    },
+    "qr_pay_stand": {
+      "emoji": "❓",
+      "name": "qr pay stand"
+    },
+    "mineral_water": {
+      "emoji": "❓",
+      "name": "mineral water"
+    },
+    "ring_light": {
+      "emoji": "❓",
+      "name": "ring light"
+    },
+    "monster_plush": {
+      "emoji": "❓",
+      "name": "monster plush"
+    },
+    "sparkling_bot": {
+      "emoji": "❓",
+      "name": "sparkling bot"
+    },
+    "airpods_lv8": {
+      "emoji": "🎧",
+      "name": "白色蓝牙耳机"
+    },
+    "smart_watch": {
+      "emoji": "❓",
+      "name": "smart watch"
+    },
+    "qr_pay_lv8": {
+      "emoji": "💳",
+      "name": "扫码收款牌"
+    },
+    "ev_scooter": {
+      "emoji": "🛴",
+      "name": "共享电动滑板车"
+    },
+    "coffee_cup": {
+      "emoji": "❓",
+      "name": "coffee cup"
+    },
+    "qr_sign": {
+      "emoji": "❓",
+      "name": "qr sign"
+    },
+    "hole_clogs": {
+      "emoji": "❓",
+      "name": "hole clogs"
+    },
+    "delivery_box": {
+      "emoji": "❓",
+      "name": "delivery box"
+    },
+    "bt_speaker": {
+      "emoji": "🔊",
+      "name": "蓝牙音箱"
+    },
+    "aircon_out": {
+      "emoji": "❄️",
+      "name": "空调外机"
+    },
+    "pop_can": {
+      "emoji": "🥤",
+      "name": "易拉罐可乐"
+    },
+    "eggplant_toy": {
+      "emoji": "❓",
+      "name": "eggplant toy"
+    },
+    "snail_noodle": {
+      "emoji": "❓",
+      "name": "snail noodle"
+    },
+    "phone_gimbal": {
+      "emoji": "❓",
+      "name": "phone gimbal"
+    },
+    "express_bag": {
+      "emoji": "❓",
+      "name": "express bag"
+    },
+    "calendar_ring": {
+      "emoji": "📅",
+      "name": "挂历五环日期"
+    },
+    "wto_mug": {
+      "emoji": "🥤",
+      "name": "国际贸易搪瓷缸"
+    },
+    "lebron_frame": {
+      "emoji": "🏀",
+      "name": "03届状元剪报相框"
+    },
+    "olympic_stkr": {
+      "emoji": "🎖",
+      "name": "五环大赛纪念贴"
+    },
+    "dragon_book": {
+      "emoji": "🐲",
+      "name": "2024 龙年黄历"
+    },
+    "radio_led": {
+      "emoji": "📻",
+      "name": "收音机 LED 灯"
+    },
+    "locker_qr": {
+      "emoji": "🔢",
+      "name": "柜号 QR 码"
+    },
+    "news_2024": {
+      "emoji": "📰",
+      "name": "2024 日期头条"
+    },
+    "phone_lcd": {
+      "emoji": "☎️",
+      "name": "电话 LCD 屏"
+    },
+    "digi_thermo": {
+      "emoji": "🌡",
+      "name": "数显温度计"
+    },
+    "bath_qr": {
+      "emoji": "🎫",
+      "name": "洗浴须知 QR 码"
+    },
+    "green_plate": {
+      "emoji": "❓",
+      "name": "green plate"
+    },
+    "mi_ev_badge": {
+      "emoji": "🚙",
+      "name": "国产电车车标"
+    },
+    "led_rose": {
+      "emoji": "🌹",
+      "name": "LED 塑料玫瑰"
+    },
+    "mirrorless": {
+      "emoji": "📸",
+      "name": "翻转屏微单相机"
+    },
+    "messi_poster": {
+      "emoji": "⚽",
+      "name": "阿根廷10号中国行海报"
+    },
+    "bike_flyer": {
+      "emoji": "🚲",
+      "name": "共享单车传单"
+    },
+    "massage_stick": {
+      "emoji": "🍬",
+      "name": "电动糖葫芦"
+    },
+    "bullet_ticket": {
+      "emoji": "❓",
+      "name": "bullet ticket"
+    },
+    "wheel_luggage": {
+      "emoji": "❓",
+      "name": "wheel luggage"
+    },
+    "ins_camera": {
+      "emoji": "❓",
+      "name": "ins camera"
+    },
+    "sprite_can": {
+      "emoji": "❓",
+      "name": "sprite can"
+    },
+    "cup_noodle": {
+      "emoji": "🍜",
+      "name": "方便面桶"
+    },
+    "price_lcd": {
+      "emoji": "❓",
+      "name": "price lcd"
+    },
+    "e_scale": {
+      "emoji": "❓",
+      "name": "e scale"
+    },
+    "photo_watch": {
+      "emoji": "❓",
+      "name": "photo watch"
+    },
+    "photo_neon": {
+      "emoji": "👕",
+      "name": "相框内 · 荧光运动服"
+    },
+    "photo_ipad": {
+      "emoji": "❓",
+      "name": "photo ipad"
+    },
+    "photo_lens": {
+      "emoji": "❓",
+      "name": "photo lens"
+    },
+    "photo_bt": {
+      "emoji": "❓",
+      "name": "photo bt"
+    },
+    "weave_qr": {
+      "emoji": "❓",
+      "name": "weave qr"
+    },
+    "crh_poster": {
+      "emoji": "❓",
+      "name": "crh poster"
+    },
+    "powerbank_rack": {
+      "emoji": "❓",
+      "name": "powerbank rack"
+    },
+    "face_gate": {
+      "emoji": "❓",
+      "name": "face gate"
+    },
+    "dep_led": {
+      "emoji": "❓",
+      "name": "dep led"
+    },
+    "mask_pack": {
+      "emoji": "😷",
+      "name": "医用口罩包装"
+    },
+    "panda_plush": {
+      "emoji": "❓",
+      "name": "panda plush"
+    },
+    "long_spout_kettle": {
+      "emoji": "❓",
+      "name": "long spout kettle"
+    },
+    "sichuan_mask": {
+      "emoji": "❓",
+      "name": "sichuan mask"
+    },
+    "hotpot_9grid": {
+      "emoji": "❓",
+      "name": "hotpot 9grid"
+    },
+    "mountain_basket": {
+      "emoji": "❓",
+      "name": "mountain basket"
+    },
+    "chili_string": {
+      "emoji": "❓",
+      "name": "chili string"
+    },
+    "broken_bowls": {
+      "emoji": "❓",
+      "name": "broken bowls"
+    },
+    "qinqiang_mask": {
+      "emoji": "❓",
+      "name": "qinqiang mask"
+    },
+    "qinghua_bowl": {
+      "emoji": "❓",
+      "name": "qinghua bowl"
+    },
+    "chayan_sign": {
+      "emoji": "❓",
+      "name": "chayan sign"
+    },
+    "stinky_tofu_sign": {
+      "emoji": "❓",
+      "name": "stinky tofu sign"
+    },
+    "tang_you_baba": {
+      "emoji": "❓",
+      "name": "tang you baba"
+    },
+    "tram_tianjin": {
+      "emoji": "❓",
+      "name": "tram tianjin"
+    },
+    "jianbing_stand": {
+      "emoji": "❓",
+      "name": "jianbing stand"
+    },
+    "xiangsheng_sign": {
+      "emoji": "❓",
+      "name": "xiangsheng sign"
+    },
+    "brick_phone_lv18": {
+      "emoji": "❓",
+      "name": "brick phone lv18"
+    },
+    "mp3_player": {
+      "emoji": "❓",
+      "name": "mp3 player"
+    },
+    "smart_speaker": {
+      "emoji": "❓",
+      "name": "smart speaker"
+    },
+    "nft_poster": {
+      "emoji": "❓",
+      "name": "nft poster"
+    },
+    "live_ring": {
+      "emoji": "❓",
+      "name": "live ring"
+    },
+    "e_firework": {
+      "emoji": "🎆",
+      "name": "电子鞭炮"
+    },
+    "express_label": {
+      "emoji": "❓",
+      "name": "express label"
+    },
+    "red_pkt_qr": {
+      "emoji": "❓",
+      "name": "red pkt qr"
+    },
+    "wine_gourd": {
+      "emoji": "❓",
+      "name": "wine gourd"
+    },
+    "palm_fan": {
+      "emoji": "❓",
+      "name": "palm fan"
+    },
+    "rabbit_lord": {
+      "emoji": "❓",
+      "name": "rabbit lord"
+    },
+    "xiaolongbao": {
+      "emoji": "❓",
+      "name": "xiaolongbao"
+    },
+    "old_radio": {
+      "emoji": "❓",
+      "name": "old radio"
+    },
+    "red_lantern": {
+      "emoji": "❓",
+      "name": "red lantern"
+    },
+    "clay_teapot": {
+      "emoji": "❓",
+      "name": "clay teapot"
+    },
+    "mango": {
+      "emoji": "❓",
+      "name": "mango"
+    },
+    "bird_cage": {
+      "emoji": "❓",
+      "name": "bird cage"
+    },
+    "walkman": {
+      "emoji": "❓",
+      "name": "walkman"
+    },
+    "sunglasses": {
+      "emoji": "❓",
+      "name": "sunglasses"
+    },
+    "brick_phone": {
+      "emoji": "❓",
+      "name": "brick phone"
+    },
+    "item_1": {
+      "emoji": "❓",
+      "name": "item 1"
+    },
+    "item_2": {
+      "emoji": "❓",
+      "name": "item 2"
+    },
+    "item_3": {
+      "emoji": "❓",
+      "name": "item 3"
+    },
+    "item_4": {
+      "emoji": "❓",
+      "name": "item 4"
+    },
+    "hearing_aid": {
+      "emoji": "👂",
+      "name": "助听器"
+    },
+    "smoke_detector": {
+      "emoji": "🚨",
+      "name": "烟感报警器"
+    },
+    "e_cig_pen": {
+      "emoji": "🚭",
+      "name": "电子烟棒"
+    },
+    "led_filament": {
+      "emoji": "💡",
+      "name": "LED仿古灯丝灯泡"
+    },
+    "white_sneaker": {
+      "emoji": "👟",
+      "name": "白色运动鞋"
+    },
+    "black_sneaker": {
+      "emoji": "👟",
+      "name": "黑色运动鞋"
+    },
+    "waist_phone": {
+      "emoji": "📱",
+      "name": "腰间黑手机"
+    },
+    "led_spot": {
+      "emoji": "🔦",
+      "name": "LED射灯"
+    },
+    "chef_timer": {
+      "emoji": "⏱️",
+      "name": "胸前电子秒表"
+    },
+    "board_phone": {
+      "emoji": "📱",
+      "name": "案板上手机"
+    },
+    "digi_scale": {
+      "emoji": "⚖️",
+      "name": "圆形电子秤"
+    },
+    "jingju_lianpu": {
+      "emoji": "🎭",
+      "name": "京剧脸谱"
+    },
+    "bingtanghulu": {
+      "emoji": "🍡",
+      "name": "糖葫芦"
+    },
+    "tuye_pigu": {
+      "emoji": "🐰",
+      "name": "兔爷"
+    },
+    "paozi_hu": {
+      "emoji": "🫖",
+      "name": "铜壶"
+    },
+    "gongbi_niaolong": {
+      "emoji": "🎋",
+      "name": "鸟笼"
+    },
+    "lvyou_ditu": {
+      "emoji": "🗺️",
+      "name": "古城地图"
+    },
+    "zhengding_pancake": {
+      "emoji": "🥯",
+      "name": "缸炉烧饼"
+    },
+    "gulou_lingdang": {
+      "emoji": "🔔",
+      "name": "寺庙铜铃"
+    },
+    "guqin": {
+      "emoji": "🎼",
+      "name": "古琴"
+    },
+    "yumu_yu": {
+      "emoji": "🪵",
+      "name": "木鱼"
+    },
+    "laobianjiaozi": {
+      "emoji": "🥟",
+      "name": "老边饺子"
+    },
+    "gaolizhi_yaocai": {
+      "emoji": "🌿",
+      "name": "人参药材"
+    },
+    "guifei_zui_bing": {
+      "emoji": "🥞",
+      "name": "糖饼铁盘"
+    },
+    "jingjuhua_dan": {
+      "emoji": "👑",
+      "name": "评剧头饰"
+    },
+    "dongbei_diaoqiang": {
+      "emoji": "🚬",
+      "name": "关东烟袋"
+    },
+    "binggun_madieer": {
+      "emoji": "🍦",
+      "name": "马迭尔冰棍"
+    },
+    "hongchang": {
+      "emoji": "🌭",
+      "name": "红肠一节"
+    },
+    "eluosi_taowa": {
+      "emoji": "🪆",
+      "name": "套娃"
+    },
+    "binghua_wan": {
+      "emoji": "❄️",
+      "name": "冰花小碗"
+    },
+    "shoufeng_qin": {
+      "emoji": "🪗",
+      "name": "手风琴"
+    },
+    "xifang_qiao": {
+      "emoji": "⛪",
+      "name": "教堂尖顶模型"
+    },
+    "suzhou_zhezi": {
+      "emoji": "🪭",
+      "name": "苏州折扇"
+    },
+    "pingtan_pipa": {
+      "emoji": "🎼",
+      "name": "评弹琵琶"
+    },
+    "su_xiu": {
+      "emoji": "🧵",
+      "name": "苏绣绷架"
+    },
+    "biluochun_gaiwan": {
+      "emoji": "🍵",
+      "name": "碧螺春盖碗"
+    },
+    "xiaolong_zheng": {
+      "emoji": "🥟",
+      "name": "小笼蒸屉"
+    },
+    "you_zhi_san": {
+      "emoji": "☂️",
+      "name": "油纸伞"
+    },
+    "longjing_cha": {
+      "emoji": "🍃",
+      "name": "龙井茶饼"
+    },
+    "xihu_choudoufu": {
+      "emoji": "🍢",
+      "name": "臭豆腐一碟"
+    },
+    "song_pai_yao": {
+      "emoji": "📜",
+      "name": "胡庆余堂药方"
+    },
+    "si_shan": {
+      "emoji": "☂️",
+      "name": "绸伞"
+    },
+    "jinsha_pian": {
+      "emoji": "🍬",
+      "name": "金丝片糖"
+    },
+    "hangzhou_paihu": {
+      "emoji": "🪧",
+      "name": "雕花木牌"
+    },
+    "qinhuai_denglong": {
+      "emoji": "🏮",
+      "name": "秦淮花灯"
+    },
+    "yasuefen": {
+      "emoji": "🍜",
+      "name": "鸭血粉丝"
+    },
+    "yun_jin": {
+      "emoji": "🧶",
+      "name": "云锦织片"
+    },
+    "jinling_tu": {
+      "emoji": "🗺️",
+      "name": "金陵折页地图"
+    },
+    "zhu_ke": {
+      "emoji": "🪨",
+      "name": "雨花石一枚"
+    },
+    "chang_gao": {
+      "emoji": "🍰",
+      "name": "重阳糕"
+    },
+    "qingdao_pijiu": {
+      "emoji": "🍺",
+      "name": "青岛啤酒瓶"
+    },
+    "gelunbao": {
+      "emoji": "⛪",
+      "name": "哈利路亚教堂顶"
+    },
+    "hail_bei": {
+      "emoji": "🐚",
+      "name": "海螺号"
+    },
+    "chuchuang_chu": {
+      "emoji": "💡",
+      "name": "欧式路灯"
+    },
+    "lvshi_men": {
+      "emoji": "🪨",
+      "name": "绿石栏杆"
+    },
+    "haijie": {
+      "emoji": "🦐",
+      "name": "海鲜壳堆"
+    },
+    "regan_mian": {
+      "emoji": "🍜",
+      "name": "热干面碗"
+    },
+    "doupi": {
+      "emoji": "🥟",
+      "name": "三鲜豆皮"
+    },
+    "mianwo": {
+      "emoji": "🍩",
+      "name": "面窝"
+    },
+    "jianbing_wuhan": {
+      "emoji": "🥞",
+      "name": "武汉煎饼"
+    },
+    "changjiang_qiao": {
+      "emoji": "🌉",
+      "name": "长江大桥模型"
+    },
+    "cai_lin_ji": {
+      "emoji": "🪧",
+      "name": "蔡林记招牌"
+    },
+    "tudouzai_jiu": {
+      "emoji": "🌶️",
+      "name": "辣椒罐"
+    },
+    "shacha_mian": {
+      "emoji": "🍜",
+      "name": "沙茶面碗"
+    },
+    "tuxun": {
+      "emoji": "🍮",
+      "name": "土笋冻"
+    },
+    "minnan_qilou": {
+      "emoji": "🏛️",
+      "name": "骑楼柱头"
+    },
+    "gongfucha": {
+      "emoji": "🫖",
+      "name": "功夫茶壶"
+    },
+    "nanpu_tuo": {
+      "emoji": "🍘",
+      "name": "南普陀素饼"
+    },
+    "gulangyu_gangqin": {
+      "emoji": "🎹",
+      "name": "鼓浪屿钢琴"
+    },
+    "hai_li_bang": {
+      "emoji": "🍳",
+      "name": "海蛎煎"
+    },
+    "chaozhou_niurou_wan": {
+      "emoji": "🍡",
+      "name": "潮汕牛肉丸"
+    },
+    "gongfucha_chao": {
+      "emoji": "🍵",
+      "name": "潮州工夫茶盘"
+    },
+    "chaozhou_gujiang": {
+      "emoji": "🎼",
+      "name": "潮州古筝"
+    },
+    "paifang_diao": {
+      "emoji": "🏯",
+      "name": "牌坊雕花"
+    },
+    "suogao": {
+      "emoji": "🍜",
+      "name": "潮汕肠粉"
+    },
+    "yulin_shu": {
+      "emoji": "🌳",
+      "name": "榕树须"
+    },
+    "chaozhou_lu": {
+      "emoji": "🍗",
+      "name": "潮州老卤味"
+    },
+    "guilin_mifen": {
+      "emoji": "🍜",
+      "name": "桂林米粉"
+    },
+    "lijiang_zhupai": {
+      "emoji": "🛶",
+      "name": "漓江竹排"
+    },
+    "shan_shui_hua": {
+      "emoji": "❓",
+      "name": "shan shui hua"
+    },
+    "zhuang_jin": {
+      "emoji": "🧵",
+      "name": "壮锦布片"
+    },
+    "gui_hua_gao": {
+      "emoji": "🍰",
+      "name": "桂花糕"
+    },
+    "lu_sheng": {
+      "emoji": "🎺",
+      "name": "芦笙"
+    },
+    "tong_gu": {
+      "emoji": "🥁",
+      "name": "铜鼓"
+    },
+    "guoqiao_mixian": {
+      "emoji": "🍲",
+      "name": "过桥米线"
+    },
+    "xuanwei_huotui": {
+      "emoji": "🥓",
+      "name": "宣威火腿"
+    },
+    "guandu_baba": {
+      "emoji": "🥞",
+      "name": "官渡粑粑"
+    },
+    "puer_bing": {
+      "emoji": "🍵",
+      "name": "普洱茶饼"
+    },
+    "dai_zhu_lou": {
+      "emoji": "🏠",
+      "name": "傣式竹楼窗"
+    },
+    "lu_yao_gui": {
+      "emoji": "🍄",
+      "name": "云南野蘑菇"
+    },
+    "kong_que_ling": {
+      "emoji": "🦚",
+      "name": "孔雀翎"
+    },
+    "suan_tang_yu": {
+      "emoji": "🐟",
+      "name": "酸汤鱼锅"
+    },
+    "qingyan_zhu": {
+      "emoji": "🍖",
+      "name": "青岩猪脚"
+    },
+    "miao_yin_shi": {
+      "emoji": "💍",
+      "name": "苗族银饰"
+    },
+    "la_zi_ji": {
+      "emoji": "🌶️",
+      "name": "辣子鸡罐"
+    },
+    "guiyang_si": {
+      "emoji": "🌯",
+      "name": "丝娃娃"
+    },
+    "lu_sheng_gui": {
+      "emoji": "🎺",
+      "name": "芦笙木架"
+    },
+    "mao_tai_ping": {
+      "emoji": "🍶",
+      "name": "茅台酒瓶"
+    },
+    "guiyang_diao_lou": {
+      "emoji": "🏯",
+      "name": "侗族鼓楼"
+    },
+    "zhuan_jing_tong": {
+      "emoji": "⚙️",
+      "name": "转经筒"
+    },
+    "tangka": {
+      "emoji": "🖼️",
+      "name": "唐卡挂画"
+    },
+    "suo_you_qing_ke": {
+      "emoji": "🍶",
+      "name": "青稞酒葫芦"
+    },
+    "yak_niu": {
+      "emoji": "🐂",
+      "name": "牦牛雕像"
+    },
+    "jinggan_niang": {
+      "emoji": "🫖",
+      "name": "酥油茶壶"
+    },
+    "jing_fan": {
+      "emoji": "🚩",
+      "name": "风马旗"
+    },
+    "zangdao": {
+      "emoji": "🗡️",
+      "name": "藏刀"
+    },
+    "jiacha_zhu": {
+      "emoji": "🪨",
+      "name": "青藏石柱"
+    },
+    "lanzhou_lamian": {
+      "emoji": "🍜",
+      "name": "兰州拉面碗"
+    },
+    "niunairjidan": {
+      "emoji": "🥛",
+      "name": "牛奶鸡蛋醪糟"
+    },
+    "yang_rou_chuan": {
+      "emoji": "🍢",
+      "name": "羊肉串一把"
+    },
+    "gaolin_bing": {
+      "emoji": "🍩",
+      "name": "糖油糕"
+    },
+    "huang_he_shui_lun": {
+      "emoji": "⚙️",
+      "name": "黄河水车模型"
+    },
+    "niu_rou_gan": {
+      "emoji": "🥩",
+      "name": "牛肉干袋"
+    },
+    "jiu_qu": {
+      "emoji": "🍶",
+      "name": "甘肃酒曲"
+    },
+    "la_zi": {
+      "emoji": "🌶️",
+      "name": "油泼辣子罐"
+    },
+    "dabazha_ding": {
+      "emoji": "🕌",
+      "name": "清真寺圆顶"
+    },
+    "yang_rou_zhua_fan": {
+      "emoji": "🍚",
+      "name": "手抓饭铜盘"
+    },
+    "nang_dab": {
+      "emoji": "🥯",
+      "name": "新疆馕"
+    },
+    "putao_gan": {
+      "emoji": "🍇",
+      "name": "葡萄干串"
+    },
+    "dust_kuli": {
+      "emoji": "🪕",
+      "name": "都塔尔琴"
+    },
+    "weiwuer_mao": {
+      "emoji": "🎩",
+      "name": "维族花帽"
+    },
+    "kaomushu": {
+      "emoji": "🔥",
+      "name": "馕坑火焰"
+    },
+    "da_zhutongzi": {
+      "emoji": "🫖",
+      "name": "大铜壶"
+    },
+    "kaiyuan_ta": {
+      "emoji": "🕌",
+      "name": "开元寺双塔"
+    },
+    "tie_guanyin": {
+      "emoji": "🫖",
+      "name": "铁观音茶罐"
+    },
+    "dehua_baici": {
+      "emoji": "🏺",
+      "name": "德化白瓷"
+    },
+    "minnan_gulou": {
+      "emoji": "🏠",
+      "name": "闽南古厝红瓦"
+    },
+    "nanyin_pipa": {
+      "emoji": "🎼",
+      "name": "南音琵琶"
+    },
+    "muouxi": {
+      "emoji": "🎎",
+      "name": "提线木偶"
+    },
+    "maweichu": {
+      "emoji": "🌯",
+      "name": "泉州润饼"
+    },
+    "chuan_lai_xiang": {
+      "emoji": "🕯️",
+      "name": "香炉青烟"
+    },
+    "taoyuan_cuzhuang": {
+      "emoji": "🫙",
+      "name": "老陈醋坛"
+    },
+    "daoxiao_mian": {
+      "emoji": "🍜",
+      "name": "刀削面碗"
+    },
+    "pingyao_niurou": {
+      "emoji": "🥩",
+      "name": "平遥牛肉罐"
+    },
+    "jinshang_piaohao": {
+      "emoji": "🪧",
+      "name": "晋商票号招牌"
+    },
+    "guoyou_rou": {
+      "emoji": "🍖",
+      "name": "过油肉盘"
+    },
+    "hui_mian": {
+      "emoji": "🍜",
+      "name": "烩面大碗"
+    },
+    "hujia_hutulu": {
+      "emoji": "🥣",
+      "name": "胡辣汤桶"
+    },
+    "shaolin_gunzi": {
+      "emoji": "🥢",
+      "name": "少林棍纪念品"
+    },
+    "huanghe_shitou": {
+      "emoji": "🪨",
+      "name": "黄河奇石"
+    },
+    "zhengzhou_erqi": {
+      "emoji": "🗼",
+      "name": "二七塔模型"
+    },
+    "kaifeng_guantang": {
+      "emoji": "🥟",
+      "name": "灌汤包蒸屉"
+    },
+    "henan_yuju": {
+      "emoji": "🎭",
+      "name": "豫剧脸谱"
+    },
+    "tanghulu": {
+      "emoji": "❓",
+      "name": "tanghulu"
+    },
+    "hongdenglong": {
+      "emoji": "❓",
+      "name": "hongdenglong"
+    },
+    "shizitou": {
+      "emoji": "❓",
+      "name": "shizitou"
+    },
+    "xiaotui": {
+      "emoji": "❓",
+      "name": "xiaotui"
+    },
+    "huadeng": {
+      "emoji": "❓",
+      "name": "huadeng"
+    },
+    "baozhu": {
+      "emoji": "❓",
+      "name": "baozhu"
+    },
+    "boliqiu": {
+      "emoji": "❓",
+      "name": "boliqiu"
+    },
+    "shangdian": {
+      "emoji": "❓",
+      "name": "shangdian"
+    },
+    "umbrella_table": {
+      "emoji": "❓",
+      "name": "umbrella table"
+    },
+    "red_lanterns": {
+      "emoji": "❓",
+      "name": "red lanterns"
+    },
+    "pink_cart": {
+      "emoji": "❓",
+      "name": "pink cart"
+    },
+    "blue_balloon": {
+      "emoji": "❓",
+      "name": "blue balloon"
+    },
+    "shop_sign": {
+      "emoji": "❓",
+      "name": "shop sign"
+    },
+    "zhaopai": {
+      "emoji": "❓",
+      "name": "zhaopai"
+    },
+    "red_booth": {
+      "emoji": "❓",
+      "name": "red booth"
+    },
+    "ice_sculpture": {
+      "emoji": "❓",
+      "name": "ice sculpture"
+    },
+    "christmas_tree": {
+      "emoji": "❓",
+      "name": "christmas tree"
+    },
+    "lantern": {
+      "emoji": "❓",
+      "name": "lantern"
+    },
+    "vendor": {
+      "emoji": "❓",
+      "name": "vendor"
+    },
+    "ice_wall": {
+      "emoji": "❓",
+      "name": "ice wall"
+    },
+    "yusan": {
+      "emoji": "❓",
+      "name": "yusan"
+    },
+    "xiaoqiao": {
+      "emoji": "❓",
+      "name": "xiaoqiao"
+    },
+    "chazhao": {
+      "emoji": "❓",
+      "name": "chazhao"
+    },
+    "lvteng": {
+      "emoji": "❓",
+      "name": "lvteng"
+    },
+    "huangmaozi": {
+      "emoji": "❓",
+      "name": "huangmaozi"
+    },
+    "lvguantong": {
+      "emoji": "❓",
+      "name": "lvguantong"
+    },
+    "huangzhaopai": {
+      "emoji": "❓",
+      "name": "huangzhaopai"
+    },
+    "hongse_san": {
+      "emoji": "❓",
+      "name": "hongse san"
+    },
+    "huangchuan": {
+      "emoji": "❓",
+      "name": "huangchuan"
+    },
+    "shiziludeng": {
+      "emoji": "❓",
+      "name": "shiziludeng"
+    },
+    "lvzhiwu": {
+      "emoji": "❓",
+      "name": "lvzhiwu"
+    },
+    "street_lamp": {
+      "emoji": "❓",
+      "name": "street lamp"
+    },
+    "red_umbrella": {
+      "emoji": "❓",
+      "name": "red umbrella"
+    },
+    "blue_tent": {
+      "emoji": "❓",
+      "name": "blue tent"
+    },
+    "church_tower": {
+      "emoji": "❓",
+      "name": "church tower"
+    },
+    "ship": {
+      "emoji": "❓",
+      "name": "ship"
+    },
+    "green_fence": {
+      "emoji": "❓",
+      "name": "green fence"
+    },
+    "cailinji_sign": {
+      "emoji": "❓",
+      "name": "cailinji sign"
+    },
+    "food_stall": {
+      "emoji": "❓",
+      "name": "food stall"
+    },
+    "red_canopy": {
+      "emoji": "❓",
+      "name": "red canopy"
+    },
+    "tree": {
+      "emoji": "❓",
+      "name": "tree"
+    },
+    "crowd": {
+      "emoji": "❓",
+      "name": "crowd"
+    },
+    "shaoqipai": {
+      "emoji": "❓",
+      "name": "shaoqipai"
+    },
+    "shizilou": {
+      "emoji": "❓",
+      "name": "shizilou"
+    },
+    "yinyueji": {
+      "emoji": "❓",
+      "name": "yinyueji"
+    },
+    "huangdeng": {
+      "emoji": "❓",
+      "name": "huangdeng"
+    },
+    "baizhuozi": {
+      "emoji": "❓",
+      "name": "baizhuozi"
+    },
+    "huanghuashu": {
+      "emoji": "❓",
+      "name": "huanghuashu"
+    },
+    "baipeng": {
+      "emoji": "❓",
+      "name": "baipeng"
+    },
+    "lvshu": {
+      "emoji": "❓",
+      "name": "lvshu"
+    },
+    "hongzhaopai": {
+      "emoji": "❓",
+      "name": "hongzhaopai"
+    },
+    "hongzhanpeng": {
+      "emoji": "❓",
+      "name": "hongzhanpeng"
+    },
+    "shizipai": {
+      "emoji": "❓",
+      "name": "shizipai"
+    },
+    "baifangzi": {
+      "emoji": "❓",
+      "name": "baifangzi"
+    },
+    "tese_xiaochi": {
+      "emoji": "❓",
+      "name": "tese xiaochi"
+    },
+    "guangxi_tang": {
+      "emoji": "❓",
+      "name": "guangxi tang"
+    },
+    "cha_hu": {
+      "emoji": "❓",
+      "name": "cha hu"
+    },
+    "mian_tiao": {
+      "emoji": "❓",
+      "name": "mian tiao"
+    },
+    "hua_deng": {
+      "emoji": "❓",
+      "name": "hua deng"
+    },
+    "flower_cart": {
+      "emoji": "❓",
+      "name": "flower cart"
+    },
+    "hat_stand": {
+      "emoji": "❓",
+      "name": "hat stand"
+    },
+    "umbrella": {
+      "emoji": "❓",
+      "name": "umbrella"
+    },
+    "sign_board": {
+      "emoji": "❓",
+      "name": "sign board"
+    },
+    "shoe_display": {
+      "emoji": "❓",
+      "name": "shoe display"
+    },
+    "san": {
+      "emoji": "❓",
+      "name": "san"
+    },
+    "shizhuo": {
+      "emoji": "❓",
+      "name": "shizhuo"
+    },
+    "lupai": {
+      "emoji": "❓",
+      "name": "lupai"
+    },
+    "colorful_flags": {
+      "emoji": "❓",
+      "name": "colorful flags"
+    },
+    "golden_pots": {
+      "emoji": "❓",
+      "name": "golden pots"
+    },
+    "hanging_lanterns": {
+      "emoji": "❓",
+      "name": "hanging lanterns"
+    },
+    "striped_awning": {
+      "emoji": "❓",
+      "name": "striped awning"
+    },
+    "red_cloth": {
+      "emoji": "❓",
+      "name": "red cloth"
+    },
+    "hanging_tapestry": {
+      "emoji": "❓",
+      "name": "hanging tapestry"
+    },
+    "white_hat": {
+      "emoji": "❓",
+      "name": "white hat"
+    },
+    "wooden_pillar": {
+      "emoji": "❓",
+      "name": "wooden pillar"
+    },
+    "tiebanjiaoyu": {
+      "emoji": "❓",
+      "name": "tiebanjiaoyu"
+    },
+    "shousi": {
+      "emoji": "❓",
+      "name": "shousi"
+    },
+    "jiaoluo": {
+      "emoji": "❓",
+      "name": "jiaoluo"
+    },
+    "shuihu": {
+      "emoji": "❓",
+      "name": "shuihu"
+    },
+    "green_umbrella": {
+      "emoji": "❓",
+      "name": "green umbrella"
+    },
+    "hanging_lantern": {
+      "emoji": "❓",
+      "name": "hanging lantern"
+    },
+    "white_dome": {
+      "emoji": "❓",
+      "name": "white dome"
+    },
+    "spices_stall": {
+      "emoji": "❓",
+      "name": "spices stall"
+    },
+    "hanging_clothes": {
+      "emoji": "❓",
+      "name": "hanging clothes"
+    },
+    "fire_pit": {
+      "emoji": "❓",
+      "name": "fire pit"
+    },
+    "golden_vase": {
+      "emoji": "❓",
+      "name": "golden vase"
+    },
+    "xiaotanche": {
+      "emoji": "❓",
+      "name": "xiaotanche"
+    },
+    "shangdianpai": {
+      "emoji": "❓",
+      "name": "shangdianpai"
+    },
+    "shizideng": {
+      "emoji": "❓",
+      "name": "shizideng"
+    },
+    "huaping": {
+      "emoji": "❓",
+      "name": "huaping"
+    },
+    "xiaozhuozi": {
+      "emoji": "❓",
+      "name": "xiaozhuozi"
+    },
+    "account_notebook": {
+      "emoji": "❓",
+      "name": "account notebook"
+    },
+    "address_avatar": {
+      "emoji": "❓",
+      "name": "address avatar"
+    },
+    "air_purifier": {
+      "emoji": "❓",
+      "name": "air purifier"
+    },
+    "airtag": {
+      "emoji": "❓",
+      "name": "airtag"
+    },
+    "airtag_key": {
+      "emoji": "❓",
+      "name": "airtag key"
+    },
+    "airtag_stitch": {
+      "emoji": "❓",
+      "name": "airtag stitch"
+    },
+    "all_names_center": {
+      "emoji": "❓",
+      "name": "all names center"
+    },
+    "ar_glasses": {
+      "emoji": "❓",
+      "name": "ar glasses"
+    },
+    "astronaut_slippers": {
+      "emoji": "❓",
+      "name": "astronaut slippers"
+    },
+    "atm_keypad": {
+      "emoji": "❓",
+      "name": "atm keypad"
+    },
+    "bag_key_name": {
+      "emoji": "❓",
+      "name": "bag key name"
+    },
+    "banking_qr": {
+      "emoji": "❓",
+      "name": "banking qr"
+    },
+    "bazi_red_paper": {
+      "emoji": "❓",
+      "name": "bazi red paper"
+    },
+    "bluetooth_speaker": {
+      "emoji": "❓",
+      "name": "bluetooth speaker"
+    },
+    "bone_china": {
+      "emoji": "❓",
+      "name": "bone china"
+    },
+    "boss_jacket_bg": {
+      "emoji": "❓",
+      "name": "boss jacket bg"
+    },
+    "bt_tag": {
+      "emoji": "❓",
+      "name": "bt tag"
+    },
+    "bubble_tea": {
+      "emoji": "❓",
+      "name": "bubble tea"
+    },
+    "buzzword_note": {
+      "emoji": "❓",
+      "name": "buzzword note"
+    },
+    "cake_box": {
+      "emoji": "❓",
+      "name": "cake box"
+    },
+    "cam_dome": {
+      "emoji": "❓",
+      "name": "cam dome"
+    },
+    "candid_shot": {
+      "emoji": "❓",
+      "name": "candid shot"
+    },
+    "car_key": {
+      "emoji": "❓",
+      "name": "car key"
+    },
+    "card_handdrawn": {
+      "emoji": "❓",
+      "name": "card handdrawn"
+    },
+    "cat_basket": {
+      "emoji": "❓",
+      "name": "cat basket"
+    },
+    "cctv": {
+      "emoji": "❓",
+      "name": "cctv"
+    },
+    "chalkboard_small": {
+      "emoji": "❓",
+      "name": "chalkboard small"
+    },
+    "chat_last_msg": {
+      "emoji": "❓",
+      "name": "chat last msg"
+    },
+    "chat_secret_99": {
+      "emoji": "❓",
+      "name": "chat secret 99"
+    },
+    "childhood_drawing": {
+      "emoji": "❓",
+      "name": "childhood drawing"
+    },
+    "comment_blur": {
+      "emoji": "❓",
+      "name": "comment blur"
+    },
+    "confession_paper": {
+      "emoji": "❓",
+      "name": "confession paper"
+    },
+    "crumpled_paper": {
+      "emoji": "❓",
+      "name": "crumpled paper"
+    },
+    "delivery_note": {
+      "emoji": "❓",
+      "name": "delivery note"
+    },
+    "diary_1825": {
+      "emoji": "❓",
+      "name": "diary 1825"
+    },
+    "didi_sign": {
+      "emoji": "❓",
+      "name": "didi sign"
+    },
+    "digi_stopwatch": {
+      "emoji": "❓",
+      "name": "digi stopwatch"
+    },
+    "digital_zip_lock": {
+      "emoji": "❓",
+      "name": "digital zip lock"
+    },
+    "disposable_mask": {
+      "emoji": "❓",
+      "name": "disposable mask"
+    },
+    "doorbell_lens": {
+      "emoji": "❓",
+      "name": "doorbell lens"
+    },
+    "drone_prop": {
+      "emoji": "❓",
+      "name": "drone prop"
+    },
+    "e_paper_reader": {
+      "emoji": "❓",
+      "name": "e paper reader"
+    },
+    "e_scooter": {
+      "emoji": "❓",
+      "name": "e scooter"
+    },
+    "earbud_case": {
+      "emoji": "❓",
+      "name": "earbud case"
+    },
+    "envelope_name": {
+      "emoji": "❓",
+      "name": "envelope name"
+    },
+    "envelopes_names": {
+      "emoji": "❓",
+      "name": "envelopes names"
+    },
+    "fan_spinning": {
+      "emoji": "❓",
+      "name": "fan spinning"
+    },
+    "fiber_end": {
+      "emoji": "❓",
+      "name": "fiber end"
+    },
+    "finger_scan": {
+      "emoji": "❓",
+      "name": "finger scan"
+    },
+    "first_day_back": {
+      "emoji": "❓",
+      "name": "first day back"
+    },
+    "fu_to_xi": {
+      "emoji": "❓",
+      "name": "fu to xi"
+    },
+    "giant_duck": {
+      "emoji": "❓",
+      "name": "giant duck"
+    },
+    "glass_reply_note": {
+      "emoji": "❓",
+      "name": "glass reply note"
+    },
+    "group_photo_old": {
+      "emoji": "❓",
+      "name": "group photo old"
+    },
+    "hair_tie_foreign": {
+      "emoji": "❓",
+      "name": "hair tie foreign"
+    },
+    "half_body_corner": {
+      "emoji": "❓",
+      "name": "half body corner"
+    },
+    "hd_bullet_cam": {
+      "emoji": "❓",
+      "name": "hd bullet cam"
+    },
+    "health_bracelet": {
+      "emoji": "❓",
+      "name": "health bracelet"
+    },
+    "helmet_smart": {
+      "emoji": "❓",
+      "name": "helmet smart"
+    },
+    "hopscotch_home": {
+      "emoji": "❓",
+      "name": "hopscotch home"
+    },
+    "hotel_vip_room": {
+      "emoji": "❓",
+      "name": "hotel vip room"
+    },
+    "icecoffee_half": {
+      "emoji": "❓",
+      "name": "icecoffee half"
+    },
+    "intranet_ss": {
+      "emoji": "❓",
+      "name": "intranet ss"
+    },
+    "jacket_foreign": {
+      "emoji": "❓",
+      "name": "jacket foreign"
+    },
+    "jacket_new_style": {
+      "emoji": "❓",
+      "name": "jacket new style"
+    },
+    "jar_baby_teeth": {
+      "emoji": "❓",
+      "name": "jar baby teeth"
+    },
+    "kindle": {
+      "emoji": "❓",
+      "name": "kindle"
+    },
+    "laptop": {
+      "emoji": "❓",
+      "name": "laptop"
+    },
+    "led_bulb": {
+      "emoji": "❓",
+      "name": "led bulb"
+    },
+    "led_bulb_strip": {
+      "emoji": "❓",
+      "name": "led bulb strip"
+    },
+    "led_lantern": {
+      "emoji": "❓",
+      "name": "led lantern"
+    },
+    "led_mirror_ring": {
+      "emoji": "❓",
+      "name": "led mirror ring"
+    },
+    "led_undershelf": {
+      "emoji": "❓",
+      "name": "led undershelf"
+    },
+    "ledger_32years": {
+      "emoji": "❓",
+      "name": "ledger 32years"
+    },
+    "letter_granny": {
+      "emoji": "❓",
+      "name": "letter granny"
+    },
+    "lightbulb_note": {
+      "emoji": "❓",
+      "name": "lightbulb note"
+    },
+    "lightning_cable": {
+      "emoji": "❓",
+      "name": "lightning cable"
+    },
+    "lily_to_pink_rose": {
+      "emoji": "❓",
+      "name": "lily to pink rose"
+    },
+    "lipstick_tube": {
+      "emoji": "❓",
+      "name": "lipstick tube"
+    },
+    "live_phone": {
+      "emoji": "❓",
+      "name": "live phone"
+    },
+    "location_boss": {
+      "emoji": "❓",
+      "name": "location boss"
+    },
+    "lost_cat_poster": {
+      "emoji": "❓",
+      "name": "lost cat poster"
+    },
+    "lucky_coin": {
+      "emoji": "❓",
+      "name": "lucky coin"
+    },
+    "lunchbox_msg": {
+      "emoji": "❓",
+      "name": "lunchbox msg"
+    },
+    "luxury_cosmetics": {
+      "emoji": "❓",
+      "name": "luxury cosmetics"
+    },
+    "manga_hidden": {
+      "emoji": "❓",
+      "name": "manga hidden"
+    },
+    "map_note_corner": {
+      "emoji": "❓",
+      "name": "map note corner"
+    },
+    "medal_on_door": {
+      "emoji": "❓",
+      "name": "medal on door"
+    },
+    "medicine_qr": {
+      "emoji": "❓",
+      "name": "medicine qr"
+    },
+    "memo_47": {
+      "emoji": "❓",
+      "name": "memo 47"
+    },
+    "memo_doctor": {
+      "emoji": "❓",
+      "name": "memo doctor"
+    },
+    "memo_first_day": {
+      "emoji": "❓",
+      "name": "memo first day"
+    },
+    "memo_letter": {
+      "emoji": "❓",
+      "name": "memo letter"
+    },
+    "memo_my_food": {
+      "emoji": "❓",
+      "name": "memo my food"
+    },
+    "memo_save_plan": {
+      "emoji": "❓",
+      "name": "memo save plan"
+    },
+    "memo_secret_lock": {
+      "emoji": "❓",
+      "name": "memo secret lock"
+    },
+    "mini_bt_speaker": {
+      "emoji": "❓",
+      "name": "mini bt speaker"
+    },
+    "mirror_diff": {
+      "emoji": "❓",
+      "name": "mirror diff"
+    },
+    "mirror_frame_color": {
+      "emoji": "❓",
+      "name": "mirror frame color"
+    },
+    "mirror_shadow": {
+      "emoji": "❓",
+      "name": "mirror shadow"
+    },
+    "modern_ev": {
+      "emoji": "❓",
+      "name": "modern ev"
+    },
+    "movie_stub_old": {
+      "emoji": "❓",
+      "name": "movie stub old"
+    },
+    "movie_ticket": {
+      "emoji": "❓",
+      "name": "movie ticket"
+    },
+    "nap_alarm": {
+      "emoji": "❓",
+      "name": "nap alarm"
+    },
+    "neck_massager": {
+      "emoji": "❓",
+      "name": "neck massager"
+    },
+    "neon_shoes": {
+      "emoji": "❓",
+      "name": "neon shoes"
+    },
+    "nfc_sticker": {
+      "emoji": "❓",
+      "name": "nfc sticker"
+    },
+    "noise_earbud": {
+      "emoji": "❓",
+      "name": "noise earbud"
+    },
+    "note_20years": {
+      "emoji": "❓",
+      "name": "note 20years"
+    },
+    "note_first_meet": {
+      "emoji": "❓",
+      "name": "note first meet"
+    },
+    "note_secret": {
+      "emoji": "❓",
+      "name": "note secret"
+    },
+    "notebook_date": {
+      "emoji": "❓",
+      "name": "notebook date"
+    },
+    "notice_ribs": {
+      "emoji": "❓",
+      "name": "notice ribs"
+    },
+    "offer_letter": {
+      "emoji": "❓",
+      "name": "offer letter"
+    },
+    "old_photo_msg": {
+      "emoji": "❓",
+      "name": "old photo msg"
+    },
+    "old_photo_wallet": {
+      "emoji": "❓",
+      "name": "old photo wallet"
+    },
+    "origami_animals": {
+      "emoji": "❓",
+      "name": "origami animals"
+    },
+    "patched_shoes": {
+      "emoji": "❓",
+      "name": "patched shoes"
+    },
+    "pearl_to_ruby": {
+      "emoji": "❓",
+      "name": "pearl to ruby"
+    },
+    "phone_holder": {
+      "emoji": "❓",
+      "name": "phone holder"
+    },
+    "phone_tripod": {
+      "emoji": "❓",
+      "name": "phone tripod"
+    },
+    "pillow_indent": {
+      "emoji": "❓",
+      "name": "pillow indent"
+    },
+    "plant_alive": {
+      "emoji": "❓",
+      "name": "plant alive"
+    },
+    "pos_terminal": {
+      "emoji": "❓",
+      "name": "pos terminal"
+    },
+    "power_station": {
+      "emoji": "❓",
+      "name": "power station"
+    },
+    "power_station_stove": {
+      "emoji": "❓",
+      "name": "power station stove"
+    },
+    "private_best_note": {
+      "emoji": "❓",
+      "name": "private best note"
+    },
+    "pulse_oximeter": {
+      "emoji": "❓",
+      "name": "pulse oximeter"
+    },
+    "qr_hongbao": {
+      "emoji": "❓",
+      "name": "qr hongbao"
+    },
+    "qr_price_tag": {
+      "emoji": "❓",
+      "name": "qr price tag"
+    },
+    "qr_tissue": {
+      "emoji": "❓",
+      "name": "qr tissue"
+    },
+    "radio_tab": {
+      "emoji": "❓",
+      "name": "radio tab"
+    },
+    "receipt_big": {
+      "emoji": "❓",
+      "name": "receipt big"
+    },
+    "record_32years": {
+      "emoji": "❓",
+      "name": "record 32years"
+    },
+    "restaurant_invoice": {
+      "emoji": "❓",
+      "name": "restaurant invoice"
+    },
+    "rgb_smart_bulb": {
+      "emoji": "❓",
+      "name": "rgb smart bulb"
+    },
+    "ring_doorbell": {
+      "emoji": "❓",
+      "name": "ring doorbell"
+    },
+    "ring_hidden": {
+      "emoji": "❓",
+      "name": "ring hidden"
+    },
+    "rival_mug": {
+      "emoji": "❓",
+      "name": "rival mug"
+    },
+    "rubber_duck": {
+      "emoji": "❓",
+      "name": "rubber duck"
+    },
+    "saved_message": {
+      "emoji": "❓",
+      "name": "saved message"
+    },
+    "scarf_handlebar": {
+      "emoji": "❓",
+      "name": "scarf handlebar"
+    },
+    "scarves_all": {
+      "emoji": "❓",
+      "name": "scarves all"
+    },
+    "schedule_wall": {
+      "emoji": "❓",
+      "name": "schedule wall"
+    },
+    "selfie_phone": {
+      "emoji": "❓",
+      "name": "selfie phone"
+    },
+    "shadow_pattern": {
+      "emoji": "❓",
+      "name": "shadow pattern"
+    },
+    "shoe_claim_note": {
+      "emoji": "❓",
+      "name": "shoe claim note"
+    },
+    "silicone_puff": {
+      "emoji": "❓",
+      "name": "silicone puff"
+    },
+    "slack_off_book": {
+      "emoji": "❓",
+      "name": "slack off book"
+    },
+    "smart_glasses_case": {
+      "emoji": "❓",
+      "name": "smart glasses case"
+    },
+    "smart_lock": {
+      "emoji": "❓",
+      "name": "smart lock"
+    },
+    "smart_lock_chest": {
+      "emoji": "❓",
+      "name": "smart lock chest"
+    },
+    "smart_plug": {
+      "emoji": "❓",
+      "name": "smart plug"
+    },
+    "smart_ring": {
+      "emoji": "❓",
+      "name": "smart ring"
+    },
+    "smart_scale": {
+      "emoji": "❓",
+      "name": "smart scale"
+    },
+    "smart_water_bottle": {
+      "emoji": "❓",
+      "name": "smart water bottle"
+    },
+    "solar_chip": {
+      "emoji": "❓",
+      "name": "solar chip"
+    },
+    "sticky_password": {
+      "emoji": "❓",
+      "name": "sticky password"
+    },
+    "succulent_tagged": {
+      "emoji": "❓",
+      "name": "succulent tagged"
+    },
+    "switch_gamepad": {
+      "emoji": "❓",
+      "name": "switch gamepad"
+    },
+    "teddy_flipped": {
+      "emoji": "❓",
+      "name": "teddy flipped"
+    },
+    "ten_cups": {
+      "emoji": "❓",
+      "name": "ten cups"
+    },
+    "textbook_open": {
+      "emoji": "❓",
+      "name": "textbook open"
+    },
+    "ticket_20ago": {
+      "emoji": "❓",
+      "name": "ticket 20ago"
+    },
+    "ticket_tablet": {
+      "emoji": "❓",
+      "name": "ticket tablet"
+    },
+    "tiny_qr": {
+      "emoji": "❓",
+      "name": "tiny qr"
+    },
+    "two_pillows": {
+      "emoji": "❓",
+      "name": "two pillows"
+    },
+    "typec_cable": {
+      "emoji": "❓",
+      "name": "typec cable"
+    },
+    "unsent_letters": {
+      "emoji": "❓",
+      "name": "unsent letters"
+    },
+    "usb_cable": {
+      "emoji": "❓",
+      "name": "usb cable"
+    },
+    "usb_data": {
+      "emoji": "❓",
+      "name": "usb data"
+    },
+    "usbc_port": {
+      "emoji": "❓",
+      "name": "usbc port"
+    },
+    "vacuum": {
+      "emoji": "❓",
+      "name": "vacuum"
+    },
+    "vape": {
+      "emoji": "❓",
+      "name": "vape"
+    },
+    "vape_torch": {
+      "emoji": "❓",
+      "name": "vape torch"
+    },
+    "watch_strange": {
+      "emoji": "❓",
+      "name": "watch strange"
+    },
+    "watermelon_split": {
+      "emoji": "❓",
+      "name": "watermelon split"
+    },
+    "wifi_router": {
+      "emoji": "❓",
+      "name": "wifi router"
+    },
+    "wine_bottle_back": {
+      "emoji": "❓",
+      "name": "wine bottle back"
+    },
+    "wing_to_drumstick": {
+      "emoji": "❓",
+      "name": "wing to drumstick"
+    },
+    "wireless_earbud_case": {
+      "emoji": "❓",
+      "name": "wireless earbud case"
+    },
+    "wireless_pad": {
+      "emoji": "❓",
+      "name": "wireless pad"
+    },
+    "affair_pearl_earring": {
+      "emoji": "🔎",
+      "name": "珍珠耳环"
+    },
+    "affair_rose_perfume": {
+      "emoji": "🔎",
+      "name": "陌生玫瑰香水"
+    },
+    "affair_red_scarf": {
+      "emoji": "🔎",
+      "name": "红色丝巾"
+    },
+    "affair_breakfast_receipt": {
+      "emoji": "🔎",
+      "name": "酒店双人早餐单"
+    },
+    "affair_burgundy_barrette_bed": {
+      "emoji": "🔎",
+      "name": "酒红宝石发夹"
+    },
+    "affair_laundry_tag_1808": {
+      "emoji": "🔎",
+      "name": "1808洗衣牌"
+    },
+    "affair_second_skincare": {
+      "emoji": "🔎",
+      "name": "第二套护肤品"
+    },
+    "affair_strange_lipstick_bath": {
+      "emoji": "🔎",
+      "name": "陌生口红"
+    },
+    "affair_red_hair": {
+      "emoji": "🔎",
+      "name": "红色长发"
+    },
+    "affair_washbag_1808": {
+      "emoji": "🔎",
+      "name": "1808洗漱包"
+    },
+    "affair_single_pearl_stud": {
+      "emoji": "🔎",
+      "name": "单只珍珠耳钉"
+    },
+    "affair_burgundy_barrette_shower": {
+      "emoji": "🔎",
+      "name": "酒红发卡"
+    },
+    "affair_lipstick_cup": {
+      "emoji": "🔎",
+      "name": "口红印纸杯"
+    },
+    "affair_parking_ticket": {
+      "emoji": "🔎",
+      "name": "餐厅停车票"
+    },
+    "affair_strange_barrette_car": {
+      "emoji": "🔎",
+      "name": "陌生发夹"
+    },
+    "affair_spare_phone_card": {
+      "emoji": "🔎",
+      "name": "备用手机卡"
+    },
+    "affair_womens_sunglasses": {
+      "emoji": "🔎",
+      "name": "女士墨镜"
+    },
+    "affair_lipstick_napkin": {
+      "emoji": "🔎",
+      "name": "带口红印的餐巾"
+    },
+    "affair_pair_train_tickets": {
+      "emoji": "🔎",
+      "name": "双人车票"
+    },
+    "affair_jewelry_receipt": {
+      "emoji": "🔎",
+      "name": "珠宝收据"
+    },
+    "affair_roomcard_sleeve_1808": {
+      "emoji": "🔎",
+      "name": "1808房卡套"
+    },
+    "affair_burgundy_nightdress": {
+      "emoji": "🔎",
+      "name": "酒红女性睡衣"
+    },
+    "affair_makeup_pouch": {
+      "emoji": "🔎",
+      "name": "女士化妆包"
+    },
+    "affair_pearl_necklace": {
+      "emoji": "🔎",
+      "name": "珍珠项链"
+    },
+    "affair_strange_lipstick_case": {
+      "emoji": "🔎",
+      "name": "陌生口红"
+    },
+    "affair_hidden_phone": {
+      "emoji": "🔎",
+      "name": "隐藏手机"
+    },
+    "affair_hotel_date_card": {
+      "emoji": "🔎",
+      "name": "酒店18号日期卡"
+    },
+    "affair_transfer_slip": {
+      "emoji": "🔎",
+      "name": "转账凭证"
+    },
+    "affair_cropped_photo": {
+      "emoji": "🔎",
+      "name": "裁切合照"
+    },
+    "affair_note_1808": {
+      "emoji": "🔎",
+      "name": "1808手写纸条"
+    },
+    "affair_double_reservation": {
+      "emoji": "🔎",
+      "name": "双人预约卡"
+    },
+    "affair_pearl_bracelet": {
+      "emoji": "🔎",
+      "name": "陌生珍珠手链"
+    },
+    "affair_spare_charging_cable": {
+      "emoji": "🔎",
+      "name": "备用充电线"
+    }
+  },
+  "laotieLines": [
+    "老铁，看走眼啦！",
+    "瞅准喽再点，别急！",
+    "这可不是穿越物嘞～",
+    "老铁，眼神儿再毒一点！",
+    "瞧，你手抖啦？",
+    "老铁不冲动，稳一稳！",
+    "再仔细瞅瞅～",
+    "这货本地土产，不是茬！"
+  ],
+  "hiddenIdxRanges": []
+}

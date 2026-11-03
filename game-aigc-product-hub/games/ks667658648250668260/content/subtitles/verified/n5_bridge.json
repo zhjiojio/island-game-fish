@@ -1,0 +1,76 @@
+{
+ "schemaVersion": 1,
+ "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_bridge.mp4",
+ "sha256": "ff65e0a8b8879549fb3519da529d1799f198666009e11849f8ae46efc31f5b4c",
+ "duration": 10.042,
+ "nodes": [
+  "e5_bridge"
+ ],
+ "status": "speech",
+ "transcript": "天亮雨停了，可这屋还是得修。",
+ "rawText": "天亮雨停了可这屋还是得修",
+ "asrChars": [
+  [
+   2.24,
+   2.48,
+   "天"
+  ],
+  [
+   2.5,
+   2.68,
+   "亮"
+  ],
+  [
+   2.68,
+   2.84,
+   "雨"
+  ],
+  [
+   2.84,
+   3.02,
+   "停"
+  ],
+  [
+   3.02,
+   3.26,
+   "了"
+  ],
+  [
+   4.3,
+   4.52,
+   "可"
+  ],
+  [
+   4.52,
+   4.68,
+   "这"
+  ],
+  [
+   4.68,
+   4.92,
+   "屋"
+  ],
+  [
+   6.28,
+   6.52,
+   "还"
+  ],
+  [
+   6.52,
+   6.7,
+   "是"
+  ],
+  [
+   6.7,
+   6.82,
+   "得"
+  ],
+  [
+   6.82,
+   7.145,
+   "修"
+  ]
+ ],
+ "timingEngine": "asr-anchor(funasr-paraformer)",
+ "reviewMethod": "batch ASR auto (needs human proof-read for punctuation/speaker)."
+}

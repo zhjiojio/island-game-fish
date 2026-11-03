@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s4.hd.mp4",
+  "sha256": "7a554321a64aab1f17fa61a3d1fe9a942986698cf49b705774bb61486363f398",
+  "duration": 10.042,
+  "nodes": [
+    "e3s4"
+  ],
+  "status": "speech",
+  "transcript": "傲天哥，这衣裳合身吗？",
+  "rawText": "傲天哥这衣裳合身吗",
+  "asrChars": [
+    [
+      5.05,
+      5.27,
+      "傲"
+    ],
+    [
+      5.27,
+      5.49,
+      "天"
+    ],
+    [
+      5.49,
+      5.73,
+      "哥"
+    ],
+    [
+      7.05,
+      7.29,
+      "这"
+    ],
+    [
+      7.39,
+      7.63,
+      "衣"
+    ],
+    [
+      7.63,
+      7.87,
+      "裳"
+    ],
+    [
+      8.99,
+      9.23,
+      "合"
+    ],
+    [
+      9.35,
+      9.59,
+      "身"
+    ],
+    [
+      9.59,
+      9.855,
+      "吗"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "奥天哥：这衣裳合身吗?",
+  "speakerKey": null,
+  "speakerRuleKey": "e3s4",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

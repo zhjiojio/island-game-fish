@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be3_nowhere.c.mp4",
+  "sha256": "f34e5797399b16586b3e74ad1ae9ca19f4f69a76ea08978b1875e36037152b1f",
+  "duration": 10.042,
+  "nodes": [
+    "BE_RUNAWAY"
+  ],
+  "status": "speech",
+  "transcript": "傲天，你去哪儿啊？",
+  "rawText": "傲天你去哪儿啊",
+  "asrChars": [
+    [
+      2.39,
+      2.63,
+      "傲"
+    ],
+    [
+      2.83,
+      3.135,
+      "天"
+    ],
+    [
+      7.0,
+      7.22,
+      "你"
+    ],
+    [
+      7.22,
+      7.46,
+      "去"
+    ],
+    [
+      7.52,
+      7.74,
+      "哪"
+    ],
+    [
+      7.74,
+      7.9,
+      "儿"
+    ],
+    [
+      7.9,
+      8.05,
+      "啊"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "傲天：你去哪儿啊?",
+  "speakerKey": "wanerh",
+  "speakerRuleKey": "be3_nowhere",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

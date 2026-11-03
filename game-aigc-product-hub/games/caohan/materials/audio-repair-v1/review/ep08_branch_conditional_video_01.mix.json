@@ -1,0 +1,18 @@
+{
+  "videoId": "ep08_branch_conditional_video_01",
+  "voiceWindows": [],
+  "newVoice": [
+    {
+      "lineId": "ep08_branch_conditional_video_01__l01",
+      "speaker": "画外叙述者",
+      "kind": "narration",
+      "text": "他们刚回国的儿子，是个很厉害的人。",
+      "audioFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/audio/ep08_branch_conditional_video_01__l01.mp3",
+      "start": 0.4,
+      "end": 3.767
+    }
+  ],
+  "durationSec": 8.034104308390022,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.516845703125
+}

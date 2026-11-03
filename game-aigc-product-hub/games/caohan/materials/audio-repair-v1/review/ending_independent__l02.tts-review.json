@@ -1,0 +1,9 @@
+{
+  "transcript": "这次他先选自己",
+  "voice": "普通话，女声，中年",
+  "issues": [
+    "吞字"
+  ],
+  "uncertain": "",
+  "reviewModel": "mistralai/voxtral-small-24b-2507"
+}

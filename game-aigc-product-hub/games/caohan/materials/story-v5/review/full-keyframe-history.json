@@ -1,0 +1,213 @@
+[
+  {
+    "partId": "ep01_branch_counterattack_video_01__p01",
+    "videoId": "ep01_branch_counterattack_video_01",
+    "nodeId": "ep01_branch_counterattack",
+    "shotId": "ep01_branch_counterattack_video_01_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep01_branch_counterattack_video_01__p01.json",
+    "requestSha256": "59bfeaade32878424244759f0daca57b1bd55c61a12db5320ce54db4fd74133b",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep01_branch_counterattack_video_01__p01.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep01_branch_counterattack_video_01__p01.json",
+    "durationSec": 8,
+    "expectedSpeech": [
+      {
+        "shotId": "ep01_branch_counterattack_video_01_shot_01",
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "on_screen",
+        "text": "来，喝点热的。",
+        "startSec": 0.55,
+        "endSec": 2.4
+      },
+      {
+        "shotId": "ep01_branch_counterattack_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "刚才推我的时候，你怎么不装了？",
+        "startSec": 2.65,
+        "endSec": 7.45
+      }
+    ],
+    "requiredSound": {
+      "ambient": "贺家卧室门口自然环境声",
+      "music": "无配乐，以现场声为主",
+      "sfx": [
+        "杯子在地面碎裂、牛奶溅落声"
+      ],
+      "vocalizations": []
+    },
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep01_branch_counterattack_video_01__p01.png",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep01_branch_counterattack_video_01.mp4",
+    "reuseSourceFrame": false
+  },
+  {
+    "partId": "ep01_branch_counterattack_video_01__p01",
+    "sha256": "5f8f1fd9dcee81e9f0aa11cce44d005ec0d5197c0e4b239056716292719545b9",
+    "status": "needs_keyframe_revision",
+    "evidence": "keyframes/ep01_branch_counterattack_video_01__p01.png",
+    "decision": "人物与递奶动作正确；许邵泽需恢复与露台样片一致的黑西装、白衬衫、黑领带。"
+  },
+  {
+    "partId": "ep02_branch_truth_video_01__p01",
+    "videoId": "ep02_branch_truth_video_01",
+    "nodeId": "ep02_branch_truth",
+    "shotId": "ep02_branch_truth_video_01_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep02_branch_truth_video_01__p01.json",
+    "requestSha256": "2cde04950f4ee607a5ed678f5f0b8a3760c1484adbbf400819a7d1b59c5c1095",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep02_branch_truth_video_01__p01.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep02_branch_truth_video_01__p01.json",
+    "durationSec": 6,
+    "expectedSpeech": [
+      {
+        "shotId": "ep02_branch_truth_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "五万，现在转，转完就走。",
+        "startSec": 0.55,
+        "endSec": 4.74
+      },
+      {
+        "shotId": "ep02_branch_truth_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "行。",
+        "startSec": 4.99,
+        "endSec": 5.45
+      }
+    ],
+    "requiredSound": {
+      "ambient": "摩托引擎和轻微风声",
+      "music": "无配乐，以现场声为主",
+      "sfx": [],
+      "vocalizations": []
+    },
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep02_branch_truth_video_01__p01.png",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep02_branch_truth_video_01.mp4",
+    "reuseSourceFrame": false
+  },
+  {
+    "partId": "ep02_branch_truth_video_01__p01",
+    "sha256": "21bbf0c0d2f22f3097dab4ba461091415693e1baf2477f75f2b0bb1678b276d1",
+    "status": "needs_keyframe_revision",
+    "evidence": "full-keyframes-round1.jpg",
+    "decision": "女主误用酒红礼服，须改回灰色外套、白内搭、黑长裤。"
+  },
+  {
+    "partId": "ep03_scene_00_video_01__p01",
+    "videoId": "ep03_scene_00_video_01",
+    "nodeId": "ep03_scene_00",
+    "shotId": "ep03_scene_00_video_01_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep03_scene_00_video_01__p01.json",
+    "requestSha256": "92dc29cf69f193e78e811873592df0b85de5b071c7c9a3ac9690a66730708b86",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep03_scene_00_video_01__p01.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep03_scene_00_video_01__p01.json",
+    "durationSec": 6,
+    "expectedSpeech": [],
+    "requiredSound": {
+      "ambient": "乡间路边自然环境声",
+      "music": "无配乐，以现场声为主",
+      "sfx": [],
+      "vocalizations": [
+        {
+          "speakerId": "hexingran",
+          "kind": "gasp"
+        }
+      ]
+    },
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep03_scene_00_video_01__p01.png",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep03_scene_00_video_01.mp4",
+    "reuseSourceFrame": false
+  },
+  {
+    "partId": "ep03_scene_00_video_01__p01",
+    "status": "needs_keyframe_revision",
+    "sha256": "9fcc52c88642bc9616f2b946563dae63e467ea9a450e61f36692eaaa51793bd3",
+    "evidence": "full-keyframes-round2.jpg",
+    "decision": "女主错误使用礼服，应穿灰外套白内搭黑裤。"
+  },
+  {
+    "partId": "ep03_branch_emotion_video_01__p01",
+    "videoId": "ep03_branch_emotion_video_01",
+    "nodeId": "ep03_branch_emotion",
+    "shotId": "ep03_branch_emotion_video_01_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep03_branch_emotion_video_01__p01.json",
+    "requestSha256": "6c0ccb1fab035c434cc50d9aeda32de5086528e78a478ca73e1ee2685d7c9931",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep03_branch_emotion_video_01__p01.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep03_branch_emotion_video_01__p01.json",
+    "durationSec": 6,
+    "expectedSpeech": [
+      {
+        "shotId": "ep03_branch_emotion_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "蹲下。别站那么高看我。",
+        "startSec": 0.55,
+        "endSec": 4.04
+      },
+      {
+        "shotId": "ep03_branch_emotion_video_01_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "喝口水。",
+        "startSec": 4.29,
+        "endSec": 5.45
+      }
+    ],
+    "requiredSound": {
+      "ambient": "乡间路边自然环境声",
+      "music": "无配乐，以现场声为主",
+      "sfx": [],
+      "vocalizations": []
+    },
+    "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep03_branch_emotion_video_01__p01.png",
+    "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep03_branch_emotion_video_01.mp4",
+    "reuseSourceFrame": false
+  },
+  {
+    "partId": "ep03_branch_emotion_video_01__p01",
+    "status": "needs_keyframe_revision",
+    "sha256": "ad36608dd08c0f7e8434307fa7070948d6bc2bdc8aaf94862d2601081574f8c8",
+    "evidence": "full-keyframes-round2.jpg",
+    "decision": "陈劲应站着，不能在女主说“蹲下”前已经蹲下。"
+  },
+  {
+    "partId": "ep04_scene_00_video_01__p01",
+    "status": "needs_keyframe_revision",
+    "sha256": "3e672de9d64879336e586f977bcb0bfd07bd72a6d30842e601f9de877613401b",
+    "evidence": "full-keyframes-round2.jpg",
+    "decision": "女主服装错误；跟车追兵被误画在后座，车内只能两人。"
+  },
+  {
+    "partId": "ep07_scene_00_video_01__p01",
+    "sha256": "36966622b5a22501dbbbb53dbdfa63a8dbbd66d5aedfda39ba5a77b074368678",
+    "status": "needs_keyframe_revision",
+    "evidence": "full-keyframes-round4.jpg",
+    "decision": "许邵泽误用贺铭中年面孔，需指定年轻许邵泽参考修正。"
+  },
+  {
+    "partId": "ep07_branch_emotion_video_01__p01",
+    "sha256": "0b59ff689dcf598ece030a3ce5420ec67852cae4306135d8c20cc2ac2df40e96",
+    "status": "needs_keyframe_revision",
+    "evidence": "full-keyframes-round4.jpg",
+    "decision": "许邵泽误用贺铭中年面孔，需指定年轻许邵泽参考修正。"
+  },
+  {
+    "partId": "ep09_branch_truth_video_01__p01",
+    "sha256": "9849bce21a7e1c3f12a0d10a0e8673999a9e75f52471645b2a4ec06a15b67bba",
+    "status": "needs_keyframe_revision",
+    "evidence": "full-keyframes-round6.jpg",
+    "decision": "服务返回黑帧，需重做。"
+  },
+  {
+    "partId": "ep07_branch_counterattack_video_01__p01",
+    "sha256": "16b11486d47dd754dfc3bec107bd4f00e52ef3e384c55ec7de1d49110ea28920",
+    "status": "needs_keyframe_revision",
+    "evidence": "full-keyframes-round5.jpg",
+    "decision": "左侧应为黑T恤陈劲，当前误用年轻许邵泽面孔及黑外套，需恢复陈劲身份与服装。"
+  }
+]

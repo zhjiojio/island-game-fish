@@ -1,0 +1,98 @@
+{
+  "sourceFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/output/逃婚后我花千万雇了工地糙汉.v4.json",
+  "sourceSha256": "77cee12ed8c5f8a99e49c6ec00ef31136fa64c03eb09995732b91220ca491ec7",
+  "nodeId": "ep05_scene_00",
+  "video": {
+    "id": "ep05_scene_00_video_01",
+    "order": 1,
+    "title": "冷开场：intimacy",
+    "durationSec": 3.0,
+    "renderMode": "image_motion",
+    "needsLipSync": false,
+    "continuity": {
+      "locationId": "source_5_5_3",
+      "timeOfDay": "day",
+      "characterIds": [
+        "贺星冉"
+      ],
+      "wardrobe": "沿用角色 wardrobeByEpisode，视频内不得换装",
+      "screenDirection": "保持人物空间轴线与视线方向",
+      "startState": "承接上一视频末帧；首视频承接场景入口",
+      "endState": "保留人物动作、视线与构图状态供下一视频承接"
+    },
+    "assetRefs": [],
+    "shots": [
+      {
+        "id": "ep05_scene_00_video_01_shot_01",
+        "order": 1,
+        "durationSec": 1.5,
+        "shotSize": "全景",
+        "cameraAngle": "低角度",
+        "cameraMovement": "缓推",
+        "composition": "酒店卧室·清晨内建立清楚人物方位，主体动作是：两人同时怔住了。",
+        "locationId": "source_5_5_3",
+        "timeOfDay": "day",
+        "characters": [
+          "贺星冉"
+        ],
+        "dialogue": [
+          {
+            "speaker": "旁白",
+            "text": "两人同时怔住了。"
+          }
+        ],
+        "audio": {
+          "ambient": "酒店卧室·清晨环境底噪",
+          "music": "她从噩梦里扑进他怀里，他的手却落在不该落的位置情绪低频铺底",
+          "sfx": []
+        },
+        "visual": {
+          "firstFramePrompt": "日，酒店卧室·清晨，景别：全景，画面人物：贺星冉；两人同时怔住了。，人物外观与上镜连续，电影级写实短剧",
+          "videoPrompt": "镜头缓慢推进，清晰呈现两人同时怔住了。，保持人物服装、光向和空间轴线连续",
+          "negativePrompt": "字幕，水印，畸形手指，多余人物，角色换脸，服装突变，空间跳轴"
+        },
+        "sourceRef": {
+          "episode": 5,
+          "scene": "5-3",
+          "unit": 13,
+          "adaptation": "condensed"
+        },
+        "startSec": 0.0,
+        "endSec": 1.5
+      },
+      {
+        "id": "ep05_scene_00_video_01_shot_02",
+        "order": 2,
+        "durationSec": 1.5,
+        "shotSize": "全景",
+        "cameraAngle": "低角度",
+        "cameraMovement": "缓推",
+        "composition": "酒店卧室·清晨内建立清楚人物方位，主体动作是：两人同时怔住了。",
+        "locationId": "source_5_5_3",
+        "timeOfDay": "day",
+        "characters": [
+          "贺星冉"
+        ],
+        "dialogue": [],
+        "audio": {
+          "ambient": "酒店卧室·清晨环境底噪",
+          "music": "她从噩梦里扑进他怀里，他的手却落在不该落的位置情绪低频铺底",
+          "sfx": []
+        },
+        "visual": {
+          "firstFramePrompt": "日，酒店卧室·清晨，景别：全景，画面人物：贺星冉；两人同时怔住了。，人物外观与上镜连续，电影级写实短剧",
+          "videoPrompt": "镜头缓慢推进，清晰呈现两人同时怔住了。，保持人物服装、光向和空间轴线连续，对白结束后保持动作连续",
+          "negativePrompt": "字幕，水印，畸形手指，多余人物，角色换脸，服装突变，空间跳轴"
+        },
+        "sourceRef": {
+          "episode": 5,
+          "scene": "5-3",
+          "unit": 13,
+          "adaptation": "condensed"
+        },
+        "startSec": 1.5,
+        "endSec": 3.0
+      }
+    ]
+  }
+}

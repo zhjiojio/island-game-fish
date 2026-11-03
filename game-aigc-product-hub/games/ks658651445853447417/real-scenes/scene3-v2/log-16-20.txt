@@ -1,0 +1,26 @@
+▶ Lv16 · 杭州 · 河坊街茶庄 · 6 物：龙井茶饼、臭豆腐一碟、胡庆余堂药方、绸伞、金丝片糖、雕花木牌
+   ✅ Lv16 → ./generated/lv16.jpg (5052318 B)
+▶ Lv17 · 南京 · 夫子庙秦淮 · 6 物：秦淮花灯、鸭血粉丝、云锦织片、金陵折页地图、雨花石一枚、重阳糕
+   ✅ Lv17 → ./generated/lv17.jpg (4997318 B)
+▶ Lv18 · 青岛 · 八大关洋楼 · 6 物：青岛啤酒瓶、哈利路亚教堂顶、海螺号、欧式路灯、绿石栏杆、海鲜壳堆
+   ✅ Lv18 → ./generated/lv18.jpg (4913765 B)
+▶ Lv19 · 武汉 · 户部巷早点街 · 7 物：热干面碗、三鲜豆皮、面窝、武汉煎饼、长江大桥模型、蔡林记招牌、辣椒罐
+   ✅ Lv19 → ./generated/lv19.jpg (4945009 B)
+▶ Lv20 · 长沙 · 文和友怀旧巷 · 7 物：黑臭豆腐、糖火烧铁盘、文和友红招牌、小龙虾一盆、麻辣烫竹签、卤蛋一碟、火宫殿油纸包
+   ✅ Lv20 → ./generated/lv20.jpg (4986226 B)
+
+=== 汇总 ===
+total 123144
+drwxr-xr-x@ 13 fat  staff      416  8  9 02:47 .
+drwxr-xr-x@ 12 fat  staff      384  8  9 02:47 ..
+-rw-r--r--@  1 fat  staff  5830385  8  9 02:40 lv10.jpg
+-rw-r--r--@  1 fat  staff  5009271  8  9 02:41 lv11.jpg
+-rw-r--r--@  1 fat  staff  4922542  8  9 02:42 lv12.jpg
+-rw-r--r--@  1 fat  staff  5109184  8  9 02:43 lv13.jpg
+-rw-r--r--@  1 fat  staff  5442791  8  9 02:44 lv14.jpg
+-rw-r--r--@  1 fat  staff  9761053  8  9 02:47 lv15.jpg
+-rw-r--r--@  1 fat  staff  5052318  8  9 02:43 lv16.jpg
+-rw-r--r--@  1 fat  staff  4997318  8  9 02:44 lv17.jpg
+-rw-r--r--@  1 fat  staff  4913765  8  9 02:45 lv18.jpg
+-rw-r--r--@  1 fat  staff  4945009  8  9 02:46 lv19.jpg
+-rw-r--r--@  1 fat  staff  4986226  8  9 02:47 lv20.jpg

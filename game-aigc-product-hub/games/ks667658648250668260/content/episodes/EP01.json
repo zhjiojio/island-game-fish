@@ -1,0 +1,792 @@
+{
+  "op1": {
+    "ep": "EP01",
+    "epTitle": "半碗糊糊·技能觉醒",
+    "scene": "city",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/op1_final20s.mp4",
+      "duration": 20,
+      "label": "白日梦·加班夜的她（婉儿同脸·现代造型·20s双段·脱外套互动版）",
+      "poster": "images/lastframes/op1.v3.jpg",
+      "interaction": {
+        "type": "drag",
+        "pauseAt": 10.0,
+        "start": {
+          "x": 0.32,
+          "y": 0.66
+        },
+        "target": {
+          "x": 0.80,
+          "y": 0.50,
+          "r": 0.09
+        },
+        "hint": "牵她的手，帮她脱下外套"
+      }
+    },
+    "char": "dreammj",
+    "speaker": "梦中女主播",
+    "text": "屋里好像有点热，要不把外套脱了吧。",
+    "next": "f_op1_outfit"
+  },
+  "f_op1_outfit": {
+    "ep": "EP01",
+    "epTitle": "半碗糊糊·技能觉醒",
+    "scene": "city",
+    "type": "choice",
+    "title": "她想换衣服给你看，要看么？",
+    "media": {
+      "kind": "image",
+      "file": "images/lastframes/op1.v3.jpg",
+      "label": "外套已脱·她还有惊喜"
+    },
+    "options": [
+      {
+        "text": "换给我看",
+        "icon": "say",
+        "next": "s_op1_lace",
+        "ad": true,
+        "adUnitId": "2300058116_01",
+        "id": "f_op1_outfit_opt_0"
+      },
+      {
+        "text": "算了，今天挺忙的",
+        "icon": "fight",
+        "next": "s1",
+        "id": "f_op1_outfit_opt_1"
+      }
+    ]
+  },
+  "s_op1_lace": {
+    "ep": "EP01",
+    "epTitle": "半碗糊糊·技能觉醒",
+    "scene": "city",
+    "media": {
+      "kind": "video",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/lace_confess_final.mp4",
+      "duration": 10,
+      "label": "白日梦加播·蕾丝内搭换装",
+      "poster": "images/lastframes/lace_confess.jpg"
+    },
+    "char": "dreammj",
+    "speaker": "梦中女主播",
+    "text": "换好了，哥哥，谢谢你帮我。",
+    "next": "s1"
+  },
+  "s1": {
+    "ep": "EP01",
+    "epTitle": "半碗糊糊·技能觉醒",
+    "scene": "city",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S1a.dream.mp4",
+      "duration": 5,
+      "label": "傲天骑手梦醒·原来是做梦啊",
+      "poster": "images/lastframes/S1a.dream.jpg"
+    },
+    "char": "aotian",
+    "speaker": "傲天",
+    "text": "哦——原来是做梦啊……嘿嘿……",
+    "next": "f_dream_more"
+  },
+  "f_dream_more": {
+    "ep": "EP01",
+    "epTitle": "半碗糊糊·技能觉醒",
+    "scene": "city",
+    "type": "choice",
+    "title": "没看够，再看一个？",
+    "media": {
+      "kind": "image",
+      "file": "images/lastframes/S1a.dream.jpg",
+      "label": "梦醒帧·还想再睡一会"
+    },
+    "options": [
+      {
+        "text": "再梦个御姐",
+        "icon": "say",
+        "next": "s_dream_yujie",
+        "ad": true,
+        "adUnitId": "2300058116_01",
+        "id": "f_dream_more_opt_0"
+      },
+      {
+        "text": "看个性感的",
+        "icon": "give",
+        "next": "s_dream_xinggan",
+        "ad": true,
+        "adUnitId": "2300058116_01",
+        "id": "f_dream_more_opt_1"
+      },
+      {
+        "text": "看个知性的",
+        "icon": "hide",
+        "next": "s_dream_zhixing",
+        "ad": true,
+        "adUnitId": "2300058116_01",
+        "id": "f_dream_more_opt_2"
+      },
+      {
+        "text": "不看了，继续送外卖",
+        "icon": "fight",
+        "next": "s1b",
+        "id": "f_dream_more_opt_3"
+      }
+    ]
+  },
+  "s_dream_yujie": {
+    "ep": "EP01",
+    "epTitle": "半碗糊糊·技能觉醒",
+    "scene": "city",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/dream_yujie.v1.mp4",
+      "duration": 10,
+      "label": "白日梦加播·御姐",
+      "poster": "images/lastframes/dream_yujie.v1.jpg"
+    },
+    "char": "aotian",
+    "speaker": "傲天",
+    "text": "这回是个御姐……我这觉睡得真值。",
+    "next": "f_dream_more"
+  },
+  "s_dream_xinggan": {
+    "ep": "EP01",
+    "epTitle": "半碗糊糊·技能觉醒",
+    "scene": "city",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/dream_xinggan.v1.mp4",
+      "duration": 10,
+      "label": "白日梦加播·性感",
+      "poster": "images/lastframes/dream_xinggan.v1.jpg"
+    },
+    "char": "aotian",
+    "speaker": "傲天",
+    "text": "嘶——这个梦，有点上头啊……",
+    "next": "f_dream_more"
+  },
+  "s_dream_zhixing": {
+    "ep": "EP01",
+    "epTitle": "半碗糊糊·技能觉醒",
+    "scene": "city",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/dream_zhixing.v1.mp4",
+      "duration": 10,
+      "label": "白日梦加播·知性",
+      "poster": "images/lastframes/dream_zhixing.v1.jpg"
+    },
+    "char": "aotian",
+    "speaker": "傲天",
+    "text": "知性的也不错……可惜都是梦。",
+    "next": "f_dream_more"
+  },
+  "s1b": {
+    "ep": "EP01",
+    "epTitle": "半碗糊糊·技能觉醒",
+    "scene": "city",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S1b.crash.mp4",
+      "duration": 5,
+      "label": "傲天骑手被撞倒躺地",
+      "poster": "images/lastframes/S1b.crash.jpg"
+    },
+    "char": "aotian",
+    "speaker": "傲天",
+    "text": "嘿嘿……诶？！",
+    "next": "s2"
+  },
+  "s2": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S2.hd.mp4",
+      "duration": 10,
+      "label": "窑洞醒来",
+      "poster": "images/lastframes/S2.hd.jpg"
+    },
+    "char": "aotian",
+    "speaker": "你（内心）",
+    "text": "再睁眼……这不是我的房。",
+    "next": "f_s2"
+  },
+  "f_s2": {
+    "ep": "EP01",
+    "scene": "house",
+    "type": "choice",
+    "title": "前一秒车祸，这一秒在窑洞——你先：",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s2_a.png",
+      "label": "窑洞醒来"
+    },
+    "options": [
+      {
+        "text": "摸摸脉搞清楚自己没死",
+        "icon": "say",
+        "stat": {
+          "qing": 3
+        },
+        "next": "r_f_s2_a",
+        "id": "f_s2_opt_0"
+      },
+      {
+        "text": "抽自己一巴掌试试痛不痛",
+        "icon": "fight",
+        "stat": {
+          "qing": 1,
+          "wei": -1
+        },
+        "next": "r_f_s2_b",
+        "id": "f_s2_opt_1"
+      },
+      {
+        "text": "先坐起来看四周环境",
+        "icon": "hide",
+        "stat": {
+          "qing": 5
+        },
+        "next": "r_f_s2_c",
+        "id": "f_s2_opt_2"
+      }
+    ]
+  },
+  "r_f_s2_a": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s2_a.png",
+      "duration": 3200,
+      "label": ""
+    },
+    "char": "aotian",
+    "speaker": "你（内心）",
+    "text": "指头压在腕上，一下、两下——跳得急。是活人。这具身子从今天起，姓李，叫傲天。……门帘一响，谁进来了？",
+    "next": "s3"
+  },
+  "r_f_s2_b": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s2_b.png",
+      "duration": 3200,
+      "label": ""
+    },
+    "char": "aotian",
+    "speaker": "你（内心）",
+    "text": "啪！半边脸火辣辣地烧起来。疼，是真的疼——不是梦。老子真穿过来了。……门口咋还站着个人？",
+    "next": "s3"
+  },
+  "r_f_s2_c": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s2_c.png",
+      "duration": 3200,
+      "label": ""
+    },
+    "char": "aotian",
+    "speaker": "你（内心）",
+    "text": "土墙、油灯、麻绳……房梁上还挂着晒干的辣椒。这是——一九八几年？门帘忽然一动，有人端着碗进来了。",
+    "next": "s3"
+  },
+  "s3": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S3.hd.mp4",
+      "duration": 10,
+      "label": "婉儿端糊糊",
+      "poster": "images/lastframes/S3.hd.jpg"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿（哽咽）",
+    "text": "傲天……你终于醒了！",
+    "next": "f0"
+  },
+  "f0": {
+    "ep": "EP01",
+    "scene": "house",
+    "type": "choice",
+    "title": "她把糊糊端到你面前，你先……",
+    "media": {
+      "kind": "image",
+      "file": "images/lastframes/S3.hd.jpg",
+      "label": "婉儿端糊糊"
+    },
+    "options": [
+      {
+        "text": "接过来喝一口暖胃",
+        "icon": "eat",
+        "stat": {
+          "wei": 8,
+          "liang": 3
+        },
+        "next": "r_f0_a",
+        "id": "f0_opt_0"
+      },
+      {
+        "text": "先问「婉儿你吃了没」",
+        "icon": "say",
+        "stat": {
+          "wei": 15,
+          "qing": 5
+        },
+        "next": "r_f0_b",
+        "id": "f0_opt_1"
+      },
+      {
+        "text": "让她先喝一口",
+        "icon": "give",
+        "stat": {
+          "wei": 12,
+          "qing": 8
+        },
+        "next": "r_f0_c",
+        "id": "f0_opt_2"
+      },
+      {
+        "text": "一口闷了不给她",
+        "icon": "eat",
+        "label": "一口闷了不给她",
+        "stat": {
+          "wei": -99,
+          "liang": -99
+        },
+        "roastKey": "roast_starve_gulp",
+        "roast": "你把嫂子仅剩的半碗糊糊一口闷了。三个月后你满仓存粮，嫂子饿倒在灶台边，再没抬起头。粮是攒下了，媳妇没了。",
+        "next": "BE_STARVE",
+        "id": "f0_opt_3"
+      }
+    ]
+  },
+  "r_f0_a": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f0_a.png",
+      "duration": 3200,
+      "label": ""
+    },
+    "char": "aotian",
+    "speaker": "你",
+    "text": "碗一沾手，热气就冲上了眼眶。你低头喝了一口——是热的。这年头，热的就是命。她在旁边看着，嘴角轻轻扬了一下。",
+    "next": "s4"
+  },
+  "r_f0_b": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f0_b.png",
+      "duration": 3200,
+      "label": ""
+    },
+    "char": "aotian",
+    "speaker": "你",
+    "text": "你没接碗，抬头看她——脸黄得像张纸。「婉儿，你吃了没？」她别过脸去，只把碗又往你手里推了推。",
+    "next": "s4"
+  },
+  "r_f0_c": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f0_c.png",
+      "duration": 3200,
+      "label": ""
+    },
+    "char": "aotian",
+    "speaker": "你",
+    "text": "你把碗轻轻推回去。「你先喝。我不饿。」——她愣了半天，眼圈就红了，硬是把碗又端回你面前。",
+    "next": "s4"
+  },
+  "s4": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S4.hd.mp4",
+      "duration": 10,
+      "label": "温情帧·端碗",
+      "poster": "images/lastframes/S4.hd.jpg"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿（温柔）",
+    "text": "慢点，喝了病就好三分。",
+    "next": "f_saoshi"
+  },
+  "f_saoshi": {
+    "ep": "EP01",
+    "scene": "house",
+    "type": "choice",
+    "title": "未过门的嫂子……你心里翻涌——",
+    "media": {
+      "kind": "image",
+      "file": "images/lastframes/S4.hd.jpg",
+      "label": "温情帧·端碗"
+    },
+    "options": [
+      {
+        "text": "穿越还有这福利？",
+        "icon": "say",
+        "stat": {
+          "wei": 10
+        },
+        "next": "r_f_saoshi_a",
+        "id": "f_saoshi_opt_0"
+      },
+      {
+        "text": "震惊！还有未过门的嫂子？",
+        "icon": "say",
+        "stat": {
+          "wei": 15,
+          "qing": 5
+        },
+        "next": "r_f_saoshi_b",
+        "id": "f_saoshi_opt_1"
+      },
+      {
+        "text": "嫂子，给我跳个舞吧。",
+        "icon": "give",
+        "stat": {
+          "wei": 12,
+          "qing": 3
+        },
+        "next": "f_saoshi_dance",
+        "ad": true,
+        "adUnitId": "2300058116_01",
+        "id": "f_saoshi_opt_2"
+      },
+      {
+        "text": "顺手摸一下她的腰",
+        "icon": "fight",
+        "stat": {
+          "wei": -99,
+          "qing": -30
+        },
+        "roastKey": "roast_slap_waist",
+        "roast": "你趁着未过门的嫂子端碗时，一手摸上她的腰。三巴掌下来，你连喊「嫂子」的力气都没了。",
+        "next": "BE_SLAP",
+        "id": "f_saoshi_opt_3"
+      }
+    ]
+  },
+  "r_f_saoshi_a": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_saoshi_a.png",
+      "duration": 3200,
+      "label": ""
+    },
+    "char": "aotian",
+    "speaker": "你（内心）",
+    "text": "你偷瞄了她一眼，嘴角一抽——老天爷，穿越还配这么个媳妇？这波真赚了……可她突然低下头，声音轻得像叹气。",
+    "next": "s5"
+  },
+  "r_f_saoshi_b": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_saoshi_b.png",
+      "duration": 3200,
+      "label": ""
+    },
+    "char": "aotian",
+    "speaker": "你（内心）",
+    "text": "端碗的手一抖，糊糊差点洒——等等，未过门的嫂子？！这剧本谁写的？还没等我回过神，她掀开米缸盖，让我看了眼里头。",
+    "next": "s5"
+  },
+  "f_saoshi_dance": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side04_kongque.hd.mp4",
+      "duration": 10,
+      "label": "孔雀舞",
+      "poster": "images/lastframes/side04_kongque.hd.jpg"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿（旋身）",
+    "text": "婉儿轻抬手臂，孔雀开屏……",
+    "next": "f_dance_react"
+  },
+  "f_dance_react": {
+    "ep": "EP01",
+    "scene": "house",
+    "type": "choice",
+    "title": "婉儿转过身，眼睛亮亮地看你——",
+    "options": [
+      {
+        "text": "你跳得真美，像画里的仙女",
+        "icon": "say",
+        "stat": {
+          "wei": 18,
+          "qing": 8
+        },
+        "next": "r_f_dance_react_a",
+        "id": "f_dance_react_opt_0"
+      },
+      {
+        "text": "再跳一支给我看，看不够",
+        "icon": "eat",
+        "stat": {
+          "wei": 10,
+          "qing": 3
+        },
+        "next": "r_dance_encore_ep01",
+        "id": "f_dance_react_opt_1",
+        "ad": true,
+        "adUnitId": "2300058116_01"
+      },
+      {
+        "text": "就这？也太难看了吧",
+        "icon": "fight",
+        "stat": {
+          "wei": -99,
+          "qing": -20
+        },
+        "roastKey": "roast_kicked_baddance",
+        "roast": "婉儿转过身，眼睛亮亮地等你一句话——你说「就这？」三个字。她扭头拎起你的包袱丢到院外，从此再没让你进门。",
+        "next": "BE_KICKED",
+        "id": "f_dance_react_opt_2"
+      }
+    ]
+  },
+  "r_f_dance_react_a": {
+    "ep": "EP01",
+    "scene": "house",
+    "char": "aotian",
+    "speaker": "你",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_dance_react_a.v2.c.jpg",
+      "label": "婉儿脸红低头"
+    },
+    "text": "嫂子——你这一转身，我这辈子都忘不了。婉儿脸唰地红到耳根，抿嘴低头：「呸，油嘴的。」——手里的水袖却攥得更紧。",
+    "next": "s5"
+  },
+  "r_f_dance_react_b": {
+    "ep": "EP01",
+    "scene": "house",
+    "char": "aotian",
+    "speaker": "你",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_dance_react_b.v2.c.jpg",
+      "label": "婉儿抿嘴再来一支"
+    },
+    "text": "再来一支，我给你打拍子。婉儿抿嘴笑：「就一支哦，看不够也没了。」——她原地一旋，水袖又飘起来。",
+    "next": "s5"
+  },
+  "BE_KICKED": {
+    "ep": "EP01",
+    "scene": "outside",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be5_kicked_out.hd.mp4",
+      "duration": 10,
+      "label": "被赶出家门",
+      "poster": "images/lastframes/be5_kicked_out.hd.jpg"
+    },
+    "next": "BE_KICKED_END"
+  },
+  "BE_KICKED_END": {
+    "ep": "EP01",
+    "scene": "end",
+    "type": "end",
+    "ending": "BE12",
+    "media": {
+      "kind": "image",
+      "file": "images/lastframes/be5_kicked_out.hd.jpg"
+    },
+    "title": "BE · 恶语伤人",
+    "text": "你嘲讽了她最珍贵的东西。她把你的包袱丢到院外，从此再也没让你进过门。荒年里孤身一人，你才明白——有些话说出口，就是一辈子的悔。",
+    "char": "aotian",
+    "speaker": "你（内心）"
+  },
+  "s5": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S5.hd.mp4",
+      "duration": 10,
+      "label": "婉儿摊家底·米缸",
+      "poster": "images/lastframes/S5.hd.jpg"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿（心里）",
+    "text": "家底就剩这一点。",
+    "next": "s5b"
+  },
+  "s5b": {
+    "ep": "EP01",
+    "scene": "house",
+    "char": "wanerh",
+    "speaker": "沈婉儿（压声哽）",
+    "text": "就这大半碗面了……",
+    "next": "s5c"
+  },
+  "s5c": {
+    "ep": "EP01",
+    "scene": "house",
+    "char": "wanerh",
+    "speaker": "沈婉儿",
+    "text": "再撑三天，就得下地挖野菜。",
+    "next": "f_s5"
+  },
+  "f_s5": {
+    "ep": "EP01",
+    "scene": "house",
+    "type": "choice",
+    "title": "家底只剩大半碗面，你——",
+    "media": {
+      "kind": "image",
+      "file": "images/lastframes/S5.hd.jpg",
+      "label": "米缸见底"
+    },
+    "options": [
+      {
+        "text": "握拳：我一定想办法",
+        "icon": "fight",
+        "stat": {
+          "wei": 12,
+          "qing": 5
+        },
+        "next": "r_f_s5_a",
+        "id": "f_s5_opt_0"
+      },
+      {
+        "text": "看向婉儿心疼一下",
+        "icon": "give",
+        "stat": {
+          "wei": 15,
+          "qing": 8
+        },
+        "next": "r_f_s5_b",
+        "id": "f_s5_opt_1"
+      },
+      {
+        "text": "叹口气：这日子……过一天算一天",
+        "icon": "hide",
+        "stat": {
+          "wei": 3,
+          "qing": 5
+        },
+        "next": "r_f_s5_c",
+        "id": "f_s5_opt_2"
+      },
+      {
+        "text": "让她进城卖身还债",
+        "icon": "run",
+        "stat": {
+          "wei": -99,
+          "qing": -99
+        },
+        "roastKey": "roast_lose_sellbody",
+        "roast": "荒年家里只剩半碗面，你竟劝她进城卖身还债。爱意瞬间归零——她收拾包袱那晚没哭，第二天穿上他人的嫁衣，你看着轿子远去，一辈子回不了头。",
+        "next": "BE_LOSE_HER",
+        "id": "f_s5_opt_3"
+      }
+    ]
+  },
+  "r_f_s5_a": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s5_a.png",
+      "duration": 3200,
+      "label": ""
+    },
+    "char": "aotian",
+    "speaker": "你",
+    "text": "你拳头攥紧，指关节都白了。「婉儿。这日子——我给你顶起来。」话音刚落——诶？我的身体怎么回事？浑身发烫，像有股热流从脚底往上涌。",
+    "next": "s6"
+  },
+  "r_f_s5_b": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s5_b.png",
+      "duration": 3200,
+      "label": ""
+    },
+    "char": "aotian",
+    "speaker": "你（内心）",
+    "text": "她瘦得肩膀都撑不起衣裳。让她一个人扛这个家，我算什么男人？心口一紧——奇了，脑子里忽然冒出一片田埂的影子，清清楚楚。",
+    "next": "s6"
+  },
+  "r_f_s5_c": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s5_c.png",
+      "duration": 3200,
+      "label": ""
+    },
+    "char": "aotian",
+    "speaker": "你（内心）",
+    "text": "你颓靠土墙，眼神放空——荒年、破窑、半碗面……总会有办法的吧。可就在这时，手心突然一阵发麻，像攥了把泥土似的。",
+    "next": "s6"
+  },
+  "s6": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S6.hd.mp4",
+      "duration": 10,
+      "label": "傲天觉醒·眼中金光·技能激活",
+      "poster": "images/lastframes/S6.hd.jpg"
+    },
+    "char": "aotian",
+    "speaker": "你（低吼）",
+    "text": "我不能让她饿死！",
+    "next": "s6b"
+  },
+  "s6b": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "skillcard",
+      "name": "一亩好地·Lv1",
+      "desc": "这块地，真能救下嫂子吗？",
+      "achvId": "skill_land",
+      "duration": 3000
+    },
+    "char": "system",
+    "speaker": "系统",
+    "text": "叮——技能激活：一亩好地。",
+    "next": "f_s6"
+  },
+  "r_dance_encore_ep01": {
+    "ep": "EP01",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side07_cailian.hd.mp4",
+      "duration": 10,
+      "label": "江南采莲扇舞",
+      "poster": "images/lastframes/side07_cailian.hd.jpg"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿（含笑）",
+    "text": "傲天……我跳的好看么？",
+    "next": "s5"
+  }
+}

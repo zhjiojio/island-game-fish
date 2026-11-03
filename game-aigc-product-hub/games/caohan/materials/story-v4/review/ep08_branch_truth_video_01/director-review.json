@@ -1,0 +1,12 @@
+{
+  "videoId": "ep08_branch_truth_video_01",
+  "sourceParts": [
+    "ep08_branch_truth_video_01__p01",
+    "ep08_branch_truth_video_01__p03"
+  ],
+  "result": "visual_pass_audio_transcript_pass",
+  "durationSec": 20.083333,
+  "sha256": "5743ed5ce36b97d9cd4670b0ca60e6ab3afc4f6e845ec26a712c69852f188bbd",
+  "note": "全部源片段均通过人工身份、构图与独立转写检查；按原文顺序保留原生音轨。",
+  "finalSamplingReviewed": true
+}

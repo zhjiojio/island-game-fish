@@ -1,0 +1,16 @@
+{
+  "stage": "full_batch_reviewed",
+  "updatedAt": "2026-09-07T14:40:33.268916+00:00",
+  "totalTargetVideos": 69,
+  "approvedPilotVideos": 5,
+  "remainingBatchVideos": 64,
+  "remainingBatchParts": 70,
+  "newPartsGenerated": 70,
+  "newPartsReviewed": 70,
+  "finalVideosReady": 69,
+  "newKeyframesGenerated": 59,
+  "newKeyframesPlanned": 59,
+  "keyframeCorrectionsPending": [],
+  "videoCorrectionsPending": [],
+  "deliveryManifest": "review/full-delivery.json"
+}

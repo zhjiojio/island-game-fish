@@ -1,0 +1,12 @@
+{
+  "videoId": "ending_loop",
+  "sourceParts": [
+    "ending_loop__p01",
+    "ending_loop__p02"
+  ],
+  "result": "visual_pass_audio_transcript_pass",
+  "durationSec": 21.083991,
+  "sha256": "193159c8dc74aced7fb38ec80a7016a34f20b3daf3e3ce22f43285691ad9d985",
+  "note": "全部源片段均通过人工身份、构图与独立转写检查；按原文顺序保留原生音轨。",
+  "finalSamplingNote": "合并抽帧确认露台循环提示至提前接杯顺序；对白与前后旁白均来自已审核分段。"
+}

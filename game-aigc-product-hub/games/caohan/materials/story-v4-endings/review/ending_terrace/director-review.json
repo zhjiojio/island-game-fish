@@ -1,0 +1,12 @@
+{
+  "videoId": "ending_terrace",
+  "sourceParts": [
+    "ending_terrace__p01",
+    "ending_terrace__p02"
+  ],
+  "result": "visual_pass_audio_transcript_pass",
+  "durationSec": 17.083333,
+  "sha256": "b2dfeef14302a54f16f6a914c9915e0bad12fdae25954bd55442758dd1518d58",
+  "note": "全部源片段均通过人工身份、构图与独立转写检查；按原文顺序保留原生音轨。",
+  "finalSamplingNote": "合并抽帧核对许邵泽退到断栏杆后自行坠落，女主未接触；原文旁白完整。"
+}

@@ -1,0 +1,34 @@
+{
+  "partId": "ending_reality_show__p01",
+  "sourceSha256": "56f29bbc19c4843d142af8e285b5e050a0c263ab5fae92a5ffcea0191bd845db",
+  "model": "google/gemini-2.5-flash",
+  "review": {
+    "utterances": [
+      {
+        "startSec": 0.04,
+        "endSec": 0.74,
+        "text": "投票结果",
+        "audibleVoice": "场外声音",
+        "visibleSpeaker": "none",
+        "mouthSyncEvidence": "none"
+      },
+      {
+        "startSec": 0.94,
+        "endSec": 3.44,
+        "text": "贺星然独自出道",
+        "audibleVoice": "场外声音",
+        "visibleSpeaker": "none",
+        "mouthSyncEvidence": "none"
+      }
+    ],
+    "nonverbal": [
+      {
+        "startSec": 0.0,
+        "endSec": 6.04,
+        "text": "持续的背景音乐和人群嘈杂声"
+      }
+    ],
+    "issues": [],
+    "uncertain": []
+  }
+}

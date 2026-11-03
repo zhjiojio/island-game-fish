@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S8.hd.mp4",
+  "sha256": "acd2ef83134dfc7b5a155ab762bf45138844af0707b8bc6e92c6d899537764a1",
+  "duration": 10.042,
+  "nodes": [
+    "s8"
+  ],
+  "status": "speech",
+  "transcript": "嫂子，出来吧。看来这辈子饿不死了。",
+  "rawText": "嫂子出来吧看来这辈子饿不死了",
+  "asrChars": [
+    [
+      3.09,
+      3.31,
+      "嫂"
+    ],
+    [
+      3.31,
+      3.55,
+      "子"
+    ],
+    [
+      4.07,
+      4.31,
+      "出"
+    ],
+    [
+      4.31,
+      4.47,
+      "来"
+    ],
+    [
+      4.47,
+      4.825,
+      "吧"
+    ],
+    [
+      7.69,
+      7.81,
+      "看"
+    ],
+    [
+      7.81,
+      7.97,
+      "来"
+    ],
+    [
+      7.97,
+      8.09,
+      "这"
+    ],
+    [
+      8.09,
+      8.27,
+      "辈"
+    ],
+    [
+      8.27,
+      8.51,
+      "子"
+    ],
+    [
+      9.13,
+      9.33,
+      "饿"
+    ],
+    [
+      9.33,
+      9.43,
+      "不"
+    ],
+    [
+      9.43,
+      9.61,
+      "死"
+    ],
+    [
+      9.61,
+      9.845,
+      "了"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "老婆,出来吧。看来这辈子,饿不死了。",
+  "speakerKey": null,
+  "speakerRuleKey": "S8",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

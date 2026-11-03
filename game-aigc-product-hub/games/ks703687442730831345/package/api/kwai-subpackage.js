@@ -1,0 +1,1 @@
+(function(r){var M=r.M3;M.KwaiSubpackage={load:function(name,cb){var k=M.Platform.sdk;if(k&&k.loadSubpackage)k.loadSubpackage({name:name,success:function(){cb(true);},fail:function(){cb(false);}});else cb(false);}};})(typeof GameGlobal!=='undefined'?GameGlobal:typeof window!=='undefined'?window:global);

@@ -1,0 +1,80 @@
+{
+  "scale": 2,
+  "slices": {
+    "slot_empty": {
+      "w": 108,
+      "h": 110,
+      "file": "assets/ui/slot_empty.png"
+    },
+    "slot_hi": {
+      "w": 108,
+      "h": 110,
+      "file": "assets/ui/slot_hi.png"
+    },
+    "slot_lock": {
+      "w": 108,
+      "h": 110,
+      "file": "assets/ui/slot_lock.png"
+    },
+    "panel": {
+      "w": 750,
+      "h": 240,
+      "file": "assets/ui/panel.png"
+    },
+    "tray": {
+      "w": 790,
+      "h": 300,
+      "file": "assets/ui/tray.png"
+    },
+    "hud_capsule": {
+      "w": 184,
+      "h": 58,
+      "file": "assets/ui/hud_capsule.png"
+    },
+    "hud_gear": {
+      "w": 84,
+      "h": 84,
+      "file": "assets/ui/hud_gear.png"
+    },
+    "btn_upgrade": {
+      "w": 100,
+      "h": 100,
+      "file": "assets/ui/btn_upgrade.png"
+    },
+    "btn_clear": {
+      "w": 100,
+      "h": 100,
+      "file": "assets/ui/btn_clear.png"
+    },
+    "btn_refresh": {
+      "w": 100,
+      "h": 100,
+      "file": "assets/ui/btn_refresh.png"
+    },
+    "btn_boost": {
+      "w": 100,
+      "h": 100,
+      "file": "assets/ui/btn_boost.png"
+    },
+    "ad_badge": {
+      "w": 40,
+      "h": 30,
+      "file": "assets/ui/ad_badge.png"
+    },
+    "card_speed": {
+      "w": 150,
+      "h": 58,
+      "file": "assets/ui/card_speed.png"
+    },
+    "queue_pad": {
+      "w": 104,
+      "h": 94,
+      "file": "assets/ui/queue_pad.png"
+    },
+    "win_ribbon": {
+      "w": 500,
+      "h": 100,
+      "file": "assets/ui/win_ribbon.png"
+    }
+  }
+}

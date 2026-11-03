@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "runtimeNodes": 78,
+  "uniqueVideos": 69,
+  "endings": 14,
+  "mediaAndNonEndingLogicUnchanged": true,
+  "templateFieldPathsValid": true,
+  "allNodesReachable": true,
+  "badEndingRetry": "ep11_scene_00__v2",
+  "preloadInitialNodes": [
+    "ep01_scene_00",
+    "ep01_branch_emotion",
+    "ep01_branch_truth",
+    "ep01_branch_counterattack",
+    "ep01_branch_conditional"
+  ],
+  "configSha256": "23841213e8fb9e15ccd75eba08f0ebc19b60057322daa6804bbb51ca471fa965",
+  "engineDeviceTest": "not_run"
+}

@@ -1,0 +1,31 @@
+▶ Lv10 · 北京 · 南锣鼓巷 · 5 物：京剧脸谱、糖葫芦、兔爷、铜壶、鸟笼
+   ✅ Lv10 → ./generated/lv10.jpg (4566881 B)
+▶ Lv11 · 太原 · 柳巷步行街 · 5 物：老陈醋坛、刀削面碗、平遥牛肉罐、晋商票号招牌、过油肉盘
+   ✅ Lv11 → ./generated/lv11.jpg (4120180 B)
+▶ Lv12 · 石家庄 · 正定古城 · 5 物：古城地图、缸炉烧饼、寺庙铜铃、古琴、木鱼
+   ✅ Lv12 → ./generated/lv12.jpg (4563869 B)
+▶ Lv13 · 沈阳 · 中街清代老街 · 5 物：老边饺子、人参药材、糖饼铁盘、评剧头饰、关东烟袋
+   ✅ Lv13 → ./generated/lv13.jpg (4615745 B)
+▶ Lv14 · 哈尔滨 · 中央大街冰雕 · 6 物：马迭尔冰棍、红肠一节、套娃、冰花小碗、手风琴、教堂尖顶模型
+   ✅ Lv14 → ./generated/lv14.jpg (4480261 B)
+
+=== 汇总 ===
+total 138616
+drwxr-xr-x@ 18 fat  staff      576  8  9 03:09 .
+drwxr-xr-x@ 19 fat  staff      608  8  9 03:06 ..
+-rw-r--r--@  1 fat  staff  4566881  8  9 03:06 lv10.jpg
+-rw-r--r--@  1 fat  staff  4120180  8  9 03:06 lv11.jpg
+-rw-r--r--@  1 fat  staff  4563869  8  9 03:07 lv12.jpg
+-rw-r--r--@  1 fat  staff  4615745  8  9 03:08 lv13.jpg
+-rw-r--r--@  1 fat  staff  4480261  8  9 03:09 lv14.jpg
+-rw-r--r--@  1 fat  staff  4895286  8  9 03:06 lv15.jpg
+-rw-r--r--@  1 fat  staff  4335072  8  9 03:07 lv16.jpg
+-rw-r--r--@  1 fat  staff  4113895  8  9 03:08 lv17.jpg
+-rw-r--r--@  1 fat  staff  4014702  8  9 03:09 lv18.jpg
+-rw-r--r--@  1 fat  staff  4322587  8  9 03:06 lv20.jpg
+-rw-r--r--@  1 fat  staff  4379681  8  9 03:07 lv21.jpg
+-rw-r--r--@  1 fat  staff  4266027  8  9 03:08 lv22.jpg
+-rw-r--r--@  1 fat  staff  4386366  8  9 03:06 lv25.jpg
+-rw-r--r--@  1 fat  staff  4070831  8  9 03:06 lv26.jpg
+-rw-r--r--@  1 fat  staff  4043489  8  9 03:07 lv27.jpg
+-rw-r--r--@  1 fat  staff  4093190  8  9 03:08 lv28.jpg

@@ -1,0 +1,142 @@
+{
+  "sourceFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/output/逃婚后我花千万雇了工地糙汉.v4.json",
+  "sourceSha256": "77cee12ed8c5f8a99e49c6ec00ef31136fa64c03eb09995732b91220ca491ec7",
+  "nodeId": "ep02_branch_conditional",
+  "video": {
+    "id": "ep02_branch_conditional_video_01",
+    "order": 1,
+    "title": "选择后果·证据反杀",
+    "durationSec": 10.0,
+    "renderMode": "video_gen",
+    "needsLipSync": true,
+    "continuity": {
+      "locationId": "source_2_2_5",
+      "timeOfDay": "day",
+      "characterIds": [
+        "陈劲",
+        "贺星冉"
+      ],
+      "wardrobe": "沿用角色 wardrobeByEpisode，视频内不得换装",
+      "screenDirection": "保持人物空间轴线与视线方向",
+      "startState": "承接上一视频末帧；首视频承接场景入口",
+      "endState": "保留人物动作、视线与构图状态供下一视频承接"
+    },
+    "assetRefs": [],
+    "shots": [
+      {
+        "id": "ep02_branch_conditional_video_01_shot_01",
+        "order": 1,
+        "durationSec": 3,
+        "shotSize": "全景",
+        "cameraAngle": "主观视角",
+        "cameraMovement": "缓推",
+        "composition": "荒郊土路·摩托车旁内建立清楚人物方位，主体动作是：陈劲位于荒郊土路·摩托车旁画面前景，面部近景，视线指向对话对象，嘴唇正在说“看出来了。”",
+        "locationId": "source_2_2_5",
+        "timeOfDay": "day",
+        "characters": [
+          "陈劲"
+        ],
+        "dialogue": [
+          {
+            "speaker": "陈劲",
+            "text": "看出来了。"
+          }
+        ],
+        "audio": {
+          "ambient": "荒郊土路·摩托车旁环境底噪",
+          "music": "失控情绪低频铺底",
+          "sfx": []
+        },
+        "visual": {
+          "firstFramePrompt": "清晨，荒郊土路·摩托车旁，景别：全景，画面人物：陈劲；陈劲位于荒郊土路·摩托车旁画面前景，面部近景，视线指向对话对象，嘴唇正在说“看出来了。”，人物外观与上镜连续，电影级写实短剧；选择后果：用上一集留下的录音反向威胁",
+          "videoPrompt": "镜头缓慢推进，清晰呈现陈劲位于荒郊土路·摩托车旁画面前景，面部近景，视线指向对话对象，嘴唇正在说“看出来了。”，保持人物服装、光向和空间轴线连续，明确展示“用上一集留下的录音反向威胁”导致的动作和关系变化",
+          "negativePrompt": "字幕，水印，畸形手指，多余人物，角色换脸，服装突变，空间跳轴"
+        },
+        "sourceRef": {
+          "episode": 2,
+          "scene": "2-5",
+          "unit": 4,
+          "adaptation": "condensed"
+        },
+        "startSec": 0.0,
+        "endSec": 3.0
+      },
+      {
+        "id": "ep02_branch_conditional_video_01_shot_02",
+        "order": 2,
+        "durationSec": 3,
+        "shotSize": "中景",
+        "cameraAngle": "平视",
+        "cameraMovement": "跟拍",
+        "composition": "荒郊土路·摩托车旁内建立清楚人物方位，主体动作是：贺星冉位于荒郊土路·摩托车旁画面前景，面部近景，视线指向对话对象，嘴唇正在说“呵呵，你还挺聪明。”",
+        "locationId": "source_2_2_5",
+        "timeOfDay": "day",
+        "characters": [
+          "贺星冉"
+        ],
+        "dialogue": [
+          {
+            "speaker": "贺星冉",
+            "text": "呵呵，你还挺聪明。"
+          }
+        ],
+        "audio": {
+          "ambient": "荒郊土路·摩托车旁环境底噪",
+          "music": "失控情绪低频铺底",
+          "sfx": []
+        },
+        "visual": {
+          "firstFramePrompt": "清晨，荒郊土路·摩托车旁，景别：中景，画面人物：贺星冉；贺星冉位于荒郊土路·摩托车旁画面前景，面部近景，视线指向对话对象，嘴唇正在说“呵呵，你还挺聪明。”，人物外观与上镜连续，电影级写实短剧；选择后果：用上一集留下的录音反向威胁",
+          "videoPrompt": "镜头跟随主体，清晰呈现贺星冉位于荒郊土路·摩托车旁画面前景，面部近景，视线指向对话对象，嘴唇正在说“呵呵，你还挺聪明。”，保持人物服装、光向和空间轴线连续，明确展示“用上一集留下的录音反向威胁”导致的动作和关系变化",
+          "negativePrompt": "字幕，水印，畸形手指，多余人物，角色换脸，服装突变，空间跳轴"
+        },
+        "sourceRef": {
+          "episode": 2,
+          "scene": "2-5",
+          "unit": 5,
+          "adaptation": "condensed"
+        },
+        "startSec": 3.0,
+        "endSec": 6.0
+      },
+      {
+        "id": "ep02_branch_conditional_video_01_shot_03",
+        "order": 3,
+        "durationSec": 4,
+        "shotSize": "近景",
+        "cameraAngle": "低角度",
+        "cameraMovement": "固定后骤推",
+        "composition": "荒郊土路·摩托车旁内建立清楚人物方位，主体动作是：疾风里，贺星冉的胃开始翻涌，一夜没睡，加上颠簸和烟味，一股强烈的恶心猛地涌上来",
+        "locationId": "source_2_2_5",
+        "timeOfDay": "day",
+        "characters": [
+          "贺星冉"
+        ],
+        "dialogue": [
+          {
+            "speaker": "旁白",
+            "text": "疾风里，贺星冉的胃开始翻涌，一夜没睡，加上颠簸和烟味，一股强烈的恶心猛地涌上来"
+          }
+        ],
+        "audio": {
+          "ambient": "荒郊土路·摩托车旁环境底噪",
+          "music": "失控情绪低频铺底",
+          "sfx": []
+        },
+        "visual": {
+          "firstFramePrompt": "清晨，荒郊土路·摩托车旁，景别：近景，画面人物：贺星冉；疾风里，贺星冉的胃开始翻涌，一夜没睡，加上颠簸和烟味，一股强烈的恶心猛地涌上来，人物外观与上镜连续，电影级写实短剧；选择后果：用上一集留下的录音反向威胁",
+          "videoPrompt": "镜头缓慢推进，清晰呈现疾风里，贺星冉的胃开始翻涌，一夜没睡，加上颠簸和烟味，一股强烈的恶心猛地涌上来，保持人物服装、光向和空间轴线连续，明确展示“用上一集留下的录音反向威胁”导致的动作和关系变化",
+          "negativePrompt": "字幕，水印，畸形手指，多余人物，角色换脸，服装突变，空间跳轴"
+        },
+        "sourceRef": {
+          "episode": 2,
+          "scene": "2-5",
+          "unit": 6,
+          "adaptation": "condensed"
+        },
+        "startSec": 6.0,
+        "endSec": 10.0
+      }
+    ]
+  }
+}

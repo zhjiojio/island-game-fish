@@ -1,0 +1,10 @@
+{
+  "node": "e5s6",
+  "speakerKey": "narrator",
+  "speakerName": "李老憨",
+  "asrText": "三十年了，我等的就是今天。",
+  "asrTextRaw": "我等的就是今天",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 1
+}

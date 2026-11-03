@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EP05《一坛酒》· 完整剧本与分支图</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#14100c;color:#e8e0d4;line-height:1.75}
+.wrap{max-width:1180px;margin:0 auto;padding:36px 22px 90px}
+h1{font-size:30px;color:#f0c674;letter-spacing:2px}
+.sub{color:#8a7f70;font-size:14px;margin-top:6px}
+.meta{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 34px}
+.chip{background:#241d15;border:1px solid #3d3226;border-radius:20px;padding:5px 14px;font-size:13px;color:#c9b998}
+.chip b{color:#f0c674}
+h2{font-size:20px;color:#f0c674;margin:44px 0 16px;padding-left:12px;border-left:4px solid #f0c674}
+/* 流程图 */
+.flow{background:#1b1610;border:1px solid #34291d;border-radius:12px;padding:24px;overflow-x:auto}
+.fl{font-family:ui-monospace,Menlo,monospace;font-size:13px;line-height:2.1;white-space:pre;color:#b8ab95}
+.fl .m{color:#7fb0d8}.fl .c{color:#f0c674;font-weight:700}
+.fl .be{color:#e07a6a;font-weight:700}.fl .ad{color:#7fd8a0;font-weight:700}
+/* 镜头卡 */
+.shot{background:#1b1610;border:1px solid #34291d;border-radius:12px;margin-bottom:18px;overflow:hidden}
+.sh{display:flex;align-items:center;gap:12px;padding:14px 18px;background:#221b13;border-bottom:1px solid #34291d;flex-wrap:wrap}
+.id{font-family:ui-monospace,monospace;font-size:12px;background:#3a2f1f;color:#f0c674;padding:3px 9px;border-radius:5px}
+.tt{font-size:16px;font-weight:700;color:#f5ede0}
+.tag{font-size:11px;padding:3px 9px;border-radius:5px;margin-left:auto}
+.t-main{background:#1e3a4a;color:#7fb0d8}.t-ad{background:#1c3a28;color:#7fd8a0}
+.t-be{background:#4a1e18;color:#e07a6a}.t-back{background:#3a3020;color:#d8bd7f}
+.sb{padding:16px 18px}
+.row{display:grid;grid-template-columns:78px 1fr;gap:12px;padding:9px 0;border-bottom:1px dashed #2c2318}
+.row:last-child{border:none}
+.k{font-size:12px;color:#8a7f70;padding-top:3px}
+.v{font-size:14px;color:#ddd2c0}
+.p{background:#120f0a;border-left:3px solid #4a3d2a;padding:11px 13px;border-radius:5px;font-size:13px;color:#c4b89f;white-space:pre-wrap}
+.line{color:#f0c674}
+.link{color:#7fb0d8;font-size:13px}
+/* 选择点 */
+.cp{background:#1f1a12;border:2px solid #f0c674;border-radius:12px;margin:26px 0;overflow:hidden}
+.cph{padding:15px 18px;background:#2a2116;font-size:17px;font-weight:700;color:#f0c674}
+.opts{padding:16px 18px;display:grid;gap:13px}
+.opt{background:#181309;border:1px solid #34291d;border-left:5px solid #666;border-radius:8px;padding:14px 16px}
+.opt.ad{border-left-color:#7fd8a0}.opt.be{border-left-color:#e07a6a}.opt.back{border-left-color:#d8bd7f}
+.oh{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:9px}
+.ot{font-size:15px;font-weight:700;color:#f5ede0}
+.arrow{font-size:13px;color:#8a7f70;margin-top:9px;padding-top:9px;border-top:1px dashed #2c2318}
+.arrow b{color:#7fb0d8}.arrow .r{color:#e07a6a}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}
+th,td{padding:9px 11px;border:1px solid #34291d;text-align:left}
+th{background:#241d15;color:#f0c674}
+td.n{text-align:center;font-weight:700;color:#f0c674}
+.note{background:#1a1a0e;border-left:4px solid #d8bd7f;padding:12px 15px;border-radius:5px;margin:14px 0;font-size:13px;color:#c9bd9a}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>EP05《一坛酒》</h1>
+<div class="sub">完整剧本 · 分支走向 · 逐镜提示词 ｜ 我的未婚妻 · AppID ks667658648250668260</div>
+
+<div class="meta">
+  <div class="chip">视频 <b>20</b></div>
+  <div class="chip">首帧图 <b>20</b></div>
+  <div class="chip">选择点 <b>3</b>（各3选）</div>
+  <div class="chip">广告触点 <b>5</b></div>
+  <div class="chip">新增BE <b>3</b></div>
+  <div class="chip">新增技能 <b>点石成屋</b></div>
+  <div class="chip">素材复用 <b>0</b></div>
+</div>
+
+<div class="note">
+<b>上游承接（EP04）：</b>你打跑赵铁牛，她替你擦手上的血，说「你要是没了，我也不活」——狠话说了，可两人还是分屋睡，名分一个字没提。EP05 就从这个尴尬开场。<br>
+<b>本集核心：</b>屋塌 → 逼出「点石成屋」→ 变出现代大平层 → 嫂子请求带全村致富 → 养猪 → 亲密推进 → 两个鸡蛋。<br>
+<b>反差记忆点：</b>两个人始终穿 1980 年的粗布衣裳，站在大理石和落地窗里。
+</div>
+
+<h2>一、全集分支流程图</h2>
+<div class="flow"><div class="fl"><span class="m">M1</span> 半坛酒进门（土窑洞）
+      │
+<span class="m">M2</span> 划拳喝酒·玩闹（全集唯一轻松段）
+      │
+<span class="m">M3</span> 屋顶塌方·泥水灌进来
+      │
+   <span class="c">★选择点1「房子要塌了，咋办？」</span>
+      ├─ A 冒大雨爬房顶修 ────────────→ <span class="be">BE_ROOF · 摔死</span>
+      ├─ B <span class="ad">🎁 翻技能库</span> ─→ 解锁<span class="ad">「点石成屋」</span>──→ M4
+      └─ C 拉她躲墙角扛一夜 ──→ 天亮还得修 ──→ 强制进 B ──→ M4
+      │
+<span class="m">M4</span> 大平层建成·她赤脚蹲下摸地暖
+      │
+<span class="m">M5</span> 嫂子请求：「咱一家富了，不叫富」
+      │
+   <span class="c">★选择点2「带全村干哪一行？」</span>
+      ├─ A 种玉米 ──────────────────→ <span class="be">BE_DROUGHT · 六十天大旱</span>
+      ├─ B <span class="ad">🎁 养猪</span> ────────────────→ M6
+      └─ C 拒绝嫂子 ────────────────→ <span class="be">BE_ALONE · 她走了七十里</span>
+      │
+<span class="m">M6</span> 三个月·猪长到二百斤·日子一天天过
+      │
+<span class="m">M7</span> 她喂猪喂到直不起腰，趴在栏杆上
+      │
+   <span class="c">★选择点3「她说腰断了」</span>
+      ├─ A <span class="ad">🎁 猪圈边给她按腰</span> ─→ <span class="ad">🎁加长：按到她转过身</span> ─→ M8
+      ├─ B 扛回去泡热水澡 ───────→ <span class="ad">🎁加长：浴室后半截</span> ───→ M8
+      └─ C 「歇会儿就好」 ──────→ 扣分 ──────────────→ M8<span class="be">无蛋版</span>
+      │
+<span class="m">M8</span> 天亮·两个鸡蛋（集尾钩，EP09 回收）
+      │
+      └──→ <span class="m">EP06《一场雨》</span></div></div>
+
+<h2>二、主线镜头（8 条）</h2>
+
+<div class="shot">
+<div class="sh"><span class="id">n5s1</span><span class="tt">M1 · 半坛酒进门</span><span class="tag t-main">主线</span></div>
+<div class="sb">
+<div class="row"><div class="k">场景</div><div class="v">土窑洞 · 傍晚</div></div>
+<div class="row"><div class="k">剧情</div><div class="v">他从县城卖粮回来，一脚踹开门，怀里抱着半坛烧酒往桌上一墩。</div></div>
+<div class="row"><div class="k">台词</div><div class="v line">傲天：「今年的粮卖完了。剩下这点钱我打了半坛酒。婉儿——今晚谁也不许睡早了。」</div></div>
+<div class="row"><div class="k">首帧图</div><div class="v"><div class="p">1980年代陕北窑洞内景，傍晚。木门被一脚踹开，一个精瘦的年轻农民穿粗灰麻布衣站在门口，逆着斜射进来的金色尘光，双臂抱着半坛陶制酒坛。门口视线的低机位。暖钨丝色调，胶片颗粒，9:16。</div></div></div>
+<div class="row"><div class="k">视频</div><div class="v"><div class="p">他大步走进来，把酒坛"咚"地墩在木桌上——声音沉而决绝。他咧嘴笑，走了长路还在喘。
+镜头：低角度固定，随后缓慢推进。
+环境音：摔门、陶坛磕木头、远处鸡叫、风声。</div></div></div>
+<div class="row"><div class="k">承接</div><div class="v link">EP04 结尾是她低头擦血的死寂 → 本镜用踹门声打破。声音差制造情绪差。</div></div>
+</div></div>
+
+<div class="shot">
+<div class="sh"><span class="id">n5s2</span><span class="tt">M2 · 划拳喝酒·玩闹</span><span class="tag t-main">主线</span></div>
+<div class="sb">
+<div class="row"><div class="k">场景</div><div class="v">土窑洞炕上 · 夜</div></div>
+<div class="row"><div class="k">剧情</div><div class="v">两人盘腿坐炕上划拳，她一把接一把地赢，他一碗接一碗地喝。全集唯一的轻松段。</div></div>
+<div class="row"><div class="k">台词</div><div class="v line">婉儿：「五魁首！哥俩好！——你又输了！」<br>傲天：「……你这打小练过吧？」</div></div>
+<div class="row"><div class="k">首帧图</div><div class="v"><div class="p">[锁脸] 1980年代窑洞内景，夜，单盏煤油灯。年轻农民与穿粗蓝布衣的年轻女子盘腿坐在土炕上划拳，双手正甩在半空，两人都在笑，之间摆着几只空碗。暖色主光，深阴影，胶片颗粒，9:16。</div></div></div>
+<div class="row"><div class="k">视频</div><div class="v"><div class="p">两人在炕上划拳。她一直赢，他一直喝。她脸红了，兴奋地拍炕。
+环境音：拍手、拍炕、笑声、灯芯噼啪。</div></div></div>
+<div class="row"><div class="k">承接</div><div class="v link">这是全集唯一的轻松段，为下一镜的塌方做情绪落差。</div></div>
+</div></div>
+
+<div class="shot">
+<div class="sh"><span class="id">n5s3</span><span class="tt">M3 · 屋顶塌方·泥水灌进来</span><span class="tag t-main">主线</span></div>
+<div class="sb">
+<div class="row"><div class="k">场景</div><div class="v">土窑洞 · 暴雨夜</div></div>
+<div class="row"><div class="k">剧情</div><div class="v">土顶裂开，泥水灌下，一块顶子砸在炕上。他一把把她拽到墙边护住。</div></div>
+<div class="row"><div class="k">台词</div><div class="v line">傲天（吼）：「婉儿！退后！」<br>婉儿（惊）：「顶要塌了——去年王家就是这么塌的！」</div></div>
+<div class="row"><div class="k">首帧图</div><div class="v"><div class="p">1980年代窑洞内景，夜，灾难场面。泥水正从崩塌的土质顶棚灌下，一块顶子已砸在土炕上，煤油灯将熄。年轻农民一条胳膊把穿蓝布衣的女子护在身后，两人都抬头看着上方。手持低角度，硬光，空气中有尘土和水汽，9:16。</div></div></div>
+<div class="row"><div class="k">视频</div><div class="v"><div class="p">一道裂缝横穿土顶，泥水爆出，一块顶子砸落炕上。灯几乎熄灭。他一把拽住她退到墙边。
+环境音：暴雨砸地、土层开裂、水柱倾泻、风。</div></div></div>
+<div class="row"><div class="k">承接</div><div class="v link">人命关头 → 弹选择点1。技能是被真事逼出来的，不是被一句台词请出来的。</div></div>
+</div></div>
+
+<div class="cp">
+<div class="cph">★ 选择点 1 —「房子要塌了，咋办？」</div>
+<div class="opts">
+
+<div class="opt be">
+<div class="oh"><span class="id">BE_ROOF</span><span class="ot">A · 冒着大雨爬上房顶去修</span><span class="tag t-be">BE · 新增</span></div>
+<div class="row"><div class="k">剧情</div><div class="v">他抱着木板爬上陡峭湿滑的土房顶。脚下一空——从房檐翻了下去。</div></div>
+<div class="row"><div class="k">台词</div><div class="v line">婉儿（尖叫）：「傲天——！」<br>旁白（女）：「他们把他抬回来的时候，天还没亮。」</div></div>
+<div class="row"><div class="k">首帧图</div><div class="v"><div class="p">1980年代中国农村，暴雨之夜。一个浑身湿透穿粗麻布衣的年轻农民正爬过陡峭的泥泞土屋顶，一手抓着木板，闪电照亮如注的雨幕。下方院子里，一个年轻女子仰头看着，双手捂住嘴。从院中仰拍的戏剧性低角度，闪电硬主光，9:16。</div></div></div>
+<div class="row"><div class="k">视频</div><div class="v"><div class="p">他抱着木板爬上屋顶。脚在湿土上一滑——整个人翻了下去。落地声起，切黑。
+环境音：倾盆大雨、雷声、打滑、尖叫，然后死寂。</div></div></div>
+<div class="row"><div class="k">结局</div><div class="v line">你逞强上了房顶。那块土是空的。<br>她守了你三天三夜。第四天早上，她把那半坛没喝完的酒，倒在了你坟前。</div></div>
+</div>
+
+<div class="opt ad">
+<div class="oh"><span class="id">r_n5_fix_b</span><span class="ot">B · 🎁 翻技能库找法子</span><span class="tag t-ad">广告 · 主推</span></div>
+<div class="row"><div class="k">剧情</div><div class="v">他闭眼，技能列表浮现——一亩好地、石头变钱、看天知雨，最底下还有一个从没见过的，正在发光。眼中金光暴涨，抬手对着塌顶。</div></div>
+<div class="row"><div class="k">台词</div><div class="v line">傲天：「石头能变钱……那这堆土，能不能变间屋？」</div></div>
+<div class="row"><div class="k">首帧图</div><div class="v"><div class="p">1980年代中国农村，夜，正在崩塌的窑洞内景。穿粗灰麻布衣的年轻农民双眼燃着金光，一只手抬向裂开的土顶；金色光芒正从他掌心向四壁扩散，土层开始展开、重塑成玻璃与浅色石材的墙板。穿蓝布衣的年轻女子贴在他身后的墙上，怔怔看着。暗色中的戏剧性金色主光，9:16。</div></div></div>
+<div class="row"><div class="k">视频</div><div class="v"><div class="p">他闭眼，技能列表浮现，最下方多出一个从未见过的、发光的条目。他双眼金光暴涨，抬手对准塌顶。
+环境音：暴雨声，随后被一记低沉共鸣的嗡鸣吞没。</div></div></div>
+<div class="row"><div class="k">技能卡</div><div class="v"><b style="color:#7fd8a0">s_house</b> ｜ 叮——技能激活：<b>点石成屋</b>（一咬牙一跺脚 · 土坯落地成华堂）· 5星 · 成就墙第4张技能卡</div></div>
+<div class="arrow">→ 进入 <b>M4 大平层建成</b></div>
+</div>
+
+<div class="opt back">
+<div class="oh"><span class="id">r_n5_fix_c</span><span class="ot">C · 拉她躲到墙角硬扛一夜</span><span class="tag t-back">绕回主线</span></div>
+<div class="row"><div class="k">剧情</div><div class="v">他把她拽进最干的墙角，举着湿透的被子罩在两人头顶，扛了一夜。她最后靠在他身侧，抖着抖着不抖了。</div></div>
+<div class="row"><div class="k">台词</div><div class="v line">傲天：「塌不了。我撑着。」<br>婉儿（长久沉默后，很轻）：「……你身上是热的。」<br>旁白：「天亮雨停了。可这屋，还是得修。」</div></div>
+<div class="row"><div class="k">首帧图</div><div class="v"><div class="p">[锁脸] 1980年代窑洞，夜，雨从破顶灌下。年轻农民与年轻女子挤在最干的墙角，头顶举着一床湿透的被子，四周墙面淌着水。两人都湿透了。亲密的近距双人镜头，一盏将熄的油灯，9:16。</div></div></div>
+<div class="row"><div class="k">视频</div><div class="v"><div class="p">他把她拖进墙角，举着湿被子罩住两人。他们坐了一夜，水顺墙淌下。她最后靠在他身侧发抖，然后慢慢不抖了。
+环境音：雨、滴水、被子下两个人的呼吸。</div></div></div>
+<div class="arrow">→ 天亮后屋子还是得修 → <b class="r">强制进入 B（翻技能库）</b> → M4<br><span style="color:#8a7f70">走这条的人多赚一段亲密戏，剧情不悬空。</span></div>
+</div>
+
+</div></div>
+
+<div class="shot">
+<div class="sh"><span class="id">n5s4</span><span class="tt">M4 · 大平层建成</span><span class="tag t-main">主线</span></div>
+<div class="sb">
+<div class="row"><div class="k">场景</div><div class="v">现代大平层 · 雨夜</div></div>
+<div class="row"><div class="k">剧情</div><div class="v">外头雨还在砸，屋里一滴不漏。她赤着脚在地板上走，然后蹲下去，把手掌贴在温热的石地上。</div></div>
+<div class="row"><div class="k">台词</div><div class="v line">婉儿（气声）：「……傲天，这地是热的。这屋子……不漏了。」<br>傲天：「以后都不漏了。」</div></div>
+<div class="row"><div class="k">首帧图</div><div class="v"><div class="p">一个穿1980年代粗灰麻布衣的中国农民与一个穿1980年代粗蓝布衣的年轻女子，赤脚站在一间巨大的现代豪华大平层中央。整面落地窗外是夜色城市，浅色大理石中岛台，深色真皮沙发，暖色嵌入式灯光。那只陶制酒坛突兀地摆在大理石台面上。她蹲下身，手掌贴着温热的石地板，怔怔看着。广角，粗布衣着与奢华室内形成强烈反差，电影感，9:16。</div></div></div>
+<div class="row"><div class="k">视频</div><div class="v"><div class="p">外面雨仍在砸，屋里一滴不进。窑洞已变成现代大平层。她赤脚走过地面，然后蹲下，手掌平贴在温热的石头上。
+环境音：玻璃外的雨、空调声、彻底的干燥感。</div></div></div>
+</div></div>
+
+<div class="shot">
+<div class="sh"><span class="id">n5s5</span><span class="tt">M5 · 嫂子的请求</span><span class="tag t-main">主线</span></div>
+<div class="sb">
+<div class="row"><div class="k">剧情</div><div class="v">她在落地窗前站了很久，转过身来。</div></div>
+<div class="row"><div class="k">台词</div><div class="v line">婉儿：「傲天。咱家不漏雨了，可村东头张家的顶，去年就塌了。李家沟三百口人，还在啃糠。<br>咱一家富了，那不叫富。」</div></div>
+<div class="row"><div class="k">首帧图</div><div class="v"><div class="p">[锁脸] 现代大平层，夜，落地窗外城市灯火。穿1980年代粗蓝布衣的年轻女子背对房间站在整面落地窗前向外望——但玻璃倒影里她是低着头、目光偏移、心事重重的。男人坐在她身后的真皮沙发上。广角，冷色城市光与暖色室内对比，9:16。</div></div></div>
+<div class="row"><div class="k">视频</div><div class="v"><div class="p">她在玻璃前站了很久，然后转过身来。
+环境音：外面雨势渐小，城市底噪。</div></div></div>
+<div class="row"><div class="k">承接</div><div class="v link">→ 弹选择点2</div></div>
+</div></div>
+
+<div class="cp">
+<div class="cph">★ 选择点 2 —「带全村干哪一行？」</div>
+<div class="opts">
+
+<div class="opt be">
+<div class="oh"><span class="id">BE_DROUGHT</span><span class="ot">A · 种玉米</span><span class="tag t-be">BE · 新增</span></div>
+<div class="row"><div class="k">剧情</div><div class="v">六十天没下一滴雨。整片玉米地烧成焦褐，土地裂成板块。村民站在他身后，一句话不说。</div></div>
+<div class="row"><div class="k">台词</div><div class="v line">村民（空洞）：「傲天，你说种玉米……」<br>旁白：「六十天没下一滴雨。三百口人的口粮，全烂在我手里。」</div></div>
+<div class="row"><div class="k">首帧图</div><div class="v"><div class="p">1980年代陕北农村，烈日正午。一大片玉米地，每一株都焦褐卷曲，土地龟裂成板块。穿粗麻布衣的年轻农民独自站在死掉的田里，一群村民沉默地站在他身后。刺眼过曝的阳光，扬尘，9:16。</div></div></div>
+<div class="row"><div class="k">结局</div><div class="v line">你带全村种了玉米，赶上六十年不遇的大旱。<br>秋天没人上门骂你，可也再没人叫你一声"傲天哥"。<br>婉儿把自家的粮一袋袋分了出去——分到最后，她自己碗里是清水。<br><span style="color:#d8bd7f">💡 早知道抬头看看天就好了。（提示：技能库里有「看天知雨」）</span></div></div>
+</div>
+
+<div class="opt ad">
+<div class="oh"><span class="id">r_n5_biz_b</span><span class="ot">B · 🎁 养猪</span><span class="tag t-ad">广告 · 主推</span></div>
+<div class="row"><div class="k">剧情</div><div class="v">新砌的一排砖猪圈，几十头猪仔。他一家一家发猪仔，她拿石板记账。</div></div>
+<div class="row"><div class="k">台词</div><div class="v line">傲天（对全村）：「猪不看天吃饭。一家两头，年底见钱——赔了算我的。」<br>婉儿（点名，笑）：「张家两头——王家两头——都记上了！」</div></div>
+<div class="row"><div class="k">首帧图</div><div class="v"><div class="p">1980年代陕北农村，清晨。村里院中新砌的一排砖砌猪圈，里面几十头猪仔。穿粗麻布衣的年轻农民与穿蓝布衣的年轻女子站在猪圈栏杆前，一群村民围着他们向里看。暖色晨光，空气中有浮尘，热闹，9:16。</div></div></div>
+<div class="row"><div class="k">视频</div><div class="v"><div class="p">猪圈是新的，猪仔叫得很响。村民挤在栏杆边。他一家一家发猪仔，她在石板上记账。
+环境音：猪仔尖叫、村民七嘴八舌、晨鸟。</div></div></div>
+<div class="arrow">→ 进入 <b>M6 三个月</b></div>
+</div>
+
+<div class="opt be">
+<div class="oh"><span class="id">BE_ALONE</span><span class="ot">C · 拒绝嫂子</span><span class="tag t-be">BE · 新增</span></div>
+<div class="row"><div class="k">台词</div><div class="v line">傲天：「凭啥？我凭本事挣的，凭啥分给他们？」<br>婉儿（停顿后，很轻）：「……凭你去年，也是啃糠的。」</div></div>
+<div class="row"><div class="k">首帧图</div><div class="v"><div class="p">[锁脸] 现代大平层，玻璃外是冷灰的黎明。房子一尘不染、昂贵，而且彻底空了。一个穿1980年代粗麻布衣的男人独自坐在巨大的真皮沙发上。大理石中岛台上：一只碗，和一支被留下的木簪。空旷的广角，冷色平光，9:16。</div></div></div>
+<div class="row"><div class="k">结局</div><div class="v line">你守着一屋子的大理石和玻璃，守到天亮。<br>她留下那支木簪走了——她说过，一家富了不叫富。<br>后来村里人说，沈家那个媳妇，回娘家那天是走着去的，走了七十里。</div></div>
+</div>
+
+</div></div>
+
+<div class="shot">
+<div class="sh"><span class="id">n5s6</span><span class="tt">M6 · 三个月·日子一天天过</span><span class="tag t-main">主线</span></div>
+<div class="sb">
+<div class="row"><div class="k">剧情</div><div class="v">时间流逝蒙太奇：猪仔长大、饲料桶、石板上的账、夜里大理石台上数铜板、村民串门。她天天守着猪圈。</div></div>
+<div class="row"><div class="k">台词</div><div class="v line">旁白：「三个月，猪长到二百斤。村里第一次有人家过年能割上肉。<br>她天天守着那排猪圈，谁劝都不听。」</div></div>
+<div class="row"><div class="k">首帧图</div><div class="v"><div class="p">[锁脸] 1980年代陕北农村，蒙太奇画面：暖色午后光照着一排猪圈，猪已长得很大。穿粗蓝布衣、挽起袖子的年轻女子正把一桶饲料倒进栏内；年轻农民提着另外两桶跟在她身后。扬尘与金色逆光，温暖有生活气，9:16。</div></div></div>
+</div></div>
+
+<div class="shot">
+<div class="sh"><span class="id">n5s7</span><span class="tt">M7 · 她直不起腰了</span><span class="tag t-main">主线</span></div>
+<div class="sb">
+<div class="row"><div class="k">剧情</div><div class="v">她倒完最后一桶，整个人向前折在栏杆上不动了。空桶倒在脚边。</div></div>
+<div class="row"><div class="k">台词</div><div class="v line">婉儿（闷在自己胳膊里）：「……傲天。我腰，直不起来了。」</div></div>
+<div class="row"><div class="k">首帧图</div><div class="v"><div class="p">[锁脸] 1980年代陕北农村，黄昏。穿粗蓝布衣的年轻女子整个人向前折在猪圈栏杆上，两条小臂压着木栏，低着头，力气用尽。一只空饲料桶侧倒在她脚边。她的发髻散了。低角度金色逆光，扬尘，9:16。</div></div></div>
+<div class="row"><div class="k">视频</div><div class="v"><div class="p">她倒完最后一桶，然后向前折在栏杆上不动了。桶在她脚边翻倒。
+环境音：猪群安静下来、晚风、她的呼吸。</div></div></div>
+<div class="row"><div class="k">承接</div><div class="v link">→ 弹选择点3</div></div>
+</div></div>
+
+<div class="cp">
+<div class="cph">★ 选择点 3 —「她说腰断了」</div>
+<div class="opts">
+
+<div class="opt ad">
+<div class="oh"><span class="id">r_n5_rub_a</span><span class="ot">A · 🎁 就在猪圈边给她按腰</span><span class="tag t-ad">广告</span></div>
+<div class="row"><div class="k">台词</div><div class="v line">傲天：「疼你就吭声。」<br>婉儿（低，拖长）：「……别停。」</div></div>
+<div class="row"><div class="k">首帧图</div><div class="v"><div class="p">[锁脸] 1980年代陕北农村，黄昏，猪圈旁。年轻女子仍折在栏杆上；年轻农民紧贴站在她身后，两只拇指抵在她后腰上。她的头垂得更低，闭着眼，嘴微张。暖色低角度逆光，空气中有浮尘，浅景深，9:16。</div></div></div>
+<div class="row"><div class="k">视频</div><div class="v"><div class="p">他上前贴在她身后，两只拇指抵住她后腰，缓慢向上推。她整个人软在栏杆上，闭着眼。
+环境音：猪群安静、晚风、她呼吸变了。</div></div></div>
+<div class="arrow">→ <b style="color:#7fd8a0">🎁 加长镜头 r_n5_rub_a2</b> → M8</div>
+</div>
+
+<div class="opt">
+<div class="oh"><span class="id">r_n5_rub_b</span><span class="ot">B · 扛她回去泡热水澡</span><span class="tag t-main">主线</span></div>
+<div class="row"><div class="k">台词</div><div class="v line">傲天：「猪圈的味儿，泡掉。」<br>婉儿（迷糊，靠着他）：「……热水……你家有龙王爷啊……」</div></div>
+<div class="row"><div class="k">首帧图</div><div class="v"><div class="p">[锁脸] 一间巨大的现代大理石浴室，注满水的独立浴缸升起蒸汽。穿粗灰麻布衣的年轻农民刚把穿1980年代蓝布衣的年轻女子放坐在浴缸边沿；她的头发全散了、湿漉漉垂在肩上，被蒸汽熏红了脸。两人都仍穿着1980年代的衣服。暖色顶灯，蒸汽，浅景深，9:16。</div></div></div>
+<div class="row"><div class="k">视频</div><div class="v"><div class="p">他把她扛在肩上抱进来，放坐在浴缸边，捧起热水浇在她后颈上。她的头发散落、湿透。她安静下来，然后整个人的重量都靠在他胸口。
+环境音：水声、蒸汽、大理石上的滴水回声。</div></div></div>
+<div class="row"><div class="k">戏眼</div><div class="v">热水对1980年代农村女人是奇观级的东西。她不是被撩到的，是被热水击穿的。</div></div>
+<div class="arrow">→ <b style="color:#7fd8a0">🎁 加长镜头 r_n5_rub_b2</b> → M8</div>
+</div>
+
+<div class="opt back">
+<div class="oh"><span class="id">r_n5_rub_c</span><span class="ot">C ·「歇会儿就好」</span><span class="tag t-back">扣分回主线</span></div>
+<div class="row"><div class="k">台词</div><div class="v line">傲天：「歇会儿就好了。」<br>婉儿（停顿后，平）：「……嗯。歇会儿就好了。」</div></div>
+<div class="row"><div class="k">首帧图</div><div class="v"><div class="p">[锁脸] 1980年代陕北农村，黄昏，猪圈旁。年轻女子已自己直起身，拎起空桶，独自朝屋子走去；男人站在原地没动。从两人背后的广角，冷蓝色黄昏，9:16。</div></div></div>
+<div class="row"><div class="k">视频</div><div class="v"><div class="p">他耸耸肩。她自己直起腰，拎起桶，头也不回地朝屋子走了。
+环境音：桶把手吱呀、她的脚步声远去、猪。</div></div></div>
+<div class="arrow">→ <b class="r">M8 无蛋版</b>（碗底下什么都没有）<br><span style="color:#8a7f70">比直接 BE 更疼，而且剧情能继续。</span></div>
+</div>
+
+</div></div>
+
+<h2>三、🎁 加长镜头（广告解锁的是"这场戏的下一分钟"）</h2>
+
+<div class="shot">
+<div class="sh"><span class="id">r_n5_rub_a2</span><span class="tt">加长A · 按腰按到她转过身</span><span class="tag t-ad">广告</span></div>
+<div class="sb">
+<div class="row"><div class="k">剧情</div><div class="v">他一路按上她脊背。她安静下来——忽然在他两手之间转过身，后背抵着栏杆，直直仰头看他。两个人谁都没往后退。</div></div>
+<div class="row"><div class="k">台词</div><div class="v line">婉儿（低）：「……你手劲儿，比你说话实在。」<br>傲天（停顿）：「那我以后少说话。」</div></div>
+<div class="row"><div class="k">首帧图</div><div class="v"><div class="p">[锁脸] 1980年代陕北农村，黄昏，猪圈旁。年轻女子已转过身面对他，后背抵着栏杆，从极近的距离仰头看着他；她的发髻散了，因为长时间弯腰而脸色泛红。他的双手仍没有离开她的腰。金色低角度逆光，扬尘，浅景深，9:16。</div></div></div>
+</div></div>
+
+<div class="shot">
+<div class="sh"><span class="id">r_n5_rub_b2</span><span class="tt">加长B · 浴室后半截</span><span class="tag t-ad">广告</span></div>
+<div class="sb">
+<div class="row"><div class="k">剧情</div><div class="v">他把毛巾裹在她肩上。她把额头抵在他胸口，就那么待着。两个人很久没说话。</div></div>
+<div class="row"><div class="k">台词</div><div class="v line">婉儿（闷声）：「傲天……我今天喂猪的时候在想。这屋子是你变的，天亮要是没了，我不心疼。可你要是没了……」（她停住了）<br><span style="color:#8a7f70">旁白：这句话她 EP04 说过一回。这是第二回。</span></div></div>
+<div class="row"><div class="k">首帧图</div><div class="v"><div class="p">[锁脸] 一间蒸汽弥漫的现代大理石浴室。穿1980年代蓝布衣的年轻女子坐在浴缸边沿，头发全湿披散，额头抵在他胸口；他双手拉着一条毛巾裹住她的肩。两人都仍穿着衣服。暖色顶灯，浓重蒸汽，浅景深，9:16。</div></div></div>
+<div class="row"><div class="k">戏眼</div><div class="v">回扣 EP04 那句「你要是没了，我也不活」——加长镜头不只是更爽，还在推关系。</div></div>
+</div></div>
+
+<h2>四、集尾钩</h2>
+
+<div class="shot">
+<div class="sh"><span class="id">n5s8</span><span class="tt">M8 · 两个鸡蛋</span><span class="tag t-main">主线</span></div>
+<div class="sb">
+<div class="row"><div class="k">剧情</div><div class="v">早上。他在大理石台前坐下端起碗——碗底下压着两个剥好的鸡蛋。他抬头，她始终背对着他忙活，耳朵尖是红的。</div></div>
+<div class="row"><div class="k">台词</div><div class="v line">旁白：「屋子是我变的，猪是全村的。<br>可这两个蛋是她剥的——在李家沟，这是给当家男人才有的。」</div></div>
+<div class="row"><div class="k">首帧图</div><div class="v"><div class="p">[锁脸] 现代大平层厨房，清晨，冷蓝白色日光从落地窗照入。浅色大理石中岛台上放着一只1980年代的粗陶碗，盛着小米粥；碗被端起，下面压着两个剥好的白鸡蛋。穿粗蓝布衣的年轻女子背对镜头站在现代灶台前，发髻重新盘得整齐，耳朵尖是红的。冷色晨光，9:16。</div></div></div>
+<div class="row"><div class="k">无蛋版</div><div class="v">选3-C 触发。碗底下空空，旁白改为：「碗底下什么都没有。我知道我昨天做错了什么。」</div></div>
+<div class="row"><div class="k">承接</div><div class="v link">她认了你是当家的，但名分还是没有 → EP06《一场雨》把"没名分"推到全村面前。这两个蛋在 EP09 最后一镜回收（她敢看着你眼睛放进碗里）。</div></div>
+</div></div>
+
+<h2>五、素材与结构汇总</h2>
+<table>
+<tr><th>类别</th><th>数量</th><th>明细</th></tr>
+<tr><td>主线</td><td class="n">8</td><td>n5s1–n5s8</td></tr>
+<tr><td>选择点1 分支</td><td class="n">3</td><td>BE_ROOF / 🎁技能 / 硬扛绕回</td></tr>
+<tr><td>选择点2 分支</td><td class="n">3</td><td>BE_DROUGHT / 🎁养猪 / BE_ALONE</td></tr>
+<tr><td>选择点3 分支</td><td class="n">3</td><td>🎁按腰 / 浴室 / 扣分</td></tr>
+<tr><td>🎁 加长镜头</td><td class="n">2</td><td>rub_a2 / rub_b2</td></tr>
+<tr><td>M8 无蛋版</td><td class="n">1</td><td>选3-C 惩罚版</td></tr>
+<tr><td><b>视频合计</b></td><td class="n">20</td><td>首帧图同为 20 张</td></tr>
+<tr><td>技能卡节点</td><td class="n">1</td><td>s_house（静态卡，不出视频）</td></tr>
+</table>
+
+<table>
+<tr><th>指标</th><th>值</th></tr>
+<tr><td>选择点</td><td>3 个，每个严格 3 选</td></tr>
+<tr><td>广告触点</td><td>5 个（🎁×3 + 加长×2），<b>全部长在主线上，全部推剧情</b></td></tr>
+<tr><td>新增 BE</td><td>3 个：BE_ROOF 摔死 / BE_DROUGHT 大旱 / BE_ALONE 独富</td></tr>
+<tr><td>新增技能</td><td>skill_house「点石成屋」5星</td></tr>
+<tr><td>素材复用</td><td>0（全部新拍）</td></tr>
+<tr><td>悬空 / 空壳节点</td><td>0</td></tr>
+</table>
+
+<div class="note">
+<b>生成规范：</b><br>
+首帧图 = image2 (gpt-image-2)，<code>task=edit</code> + <code>references=[assets/refs/wanr.png]</code>，1024×1792（9:16）。含婉儿的 prompt 必须以锁脸句开头。<br>
+视频 = Kling 官方 API，<code>model_name=kling-v3</code>、<code>mode=pro</code>、<code>sound=on</code>、<code>duration=10</code>、<code>aspect_ratio=9:16</code>，台词直接写进 prompt，禁止事后拼音频。<br>
+<b>⚠️ 当前阻塞：</b>参考图 <code>assets/refs/wanr.png</code> 不在仓库中（assets 目录在 git 里是 deleted 状态），锁脸依赖它。
+</div>
+
+</div>
+</body>
+</html>

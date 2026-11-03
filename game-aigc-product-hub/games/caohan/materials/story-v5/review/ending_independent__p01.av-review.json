@@ -1,0 +1,34 @@
+{
+  "partId": "ending_independent__p01",
+  "sourceSha256": "b75fc88655fc84aef79cca031001073d4a309b8bad59ca7252119bfc9e46ae2b",
+  "model": "google/gemini-2.5-flash",
+  "review": {
+    "utterances": [
+      {
+        "startSec": 1.04,
+        "endSec": 2.04,
+        "text": "婚约取消。",
+        "audibleVoice": "年轻女性",
+        "visibleSpeaker": "画面中央穿白色西装的年轻女性",
+        "mouthSyncEvidence": "00:01.040-00:02.040：嘴唇随声音发音"
+      },
+      {
+        "startSec": 2.84,
+        "endSec": 4.04,
+        "text": "我的事我自己决定。",
+        "audibleVoice": "年轻女性",
+        "visibleSpeaker": "画面中央穿白色西装的年轻女性",
+        "mouthSyncEvidence": "00:02.840-00:04.040：嘴唇随声音发音"
+      }
+    ],
+    "nonverbal": [
+      {
+        "startSec": 0.0,
+        "endSec": 6.04,
+        "text": "持续的轻微环境噪音"
+      }
+    ],
+    "issues": [],
+    "uncertain": []
+  }
+}

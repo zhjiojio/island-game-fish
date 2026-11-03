@@ -1,0 +1,26 @@
+{
+  "source_video": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/materials/龙凤劫/💥【全集】正片抢先看 ｜《龙凤劫：我的战神保镖》#AA短剧批发 #AI #真人AI短剧 #都市 #drama #短劇 #短劇全集 #逆襲 #情感 [WjXsbAYNd80].mp4",
+  "size_limit_mb": 25,
+  "assets": [
+    {"id":"protection-contract","path":"../package/src/assets/video/protection-contract.mp4","kind":"video","node":"protection-contract","bytes":1198735,"deployable":true,"source_role":"segment","build_reference":"vite-import"},
+    {"id":"jade-trust","path":"../package/src/assets/video/jade-trust.mp4","kind":"video","node":"jade-guarded","bytes":1490763,"deployable":true,"source_role":"segment","build_reference":"vite-import"},
+    {"id":"jade-distance","path":"../package/src/assets/video/jade-distance.mp4","kind":"video","node":"jade-independent","bytes":945614,"deployable":true,"source_role":"segment","build_reference":"vite-import"},
+    {"id":"lab-evidence","path":"../package/src/assets/video/lab-evidence.mp4","kind":"video","node":"lab-truth","bytes":1294142,"deployable":true,"source_role":"segment","build_reference":"vite-import"},
+    {"id":"capital-deal","path":"../package/src/assets/video/capital-deal.mp4","kind":"video","node":"lab-business","bytes":1029528,"deployable":true,"source_role":"segment","build_reference":"vite-import"},
+    {"id":"launch-stage","path":"../package/src/assets/video/launch-stage.mp4","kind":"video","node":"launch-control","bytes":1065501,"deployable":true,"source_role":"segment","build_reference":"vite-import"},
+    {"id":"launch-attack","path":"../package/src/assets/video/launch-attack.mp4","kind":"video","node":"launch-evidence","bytes":1476665,"deployable":true,"source_role":"segment","build_reference":"vite-import"},
+    {"id":"wedding-crisis","path":"../package/src/assets/video/wedding-crisis.mp4","kind":"video","node":"wedding-crisis","bytes":1238011,"deployable":true,"source_role":"segment","build_reference":"vite-import"},
+    {"id":"protection-contract-poster","path":"../package/src/assets/stills/protection-contract.jpg","kind":"poster","node":"protection-contract","bytes":8402,"deployable":true,"source_role":"poster","build_reference":"vite-import"},
+    {"id":"warehouse-priority","path":"../package/src/assets/stills/warehouse-priority.jpg","kind":"still","node":"warehouse-priority","bytes":7489,"deployable":true,"source_role":"still","build_reference":"vite-import"},
+    {"id":"jade-trust-poster","path":"../package/src/assets/stills/jade-trust.jpg","kind":"poster","node":"jade-guarded","bytes":8518,"deployable":true,"source_role":"poster","build_reference":"vite-import"},
+    {"id":"jade-distance-poster","path":"../package/src/assets/stills/jade-distance.jpg","kind":"poster","node":"jade-independent","bytes":8953,"deployable":true,"source_role":"poster","build_reference":"vite-import"},
+    {"id":"lab-evidence-poster","path":"../package/src/assets/stills/lab-evidence.jpg","kind":"poster","node":"lab-truth","bytes":11409,"deployable":true,"source_role":"poster","build_reference":"vite-import"},
+    {"id":"capital-deal-poster","path":"../package/src/assets/stills/capital-deal.jpg","kind":"poster","node":"lab-business","bytes":11454,"deployable":true,"source_role":"poster","build_reference":"vite-import"},
+    {"id":"launch-stage-poster","path":"../package/src/assets/stills/launch-stage.jpg","kind":"poster","node":"launch-control","bytes":14323,"deployable":true,"source_role":"poster","build_reference":"vite-import"},
+    {"id":"launch-attack-poster","path":"../package/src/assets/stills/launch-attack.jpg","kind":"poster","node":"launch-evidence","bytes":6899,"deployable":true,"source_role":"poster","build_reference":"vite-import"},
+    {"id":"wedding-crisis-poster","path":"../package/src/assets/stills/wedding-crisis.jpg","kind":"poster","node":"wedding-crisis","bytes":10522,"deployable":true,"source_role":"poster","build_reference":"vite-import"},
+    {"id":"ending-together","path":"../package/src/assets/stills/ending-together.jpg","kind":"still","node":"ending-together","bytes":7037,"deployable":true,"source_role":"still","build_reference":"vite-import"},
+    {"id":"ending-crown-alone","path":"../package/src/assets/stills/ending-crown-alone.jpg","kind":"still","node":"ending-crown-alone","bytes":10190,"deployable":true,"source_role":"still","build_reference":"vite-import"},
+    {"id":"ending-unfinished","path":"../package/src/assets/stills/ending-unfinished.jpg","kind":"still","node":"ending-unfinished","bytes":15174,"deployable":true,"source_role":"still","build_reference":"vite-import"}
+  ]
+}

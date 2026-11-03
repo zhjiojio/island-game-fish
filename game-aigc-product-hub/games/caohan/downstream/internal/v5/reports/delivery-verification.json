@@ -1,0 +1,21 @@
+{
+  "status": "content_config_ready_for_engineering",
+  "deliveredAt": "2026-09-08T11:32:04.715465+08:00",
+  "configPath": "../../../game-config.json",
+  "configSha256": "0f286907e0162adca7d2a873b526f84761b04541d06755b12de4200f71402aef",
+  "sourceSha256": "130c08553def1730d3ab742b6aca64f4a4a7e7ec8950414b40e57e41207e088d",
+  "referenceSha256": "4065d6e132116d3a8bc4350d59a61e4a9cdd96c274796ac3c07caf2bacf1f080",
+  "runtimeNodes": 78,
+  "uniqueVideos": 69,
+  "endings": 14,
+  "cdnAssetsVerified": 207,
+  "skillTests": 80,
+  "engineDeviceTest": "not_run",
+  "engineeringRemaining": [
+    "真实广告位ID",
+    "UI布局与锁定提示样式",
+    "广告失败重播行为确认",
+    "成就/收藏系统（样例未定义）",
+    "快小游真机及上线"
+  ]
+}

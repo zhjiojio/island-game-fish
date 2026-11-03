@@ -1,0 +1,13 @@
+game_name: "荒年记"
+stage: publish
+config:
+  appid: "ks667658648250668260"
+nodes:
+  publish:
+    version: "96.0.1"
+    previous_platform_version: "96.0.0"
+    source_game_version: "v90.13"
+    status: uploaded
+    uploaded_at: "2026-09-08T18:18:04+08:00"
+    output: "docs/publish-report.md"
+    review_submitted: false

@@ -1,0 +1,16 @@
+{
+    "deviceOrientation": "landscape",
+    "showStatusBar": false,
+    "runtimeVersion": "1.0.0",
+    "subpackages": [
+        {
+            "name": "night-defense",
+            "root": "subpackages/night-defense/"
+        },
+        {
+            "name": "vip-content",
+            "root": "subpackages/vip-content/"
+        }
+    ],
+    "parallelPreloadSubpackages": []
+}

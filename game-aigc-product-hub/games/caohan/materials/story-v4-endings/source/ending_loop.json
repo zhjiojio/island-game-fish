@@ -1,0 +1,25 @@
+{
+  "id": "ending_loop",
+  "type": "ending",
+  "episodeId": "ep01",
+  "title": "隐藏结局：无限逃婚",
+  "isEnding": true,
+  "category": "secret",
+  "tone": [
+    "循环",
+    "悬疑"
+  ],
+  "rarity": "legendary",
+  "isCanonical": false,
+  "unlock": {
+    "requiredFlags": [
+      "ep01_conditional"
+    ],
+    "requiredEndingTags": []
+  },
+  "description": "女主每次结婚都会回到露台，只有找到真正的时间锚点才能离开。",
+  "closing": "许邵泽再次说出分手吧，她却提前接住了那只牛奶杯。",
+  "achievement": "ending_loop",
+  "chapterId": "ch1",
+  "chapterTitle": "第一章：栏杆外的一秒"
+}

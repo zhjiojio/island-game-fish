@@ -1,0 +1,10 @@
+{
+  "node": "e8s4",
+  "speakerKey": "narrator",
+  "speakerName": "旁白",
+  "asrText": "水已经漫过田埂。屋后那一亩好地，他从荒年里一锄头一锄头刨出来的那一亩，眼看就要没了",
+  "asrTextRaw": "水已經漫過田梗 屋後那一母好地 他從荒年裡 一出頭一出頭 跑出來的那一母 眼看就要沒了",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 4
+}

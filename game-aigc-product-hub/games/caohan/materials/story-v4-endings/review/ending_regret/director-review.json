@@ -1,0 +1,13 @@
+{
+  "videoId": "ending_regret",
+  "sourceParts": [
+    "ending_regret__p01",
+    "ending_regret__p03",
+    "ending_regret__p02"
+  ],
+  "result": "visual_pass_audio_transcript_pass",
+  "durationSec": 22.291667,
+  "sha256": "af3dd175a3210e48b449b7aac65b1d28ef7c2840e14c0c8bf22cc390e4bfa2a1",
+  "note": "全部源片段均通过人工身份、构图与独立转写检查；按原文顺序保留原生音轨。",
+  "finalSamplingNote": "三段按清算、松手、灯灭离开的原文顺序合并；短段裁掉额外尾句，原声保留。"
+}

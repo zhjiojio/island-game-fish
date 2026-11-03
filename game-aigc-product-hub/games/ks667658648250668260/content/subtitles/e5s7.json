@@ -1,0 +1,10 @@
+{
+  "node": "e5s7",
+  "speakerKey": "aotian",
+  "speakerName": "你",
+  "asrText": "听清了。再进李家沟一步，我剥了你皮！",
+  "asrTextRaw": "再进李家沟一步 我剥了你皮",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 2
+}

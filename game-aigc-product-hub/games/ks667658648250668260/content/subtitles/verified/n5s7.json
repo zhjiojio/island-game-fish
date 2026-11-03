@@ -1,0 +1,61 @@
+{
+ "schemaVersion": 1,
+ "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s7.mp4",
+ "sha256": "352d5b58f6bd32e729f2a76d69d0ec62e67318399e63a3f154bbfb9e333dfbc6",
+ "duration": 10.042,
+ "nodes": [
+  "e5s7"
+ ],
+ "status": "speech",
+ "transcript": "傲天，我腰直不起来了。",
+ "rawText": "傲天我腰直不起来了",
+ "asrChars": [
+  [
+   5.61,
+   5.81,
+   "傲"
+  ],
+  [
+   5.81,
+   6.05,
+   "天"
+  ],
+  [
+   7.21,
+   7.45,
+   "我"
+  ],
+  [
+   7.53,
+   7.77,
+   "腰"
+  ],
+  [
+   8.49,
+   8.71,
+   "直"
+  ],
+  [
+   8.71,
+   8.89,
+   "不"
+  ],
+  [
+   8.89,
+   8.99,
+   "起"
+  ],
+  [
+   8.99,
+   9.23,
+   "来"
+  ],
+  [
+   9.23,
+   9.675,
+   "了"
+  ]
+ ],
+ "timingEngine": "asr-anchor(funasr-paraformer)",
+ "reviewMethod": "batch ASR auto (needs human proof-read for punctuation/speaker)."
+}

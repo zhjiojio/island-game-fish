@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e5s6_v82.mp4",
+  "sha256": "9cb5b619ead8d827631c51898cc185fda32abf8517269c9ed5e968c0087b4446",
+  "duration": 10.042,
+  "nodes": [
+    "e5s6"
+  ],
+  "status": "speech",
+  "transcript": "三十年了，我等的就是今天。",
+  "rawText": "三十年了我等的就是今天",
+  "asrChars": [
+    [
+      4.09,
+      4.33,
+      "三"
+    ],
+    [
+      4.35,
+      4.59,
+      "十"
+    ],
+    [
+      4.59,
+      4.81,
+      "年"
+    ],
+    [
+      4.81,
+      5.05,
+      "了"
+    ],
+    [
+      5.87,
+      6.11,
+      "我"
+    ],
+    [
+      6.21,
+      6.41,
+      "等"
+    ],
+    [
+      6.41,
+      6.63,
+      "的"
+    ],
+    [
+      6.63,
+      6.87,
+      "就"
+    ],
+    [
+      6.89,
+      7.07,
+      "是"
+    ],
+    [
+      7.07,
+      7.31,
+      "今"
+    ],
+    [
+      7.35,
+      7.705,
+      "天"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "三十年了,我等的就是今天。",
+  "speakerKey": null,
+  "speakerRuleKey": "e5s6",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

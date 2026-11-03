@@ -1,0 +1,929 @@
+{
+  "k_side_gate2": {
+    "ep": "EP03",
+    "scene": "house",
+    "type": "choice",
+    "title": "夜里，婉儿给你掏胳膊花土——要不要再来一回？",
+    "options": [
+      {
+        "text": "看她跳支新舞（红绸水袖）",
+        "icon": "say",
+        "stat": {
+          "wei": 8
+        },
+        "next": "r_side08",
+        "ad": true,
+        "adUnitId": "2300058116_01",
+        "id": "k_side_gate2_opt_0"
+      },
+      {
+        "text": "再给她换身新衣裳",
+        "icon": "give",
+        "stat": {
+          "wei": 8
+        },
+        "next": "k_side_dress_e3",
+        "id": "k_side_gate2_opt_1",
+        "ad": true,
+        "adUnitId": "2300058116_01"
+      },
+      {
+        "text": "什么都不干，往前推剧情",
+        "icon": "hide",
+        "stat": {
+          "qing": 5,
+          "liang": 3
+        },
+        "next": "e3_trans1",
+        "id": "k_side_gate2_opt_2"
+      },
+      {
+        "text": "直接把她推倒在炉台上",
+        "icon": "fight",
+        "stat": {
+          "wei": -99,
+          "qing": -40
+        },
+        "roastKey": "roast_slap_stove",
+        "roast": "她只是给你端来一碗热汤，你却把她推倒在炉台边上。她烫伤了手腕，拎起菜刀站起来的那一刻，你就知道自己完了。",
+        "next": "BE_SLAP",
+        "id": "k_side_gate2_opt_3"
+      }
+    ]
+  },
+  "e3s1": {
+    "ep": "EP03",
+    "epTitle": "换新衣",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s1.hd.mp4",
+      "poster": "images/lastframes/e3s1.hd.jpg",
+      "duration": 10,
+      "label": "深夜·婉儿摸布未眠"
+    },
+    "char": "narrator",
+    "speaker": "旁白",
+    "forceCaption": true,
+    "text": "夜半三更·婉儿蜷在炕上侧躺——她一辈子没摸过这么好的布。",
+    "next": "e3s1b"
+  },
+  "e3s1b": {
+    "ep": "EP03",
+    "scene": "house",
+    "char": "wanerh",
+    "speaker": "沈婉儿（心里）",
+    "text": "（指尖悬在布卷上不敢碰）……三丈布，够买半月的粮。",
+    "next": "f_e3s1"
+  },
+  "f_e3s1": {
+    "ep": "EP03",
+    "scene": "house",
+    "type": "choice",
+    "title": "婉儿蜷在炕上摸布未眠——你要不要打扰她？",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/e3s1.jpg",
+      "label": "夜半婉儿摸布"
+    },
+    "options": [
+      {
+        "text": "悄悄看她一眼",
+        "icon": "say",
+        "stat": {
+          "qing": 5
+        },
+        "next": "e3s2",
+        "id": "f_e3s1_opt_0"
+      },
+      {
+        "text": "装睡",
+        "icon": "hide",
+        "stat": {
+          "qing": 2,
+          "wei": 2
+        },
+        "next": "e3s2",
+        "id": "f_e3s1_opt_1"
+      },
+      {
+        "text": "起身给她盖被角",
+        "icon": "give",
+        "stat": {
+          "qing": 8
+        },
+        "next": "e3s2",
+        "id": "f_e3s1_opt_2"
+      }
+    ]
+  },
+  "e3s2": {
+    "ep": "EP03",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s2.hd.mp4",
+      "poster": "images/lastframes/e3s2.hd.jpg",
+      "duration": 10,
+      "label": "清晨·婉儿含泪推布"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿",
+    "forceCaption": true,
+    "text": "（跪坐炕沿低头，声音哽）傲天······这匹布我不能收。你把它退了·换了钱留着过冬吧。",
+    "next": "e3s2b"
+  },
+  "e3s2b": {
+    "ep": "EP03",
+    "scene": "house",
+    "char": "aotian",
+    "speaker": "你",
+    "text": "（走到她身后·顿了顿）……嫂子。这钱是我挣的，就是给你花的。",
+    "next": "f2"
+  },
+  "f2": {
+    "ep": "EP03",
+    "scene": "house",
+    "type": "choice",
+    "title": "她还在推——你怎么让她收下？",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/e3s2.jpg",
+      "label": "清晨·婉儿推布"
+    },
+    "options": [
+      {
+        "text": "「你就是我要娶的正房」",
+        "icon": "say",
+        "stat": {
+          "qing": 10
+        },
+        "next": "r_f2_a",
+        "id": "f2_opt_0",
+        "ad": true,
+        "adUnitId": "2300058116_01"
+      },
+      {
+        "text": "什么都不说，转身出去劈柴",
+        "icon": "fight",
+        "stat": {
+          "qing": 5,
+          "wei": 3
+        },
+        "next": "r_f2_b",
+        "id": "f2_opt_1"
+      },
+      {
+        "text": "「你自己决定」",
+        "icon": "hide",
+        "stat": {
+          "qing": -3
+        },
+        "next": "r_f2_c",
+        "id": "f2_opt_2"
+      },
+      {
+        "text": "🎁 把母亲的银簪别在她发上",
+        "icon": "give",
+        "unlock": "hairpin",
+        "stat": {
+          "qing": 20
+        },
+        "next": "r_f2_d",
+        "ad": true,
+        "adUnitId": "2300058116_01",
+        "id": "f2_opt_3"
+      },
+      {
+        "text": "抢过来自己抱走去酒楼",
+        "icon": "run",
+        "stat": {
+          "wei": -99,
+          "qing": -40,
+          "liang": -99
+        },
+        "roastKey": "roast_drunk_rob",
+        "roast": "你把嫂子刚换好的新衣裳抢过来自己抱走去酒楼喝花酒。回家时嫂子已经拎着包袱走了半里地。",
+        "next": "BE_DRUNK",
+        "id": "f2_opt_4"
+      }
+    ]
+  },
+  "r_f2_a": {
+    "ep": "EP03",
+    "scene": "house",
+    "char": "aotian",
+    "speaker": "你",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f2_a.c.jpg",
+      "label": "正房宣告"
+    },
+    "text": "（正视她的眼）我说过——你就是我要娶的正房。我给我媳妇儿扯块布，天经地义……她眼圈一红，把布抱在胸口，肩膀轻轻抖了一下。",
+    "next": "e3s3"
+  },
+  "r_f2_b": {
+    "ep": "EP03",
+    "scene": "house",
+    "char": "narrator",
+    "speaker": "旁白",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f2_b.c.jpg",
+      "label": "沉默劈柴"
+    },
+    "text": "（他抓起门口斧头，一言不发去院里劈柴。柴块一块块落地，比任何一句话都响。）……她站在门口看了半晌，低头把布叠好，抱进了里屋。",
+    "next": "e3s3"
+  },
+  "r_f2_c": {
+    "ep": "EP03",
+    "scene": "house",
+    "char": "aotian",
+    "speaker": "你",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f2_c.jpg",
+      "label": "让她自主"
+    },
+    "text": "（背过身·闷声）……你自己想。收不收都行。……身后窸窣一响，她把布轻轻抱在怀里，屋里静得只剩两个人的心跳。",
+    "next": "e3s3"
+  },
+  "r_f2_d": {
+    "ep": "EP03",
+    "scene": "house",
+    "char": "aotian",
+    "speaker": "你",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f2_d.hd.mp4",
+      "poster": "images/lastframes/r_f2_d.hd.jpg",
+      "duration": 10,
+      "label": "🎁 别上银簪"
+    },
+    "text": "（从怀里掏出一支老银簪·郑重）这是我娘留下的。今儿起——你戴上它，就是过明路了……她双手接簪，指尖直抖，眼泪一颗砸在簪身上。",
+    "next": "e3s3"
+  },
+  "e3s3": {
+    "ep": "EP03",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s3_v2.hd.mp4",
+      "poster": "images/lastframes/e3s3_v2.hd.jpg",
+      "duration": 10,
+      "label": "屏风换衣·克制版"
+    },
+    "char": "narrator",
+    "speaker": "旁白",
+    "forceCaption": true,
+    "text": "（芦苇屏风后·她褪下旧衣的窸窣声轻得像风。傲天穿着灰粗布单衣坐炕沿，低头闭眼，喉结紧绷——像坐在一根烧红的针上。）",
+    "next": "e3s3b"
+  },
+  "e3s3b": {
+    "ep": "EP03",
+    "scene": "house",
+    "char": "aotian",
+    "speaker": "你（心里）",
+    "text": "（喉结在滚·扣紧膝盖）不能回头。不能回头。",
+    "next": "f_e3s3"
+  },
+  "f_e3s3": {
+    "ep": "EP03",
+    "scene": "house",
+    "type": "choice",
+    "title": "屏风后窸窣不断——你怎么熬这一刻？",
+    "options": [
+      {
+        "text": "闭眼别看·硬憋",
+        "icon": "hide",
+        "stat": {
+          "qing": 8,
+          "wei": 3
+        },
+        "next": "r_f_e3s3_a",
+        "id": "f_e3s3_opt_0"
+      },
+      {
+        "text": "起身走开·出门透气",
+        "icon": "run",
+        "stat": {
+          "qing": 5
+        },
+        "next": "r_f_e3s3_c",
+        "id": "f_e3s3_opt_1"
+      }
+    ]
+  },
+  "r_f_e3s3_a": {
+    "ep": "EP03",
+    "scene": "house",
+    "char": "aotian",
+    "speaker": "你（心里）",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_e3s3_a.v2.c.jpg",
+      "label": "闭眼硬憋"
+    },
+    "text": "（十根手指死死扣着膝盖·眼皮压得比夜还深）不能回头·不能回头······指甲把粗布单衣掐出了一个小洞·后背一层薄汗。",
+    "next": "e3s4"
+  },
+  "r_f_e3s3_c": {
+    "ep": "EP03",
+    "scene": "house",
+    "char": "aotian",
+    "speaker": "你（心里）",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_e3s3_c.v2.c.jpg",
+      "label": "月下透气"
+    },
+    "text": "（推开吱呀作响的木门·一步跨到院里·仰头灌一口凉风）稳住·稳住······头顶月牙儿细得像她的眉·你偏过脸不敢看。",
+    "next": "e3s4"
+  },
+  "e3s4": {
+    "ep": "EP03",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s4.hd.mp4",
+      "poster": "images/lastframes/e3s4.hd.jpg",
+      "duration": 10,
+      "label": "🔥名场面1·滑肩"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿",
+    "forceCaption": true,
+    "text": "（她从屏风后缓步走出·米白布袍在肩头一滑）……傲天哥·你看看合身么？",
+    "next": "e3s4b"
+  },
+  "e3s4b": {
+    "ep": "EP03",
+    "scene": "house",
+    "char": "wanerh",
+    "speaker": "沈婉儿（脸红）",
+    "text": "（一手轻拢胸前衣襟）……傲天·你看看·合身吗？",
+    "next": "f_e3_look"
+  },
+  "f_e3_look": {
+    "ep": "EP03",
+    "scene": "house",
+    "type": "choice",
+    "title": "她的衣领滑到肩下——你敢不敢直视她？",
+    "options": [
+      {
+        "text": "立刻转开视线看地面",
+        "icon": "hide",
+        "unlock": "look_ground",
+        "stat": {
+          "qing": 3,
+          "wei": 2
+        },
+        "next": "e3s5",
+        "id": "f_e3_look_opt_0"
+      },
+      {
+        "text": "🎁 直视她眼睛·不看肩",
+        "icon": "say",
+        "unlock": "e3_eyes",
+        "stat": {
+          "qing": 15
+        },
+        "next": "r_e3_eyes",
+        "ad": true,
+        "adUnitId": "2300058116_01",
+        "id": "f_e3_look_opt_1"
+      },
+      {
+        "text": "🎁🎁 伸手轻轻帮她拢好衣领",
+        "icon": "give",
+        "unlock": "pull_cloth",
+        "stat": {
+          "qing": 30
+        },
+        "next": "r_e3_pull",
+        "ad": true,
+        "adUnitId": "2300058116_01",
+        "id": "f_e3_look_opt_2"
+      }
+    ]
+  },
+  "r_e3_eyes": {
+    "ep": "EP03",
+    "scene": "house",
+    "char": "aotian",
+    "speaker": "你",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_e3_eyes.hd.mp4",
+      "poster": "images/lastframes/r_e3_eyes.hd.jpg",
+      "duration": 10,
+      "label": "只看她的眼"
+    },
+    "text": "（视线锁在她瞳孔·喉结滚动）……合身。你抬头看我。……她耳根一下红透，睫毛颤了颤，屋里那盏油灯忽地爆了个小花。",
+    "next": "e3s5"
+  },
+  "r_e3_pull": {
+    "ep": "EP03",
+    "scene": "house",
+    "char": "aotian",
+    "speaker": "你",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_e3_pull.hd.mp4",
+      "poster": "images/lastframes/r_e3_pull.hd.jpg",
+      "duration": 10,
+      "label": "🎁 轻轻拢衣"
+    },
+    "text": "（伸出一根食指钩住衣领·极慢地帮她拉合）……以后我给你扣。……她整个人僵了一瞬，肩膀轻轻抖，你指腹擦过她锁骨，滚烫。",
+    "next": "e3s5"
+  },
+  "e3s5": {
+    "ep": "EP03",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s5.hd.mp4",
+      "poster": "images/lastframes/e3s5.hd.jpg",
+      "duration": 10,
+      "label": "她主动·他攥腕"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿",
+    "forceCaption": true,
+    "text": "（她换完衣·赤脚一步一步走近·白皙手指轻勾傲天后腰粗布腰带·脸贴到他后背）……傲天哥·你看合身吗——我这一辈子·就是你的人了。",
+    "next": "e3s5b"
+  },
+  "e3s5b": {
+    "ep": "EP03",
+    "scene": "house",
+    "char": "aotian",
+    "speaker": "你",
+    "text": "（呼吸猛地一滞·反手攥住她的手腕·力道大得几乎要捏碎·却又忽然放软·转过身逼近她眉眼间只剩一寸）……婉儿。这话——你可想清楚了再说。",
+    "next": "f_e3s5"
+  },
+  "f_e3s5": {
+    "ep": "EP03",
+    "scene": "house",
+    "type": "choice",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/e3s5.jpg",
+      "label": "她主动贴过来·你怎么接"
+    },
+    "title": "她主动贴上来说要跟你一辈子——你怎么接住？",
+    "options": [
+      {
+        "text": "回一句『我等你想清楚』",
+        "icon": "say",
+        "stat": {
+          "qing": 15,
+          "wei": 8
+        },
+        "next": "e3s6",
+        "id": "f_e3s5_opt_0"
+      },
+      {
+        "text": "憨憨来一句『那·睡吧？』",
+        "icon": "give",
+        "stat": {
+          "qing": 2,
+          "wei": 3
+        },
+        "next": "r_f_e3s5_c",
+        "id": "f_e3s5_opt_1"
+      },
+      {
+        "text": "转身把她抱起放上炕",
+        "icon": "give",
+        "unlock": "nightscene",
+        "stat": {
+          "qing": 10,
+          "wei": 3
+        },
+        "next": "r_f_e3s5_ad",
+        "id": "f_e3s5_opt_2",
+        "ad": true,
+        "adUnitId": "2300058116_01"
+      },
+      {
+        "text": "顺势把她揽到怀里就啃",
+        "icon": "fight",
+        "stat": {
+          "wei": -99,
+          "qing": -99
+        },
+        "roastKey": "roast_lose_takeit",
+        "roast": "她刚说这辈子是你的人·你就把她揽进怀里就啃。她愣了三秒·猛地把你推开·卷起包袱在天亮前就走了。爱意归零·媳妇没了。",
+        "next": "BE_LOSE_HER",
+        "id": "f_e3s5_opt_3"
+      }
+    ]
+  },
+  "r_f_e3s5_ad": {
+    "ep": "EP03",
+    "scene": "house",
+    "char": "narrator",
+    "speaker": "旁白",
+    "forceCaption": true,
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_e3s5_ad.v2.c.jpg",
+      "label": "🎁 吹灯·别过头"
+    },
+    "text": "他把她轻轻横抱起来·两步搁到炕沿·又赶紧退了三步。婉儿闭着眼小声催：傲天哥·你倒是吹灯呀……他嘴上答应『哎』·手却抖得跟风里的旗一样·连吹三次都没吹灭·最后憋红了脸干脆用手指把火苗一掐——屋里黑了一秒·又亮了一秒·两个人都笑出了声。",
+    "next": "e3s6"
+  },
+  "r_f_e3s5_c": {
+    "ep": "EP03",
+    "scene": "house",
+    "char": "narrator",
+    "speaker": "旁白",
+    "forceCaption": true,
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_e3s5_c.v2.c.jpg",
+      "label": "憨憨催睡·被笑"
+    },
+    "text": "他脑袋一热就冒了一句：那……睡吧？话音没落，婉儿一巴掌轻轻拍在他胸口，笑弯了眼——傻子，我说的是一辈子。",
+    "next": "e3s6"
+  },
+  "e3s6": {
+    "ep": "EP03",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s6.hd.mp4",
+      "poster": "images/lastframes/e3s6.hd.jpg",
+      "duration": 10,
+      "label": "搭肩·四目相对"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿",
+    "text": "（走到他身后·轻搭他右肩·踮脚）……以后，我给你当好这个家。",
+    "next": "e3s6b"
+  },
+  "e3s6b": {
+    "ep": "EP03",
+    "scene": "house",
+    "char": "aotian",
+    "speaker": "你",
+    "text": "（回头·眼神动容·嘴唇微启）……嗯。",
+    "next": "f_e3s6"
+  },
+  "f_e3s6": {
+    "ep": "EP03",
+    "scene": "house",
+    "type": "choice",
+    "title": "她说要给你当好这个家——你怎么回应？",
+    "options": [
+      {
+        "text": "正视她一句『好』",
+        "icon": "say",
+        "stat": {
+          "qing": 15,
+          "wei": 5
+        },
+        "next": "e3s7",
+        "id": "f_e3s6_opt_0"
+      },
+      {
+        "text": "憨笑一句『那我给你打个大院子』",
+        "icon": "give",
+        "stat": {
+          "qing": 8,
+          "wei": 2
+        },
+        "next": "r_f_e3s6_b",
+        "id": "f_e3s6_opt_1"
+      },
+      {
+        "text": "掏出金子说『你想要啥买啥』",
+        "icon": "give",
+        "stat": {
+          "qing": -10,
+          "wei": -5
+        },
+        "next": "r_f_e3s6_gold",
+        "id": "f_e3s6_opt_2"
+      }
+    ]
+  },
+  "r_f_e3s6_b": {
+    "ep": "EP03",
+    "scene": "house",
+    "char": "narrator",
+    "speaker": "旁白",
+    "forceCaption": true,
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_e3s6_b.v2.c.jpg",
+      "label": "憨笑打大院子"
+    },
+    "text": "他挠着后脑勺傻笑：那我给你打个大院子，前院种玉米，后院养小鸡。婉儿捂着嘴笑得眼泪都出来了——你说的可算数。",
+    "next": "e3s7"
+  },
+  "r_f_e3s6_gold": {
+    "ep": "EP03",
+    "scene": "house",
+    "char": "wanerh",
+    "speaker": "沈婉儿",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_e3s6_b.v2.c.jpg",
+      "label": "金子·藏进枕头"
+    },
+    "text": "（她突然把你摊开的手一合·四下张望·压低嗓子）傲天哥·你疯啦——这东西可不能露！她小心翼翼把金子包进帕子塞进枕头下·眼里全是心疼——你哪儿来的？我不问·可你以后千万别再拿出来了。",
+    "next": "r_f_e3s6_gold_b"
+  },
+  "r_f_e3s6_gold_b": {
+    "ep": "EP03",
+    "scene": "house",
+    "char": "aotian",
+    "speaker": "你",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_f_e3s6_b.v2.c.jpg",
+      "label": "应她·藏起来"
+    },
+    "text": "（你被她这一按吓了一跳·反手握住她的手·郑重）……嫂子，我知道了。这是给你留的底——真到了要救命的时候才动。",
+    "next": "e3s7"
+  },
+  "e3s7": {
+    "ep": "EP03",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e3s7.hd.mp4",
+      "poster": "images/lastframes/e3s7.hd.jpg",
+      "duration": 10,
+      "label": "第一顿家常饭·夜色暖窗"
+    },
+    "char": "narrator",
+    "speaker": "旁白",
+    "text": "一盏油灯·两碗玉米糊糊。他们对坐着·偶尔抬眼对视·她脸红低头。这一夜·风都软了。",
+    "next": "k2"
+  },
+  "k2": {
+    "ep": "EP03",
+    "scene": "house",
+    "type": "choice",
+    "title": "接下来去做什么？",
+    "options": [
+      {
+        "text": "把石头换钱再多赚一笔",
+        "icon": "give",
+        "stat": {
+          "liang": 30,
+          "wei": -5
+        },
+        "next": "r_k2_1",
+        "id": "k2_opt_0"
+      },
+      {
+        "text": "找李老憨学打猎",
+        "icon": "fight",
+        "stat": {
+          "wei": 15,
+          "qing": 5
+        },
+        "next": "r_k2_2",
+        "id": "k2_opt_1"
+      },
+      {
+        "text": "教婉儿识字",
+        "icon": "say",
+        "stat": {
+          "qing": 25
+        },
+        "next": "r_k2_3",
+        "id": "k2_opt_2"
+      },
+      {
+        "text": "夜里再摸一回嫂子衣裳",
+        "icon": "give",
+        "stat": {
+          "wei": 5
+        },
+        "next": "k_side_gate2",
+        "id": "k2_opt_3",
+        "ad": true,
+        "adUnitId": "2300058116_01"
+      },
+      {
+        "text": "娶个隔壁小妹回来充面子",
+        "icon": "say",
+        "stat": {
+          "wei": -99,
+          "qing": -40
+        },
+        "roastKey": "roast_lose_marry",
+        "roast": "你为了在赵铁牛面前不掉面子，转身娶了隔壁小妹充喜。爱意从此清零——婉儿那晚烧完自己所有的旧衣裳，一个人走进了雪地。",
+        "next": "BE_LOSE_HER",
+        "id": "k2_opt_4"
+      }
+    ]
+  },
+  "r_k2_1": {
+    "ep": "EP03",
+    "scene": "house",
+    "char": "aotian",
+    "speaker": "你（心里）",
+    "text": "（把玉米地里翻出的怪石头一颗颗擦干净）这年头儿，怪石头也能进城换饭钱。",
+    "next": "e3_trans1"
+  },
+  "r_k2_2": {
+    "ep": "EP03",
+    "scene": "house",
+    "char": "aotian",
+    "speaker": "你（心里）",
+    "text": "（拎两瓶烧酒摸黑上山）李叔，教教我下套子和瞄准。这年头儿，会打猎才活得住。",
+    "next": "e3_trans1"
+  },
+  "r_k2_3": {
+    "ep": "EP03",
+    "scene": "house",
+    "char": "aotian",
+    "speaker": "你（心里）",
+    "text": "（借来一支毛笔·蘸口水在土地上划）婉儿，这是「李」，你的姓，也是我的姓。她看你的眼里全是光。",
+    "next": "e3_trans1"
+  },
+  "r_side08": {
+    "ep": "EP03",
+    "scene": "house",
+    "type": "story",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side08_shuixiu.c.mp4",
+      "duration": 10,
+      "label": "婉儿的红绸水袖舞",
+      "poster": "images/lastframes/side08_shuixiu.c.jpg"
+    },
+    "lines": [
+      {
+        "sp": "嫂子",
+        "t": "这支舞……我练了好些天了，就想着哪天夜里跳给你一个人看。"
+      },
+      {
+        "sp": "旁白",
+        "t": "油灯的火苗晃了晃，红绸在土墙上扫过一道影子。你忽然觉得，这荒年也没那么难熬。"
+      }
+    ],
+    "stat": {
+      "wei": 6,
+      "qing": 4
+    },
+    "next": "e3_trans1"
+  },
+  "k_side_dress_e3": {
+    "ep": "EP03",
+    "scene": "house",
+    "type": "choice",
+    "title": "婉儿羞得低下头：「你……你想看嫂子穿哪件？」",
+    "options": [
+      {
+        "text": "🎁 大红肚兜 + 白纱披",
+        "icon": "give",
+        "unlock": "medal_cloth1",
+        "stat": {
+          "wei": 12
+        },
+        "next": "r_side01_e3",
+        "ad": true,
+        "adUnitId": "2300058116_01",
+        "id": "k_side_dress_e3_opt_0"
+      },
+      {
+        "text": "黑色蕾丝旗袍",
+        "icon": "give",
+        "stat": {
+          "wei": 10,
+          "qing": -2
+        },
+        "next": "r_side02_e3",
+        "ad": true,
+        "adUnitId": "2300058116_01",
+        "id": "k_side_dress_e3_opt_1"
+      },
+      {
+        "text": "沐浴后的白纱裙",
+        "icon": "give",
+        "stat": {
+          "wei": 15,
+          "qing": -3
+        },
+        "next": "r_side03_e3",
+        "ad": true,
+        "adUnitId": "2300058116_01",
+        "id": "k_side_dress_e3_opt_2"
+      },
+      {
+        "text": "偷偷摸进屏风后偷看",
+        "icon": "hide",
+        "stat": {
+          "wei": -99,
+          "qing": -30
+        },
+        "roastKey": "roast_slap_peek",
+        "roast": "嫂子躲在屏风后换衣裳，你悄悄摸过去偷看。她转头一眼看穿——巴掌落下来的时候，你连躲的时间都没有。",
+        "next": "BE_SLAP",
+        "id": "k_side_dress_e3_opt_3"
+      },
+      {
+        "text": "直接上手不让她换",
+        "icon": "fight",
+        "stat": {
+          "wei": -99,
+          "qing": -40
+        },
+        "roastKey": "roast_slap_grab",
+        "roast": "她刚要换衣裳，你直接上手把她拉住。她使足力气一巴掌把你送出门，木门「哐当」一声关得比你耳光还响。",
+        "next": "BE_SLAP",
+        "id": "k_side_dress_e3_opt_4"
+      },
+      {
+        "text": "算了，别折腾了",
+        "icon": "say",
+        "stat": {
+          "wei": 2
+        },
+        "next": "e3_trans1",
+        "id": "k_side_dress_e3_opt_5"
+      }
+    ]
+  },
+  "r_side01_e3": {
+    "ep": "EP03",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side01_hongdudou.hd.mp4",
+      "duration": 10,
+      "label": "红肚兜换装",
+      "poster": "images/lastframes/side01_hongdudou.hd.jpg"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿（气声）",
+    "text": "傲天～你真坏……",
+    "next": "e3_trans1"
+  },
+  "r_side02_e3": {
+    "ep": "EP03",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side02_qipao.hd.mp4",
+      "duration": 10,
+      "label": "黑蕾丝旗袍换装",
+      "poster": "images/lastframes/side02_qipao.hd.jpg"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿（气声）",
+    "text": "傲天～你真坏……",
+    "next": "e3_trans1"
+  },
+  "r_side03_e3": {
+    "ep": "EP03",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side03_shishen.hd.mp4",
+      "duration": 10,
+      "label": "湿身白纱换装",
+      "poster": "images/lastframes/side03_shishen.hd.jpg"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿（气声）",
+    "text": "傲天～你真坏……",
+    "next": "e3_trans1"
+  },
+  "e3_trans1": {
+    "ep": "EP03",
+    "scene": "house",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/e3s7.jpg",
+      "poster": "images/lastframes/e3s7.hd.jpg",
+      "label": "天亮了·暖窗夜色散去"
+    },
+    "char": "narrator",
+    "speaker": "旁白",
+    "forceCaption": true,
+    "text": "油灯熄了，这是婉儿嫁过来后，头一回睡得踏实。可几天光景，新翻的院墙、屋顶的新瓦，藏不住——李家沟的风里，早有人惦记上了李傲天这份家业。",
+    "next": "e3_trans2"
+  },
+  "e3_trans2": {
+    "ep": "EP03",
+    "scene": "house",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s6.v2.c.jpg",
+      "poster": "images/lastframes/e2s6.hd.jpg",
+      "label": "赵铁牛·山口结怨的人"
+    },
+    "char": "aotian",
+    "speaker": "你（心里）",
+    "forceCaption": true,
+    "text": "山口那回，赵铁牛拦路要过路费，这梁子早结下了。如今他听说我李傲天翻了身……院外那几声脚步，来者不善。",
+    "next": "e4s1"
+  }
+}

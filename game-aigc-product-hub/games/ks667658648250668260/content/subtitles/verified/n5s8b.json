@@ -1,0 +1,76 @@
+{
+ "schemaVersion": 1,
+ "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s8b.mp4",
+ "sha256": "1e825d34a45dd6727d029dd221a2409fce0767b0d57e4db71b6b18867c55a146",
+ "duration": 10.042,
+ "nodes": [
+  "e5s8b"
+ ],
+ "status": "speech",
+ "transcript": "那天早上，碗底下什么也没有。",
+ "rawText": "那天早上碗底下什么也没有",
+ "asrChars": [
+  [
+   5.18,
+   5.42,
+   "那"
+  ],
+  [
+   5.42,
+   5.62,
+   "天"
+  ],
+  [
+   5.62,
+   5.82,
+   "早"
+  ],
+  [
+   5.82,
+   6.06,
+   "上"
+  ],
+  [
+   7.32,
+   7.56,
+   "碗"
+  ],
+  [
+   7.68,
+   7.9,
+   "底"
+  ],
+  [
+   7.9,
+   8.12,
+   "下"
+  ],
+  [
+   8.12,
+   8.32,
+   "什"
+  ],
+  [
+   8.32,
+   8.48,
+   "么"
+  ],
+  [
+   8.48,
+   8.68,
+   "也"
+  ],
+  [
+   8.68,
+   8.9,
+   "没"
+  ],
+  [
+   8.9,
+   9.495,
+   "有"
+  ]
+ ],
+ "timingEngine": "asr-anchor(funasr-paraformer)",
+ "reviewMethod": "batch ASR auto (needs human proof-read for punctuation/speaker)."
+}

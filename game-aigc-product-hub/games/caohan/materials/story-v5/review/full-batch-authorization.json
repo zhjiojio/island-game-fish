@@ -1,0 +1,13 @@
+{
+  "userMessage": "符合预期 请继续",
+  "scope": "沿已认可五条样片标准继续剩余64条",
+  "approvedPilotIds": [
+    "ep01_scene_00_video_01",
+    "ep01_branch_emotion_video_01",
+    "ep03_branch_counterattack_video_01",
+    "ending_crane",
+    "ending_future"
+  ],
+  "status": "full_batch_authorized",
+  "factTreatment": "不引入具体旧姓，不编造未知录音内容"
+}

@@ -1,0 +1,9 @@
+{
+    "deviceOrientation": "portrait",
+    "showStatusBar": false,
+    "runtimeVersion": "1.0.0",
+    "subpackages": [
+        { "name": "ingame", "root": "subpackages/ingame/" },
+        { "name": "popup", "root": "subpackages/popup/" }
+    ]
+}

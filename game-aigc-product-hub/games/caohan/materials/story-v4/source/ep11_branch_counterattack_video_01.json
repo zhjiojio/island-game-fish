@@ -1,0 +1,142 @@
+{
+  "sourceFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/output/逃婚后我花千万雇了工地糙汉.v4.json",
+  "sourceSha256": "77cee12ed8c5f8a99e49c6ec00ef31136fa64c03eb09995732b91220ca491ec7",
+  "nodeId": "ep11_branch_counterattack",
+  "video": {
+    "id": "ep11_branch_counterattack_video_01",
+    "order": 1,
+    "title": "选择后果·复仇与清算",
+    "durationSec": 9.0,
+    "renderMode": "video_gen",
+    "needsLipSync": true,
+    "continuity": {
+      "locationId": "source_11_11_3",
+      "timeOfDay": "day",
+      "characterIds": [
+        "贺星冉",
+        "陈劲"
+      ],
+      "wardrobe": "沿用角色 wardrobeByEpisode，视频内不得换装",
+      "screenDirection": "保持人物空间轴线与视线方向",
+      "startState": "承接上一视频末帧；首视频承接场景入口",
+      "endState": "保留人物动作、视线与构图状态供下一视频承接"
+    },
+    "assetRefs": [],
+    "shots": [
+      {
+        "id": "ep11_branch_counterattack_video_01_shot_01",
+        "order": 1,
+        "durationSec": 3,
+        "shotSize": "近景",
+        "cameraAngle": "平视",
+        "cameraMovement": "固定后骤推",
+        "composition": "商业街·返回途中内建立清楚人物方位，主体动作是：两人提着购物袋走回停车场，阳光斜打进来，贺星冉的长发被风吹得微乱。",
+        "locationId": "source_11_11_3",
+        "timeOfDay": "day",
+        "characters": [
+          "贺星冉"
+        ],
+        "dialogue": [
+          {
+            "speaker": "旁白",
+            "text": "两人提着购物袋走回停车场，阳光斜打进来，贺星冉的长发被风吹得微乱。"
+          }
+        ],
+        "audio": {
+          "ambient": "商业街·返回途中环境底噪",
+          "music": "新关系情绪低频铺底",
+          "sfx": []
+        },
+        "visual": {
+          "firstFramePrompt": "日，商业街·返回途中，景别：近景，画面人物：贺星冉；两人提着购物袋走回停车场，阳光斜打进来，贺星冉的长发被风吹得微乱。，人物外观与上镜连续，电影级写实短剧；选择后果：公开全部证据，让许家当场覆灭",
+          "videoPrompt": "镜头缓慢推进，清晰呈现两人提着购物袋走回停车场，阳光斜打进来，贺星冉的长发被风吹得微乱。，保持人物服装、光向和空间轴线连续，明确展示“公开全部证据，让许家当场覆灭”导致的动作和关系变化",
+          "negativePrompt": "字幕，水印，畸形手指，多余人物，角色换脸，服装突变，空间跳轴"
+        },
+        "sourceRef": {
+          "episode": 11,
+          "scene": "11-3",
+          "unit": 1,
+          "adaptation": "condensed"
+        },
+        "startSec": 0.0,
+        "endSec": 3.0
+      },
+      {
+        "id": "ep11_branch_counterattack_video_01_shot_02",
+        "order": 2,
+        "durationSec": 3,
+        "shotSize": "特写",
+        "cameraAngle": "低角度",
+        "cameraMovement": "轻微手持",
+        "composition": "商业街·返回途中内建立清楚人物方位，主体动作是：陈劲走在她旁边，忽然开口。",
+        "locationId": "source_11_11_3",
+        "timeOfDay": "day",
+        "characters": [
+          "陈劲"
+        ],
+        "dialogue": [
+          {
+            "speaker": "旁白",
+            "text": "陈劲走在她旁边，忽然开口。"
+          }
+        ],
+        "audio": {
+          "ambient": "商业街·返回途中环境底噪",
+          "music": "新关系情绪低频铺底",
+          "sfx": []
+        },
+        "visual": {
+          "firstFramePrompt": "日，商业街·返回途中，景别：特写，画面人物：陈劲；陈劲走在她旁边，忽然开口。，人物外观与上镜连续，电影级写实短剧；选择后果：公开全部证据，让许家当场覆灭",
+          "videoPrompt": "镜头跟随主体，清晰呈现陈劲走在她旁边，忽然开口。，保持人物服装、光向和空间轴线连续，明确展示“公开全部证据，让许家当场覆灭”导致的动作和关系变化",
+          "negativePrompt": "字幕，水印，畸形手指，多余人物，角色换脸，服装突变，空间跳轴"
+        },
+        "sourceRef": {
+          "episode": 11,
+          "scene": "11-3",
+          "unit": 2,
+          "adaptation": "condensed"
+        },
+        "startSec": 3.0,
+        "endSec": 6.0
+      },
+      {
+        "id": "ep11_branch_counterattack_video_01_shot_03",
+        "order": 3,
+        "durationSec": 3,
+        "shotSize": "全景",
+        "cameraAngle": "侧后方",
+        "cameraMovement": "缓推",
+        "composition": "商业街·返回途中内建立清楚人物方位，主体动作是：陈劲位于商业街·返回途中画面前景，面部近景，视线指向对话对象，嘴唇正在说“你今天好看。”",
+        "locationId": "source_11_11_3",
+        "timeOfDay": "day",
+        "characters": [
+          "陈劲"
+        ],
+        "dialogue": [
+          {
+            "speaker": "陈劲",
+            "text": "你今天好看。"
+          }
+        ],
+        "audio": {
+          "ambient": "商业街·返回途中环境底噪",
+          "music": "新关系情绪低频铺底",
+          "sfx": []
+        },
+        "visual": {
+          "firstFramePrompt": "日，商业街·返回途中，景别：全景，画面人物：陈劲；陈劲位于商业街·返回途中画面前景，面部近景，视线指向对话对象，嘴唇正在说“你今天好看。”，人物外观与上镜连续，电影级写实短剧；选择后果：公开全部证据，让许家当场覆灭",
+          "videoPrompt": "镜头缓慢推进，清晰呈现陈劲位于商业街·返回途中画面前景，面部近景，视线指向对话对象，嘴唇正在说“你今天好看。”，保持人物服装、光向和空间轴线连续，明确展示“公开全部证据，让许家当场覆灭”导致的动作和关系变化",
+          "negativePrompt": "字幕，水印，畸形手指，多余人物，角色换脸，服装突变，空间跳轴"
+        },
+        "sourceRef": {
+          "episode": 11,
+          "scene": "11-3",
+          "unit": 3,
+          "adaptation": "condensed"
+        },
+        "startSec": 6.0,
+        "endSec": 9.0
+      }
+    ]
+  }
+}

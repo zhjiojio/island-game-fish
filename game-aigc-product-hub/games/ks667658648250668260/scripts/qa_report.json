@@ -1,0 +1,79 @@
+{
+  "total": 7,
+  "pass": 7,
+  "warn": 0,
+  "error": 0,
+  "threshold": 0.5,
+  "results": [
+    {
+      "shot": "e3s1",
+      "status": "PASS",
+      "max_score": 0.598,
+      "threshold": 0.5,
+      "scores": {
+        "wanr": 0.546,
+        "aotian": 0.598
+      }
+    },
+    {
+      "shot": "e3s2",
+      "status": "PASS",
+      "max_score": 0.57,
+      "threshold": 0.5,
+      "scores": {
+        "wanr": 0.57,
+        "aotian": 0.536
+      }
+    },
+    {
+      "shot": "e3s3_v2",
+      "status": "PASS",
+      "max_score": 0.725,
+      "threshold": 0.5,
+      "scores": {
+        "wanr": 0.626,
+        "aotian": 0.725
+      }
+    },
+    {
+      "shot": "e3s4",
+      "status": "PASS",
+      "max_score": 0.598,
+      "threshold": 0.5,
+      "scores": {
+        "wanr": 0.589,
+        "aotian": 0.598
+      }
+    },
+    {
+      "shot": "e3s5",
+      "status": "PASS",
+      "max_score": 0.651,
+      "threshold": 0.5,
+      "scores": {
+        "wanr": 0.616,
+        "aotian": 0.651
+      }
+    },
+    {
+      "shot": "e3s6",
+      "status": "PASS",
+      "max_score": 0.611,
+      "threshold": 0.5,
+      "scores": {
+        "wanr": 0.53,
+        "aotian": 0.611
+      }
+    },
+    {
+      "shot": "e3s7",
+      "status": "PASS",
+      "max_score": 0.581,
+      "threshold": 0.5,
+      "scores": {
+        "wanr": 0.507,
+        "aotian": 0.581
+      }
+    }
+  ]
+}

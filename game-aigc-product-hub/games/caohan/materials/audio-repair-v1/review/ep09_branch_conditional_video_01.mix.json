@@ -1,0 +1,27 @@
+{
+  "videoId": "ep09_branch_conditional_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep09_branch_conditional_video_01__l01",
+      "speaker": "陈劲",
+      "text": "一百五十万。",
+      "heard": "一百五十万",
+      "start": 2.575,
+      "end": 3.645,
+      "alignmentScore": 1.0
+    },
+    {
+      "lineId": "ep09_branch_conditional_video_01__l02",
+      "speaker": "贺星冉",
+      "text": "好。",
+      "heard": "好",
+      "start": 8.35,
+      "end": 9.1,
+      "alignmentScore": 1.0
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 19.13324263038549,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.650054931640625
+}

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AIGC 小游戏埋点方案 · 一页讲清</title>
+<style>
+:root{
+  --ink:#0d0d0f; --paper:#f4f1ea; --card:#fffdf8;
+  --line:#0d0d0f; --red:#e8483f; --green:#12a150; --amber:#f5a524;
+  --blue:#2b6ef5; --grey:#8a8577;
+  --sh:4px 4px 0 var(--ink);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:-apple-system,"PingFang SC","Helvetica Neue",sans-serif;
+  padding:32px 20px 80px; line-height:1.7;
+  background-image:radial-gradient(var(--grey) .6px,transparent .6px);
+  background-size:22px 22px;
+}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:34px;font-weight:900;letter-spacing:-1px;line-height:1.25}
+h1 em{font-style:normal;background:var(--amber);padding:0 8px;box-shadow:var(--sh);display:inline-block}
+.sub{color:var(--grey);font-size:15px;margin-top:10px;font-weight:600}
+section{
+  background:var(--card);border:2.5px solid var(--line);box-shadow:var(--sh);
+  padding:24px;margin-top:28px;border-radius:2px;
+}
+h2{font-size:21px;font-weight:900;display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.no{
+  background:var(--ink);color:var(--paper);width:30px;height:30px;
+  display:grid;place-items:center;border-radius:50%;font-size:15px;flex:none
+}
+.lead{font-size:15px;color:#4a463c;margin:10px 0 18px}
+.kbd{background:var(--ink);color:var(--paper);padding:1px 7px;border-radius:3px;font-size:13px;font-family:ui-monospace,Menlo,monospace}
+code{background:#eee9dc;padding:1px 6px;border-radius:3px;font-family:ui-monospace,Menlo,monospace;font-size:13px}
+
+/* 对比双栏 */
+.vs{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:stretch}
+.vs .mid{display:grid;place-items:center;font-size:24px;font-weight:900;color:var(--grey)}
+.box{border:2.5px solid var(--line);padding:16px;border-radius:2px;background:#fff}
+.box.bad{background:#fdeeed;border-color:var(--red)}
+.box.good{background:#eaf8f0;border-color:var(--green)}
+.box h3{font-size:15px;font-weight:900;margin-bottom:12px;display:flex;gap:7px;align-items:center}
+.tag{font-size:11px;padding:2px 8px;border-radius:20px;color:#fff;font-weight:800}
+.tag.r{background:var(--red)} .tag.g{background:var(--green)}
+pre{background:var(--ink);color:#e8e6e0;padding:12px;border-radius:4px;font-size:12px;overflow-x:auto;font-family:ui-monospace,Menlo,monospace;line-height:1.6}
+pre .c{color:#7d8590} pre .r{color:#ff8a80} pre .g{color:#8ee9a8} pre .y{color:#ffd479} pre .b{color:#79c0ff}
+
+/* 数字卡 */
+.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:16px 0}
+.num{border:2.5px solid var(--line);padding:14px;background:#fff;text-align:center;box-shadow:2px 2px 0 var(--ink)}
+.num b{display:block;font-size:32px;font-weight:900;line-height:1.1}
+.num span{font-size:12px;color:var(--grey);font-weight:700}
+.num.hl{background:var(--amber)}
+.num.ok{background:#eaf8f0} .num.no{background:#fdeeed}
+
+/* 管道图 —— 用 grid 保证等宽不错行 */
+.pipe{display:grid;align-items:stretch;gap:0;margin:18px 0}
+.pipe5{grid-template-columns:1fr auto 1fr auto 1fr auto 1fr auto 1fr}
+.pipe4{grid-template-columns:1fr auto 1fr auto 1fr auto 1fr}
+.node{
+  border:2.5px solid var(--line);padding:11px 10px;background:#fff;font-size:13px;
+  font-weight:800;box-shadow:2px 2px 0 var(--ink);text-align:center;
+  display:flex;flex-direction:column;justify-content:center
+}
+.node small{display:block;font-weight:600;color:var(--grey);font-size:11px;margin-top:2px}
+.node.src{background:#e7efff} .node.gate{background:var(--amber)} .node.out{background:#eaf8f0}
+.arw{font-size:19px;font-weight:900;padding:0 7px;color:var(--grey);display:grid;place-items:center}
+
+/* 层级 */
+.layers{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.layer{display:grid;grid-template-columns:60px 1fr 108px;gap:14px;align-items:center;
+  border:2.5px solid var(--line);padding:13px;background:#fff;box-shadow:2px 2px 0 var(--ink)}
+.layer .lv{font-weight:900;font-size:17px;text-align:center;padding:5px;border-radius:3px}
+.layer .d b{display:block;font-size:14px}
+.layer .d span{font-size:12.5px;color:#5b564a}
+.stars{font-size:12px;text-align:right;font-weight:800;color:var(--amber)}
+.l0 .lv{background:var(--green);color:#fff} .l1 .lv{background:var(--blue);color:#fff}
+.l2 .lv{background:var(--amber)} .l3 .lv{background:#c9c3b2} .l4 .lv{background:#e3ded0}
+
+/* 表 */
+table{width:100%;border-collapse:collapse;margin-top:14px;font-size:13px}
+th,td{border:2px solid var(--line);padding:9px 11px;text-align:left}
+th{background:var(--ink);color:var(--paper);font-size:12px}
+tr:nth-child(even) td{background:#faf7f0}
+.ok{color:var(--green);font-weight:900} .no{color:var(--red);font-weight:900}
+
+/* 优劣 */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.pn ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.pn li{font-size:13.5px;padding-left:24px;position:relative;line-height:1.6}
+.pn li b{display:block}
+.pros li:before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:900;font-size:16px}
+.cons li:before{content:"!";position:absolute;left:0;color:var(--red);font-weight:900;font-size:16px;
+  background:#fdeeed;width:16px;height:16px;text-align:center;line-height:16px;border-radius:50%;font-size:12px}
+.fix{background:#eaf8f0;border-left:3px solid var(--green);padding:5px 9px;margin-top:6px;font-size:12.5px;display:block;border-radius:2px}
+
+.note{background:var(--amber);border:2.5px solid var(--line);padding:14px 16px;margin-top:18px;font-size:14px;font-weight:700;box-shadow:var(--sh)}
+.quote{border-left:5px solid var(--ink);padding:12px 16px;background:#f0ece1;font-size:15px;font-weight:800;margin-top:16px}
+@media(max-width:820px){
+  .vs{grid-template-columns:1fr} .vs .mid{padding:6px 0}
+  .pn{grid-template-columns:1fr} .layer{grid-template-columns:48px 1fr;gap:10px}
+  .stars{display:none} h1{font-size:26px}
+  .pipe5,.pipe4{grid-template-columns:1fr auto 1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>AIGC 小游戏埋点：<em>让 AI 没机会漏埋</em></h1>
+<p class="sub">核心不是「怎么检查 AI 埋没埋」，而是「让埋点不需要 AI 去埋」 · 2026-09-17</p>
+
+<!-- 1 -->
+<section>
+  <h2><span class="no">1</span>问题是什么</h2>
+  <p class="lead">埋点是 vibe coding 里<b>唯一一类「写错了但永远不会被自然发现」的代码</b>。它没有肉眼可见的功能表现 —— 漏埋、写错、没执行，游戏照样跑得好好的。等两周后看板一片空白，赛马周期已经废了。</p>
+  <div class="pipe pipe5">
+    <div class="node src">AI 说<br><small>「埋点已加好」</small></div><span class="arw">→</span>
+    <div class="node">游戏正常跑<br><small>看不出异常</small></div><span class="arw">→</span>
+    <div class="node">上线放量<br><small>花了钱</small></div><span class="arw">→</span>
+    <div class="node" style="background:#fdeeed;border-color:var(--red)">T+14 看板<br><small>数据是空的</small></div><span class="arw">→</span>
+    <div class="node" style="background:var(--red);color:#fff">整个赛马<br><small>周期作废</small></div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section>
+  <h2><span class="no">2</span>关键发现：答案已经在你们代码里</h2>
+  <p class="lead">我实测对比了你们两款游戏，结论出人意料 —— 差别<b>不在谁更细心，在于埋点调用点的数量</b>。</p>
+
+  <div class="vs">
+    <div class="box bad">
+      <h3>老铁眼真尖 <span class="tag r">12 处调用</span></h3>
+      <pre><span class="c">// 每个业务入口手写一次，靠"记得"</span>
+<span class="r">buttonClick</span>(<span class="y">'btn_hint'</span>);
+<span class="r">buttonClick</span>(<span class="y">'btn_skip'</span>);
+<span class="r">buttonClick</span>(<span class="y">'tap_correct'</span>);
+<span class="r">screenEnter</span>(<span class="y">'level_win'</span>);
+<span class="c">... 共 12 处散落各文件</span>
+
+<span class="c">// ❌ AI 新增第 19 关忘了埋</span>
+<span class="c">//    → 没有任何人会发现</span></pre>
+    </div>
+    <div class="mid">VS</div>
+    <div class="box good">
+      <h3>我的未婚妻 <span class="tag g">1 处调用</span></h3>
+      <pre><span class="c">// 唯一调用点，ID 从数据自动拼</span>
+<span class="g">event</span>(<span class="y">'node_view:'</span> + id, dim);
+
+<span class="c">// 252 个剧情节点全覆盖</span>
+<span class="c">// ✅ AI 新增 100 个节点</span>
+<span class="c">//    埋点自动就有了</span>
+<span class="c">//    它连"忘记"的机会都没有</span></pre>
+    </div>
+  </div>
+
+  <div class="nums">
+    <div class="num ok"><b>1</b><span>未婚妻 · 调用点</span></div>
+    <div class="num ok"><b>252</b><span>覆盖节点数</span></div>
+    <div class="num hl"><b>0</b><span>漏埋数（实测）</span></div>
+    <div class="num no"><b>12</b><span>老铁 · 调用点</span></div>
+    <div class="num no"><b>?</b><span>漏埋数（无法验证）</span></div>
+  </div>
+
+  <div class="quote">调用点数量 = 漏埋风险数量。把 N 降到 1，风险就归零。</div>
+</section>
+
+<!-- 3 -->
+<section>
+  <h2><span class="no">3</span>方案逻辑：埋点是「框架副作用」，不是「业务代码」</h2>
+  <p class="lead">让 AI 写业务逻辑时<b>物理上无法绕过埋点</b>。三个收口手法：</p>
+
+  <div class="vs" style="margin-bottom:18px">
+    <div class="box bad">
+      <h3>❌ 现在：埋点是「额外动作」</h3>
+      <pre><span class="c">// 业务代码里插一句埋点</span>
+function enterLevel(lv){
+  <span class="r">Analytics.levelStart(lv.idx);</span>  <span class="c">// 靠记得</span>
+  render(lv);
+}
+<span class="c">// AI 复制粘贴时删掉这行 → 静默失效</span></pre>
+    </div>
+    <div class="mid">→</div>
+    <div class="box good">
+      <h3>✅ 改造：埋点是「唯一入口的必经之路」</h3>
+      <pre><span class="c">// 埋点在加载器里，业务碰不到</span>
+function <span class="g">loadStage</span>(id){
+  const st = STAGES[id];       <span class="c">// 数据驱动</span>
+  <span class="g">T.stage_enter(derive(st));</span>  <span class="c">// 不可绕过</span>
+  return render(st);
+}
+<span class="c">// AI 想进关卡只能走这里 → 必然有数据</span></pre>
+    </div>
+  </div>
+
+  <table>
+    <tr><th style="width:130px">手法</th><th>做法</th><th style="width:250px">消灭了什么风险</th></tr>
+    <tr><td><b>① 数据驱动</b></td><td>埋点 ID 从<code>关卡表</code>/<code>剧本表</code>自动拼，不手写</td><td>新增关卡/节点忘了埋</td></tr>
+    <tr><td><b>② 事件代理</b></td><td><code>Btn.add({id,...})</code> 注册即埋点，点击由统一分发器上报</td><td>新增按钮忘了埋<br><small>不注册就没按钮，注册就必须给 id</small></td></tr>
+    <tr><td><b>③ SDK 包一层</b></td><td>禁止业务直调 <code>createRewardedVideoAd</code>，统一走 <code>AdService.show({slot,from})</code>，6 个生命周期事件自动全发</td><td>广告漏斗缺环<br><small>顺带修复人均触点 0.36 的归因断层</small></td></tr>
+  </table>
+
+  <div class="note">效果：新游戏只要用了脚手架的 <span class="kbd">loadStage</span> / <span class="kbd">Btn.add</span> / <span class="kbd">AdService</span>，四条总线数据<b>自动是全的</b>。埋点从「AI 的自觉」变成「框架的副作用」。</div>
+</section>
+
+<!-- 4 -->
+<section>
+  <h2><span class="no">4</span>五层防线：每层管一种错法</h2>
+  <p class="lead">L0 治本，其余是逐层收窄的网。<b>优先做 L0 + L2</b> —— 这两层合起来就能把「AI 说埋了实际没埋」从概率事件降级为结构上不可能。</p>
+  <div class="layers">
+    <div class="layer l0"><div class="lv">L0</div><div class="d"><b>结构性消除 —— 让 AI 没机会漏埋</b><span>数据驱动 + 事件代理 + SDK 包装，把 12 处调用点收成 1 处</span></div><div class="stars">★★★★★<br><small>治本</small></div></div>
+    <div class="layer l1"><div class="lv">L1</div><div class="d"><b>Schema 静态校验 —— 让 AI 不能埋错</b><span>codegen 出强类型 SDK；枚举值写错、裸调 reportScene → 构建期阻断</span></div><div class="stars">★★★★</div></div>
+    <div class="layer l2"><div class="lv">L2</div><div class="d"><b>覆盖率审计 —— 抓数据与埋点的漂移</b><span>拿业务数据当基准反查埋点清单（已在你们项目跑通，见下节）</span></div><div class="stars">★★★★<br><small>已验证</small></div></div>
+    <div class="layer l3"><div class="lv">L3</div><div class="d"><b>真机自证 —— 抓「写了但没执行」</b><span>expected-events 契约 + debug 事件流回放 diff；哑火页面告警</span></div><div class="stars">★★★</div></div>
+    <div class="layer l4"><div class="lv">L4</div><div class="d"><b>数仓监控 —— 兜底</b><span>断流/断环/枚举越界/维度缺失告警；埋点不达标不给放量预算</span></div><div class="stars">★★</div></div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section>
+  <h2><span class="no">5</span>L2 实测：这个脚本已经在你们项目跑出结果了</h2>
+  <p class="lead">原理：<b>拿业务数据当基准，反查埋点清单</b>。不信 AI 的话，只信数据对账。</p>
+  <div class="pipe pipe4">
+    <div class="node src">story.js<br><small>252 个真实节点</small></div><span class="arw">→</span>
+    <div class="node gate">对账<br><small>telemetry-audit</small></div><span class="arw">←</span>
+    <div class="node src" style="background:#e7efff">埋点清单<br><small>552 个 node_view ID</small></div>
+    <span class="arw">⇒</span>
+    <div class="node out">漏埋 = 0<br><small>✅ 合格</small></div>
+  </div>
+  <pre>$ node scripts/telemetry-audit.cjs
+story.js 真实节点数:        252
+manifest node_view 数:      552
+<span class="g">❌ 节点存在但无埋点ID:      0     ← 合格，可以 build</span>
+<span class="y">⚠️  埋点ID存在但节点已删:   300   ← 无害残留，建议清理</span></pre>
+  <table>
+    <tr><th>基准数据源（真相）</th><th>应有埋点</th><th style="width:110px">缺失即阻断</th></tr>
+    <tr><td><code>story.js</code> 剧情节点表</td><td><code>stage:&lt;nodeId&gt;</code></td><td class="ok">✅</td></tr>
+    <tr><td><code>levels.js</code> 关卡表</td><td><code>stage:&lt;levelIdx&gt;</code></td><td class="ok">✅</td></tr>
+    <tr><td><code>Btn</code> 按钮注册表</td><td><code>btnId</code> ∈ 字典</td><td class="ok">✅</td></tr>
+    <tr><td><code>AdService</code> 调用点</td><td><code>adSlot</code> ∈ 字典</td><td class="ok">✅</td></tr>
+    <tr><td>页面路由表</td><td><code>pageId</code> ∈ 字典</td><td class="ok">✅</td></tr>
+  </table>
+  <div class="note">这条挂进 build 前置（和现有 <span class="kbd">laotie-check</span> 同级），能抓住「AI 加了 5 关但埋点表没更新」这类最典型的幻觉。</div>
+</section>
+
+<!-- 6 -->
+<section>
+  <h2><span class="no">6</span>为什么好 / 代价是什么</h2>
+  <div class="pn">
+    <div>
+      <h3 style="font-size:15px;font-weight:900;color:var(--green);margin-bottom:12px">✓ 优势</h3>
+      <ul class="pros">
+        <li><b>漏埋从概率问题变成结构问题</b>不再依赖 AI 的自觉或人的 review，AI 想进关卡只能走唯一入口</li>
+        <li><b>AI 越多产越受益</b>新增 100 个节点、10 个关卡，埋点自动跟上，边际成本为 0</li>
+        <li><b>跨游戏可比</b>统一 Stage 抽象后，找茬第 7 关和剧情第 23 节点能画在同一张流失曲线上</li>
+        <li><b>AIGC 归因链完整</b>公共维度自动注入 tplId/themeId/assetBatch，能回答「该押哪个模板/题材」</li>
+        <li><b>问题暴露在构建期</b>而不是上线两周后的空看板</li>
+        <li><b>已被你们自己验证</b>未婚妻 252 节点漏埋 0，不是理论推演</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="font-size:15px;font-weight:900;color:var(--red);margin-bottom:12px">! 劣势与代价</h3>
+      <ul class="cons">
+        <li><b>存量改造有成本</b>老铁 12 处调用点要收口，动的是核心流程，有回归风险
+          <span class="fix">→ 新老双发一个版本，数仓校准后再停老的</span></li>
+        <li><b>框架约束降低灵活性</b>AI 想「就这里特殊处理一下」会被 CI 挡住，短期显得别扭
+          <span class="fix">→ 留 7090-7099 自定义沙盒段，但数仓不建标准模型</span></li>
+        <li><b>Stage 抽象有信息损耗</b>把关卡和剧情节点压成同一模型，会丢玩法特有语义
+          <span class="fix">→ 品类层 7060-7079 补细节，标准层只保通用</span></li>
+        <li><b>依赖 DE 排期</b>codegen、Hive 表、看板都不在我们手里
+          <span class="fix">→ 先自建通道 B 跑起来，DE 到位后迁移</span></li>
+        <li><b>剧情类 stageSeq 需拓扑排序</b>剧情有分支，线性序号要靠 BFS 生成，改剧本会变号
+          <span class="fix">→ 序号一经生成即冻结，新节点追加不重排</span></li>
+        <li><b>L0 挡不住「代码写了但分支走不到」</b>静态手段管不了运行时
+          <span class="fix">→ 这正是 L3 真机自证要补的</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 7 -->
+<section>
+  <h2><span class="no">7</span>落地顺序</h2>
+  <table>
+    <tr><th style="width:52px">步</th><th>动作</th><th style="width:120px">谁做</th><th style="width:92px">工期</th></tr>
+    <tr><td><b>1</b></td><td>写 <code>scripts/telemetry-audit.cjs</code>，接进 build 前置<br><small>把已跑通的对账逻辑固化，先给两款游戏各出一份体检报告</small></td><td>我们</td><td>0.5 天</td></tr>
+    <tr><td><b>2</b></td><td>老铁 12 处调用点 → 1 处，做成「结构性消除」样板<br><small>拿去说服 DE 和其他游戏跟进</small></td><td>我们</td><td>1-2 天</td></tr>
+    <tr><td><b>3</b></td><td>出 <code>aigc-events.schema.json</code> v1.0 交 DE 提需求</td><td>我们</td><td>1 天</td></tr>
+    <tr><td><b>4</b></td><td>codegen 工具链 + SDK + 4 张 Hive 表 + 赛马看板</td><td><b>DE</b></td><td>排期</td></tr>
+    <tr><td><b>5</b></td><td>CI 红线 hook + 埋点验收闸门（不达标不放量）</td><td>我们+DE</td><td>随 4</td></tr>
+  </table>
+  <div class="quote">不要审计 AI 的诚实度，要消灭它撒谎的空间。<br>调用点从 12 处降到 1 处，可靠性提升不是 12 倍 —— 是从「靠谱不靠谱」变成「对不对」。</div>
+</section>
+
+</div>
+</body>
+</html>

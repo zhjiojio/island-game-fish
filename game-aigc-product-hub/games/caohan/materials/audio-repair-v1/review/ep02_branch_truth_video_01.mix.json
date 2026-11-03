@@ -1,0 +1,27 @@
+{
+  "videoId": "ep02_branch_truth_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep02_branch_truth_video_01__l01",
+      "speaker": "贺星冉",
+      "text": "五万，现在转，转完就走。",
+      "heard": "五万现在转转完就走",
+      "start": 4.075,
+      "end": 6.565,
+      "alignmentScore": 1.0
+    },
+    {
+      "lineId": "ep02_branch_truth_video_01__l02",
+      "speaker": "陈劲",
+      "text": "……行。",
+      "heard": "行",
+      "start": 10.115,
+      "end": 10.605,
+      "alignmentScore": 1.0
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 11.145578231292516,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.42376708984375
+}

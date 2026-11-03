@@ -1,0 +1,9 @@
+{
+  "transcript": "帮一大哥只留下一句话，下播吃饭。",
+  "voice": "普通话，男性，中年，稳重",
+  "issues": [
+    "吞字"
+  ],
+  "uncertain": "",
+  "reviewModel": "mistralai/voxtral-small-24b-2507"
+}

@@ -1,0 +1,26 @@
+{
+  "guide_l1": {
+    "file": "assets/ui/guide/guide_l1.png",
+    "px": [
+      1122,
+      162
+    ],
+    "design": [
+      561.0,
+      81.0
+    ],
+    "text": "滑动一辆小车到上面的空车位"
+  },
+  "guide_l2": {
+    "file": "assets/ui/guide/guide_l2.png",
+    "px": [
+      916,
+      138
+    ],
+    "design": [
+      458.0,
+      69.0
+    ],
+    "text": "同颜色的豆子会自己上对应的车"
+  }
+}

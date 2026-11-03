@@ -1,0 +1,1 @@
+Please provide the audio sample that you would like me to transcribe. Once I have the audio, I’ll be able to analyze it and provide the transcription in the requested JSON format.

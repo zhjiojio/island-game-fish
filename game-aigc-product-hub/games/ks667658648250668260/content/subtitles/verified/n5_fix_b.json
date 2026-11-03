@@ -1,0 +1,36 @@
+{
+ "schemaVersion": 1,
+ "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_fix_b.mp4",
+ "sha256": "33f6406daa83a6b6366648177fb907ac4fc35259fdbdc90b80fa5b0b71fef142",
+ "duration": 10.042,
+ "nodes": [
+  "r_fix_b"
+ ],
+ "status": "speech",
+ "transcript": "点石成屋。",
+ "rawText": "点石成屋",
+ "asrChars": [
+  [
+   4.66,
+   4.9,
+   "点"
+  ],
+  [
+   5.0,
+   5.24,
+   "石"
+  ],
+  [
+   5.5,
+   5.74,
+   "成"
+  ],
+  [
+   5.92,
+   6.305,
+   "屋"
+  ]
+ ],
+ "timingEngine": "asr-anchor(funasr-paraformer)",
+ "reviewMethod": "batch ASR auto (needs human proof-read for punctuation/speaker)."
+}

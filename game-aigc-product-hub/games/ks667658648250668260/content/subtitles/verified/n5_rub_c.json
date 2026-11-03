@@ -1,0 +1,76 @@
+{
+ "schemaVersion": 1,
+ "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_rub_c.mp4",
+ "sha256": "25fc6cf2e6e6a4d0135b6b6b9c0849f2b808d7c347dfd7e430288ff26bfa2e09",
+ "duration": 10.042,
+ "nodes": [
+  "r_rub_c"
+ ],
+ "status": "speech",
+ "transcript": "歇会儿就好了，你去忙吧，那那。",
+ "rawText": "歇会儿就好了你去忙吧那那",
+ "asrChars": [
+  [
+   2.34,
+   2.58,
+   "歇"
+  ],
+  [
+   2.64,
+   2.76,
+   "会"
+  ],
+  [
+   2.76,
+   2.84,
+   "儿"
+  ],
+  [
+   2.84,
+   2.98,
+   "就"
+  ],
+  [
+   2.98,
+   3.14,
+   "好"
+  ],
+  [
+   3.14,
+   3.38,
+   "了"
+  ],
+  [
+   5.14,
+   5.3,
+   "你"
+  ],
+  [
+   5.3,
+   5.46,
+   "去"
+  ],
+  [
+   5.46,
+   5.64,
+   "忙"
+  ],
+  [
+   5.64,
+   5.995,
+   "吧"
+  ],
+  [
+   9.13,
+   9.37,
+   "那"
+  ],
+  [
+   9.47,
+   9.765,
+   "那"
+  ]
+ ],
+ "timingEngine": "asr-anchor(funasr-paraformer)",
+ "reviewMethod": "batch ASR auto (needs human proof-read for punctuation/speaker)."
+}

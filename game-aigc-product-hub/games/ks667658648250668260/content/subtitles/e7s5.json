@@ -1,0 +1,10 @@
+{
+  "node": "e7s5",
+  "speakerKey": "narrator",
+  "speakerName": "村民",
+  "asrText": "下雨了！真下雨了！",
+  "asrTextRaw": "下雨了 下雨了 真下雨了",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 2
+}

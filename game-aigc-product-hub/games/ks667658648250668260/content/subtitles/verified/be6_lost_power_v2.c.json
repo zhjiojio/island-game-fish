@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be6_lost_power_v2.c.mp4",
+  "sha256": "075ade5780a2ddcffe6b11d3aa5bf5ecd260445a4bb065ccff41f9acf384a42d",
+  "duration": 10.208,
+  "nodes": [
+    "BE_DRUNK"
+  ],
+  "status": "speech",
+  "transcript": "地不长了，都不长了。",
+  "rawText": "地不长了都不长了",
+  "asrChars": [
+    [
+      2.69,
+      2.93,
+      "地"
+    ],
+    [
+      3.33,
+      3.57,
+      "不"
+    ],
+    [
+      3.61,
+      3.85,
+      "长"
+    ],
+    [
+      3.97,
+      4.21,
+      "了"
+    ],
+    [
+      5.45,
+      5.69,
+      "都"
+    ],
+    [
+      5.79,
+      6.03,
+      "不"
+    ],
+    [
+      6.03,
+      6.27,
+      "长"
+    ],
+    [
+      6.39,
+      6.895,
+      "了"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "爹：不长了：都不长了!",
+  "speakerKey": null,
+  "speakerRuleKey": "be6_lost_power",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

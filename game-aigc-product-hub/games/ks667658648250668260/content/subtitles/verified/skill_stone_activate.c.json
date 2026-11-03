@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/skill_stone_activate.c.mp4",
+  "sha256": "ea1bebce79df32a1aecdee9c3eb2365c8a9e1ce9f8af05854549bb9b4af2d4da",
+  "duration": 10.042,
+  "nodes": [
+    "s_stone_video"
+  ],
+  "status": "nonverbal",
+  "transcript": "",
+  "rawText": "啊啊",
+  "asrChars": [
+    [
+      1.01,
+      1.25,
+      "啊"
+    ],
+    [
+      3.05,
+      3.29,
+      "啊"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "啊：啊：啊：呵呵呵",
+  "speakerKey": null,
+  "speakerRuleKey": "skill_stone_activate",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

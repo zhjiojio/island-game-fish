@@ -1,0 +1,75 @@
+{
+  "scale": 2,
+  "slices": {
+    "ad_tag": {
+      "w": 56,
+      "h": 40,
+      "file": "assets/ui/home/ad_tag.png"
+    },
+    "btn_close": {
+      "w": 88,
+      "h": 88,
+      "file": "assets/ui/home/btn_close.png"
+    },
+    "btn_home": {
+      "w": 136,
+      "h": 136,
+      "file": "assets/ui/home/btn_home.png"
+    },
+    "btn_restart": {
+      "w": 340,
+      "h": 126,
+      "file": "assets/ui/home/btn_restart.png"
+    },
+    "btn_resume": {
+      "w": 400,
+      "h": 126,
+      "file": "assets/ui/home/btn_resume.png"
+    },
+    "btn_skip": {
+      "w": 136,
+      "h": 136,
+      "file": "assets/ui/home/btn_skip.png"
+    },
+    "ico_music": {
+      "w": 72,
+      "h": 72,
+      "file": "assets/ui/home/ico_music.png"
+    },
+    "ico_sound": {
+      "w": 72,
+      "h": 72,
+      "file": "assets/ui/home/ico_sound.png"
+    },
+    "ico_vibrate": {
+      "w": 72,
+      "h": 72,
+      "file": "assets/ui/home/ico_vibrate.png"
+    },
+    "pause_card": {
+      "w": 626,
+      "h": 536,
+      "file": "assets/ui/home/pause_card.png"
+    },
+    "pause_title": {
+      "w": 390,
+      "h": 108,
+      "file": "assets/ui/home/pause_title.png"
+    },
+    "row_bg": {
+      "w": 550,
+      "h": 140,
+      "file": "assets/ui/home/row_bg.png"
+    },
+    "toggle_off": {
+      "w": 130,
+      "h": 70,
+      "file": "assets/ui/home/toggle_off.png"
+    },
+    "toggle_on": {
+      "w": 130,
+      "h": 70,
+      "file": "assets/ui/home/toggle_on.png"
+    }
+  }
+}

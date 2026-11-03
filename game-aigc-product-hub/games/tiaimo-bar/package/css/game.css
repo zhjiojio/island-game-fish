@@ -1,0 +1,138 @@
+/* css/game.css — 提艾默酒吧 直播间应援剧游（9:16，L3 拟物暗调酒吧） */
+:root{
+  --bg0:#0d0a08; --bg1:#1a1210; --gold:#ffd257; --gold2:#f5a623;
+  --red:#ff2e4d; --pk-l:#ffca3a; --pk-r:#ff2e4d; --pink:#ff5b8a; --purple:#6a5cff;
+  --ink:#fff; --dim:rgba(255,255,255,.72); --panel:rgba(20,14,12,.62);
+  --safe-b: 300px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:#000;overflow:hidden;font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;color:var(--ink)}
+#app{position:relative;width:100vw;height:100vh;max-width:calc(100vh*9/16);margin:0 auto;overflow:hidden;background:linear-gradient(160deg,var(--bg1),var(--bg0))}
+
+/* ===== 舞台视频/海报 ===== */
+.stage{position:absolute;inset:0;z-index:1;background:#000}
+.stage video,.stage img{width:100%;height:100%;object-fit:cover;display:block}
+.stage::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,transparent 22%,transparent 55%,rgba(0,0,0,.75) 100%);pointer-events:none}
+.stage.pk{display:flex}
+.stage.pk .half{position:relative;width:50%;height:100%;overflow:hidden}
+.stage.pk .half video,.stage.pk .half img{width:100%;height:100%;object-fit:cover}
+.stage.pk .half.dim{filter:brightness(.55) saturate(.8)}
+
+/* ===== 顶部主播卡 ===== */
+.topbar{position:absolute;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:14px 12px;gap:8px}
+.host-card{display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.32);border-radius:40px;padding:5px 12px 5px 5px;backdrop-filter:blur(6px)}
+.host-card .ava{width:40px;height:40px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;background:#333}
+.host-card .meta b{font-size:15px}
+.host-card .meta small{display:block;font-size:11px;color:var(--dim)}
+.vip{background:linear-gradient(90deg,#ff4d7a,#ff2e4d);font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;margin-left:4px}
+.top-right{display:flex;align-items:center;gap:10px}
+.crown-count{display:flex;align-items:center;gap:4px;background:rgba(0,0,0,.32);padding:5px 12px;border-radius:20px;font-weight:700;font-size:13px}
+.close-x{font-size:24px;color:#fff;opacity:.9;cursor:pointer;line-height:1}
+.mute-btn{background:rgba(0,0,0,.32);border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer}
+
+/* ===== 团员排名榜 ===== */
+.rank{position:absolute;left:10px;top:84px;z-index:18;width:132px;background:var(--panel);border:1px solid rgba(255,210,87,.28);border-radius:14px;padding:8px 8px 10px;backdrop-filter:blur(8px);box-shadow:0 6px 18px rgba(0,0,0,.5)}
+.rank h4{font-size:13px;text-align:center;margin-bottom:2px}
+.rank .sub{font-size:10px;color:var(--gold);text-align:center;margin-bottom:6px}
+.rank-item{display:flex;align-items:center;gap:6px;padding:4px 2px;border-radius:8px;transition:.3s;position:relative}
+.rank-item .no{width:16px;font-weight:800;font-style:italic;font-size:14px;text-align:center}
+.rank-item:nth-child(3) .no{color:var(--gold)} /* 1 */
+.rank-item .ava{width:34px;height:34px;border-radius:8px;object-fit:cover;border:1px solid rgba(255,255,255,.25);background:#333}
+.rank-item.gold .ava{border-color:var(--gold);box-shadow:0 0 8px rgba(255,210,87,.6)}
+.rank-item .txt b{font-size:11px;display:block;max-width:70px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rank-item .txt span{font-size:10px;color:var(--gold2)}
+.rank-item .badge{position:absolute;left:8px;top:2px;font-size:11px}
+.rank-count{font-size:10px;color:var(--red);text-align:center;margin-top:6px;border-top:1px solid rgba(255,255,255,.12);padding-top:5px}
+
+/* ===== 弹幕流 ===== */
+.danmu{position:absolute;right:8px;top:150px;z-index:16;width:150px;max-height:44%;overflow:hidden;display:flex;flex-direction:column;gap:7px;pointer-events:none;mask-image:linear-gradient(180deg,transparent,#000 18%)}
+.danmu .d{font-size:12px;line-height:1.35;animation:dmin .4s ease}
+.danmu .d .u{color:var(--pink);font-weight:600}
+.danmu .d .c{color:#fff;opacity:.94}
+@keyframes dmin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ===== PK 进度条 ===== */
+.pkbar{position:absolute;left:12px;right:12px;bottom:calc(var(--safe-b) + 96px);z-index:17;height:34px;border-radius:20px;overflow:hidden;display:flex;box-shadow:0 3px 10px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.2)}
+.pkbar .l{background:linear-gradient(90deg,#ffe27a,var(--pk-l));display:flex;align-items:center;padding-left:14px;font-weight:800;color:#5a3d00;transition:width .6s cubic-bezier(.4,1.3,.5,1)}
+.pkbar .r{background:linear-gradient(90deg,var(--pk-r),#ff5b74);flex:1;display:flex;align-items:center;justify-content:flex-end;padding-right:14px;font-weight:800}
+.pkbar .mid{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;font-style:italic;font-weight:900;font-size:20px;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,.6);pointer-events:none}
+.pk-timer{position:absolute;left:50%;transform:translateX(-50%);bottom:calc(var(--safe-b) + 74px);z-index:17;background:rgba(0,0,0,.6);color:var(--gold);font-weight:700;font-size:13px;padding:2px 12px;border-radius:12px}
+.hot-pop{position:absolute;left:12px;bottom:calc(var(--safe-b) + 134px);z-index:17;color:var(--gold);font-weight:800;font-size:15px;text-shadow:0 2px 6px rgba(0,0,0,.7);animation:hotpop 1.4s ease forwards}
+@keyframes hotpop{0%{opacity:0;transform:translateY(14px) scale(.8)}30%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-20px)}}
+
+/* ===== 字幕条 ===== */
+.subtitle{position:absolute;left:10px;right:10px;bottom:calc(var(--safe-b) + 8px);z-index:19;background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(0,0,0,.78));border:1px solid rgba(255,210,87,.3);border-radius:14px;padding:11px 13px;backdrop-filter:blur(4px);animation:subin .35s ease}
+.subtitle .who{color:var(--gold);font-weight:800;font-size:14px;margin-bottom:3px}
+.subtitle .body{font-size:15px;line-height:1.5;max-height:4.5em;overflow-y:auto}
+.subtitle .tap-hint{position:absolute;right:12px;bottom:8px;font-size:11px;color:var(--dim);animation:blink 1.2s infinite}
+@keyframes blink{50%{opacity:.35}}
+@keyframes subin{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+/* ===== 选择卡 ===== */
+.choices{position:absolute;left:14px;right:14px;bottom:calc(var(--safe-b) + 8px);z-index:22;display:flex;flex-direction:column;gap:10px}
+.choice{position:relative;display:flex;align-items:center;gap:10px;padding:14px 15px;border-radius:14px;cursor:pointer;font-size:15px;font-weight:600;
+  background:linear-gradient(180deg,rgba(60,42,30,.95),rgba(34,22,16,.98));
+  border:1.5px solid rgba(255,210,87,.4);
+  box-shadow:0 4px 0 rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.14);
+  transition:transform .12s,box-shadow .12s;overflow:hidden}
+.choice::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 0,rgba(255,210,87,.18),transparent 60%);pointer-events:none}
+.choice:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.5)}
+.choice.disabled{opacity:.5;filter:grayscale(.6);cursor:not-allowed}
+.choice.selected{border-color:var(--gold);box-shadow:0 0 14px rgba(255,210,87,.7),inset 0 1px 0 rgba(255,255,255,.2)}
+.choice .ck{margin-left:auto;color:var(--gold);font-weight:800;font-size:18px;opacity:0}
+.choice.selected .ck{opacity:1}
+
+/* ===== 底部礼物栏 + 星光 ===== */
+.dock{position:absolute;left:0;right:0;bottom:0;z-index:21;background:linear-gradient(180deg,rgba(14,10,8,.4),rgba(10,7,6,.96));padding:8px 0 12px}
+.star-bar{display:flex;align-items:center;justify-content:space-between;padding:0 14px 8px}
+.star-pill{display:flex;align-items:center;gap:6px;background:rgba(0,0,0,.5);border:1px solid var(--gold);border-radius:20px;padding:5px 14px;font-weight:800;color:var(--gold);box-shadow:0 0 10px rgba(255,210,87,.3)}
+.ad-btn{display:flex;align-items:center;gap:5px;background:linear-gradient(180deg,var(--gold),var(--gold2));color:#5a3d00;font-weight:800;font-size:13px;padding:7px 15px;border-radius:20px;cursor:pointer;box-shadow:0 3px 0 #a5670f;border:none}
+.ad-btn:active{transform:translateY(2px);box-shadow:0 1px 0 #a5670f}
+.gift-row{display:flex;gap:4px;overflow-x:auto;padding:2px 8px;scrollbar-width:none}
+.gift-row::-webkit-scrollbar{display:none}
+.gift{flex:0 0 auto;width:66px;display:flex;flex-direction:column;align-items:center;gap:2px;padding:7px 2px;border-radius:12px;cursor:pointer;transition:.15s;background:transparent}
+.gift:active{transform:scale(.92)}
+.gift.send{background:linear-gradient(180deg,#3a2a1e,#241610);border:1px solid rgba(255,210,87,.4)}
+.gift .ic{font-size:30px;filter:drop-shadow(0 3px 4px rgba(0,0,0,.6))}
+.gift .nm{font-size:11px;font-weight:600}
+.gift .pr{font-size:10px;color:var(--gold)}
+
+/* ===== 飘屏礼物特效 ===== */
+.fx-layer{position:absolute;inset:0;z-index:23;pointer-events:none;overflow:hidden}
+.fx-gift{position:absolute;font-size:34px;animation:floatUp 2.2s ease-out forwards;filter:drop-shadow(0 3px 6px rgba(0,0,0,.5))}
+@keyframes floatUp{0%{transform:translateY(0) scale(.5);opacity:0}15%{opacity:1;transform:scale(1.1)}100%{transform:translateY(-120vh) scale(.9);opacity:0}}
+.fx-night{position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,rgba(106,92,255,.5),rgba(0,0,0,.85));animation:nightIn 2.6s ease forwards}
+.fx-night .beam{position:absolute;inset:0;background:repeating-conic-gradient(from 0deg,rgba(255,210,87,.25) 0 8deg,transparent 8deg 20deg);animation:spin 6s linear infinite}
+@keyframes nightIn{0%{opacity:0}20%{opacity:1}80%{opacity:1}100%{opacity:0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.broadcast{position:absolute;left:0;right:0;top:38%;z-index:24;text-align:center;font-weight:900;font-size:19px;color:var(--gold);text-shadow:0 0 14px rgba(255,210,87,.9),0 2px 4px #000;animation:bc 2.6s ease forwards;padding:0 20px}
+@keyframes bc{0%{opacity:0;transform:scale(.6)}20%{opacity:1;transform:scale(1)}80%{opacity:1}100%{opacity:0}}
+
+/* ===== toast / 亲密度 ===== */
+.toast{position:absolute;left:50%;top:46%;transform:translateX(-50%);z-index:26;background:rgba(0,0,0,.82);border:1px solid var(--gold);color:var(--gold);font-weight:700;font-size:14px;padding:9px 18px;border-radius:24px;animation:toast 1.8s ease forwards;white-space:nowrap}
+@keyframes toast{0%{opacity:0;transform:translate(-50%,10px)}20%{opacity:1;transform:translate(-50%,0)}80%{opacity:1}100%{opacity:0;transform:translate(-50%,-14px)}}
+
+/* ===== 幕间转场 ===== */
+.chapter{position:absolute;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;background:#000;animation:chap 1.6s ease forwards}
+.chapter b{font-size:26px;color:var(--gold);letter-spacing:3px;text-shadow:0 0 16px rgba(255,210,87,.6)}
+@keyframes chap{0%{opacity:0}25%{opacity:1}75%{opacity:1}100%{opacity:0;visibility:hidden}}
+
+/* ===== 结局 ===== */
+.ending-badge{position:absolute;left:50%;top:88px;transform:translateX(-50%);z-index:20;text-align:center}
+.ending-badge .crown{font-size:34px}
+.ending-badge .title{background:linear-gradient(180deg,#ffe488,var(--gold2));color:#5a3d00;font-weight:900;font-size:16px;padding:6px 22px;border-radius:10px;border:2px solid #fff3c4;box-shadow:0 4px 12px rgba(0,0,0,.5)}
+.replay-bar{position:absolute;left:14px;right:14px;bottom:calc(var(--safe-b) + 6px);z-index:25;display:flex;gap:10px}
+.replay-bar button{flex:1;padding:14px;border:none;border-radius:14px;font-size:15px;font-weight:800;cursor:pointer;color:#5a3d00;background:linear-gradient(180deg,var(--gold),var(--gold2));box-shadow:0 4px 0 #a5670f}
+.replay-bar button.ghost{color:#fff;background:linear-gradient(180deg,rgba(60,42,30,.95),rgba(34,22,16,.98));border:1.5px solid rgba(255,210,87,.4);box-shadow:0 4px 0 rgba(0,0,0,.5)}
+.replay-bar button:active{transform:translateY(3px);box-shadow:0 1px 0 #a5670f}
+
+/* ===== 加载 / 广告遮罩 ===== */
+.overlay{position:absolute;inset:0;z-index:60;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:rgba(0,0,0,.9)}
+.overlay .neon{font-size:30px;font-weight:900;color:var(--red);text-shadow:0 0 12px var(--red),0 0 24px rgba(255,46,77,.6)}
+.overlay .bar{width:60%;height:8px;border-radius:8px;background:rgba(255,255,255,.15);overflow:hidden}
+.overlay .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold2));animation:load 1.2s ease forwards}
+@keyframes load{to{width:100%}}
+.overlay .ad-count{font-size:15px;color:#fff}
+.overlay small{color:var(--dim);font-size:12px}
+
+@media (max-width:360px){:root{--safe-b:280px} .rank{width:118px} .danmu{width:130px}}

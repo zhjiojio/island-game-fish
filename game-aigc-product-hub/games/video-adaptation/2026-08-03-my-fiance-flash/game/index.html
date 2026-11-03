@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>我的温柔未婚妻 · Flash</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="stage" class="stage">
+  <!-- 顶部 HUD -->
+  <div class="hud">
+    <div class="favor">
+      <span class="heart">♥</span>
+      <span id="favor-val">50</span>
+      <div class="favor-bar"><i id="favor-fill"></i></div>
+    </div>
+    <div class="dots" id="dots"></div>
+    <button id="mute" class="mute" aria-label="mute">🔊</button>
+  </div>
+
+  <!-- 场景层 -->
+  <div class="scene" id="scene">
+    <div class="scene-bg" id="scene-bg"></div>
+    <div class="grain"></div>
+    <img id="portrait" class="portrait" src="../assets/portrait/su-anime-v1.png" alt="苏小雨" />
+    <video id="portrait-video" class="portrait-video hidden" playsinline preload="auto"></video>
+    <div class="light-beam"></div>
+    <div id="favor-pop" class="favor-pop"></div>
+    <div id="cg-layer" class="cg-layer hidden"></div>
+  </div>
+
+  <!-- 对话+选择 -->
+  <div class="bottom">
+    <div class="bubble" id="bubble">
+      <div class="bubble-name">苏小雨</div>
+      <div class="bubble-text" id="bubble-text">…</div>
+    </div>
+    <div class="choices" id="choices"></div>
+  </div>
+
+  <!-- 广告卡点 -->
+  <div id="ad-modal" class="ad-modal hidden">
+    <div class="ad-card">
+      <div class="ad-icon">📺</div>
+      <div class="ad-title">观看广告解锁 CG</div>
+      <div class="ad-desc">粉色棉睡衣立绘</div>
+      <button id="ad-watch">观看广告 · 5s</button>
+      <button id="ad-skip" class="ad-skip">跳过</button>
+    </div>
+  </div>
+
+  <!-- 结局 -->
+  <div id="ending" class="ending hidden">
+    <div class="ending-inner">
+      <h1 id="ending-title">HE</h1>
+      <p id="ending-sub"></p>
+      <img id="ending-cg" src="../assets/reference/su-xiaoyu-master.png" alt="" />
+      <div class="ending-stats">
+        <div>好感度 <b id="ending-favor">-</b> / 200</div>
+        <div>关键锚点 F5 · <b id="ending-anchor">未命中</b></div>
+      </div>
+      <button id="restart">回到开始</button>
+    </div>
+  </div>
+
+  <!-- 反应过场 -->
+  <div id="reaction" class="reaction hidden">
+    <p id="reaction-text"></p>
+    <button id="reaction-next">继续 ▶</button>
+  </div>
+</div>
+
+<audio id="bgm" src="../assets/audio/bgm-warm.mp3" loop preload="auto"></audio>
+<audio id="voice" preload="auto"></audio>
+<audio id="sfx" preload="auto"></audio>
+
+<script src="script.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

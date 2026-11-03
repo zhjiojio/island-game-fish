@@ -1,0 +1,71 @@
+{
+ "schemaVersion": 1,
+ "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_drink_b.mp4",
+ "sha256": "b353fc1f9191f3852df15d13ee2b0d9c3e0a7a7dcd6b87d30ad01275d80adb52",
+ "duration": 10.042,
+ "nodes": [
+  "r_drink_b"
+ ],
+ "status": "speech",
+ "transcript": "这么摇，你手别动，我自己来。",
+ "rawText": "这么摇你手别动我自己来",
+ "asrChars": [
+  [
+   4.02,
+   4.2,
+   "这"
+  ],
+  [
+   4.2,
+   4.38,
+   "么"
+  ],
+  [
+   4.38,
+   4.62,
+   "摇"
+  ],
+  [
+   5.76,
+   5.92,
+   "你"
+  ],
+  [
+   5.92,
+   6.1,
+   "手"
+  ],
+  [
+   6.1,
+   6.26,
+   "别"
+  ],
+  [
+   6.26,
+   6.5,
+   "动"
+  ],
+  [
+   6.64,
+   6.82,
+   "我"
+  ],
+  [
+   6.82,
+   6.96,
+   "自"
+  ],
+  [
+   6.96,
+   7.08,
+   "己"
+  ],
+  [
+   7.08,
+   7.435,
+   "来"
+  ]
+ ],
+ "timingEngine": "asr-anchor(funasr-paraformer)",
+ "reviewMethod": "batch ASR auto (needs human proof-read for punctuation/speaker)."
+}

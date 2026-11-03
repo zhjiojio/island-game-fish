@@ -1,0 +1,10 @@
+{
+  "node": "e4_escape",
+  "speakerKey": "narrator",
+  "speakerName": "旁白",
+  "asrText": "天擦黑，两个人手拉着手往田里跑，绕过土堤蹲下来，谁都不敢出声。跑出来了，可跑出来只是开头。",
+  "asrTextRaw": "天叉黑 两个人手拉着手往田里跑 绕过土地蹲下来 谁都不敢出声 跑出来了 可跑出来只是开头",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 3
+}

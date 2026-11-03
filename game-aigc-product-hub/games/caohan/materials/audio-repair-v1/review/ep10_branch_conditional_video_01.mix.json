@@ -1,0 +1,18 @@
+{
+  "videoId": "ep10_branch_conditional_video_01",
+  "voiceWindows": [],
+  "newVoice": [
+    {
+      "lineId": "ep10_branch_conditional_video_01__l01",
+      "speaker": "画外叙述者",
+      "kind": "narration",
+      "text": "这场偶遇，早已落进了别人的眼里。",
+      "audioFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/audio/ep10_branch_conditional_video_01__l01.mp3",
+      "start": 0.4,
+      "end": 3.9
+    }
+  ],
+  "durationSec": 9.032562358276644,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.5625762939453125
+}

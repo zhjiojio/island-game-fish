@@ -1,0 +1,5 @@
+# Track shared MP4 sources through Git LFS while ignoring local byproducts.
+*
+!.gitignore
+!README.md
+!*.mp4

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta name="viewport"
+    content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <title>斗地主 - 多人联机</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #0a2e1f;
+    }
+
+    canvas {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+
+<body style="margin:0;background:#000;overflow:hidden;touch-action:none">
+  <canvas id="game" style="display:block"></canvas>
+  <script>window.canvas = document.getElementById('game');</script>
+  <script>
+    // 浏览器调试时使用与小游戏一致的公网服务地址。
+    // window.__DDZ_SERVER_URL__ = "ws://8.130.86.207/ws";
+    // window.__DDZ_HTTP_SERVER_URL__ = "http://8.130.86.207";
+
+    // 本地调试时使用本机服务地址。
+    window.__DDZ_SERVER_URL__ = "ws://127.0.0.1:8080";
+    window.__DDZ_HTTP_SERVER_URL__ = "http://127.0.0.1:8080";
+    window.__DDZ_DEBUG__ = true;
+  </script>
+  <script>
+    // ─────────────────────────────────────────────────────────────────────────
+    // 【统一版本号 + 顺序加载】
+    // 此前 25 个 <script> 各自手工维护 ?v=N（散落着 v=1/2/5/7/9），
+    // 改一个文件却忘记改版本号就会命中浏览器缓存 —— 本项目已因此踩过
+    // 「M3.Game.enterRoom is not defined」的坑。
+    //
+    // 现在只需改下面一处 BUILD_VERSION 即可让全部脚本一起失效。
+    // 本地开发把 DEV_ALWAYS_FRESH 置为 true，可每次刷新都强制取最新。
+    //
+    // 注意：必须保持顺序同步加载（document.write 或串行 onload），
+    // 因为各模块间存在依赖（m3-init 必须最先，main 必须最后）。
+    // ─────────────────────────────────────────────────────────────────────────
+    (function () {
+
+      var BUILD_VERSION = '608';
+
+      var DEV_ALWAYS_FRESH = false;   // 本地调试可临时改 true
+
+      var version = DEV_ALWAYS_FRESH ? String(Date.now()) : BUILD_VERSION;
+
+      // 依赖顺序：m3-init 最先，main 最后，中间按平台能力 -> 游戏模块
+      var scripts = [
+        // 必须最先加载
+        'js/common/m3-init.js',
+        // 平台能力
+        'js/common/kwai-event-bus.js',
+        'js/common/kwai-ad-config.js',
+        'api/kwai-base.js',       // 生命周期 / 前台恢复
+        'api/kwai-payment.js',    // 快手小游戏支付适配
+        'api/kwai-login.js',
+        'api/kwai-ad.js',
+        'api/kwai-share.js',
+        'api/kwai-network.js',
+        'api/kwai-storage.js',
+        'api/kwai-file.js',      // 沙盒文件系统（语音包下载缓存）
+        'api/kwai-open.js',
+        'api/kwai-ui.js',
+        'api/kwai-media.js',
+        'api/kwai-device.js',   // 振动（vibrateShort）
+        // 斗地主游戏文件（按依赖顺序）
+        'js/common/compliance.js',   // 隐私政策、实名、防沉迷与客服能力预留
+        'js/common/vibrate.js',      // 震动统一管理（分级/节流/预算/开关）
+        'js/common/config.js',
+        'js/common/subpackage.js',  // 快手小游戏分包门禁与预载（H5 端直通放行）
+        'js/common/asset-manager.js', // 统一资源管理器（引用计数 + 双端适配）
+        'js/core/voice-pack.js',      // 快手小帅斗地主语音包
+        // auth 必须早于 network/game 加载：两者都依赖 M3.Auth 组装认证帧
+        'js/core/auth.js',
+        'js/common/layout.js',
+        'js/common/ui-button.js',
+        'js/core/deck.js',
+        'js/core/rule.js',
+        'js/core/network.js',
+        'js/core/game.js',
+        'js/iap/diamond-wallet.js',
+        'js/iap/iap-http.js',
+        'js/iap/iap.js',
+        'js/core/game-http.js',
+        'js/scene/home.js',
+        'js/popup/ad-reward.js',
+        'js/popup/newcomer.js',
+        'js/popup/add-desk.js',
+        'js/popup/bankrupt.js',
+        'js/popup/bean-reward.js',    // 获得豆子弹窗（通用，全场景最顶层）
+        'js/popup/record.js',
+        'js/core/matchmaking.js',
+        'js/scene/game.js',
+        'js/popup/settlement.js',
+        'js/common/settings.js',      // 音频设置配置（读写存储 + 应用到 KwaiMedia）
+        'js/popup/voice.js',
+        'js/popup/profile.js',
+        'js/popup/shop.js',
+        'js/popup/exchange.js',
+        'js/popup/insufficient-diamond.js',
+        'js/popup/insufficient-beans.js',
+        'js/lib/spine38.js',        // Spine 3.8 runtime（全局 window.spine）
+        'js/common/spine-fx.js',    // 一次性 Spine 特效（三带一，共享主 GL，播完销毁）
+        'js/common/render.js',
+        'js/common/input.js',
+        'js/dev/dev-inspect.js',      // 调试：Canvas Inspect 工具（仅 __DDZ_DEBUG__ / ?inspect=1 激活）
+        // 保持最后加载
+        'js/main.js'
+      ];
+
+      var i = 0;
+      function loadNext () {
+        if (i >= scripts.length) return;
+        var src = scripts[i++];
+        var el = document.createElement('script');
+        el.src = src + '?v=' + version;
+        el.async = false;               // 关键：保持执行顺序
+        el.onload = loadNext;
+        el.onerror = function () {
+          console.error('[DDZ] 脚本加载失败:', src);
+          loadNext();                   // 继续后续，便于定位问题而非白屏
+        };
+        document.body.appendChild(el);
+      }
+      loadNext();
+    })();
+  </script>
+</body>
+
+</html>

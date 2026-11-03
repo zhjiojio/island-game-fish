@@ -1,0 +1,36 @@
+▶ Lv20 · 郑州 · 德化步行街夜市 · 7 物：烩面大碗、胡辣汤桶、少林棍纪念品、黄河奇石、二七塔模型、灌汤包蒸屉、豫剧脸谱
+   ✅ Lv20 → ./generated/lv20.jpg (4322587 B)
+▶ Lv21 · 厦门 · 中山路骑楼 · 7 物：沙茶面碗、土笋冻、骑楼柱头、功夫茶壶、南普陀素饼、鼓浪屿钢琴、海蛎煎
+   ✅ Lv21 → ./generated/lv21.jpg (4379681 B)
+▶ Lv22 · 潮州 · 牌坊街古城 · 7 物：潮汕牛肉丸、潮州工夫茶盘、潮州古筝、牌坊雕花、潮汕肠粉、榕树须、潮州老卤味
+   ✅ Lv22 → ./generated/lv22.jpg (4266027 B)
+▶ Lv23 · 桂林 · 东西巷石板路 · 7 物：桂林米粉、漓江竹排、山水画一幅、壮锦布片、桂花糕、芦笙、铜鼓
+   ⚠ GPT 失败，切 Gemini：请求失败: ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))。建议操作：检查网络连接或确认 SSO 会话是否有效。
+   ✅ Lv23 → ./generated/lv23.jpg (8952510 B)
+▶ Lv24 · 昆明 · 官渡古镇 · 7 物：过桥米线、宣威火腿、官渡粑粑、普洱茶饼、傣式竹楼窗、云南野蘑菇、孔雀翎
+   ✅ Lv24 → ./generated/lv24.jpg (3883722 B)
+
+=== 汇总 ===
+total 183120
+drwxr-xr-x@ 22 fat  staff      704  8  9 03:11 .
+drwxr-xr-x@ 19 fat  staff      608  8  9 03:06 ..
+-rw-r--r--@  1 fat  staff  4566881  8  9 03:06 lv10.jpg
+-rw-r--r--@  1 fat  staff  4120180  8  9 03:06 lv11.jpg
+-rw-r--r--@  1 fat  staff  4563869  8  9 03:07 lv12.jpg
+-rw-r--r--@  1 fat  staff  4615745  8  9 03:08 lv13.jpg
+-rw-r--r--@  1 fat  staff  4480261  8  9 03:09 lv14.jpg
+-rw-r--r--@  1 fat  staff  4895286  8  9 03:06 lv15.jpg
+-rw-r--r--@  1 fat  staff  4335072  8  9 03:07 lv16.jpg
+-rw-r--r--@  1 fat  staff  4113895  8  9 03:08 lv17.jpg
+-rw-r--r--@  1 fat  staff  4014702  8  9 03:09 lv18.jpg
+-rw-r--r--@  1 fat  staff  4709557  8  9 03:10 lv19.jpg
+-rw-r--r--@  1 fat  staff  4322587  8  9 03:06 lv20.jpg
+-rw-r--r--@  1 fat  staff  4379681  8  9 03:07 lv21.jpg
+-rw-r--r--@  1 fat  staff  4266027  8  9 03:08 lv22.jpg
+-rw-r--r--@  1 fat  staff  8952510  8  9 03:10 lv23.jpg
+-rw-r--r--@  1 fat  staff  3883722  8  9 03:11 lv24.jpg
+-rw-r--r--@  1 fat  staff  4386366  8  9 03:06 lv25.jpg
+-rw-r--r--@  1 fat  staff  4070831  8  9 03:06 lv26.jpg
+-rw-r--r--@  1 fat  staff  4043489  8  9 03:07 lv27.jpg
+-rw-r--r--@  1 fat  staff  4093190  8  9 03:08 lv28.jpg
+-rw-r--r--@  1 fat  staff  4392577  8  9 03:09 lv29.jpg

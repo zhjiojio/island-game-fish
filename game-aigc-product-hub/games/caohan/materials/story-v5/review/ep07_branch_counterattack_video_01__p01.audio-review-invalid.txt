@@ -1,0 +1,1 @@
+Sure, let's analyze the audio and produce the transcription. I'll now call a function to start processing the audio.

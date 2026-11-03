@@ -1,0 +1,103 @@
+skeleton.png
+size: 1705,817
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+111
+  rotate: true
+  xy: 1349, 239
+  size: 215, 205
+  orig: 215, 207
+  offset: 0, 0
+  index: -1
+222
+  rotate: true
+  xy: 1428, 30
+  size: 207, 185
+  orig: 209, 187
+  offset: 1, 1
+  index: -1
+guangxiao
+  rotate: false
+  xy: 2, 2
+  size: 778, 813
+  orig: 895, 895
+  offset: 117, 0
+  index: -1
+大花
+  rotate: false
+  xy: 782, 456
+  size: 913, 359
+  orig: 913, 359
+  offset: 0, 0
+  index: -1
+春天
+  rotate: false
+  xy: 782, 162
+  size: 565, 292
+  orig: 565, 292
+  offset: 0, 0
+  index: -1
+未命名文件夹/1
+  rotate: false
+  xy: 1373, 41
+  size: 46, 35
+  orig: 46, 36
+  offset: 0, 0
+  index: -1
+未命名文件夹/2
+  rotate: true
+  xy: 1373, 78
+  size: 38, 44
+  orig: 38, 44
+  offset: 0, 0
+  index: -1
+未命名文件夹/3
+  rotate: false
+  xy: 1349, 181
+  size: 77, 56
+  orig: 77, 56
+  offset: 0, 0
+  index: -1
+未命名文件夹/4
+  rotate: true
+  xy: 1373, 118
+  size: 61, 38
+  orig: 61, 38
+  offset: 0, 0
+  index: -1
+皇冠
+  rotate: false
+  xy: 782, 10
+  size: 195, 150
+  orig: 195, 150
+  offset: 0, 0
+  index: -1
+皇冠5
+  rotate: false
+  xy: 782, 10
+  size: 195, 150
+  orig: 195, 150
+  offset: 0, 0
+  index: -1
+皇冠 2
+  rotate: false
+  xy: 979, 11
+  size: 195, 149
+  orig: 195, 149
+  offset: 0, 0
+  index: -1
+皇冠 3
+  rotate: true
+  xy: 1556, 261
+  size: 193, 147
+  orig: 193, 147
+  offset: 0, 0
+  index: -1
+皇冠 4
+  rotate: false
+  xy: 1176, 11
+  size: 195, 149
+  orig: 195, 149
+  offset: 0, 0
+  index: -1

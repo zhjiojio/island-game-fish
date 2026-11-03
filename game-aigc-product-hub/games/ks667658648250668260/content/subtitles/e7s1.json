@@ -1,0 +1,10 @@
+{
+  "node": "e7s1",
+  "speakerKey": "narrator",
+  "speakerName": "旁白",
+  "asrText": "井底见了泥。三十天没下一滴雨，苞米叶子卷成了针，一捏就碎成末。老村长在祠堂前蹲了一整天，谁都知道那句话，再不下雨，就死",
+  "asrTextRaw": "井底建了泥 三十天没下一滴雨 包米叶子卷成了针 一捏就碎成沫 老村长在池塘前 蹲了一整天 再不下雨就死了",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 7
+}

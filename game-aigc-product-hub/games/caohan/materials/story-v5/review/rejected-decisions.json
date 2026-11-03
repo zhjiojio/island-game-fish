@@ -1,0 +1,20 @@
+[
+  {
+    "partId": "ep03_branch_counterattack_video_01__p02",
+    "sha256": "6b6362f063c180ea8d71f53055d1f52c894b44b2f7e0da08a3494f32789700ae",
+    "status": "rejected_extra_speech",
+    "visualEvidence": "ep03_branch_counterattack_video_01__p02.frames.jpg",
+    "audioEvidence": "ep03_branch_counterattack_video_01__p02.audio-review.json",
+    "additionalAudioEvidence": "ep03_branch_counterattack_video_01__p02.crosscheck.json",
+    "decision": "两次独立转写均检测到除白名单外的开场词句；表情偏轻松。重做r2待审核。"
+  },
+  {
+    "partId": "ending_crane__p02",
+    "sha256": "1d1c9cab1df6975c57259eba4bd62ba4824779ba9f8d39168c893431f1269406",
+    "status": "rejected_missing_sound_effect",
+    "visualEvidence": "ending_crane__p02.frames.jpg",
+    "audioEvidence": "ending_crane__p02.audio-review.json",
+    "decision": "声音专项复核未检出核心齐鸣喇叭，且检出疑似音乐；重做r2，旧合成不可交付。",
+    "additionalAudioEvidence": "ending_crane__p02.sound-detail.json"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "videoId": "ending_regret",
+  "voiceWindows": [],
+  "newVoice": [
+    {
+      "lineId": "ending_regret__l01",
+      "speaker": "画外叙述者",
+      "kind": "narration",
+      "text": "她赢下了清算，却松开了那只伸向她的手。",
+      "audioFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/audio/ending_regret__l01.mp3",
+      "start": 0.4,
+      "end": 4.487
+    }
+  ],
+  "durationSec": 22.291156462585032,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.5412445068359375
+}

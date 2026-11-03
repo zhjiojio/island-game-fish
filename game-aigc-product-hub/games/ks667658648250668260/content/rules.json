@@ -1,0 +1,82 @@
+{
+  "$comment": [
+    "rules.json —— 21 条编号铁律的机器可执行版",
+    "由 scripts/tools/validate-rules.js 消费。每条规则形如：",
+    "  { id, name, level (fatal/warn), when, must, hint }",
+    "when/must 是 JavaScript 表达式，运行时以 ctx = { node, story, registry, allNodes } 求值。"
+  ],
+  "rules": [
+    {
+      "id": 21,
+      "name": "video 节点做说书人字幕必须 forceCaption",
+      "level": "warn",
+      "when": "node.media && node.media.kind === 'video' && node.char === 'narrator' && node.text",
+      "must": "node.forceCaption === true",
+      "hint": "video + narrator 节点必须 forceCaption:true，否则字幕不显示"
+    },
+    {
+      "id": 25,
+      "name": "char 必须 ∈ charInfo 白名单",
+      "level": "fatal",
+      "when": "node.char && node.text",
+      "must": "registry.chars[node.char] !== undefined",
+      "hint": "node.char 必须在 assets.registry.json → chars 里注册"
+    },
+    {
+      "id": 28,
+      "name": "CDN 素材 URL 写入前必须验证",
+      "level": "warn",
+      "when": "node.media && node.media.file && /^https:/.test(node.media.file)",
+      "must": "true",
+      "hint": "跑 `npm run assets:audit` 前不校验 CDN 200 是常见回归源"
+    },
+    {
+      "id": 33,
+      "name": "skillcard 卡必须在剧本里有触发节点",
+      "level": "warn",
+      "when": "false",
+      "must": "true",
+      "hint": "CARDS 表里的卡在剧本里必须有 kind:skillcard 或 unlock 触发；改动请跑 audit_skillcard_prev.js"
+    },
+    {
+      "id": 34,
+      "name": "NPC 提问节点必须走 choice 类型",
+      "level": "warn",
+      "when": "node.text && /[?？](\\s*[”\"'])?\\s*$/.test(node.text) && node.speaker && !/^(你|傲天|旁白|系统|内心|说书)/.test(node.speaker)",
+      "must": "node.type === 'choice' || (node.options && node.options.length > 0)",
+      "hint": "NPC 问了句问句就必须给玩家 choice 应答，不能 stay 干看"
+    },
+    {
+      "id": 38,
+      "name": "choice 节点必须自带 media",
+      "level": "warn",
+      "when": "node.type === 'choice' || (node.options && node.options.length > 0)",
+      "must": "node.media && (node.media.kind || node.media.file || node.media.image)",
+      "hint": "choice 节点前置视频结束后 mediaImg 清空，若 choice 无 media 会黑屏（存量特例：inherit 前节点视觉的暂 warn）"
+    },
+    {
+      "id": 40,
+      "name": "video+narrator 无音轨必须白名单 NARR_VIDEO_ALLOW",
+      "level": "warn",
+      "when": "node.media && node.media.kind === 'video' && node.char === 'narrator' && node.text && node.media.mute === true",
+      "must": "registry.narrVideoAllow.indexOf(node.id) >= 0",
+      "hint": "video 节点若 mp4 无音轨（media.mute:true），char=narrator 时必须在 registry.narrVideoAllow 里；存量未标 mute 的暂不 fatal"
+    },
+    {
+      "id": 41,
+      "name": "image + narr mp3 text 必须字对字",
+      "level": "warn",
+      "when": "false",
+      "must": "true",
+      "hint": "此条运行时不好校验；建 mp3 时校对 TTS 文本"
+    },
+    {
+      "id": 42,
+      "name": "UI 门槛从 storage 恢复时必须同步 revealed 状态（v92.4 已失效）",
+      "level": "warn",
+      "when": "false",
+      "must": "true",
+      "hint": "v92.4 新手引导浮层整体删除，tutorialSeen 门槛不再存在；三胶囊进剧情即亮相，本条保留仅作历史记录"
+    }
+  ]
+}

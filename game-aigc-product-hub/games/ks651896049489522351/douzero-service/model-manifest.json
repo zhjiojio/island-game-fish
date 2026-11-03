@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "name": "douzero-wp",
+  "version": "douzero-wp-hf-57b3914046c2",
+  "license_review_status": "approved",
+  "source": "https://huggingface.co/palemoky/douzero-baselines/tree/57b3914046c2a0877016b8b8830fd07cf5b0ba08 (model card declares Apache-2.0)",
+  "models": {
+    "landlord": {
+      "file": "landlord.onnx",
+      "sha256": "5ba2f1bb414483a3ecdf0d000159c1322b02e2d096e6d83be8a18765b56d6d32"
+    },
+    "landlord_down": {
+      "file": "landlord_down.onnx",
+      "sha256": "9b816457615f8007dd3a657dde1f78dac4fec7c3b0041f6f89321a1c6335cbd1"
+    },
+    "landlord_up": {
+      "file": "landlord_up.onnx",
+      "sha256": "244ec62a549a0141c6532dffd02bee7675621d095cb194362b47c8a923c95883"
+    }
+  }
+}

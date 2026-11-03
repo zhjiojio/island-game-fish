@@ -1,0 +1,12 @@
+{
+  "videoId": "ending_future",
+  "sourceParts": [
+    "ending_future__p01",
+    "ending_future__p02"
+  ],
+  "result": "visual_pass_audio_transcript_pass",
+  "durationSec": 18.083333,
+  "sha256": "7ecaa8093f7d1b2ca31a3e647215435385e96a31007ed4dd5dacb19275919135",
+  "note": "全部源片段均通过人工身份、构图与独立转写检查；按原文顺序保留原生音轨。",
+  "finalSamplingNote": "合并五点抽帧核对未来研究室至旧手机付款人揭示的顺序，人物一致，手机字清楚。"
+}

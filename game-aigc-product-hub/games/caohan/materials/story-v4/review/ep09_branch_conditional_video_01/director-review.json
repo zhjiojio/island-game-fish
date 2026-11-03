@@ -1,0 +1,13 @@
+{
+  "videoId": "ep09_branch_conditional_video_01",
+  "sourceParts": [
+    "ep09_branch_conditional_video_01__p01",
+    "ep09_branch_conditional_video_01__p02",
+    "ep09_branch_conditional_video_01__p03"
+  ],
+  "result": "visual_pass_audio_transcript_pass",
+  "durationSec": 19.125,
+  "sha256": "3672fab172fe35bc3a8cc6542c8b8e39abc00cdf647619829852648dcf1e40e0",
+  "note": "全部源片段均通过人工身份、构图与独立转写检查；按原文顺序保留原生音轨。",
+  "finalSamplingNote": "已检查合并后全时段抽帧，人物身份、镜头顺序及服装变化符合原分镜。"
+}

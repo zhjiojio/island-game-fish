@@ -1,0 +1,86 @@
+{
+ "schemaVersion": 1,
+ "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_rub_a2.mp4",
+ "sha256": "bfc4d34b8ae945e0f9e69c70d595442e065517a62bbf3babc48a7975cb8ac35e",
+ "duration": 10.042,
+ "nodes": [
+  "r_rub_a2"
+ ],
+ "status": "speech",
+ "transcript": "嗯嗯，傲天，你说咱这儿算成家了吗？",
+ "rawText": "嗯嗯傲天你说咱这儿算成家了吗",
+ "asrChars": [
+  [
+   0.4,
+   0.67,
+   "嗯"
+  ],
+  [
+   3.05,
+   3.275,
+   "嗯"
+  ],
+  [
+   5.32,
+   5.5,
+   "傲"
+  ],
+  [
+   5.5,
+   5.74,
+   "天"
+  ],
+  [
+   6.74,
+   6.98,
+   "你"
+  ],
+  [
+   6.98,
+   7.22,
+   "说"
+  ],
+  [
+   8.5,
+   8.72,
+   "咱"
+  ],
+  [
+   8.72,
+   8.82,
+   "这"
+  ],
+  [
+   8.82,
+   8.92,
+   "儿"
+  ],
+  [
+   8.92,
+   9.08,
+   "算"
+  ],
+  [
+   9.08,
+   9.28,
+   "成"
+  ],
+  [
+   9.28,
+   9.46,
+   "家"
+  ],
+  [
+   9.46,
+   9.64,
+   "了"
+  ],
+  [
+   9.64,
+   9.875,
+   "吗"
+  ]
+ ],
+ "timingEngine": "asr-anchor(funasr-paraformer)",
+ "reviewMethod": "batch ASR auto (needs human proof-read for punctuation/speaker)."
+}

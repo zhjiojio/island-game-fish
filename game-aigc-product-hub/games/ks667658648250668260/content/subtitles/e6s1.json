@@ -1,0 +1,10 @@
+{
+  "node": "e6s1",
+  "speakerKey": "narrator",
+  "speakerName": "沈婉儿",
+  "asrText": "水烧好了，趁热洗。",
+  "asrTextRaw": "水烧好了 趁热洗",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 2
+}

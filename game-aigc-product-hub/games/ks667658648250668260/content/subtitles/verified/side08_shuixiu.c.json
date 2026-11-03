@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side08_shuixiu.c.mp4",
+  "sha256": "9ecdd39081005153b4a0cb9c21fdefc5a5f474a95e82fb4b603597aad414fe67",
+  "duration": 10.042,
+  "nodes": [
+    "r_side08"
+  ],
+  "status": "speech",
+  "transcript": "这支舞，我练了好些天了，就想着哪天夜里跳给你一个人看。",
+  "rawText": "这支舞我练了好些天了就想着哪天夜里跳给你一个人看",
+  "asrChars": [
+    [
+      3.91,
+      4.09,
+      "这"
+    ],
+    [
+      4.09,
+      4.33,
+      "支"
+    ],
+    [
+      4.33,
+      4.57,
+      "舞"
+    ],
+    [
+      5.15,
+      5.37,
+      "我"
+    ],
+    [
+      5.37,
+      5.53,
+      "练"
+    ],
+    [
+      5.53,
+      5.67,
+      "了"
+    ],
+    [
+      5.67,
+      5.81,
+      "好"
+    ],
+    [
+      5.81,
+      6.05,
+      "些"
+    ],
+    [
+      6.05,
+      6.29,
+      "天"
+    ],
+    [
+      6.29,
+      6.53,
+      "了"
+    ],
+    [
+      7.01,
+      7.25,
+      "就"
+    ],
+    [
+      7.27,
+      7.49,
+      "想"
+    ],
+    [
+      7.49,
+      7.73,
+      "着"
+    ],
+    [
+      7.95,
+      8.13,
+      "哪"
+    ],
+    [
+      8.13,
+      8.33,
+      "天"
+    ],
+    [
+      8.33,
+      8.55,
+      "夜"
+    ],
+    [
+      8.55,
+      8.75,
+      "里"
+    ],
+    [
+      8.75,
+      8.89,
+      "跳"
+    ],
+    [
+      8.89,
+      9.01,
+      "给"
+    ],
+    [
+      9.01,
+      9.15,
+      "你"
+    ],
+    [
+      9.15,
+      9.25,
+      "一"
+    ],
+    [
+      9.25,
+      9.43,
+      "个"
+    ],
+    [
+      9.43,
+      9.61,
+      "人"
+    ],
+    [
+      9.61,
+      9.845,
+      "看"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "这支舞,我练了好些天了,就想着哪天夜里跳给你一个人看。",
+  "speakerKey": "wanerh",
+  "speakerRuleKey": "side08_shuixiu",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

@@ -1,0 +1,65 @@
+[
+  {
+    "partId": "ending_streamer__p01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/requests/ending_streamer__p01.silent-picture.json",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/video/ending_streamer__p01.silent-picture.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/requests/ending_streamer__p01.silent-picture.job.json",
+    "originalSegment": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/segments/ending_streamer__p01.mp4",
+    "reason": "visible_mouth_motion_during_removed_narration",
+    "status": "queued_candidate_not_approved"
+  },
+  {
+    "partId": "ending_streamer__p02",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/requests/ending_streamer__p02.silent-picture.json",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/video/ending_streamer__p02.silent-picture.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/requests/ending_streamer__p02.silent-picture.job.json",
+    "originalSegment": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/segments/ending_streamer__p02.mp4",
+    "reason": "visible_mouth_motion_during_removed_narration",
+    "status": "queued_candidate_not_approved"
+  },
+  {
+    "partId": "ending_terrace__p02",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/requests/ending_terrace__p02.silent-picture.json",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/video/ending_terrace__p02.silent-picture.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/requests/ending_terrace__p02.silent-picture.job.json",
+    "originalSegment": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/segments/ending_terrace__p02.mp4",
+    "reason": "visible_mouth_motion_during_removed_narration",
+    "status": "queued_candidate_not_approved"
+  },
+  {
+    "partId": "ending_empire__p01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/requests/ending_empire__p01.silent-picture.json",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/video/ending_empire__p01.silent-picture.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/requests/ending_empire__p01.silent-picture.job.json",
+    "originalSegment": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/segments/ending_empire__p01.mp4",
+    "reason": "visible_mouth_motion_during_removed_narration",
+    "status": "queued_candidate_not_approved"
+  },
+  {
+    "partId": "ending_independent__p01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/requests/ending_independent__p01.silent-picture.json",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/video/ending_independent__p01.silent-picture.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/requests/ending_independent__p01.silent-picture.job.json",
+    "originalSegment": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/segments/ending_independent__p01.mp4",
+    "reason": "visible_mouth_motion_during_removed_narration",
+    "status": "queued_candidate_not_approved"
+  },
+  {
+    "partId": "ending_revenge__p01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/requests/ending_revenge__p01.silent-picture.json",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/video/ending_revenge__p01.silent-picture.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/requests/ending_revenge__p01.silent-picture.job.json",
+    "originalSegment": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/segments/ending_revenge__p01.mp4",
+    "reason": "visible_mouth_motion_during_removed_narration",
+    "status": "queued_candidate_not_approved"
+  },
+  {
+    "partId": "ep06_scene_00_video_01__p01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/requests/ep06_scene_00_video_01__p01.silent-picture.json",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/video/ep06_scene_00_video_01__p01.silent-picture.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/requests/ep06_scene_00_video_01__p01.silent-picture.job.json",
+    "originalSegment": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/segments/ep06_scene_00_video_01__p01.mp4",
+    "reason": "visible_mouth_motion_during_removed_narration",
+    "status": "queued_candidate_not_approved"
+  }
+]

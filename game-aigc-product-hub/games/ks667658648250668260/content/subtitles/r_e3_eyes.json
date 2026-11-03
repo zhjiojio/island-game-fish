@@ -1,0 +1,10 @@
+{
+  "node": "r_e3_eyes",
+  "speakerKey": "aotian",
+  "speakerName": "你",
+  "asrText": "（视线锁在她瞳孔·喉结滚动）……合身。你抬头看我。……她耳根一下红透，睫毛颤了颤，屋里那盏油灯忽地爆了个小花。",
+  "asrTextRaw": "",
+  "matchScript": true,
+  "textSource": "script-authoritative (v82.0重生成全库视频后，旧ASR已失效，以剧本text为权威)",
+  "cues": 5
+}

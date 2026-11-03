@@ -1,0 +1,27 @@
+{
+  "videoId": "ending_terrace",
+  "voiceWindows": [],
+  "newVoice": [
+    {
+      "lineId": "ending_terrace__l01",
+      "speaker": "画外叙述者",
+      "kind": "narration",
+      "text": "这一次，贺星冉没有动手。",
+      "audioFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/audio/ending_terrace__l01.mp3",
+      "start": 0.4,
+      "end": 3.5
+    },
+    {
+      "lineId": "ending_terrace__l02",
+      "speaker": "画外叙述者",
+      "kind": "narration",
+      "text": "他终于尝到了坠落的滋味。",
+      "audioFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/audio/ending_terrace__l02.mp3",
+      "start": 8.942,
+      "end": 11.642
+    }
+  ],
+  "durationSec": 17.08988662131519,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.5643768310546875
+}

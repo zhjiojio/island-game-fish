@@ -1,0 +1,12 @@
+{
+  "videoId": "ending_revenge",
+  "sourceParts": [
+    "ending_revenge__p01",
+    "ending_revenge__p02"
+  ],
+  "result": "visual_pass_audio_transcript_pass",
+  "durationSec": 16.083333,
+  "sha256": "fa4dd99b2bb50e3a2b57118a3a09bac9b70eacd9c4e84fd1a78c1d30133a8b81",
+  "note": "全部源片段均通过人工身份、构图与独立转写检查；按原文顺序保留原生音轨。",
+  "finalSamplingNote": "合并五点抽帧确认公开证据至递资料给媒体的顺序；原生音轨来自已审核分段。"
+}

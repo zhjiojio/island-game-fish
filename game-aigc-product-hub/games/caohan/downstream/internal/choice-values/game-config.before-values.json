@@ -1,0 +1,5446 @@
+{
+  "meta": {
+    "version": "2.4.0",
+    "gameId": "caohan",
+    "gameName": "逃婚后我花千万雇了工地糙汉",
+    "lang": "zh-CN",
+    "description": "从逃婚、背叛与生死危机开场的章节化互动影游视频分镜版。",
+    "configUpdatedAt": "2026-09-08T16:21:51.188610+08:00"
+  },
+  "theme": {
+    "uiStyle": "style1",
+    "_uiStyleNote": "UI 风格 ID，对应 uiStyle/{id}/components.js 中已注册的风格。目前可选：style1（沉浸暗金）",
+    "primaryColor": "#C8902A",
+    "overlayOpacity": 0.65,
+    "animDuration": 400,
+    "textColor": "#F5E6C8",
+    "buttonTextColor": "#302D2A",
+    "titleTextColor": "#F2DBAB",
+    "_renderColorsNote": "以下字段控制纯渲染（无 bg 图片）模式下各组件的颜色，支持动态下发。panelColor=面板/hub/文本/dialog 共用背景色（透明度 0.75 写死在代码里）；borderColor=全部描边色；buttonBg=浅色按钮背景（渐变起点）；buttonBgEnd=浅色按钮背景渐变终点；buttonBgLock=锁定按钮背景",
+    "borderColor": "#FFE8CB",
+    "buttonBg": "#FFF8F0",
+    "buttonBgEnd": "#FFF1E0",
+    "buttonBgLock": "#616161",
+    "panelColor": "#0D0F1C"
+  },
+  "valueDefinitions": [],
+  "homepage": {
+    "image": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep01_scene_00_video_01.v5.a8098354592c.first.jpg",
+    "hotspots": [
+      {
+        "id": "btn_new_game",
+        "label": "开始游戏",
+        "action": "new_game",
+        "x": 0.12,
+        "y": 0.72,
+        "w": 0.76,
+        "h": 0.09,
+        "showCondition": null
+      }
+    ],
+    "bgm": null,
+    "loadingTitle": "正在载入逃婚故事…",
+    "loadingHints": [
+      {
+        "prefix": "每一次选择，都通向",
+        "highlight": "不同的结局"
+      },
+      {
+        "prefix": "逃离一场婚约，",
+        "highlight": "找回自己的方向"
+      },
+      {
+        "prefix": "相信谁、留下谁，",
+        "highlight": "由你决定"
+      }
+    ],
+    "copyright": ""
+  },
+  "entryNodeId": "ep01_scene_00",
+  "nodes": [
+    {
+      "nodeId": "ep01_scene_00",
+      "nodeDesc": "背叛在第一句话发生",
+      "title": "露台上的分手",
+      "nodeType": "video",
+      "sceneType": "begin",
+      "nodeIconUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep01_scene_00_video_01.v5.a8098354592c.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep01_scene_00_video_01.v5.a8098354592c.mp4",
+        "firstFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep01_scene_00_video_01.v5.a8098354592c.first.jpg",
+        "endFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep01_scene_00_video_01.v5.a8098354592c.end.jpg",
+        "preload": true,
+        "loop": false,
+        "muted": false,
+        "duration": 10.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep01_scene_00__ep01_choice_01_prompt",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "这一刻，你承认自己真正的感受——",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 390,
+            "width": 360,
+            "height": null
+          }
+        },
+        {
+          "componentId": "ep01_scene_00__ep01_choice_01_emotion",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep01_branch_emotion",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "他只是压力太大，不是认真的",
+            "iconUrl": null,
+            "lable": "A"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep01_scene_00__ep01_choice_01_truth",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep01_branch_truth",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "他是认真的，他从来没爱过我",
+            "iconUrl": null,
+            "lable": "B"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 591,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep01_scene_00__ep01_choice_01_counterattack",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep01_branch_counterattack",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "把牛奶杯砸在他脚边，逼他承认",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png",
+            "lable": "C"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep01_scene_00"
+          },
+          "position": {
+            "x": null,
+            "y": 653,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep01_scene_00__ep01_choice_01_conditional",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep01_branch_conditional",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "播放提前留下的露台录音",
+            "iconUrl": null,
+            "lable": "D"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 715,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep01_branch_emotion",
+      "nodeDesc": "玩家选择“他只是压力太大，不是认真的”后的可见后果",
+      "title": "选择后果·情感惯性",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep01_branch_emotion_video_01.v5.2919c7ad7457.first.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep01_branch_emotion_video_01.v5.2919c7ad7457.mp4",
+        "firstFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep01_branch_emotion_video_01.v5.2919c7ad7457.first.jpg",
+        "endFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep01_branch_emotion_video_01.v5.2919c7ad7457.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep01_branch_emotion__ep01_ad_01_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep02_scene_00",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep01_branch_emotion"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep01_branch_truth",
+      "nodeDesc": "玩家选择“他是认真的，他从来没爱过我”后的可见后果",
+      "title": "选择后果·内心真相",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep01_branch_truth_video_01.v5.39c3253ba57a.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep01_branch_truth_video_01.v5.39c3253ba57a.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep01_branch_truth_video_01.v5.39c3253ba57a.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep01_branch_truth_video_01.v5.39c3253ba57a.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep01_branch_truth__ep01_ad_02_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep03_scene_00__v2",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep01_branch_truth"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep01_branch_counterattack",
+      "nodeDesc": "玩家选择“把牛奶杯砸在他脚边，逼他承认”后的可见后果",
+      "title": "选择后果·公开反击",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep01_branch_counterattack_video_01.v5.bcfed0246cdd.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep01_branch_counterattack_video_01.v5.bcfed0246cdd.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep01_branch_counterattack_video_01.v5.bcfed0246cdd.first.jpg",
+        "endFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep01_branch_counterattack_video_01.v5.bcfed0246cdd.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 8.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep01_branch_counterattack__ep01_ad_03_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep04_scene_00",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep01_branch_counterattack"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep01_branch_conditional",
+      "nodeDesc": "玩家选择“播放提前留下的露台录音”后的可见后果",
+      "title": "选择后果·秘密翻盘",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep01_branch_conditional_video_01.v5.158445de3727.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep01_branch_conditional_video_01.v5.158445de3727.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep01_branch_conditional_video_01.v5.158445de3727.first.jpg",
+        "endFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep01_branch_conditional_video_01.v5.158445de3727.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 8.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep01_branch_conditional__ep01_ad_04_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ending_loop",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "查看结局",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep01_branch_conditional"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep02_scene_00",
+      "nodeDesc": "追兵锁定她的脸，陌生糙汉突然把她搂进怀里",
+      "title": "冷开场：protection",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep02_scene_00_video_01.v5.0e8176ea3f9a.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep02_scene_00_video_01.v5.0e8176ea3f9a.mp4",
+        "firstFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep02_scene_00_video_01.v5.0e8176ea3f9a.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep02_scene_00_video_01.v5.0e8176ea3f9a.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep02_scene_00__ep02_choice_01_prompt",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "这一刻，你承认自己真正的感受——",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 390,
+            "width": 360,
+            "height": null
+          }
+        },
+        {
+          "componentId": "ep02_scene_00__ep02_choice_01_emotion",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep02_branch_emotion",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "靠近他，我现在只能信这双手",
+            "iconUrl": null,
+            "lable": "A"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep02_scene_00__ep02_choice_01_truth",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep02_branch_truth",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "推开他，我不能再把命交给男人",
+            "iconUrl": null,
+            "lable": "B"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 591,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep02_scene_00__ep02_choice_01_counterattack",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep02_branch_counterattack",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "让陈劲当众把追兵吓退",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png",
+            "lable": "C"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep02_scene_00"
+          },
+          "position": {
+            "x": null,
+            "y": 653,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep02_scene_00__ep02_choice_01_conditional",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep02_branch_conditional",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "用上一集留下的录音反向威胁",
+            "iconUrl": null,
+            "lable": "D"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 715,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep03_scene_00__v2",
+      "nodeDesc": "她一低头，直接吐在救命恩人的鞋边",
+      "title": "冷开场：humiliation",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep03_scene_00_video_01.v5.dbda82dc8ccc.first.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep03_scene_00_video_01.v5.dbda82dc8ccc.mp4",
+        "firstFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep03_scene_00_video_01.v5.dbda82dc8ccc.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep03_scene_00_video_01.v5.dbda82dc8ccc.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep03_scene_00__v2__ep03_choice_01_prompt",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "这一刻，你承认自己真正的感受——",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 390,
+            "width": 360,
+            "height": null
+          }
+        },
+        {
+          "componentId": "ep03_scene_00__v2__ep03_choice_01_emotion",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep03_branch_emotion",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "丢脸也好，至少不用再装体面",
+            "iconUrl": null,
+            "lable": "A"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep03_scene_00__v2__ep03_choice_01_truth",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep03_branch_truth",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "忍住，我不能让他看见我崩溃",
+            "iconUrl": null,
+            "lable": "B"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 591,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep03_scene_00__v2__ep03_choice_01_counterattack",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep03_branch_counterattack",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "吐完以后抬头说一句谢谢",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png",
+            "lable": "C"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep03_scene_00__v2"
+          },
+          "position": {
+            "x": null,
+            "y": 653,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep03_scene_00__v2__ep03_choice_01_conditional",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep03_branch_conditional",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "认出闺蜜提前藏好的定位器",
+            "iconUrl": null,
+            "lable": "D"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 715,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep04_scene_00",
+      "nodeDesc": "工地糙汉第一次坐进宾利驾驶座，身后的人却已经盯上他们",
+      "title": "冷开场：identity-gap",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep04_scene_00_video_01.v5.ccacb0e5308d.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep04_scene_00_video_01.v5.ccacb0e5308d.mp4",
+        "firstFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep04_scene_00_video_01.v5.ccacb0e5308d.first.jpg",
+        "endFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep04_scene_00_video_01.v5.ccacb0e5308d.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep04_scene_00__ep04_choice_01_prompt",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "这一刻，你承认自己真正的感受——",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 390,
+            "width": 360,
+            "height": null
+          }
+        },
+        {
+          "componentId": "ep04_scene_00__ep04_choice_01_emotion",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep04_branch_emotion",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "让他开，我想看看他能不能接住我的世界",
+            "iconUrl": null,
+            "lable": "A"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep04_scene_00__ep04_choice_01_truth",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep04_branch_truth",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "自己开，我不需要任何人掌控方向",
+            "iconUrl": null,
+            "lable": "B"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 591,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep04_scene_00__ep04_choice_01_counterattack",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep04_branch_counterattack",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "把宾利钥匙直接塞进他手里",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png",
+            "lable": "C"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep04_scene_00"
+          },
+          "position": {
+            "x": null,
+            "y": 653,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep04_scene_00__ep04_choice_01_conditional",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "选项 D · 未解锁",
+            "text": "说出只有真正信任过他才知道的暗号（需要前序关键选择或隐藏证据）",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 715,
+            "width": 360,
+            "height": null
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ending_loop",
+      "nodeDesc": "女主每次结婚都会回到露台，只有找到真正的时间锚点才能离开。",
+      "title": "隐藏结局：无限逃婚",
+      "nodeType": "video",
+      "sceneType": "end",
+      "nodeIconUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_loop.v5.d172f785989e.first.jpg",
+      "video": {
+        "url": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_loop.v5.d172f785989e.mp4",
+        "firstFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_loop.v5.d172f785989e.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_loop.v5.d172f785989e.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ending_loop__ending_dialog",
+          "componentType": "endingDialog_he",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": "share",
+          "content": {
+            "roleName": "",
+            "title": "隐藏结局：无限逃婚",
+            "text": "女主每次结婚都会回到露台，只有找到真正的时间锚点才能离开。",
+            "buttonText": "分享给好友",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": null
+        }
+      ]
+    },
+    {
+      "nodeId": "ep02_branch_emotion",
+      "nodeDesc": "玩家选择“靠近他，我现在只能信这双手”后的可见后果",
+      "title": "选择后果·渴望保护",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep02_branch_emotion_video_01.v5.b35c8da18967.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep02_branch_emotion_video_01.v5.b35c8da18967.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep02_branch_emotion_video_01.v5.b35c8da18967.first.jpg",
+        "endFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep02_branch_emotion_video_01.v5.b35c8da18967.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep02_branch_emotion__ep02_ad_01_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep03_scene_00",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep02_branch_emotion"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep02_branch_truth",
+      "nodeDesc": "玩家选择“推开他，我不能再把命交给男人”后的可见后果",
+      "title": "选择后果·创伤警觉",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep02_branch_truth_video_01.v5.7254dc88d85a.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep02_branch_truth_video_01.v5.7254dc88d85a.mp4",
+        "firstFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep02_branch_truth_video_01.v5.7254dc88d85a.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep02_branch_truth_video_01.v5.7254dc88d85a.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep02_branch_truth__ep02_ad_02_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep04_scene_00__v2",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep02_branch_truth"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep02_branch_counterattack",
+      "nodeDesc": "玩家选择“让陈劲当众把追兵吓退”后的可见后果",
+      "title": "选择后果·强者保护",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep02_branch_counterattack_video_01.v5.9289ed403508.first.jpg",
+      "video": {
+        "url": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep02_branch_counterattack_video_01.v5.9289ed403508.mp4",
+        "firstFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep02_branch_counterattack_video_01.v5.9289ed403508.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep02_branch_counterattack_video_01.v5.9289ed403508.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep02_branch_counterattack__ep02_ad_03_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ending_streamer",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "查看结局",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep02_branch_counterattack"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep02_branch_conditional",
+      "nodeDesc": "玩家选择“用上一集留下的录音反向威胁”后的可见后果",
+      "title": "选择后果·证据反杀",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep02_branch_conditional_video_01.v5.d26e6fadce2a.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep02_branch_conditional_video_01.v5.d26e6fadce2a.mp4",
+        "firstFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep02_branch_conditional_video_01.v5.d26e6fadce2a.first.jpg",
+        "endFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep02_branch_conditional_video_01.v5.d26e6fadce2a.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep02_branch_conditional__ep02_ad_04_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep05_scene_00",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep02_branch_conditional"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep03_branch_emotion",
+      "nodeDesc": "玩家选择“丢脸也好，至少不用再装体面”后的可见后果",
+      "title": "选择后果·释放脆弱",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep03_branch_emotion_video_01.v5.8ad0503a1eb3.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep03_branch_emotion_video_01.v5.8ad0503a1eb3.mp4",
+        "firstFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep03_branch_emotion_video_01.v5.8ad0503a1eb3.first.jpg",
+        "endFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep03_branch_emotion_video_01.v5.8ad0503a1eb3.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep03_branch_emotion__ep03_ad_01_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep04_scene_00",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep03_branch_emotion"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep03_branch_truth",
+      "nodeDesc": "玩家选择“忍住，我不能让他看见我崩溃”后的可见后果",
+      "title": "选择后果·维持尊严",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep03_branch_truth_video_01.v5.f2c2640a5091.first.jpg",
+      "video": {
+        "url": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep03_branch_truth_video_01.v5.f2c2640a5091.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep03_branch_truth_video_01.v5.f2c2640a5091.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep03_branch_truth_video_01.v5.f2c2640a5091.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep03_branch_truth__ep03_ad_02_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep05_scene_00__v2",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep03_branch_truth"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep03_branch_counterattack",
+      "nodeDesc": "玩家选择“吐完以后抬头说一句谢谢”后的可见后果",
+      "title": "选择后果·狼狈坦白",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep03_branch_counterattack_video_01.v5.4e22bccb6cd4.first.jpg",
+      "video": {
+        "url": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep03_branch_counterattack_video_01.v5.4e22bccb6cd4.mp4",
+        "firstFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep03_branch_counterattack_video_01.v5.4e22bccb6cd4.first.jpg",
+        "endFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep03_branch_counterattack_video_01.v5.4e22bccb6cd4.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 34.171631
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep03_branch_counterattack__ep03_ad_03_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep06_scene_00",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep03_branch_counterattack"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep03_branch_conditional",
+      "nodeDesc": "玩家选择“认出闺蜜提前藏好的定位器”后的可见后果",
+      "title": "选择后果·危机识破",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep03_branch_conditional_video_01.v5.804bc339eb06.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep03_branch_conditional_video_01.v5.804bc339eb06.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep03_branch_conditional_video_01.v5.804bc339eb06.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep03_branch_conditional_video_01.v5.804bc339eb06.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep03_branch_conditional__ep03_ad_04_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ending_cow",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "查看结局",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep03_branch_conditional"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep04_branch_emotion",
+      "nodeDesc": "玩家选择“让他开，我想看看他能不能接住我的世界”后的可见后果",
+      "title": "选择后果·交付信任",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep04_branch_emotion_video_01.v5.ed607c6ef1b8.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep04_branch_emotion_video_01.v5.ed607c6ef1b8.mp4",
+        "firstFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep04_branch_emotion_video_01.v5.ed607c6ef1b8.first.jpg",
+        "endFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep04_branch_emotion_video_01.v5.ed607c6ef1b8.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep04_branch_emotion__ep04_ad_01_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep05_scene_00",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep04_branch_emotion"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep04_branch_truth",
+      "nodeDesc": "玩家选择“自己开，我不需要任何人掌控方向”后的可见后果",
+      "title": "选择后果·夺回控制",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep04_branch_truth_video_01.v5.b0bf60c32768.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep04_branch_truth_video_01.v5.b0bf60c32768.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep04_branch_truth_video_01.v5.b0bf60c32768.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep04_branch_truth_video_01.v5.b0bf60c32768.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep04_branch_truth__ep04_ad_02_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep06_scene_00__v2",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep04_branch_truth"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep04_branch_counterattack",
+      "nodeDesc": "玩家选择“把宾利钥匙直接塞进他手里”后的可见后果",
+      "title": "选择后果·阶层反差",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep04_branch_counterattack_video_01.v5.f6c44661bb5a.first.jpg",
+      "video": {
+        "url": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep04_branch_counterattack_video_01.v5.f6c44661bb5a.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep04_branch_counterattack_video_01.v5.f6c44661bb5a.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep04_branch_counterattack_video_01.v5.f6c44661bb5a.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep04_branch_counterattack__ep04_ad_03_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ending_terrace",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "查看结局",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep04_branch_counterattack"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep03_scene_00",
+      "nodeDesc": "她一低头，直接吐在救命恩人的鞋边",
+      "title": "冷开场：humiliation",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep03_scene_00_video_01.v5.dbda82dc8ccc.first.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep03_scene_00_video_01.v5.dbda82dc8ccc.mp4",
+        "firstFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep03_scene_00_video_01.v5.dbda82dc8ccc.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep03_scene_00_video_01.v5.dbda82dc8ccc.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep03_scene_00__ep03_choice_01_prompt",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "这一刻，你承认自己真正的感受——",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 390,
+            "width": 360,
+            "height": null
+          }
+        },
+        {
+          "componentId": "ep03_scene_00__ep03_choice_01_emotion",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep03_branch_emotion",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "丢脸也好，至少不用再装体面",
+            "iconUrl": null,
+            "lable": "A"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep03_scene_00__ep03_choice_01_truth",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep03_branch_truth",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "忍住，我不能让他看见我崩溃",
+            "iconUrl": null,
+            "lable": "B"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 591,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep03_scene_00__ep03_choice_01_counterattack",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep03_branch_counterattack",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "吐完以后抬头说一句谢谢",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png",
+            "lable": "C"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep03_scene_00"
+          },
+          "position": {
+            "x": null,
+            "y": 653,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep03_scene_00__ep03_choice_01_conditional",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "选项 D · 未解锁",
+            "text": "认出闺蜜提前藏好的定位器（需要前序关键选择或隐藏证据）",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 715,
+            "width": 360,
+            "height": null
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep04_scene_00__v2",
+      "nodeDesc": "工地糙汉第一次坐进宾利驾驶座，身后的人却已经盯上他们",
+      "title": "冷开场：identity-gap",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep04_scene_00_video_01.v5.ccacb0e5308d.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep04_scene_00_video_01.v5.ccacb0e5308d.mp4",
+        "firstFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep04_scene_00_video_01.v5.ccacb0e5308d.first.jpg",
+        "endFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep04_scene_00_video_01.v5.ccacb0e5308d.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep04_scene_00__v2__ep04_choice_01_prompt",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "这一刻，你承认自己真正的感受——",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 390,
+            "width": 360,
+            "height": null
+          }
+        },
+        {
+          "componentId": "ep04_scene_00__v2__ep04_choice_01_emotion",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep04_branch_emotion",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "让他开，我想看看他能不能接住我的世界",
+            "iconUrl": null,
+            "lable": "A"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep04_scene_00__v2__ep04_choice_01_truth",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep04_branch_truth",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "自己开，我不需要任何人掌控方向",
+            "iconUrl": null,
+            "lable": "B"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 591,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep04_scene_00__v2__ep04_choice_01_counterattack",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep04_branch_counterattack",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "把宾利钥匙直接塞进他手里",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png",
+            "lable": "C"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep04_scene_00__v2"
+          },
+          "position": {
+            "x": null,
+            "y": 653,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep04_scene_00__v2__ep04_choice_01_conditional",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep04_branch_conditional",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "说出只有真正信任过他才知道的暗号",
+            "iconUrl": null,
+            "lable": "D"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 715,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ending_streamer",
+      "nodeDesc": "牛奶杯证据意外直播曝光，她转行连麦鉴渣。",
+      "title": "荒诞结局：反渣直播一姐",
+      "nodeType": "video",
+      "sceneType": "end",
+      "nodeIconUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_streamer.v5.de32e12511a4.first.jpg",
+      "video": {
+        "url": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_streamer.v5.de32e12511a4.mp4",
+        "firstFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_streamer.v5.de32e12511a4.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_streamer.v5.de32e12511a4.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 7.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ending_streamer__ending_dialog",
+          "componentType": "endingDialog_he",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": "share",
+          "content": {
+            "roleName": "",
+            "title": "荒诞结局：反渣直播一姐",
+            "text": "牛奶杯证据意外直播曝光，她转行连麦鉴渣。",
+            "buttonText": "分享给好友",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": null
+        }
+      ]
+    },
+    {
+      "nodeId": "ep05_scene_00",
+      "nodeDesc": "她从噩梦里扑进他怀里，他的手却落在不该落的位置",
+      "title": "冷开场：intimacy",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep05_scene_00_video_01.v5.8713a0456434.first.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep05_scene_00_video_01.v5.8713a0456434.mp4",
+        "firstFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep05_scene_00_video_01.v5.8713a0456434.first.jpg",
+        "endFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep05_scene_00_video_01.v5.8713a0456434.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep05_scene_00__ep05_choice_01_prompt",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "这一刻，你承认自己真正的感受——",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 390,
+            "width": 360,
+            "height": null
+          }
+        },
+        {
+          "componentId": "ep05_scene_00__ep05_choice_01_emotion",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep05_branch_emotion",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "别推开我，我现在只想抓住一个人",
+            "iconUrl": null,
+            "lable": "A"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep05_scene_00__ep05_choice_01_truth",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep05_branch_truth",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "立刻松手，我不能再失去边界",
+            "iconUrl": null,
+            "lable": "B"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 591,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep05_scene_00__ep05_choice_01_counterattack",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep05_branch_counterattack",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "不躲，反手把他按回床边",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png",
+            "lable": "C"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep05_scene_00"
+          },
+          "position": {
+            "x": null,
+            "y": 653,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep05_scene_00__ep05_choice_01_conditional",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "选项 D · 未解锁",
+            "text": "用合同里的安全条款叫停越界（需要前序关键选择或隐藏证据）",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 715,
+            "width": 360,
+            "height": null
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep05_scene_00__v2",
+      "nodeDesc": "她从噩梦里扑进他怀里，他的手却落在不该落的位置",
+      "title": "冷开场：intimacy",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep05_scene_00_video_01.v5.8713a0456434.first.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep05_scene_00_video_01.v5.8713a0456434.mp4",
+        "firstFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep05_scene_00_video_01.v5.8713a0456434.first.jpg",
+        "endFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep05_scene_00_video_01.v5.8713a0456434.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep05_scene_00__v2__ep05_choice_01_prompt",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "这一刻，你承认自己真正的感受——",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 390,
+            "width": 360,
+            "height": null
+          }
+        },
+        {
+          "componentId": "ep05_scene_00__v2__ep05_choice_01_emotion",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep05_branch_emotion",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "别推开我，我现在只想抓住一个人",
+            "iconUrl": null,
+            "lable": "A"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep05_scene_00__v2__ep05_choice_01_truth",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep05_branch_truth",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "立刻松手，我不能再失去边界",
+            "iconUrl": null,
+            "lable": "B"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 591,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep05_scene_00__v2__ep05_choice_01_counterattack",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep05_branch_counterattack",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "不躲，反手把他按回床边",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png",
+            "lable": "C"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep05_scene_00__v2"
+          },
+          "position": {
+            "x": null,
+            "y": 653,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep05_scene_00__v2__ep05_choice_01_conditional",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep05_branch_conditional",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "用合同里的安全条款叫停越界",
+            "iconUrl": null,
+            "lable": "D"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 715,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep06_scene_00",
+      "nodeDesc": "她把三千万和一张黑卡推给陌生男人，要买他一年",
+      "title": "冷开场：transaction",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep06_scene_00_video_01.v5.f06c00231993.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep06_scene_00_video_01.v5.f06c00231993.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep06_scene_00_video_01.v5.f06c00231993.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep06_scene_00_video_01.v5.f06c00231993.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep06_scene_00__ep06_choice_01_prompt",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "这一刻，你承认自己真正的感受——",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 390,
+            "width": 360,
+            "height": null
+          }
+        },
+        {
+          "componentId": "ep06_scene_00__ep06_choice_01_emotion",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep06_branch_emotion",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "用钱把安全感留住，至少它不会背叛",
+            "iconUrl": null,
+            "lable": "A"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep06_scene_00__ep06_choice_01_truth",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep06_branch_truth",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "告诉他真相，我要的不是雇佣关系",
+            "iconUrl": null,
+            "lable": "B"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 591,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep06_scene_00__ep06_choice_01_counterattack",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep06_branch_counterattack",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "把三千万改成共同创业基金",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png",
+            "lable": "C"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep06_scene_00"
+          },
+          "position": {
+            "x": null,
+            "y": 653,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep06_scene_00__ep06_choice_01_conditional",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "选项 D · 未解锁",
+            "text": "亮出前一集保住的黑卡流水（需要前序关键选择或隐藏证据）",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 715,
+            "width": 360,
+            "height": null
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ending_cow",
+      "nodeDesc": "所有阴谋线索最终都指向第一集那杯牛奶。",
+      "title": "荒诞结局：奶牛真相",
+      "nodeType": "video",
+      "sceneType": "end",
+      "nodeIconUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_cow.v5.dc9a38eb75c5.first.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_cow.v5.dc9a38eb75c5.mp4",
+        "firstFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_cow.v5.dc9a38eb75c5.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_cow.v5.dc9a38eb75c5.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 11.129313
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ending_cow__ending_dialog",
+          "componentType": "endingDialog_he",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": "share",
+          "content": {
+            "roleName": "",
+            "title": "荒诞结局：奶牛真相",
+            "text": "所有阴谋线索最终都指向第一集那杯牛奶。",
+            "buttonText": "分享给好友",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": null
+        }
+      ]
+    },
+    {
+      "nodeId": "ep06_scene_00__v2",
+      "nodeDesc": "她把三千万和一张黑卡推给陌生男人，要买他一年",
+      "title": "冷开场：transaction",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep06_scene_00_video_01.v5.f06c00231993.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep06_scene_00_video_01.v5.f06c00231993.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep06_scene_00_video_01.v5.f06c00231993.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep06_scene_00_video_01.v5.f06c00231993.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep06_scene_00__v2__ep06_choice_01_prompt",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "这一刻，你承认自己真正的感受——",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 390,
+            "width": 360,
+            "height": null
+          }
+        },
+        {
+          "componentId": "ep06_scene_00__v2__ep06_choice_01_emotion",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep06_branch_emotion",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "用钱把安全感留住，至少它不会背叛",
+            "iconUrl": null,
+            "lable": "A"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep06_scene_00__v2__ep06_choice_01_truth",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep06_branch_truth",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "告诉他真相，我要的不是雇佣关系",
+            "iconUrl": null,
+            "lable": "B"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 591,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep06_scene_00__v2__ep06_choice_01_counterattack",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep06_branch_counterattack",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "把三千万改成共同创业基金",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png",
+            "lable": "C"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep06_scene_00__v2"
+          },
+          "position": {
+            "x": null,
+            "y": 653,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep06_scene_00__v2__ep06_choice_01_conditional",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep06_branch_conditional",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "亮出前一集保住的黑卡流水",
+            "iconUrl": null,
+            "lable": "D"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 715,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ending_terrace",
+      "nodeDesc": "许邵泽再次站上露台，一步步被自己的谎言逼到断裂栏杆边。",
+      "title": "反转结局：露台回旋镖",
+      "nodeType": "video",
+      "sceneType": "end",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_terrace.v5.c47ce7a5ea8c.first.jpg",
+      "video": {
+        "url": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_terrace.v5.c47ce7a5ea8c.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_terrace.v5.c47ce7a5ea8c.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_terrace.v5.c47ce7a5ea8c.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ending_terrace__ending_dialog",
+          "componentType": "endingDialog_he",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": "share",
+          "content": {
+            "roleName": "",
+            "title": "反转结局：露台回旋镖",
+            "text": "许邵泽再次站上露台，一步步被自己的谎言逼到断裂栏杆边。",
+            "buttonText": "分享给好友",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": null
+        }
+      ]
+    },
+    {
+      "nodeId": "ep04_branch_conditional",
+      "nodeDesc": "玩家选择“说出只有真正信任过他才知道的暗号”后的可见后果",
+      "title": "选择后果·默契验证",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep04_branch_conditional_video_01.v5.cf8a6fb70b88.first.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep04_branch_conditional_video_01.v5.cf8a6fb70b88.mp4",
+        "firstFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep04_branch_conditional_video_01.v5.cf8a6fb70b88.first.jpg",
+        "endFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep04_branch_conditional_video_01.v5.cf8a6fb70b88.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep04_branch_conditional__ep04_ad_04_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep07_scene_00",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep04_branch_conditional"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep05_branch_emotion",
+      "nodeDesc": "玩家选择“别推开我，我现在只想抓住一个人”后的可见后果",
+      "title": "选择后果·依恋冲动",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep05_branch_emotion_video_01.v5.30628bdb7fc7.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep05_branch_emotion_video_01.v5.30628bdb7fc7.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep05_branch_emotion_video_01.v5.30628bdb7fc7.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep05_branch_emotion_video_01.v5.30628bdb7fc7.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep05_branch_emotion__ep05_ad_01_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep06_scene_00",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep05_branch_emotion"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep05_branch_truth",
+      "nodeDesc": "玩家选择“立刻松手，我不能再失去边界”后的可见后果",
+      "title": "选择后果·自我保护",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep05_branch_truth_video_01.v5.2263da3e34bc.first.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep05_branch_truth_video_01.v5.2263da3e34bc.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep05_branch_truth_video_01.v5.2263da3e34bc.first.jpg",
+        "endFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep05_branch_truth_video_01.v5.2263da3e34bc.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep05_branch_truth__ep05_ad_02_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep07_scene_00__v2",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep05_branch_truth"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep05_branch_counterattack",
+      "nodeDesc": "玩家选择“不躲，反手把他按回床边”后的可见后果",
+      "title": "选择后果·暧昧反攻",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep05_branch_counterattack_video_01.v5.a2818164e11f.first.jpg",
+      "video": {
+        "url": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep05_branch_counterattack_video_01.v5.a2818164e11f.mp4",
+        "firstFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep05_branch_counterattack_video_01.v5.a2818164e11f.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep05_branch_counterattack_video_01.v5.a2818164e11f.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 12.041995
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep05_branch_counterattack__ep05_ad_03_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep08_scene_00",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep05_branch_counterattack"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep05_branch_conditional",
+      "nodeDesc": "玩家选择“用合同里的安全条款叫停越界”后的可见后果",
+      "title": "选择后果·边界掌控",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep05_branch_conditional_video_01.v5.b0278c01ec23.first.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep05_branch_conditional_video_01.v5.b0278c01ec23.mp4",
+        "firstFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep05_branch_conditional_video_01.v5.b0278c01ec23.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep05_branch_conditional_video_01.v5.b0278c01ec23.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 7.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep05_branch_conditional__ep05_ad_04_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ending_reality_show",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "查看结局",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep05_branch_conditional"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep06_branch_emotion",
+      "nodeDesc": "玩家选择“用钱把安全感留住，至少它不会背叛”后的可见后果",
+      "title": "选择后果·金钱控制",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep06_branch_emotion_video_01.v5.e10d59c0f820.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep06_branch_emotion_video_01.v5.e10d59c0f820.mp4",
+        "firstFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep06_branch_emotion_video_01.v5.e10d59c0f820.first.jpg",
+        "endFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep06_branch_emotion_video_01.v5.e10d59c0f820.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 7.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep06_branch_emotion__ep06_ad_01_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep07_scene_00",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep06_branch_emotion"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep06_branch_truth",
+      "nodeDesc": "玩家选择“告诉他真相，我要的不是雇佣关系”后的可见后果",
+      "title": "选择后果·情感坦白",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep06_branch_truth_video_01.v5.d2c8b606220c.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep06_branch_truth_video_01.v5.d2c8b606220c.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep06_branch_truth_video_01.v5.d2c8b606220c.first.jpg",
+        "endFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep06_branch_truth_video_01.v5.d2c8b606220c.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 10.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep06_branch_truth__ep06_ad_02_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep08_scene_00__v2",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep06_branch_truth"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep06_branch_counterattack",
+      "nodeDesc": "玩家选择“把三千万改成共同创业基金”后的可见后果",
+      "title": "选择后果·关系升级",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep06_branch_counterattack_video_01.v5.dd69137056ba.first.jpg",
+      "video": {
+        "url": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep06_branch_counterattack_video_01.v5.dd69137056ba.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep06_branch_counterattack_video_01.v5.dd69137056ba.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep06_branch_counterattack_video_01.v5.dd69137056ba.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 9.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep06_branch_counterattack__ep06_ad_03_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ending_empire",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "查看结局",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep06_branch_counterattack"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep06_branch_conditional",
+      "nodeDesc": "玩家选择“亮出前一集保住的黑卡流水”后的可见后果",
+      "title": "选择后果·资金反转",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep06_branch_conditional_video_01.v5.2d84aa980564.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep06_branch_conditional_video_01.v5.2d84aa980564.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep06_branch_conditional_video_01.v5.2d84aa980564.first.jpg",
+        "endFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep06_branch_conditional_video_01.v5.2d84aa980564.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 8.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep06_branch_conditional__ep06_ad_04_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep09_scene_00",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep06_branch_conditional"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep07_scene_00",
+      "nodeDesc": "她带着蛇皮袋糙汉闯回豪门，杀她的人正笑着迎上来",
+      "title": "冷开场：public-humiliation",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep07_scene_00_video_01.v5.9e0df28c7933.first.jpg",
+      "video": {
+        "url": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep07_scene_00_video_01.v5.9e0df28c7933.mp4",
+        "firstFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep07_scene_00_video_01.v5.9e0df28c7933.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep07_scene_00_video_01.v5.9e0df28c7933.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep07_scene_00__ep07_choice_01_prompt",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "这一刻，你承认自己真正的感受——",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 390,
+            "width": 360,
+            "height": null
+          }
+        },
+        {
+          "componentId": "ep07_scene_00__ep07_choice_01_emotion",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep07_branch_emotion",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "低头走开，先活下来",
+            "iconUrl": null,
+            "lable": "A"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep07_scene_00__ep07_choice_01_truth",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep07_branch_truth",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "当众开口，把露台真相砸在他脸上",
+            "iconUrl": null,
+            "lable": "B"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 591,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep07_scene_00__ep07_choice_01_counterattack",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep07_branch_counterattack",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "当众播放露台录音",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png",
+            "lable": "C"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep07_scene_00"
+          },
+          "position": {
+            "x": null,
+            "y": 653,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep07_scene_00__ep07_choice_01_conditional",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "选项 D · 未解锁",
+            "text": "让陈劲说出管家才懂的旧姓氏（需要前序关键选择或隐藏证据）",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 715,
+            "width": 360,
+            "height": null
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep07_scene_00__v2",
+      "nodeDesc": "她带着蛇皮袋糙汉闯回豪门，杀她的人正笑着迎上来",
+      "title": "冷开场：public-humiliation",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep07_scene_00_video_01.v5.9e0df28c7933.first.jpg",
+      "video": {
+        "url": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep07_scene_00_video_01.v5.9e0df28c7933.mp4",
+        "firstFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep07_scene_00_video_01.v5.9e0df28c7933.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep07_scene_00_video_01.v5.9e0df28c7933.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep07_scene_00__v2__ep07_choice_01_prompt",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "这一刻，你承认自己真正的感受——",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 390,
+            "width": 360,
+            "height": null
+          }
+        },
+        {
+          "componentId": "ep07_scene_00__v2__ep07_choice_01_emotion",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep07_branch_emotion",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "低头走开，先活下来",
+            "iconUrl": null,
+            "lable": "A"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep07_scene_00__v2__ep07_choice_01_truth",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep07_branch_truth",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "当众开口，把露台真相砸在他脸上",
+            "iconUrl": null,
+            "lable": "B"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 591,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep07_scene_00__v2__ep07_choice_01_counterattack",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep07_branch_counterattack",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "当众播放露台录音",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png",
+            "lable": "C"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep07_scene_00__v2"
+          },
+          "position": {
+            "x": null,
+            "y": 653,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep07_scene_00__v2__ep07_choice_01_conditional",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep07_branch_conditional",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "让陈劲说出管家才懂的旧姓氏",
+            "iconUrl": null,
+            "lable": "D"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 715,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep08_scene_00",
+      "nodeDesc": "老管家故意递上古董瓶，糙汉单手接住却说破了试探",
+      "title": "冷开场：power-display",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep08_scene_00_video_01.v5.33127e5a0ee7.first.jpg",
+      "video": {
+        "url": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep08_scene_00_video_01.v5.33127e5a0ee7.mp4",
+        "firstFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep08_scene_00_video_01.v5.33127e5a0ee7.first.jpg",
+        "endFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep08_scene_00_video_01.v5.33127e5a0ee7.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep08_scene_00__ep08_choice_01_prompt",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "这一刻，你承认自己真正的感受——",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 390,
+            "width": 360,
+            "height": null
+          }
+        },
+        {
+          "componentId": "ep08_scene_00__ep08_choice_01_emotion",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep08_branch_emotion",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "装作没看见，给所有人留体面",
+            "iconUrl": null,
+            "lable": "A"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep08_scene_00__ep08_choice_01_truth",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep08_branch_truth",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "点破试探，我不准他们再踩他",
+            "iconUrl": null,
+            "lable": "B"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 591,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep08_scene_00__ep08_choice_01_counterattack",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep08_branch_counterattack",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "接过古董瓶，当场宣布买下它",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png",
+            "lable": "C"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep08_scene_00"
+          },
+          "position": {
+            "x": null,
+            "y": 653,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep08_scene_00__ep08_choice_01_conditional",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "选项 D · 未解锁",
+            "text": "用陈劲教过的手势拆穿试探（需要前序关键选择或隐藏证据）",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 715,
+            "width": 360,
+            "height": null
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ending_reality_show",
+      "nodeDesc": "所有人被送进恋爱综艺，婚约改由观众投票。",
+      "title": "荒诞结局：全员恋综",
+      "nodeType": "video",
+      "sceneType": "end",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_reality_show.v5.56f29bbc19c4.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_reality_show.v5.56f29bbc19c4.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_reality_show.v5.56f29bbc19c4.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_reality_show.v5.56f29bbc19c4.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ending_reality_show__ending_dialog",
+          "componentType": "endingDialog_he",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": "share",
+          "content": {
+            "roleName": "",
+            "title": "荒诞结局：全员恋综",
+            "text": "所有人被送进恋爱综艺，婚约改由观众投票。",
+            "buttonText": "分享给好友",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": null
+        }
+      ]
+    },
+    {
+      "nodeId": "ep08_scene_00__v2",
+      "nodeDesc": "老管家故意递上古董瓶，糙汉单手接住却说破了试探",
+      "title": "冷开场：power-display",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep08_scene_00_video_01.v5.33127e5a0ee7.first.jpg",
+      "video": {
+        "url": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep08_scene_00_video_01.v5.33127e5a0ee7.mp4",
+        "firstFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep08_scene_00_video_01.v5.33127e5a0ee7.first.jpg",
+        "endFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep08_scene_00_video_01.v5.33127e5a0ee7.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep08_scene_00__v2__ep08_choice_01_prompt",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "这一刻，你承认自己真正的感受——",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 390,
+            "width": 360,
+            "height": null
+          }
+        },
+        {
+          "componentId": "ep08_scene_00__v2__ep08_choice_01_emotion",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep08_branch_emotion",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "装作没看见，给所有人留体面",
+            "iconUrl": null,
+            "lable": "A"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep08_scene_00__v2__ep08_choice_01_truth",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep08_branch_truth",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "点破试探，我不准他们再踩他",
+            "iconUrl": null,
+            "lable": "B"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 591,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep08_scene_00__v2__ep08_choice_01_counterattack",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep08_branch_counterattack",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "接过古董瓶，当场宣布买下它",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png",
+            "lable": "C"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep08_scene_00__v2"
+          },
+          "position": {
+            "x": null,
+            "y": 653,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep08_scene_00__v2__ep08_choice_01_conditional",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep08_branch_conditional",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "用陈劲教过的手势拆穿试探",
+            "iconUrl": null,
+            "lable": "D"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 715,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ending_empire",
+      "nodeDesc": "她拒绝爱情，收购许家、工地和婚庆公司，垄断逃婚产业链。",
+      "title": "隐藏结局：一个全都要",
+      "nodeType": "video",
+      "sceneType": "end",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_empire.v5.6eaddb8e4d7c.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_empire.v5.6eaddb8e4d7c.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_empire.v5.6eaddb8e4d7c.first.jpg",
+        "endFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_empire.v5.6eaddb8e4d7c.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 13.129313
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ending_empire__ending_dialog",
+          "componentType": "endingDialog_he",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": "share",
+          "content": {
+            "roleName": "",
+            "title": "隐藏结局：一个全都要",
+            "text": "她拒绝爱情，收购许家、工地和婚庆公司，垄断逃婚产业链。",
+            "buttonText": "分享给好友",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": null
+        }
+      ]
+    },
+    {
+      "nodeId": "ep09_scene_00",
+      "nodeDesc": "她签下一年契约，却发现对方连三千万都没有多看一眼",
+      "title": "冷开场：contract",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep09_scene_00_video_01.v5.6121a6e75ba9.first.jpg",
+      "video": {
+        "url": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep09_scene_00_video_01.v5.6121a6e75ba9.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep09_scene_00_video_01.v5.6121a6e75ba9.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep09_scene_00_video_01.v5.6121a6e75ba9.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 9.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep09_scene_00__ep09_choice_01_prompt",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "这一刻，你承认自己真正的感受——",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 390,
+            "width": 360,
+            "height": null
+          }
+        },
+        {
+          "componentId": "ep09_scene_00__ep09_choice_01_emotion",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep09_branch_emotion",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "合同能保护我，感情只会让我失控",
+            "iconUrl": null,
+            "lable": "A"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep09_scene_00__ep09_choice_01_truth",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep09_branch_truth",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "撕掉附加条款，我想知道他为什么留下",
+            "iconUrl": null,
+            "lable": "B"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 591,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep09_scene_00__ep09_choice_01_counterattack",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep09_branch_counterattack",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "撕掉合同，直接问他敢不敢留下",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png",
+            "lable": "C"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep09_scene_00"
+          },
+          "position": {
+            "x": null,
+            "y": 653,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep09_scene_00__ep09_choice_01_conditional",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "选项 D · 未解锁",
+            "text": "调出前一集保存的管家通话（需要前序关键选择或隐藏证据）",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 715,
+            "width": 360,
+            "height": null
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep07_branch_emotion",
+      "nodeDesc": "玩家选择“低头走开，先活下来”后的可见后果",
+      "title": "选择后果·求生忍耐",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep07_branch_emotion_video_01.v5.d679712d2653.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep07_branch_emotion_video_01.v5.d679712d2653.mp4",
+        "firstFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep07_branch_emotion_video_01.v5.d679712d2653.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep07_branch_emotion_video_01.v5.d679712d2653.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep07_branch_emotion__ep07_ad_01_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep08_scene_00",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep07_branch_emotion"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep07_branch_truth",
+      "nodeDesc": "玩家选择“当众开口，把露台真相砸在他脸上”后的可见后果",
+      "title": "选择后果·愤怒反击",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep07_branch_truth_video_01.v5.f521220dd214.first.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep07_branch_truth_video_01.v5.f521220dd214.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep07_branch_truth_video_01.v5.f521220dd214.first.jpg",
+        "endFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep07_branch_truth_video_01.v5.f521220dd214.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 11.041995
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep07_branch_truth__ep07_ad_02_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep09_scene_00__v2",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep07_branch_truth"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep07_branch_counterattack",
+      "nodeDesc": "玩家选择“当众播放露台录音”后的可见后果",
+      "title": "选择后果·公开处刑",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep07_branch_counterattack_video_01.v5.29ef973d48c1.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep07_branch_counterattack_video_01.v5.29ef973d48c1.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep07_branch_counterattack_video_01.v5.29ef973d48c1.first.jpg",
+        "endFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep07_branch_counterattack_video_01.v5.29ef973d48c1.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 9.129313
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep07_branch_counterattack__ep07_ad_03_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep10_scene_00",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep07_branch_counterattack"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep07_branch_conditional",
+      "nodeDesc": "玩家选择“让陈劲说出管家才懂的旧姓氏”后的可见后果",
+      "title": "选择后果·身份伏笔",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep07_branch_conditional_video_01.v5.4b6286a2b70a.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep07_branch_conditional_video_01.v5.4b6286a2b70a.mp4",
+        "firstFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep07_branch_conditional_video_01.v5.4b6286a2b70a.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep07_branch_conditional_video_01.v5.4b6286a2b70a.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 8.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep07_branch_conditional__ep07_ad_04_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ending_future",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "查看结局",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep07_branch_conditional"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep08_branch_emotion",
+      "nodeDesc": "玩家选择“装作没看见，给所有人留体面”后的可见后果",
+      "title": "选择后果·维护秩序",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep08_branch_emotion_video_01.v5.34f1e0fdd079.first.jpg",
+      "video": {
+        "url": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep08_branch_emotion_video_01.v5.34f1e0fdd079.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep08_branch_emotion_video_01.v5.34f1e0fdd079.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep08_branch_emotion_video_01.v5.34f1e0fdd079.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep08_branch_emotion__ep08_ad_01_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep09_scene_00",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep08_branch_emotion"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep08_branch_truth",
+      "nodeDesc": "玩家选择“点破试探，我不准他们再踩他”后的可见后果",
+      "title": "选择后果·公开护短",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep08_branch_truth_video_01.v5.266ec9db9f4e.first.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep08_branch_truth_video_01.v5.266ec9db9f4e.mp4",
+        "firstFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep08_branch_truth_video_01.v5.266ec9db9f4e.first.jpg",
+        "endFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep08_branch_truth_video_01.v5.266ec9db9f4e.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 8.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep08_branch_truth__ep08_ad_02_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep10_scene_00",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep08_branch_truth"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep08_branch_counterattack",
+      "nodeDesc": "玩家选择“接过古董瓶，当场宣布买下它”后的可见后果",
+      "title": "选择后果·豪门反压",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep08_branch_counterattack_video_01.v5.f4f94f3a8621.first.jpg",
+      "video": {
+        "url": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep08_branch_counterattack_video_01.v5.f4f94f3a8621.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep08_branch_counterattack_video_01.v5.f4f94f3a8621.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep08_branch_counterattack_video_01.v5.f4f94f3a8621.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep08_branch_counterattack__ep08_ad_03_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ending_boss",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "查看结局",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep08_branch_counterattack"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep08_branch_conditional",
+      "nodeDesc": "玩家选择“用陈劲教过的手势拆穿试探”后的可见后果",
+      "title": "选择后果·秘密默契",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep08_branch_conditional_video_01.v5.573120f5b0e9.first.jpg",
+      "video": {
+        "url": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep08_branch_conditional_video_01.v5.573120f5b0e9.mp4",
+        "firstFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep08_branch_conditional_video_01.v5.573120f5b0e9.first.jpg",
+        "endFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep08_branch_conditional_video_01.v5.573120f5b0e9.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep08_branch_conditional__ep08_ad_04_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep11_scene_00",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep08_branch_conditional"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep09_branch_emotion",
+      "nodeDesc": "玩家选择“合同能保护我，感情只会让我失控”后的可见后果",
+      "title": "选择后果·规则安全",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep09_branch_emotion_video_01.v5.4286dc7b54a0.first.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep09_branch_emotion_video_01.v5.4286dc7b54a0.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep09_branch_emotion_video_01.v5.4286dc7b54a0.first.jpg",
+        "endFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep09_branch_emotion_video_01.v5.4286dc7b54a0.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep09_branch_emotion__ep09_ad_01_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep10_scene_00",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep09_branch_emotion"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep09_branch_truth",
+      "nodeDesc": "玩家选择“撕掉附加条款，我想知道他为什么留下”后的可见后果",
+      "title": "选择后果·关系冒险",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep09_branch_truth_video_01.v5.c0f63bff3761.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep09_branch_truth_video_01.v5.c0f63bff3761.mp4",
+        "firstFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep09_branch_truth_video_01.v5.c0f63bff3761.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep09_branch_truth_video_01.v5.c0f63bff3761.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 9.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep09_branch_truth__ep09_ad_02_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep10_scene_00__v2",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep09_branch_truth"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep09_branch_counterattack",
+      "nodeDesc": "玩家选择“撕掉合同，直接问他敢不敢留下”后的可见后果",
+      "title": "选择后果·关系摊牌",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep09_branch_counterattack_video_01.v5.03973c691bb6.first.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep09_branch_counterattack_video_01.v5.03973c691bb6.mp4",
+        "firstFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep09_branch_counterattack_video_01.v5.03973c691bb6.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep09_branch_counterattack_video_01.v5.03973c691bb6.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep09_branch_counterattack__ep09_ad_03_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep11_scene_00",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep09_branch_counterattack"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep09_scene_00__v2",
+      "nodeDesc": "她签下一年契约，却发现对方连三千万都没有多看一眼",
+      "title": "冷开场：contract",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep09_scene_00_video_01.v5.6121a6e75ba9.first.jpg",
+      "video": {
+        "url": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep09_scene_00_video_01.v5.6121a6e75ba9.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep09_scene_00_video_01.v5.6121a6e75ba9.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep09_scene_00_video_01.v5.6121a6e75ba9.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 9.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep09_scene_00__v2__ep09_choice_01_prompt",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "这一刻，你承认自己真正的感受——",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 390,
+            "width": 360,
+            "height": null
+          }
+        },
+        {
+          "componentId": "ep09_scene_00__v2__ep09_choice_01_emotion",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep09_branch_emotion",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "合同能保护我，感情只会让我失控",
+            "iconUrl": null,
+            "lable": "A"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep09_scene_00__v2__ep09_choice_01_truth",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep09_branch_truth",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "撕掉附加条款，我想知道他为什么留下",
+            "iconUrl": null,
+            "lable": "B"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 591,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep09_scene_00__v2__ep09_choice_01_counterattack",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep09_branch_counterattack",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "撕掉合同，直接问他敢不敢留下",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png",
+            "lable": "C"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep09_scene_00__v2"
+          },
+          "position": {
+            "x": null,
+            "y": 653,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep09_scene_00__v2__ep09_choice_01_conditional",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep09_branch_conditional",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "调出前一集保存的管家通话",
+            "iconUrl": null,
+            "lable": "D"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 715,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep10_scene_00",
+      "nodeDesc": "许邵泽堵在门口，说逃跑的人终究要回到他手里",
+      "title": "冷开场：confrontation",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep10_scene_00_video_01.v5.e9e81bb30ff7.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep10_scene_00_video_01.v5.e9e81bb30ff7.mp4",
+        "firstFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep10_scene_00_video_01.v5.e9e81bb30ff7.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep10_scene_00_video_01.v5.e9e81bb30ff7.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep10_scene_00__ep10_choice_01_prompt",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "这一刻，你承认自己真正的感受——",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 390,
+            "width": 360,
+            "height": null
+          }
+        },
+        {
+          "componentId": "ep10_scene_00__ep10_choice_01_emotion",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep10_branch_emotion",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "退到陈劲身后，让他替我挡一次",
+            "iconUrl": null,
+            "lable": "A"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep10_scene_00__ep10_choice_01_truth",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep10_branch_truth",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "站到最前面，这次由我亲口拒绝",
+            "iconUrl": null,
+            "lable": "B"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 591,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep10_scene_00__ep10_choice_01_counterattack",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep10_branch_counterattack",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "抢过话筒，让所有宾客听见真相",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png",
+            "lable": "C"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep10_scene_00"
+          },
+          "position": {
+            "x": null,
+            "y": 653,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep10_scene_00__ep10_choice_01_conditional",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "选项 D · 未解锁",
+            "text": "启用之前积累的全部证据链（需要前序关键选择或隐藏证据）",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 715,
+            "width": 360,
+            "height": null
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ending_future",
+      "nodeDesc": "陈劲是未来的贺星冉花千万派回来拯救自己的。",
+      "title": "反转结局：陈劲是未来人",
+      "nodeType": "video",
+      "sceneType": "end",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_future.v5.4e152225220a.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_future.v5.4e152225220a.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_future.v5.4e152225220a.first.jpg",
+        "endFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_future.v5.4e152225220a.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 14.041995
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ending_future__ending_dialog",
+          "componentType": "endingDialog_he",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": "share",
+          "content": {
+            "roleName": "",
+            "title": "反转结局：陈劲是未来人",
+            "text": "陈劲是未来的贺星冉花千万派回来拯救自己的。",
+            "buttonText": "分享给好友",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": null
+        }
+      ]
+    },
+    {
+      "nodeId": "ending_boss",
+      "nodeDesc": "贺星冉买下整个工地，陈劲成了她的项目经理。",
+      "title": "反转结局：包工头女王",
+      "nodeType": "video",
+      "sceneType": "end",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_boss.v5.6f5edd14c996.first.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_boss.v5.6f5edd14c996.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_boss.v5.6f5edd14c996.first.jpg",
+        "endFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_boss.v5.6f5edd14c996.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ending_boss__ending_dialog",
+          "componentType": "endingDialog_he",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": "share",
+          "content": {
+            "roleName": "",
+            "title": "反转结局：包工头女王",
+            "text": "贺星冉买下整个工地，陈劲成了她的项目经理。",
+            "buttonText": "分享给好友",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": null
+        }
+      ]
+    },
+    {
+      "nodeId": "ep11_scene_00",
+      "nodeDesc": "她给糙汉系上领带，门外却有人叫出他被埋藏的身份",
+      "title": "冷开场：identity-reveal",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep11_scene_00_video_01.v5.7630b4591fdc.first.jpg",
+      "video": {
+        "url": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep11_scene_00_video_01.v5.7630b4591fdc.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep11_scene_00_video_01.v5.7630b4591fdc.first.jpg",
+        "endFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep11_scene_00_video_01.v5.7630b4591fdc.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep11_scene_00__ep11_choice_01_prompt",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "这一刻，你承认自己真正的感受——",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 390,
+            "width": 360,
+            "height": null
+          }
+        },
+        {
+          "componentId": "ep11_scene_00__ep11_choice_01_emotion",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep11_branch_emotion",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "抓住陈劲的手，和他并肩回家",
+            "iconUrl": null,
+            "lable": "A"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep11_scene_00__ep11_choice_01_truth",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep11_branch_truth",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "拒绝所有婚约，把人生拿回自己手里",
+            "iconUrl": null,
+            "lable": "B"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 591,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep11_scene_00__ep11_choice_01_counterattack",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep11_branch_counterattack",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "公开全部证据，让许家当场覆灭",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png",
+            "lable": "C"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep11_scene_00"
+          },
+          "position": {
+            "x": null,
+            "y": 653,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep11_scene_00__ep11_choice_01_conditional",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "选项 D · 未解锁",
+            "text": "松开他的手，一个人回到露台（需要前序关键选择或隐藏证据）",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 715,
+            "width": 360,
+            "height": null
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep10_scene_00__v2",
+      "nodeDesc": "许邵泽堵在门口，说逃跑的人终究要回到他手里",
+      "title": "冷开场：confrontation",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep10_scene_00_video_01.v5.e9e81bb30ff7.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep10_scene_00_video_01.v5.e9e81bb30ff7.mp4",
+        "firstFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep10_scene_00_video_01.v5.e9e81bb30ff7.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep10_scene_00_video_01.v5.e9e81bb30ff7.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep10_scene_00__v2__ep10_choice_01_prompt",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "这一刻，你承认自己真正的感受——",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 390,
+            "width": 360,
+            "height": null
+          }
+        },
+        {
+          "componentId": "ep10_scene_00__v2__ep10_choice_01_emotion",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep10_branch_emotion",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "退到陈劲身后，让他替我挡一次",
+            "iconUrl": null,
+            "lable": "A"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep10_scene_00__v2__ep10_choice_01_truth",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep10_branch_truth",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "站到最前面，这次由我亲口拒绝",
+            "iconUrl": null,
+            "lable": "B"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 591,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep10_scene_00__v2__ep10_choice_01_counterattack",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep10_branch_counterattack",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "抢过话筒，让所有宾客听见真相",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png",
+            "lable": "C"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep10_scene_00__v2"
+          },
+          "position": {
+            "x": null,
+            "y": 653,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep10_scene_00__v2__ep10_choice_01_conditional",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep10_branch_conditional",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "启用之前积累的全部证据链",
+            "iconUrl": null,
+            "lable": "D"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 715,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep09_branch_conditional",
+      "nodeDesc": "玩家选择“调出前一集保存的管家通话”后的可见后果",
+      "title": "选择后果·身份追查",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep09_branch_conditional_video_01.v5.22b9f20594b5.first.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep09_branch_conditional_video_01.v5.22b9f20594b5.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep09_branch_conditional_video_01.v5.22b9f20594b5.first.jpg",
+        "endFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep09_branch_conditional_video_01.v5.22b9f20594b5.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 7.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep09_branch_conditional__ep09_ad_04_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep11_scene_00",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep09_branch_conditional"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep10_branch_emotion",
+      "nodeDesc": "玩家选择“退到陈劲身后，让他替我挡一次”后的可见后果",
+      "title": "选择后果·接受保护",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep10_branch_emotion_video_01.v5.d863886b1bef.first.jpg",
+      "video": {
+        "url": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep10_branch_emotion_video_01.v5.d863886b1bef.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep10_branch_emotion_video_01.v5.d863886b1bef.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep10_branch_emotion_video_01.v5.d863886b1bef.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep10_branch_emotion__ep10_ad_01_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep11_scene_00",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep10_branch_emotion"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep10_branch_truth",
+      "nodeDesc": "玩家选择“站到最前面，这次由我亲口拒绝”后的可见后果",
+      "title": "选择后果·夺回主体",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep10_branch_truth_video_01.v5.6eff7d7c2f72.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep10_branch_truth_video_01.v5.6eff7d7c2f72.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep10_branch_truth_video_01.v5.6eff7d7c2f72.first.jpg",
+        "endFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep10_branch_truth_video_01.v5.6eff7d7c2f72.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep10_branch_truth__ep10_ad_02_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep11_scene_00__v2",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "继续剧情",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep10_branch_truth"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep10_branch_counterattack",
+      "nodeDesc": "玩家选择“抢过话筒，让所有宾客听见真相”后的可见后果",
+      "title": "选择后果·公开审判",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep10_branch_counterattack_video_01.v5.2b86aca17417.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep10_branch_counterattack_video_01.v5.2b86aca17417.mp4",
+        "firstFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep10_branch_counterattack_video_01.v5.2b86aca17417.first.jpg",
+        "endFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep10_branch_counterattack_video_01.v5.2b86aca17417.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 7.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep10_branch_counterattack__ep10_ad_03_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ending_crane",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "查看结局",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep10_branch_counterattack"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep11_branch_emotion",
+      "nodeDesc": "玩家选择“抓住陈劲的手，和他并肩回家”后的可见后果",
+      "title": "选择后果·爱情与并肩",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep11_branch_emotion_video_01.v5.f31f1ad7bc11.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep11_branch_emotion_video_01.v5.f31f1ad7bc11.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep11_branch_emotion_video_01.v5.f31f1ad7bc11.first.jpg",
+        "endFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep11_branch_emotion_video_01.v5.f31f1ad7bc11.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep11_branch_emotion__ep11_ad_01_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ending_romance",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "查看结局",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep11_branch_emotion"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep11_branch_truth",
+      "nodeDesc": "玩家选择“拒绝所有婚约，把人生拿回自己手里”后的可见后果",
+      "title": "选择后果·独立与自由",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep11_branch_truth_video_01.v5.cb8829641bf5.first.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep11_branch_truth_video_01.v5.cb8829641bf5.mp4",
+        "firstFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep11_branch_truth_video_01.v5.cb8829641bf5.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep11_branch_truth_video_01.v5.cb8829641bf5.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep11_branch_truth__ep11_ad_02_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ending_independent",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "查看结局",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep11_branch_truth"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep11_branch_counterattack",
+      "nodeDesc": "玩家选择“公开全部证据，让许家当场覆灭”后的可见后果",
+      "title": "选择后果·复仇与清算",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep11_branch_counterattack_video_01.v5.cd5c620f597b.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep11_branch_counterattack_video_01.v5.cd5c620f597b.mp4",
+        "firstFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep11_branch_counterattack_video_01.v5.cd5c620f597b.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep11_branch_counterattack_video_01.v5.cd5c620f597b.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 7.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep11_branch_counterattack__ep11_ad_03_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ending_revenge",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "查看结局",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep11_branch_counterattack"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep10_branch_conditional",
+      "nodeDesc": "玩家选择“启用之前积累的全部证据链”后的可见后果",
+      "title": "选择后果·终局证据",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep10_branch_conditional_video_01.v5.1b10f987e5c0.first.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep10_branch_conditional_video_01.v5.1b10f987e5c0.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep10_branch_conditional_video_01.v5.1b10f987e5c0.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep10_branch_conditional_video_01.v5.1b10f987e5c0.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep10_branch_conditional__ep10_ad_04_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ending_worker",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "查看结局",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep10_branch_conditional"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ep11_scene_00__v2",
+      "nodeDesc": "她给糙汉系上领带，门外却有人叫出他被埋藏的身份",
+      "title": "冷开场：identity-reveal",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep11_scene_00_video_01.v5.7630b4591fdc.first.jpg",
+      "video": {
+        "url": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep11_scene_00_video_01.v5.7630b4591fdc.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep11_scene_00_video_01.v5.7630b4591fdc.first.jpg",
+        "endFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep11_scene_00_video_01.v5.7630b4591fdc.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep11_scene_00__v2__ep11_choice_01_prompt",
+          "componentType": "text2",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "这一刻，你承认自己真正的感受——",
+            "buttonText": "",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 390,
+            "width": 360,
+            "height": null
+          }
+        },
+        {
+          "componentId": "ep11_scene_00__v2__ep11_choice_01_emotion",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep11_branch_emotion",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "抓住陈劲的手，和他并肩回家",
+            "iconUrl": null,
+            "lable": "A"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep11_scene_00__v2__ep11_choice_01_truth",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep11_branch_truth",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "拒绝所有婚约，把人生拿回自己手里",
+            "iconUrl": null,
+            "lable": "B"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 591,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep11_scene_00__v2__ep11_choice_01_counterattack",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep11_branch_counterattack",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "公开全部证据，让许家当场覆灭",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png",
+            "lable": "C"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep11_scene_00__v2"
+          },
+          "position": {
+            "x": null,
+            "y": 653,
+            "width": 360,
+            "height": 48
+          }
+        },
+        {
+          "componentId": "ep11_scene_00__v2__ep11_choice_01_conditional",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep11_branch_conditional",
+          "unlockType": null,
+          "content": {
+            "roleName": "",
+            "title": "",
+            "text": "",
+            "buttonText": "松开他的手，一个人回到露台",
+            "iconUrl": null,
+            "lable": "D"
+          },
+          "value": null,
+          "position": {
+            "x": null,
+            "y": 715,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ending_crane",
+      "nodeDesc": "两人把婚礼办在塔吊顶端，全城工地同时鸣笛。",
+      "title": "荒诞结局：塔吊婚礼",
+      "nodeType": "video",
+      "sceneType": "end",
+      "nodeIconUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_crane.v5.b262448e59c6.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_crane.v5.b262448e59c6.mp4",
+        "firstFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_crane.v5.b262448e59c6.first.jpg",
+        "endFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_crane.v5.b262448e59c6.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 12.129313
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ending_crane__ending_dialog",
+          "componentType": "endingDialog_he",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": "share",
+          "content": {
+            "roleName": "",
+            "title": "荒诞结局：塔吊婚礼",
+            "text": "两人把婚礼办在塔吊顶端，全城工地同时鸣笛。",
+            "buttonText": "分享给好友",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": null
+        }
+      ]
+    },
+    {
+      "nodeId": "ending_romance",
+      "nodeDesc": "贺星冉在清醒中选择了陈劲，但不再把自己交给任何人。",
+      "title": "正式结局：被接住之后",
+      "nodeType": "video",
+      "sceneType": "end",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_romance.v5.96252f33eb7d.first.jpg",
+      "video": {
+        "url": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_romance.v5.96252f33eb7d.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_romance.v5.96252f33eb7d.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_romance.v5.96252f33eb7d.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ending_romance__ending_dialog",
+          "componentType": "endingDialog_he",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": "share",
+          "content": {
+            "roleName": "",
+            "title": "正式结局：被接住之后",
+            "text": "贺星冉在清醒中选择了陈劲，但不再把自己交给任何人。",
+            "buttonText": "分享给好友",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": null
+        }
+      ]
+    },
+    {
+      "nodeId": "ending_independent",
+      "nodeDesc": "她拒绝旧婚约，也拒绝立刻给新关系命名。",
+      "title": "正式结局：自己的方向",
+      "nodeType": "video",
+      "sceneType": "end",
+      "nodeIconUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_independent.v5.6dc81ee6b968.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_independent.v5.6dc81ee6b968.mp4",
+        "firstFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_independent.v5.6dc81ee6b968.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_independent.v5.6dc81ee6b968.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 12.129313
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ending_independent__ending_dialog",
+          "componentType": "endingDialog_he",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": "share",
+          "content": {
+            "roleName": "",
+            "title": "正式结局：自己的方向",
+            "text": "她拒绝旧婚约，也拒绝立刻给新关系命名。",
+            "buttonText": "分享给好友",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": null
+        }
+      ]
+    },
+    {
+      "nodeId": "ending_revenge",
+      "nodeDesc": "完整证据链公开，许家精心维持的体面一夜崩塌。",
+      "title": "正式结局：许家覆灭",
+      "nodeType": "video",
+      "sceneType": "end",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_revenge.v5.35de8bb31e89.first.jpg",
+      "video": {
+        "url": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_revenge.v5.35de8bb31e89.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_revenge.v5.35de8bb31e89.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_revenge.v5.35de8bb31e89.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ending_revenge__ending_dialog",
+          "componentType": "endingDialog_he",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": "share",
+          "content": {
+            "roleName": "",
+            "title": "正式结局：许家覆灭",
+            "text": "完整证据链公开，许家精心维持的体面一夜崩塌。",
+            "buttonText": "分享给好友",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": null
+        }
+      ]
+    },
+    {
+      "nodeId": "ending_worker",
+      "nodeDesc": "许邵泽破产后进入陈劲的工地搬砖。",
+      "title": "反转结局：反派转职",
+      "nodeType": "video",
+      "sceneType": "end",
+      "nodeIconUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_worker.v5.9ff0f6fb4ae3.first.jpg",
+      "video": {
+        "url": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_worker.v5.9ff0f6fb4ae3.mp4",
+        "firstFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_worker.v5.9ff0f6fb4ae3.first.jpg",
+        "endFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_worker.v5.9ff0f6fb4ae3.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 11.129313
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ending_worker__ending_dialog",
+          "componentType": "endingDialog_he",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": null,
+          "unlockType": "share",
+          "content": {
+            "roleName": "",
+            "title": "反转结局：反派转职",
+            "text": "许邵泽破产后进入陈劲的工地搬砖。",
+            "buttonText": "分享给好友",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": null
+        }
+      ]
+    },
+    {
+      "nodeId": "ep11_branch_conditional",
+      "nodeDesc": "玩家选择“松开他的手，一个人回到露台”后的可见后果",
+      "title": "选择后果·遗憾与错过",
+      "nodeType": "video",
+      "sceneType": "game",
+      "nodeIconUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep11_branch_conditional_video_01.v5.20c9c0229c06.first.jpg",
+      "video": {
+        "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep11_branch_conditional_video_01.v5.20c9c0229c06.mp4",
+        "firstFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep11_branch_conditional_video_01.v5.20c9c0229c06.first.jpg",
+        "endFrameUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ep11_branch_conditional_video_01.v5.20c9c0229c06.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 11.129313
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ep11_branch_conditional__ep11_ad_04_continue",
+          "componentType": "button1",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ending_regret",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "广告解锁",
+            "text": "",
+            "buttonText": "查看结局",
+            "iconUrl": "/uiStyle/style1/asset/Icon/icon_ad.png"
+          },
+          "value": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ep11_branch_conditional"
+          },
+          "position": {
+            "x": null,
+            "y": 529,
+            "width": 360,
+            "height": 48
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "ending_regret",
+      "nodeDesc": "她赢下了清算，却在最后一次选择里松开陈劲的手。",
+      "title": "正式结局：错过的那只手",
+      "nodeType": "video",
+      "sceneType": "end",
+      "nodeIconUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_regret.v5.a7052610904b.first.jpg",
+      "video": {
+        "url": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_regret.v5.a7052610904b.mp4",
+        "firstFrameUrl": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_regret.v5.a7052610904b.first.jpg",
+        "endFrameUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/ending_regret.v5.a7052610904b.end.jpg",
+        "preload": false,
+        "loop": false,
+        "muted": false,
+        "duration": 6.041667
+      },
+      "image": null,
+      "components": [
+        {
+          "componentId": "ending_regret__ending_dialog",
+          "componentType": "endingDialog_be",
+          "showTime": null,
+          "endTime": null,
+          "nextNodeId": "ep11_scene_00__v2",
+          "unlockType": "ad",
+          "content": {
+            "roleName": "",
+            "title": "正式结局：错过的那只手",
+            "text": "她赢下了清算，却在最后一次选择里松开陈劲的手。",
+            "buttonText": "看广告重新选择",
+            "iconUrl": null
+          },
+          "value": null,
+          "position": null,
+          "adConfig": {
+            "adType": "rewarded",
+            "adId": null,
+            "failNextNodeId": "ending_regret"
+          }
+        }
+      ]
+    }
+  ],
+  "globalSettings": {
+    "enableAutoSave": true,
+    "enableUnlockPersistence": true,
+    "syncUnlockToServer": false,
+    "debugMode": false
+  },
+  "adConfig": {
+    "rewardedAdId": null,
+    "interstitialAdId": null,
+    "bannerAdId": null
+  },
+  "preload": {
+    "strategy": "EAGER",
+    "lookahead": 2,
+    "initialNodes": [
+      "ep01_scene_00",
+      "ep01_branch_emotion",
+      "ep01_branch_truth",
+      "ep01_branch_counterattack",
+      "ep01_branch_conditional"
+    ]
+  }
+}

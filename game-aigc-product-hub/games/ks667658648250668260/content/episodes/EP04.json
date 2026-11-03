@@ -1,0 +1,325 @@
+{
+ "e4s1": {
+  "ep": "EP04",
+  "epTitle": "赵铁牛上门",
+  "scene": "house",
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s1.c.mp4",
+   "duration": 10,
+   "label": "院门被踹开",
+   "poster": "images/lastframes/e4s1.c.jpg"
+  },
+  "char": "zhao",
+  "speaker": "赵铁牛（嘶吼）",
+  "text": "李傲天！玉米借哥两袋！",
+  "next": "e4s3"
+ },
+ "e4s3": {
+  "ep": "EP04",
+  "scene": "house",
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s3.c.mp4",
+   "duration": 10,
+   "label": "傲天抓锄冲出",
+   "poster": "images/lastframes/e4s3.c.jpg"
+  },
+  "char": "aotian",
+  "speaker": "你（低吼）",
+  "text": "婉儿！往后退！",
+  "next": "f3"
+ },
+ "f3": {
+  "ep": "EP04",
+  "scene": "house",
+  "type": "choice",
+  "title": "赵铁牛带了五个人堵在院子里——你怎么应对？",
+  "options": [
+   {
+    "text": "硬闯正路·拿锄头干他一个",
+    "icon": "fight",
+    "stat": {
+     "wei": 15,
+     "qing": 5
+    },
+    "next": "r_f3_1",
+    "id": "f3_opt_0"
+   },
+   {
+    "text": "把婉儿护在身后·先退一步",
+    "icon": "hide",
+    "stat": {
+     "wei": -99,
+     "qing": 5
+    },
+    "next": "BE_BEATEN",
+    "id": "f3_opt_2",
+    "roastKey": "roast_beaten",
+    "roast": "现场勘验：受害人把嫂子往身后一拉，自己两手空空迎上五个壮汉。法医结论：护人的心是真的，打不过也是真的。婉儿是踩着他的血跑出院门喊人的——喊回来的时候，只剩一口气。"
+   },
+   {
+    "text": "踹屁股警告·下次踹断腿",
+    "icon": "fight",
+    "stat": {
+     "wei": 20,
+     "liang": 3
+    },
+    "next": "r_f3_3",
+    "id": "f3_opt_3",
+    "ad": true,
+    "adUnitId": "2300058116_01"
+   }
+  ]
+ },
+ "e4s4": {
+  "ep": "EP04",
+  "scene": "house",
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s4.c.mp4",
+   "duration": 10,
+   "label": "挡在她前",
+   "poster": "images/lastframes/e4s4.c.jpg"
+  },
+  "char": "aotian",
+  "speaker": "你",
+  "forceCaption": true,
+  "text": "背后是我未过门的媳妇！",
+  "next": "f_e4s4"
+ },
+ "e4s6": {
+  "ep": "EP04",
+  "scene": "house",
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s6.c.mp4",
+   "duration": 10,
+   "label": "打架高潮",
+   "poster": "images/lastframes/e4s6.c.jpg"
+  },
+  "char": "aotian",
+  "speaker": "你（怒吼）",
+  "text": "让你欺负我媳妇！",
+  "next": "e4s7"
+ },
+ "e4s7": {
+  "ep": "EP04",
+  "scene": "house",
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s7_v82.mp4",
+   "label": "赵铁牛倒地服软",
+   "poster": "images/lastframes/e4s7_v82.jpg"
+  },
+  "char": "narrator",
+  "speaker": "旁白",
+  "text": "这一顿他记一辈子。",
+  "next": "e4s8"
+ },
+ "e4s8": {
+  "ep": "EP04",
+  "scene": "house",
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s8.c.mp4",
+   "duration": 10,
+   "label": "擦手温情",
+   "poster": "images/lastframes/e4s8.c.jpg"
+  },
+  "char": "wanerh",
+  "speaker": "沈婉儿（哽）",
+  "forceCaption": true,
+  "text": "你要是没了，我也不活。",
+  "next": "f_e4s8"
+ },
+ "r_f3_1": {
+  "ep": "EP04",
+  "scene": "house",
+  "char": "aotian",
+  "speaker": "你（心里）",
+  "text": "（一锄头拍在为首那个后脑上·只听锅盖一样的声音）把嫂子抢回来·就这样。局不开你还能怎么样。",
+  "next": "e4s4"
+ },
+ "r_f3_3": {
+  "ep": "EP04",
+  "scene": "house",
+  "char": "aotian",
+  "speaker": "你（心里）",
+  "text": "（追出去一脚踹在为首那个屁股上）下次再来·把腿给你踹断。",
+  "next": "e4s4",
+  "stay": true
+ },
+ "f_e4s4": {
+  "ep": "EP04",
+  "scene": "house",
+  "type": "choice",
+  "title": "「背后是我未过门的媳妇」——这句话已经出口了，接着？",
+  "options": [
+   {
+    "text": "再补一句「谁动她·我要谁的命」",
+    "icon": "fight",
+    "stat": {
+     "wei": 15,
+     "qing": 10
+    },
+    "next": "r_fe4s4_a",
+    "id": "f_e4s4_opt_0",
+    "ad": true,
+    "adUnitId": "2300058116_01"
+   },
+   {
+    "text": "当众把她的手攥进掌心",
+    "icon": "give",
+    "stat": {
+     "qing": 20
+    },
+    "next": "r_fe4s4_b",
+    "id": "f_e4s4_opt_1"
+   },
+   {
+    "text": "转过头问她「你怕不怕」",
+    "icon": "say",
+    "stat": {
+     "qing": 18,
+     "liang": 3
+    },
+    "next": "r_fe4s4_c",
+    "id": "f_e4s4_opt_2"
+   }
+  ]
+ },
+ "r_fe4s4_a": {
+  "ep": "EP04",
+  "scene": "house",
+  "char": "narrator",
+  "speaker": "旁白",
+  "text": "（锄头往地上一顿·声音压过全院）谁动她一根头发·我要谁的命。赵铁牛脸上的横肉抽了一下。",
+  "next": "e4_muscle",
+  "stay": true
+ },
+ "r_fe4s4_b": {
+  "ep": "EP04",
+  "scene": "house",
+  "char": "narrator",
+  "speaker": "旁白",
+  "text": "（伸手把她的手攥进掌心·十指扣紧·当着五个人的面）她整个人一震·手心全是汗·却没抽回去。",
+  "next": "e4_muscle"
+ },
+ "r_fe4s4_c": {
+  "ep": "EP04",
+  "scene": "house",
+  "char": "narrator",
+  "speaker": "旁白",
+  "text": "（回头·声音忽然软下来）婉儿·你怕不怕。她摇头·又点头·最后小声说：你在·我就不怕。",
+  "next": "e4_muscle"
+ },
+ "f_e4s8": {
+  "ep": "EP04",
+  "scene": "house",
+  "type": "choice",
+  "title": "「你要是没了，我也不活。」——她说完，煤油灯芯爆了一下",
+  "options": [
+   {
+    "text": "「那你好好活着·替我看着这个家」",
+    "icon": "say",
+    "stat": {
+     "qing": 25
+    },
+    "next": "r_fe4s8_b",
+    "id": "f_e4s8_opt_1"
+   },
+   {
+    "text": "反手把她抱进怀里·一句话不说",
+    "icon": "give",
+    "stat": {
+     "qing": 30
+    },
+    "next": "r_fe4s8_c",
+    "id": "f_e4s8_opt_2"
+   },
+   {
+    "text": "「等秋收完·我就去请王婆」",
+    "icon": "give",
+    "stat": {
+     "qing": 20,
+     "liang": 5
+    },
+    "next": "r_fe4s8_d",
+    "id": "f_e4s8_opt_3"
+   }
+  ]
+ },
+ "r_fe4s8_b": {
+  "ep": "EP04",
+  "scene": "house",
+  "char": "narrator",
+  "speaker": "旁白",
+  "text": "（握住她给你上药的那只手）真要有那一天·你就好好活着·替我看着这个家。她猛地摇头·眼泪砸在你手背上。",
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4_shangyao_v82.mp4",
+   "label": "握住上药的那只手",
+   "poster": "images/lastframes/e4_shangyao_v82.jpg"
+  },
+  "next": "e4_to_e5"
+ },
+ "r_fe4s8_c": {
+  "ep": "EP04",
+  "scene": "house",
+  "char": "narrator",
+  "speaker": "旁白",
+  "text": "（反手把她整个人搂进怀里·下巴压在她发顶）一句话没说。她起先僵着·后来两只手慢慢环上你的背·哭了很久。",
+  "next": "e4_to_e5"
+ },
+ "r_fe4s8_d": {
+  "ep": "EP04",
+  "scene": "house",
+  "char": "narrator",
+  "speaker": "旁白",
+  "text": "（看着房梁·忽然开口）等秋收完·我就去请王婆做媒。明媒正娶·八抬大轿。她手里的药布掉在了地上。",
+  "next": "e4_to_e5"
+ },
+ "e4_muscle": {
+  "ep": "EP04",
+  "scene": "house",
+  "media": {
+   "kind": "image",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/skill_muscle_activate.c.jpg",
+   "label": "掌心发烫·筋骨暴起"
+  },
+  "char": "narrator",
+  "speaker": "旁白",
+  "forceCaption": true,
+  "text": "掌心忽然发烫，两条胳膊上的筋一根根鼓起来——这身力气，是这荒年欠你的。",
+  "next": "s_muscle"
+ },
+ "s_muscle": {
+  "ep": "EP04",
+  "scene": "house",
+  "media": {
+   "kind": "skillcard",
+   "name": "变身猛男·Lv1",
+   "desc": "一身蛮力从天上掉下来·五个人也拦不住",
+   "achvId": "skill_muscle"
+  },
+  "char": "system",
+  "speaker": "系统",
+  "text": "叮——技能激活：变身猛男。",
+  "next": "e4s6"
+ },
+ "e4_to_e5": {
+  "ep": "EP04",
+  "scene": "trans",
+  "media": {
+   "kind": "image",
+   "file": "images/lastframes/e4s7_v82.jpg",
+   "label": "赵铁牛被架走"
+  },
+  "char": "narrator",
+  "speaker": "旁白",
+  "forceCaption": true,
+  "text": "当夜赵铁牛被他那几个兄弟架走了。这一架，把村里的风向也架转了——第二天起，来敲你家门的，就不再是来讨债的了。",
+  "next": "e5s0a"
+ }
+}

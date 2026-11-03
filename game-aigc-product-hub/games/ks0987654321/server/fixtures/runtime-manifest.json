@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "revision": 1,
+  "gameId": "ks0987654321",
+  "presentation": {
+    "themeId": "coral-fantasy",
+    "displayName": "珊瑚防线",
+    "copy": { "homeTitle": "珊瑚防线", "homeSubtitle": "守护最后的珊瑚礁", "homeAction": "进入潮汐地图", "mapTitle": "潮汐战图", "mapSubtitle": "选择珊瑚前哨", "mapUpgrade": "角色升级", "detailBack": "返回", "detailAction": "选择五名守卫", "deckTitle": "选择五名守卫", "deckHint": "点击卡牌组建队伍", "progressionTitle": "角色升级", "progressionMaterial": "材料", "progressionCost": "升级花费", "purchaseCost": "购买花费", "battleGold": "珍珠", "battleLife": "珊瑚礁", "resultWin": "守护成功", "resultLose": "前哨失守", "resultAction": "返回地图" },
+    "sceneAssets": { "homeBackground": "", "worldMapBackground": "", "levelBackground": "", "battleBackground": "" },
+    "colors": { "background": [0.025,0.10,0.17], "panel": [0.07,0.24,0.29], "primary": [0.16,0.72,0.70], "accent": [0.96,0.48,0.36], "success": [0.20,0.76,0.48], "disabled": [0.24,0.30,0.34], "frame": [0.72,0.96,0.91], "route": [0.34,0.48,0.48], "ground": [0.08,0.30,0.31], "obstacle": [0.72,0.36,0.28], "enemy": [0.92,0.28,0.38], "health": [0.28,0.94,0.46], "gold": [1.0,0.82,0.28] },
+    "rolePalette": [[0.18,0.72,0.86],[0.94,0.42,0.32],[0.32,0.78,0.92],[0.78,0.42,0.88],[0.26,0.86,0.58],[0.34,0.52,0.96]],
+    "enemyPalette": [[0.92,0.28,0.38],[0.76,0.24,0.46],[0.58,0.18,0.36]],
+    "mapStyle": { "tileGap": 2, "tileBorder": 2, "tileBorderColor": [0.10,0.42,0.42], "groundAccentColor": [0.12,0.38,0.34], "routeInset": 0.18, "routeMarkerColor": [0.62,0.76,0.70], "obstacleInset": 0.20, "obstacleAccentColor": [0.96,0.58,0.34], "spawnColor": [0.22,0.86,0.78], "goalColor": [1.0,0.72,0.30], "backgroundBandColor": [0.04,0.22,0.31], "backgroundBandCount": 5 },
+    "roleAppearances": [
+      { "bodyShape": "tall", "accessory": "blade", "bodyScaleX": 0.56, "bodyScaleY": 0.72, "headScale": 0.34, "secondaryColor": [0.10,0.34,0.48], "accentColor": [0.82,0.98,0.94] },
+      { "bodyShape": "wide", "accessory": "bow", "bodyScaleX": 0.70, "bodyScaleY": 0.58, "headScale": 0.31, "secondaryColor": [0.46,0.16,0.18], "accentColor": [1.0,0.78,0.34] },
+      { "bodyShape": "robe", "accessory": "orb", "bodyScaleX": 0.62, "bodyScaleY": 0.68, "headScale": 0.36, "secondaryColor": [0.12,0.38,0.62], "accentColor": [0.80,0.98,1.0] },
+      { "bodyShape": "robe", "accessory": "staff", "bodyScaleX": 0.60, "bodyScaleY": 0.72, "headScale": 0.34, "secondaryColor": [0.36,0.16,0.54], "accentColor": [1.0,0.66,0.88] },
+      { "bodyShape": "light", "accessory": "fan", "bodyScaleX": 0.54, "bodyScaleY": 0.62, "headScale": 0.30, "secondaryColor": [0.10,0.42,0.32], "accentColor": [0.86,1.0,0.62] },
+      { "bodyShape": "tall", "accessory": "shell", "bodyScaleX": 0.64, "bodyScaleY": 0.74, "headScale": 0.38, "secondaryColor": [0.14,0.24,0.58], "accentColor": [0.72,0.88,1.0] }
+    ],
+    "enemyAppearances": [
+      { "bodyShape": "blob", "accessory": "eyes", "bodyScaleX": 0.72, "bodyScaleY": 0.54, "headScale": 0.22, "secondaryColor": [0.54,0.10,0.24], "accentColor": [1.0,0.72,0.82] },
+      { "bodyShape": "armored", "accessory": "horns", "bodyScaleX": 0.78, "bodyScaleY": 0.68, "headScale": 0.28, "secondaryColor": [0.38,0.10,0.30], "accentColor": [0.96,0.56,0.72] },
+      { "bodyShape": "giant", "accessory": "crown", "bodyScaleX": 0.88, "bodyScaleY": 0.82, "headScale": 0.34, "secondaryColor": [0.24,0.08,0.22], "accentColor": [0.90,0.42,0.58] }
+    ]
+  },
+  "deckRules": { "deckSize": 5, "allowDuplicates": false, "requiredTags": [], "bannedCardIds": [] },
+  "cards": [
+    { "id": "card-1", "unitId": "tower-1", "displayName": "潮刃卫士", "uiName": "潮刃卫士", "symbol": 1, "tags": ["rapid"], "color": [0.18,0.72,0.86], "portraitAsset": "" },
+    { "id": "card-2", "unitId": "tower-2", "displayName": "赤礁射手", "uiName": "赤礁射手", "symbol": 2, "tags": ["precision"], "color": [0.94,0.42,0.32], "portraitAsset": "" },
+    { "id": "card-3", "unitId": "tower-3", "displayName": "冰潮术士", "uiName": "冰潮术士", "symbol": 3, "tags": ["control"], "color": [0.32,0.78,0.92], "portraitAsset": "" },
+    { "id": "card-4", "unitId": "tower-4", "displayName": "星珊瑚法师", "uiName": "星珊瑚法师", "symbol": 4, "tags": ["area"], "color": [0.78,0.42,0.88], "portraitAsset": "" },
+    { "id": "card-5", "unitId": "tower-5", "displayName": "海风游侠", "uiName": "海风游侠", "symbol": 5, "tags": ["rapid"], "color": [0.26,0.86,0.58], "portraitAsset": "" },
+    { "id": "card-6", "unitId": "tower-6", "displayName": "深蓝祭司", "uiName": "深蓝祭司", "symbol": 6, "tags": ["control"], "color": [0.34,0.52,0.96], "portraitAsset": "" }
+  ],
+  "progression": { "maxLevel": 20, "baseXp": 100, "xpGrowth": 1.25, "statPerLevel": 0.04, "baseUpgradeCost": 25, "upgradeCostGrowth": 1.35 },
+  "bonds": [
+    { "id": "bond-rapid", "tag": "rapid", "thresholds": [{ "count": 2, "effect": { "type": "attackSpeedMultiplier", "value": 0.9 } }] },
+    { "id": "bond-control", "tag": "control", "thresholds": [{ "count": 2, "effect": { "type": "slowPowerBonus", "value": 0.1 } }] }
+  ],
+  "worldMap": { "nodes": [{ "id": "level-1", "x": 0.5, "y": 0.5, "levelId": "neutral-level-1", "displayName": "珊瑚前哨", "description": "守住最后的珊瑚礁", "prerequisites": [], "minStars": 0, "minPlayerLevel": 1 }] },
+  "levels": { "neutral-level-1": { "revision": 1 } },
+  "assetManifest": []
+}

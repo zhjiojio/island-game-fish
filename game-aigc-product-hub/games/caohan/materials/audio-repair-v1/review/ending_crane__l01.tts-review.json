@@ -1,0 +1,9 @@
+{
+  "transcript": "谁反对",
+  "voice": "女声",
+  "issues": [
+    "吞字"
+  ],
+  "uncertain": "",
+  "reviewModel": "mistralai/voxtral-small-24b-2507"
+}

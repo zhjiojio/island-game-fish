@@ -1,0 +1,18 @@
+{
+ "schemaVersion": 1,
+ "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/dream_yujie.v1.mp4",
+ "sha256": "e2aaa8553a9d2483e1e9192901568a71d1444eb328afb3b178ea3a7b134193e3",
+ "duration": 10.042,
+ "nodes": [
+  "s_dream_yujie"
+ ],
+ "status": "nonverbal",
+ "transcript": "",
+ "rawText": "",
+ "asrChars": [],
+ "timingEngine": "FunASR-paraformer-zh",
+ "crossCheckText": "",
+ "speakerKey": null,
+ "speakerRuleKey": "dream_yujie",
+ "reviewMethod": "Dance-only reference footage: background music without dialogue. Paraformer hallucinated lyrics, so transcript is intentionally empty."
+}

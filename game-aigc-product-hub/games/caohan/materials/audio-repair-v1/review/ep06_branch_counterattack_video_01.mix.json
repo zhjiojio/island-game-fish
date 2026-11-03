@@ -1,0 +1,27 @@
+{
+  "videoId": "ep06_branch_counterattack_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep06_branch_counterattack_video_01__l01",
+      "speaker": "陈劲",
+      "text": "行。",
+      "heard": "行",
+      "start": 7.215,
+      "end": 7.745,
+      "alignmentScore": 1.0
+    },
+    {
+      "lineId": "ep06_branch_counterattack_video_01__l02",
+      "speaker": "贺星冉",
+      "text": "那就说定了。",
+      "heard": "那就说定了",
+      "start": 14.675,
+      "end": 16.06,
+      "alignmentScore": 1.0
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 25.123990929705215,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.356048583984375
+}

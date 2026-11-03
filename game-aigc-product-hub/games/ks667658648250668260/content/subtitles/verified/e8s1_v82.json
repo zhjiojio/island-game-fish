@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e8s1_v82.mp4",
+  "sha256": "d76c7b8239929e7d1830acf314c63d882cafc964cc786607cb0c6f37d3b05445",
+  "duration": 10.042,
+  "nodes": [
+    "e8s1"
+  ],
+  "status": "speech",
+  "transcript": "今夜一声令，他就没了。他就没了！",
+  "rawText": "今夜一声令他就没了他就没了",
+  "asrChars": [
+    [
+      0.15,
+      0.39,
+      "今"
+    ],
+    [
+      0.45,
+      0.69,
+      "夜"
+    ],
+    [
+      0.77,
+      1.01,
+      "一"
+    ],
+    [
+      1.03,
+      1.27,
+      "声"
+    ],
+    [
+      1.33,
+      1.57,
+      "令"
+    ],
+    [
+      3.11,
+      3.35,
+      "他"
+    ],
+    [
+      3.49,
+      3.73,
+      "就"
+    ],
+    [
+      3.75,
+      3.99,
+      "没"
+    ],
+    [
+      4.07,
+      4.31,
+      "了"
+    ],
+    [
+      5.85,
+      6.09,
+      "他"
+    ],
+    [
+      6.15,
+      6.39,
+      "就"
+    ],
+    [
+      6.49,
+      6.73,
+      "没"
+    ],
+    [
+      6.87,
+      7.405,
+      "了"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "今夜一声令,他就没了。他就没了!",
+  "speakerKey": null,
+  "speakerRuleKey": "e8s1",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

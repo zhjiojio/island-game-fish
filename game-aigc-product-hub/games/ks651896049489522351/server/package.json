@@ -1,0 +1,20 @@
+{
+  "name": "dou-di-zhu-server",
+  "version": "1.0.0",
+  "description": "斗地主联机游戏服务端",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "test": "DDZ_AUTH_MODE=dev DDZ_AUTH_SECRET=unit_test_secret node --test test/*.test.js",
+    "test:e2e": "node test/identity-binding.e2e.js && node test/full-game.e2e.js",
+    "start:dev": "DDZ_AUTH_MODE=dev DDZ_AUTH_SECRET=local_dev_secret node index.js",
+    "db:init:mysql": "node scripts/init-mysql.js",
+    "db:seed:iap": "node scripts/seed-iap-products.js"
+  },
+  "dependencies": {
+    "mysql2": "^3.11.5",
+    "pino": "^10.3.1",
+    "ws": "^8.16.0"
+  }
+}

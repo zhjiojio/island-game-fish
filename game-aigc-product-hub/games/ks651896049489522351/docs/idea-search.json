@@ -1,0 +1,137 @@
+{
+  "profile": {
+    "mode": "named",
+    "complete": false,
+    "provider": "google-web-search + github-public-pages",
+    "notes": "GitHub CLI deep inspection was cancelled by user; license and tree deduplication remain unknown."
+  },
+  "gameplay_contract": {
+    "title": "斗地主 WebSocket 联机小游戏",
+    "appid": "ks651896049489522351",
+    "game_name": "dou-di-zhu",
+    "players": 3,
+    "teams": "1 landlord vs 2 farmers",
+    "deck": "54 cards including jokers",
+    "loop": ["叫地主", "出牌", "结算"],
+    "mechanics": ["room create", "room join", "quick match", "server authoritative state", "turn-based card play", "disconnect reconnect"],
+    "rendering": "Canvas",
+    "network": "WebSocket",
+    "platform": "Kuaishou mini-game + H5 preview"
+  },
+  "selection": {
+    "mode": "single-current-game",
+    "per_category": 1,
+    "categories": [
+      {
+        "name": "联机卡牌",
+        "candidates": [
+          {
+            "id": "ddz-online-01",
+            "title": "斗地主 WebSocket 联机小游戏",
+            "predicted_score": null,
+            "hard_filter_passed": true,
+            "relationship_contrast": null,
+            "recognition_speed": null,
+            "first_frame": null
+          }
+        ]
+      }
+    ]
+  },
+  "query_plan": {
+    "unique_queries": [
+      "site:github.com doudizhu WebSocket JavaScript 斗地主",
+      "site:github.com 斗地主 websocket node.js canvas",
+      "site:github.com landlord card game javascript websocket",
+      "site:github.com multiplayer card game websocket canvas javascript",
+      "github doudizhu node websocket",
+      "github doudizhu javascript html5",
+      "github 斗地主 node websocket Doudizhu-server",
+      "github multiplayer card game socket.io javascript"
+    ],
+    "idea_consumers": {
+      "site:github.com doudizhu WebSocket JavaScript 斗地主": ["ddz-online-01"],
+      "site:github.com 斗地主 websocket node.js canvas": ["ddz-online-01"],
+      "site:github.com landlord card game javascript websocket": ["ddz-online-01"],
+      "site:github.com multiplayer card game websocket canvas javascript": ["ddz-online-01"],
+      "github doudizhu node websocket": ["ddz-online-01"],
+      "github doudizhu javascript html5": ["ddz-online-01"],
+      "github 斗地主 node websocket Doudizhu-server": ["ddz-online-01"],
+      "github multiplayer card game socket.io javascript": ["ddz-online-01"]
+    }
+  },
+  "repository_families": {
+    "R1": {
+      "representative": "Wangqingye/Doudizhu-sever",
+      "url": "https://github.com/Wangqingye/Doudizhu-sever",
+      "type": "direct",
+      "evidence": ["Search snippet: 斗地主游戏服务器端-Node.js & Express & WebSocket"],
+      "confidence": "medium",
+      "license": null,
+      "risk": "License and repository availability not deep-verified; URL should be manually confirmed."
+    },
+    "R2": {
+      "representative": "wanlihang/Dou-dizhu",
+      "url": "https://github.com/wanlihang/Dou-dizhu",
+      "type": "direct",
+      "evidence": ["Search snippet: 欢乐斗地主 / html5斗地主3.0; JavaScript/HTML/CSS"],
+      "confidence": "medium",
+      "license": null,
+      "risk": "May be frontend-only; WebSocket support unknown."
+    },
+    "R3": {
+      "representative": "llyram/Declare",
+      "url": "https://github.com/llyram/Declare",
+      "type": "structural",
+      "evidence": ["Search snippet: multiplayer card game using SocketIO, ReactJS, NodeJS and express"],
+      "confidence": "medium",
+      "license": null,
+      "risk": "Not Dou Dizhu; use only for multiplayer card-game architecture reference."
+    },
+    "R4": {
+      "representative": "GitHub Topics / multiplayer-browser-game JavaScript",
+      "url": "https://github.com/topics/multiplayer-browser-game?l=javascript&o=desc&s=stars",
+      "type": "structural_pool",
+      "evidence": ["Search snippet: Online Card-game based on NodeJS, socket.io, React"],
+      "confidence": "low",
+      "license": null,
+      "risk": "Topic page, not a repository; requires follow-up candidate selection."
+    },
+    "R5": {
+      "representative": "GitHub Topics / uno JavaScript",
+      "url": "https://github.com/topics/uno?l=javascript&o=desc&s=stars",
+      "type": "structural_pool",
+      "evidence": ["Search snippet: multiplayer websocket socket-io card-game uno online-game"],
+      "confidence": "low",
+      "license": null,
+      "risk": "UNO mechanics differ from Dou Dizhu; architecture reference only."
+    },
+    "R6": {
+      "representative": "dobyte/due",
+      "url": "https://github.com/dobyte/due",
+      "type": "structural_framework",
+      "evidence": ["Search snippet: Go distributed game server framework supporting tcp/kcp/ws; mentions due-doudizhu-server commercial case"],
+      "confidence": "low",
+      "license": null,
+      "risk": "Framework-level and commercial case not public; unsuitable for direct code reuse."
+    }
+  },
+  "idea_mappings": {
+    "ddz-online-01": {
+      "direct_matches": ["R1", "R2"],
+      "structural_references": ["R3", "R4", "R5", "R6"],
+      "complete": false
+    }
+  },
+  "risks": [
+    "License status unknown for all candidate families.",
+    "No repository README/tree/license deep inspection completed in this run.",
+    "Search snippets can be stale; verify URLs before using any implementation detail.",
+    "Do not copy code/assets from candidates without explicit license review."
+  ],
+  "handoff": {
+    "winner_id": "ddz-online-01",
+    "next_skill": "agw-codegen",
+    "current_project_note": "Project has already progressed beyond codegen/self-test; do not roll back workflow stage."
+  }
+}

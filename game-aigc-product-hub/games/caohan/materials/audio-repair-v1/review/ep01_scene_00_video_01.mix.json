@@ -1,0 +1,18 @@
+{
+  "videoId": "ep01_scene_00_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep01_scene_00_video_01__l01",
+      "speaker": "许邵泽",
+      "text": "贺星冉，分手吧。贺家这条船要沉了——我不陪你。",
+      "heard": "贺星阑分手吧贺家这条船要沉了我不陪你",
+      "start": 1.875,
+      "end": 8.745,
+      "alignmentScore": 0.9444
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 9.032562358276644,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.48736572265625
+}

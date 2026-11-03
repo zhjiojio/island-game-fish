@@ -1,0 +1,18 @@
+{
+ "schemaVersion": 1,
+ "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/dream_xinggan.v1.mp4",
+ "sha256": "d8f880766e46ff13329dcde5e1cbf91b58648e9c5c6db1f91edc7ab7630dfda3",
+ "duration": 10.042,
+ "nodes": [
+  "s_dream_xinggan"
+ ],
+ "status": "nonverbal",
+ "transcript": "",
+ "rawText": "",
+ "asrChars": [],
+ "timingEngine": "FunASR-paraformer-zh",
+ "crossCheckText": "",
+ "speakerKey": null,
+ "speakerRuleKey": "dream_xinggan",
+ "reviewMethod": "Dance-only reference footage: background music without dialogue. Paraformer hallucinated lyrics, so transcript is intentionally empty."
+}

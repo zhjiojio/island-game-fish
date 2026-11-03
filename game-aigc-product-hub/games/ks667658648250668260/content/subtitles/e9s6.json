@@ -1,0 +1,10 @@
+{
+  "node": "e9s6",
+  "speakerKey": "narrator",
+  "speakerName": "沈婉儿",
+  "asrText": "从今天起，我就是你李傲天的人。",
+  "asrTextRaw": "我就是你李傲天的人",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 1
+}

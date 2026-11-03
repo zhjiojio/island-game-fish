@@ -1,0 +1,1876 @@
+{
+  "version": "editor-20260828011007",
+  "publishedAt": "2026-08-27T17:10:07.604Z",
+  "json_source": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/418/levels-config/latest/levels-config-20260828-011007.json",
+  "cdn_base_in_code": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/",
+  "summary": {
+    "total_themes": 6,
+    "total_levels": 108,
+    "total_unique_remote_urls": 139,
+    "http_200_count": 139,
+    "http_non_200_count": 0
+  },
+  "by_theme": {
+    "1": {
+      "theme": {
+        "themeId": 1,
+        "subject": "重回 80 年代",
+        "mode": "hidden",
+        "cover": {
+          "local": "assets/scenes/covers/scene1.jpg",
+          "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/cover_scene1.jpg",
+          "is_remote": true,
+          "http": "200",
+          "size": "291476",
+          "content_type": "image/jpeg"
+        },
+        "cover_full": {
+          "local": "assets/scenes/covers/scene1.jpg",
+          "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/cover_scene1.jpg",
+          "is_remote": true,
+          "http": "200",
+          "size": "291476",
+          "content_type": "image/jpeg"
+        }
+      },
+      "levels": [
+        {
+          "idx": 0,
+          "themeId": 1,
+          "mode": null,
+          "title": "第1关 · 姥姥堂屋",
+          "scene": {
+            "local": "assets/scenes/hidden/lv1.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/hidden_lv1.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "205704",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 1,
+          "themeId": 1,
+          "mode": null,
+          "title": "第2关 · 老澡堂",
+          "scene": {
+            "local": "assets/scenes/hidden/lv2.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/hidden_lv2.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "192262",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 2,
+          "themeId": 1,
+          "mode": null,
+          "title": "第3关 · 老炕新客",
+          "scene": {
+            "local": "assets/scenes/hidden/lv6.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/hidden_lv6.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "233672",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 3,
+          "themeId": 1,
+          "mode": null,
+          "title": "第4关 · 烧烤摊",
+          "scene": {
+            "local": "assets/scenes/hidden/lv4.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/hidden_lv4.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "213002",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 4,
+          "themeId": 1,
+          "mode": null,
+          "title": "第5关 · 麻将馆",
+          "scene": {
+            "local": "assets/scenes/hidden/lv3.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/hidden_lv3.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "174463",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 5,
+          "themeId": 1,
+          "mode": null,
+          "title": "第6关 · 绿皮火车",
+          "scene": {
+            "local": "assets/scenes/hidden/lv14.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/hidden_lv14.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "163701",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 6,
+          "themeId": 1,
+          "mode": null,
+          "title": "第7关 · 饭店包厢",
+          "scene": {
+            "local": "assets/scenes/hidden/lv15.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/hidden_lv15.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "190881",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 7,
+          "themeId": 1,
+          "mode": null,
+          "title": "第8关 · 辫子姐",
+          "scene": {
+            "local": "assets/scenes/hidden/lv7.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/hidden_lv7.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "165558",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 8,
+          "themeId": 1,
+          "mode": null,
+          "title": "第9关 · 露天电影",
+          "scene": {
+            "local": "assets/scenes/hidden/lv8.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/hidden_lv8.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "127735",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 9,
+          "themeId": 1,
+          "mode": null,
+          "title": "第10关 · 卖布姑娘",
+          "scene": {
+            "local": "assets/scenes/hidden/lv10.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/hidden_lv10.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "208746",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 10,
+          "themeId": 1,
+          "mode": null,
+          "title": "第11关 · 弄堂冰棍",
+          "scene": {
+            "local": "assets/scenes/hidden/lv9.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/hidden_lv9.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "185055",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 11,
+          "themeId": 1,
+          "mode": null,
+          "title": "第12关 · 老式教室",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv19.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv19.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "212985",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 12,
+          "themeId": 1,
+          "mode": null,
+          "title": "第13关 · 筒子楼厨房",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv20.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv20.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "255473",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 13,
+          "themeId": 1,
+          "mode": null,
+          "title": "第14关 · 化妆室",
+          "scene": {
+            "local": "assets/scenes/hidden/lv11.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/hidden_lv11.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "181429",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 18,
+          "themeId": 1,
+          "mode": null,
+          "title": "第19关 · 新华书店",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv23.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv23.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "238167",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 19,
+          "themeId": 1,
+          "mode": null,
+          "title": "第20关 · 修车铺",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv24.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv24.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "264507",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 20,
+          "themeId": 1,
+          "mode": null,
+          "title": "第21关 · 老式小卖部",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv29.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv29.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "213227",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 21,
+          "themeId": 1,
+          "mode": null,
+          "title": "第22关 · 老式茶馆",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv35.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv35.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "220092",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 22,
+          "themeId": 1,
+          "mode": null,
+          "title": "第23关 · 巡演戏班后台",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv36.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv36.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "227949",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 23,
+          "themeId": 1,
+          "mode": null,
+          "title": "第24关 · 乡镇面馆",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv37.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv37.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "220988",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 24,
+          "themeId": 1,
+          "mode": null,
+          "title": "第25关 · 生产大队办公室",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv38.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv38.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "195940",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 25,
+          "themeId": 1,
+          "mode": null,
+          "title": "第26关 · 长途车站",
+          "scene": {
+            "local": "assets/scenes/hidden/lv17.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/hidden_lv17.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "212988",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 26,
+          "themeId": 1,
+          "mode": null,
+          "title": "第27关 · 报刊亭",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv25.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv25.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "273529",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 27,
+          "themeId": 1,
+          "mode": null,
+          "title": "第28关 · 老式纺织厂",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv30.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv30.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "239556",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 28,
+          "themeId": 1,
+          "mode": null,
+          "title": "第29关 · 上海弄堂洗衣",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv31.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv31.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "223574",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 29,
+          "themeId": 1,
+          "mode": null,
+          "title": "第30关 · 老中药铺",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv26.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv26.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "259380",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 30,
+          "themeId": 1,
+          "mode": null,
+          "title": "第31关 · 工人舞会",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv27.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv27.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "237403",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 31,
+          "themeId": 1,
+          "mode": null,
+          "title": "第32关 · 童年游戏院",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv28.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv28.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "269510",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 32,
+          "themeId": 1,
+          "mode": null,
+          "title": "第33关 · 人民银行营业厅",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv32.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv32.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "185472",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 33,
+          "themeId": 1,
+          "mode": null,
+          "title": "第34关 · 京剧后台",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv33.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv33.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "219813",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 34,
+          "themeId": 1,
+          "mode": null,
+          "title": "第35关 · 县城火车站台",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv34.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/hidden_lv34.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "220881",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 35,
+          "themeId": 1,
+          "mode": null,
+          "title": "第36关 · 喜宴大堂",
+          "scene": {
+            "local": "assets/scenes/hidden/lv12.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/hidden_lv12.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "178055",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 36,
+          "themeId": 1,
+          "mode": null,
+          "title": "第37关 · 婚车合影",
+          "scene": {
+            "local": "assets/scenes/hidden/lv13.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/hidden_lv13.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "215378",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 37,
+          "themeId": 1,
+          "mode": null,
+          "title": "第38关 · 年货集市",
+          "scene": {
+            "local": "assets/scenes/hidden/lv18.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/hidden_lv18.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "228977",
+            "content_type": "image/jpeg"
+          }
+        }
+      ]
+    },
+    "2": {
+      "theme": {
+        "themeId": 2,
+        "subject": "老铁眼最尖",
+        "mode": "spot",
+        "cover": {
+          "local": "assets/scenes/covers/scene2.jpg",
+          "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/cover_scene2.jpg",
+          "is_remote": true,
+          "http": "200",
+          "size": "187758",
+          "content_type": "image/jpeg"
+        },
+        "cover_full": {
+          "local": "assets/scenes/covers/scene2.jpg",
+          "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/cover_scene2.jpg",
+          "is_remote": true,
+          "http": "200",
+          "size": "187758",
+          "content_type": "image/jpeg"
+        }
+      },
+      "levels": [
+        {
+          "idx": 7,
+          "themeId": 2,
+          "mode": "spot",
+          "title": "第1关 · 海边美女",
+          "sceneA": {
+            "local": "assets/scenes/spot/lv2_a.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv2_a.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "173004",
+            "content_type": "image/jpeg"
+          },
+          "sceneB": {
+            "local": "assets/scenes/spot/lv2_b.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv2_b.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "175893",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 8,
+          "themeId": 2,
+          "mode": "spot",
+          "title": "第2关 · 温泉少女",
+          "sceneA": {
+            "local": "assets/scenes/spot/lv3_a.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv3_a.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "166084",
+            "content_type": "image/jpeg"
+          },
+          "sceneB": {
+            "local": "assets/scenes/spot/lv3_b.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv3_b.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "154638",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 9,
+          "themeId": 2,
+          "mode": "spot",
+          "title": "第3关 · 私影棚嫂",
+          "sceneA": {
+            "local": "assets/scenes/spot/lv4_a.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv4_a.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "130277",
+            "content_type": "image/jpeg"
+          },
+          "sceneB": {
+            "local": "assets/scenes/spot/lv4_b.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv4_b.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "123108",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 10,
+          "themeId": 2,
+          "mode": "spot",
+          "title": "第4关 · 咖啡师嫂",
+          "sceneA": {
+            "local": "assets/scenes/spot/lv5_a.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv5_a.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "148263",
+            "content_type": "image/jpeg"
+          },
+          "sceneB": {
+            "local": "assets/scenes/spot/lv5_b.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv5_b.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "144067",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 11,
+          "themeId": 2,
+          "mode": "spot",
+          "title": "第5关 · 瑜伽嫂",
+          "sceneA": {
+            "local": "assets/scenes/spot/lv6_a.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv6_a.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "107310",
+            "content_type": "image/jpeg"
+          },
+          "sceneB": {
+            "local": "assets/scenes/spot/lv6_b.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv6_b.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "102703",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 12,
+          "themeId": 2,
+          "mode": "spot",
+          "title": "第6关 · 花艺嫂",
+          "sceneA": {
+            "local": "assets/scenes/spot/lv7_a.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv7_a.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "163662",
+            "content_type": "image/jpeg"
+          },
+          "sceneB": {
+            "local": "assets/scenes/spot/lv7_b.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv7_b.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "156279",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 13,
+          "themeId": 2,
+          "mode": "spot",
+          "title": "第7关 · 古玩地摊",
+          "sceneA": {
+            "local": "assets/scenes/spot/lv13_a.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv13_a.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "225234",
+            "content_type": "image/jpeg"
+          },
+          "sceneB": {
+            "local": "assets/scenes/spot/lv13_b.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv13_b.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "214209",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 20,
+          "themeId": 2,
+          "mode": "spot",
+          "title": "第8关 · 玫瑰泡澡嫂",
+          "sceneA": {
+            "local": "assets/scenes/spot/lv8_a.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv8_a.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "248952",
+            "content_type": "image/jpeg"
+          },
+          "sceneB": {
+            "local": "assets/scenes/spot/lv8_b.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv8_b.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "237280",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 21,
+          "themeId": 2,
+          "mode": "spot",
+          "title": "第9关 · 沙发追剧撸猫嫂",
+          "sceneA": {
+            "local": "assets/scenes/spot/lv9_a.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv9_a.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "309742",
+            "content_type": "image/jpeg"
+          },
+          "sceneB": {
+            "local": "assets/scenes/spot/lv9_b.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv9_b.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "278822",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 22,
+          "themeId": 2,
+          "mode": "spot",
+          "title": "第10关 · 化妆镜名媛嫂",
+          "sceneA": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv10_a.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv10_a.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "310749",
+            "content_type": "image/jpeg"
+          },
+          "sceneB": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv10_b.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv10_b.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "280430",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 23,
+          "themeId": 2,
+          "mode": "spot",
+          "title": "第11关 · 厨房烹饪嫂",
+          "sceneA": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv11_a.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv11_a.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "295366",
+            "content_type": "image/jpeg"
+          },
+          "sceneB": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv11_b.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv11_b.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "282769",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 24,
+          "themeId": 2,
+          "mode": "spot",
+          "title": "第12关 · 阳台懒卧嫂",
+          "sceneA": {
+            "local": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv12_a.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv12_a.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "304322",
+            "content_type": "image/jpeg"
+          },
+          "sceneB": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv12_b.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s2_lv12_b.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "285989",
+            "content_type": "image/jpeg"
+          }
+        }
+      ]
+    },
+    "2744": {
+      "theme": {
+        "themeId": 2744,
+        "subject": "谁是第三者",
+        "mode": "story",
+        "cover": {
+          "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/anonymous/1787760722303/封面图.png",
+          "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/anonymous/1787760722303/封面图.png",
+          "is_remote": false,
+          "http": "200",
+          "size": "1977299",
+          "content_type": "image/png"
+        },
+        "cover_full": {
+          "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/anonymous/1787760722303/封面图.png",
+          "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/anonymous/1787760722303/封面图.png",
+          "is_remote": false,
+          "http": "200",
+          "size": "1977299",
+          "content_type": "image/png"
+        }
+      },
+      "levels": [
+        {
+          "idx": 38,
+          "themeId": 2744,
+          "mode": "story",
+          "title": "主卧里的她",
+          "scene": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/wangwei44/batch-scene2744/1787722273268/affair_lv01_hard_v1.jpg",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/wangwei44/batch-scene2744/1787722273268/affair_lv01_hard_v1.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "488654",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 39,
+          "themeId": 2744,
+          "mode": "story",
+          "title": "浴室里的第二个人",
+          "scene": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/wangwei44/batch-scene2744/1787722738877/affair_lv02_hard_v2.jpg",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/wangwei44/batch-scene2744/1787722738877/affair_lv02_hard_v2.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "295384",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 40,
+          "themeId": 2744,
+          "mode": "story",
+          "title": "副驾驶的位置",
+          "scene": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/wangwei44/batch-scene2744/1787722856450/affair_lv03_hard_v7.jpg",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/wangwei44/batch-scene2744/1787722856450/affair_lv03_hard_v7.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "462435",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 41,
+          "themeId": 2744,
+          "mode": "story",
+          "title": "并不存在的出差",
+          "scene": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/wangwei44/batch-scene2744/1787722966159/affair_lv04_hard_v7.jpg",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/wangwei44/batch-scene2744/1787722966159/affair_lv04_hard_v7.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "437820",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 42,
+          "themeId": 2744,
+          "mode": "story",
+          "title": "消失的手机",
+          "scene": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/wangwei44/batch-scene2744/1787723087971/affair_lv05_hard_v7.jpg",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/wangwei44/batch-scene2744/1787723087971/affair_lv05_hard_v7.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "430925",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 43,
+          "themeId": 2744,
+          "mode": "story",
+          "title": "刚散场的包间",
+          "scene": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/1787732730382/6.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/1787732730382/6.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "2148938",
+            "content_type": "image/png"
+          }
+        },
+        {
+          "idx": 44,
+          "themeId": 2744,
+          "mode": "story",
+          "title": "刻字戒指",
+          "scene": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2744/1787729010638/affair_lv07_v2.jpg",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2744/1787729010638/affair_lv07_v2.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "449664",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 45,
+          "themeId": 2744,
+          "mode": "story",
+          "title": "最后一排",
+          "scene": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2744/1787729027500/affair_lv08_v2.jpg",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2744/1787729027500/affair_lv08_v2.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "531085",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 46,
+          "themeId": 2744,
+          "mode": "story",
+          "title": "酒店大堂",
+          "scene": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2744/1787729046150/affair_lv09_v2.jpg",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2744/1787729046150/affair_lv09_v2.jpg",
+            "is_remote": false,
+            "http": "200",
+            "size": "482902",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 47,
+          "themeId": 2744,
+          "mode": "story",
+          "title": "房间里的工牌",
+          "scene": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/1787746246319/10.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/1787746246319/10.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "2357926",
+            "content_type": "image/png"
+          }
+        },
+        {
+          "idx": 48,
+          "themeId": 2744,
+          "mode": "story",
+          "title": "秘书的证据柜",
+          "scene": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2744/1787751112100/11.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2744/1787751112100/11.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1944206",
+            "content_type": "image/png"
+          }
+        },
+        {
+          "idx": 49,
+          "themeId": 2744,
+          "mode": "story",
+          "title": "闺蜜的后备箱",
+          "scene": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2744/1787751407963/13.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2744/1787751407963/13.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1968758",
+            "content_type": "image/png"
+          }
+        },
+        {
+          "idx": 50,
+          "themeId": 2744,
+          "mode": "story",
+          "title": "他们的第二个家",
+          "scene": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2744/1787751621724/14.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2744/1787751621724/14.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "2078805",
+            "content_type": "image/png"
+          }
+        },
+        {
+          "idx": 51,
+          "themeId": 2744,
+          "mode": "story",
+          "title": "监控里那张脸",
+          "scene": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2744/1787754169085/affair_lv12_v3.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2744/1787754169085/affair_lv12_v3.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1707563",
+            "content_type": "image/png"
+          }
+        },
+        {
+          "idx": 52,
+          "themeId": 2744,
+          "mode": "story",
+          "title": "离婚计划",
+          "scene": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2744/1787753803311/15.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2744/1787753803311/15.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "2056635",
+            "content_type": "image/png"
+          }
+        },
+        {
+          "idx": 53,
+          "themeId": 2744,
+          "mode": "story",
+          "title": "完整证据链",
+          "scene": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2744/1787754665126/16.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2744/1787754665126/16.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1893659",
+            "content_type": "image/png"
+          }
+        },
+        {
+          "idx": 54,
+          "themeId": 2744,
+          "mode": "story",
+          "title": "后台计划",
+          "scene": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2744/1787754905637/affair_lv17_v1.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2744/1787754905637/affair_lv17_v1.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1785316",
+            "content_type": "image/png"
+          }
+        },
+        {
+          "idx": 55,
+          "themeId": 2744,
+          "mode": "story",
+          "title": "被剪掉的新娘",
+          "scene": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2744/1787755206115/18.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2744/1787755206115/18.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1830659",
+            "content_type": "image/png"
+          }
+        },
+        {
+          "idx": 56,
+          "themeId": 2744,
+          "mode": "story",
+          "title": "上屏前一分钟",
+          "scene": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2744/1787755496407/affair_lv19_v1.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2744/1787755496407/affair_lv19_v1.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1723193",
+            "content_type": "image/png"
+          }
+        },
+        {
+          "idx": 57,
+          "themeId": 2744,
+          "mode": "story",
+          "title": "1808真相公开",
+          "scene": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2744/1787755773165/affair_lv20_v1.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2744/1787755773165/affair_lv20_v1.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "2033299",
+            "content_type": "image/png"
+          }
+        }
+      ]
+    },
+    "2797": {
+      "theme": {
+        "themeId": 2797,
+        "subject": "后宫眼真尖",
+        "mode": "spot",
+        "cover": {
+          "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/anonymous/1787843304753/封面.png",
+          "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/anonymous/1787843304753/封面.png",
+          "is_remote": false,
+          "http": "200",
+          "size": "1689461",
+          "content_type": "image/png"
+        },
+        "cover_full": {
+          "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/anonymous/1787843304753/封面.png",
+          "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/anonymous/1787843304753/封面.png",
+          "is_remote": false,
+          "http": "200",
+          "size": "1689461",
+          "content_type": "image/png"
+        }
+      },
+      "levels": [
+        {
+          "idx": 58,
+          "themeId": 2797,
+          "mode": "spot",
+          "title": "选秀入宫",
+          "sceneA": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787835206016/第1关-A图-最终.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787835206016/第1关-A图-最终.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1153465",
+            "content_type": "image/png"
+          },
+          "sceneB": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787835206447/第1关-B图-最终.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787835206447/第1关-B图-最终.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1175656",
+            "content_type": "image/png"
+          }
+        },
+        {
+          "idx": 59,
+          "themeId": 2797,
+          "mode": "spot",
+          "title": "御园初遇",
+          "sceneA": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787836718751/第2关-A图.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787836718751/第2关-A图.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1244455",
+            "content_type": "image/png"
+          },
+          "sceneB": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787836719271/第2关-B图.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787836719271/第2关-B图.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1235636",
+            "content_type": "image/png"
+          }
+        },
+        {
+          "idx": 60,
+          "themeId": 2797,
+          "mode": "spot",
+          "title": "惊鸿一舞",
+          "sceneA": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787836734309/第3关-A图.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787836734309/第3关-A图.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1116534",
+            "content_type": "image/png"
+          },
+          "sceneB": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787836734625/第3关-B图.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787836734625/第3关-B图.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1119350",
+            "content_type": "image/png"
+          }
+        },
+        {
+          "idx": 61,
+          "themeId": 2797,
+          "mode": "spot",
+          "title": "翊坤交锋",
+          "sceneA": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787836786888/第4关-A图.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787836786888/第4关-A图.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1248500",
+            "content_type": "image/png"
+          },
+          "sceneB": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787836787220/第4关-B图.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787836787220/第4关-B图.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1227584",
+            "content_type": "image/png"
+          }
+        },
+        {
+          "idx": 62,
+          "themeId": 2797,
+          "mode": "spot",
+          "title": "验亲风波",
+          "sceneA": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787836799498/第5关-A图.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787836799498/第5关-A图.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1140120",
+            "content_type": "image/png"
+          },
+          "sceneB": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787836799839/第5关-B图.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787836799839/第5关-B图.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1125246",
+            "content_type": "image/png"
+          }
+        },
+        {
+          "idx": 63,
+          "themeId": 2797,
+          "mode": "spot",
+          "title": "倚梅园夜",
+          "sceneA": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840169643/第6关-A图.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840169643/第6关-A图.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1211404",
+            "content_type": "image/png"
+          },
+          "sceneB": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840170330/第6关-B图.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840170330/第6关-B图.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1204678",
+            "content_type": "image/png"
+          }
+        },
+        {
+          "idx": 64,
+          "themeId": 2797,
+          "mode": "spot",
+          "title": "碎玉轩居",
+          "sceneA": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840413506/第7关-A图.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840413506/第7关-A图.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1175881",
+            "content_type": "image/png"
+          },
+          "sceneB": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840413970/第7关-B图.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840413970/第7关-B图.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1177898",
+            "content_type": "image/png"
+          }
+        },
+        {
+          "idx": 65,
+          "themeId": 2797,
+          "mode": "spot",
+          "title": "温宜生辰",
+          "sceneA": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840542732/第8关-A图.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840542732/第8关-A图.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1229201",
+            "content_type": "image/png"
+          },
+          "sceneB": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840543267/第8关-B图.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840543267/第8关-B图.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1238885",
+            "content_type": "image/png"
+          }
+        },
+        {
+          "idx": 66,
+          "themeId": 2797,
+          "mode": "spot",
+          "title": "木薯粉局",
+          "sceneA": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840750555/第9关-A图.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840750555/第9关-A图.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1041579",
+            "content_type": "image/png"
+          },
+          "sceneB": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840750926/第9关-B图.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840750926/第9关-B图.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1043593",
+            "content_type": "image/png"
+          }
+        },
+        {
+          "idx": 67,
+          "themeId": 2797,
+          "mode": "spot",
+          "title": "蝴蝶复宠",
+          "sceneA": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840780604/第10关-A图.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840780604/第10关-A图.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1341863",
+            "content_type": "image/png"
+          },
+          "sceneB": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840781141/第10关-B图.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840781141/第10关-B图.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "1309885",
+            "content_type": "image/png"
+          }
+        },
+        {
+          "idx": 68,
+          "themeId": 2797,
+          "mode": "spot",
+          "title": "甘露寺行",
+          "sceneA": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840862013/关卡11-A.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840862013/关卡11-A.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "2492352",
+            "content_type": "image/png"
+          },
+          "sceneB": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840862690/关卡11-B.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840862690/关卡11-B.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "2437875",
+            "content_type": "image/png"
+          }
+        },
+        {
+          "idx": 69,
+          "themeId": 2797,
+          "mode": "spot",
+          "title": "凌云峰雪",
+          "sceneA": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840890127/关卡12-A.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840890127/关卡12-A.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "2633376",
+            "content_type": "image/png"
+          },
+          "sceneB": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840890730/关卡12-B.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787840890730/关卡12-B.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "2483448",
+            "content_type": "image/png"
+          }
+        },
+        {
+          "idx": 70,
+          "themeId": 2797,
+          "mode": "spot",
+          "title": "熹妃回宫",
+          "sceneA": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787841589107/关卡13-A.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787841589107/关卡13-A.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "2576169",
+            "content_type": "image/png"
+          },
+          "sceneB": {
+            "local": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787841589814/关卡13-B.png",
+            "remote": "https://p2-ad.adkwai.com/bs2/ad-automate-cdn/project/550/chengziyu/batch-scene2797/1787841589814/关卡13-B.png",
+            "is_remote": false,
+            "http": "200",
+            "size": "2532180",
+            "content_type": "image/png"
+          }
+        }
+      ]
+    },
+    "3": {
+      "theme": {
+        "themeId": 3,
+        "subject": "帅哥靓男",
+        "mode": "hunt",
+        "cover": {
+          "local": "assets/scenes/covers/scene3.jpg",
+          "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/cover_scene3.jpg",
+          "is_remote": true,
+          "http": "200",
+          "size": "158064",
+          "content_type": "image/jpeg"
+        },
+        "cover_full": {
+          "local": "assets/scenes/covers/scene3.jpg",
+          "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/cover_scene3.jpg",
+          "is_remote": true,
+          "http": "200",
+          "size": "158064",
+          "content_type": "image/jpeg"
+        }
+      },
+      "levels": []
+    },
+    "4": {
+      "theme": {
+        "themeId": 4,
+        "subject": "寻找隐藏物",
+        "mode": "hunt",
+        "cover": {
+          "local": "assets/scenes/covers/scene4.jpg",
+          "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/cover_scene4.jpg",
+          "is_remote": true,
+          "http": "200",
+          "size": "94962",
+          "content_type": "image/jpeg"
+        },
+        "cover_full": {
+          "local": "assets/scenes/covers/scene4.jpg",
+          "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/cover_scene4.jpg",
+          "is_remote": true,
+          "http": "200",
+          "size": "94962",
+          "content_type": "image/jpeg"
+        }
+      },
+      "levels": [
+        {
+          "idx": 14,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第1关 · 老北京胡同市集",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/lv1.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/lv1.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "631273",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 15,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第2关 · 上海石库门弄堂",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/lv2.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/lv2.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "580858",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 16,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第3关 · 广州西关骑楼早茶",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/lv3.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/lv3.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "592992",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 17,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第4关 · 深圳老东街 80",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/lv4.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/lv4.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "569127",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 25,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第1关 · 成都",
+          "scene": {
+            "local": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv1.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv1.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "504275",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 26,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第2关 · 重庆",
+          "scene": {
+            "local": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv2.jpg",
+            "remote": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv2.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "517861",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 27,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第3关 · 西安",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv3.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv3.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "459059",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 28,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第4关 · 长沙",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv4.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv4.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "537451",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 29,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第5关 · 天津",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv5.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv5.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "545944",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 30,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第10关 · 北京",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv10.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/s3_lv10.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "579533",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 31,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第11关 · 太原",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv11.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/s3_lv11.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "560922",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 32,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第12关 · 石家庄",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv12.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/s3_lv12.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "624055",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 33,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第13关 · 沈阳",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv13.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/s3_lv13.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "642274",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 34,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第14关 · 哈尔滨",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv14.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/s3_lv14.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "592598",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 35,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第15关 · 苏州",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv15.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/s3_lv15.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "679610",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 36,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第16关 · 杭州",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv16.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/s3_lv16.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "548295",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 37,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第17关 · 南京",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv17.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/s3_lv17.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "534511",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 38,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第18关 · 青岛",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv18.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/s3_lv18.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "497763",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 39,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第19关 · 武汉",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv19.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/s3_lv19.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "653961",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 40,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第20关 · 郑州",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv20.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/s3_lv20.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "579518",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 41,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第21关 · 厦门",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv21.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/s3_lv21.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "623866",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 42,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第22关 · 潮州",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv22.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/s3_lv22.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "538980",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 43,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第23关 · 桂林",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv23.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/s3_lv23.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "618343",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 44,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第24关 · 昆明",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv24.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/s3_lv24.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "496990",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 45,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第25关 · 贵阳",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv25.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/s3_lv25.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "566366",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 46,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第26关 · 拉萨",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv26.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/s3_lv26.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "528191",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 47,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第27关 · 兰州",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv27.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/s3_lv27.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "542876",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 48,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第28关 · 乌鲁木齐",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv28.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/s3_lv28.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "527411",
+            "content_type": "image/jpeg"
+          }
+        },
+        {
+          "idx": 49,
+          "themeId": 4,
+          "mode": "hunt",
+          "title": "第29关 · 泉州",
+          "scene": {
+            "local": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks658651445853447417/s3_lv29.jpg",
+            "remote": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks693835817972937121/s3_lv29.jpg",
+            "is_remote": true,
+            "http": "200",
+            "size": "565288",
+            "content_type": "image/jpeg"
+          }
+        }
+      ]
+    }
+  }
+}

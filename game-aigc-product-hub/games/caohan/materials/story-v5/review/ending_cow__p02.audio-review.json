@@ -1,0 +1,12 @@
+{
+  "transcript": "",
+  "utterances": [],
+  "nonverbal": [
+    {
+      "type": "animal_sound",
+      "description": "cow mooing"
+    }
+  ],
+  "issues": "No spoken Chinese words detected in the audio.",
+  "uncertain": false
+}

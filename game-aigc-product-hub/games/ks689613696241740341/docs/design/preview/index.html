@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>拼豆装车 · 布局对照</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#14131a;color:#e8e8ef;font:14px/1.5 -apple-system,"PingFang SC",sans-serif;padding:28px 20px 60px}
+h1{font-size:22px;margin-bottom:4px}
+.sub{color:#8a8a96;font-size:13px;margin-bottom:24px}
+.warnbar{background:#3a2410;border:1px solid #8a5a1e;color:#ffc98a;padding:10px 14px;border-radius:8px;margin-bottom:22px;font-size:13px}
+.wrap{display:flex;gap:26px;flex-wrap:wrap;align-items:flex-start}
+.col{flex:0 0 auto}
+.ttl{font-size:15px;font-weight:700;margin-bottom:2px}
+.ttl.cur{color:#ff7b6b}.ttl.new{color:#5ee08a}
+.meta{color:#7a7a86;font-size:12px;margin-bottom:10px;font-family:Menlo,monospace}
+.phone{position:relative;width:300px;height:649.6px;background:#26252e;border:2px solid #3a3945;border-radius:14px;overflow:hidden}
+.band{position:absolute;left:0;right:0;border-top:1px solid rgba(255,255,255,.22);overflow:hidden;display:flex;align-items:flex-start}
+.bl{font-family:Menlo,monospace;font-size:9.5px;color:rgba(255,255,255,.92);white-space:nowrap;padding:2px 5px;line-height:1.25}
+.bl b{color:#fff;font-size:10px}
+.stage{position:relative;display:flex;gap:0}
+.ncol{position:relative;width:186px;height:649.6px;margin-left:8px}
+.nt{position:absolute;left:0;font-size:10px;line-height:1.3;padding-left:16px;white-space:normal}
+.nt i{position:absolute;left:0;top:6px;width:12px;height:1px;background:currentColor;opacity:.6}
+.nt.bad{color:#ff8a7b}.nt.warn{color:#ffc98a}.nt.good{color:#5ee08a}.nt.ok{color:#8a8a96}
+.band.ok{background:rgba(110,110,130,.30)}
+.band.good{background:rgba(94,224,138,.20);border-top-color:#5ee08a}
+.band.warn{background:rgba(255,177,61,.20);border-top-color:#ffb13d}
+.band.bad{background:rgba(255,80,70,.24);border-top-color:#ff5046}
+.bd{display:none}
+.bnote{display:none}
+.clash{position:absolute;left:0;right:0;background:repeating-linear-gradient(45deg,rgba(255,0,0,.42) 0 5px,transparent 5px 10px);border:1px dashed #ff5046;pointer-events:none;display:flex;align-items:center;justify-content:flex-end}
+.clash span{font-family:Menlo,monospace;font-size:9px;background:#ff5046;color:#fff;padding:1px 4px;border-radius:3px;margin-right:3px}
+.legend{margin-top:10px;font-size:11px;color:#8a8a96;line-height:1.9}
+.sw{display:inline-block;width:11px;height:11px;border-radius:2px;vertical-align:-1px;margin-right:4px}
+.panel{flex:1 1 420px;min-width:400px}
+.card{background:#1e1d26;border:1px solid #33323d;border-radius:10px;padding:16px;margin-bottom:16px}
+.card h2{font-size:14px;color:#00e5ff;margin-bottom:12px;font-family:Menlo,monospace}
+table{width:100%;border-collapse:collapse;font-size:12px}
+td{padding:5px 6px;border-bottom:1px solid #2a2934}
+td.k{font-family:Menlo,monospace;color:#c8c8d4;white-space:nowrap}
+td.a{font-family:Menlo,monospace;color:#ff8a7b;text-align:right;white-space:nowrap}
+td.arw{color:#5a5a66;text-align:center}
+td.b{font-family:Menlo,monospace;color:#5ee08a;white-space:nowrap}
+td.n{color:#8a8a96;font-size:11px}
+tr.same td.b{color:#7a7a86}
+tr.add td.b{color:#ffd24a}
+.icons{display:flex;flex-wrap:wrap;gap:10px}
+.ic{width:66px;text-align:center}
+.icbox{width:66px;height:56px;background:#26252e;border:1px solid #33323d;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.icn{font-family:Menlo,monospace;font-size:9px;color:#00e5ff;margin-top:3px}
+.impl{display:flex;gap:22px;padding:6px 0}
+.ib{text-align:center}
+.circle{position:relative;width:74px;height:74px;border-radius:50%;border:3px solid #fff;display:flex;align-items:center;justify-content:center;box-shadow:0 5px 0 rgba(0,0,0,.32)}
+.badge{position:absolute;top:-4px;right:-4px;width:24px;height:24px;border-radius:50%;background:#E8352B;border:2px solid #fff;color:#fff;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;line-height:1}
+.ibl{font-size:12px;color:#c8c8d4;margin-top:6px}
+.note{font-size:12px;color:#8a8a96;margin-top:10px;line-height:1.7}
+.note b{color:#ffd24a}
+code{font-family:Menlo,monospace;background:#2a2934;padding:1px 5px;border-radius:3px;font-size:11px;color:#ffd24a}
+</style></head><body>
+
+<h1>拼豆装车 · 布局对照</h1>
+<div class="sub">750×1624 · 数据来自 <code>pd-core.js PD.L</code> 实测，非估算</div>
+
+<div class="warnbar">
+<b>⚠ 修正说明</b>：我早先文档里的「现状」表已作废 —— <code>PD.L</code> 被另一会话大改过（车已放大到 160、新增 <code>laneY</code>/<code>corridorY</code>、<code>qCarH</code> 已修成 128）。本页是重新实测的结果。
+</div>
+
+<div class="wrap">
+  <div class="col">
+    <div class="ttl cur">当前布局</div>
+    <div class="meta">玩法区 112–1108 = 61.3%　6 处冲突</div>
+    <div class="stage">
+      <div class="phone"><div class="band ok" style="top:0px;height:44.8px"><span class="bl"><b>hud</b> 0–112 · 112px · 6.9%</span></div><div class="band bad" style="top:44.8px;height:55.2px"><span class="bl"><b>[空白]</b> 112–250 · 138px · 8.5%</span></div><div class="band warn" style="top:100px;height:220.8px"><span class="bl"><b>art</b> 250–802 · 552px · 34.0%</span></div><div class="band bad" style="top:314.4px;height:24px"><span class="bl"><b>lane</b> 786–846 · 60px · 3.7%</span></div><div class="band ok" style="top:330.4px;height:64px"><span class="bl"><b>slot</b> 826–986 · 160px · 9.9%</span></div><div class="band ok" style="top:396px;height:47.2px"><span class="bl"><b>corridor</b> 990–1108 · 118px · 7.3%</span></div><div class="band ok" style="top:449.6px;height:51.2px"><span class="bl"><b>qRow1</b> 1124–1252 · 128px · 7.9%</span></div><div class="band ok" style="top:503.2px;height:51.2px"><span class="bl"><b>qRow2</b> 1258–1386 · 128px · 7.9%</span></div><div class="band bad" style="top:558.4px;height:23.2px"><span class="bl"><b>speed</b> 1396–1454 · 58px · 3.6%</span></div><div class="band warn" style="top:560px;height:89.6px"><span class="bl"><b>tray</b> 1400–1624 · 224px · 13.8%</span></div><div class="band bad" style="top:606.4px;height:43.2px"><span class="bl"><b>[死区]</b> 1516–1624 · 108px · 6.7%</span></div><div class="clash" style="top:330.4px;height:8px"><span>lane ∩ slot 20px</span></div><div class="clash" style="top:569.6px;height:12px"><span>speed ∩ btn 30px</span></div><div class="clash" style="top:560px;height:89.6px"><span>qPanel ∩ tray 224px</span></div></div>
+      <div class="ncol"><div class="nt ok" style="top:0px"><i></i>HUD</div><div class="nt bad" style="top:44.8px"><i></i>纯浪费 138px</div><div class="nt warn" style="top:100px"><i></i>sundae 被压到 cell=21</div><div class="nt bad" style="top:314.4px"><i></i>侵入 slot 20px</div><div class="nt ok" style="top:330.4px"><i></i>车位 ×6</div><div class="nt ok" style="top:396px"><i></i>车离场通道</div><div class="nt ok" style="top:449.6px"><i></i>候选排 1</div><div class="nt ok" style="top:503.2px"><i></i>候选排 2 预览</div><div class="nt bad" style="top:558.4px"><i></i>撞 btn x38/y30</div><div class="nt warn" style="top:560px"><i></i>与 qPanel 叠画 224px</div><div class="nt bad" style="top:606.4px"><i></i>底部空 108px</div></div>
+    </div>
+    <div class="legend">
+      <span class="sw" style="background:rgba(255,80,70,.6)"></span>硬冲突<br>
+      <span class="sw" style="background:rgba(255,177,61,.6)"></span>隐患<br>
+      <span class="sw" style="background:repeating-linear-gradient(45deg,rgba(255,0,0,.5) 0 3px,transparent 3px 6px)"></span>重叠区
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="ttl new">修改后</div>
+    <div class="meta">玩法区 112–1130 = 62.7%　冲突归零</div>
+    <div class="stage">
+      <div class="phone"><div class="band ok" style="top:0px;height:44.8px"><span class="bl"><b>hud</b> 0–112 · 112px · 6.9%</span></div><div class="band good" style="top:44.8px;height:260px"><span class="bl"><b>art</b> 112–762 · 650px · 40.0%</span></div><div class="band good" style="top:304.8px;height:38.4px"><span class="bl"><b>lane</b> 762–858 · 96px · 5.9%</span></div><div class="band ok" style="top:343.2px;height:64px"><span class="bl"><b>slot</b> 858–1018 · 160px · 9.9%</span></div><div class="band ok" style="top:407.2px;height:44.8px"><span class="bl"><b>corridor</b> 1018–1130 · 112px · 6.9%</span></div><div class="band good" style="top:452px;height:28px"><span class="bl"><b>speed</b> 1130–1200 · 70px · 4.3%</span></div><div class="band ok" style="top:480px;height:51.2px"><span class="bl"><b>qRow1</b> 1200–1328 · 128px · 7.9%</span></div><div class="band ok" style="top:535.2px;height:51.2px"><span class="bl"><b>qRow2</b> 1338–1466 · 128px · 7.9%</span></div><div class="band good" style="top:586.4px;height:63.2px"><span class="bl"><b>tray</b> 1466–1624 · 158px · 9.7%</span></div></div>
+      <div class="ncol"><div class="nt ok" style="top:0px"><i></i>HUD</div><div class="nt good" style="top:44.8px"><i></i>+98px → cell 21→25</div><div class="nt good" style="top:304.8px"><i></i>独立成带，不撞 slot</div><div class="nt ok" style="top:343.2px"><i></i>车位 ×6（尺寸不变）</div><div class="nt ok" style="top:407.2px"><i></i>车离场通道</div><div class="nt good" style="top:452px"><i></i>★独占行</div><div class="nt ok" style="top:480px"><i></i>候选排 1</div><div class="nt ok" style="top:535.2px"><i></i>候选排 2 预览</div><div class="nt good" style="top:586.4px"><i></i>坐到最下沿，无死区</div></div>
+    </div>
+    <div class="legend">
+      <span class="sw" style="background:rgba(94,224,138,.6)"></span>改动项<br>
+      <span class="sw" style="background:rgba(110,110,130,.6)"></span>不变项
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="card">
+      <h2>PD.L 逐字段 diff</h2>
+      <table><tr class="chg"><td class="k">stageY</td><td class="a">250</td><td class="arw">→</td><td class="b">112</td><td class="n">消灭 138px 空白</td></tr><tr class="chg"><td class="k">stageH</td><td class="a">552</td><td class="arw">→</td><td class="b">650</td><td class="n">art 34.0% → 40.0%</td></tr><tr class="chg"><td class="k">beanTop</td><td class="a">262</td><td class="arw">→</td><td class="b">124</td><td class="n">随 stageY 同步</td></tr><tr class="chg"><td class="k">laneY</td><td class="a">786</td><td class="arw">→</td><td class="b">774</td><td class="n">底 858 不碰 slot</td></tr><tr class="chg"><td class="k">slotY</td><td class="a">826</td><td class="arw">→</td><td class="b">858</td><td class="n"></td></tr><tr class="same"><td class="k">slotH / slotW</td><td class="a">160 / 108</td><td class="arw">→</td><td class="b">不变</td><td class="n">车已放大好</td></tr><tr class="chg"><td class="k">corridorY</td><td class="a">990</td><td class="arw">→</td><td class="b">1018</td><td class="n"></td></tr><tr class="chg"><td class="k">corridorH</td><td class="a">118</td><td class="arw">→</td><td class="b">112</td><td class="n"></td></tr><tr class="add"><td class="k">spdY / spdH</td><td class="a">— (无)</td><td class="arw">→</td><td class="b">1130 / 70</td><td class="n">★新增，解 38px 重叠</td></tr><tr class="chg"><td class="k">qPanelY</td><td class="a">1112</td><td class="arw">→</td><td class="b">1200</td><td class="n">不再与 tray 叠画</td></tr><tr class="chg"><td class="k">qRow1</td><td class="a">1124</td><td class="arw">→</td><td class="b">1200</td><td class="n"></td></tr><tr class="chg"><td class="k">qRow2</td><td class="a">1258</td><td class="arw">→</td><td class="b">1338</td><td class="n"></td></tr><tr class="same"><td class="k">qCarW / qCarH</td><td class="a">104 / 128</td><td class="arw">→</td><td class="b">不变</td><td class="n">h&gt;w 已正确</td></tr><tr class="chg"><td class="k">trayY</td><td class="a">1400</td><td class="arw">→</td><td class="b">1466</td><td class="n">消灭 108px 死区</td></tr><tr class="chg"><td class="k">btnY</td><td class="a">1470</td><td class="arw">→</td><td class="b">1526</td><td class="n"></td></tr><tr class="chg"><td class="k">btnR</td><td class="a">46</td><td class="arw">→</td><td class="b">52</td><td class="n">触控 92→104px</td></tr></table>
+      <div class="note">另需同步两处，不改会错位：<br>
+      ① <code>spdRect()</code> 现在依赖 <code>L.trayY-4</code>，必须改成独立的 <code>L.spdY</code> —— <b>这就是 38px 重叠的根因</b><br>
+      ② <code>PD.MASKS.skirt_nuonuo.oy = 262</code> 是硬编码，需同步改 124</div>
+    </div>
+
+    <div class="card">
+      <h2>关键收益 · 豆子变大</h2>
+      <table><tr><td class="k">sundae (26行)</td><td class="a">cell=21 阵高546</td><td class="arw">→</td><td class="b">cell=25 阵高650</td><td class="n"><b>+19%</b></td></tr><tr><td class="k">melon (17行)</td><td class="a">cell=28 阵高476</td><td class="arw">→</td><td class="b">cell=28 阵高476</td><td class="n">受宽度卡，不变</td></tr></table>
+      <div class="note"><code>PATTERNS</code> 没有 <code>cell</code> 键 → 走动态缩放
+      <code>min(636/cols, stageH/rows)</code>。所以 <code>stageH</code> 一改，
+      豆子<b>自动变大</b>，不用动图案数据。</div>
+    </div>
+
+    <div class="card">
+      <h2>Icon 系统（13 个）</h2>
+      <div class="icons"><div class="ic"><div class="icbox"><svg width="38" height="38" viewBox="0 0 96 96"><g id="icon / speed"><path d="M 22 29 L 22 67 L 46 48 Z" fill="#FFFFFF"/><path d="M 50 29 L 50 67 L 74 48 Z" fill="#FFFFFF"/></g></svg></div><div class="icn">speed</div></div><div class="ic"><div class="icbox"><svg width="38" height="38" viewBox="0 0 96 96"><g id="icon / upgrade"><path d="M 48 16 L 78 46 L 59 46 L 59 80 L 37 80 L 37 46 L 18 46 Z" fill="#FFFFFF" stroke-linejoin="round"/></g></svg></div><div class="icn">upgrade</div></div><div class="ic"><div class="icbox"><svg width="38" height="38" viewBox="0 0 96 96"><g id="icon / clear"><g transform="rotate(34 48 48)"><rect x="41" y="12" width="14" height="42" rx="7" fill="#FFFFFF"/><path d="M 30 50 L 66 50 L 74 82 L 22 82 Z" fill="#FFFFFF"/><path d="M 41 58 L 41 82" stroke="#00000000" stroke-width="0"/><path d="M 55 58 L 55 82" stroke="#00000000" stroke-width="0"/></g></g></svg></div><div class="icn">clear</div></div><div class="ic"><div class="icbox"><svg width="38" height="38" viewBox="0 0 96 96"><g id="icon / refresh"><path d="M 62 23.7513 A 28 28 0 1 1 34 23.7513" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"/><path d="M 53.9186 12.2513 L 25.5 9.02886 L 42.5 38.4737 Z" fill="#FFFFFF"/></g></svg></div><div class="icn">refresh</div></div><div class="ic"><div class="icbox"><svg width="38" height="38" viewBox="0 0 96 96"><g id="icon / play"><path d="M 34 25 L 34 71 L 76 48 Z" fill="#FFFFFF"/></g></svg></div><div class="icn">play</div></div><div class="ic"><div class="icbox"><svg width="38" height="38" viewBox="0 0 96 96"><g id="icon / video"><rect x="14" y="30" width="46" height="36" rx="8" fill="#FFFFFF"/><path d="M 64 44 L 84 32 L 84 64 L 64 52 Z" fill="#FFFFFF"/></g></svg></div><div class="icn">video</div></div><div class="ic"><div class="icbox"><svg width="38" height="38" viewBox="0 0 96 96"><g id="icon / home"><path d="M 48 14 L 86 50 L 76 50 L 76 82 L 20 82 L 20 50 L 10 50 Z" fill="#FFFFFF"/></g></svg></div><div class="icn">home</div></div><div class="ic"><div class="icbox"><svg width="38" height="38" viewBox="0 0 96 96"><g id="icon / share"><path d="M 66 26 L 66 18 L 30 18 A 10 10 0 0 0 20 28 L 20 74 A 10 10 0 0 0 30 84 L 66 84 A 10 10 0 0 0 76 74 L 76 58" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"/><path d="M 46 52 L 84 16" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"/><path d="M 62 12 L 90 10 L 88 38 Z" fill="#FFFFFF"/></g></svg></div><div class="icn">share</div></div><div class="ic"><div class="icbox"><svg width="38" height="38" viewBox="0 0 96 96"><g id="icon / close"><path d="M 28 28 L 68 68 M 68 28 L 28 68" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round"/></g></svg></div><div class="icn">close</div></div><div class="ic"><div class="icbox"><svg width="38" height="38" viewBox="0 0 96 96"><g id="icon / gear"><rect x="76.5" y="38.5" width="15" height="19" rx="4" fill="#FFFFFF" transform="rotate(0 84 48)"/><rect x="65.9558" y="63.9558" width="15" height="19" rx="4" fill="#FFFFFF" transform="rotate(45 73.4558 73.4558)"/><rect x="40.5" y="74.5" width="15" height="19" rx="4" fill="#FFFFFF" transform="rotate(90 48 84)"/><rect x="15.0442" y="63.9558" width="15" height="19" rx="4" fill="#FFFFFF" transform="rotate(135 22.5442 73.4558)"/><rect x="4.5" y="38.5" width="15" height="19" rx="4" fill="#FFFFFF" transform="rotate(180 12 48)"/><rect x="15.0442" y="13.0442" width="15" height="19" rx="4" fill="#FFFFFF" transform="rotate(225 22.5442 22.5442)"/><rect x="40.5" y="2.5" width="15" height="19" rx="4" fill="#FFFFFF" transform="rotate(270 48 12)"/><rect x="65.9558" y="13.0442" width="15" height="19" rx="4" fill="#FFFFFF" transform="rotate(315 73.4558 22.5442)"/><circle cx="48" cy="48" r="24" fill="none" stroke="#FFFFFF" stroke-width="11"/></g></svg></div><div class="icn">gear</div></div><div class="ic"><div class="icbox"><svg width="38" height="38" viewBox="0 0 96 96"><g id="icon / star"><path d="M 48 8 L 58.8152 33.1141 L 86.0423 35.6393 L 65.4994 53.6859 L 71.5114 80.3607 L 48 66.4 L 24.4886 80.3607 L 30.5006 53.6859 L 9.95774 35.6393 L 37.1848 33.1141 Z" fill="#FFFFFF"/></g></svg></div><div class="icn">star</div></div><div class="ic"><div class="icbox"><svg width="38" height="38" viewBox="0 0 96 96"><g id="icon / plus"><path d="M 38 20 L 58 20 L 58 38 L 76 38 L 76 58 L 58 58 L 58 76 L 38 76 L 38 58 L 20 58 L 20 38 L 38 38 Z" fill="#FFFFFF"/></g></svg></div><div class="icn">plus</div></div><div class="ic"><div class="icbox"><svg width="38" height="38" viewBox="0 0 96 96"><g id="icon / lock"><rect x="24" y="46" width="48" height="36" rx="8" fill="#FFFFFF"/><path d="M 34 46 L 34 34 A 14 14 0 0 1 62 34 L 62 46" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"/></g></svg></div><div class="icn">lock</div></div></div>
+      <div class="note">96×96 网格 / 安全边距 8 / 描边 10 / 实心最细 18</div>
+    </div>
+
+    <div class="card">
+      <h2>托盘实装预览 r=52</h2>
+      <div class="impl"><div class="ib"><div class="circle" style="background:#FFB13D"><svg width="46" height="46" viewBox="0 0 96 96"><g id="icon / upgrade"><path d="M 48 16 L 78 46 L 59 46 L 59 80 L 37 80 L 37 46 L 18 46 Z" fill="#FFFFFF" stroke-linejoin="round"/></g></svg><div class="badge">+</div></div><div class="ibl">升级</div></div><div class="ib"><div class="circle" style="background:#FFB13D"><svg width="46" height="46" viewBox="0 0 96 96"><g id="icon / clear"><g transform="rotate(34 48 48)"><rect x="41" y="12" width="14" height="42" rx="7" fill="#FFFFFF"/><path d="M 30 50 L 66 50 L 74 82 L 22 82 Z" fill="#FFFFFF"/><path d="M 41 58 L 41 82" stroke="#00000000" stroke-width="0"/><path d="M 55 58 L 55 82" stroke="#00000000" stroke-width="0"/></g></g></svg><div class="badge">+</div></div><div class="ibl">消除</div></div><div class="ib"><div class="circle" style="background:#2E9BE8"><svg width="46" height="46" viewBox="0 0 96 96"><g id="icon / refresh"><path d="M 62 23.7513 A 28 28 0 1 1 34 23.7513" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"/><path d="M 53.9186 12.2513 L 25.5 9.02886 L 42.5 38.4737 Z" fill="#FFFFFF"/></g></svg><div class="badge">+</div></div><div class="ibl">刷新</div></div><div class="ib"><div class="circle" style="background:#FFB13D"><svg width="46" height="46" viewBox="0 0 96 96"><g id="icon / speed"><path d="M 22 29 L 22 67 L 46 48 Z" fill="#FFFFFF"/><path d="M 50 29 L 50 67 L 74 48 Z" fill="#FFFFFF"/></g></svg><div class="badge">+</div></div><div class="ibl">速度x2</div></div></div>
+      <div class="note">角标语义：道具类用<b>红底白 +</b>；<code>▶</code> 只留给纯广告位（速度/解锁/复活）。
+      现状全用绿 <code>▶</code>，与绿色 CTA 抢注意力。</div>
+    </div>
+  </div>
+</div>
+</body></html>

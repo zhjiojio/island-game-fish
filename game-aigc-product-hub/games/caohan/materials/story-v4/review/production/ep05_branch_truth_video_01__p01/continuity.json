@@ -1,0 +1,13 @@
+{
+  "frames": [
+    "/Users/kwaibear/work/minigame/game-aigc-product-hub/games/ks867658648250668260/materials/story-v4/review/production/ep05_branch_truth_video_01__p01/frame-000.png",
+    "/Users/kwaibear/work/minigame/game-aigc-product-hub/games/ks867658648250668260/materials/story-v4/review/production/ep05_branch_truth_video_01__p01/frame-025.png",
+    "/Users/kwaibear/work/minigame/game-aigc-product-hub/games/ks867658648250668260/materials/story-v4/review/production/ep05_branch_truth_video_01__p01/frame-050.png",
+    "/Users/kwaibear/work/minigame/game-aigc-product-hub/games/ks867658648250668260/materials/story-v4/review/production/ep05_branch_truth_video_01__p01/frame-075.png",
+    "/Users/kwaibear/work/minigame/game-aigc-product-hub/games/ks867658648250668260/materials/story-v4/review/production/ep05_branch_truth_video_01__p01/frame-100.png"
+  ],
+  "maxVisualDifference": 0.112,
+  "requiresVisualReview": true,
+  "identityApproved": false,
+  "note": "Pixel similarity only flags drift; Media Director must compare identity features to approved Anchor."
+}

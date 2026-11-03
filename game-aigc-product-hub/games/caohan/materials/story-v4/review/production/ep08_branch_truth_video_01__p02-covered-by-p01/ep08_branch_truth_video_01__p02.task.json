@@ -1,0 +1,25 @@
+{
+  "id": "ep08_branch_truth_video_01__p02",
+  "videoId": "ep08_branch_truth_video_01",
+  "characters": [
+    "陈劲",
+    "周伯"
+  ],
+  "frame": "/Users/kwaibear/work/minigame/game-aigc-product-hub/games/ks867658648250668260/materials/story-v4/keyframes/production/ep08_branch_truth_video_01__p02.png",
+  "output": "/Users/kwaibear/work/minigame/game-aigc-product-hub/games/ks867658648250668260/materials/story-v4/segments/ep08_branch_truth_video_01__p02.mp4",
+  "durationSec": 3,
+  "audio": [
+    {
+      "speaker": "旁白",
+      "text": "不是工地小子该有的。"
+    }
+  ],
+  "sourceShotIds": [
+    "ep08_branch_truth_video_01_shot_01"
+  ],
+  "frameRequest": "/Users/kwaibear/work/minigame/game-aigc-product-hub/games/ks867658648250668260/materials/story-v4/requests/production/ep08_branch_truth_video_01__p02.image.json",
+  "videoRequest": "/Users/kwaibear/work/minigame/game-aigc-product-hub/games/ks867658648250668260/materials/story-v4/requests/production/ep08_branch_truth_video_01__p02.video.json",
+  "approval": "/Users/kwaibear/work/minigame/game-aigc-product-hub/games/ks867658648250668260/materials/story-v4/review/production/ep08_branch_truth_video_01__p02.keyframe-approved.json",
+  "reviewDir": "/Users/kwaibear/work/minigame/game-aigc-product-hub/games/ks867658648250668260/materials/story-v4/review/production/ep08_branch_truth_video_01__p02",
+  "jobFile": "/Users/kwaibear/work/minigame/game-aigc-product-hub/games/ks867658648250668260/.cache/media-jobs/story-v4/production/ep08_branch_truth_video_01__p02.json"
+}

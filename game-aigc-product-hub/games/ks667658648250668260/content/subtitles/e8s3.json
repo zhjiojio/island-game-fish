@@ -1,0 +1,10 @@
+{
+  "node": "e8s3",
+  "speakerKey": "narrator",
+  "speakerName": "旁白",
+  "asrText": "半夜三更，上游一声闷响。雨水混着黄泥往下扑，沿路带走了两片苞米地。李家沟的天，今夜要塌",
+  "asrTextRaw": "半夜三更上游一声闷响 雨水混着黄泥往下铺 沿路带走了两片包米地 李家沟的天今夜要塌了",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 4
+}

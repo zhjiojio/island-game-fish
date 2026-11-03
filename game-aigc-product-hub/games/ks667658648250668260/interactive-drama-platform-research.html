@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>互动剧情游戏生产平台 · 行业研究与产品规划</title>
+  <style>
+    :root {
+      --bg: #0f0f13;
+      --bg-card: #17171f;
+      --bg-card2: #1d1d28;
+      --border: #2a2a3a;
+      --accent: #7c5cfc;
+      --accent2: #e05cfc;
+      --accent3: #5cf0fc;
+      --gold: #f5c842;
+      --text: #e8e8f0;
+      --text-muted: #8888aa;
+      --green: #3dfaa4;
+      --red: #fc5c7d;
+      --orange: #fcab5c;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ── Header ── */
+    header {
+      background: linear-gradient(135deg, #1a1230 0%, #0f1a2e 50%, #0f0f13 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 48px 40px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(124,92,252,.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .header-tag {
+      display: inline-block;
+      background: rgba(124,92,252,.15);
+      border: 1px solid rgba(124,92,252,.4);
+      color: #a88cfc;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 16px;
+    }
+    header h1 {
+      font-size: 32px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #e8e8f0 0%, #a88cfc 60%, #5cf0fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+    header p.subtitle {
+      color: var(--text-muted);
+      font-size: 14px;
+      max-width: 700px;
+    }
+    .header-meta {
+      display: flex;
+      gap: 24px;
+      margin-top: 20px;
+    }
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px;
+    }
+
+    /* ── Section ── */
+    .section {
+      margin-bottom: 56px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .section-num {
+      width: 28px; height: 28px;
+      background: var(--accent);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #a88cfc;
+      margin-bottom: 8px;
+    }
+    p { color: var(--text-muted); margin-bottom: 10px; line-height: 1.8; }
+    p strong { color: var(--text); }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 16px;
+    }
+
+    /* ── Platform Cards ── */
+    .platform-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .2s;
+    }
+    .platform-card:hover { border-color: rgba(124,92,252,.5); }
+    .platform-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent-color, var(--accent));
+    }
+    .platform-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .platform-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .platform-owner {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .badge {
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 20px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .badge-live { background: rgba(61,250,164,.12); color: var(--green); border: 1px solid rgba(61,250,164,.3); }
+    .badge-beta { background: rgba(245,200,66,.12); color: var(--gold); border: 1px solid rgba(245,200,66,.3); }
+    .badge-early { background: rgba(252,92,125,.12); color: var(--red); border: 1px solid rgba(252,92,125,.3); }
+    .badge-research { background: rgba(92,240,252,.12); color: var(--accent3); border: 1px solid rgba(92,240,252,.3); }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+    .tag {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(255,255,255,.06);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-bottom: 14px;
+    }
+    .feature-list li {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding: 4px 0;
+      padding-left: 16px;
+      position: relative;
+    }
+    .feature-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 11px;
+    }
+
+    .strategy-box {
+      background: rgba(124,92,252,.08);
+      border: 1px solid rgba(124,92,252,.2);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.7;
+    }
+    .strategy-box strong { color: #a88cfc; }
+
+    /* ── Data Table ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th {
+      text-align: left;
+      padding: 10px 14px;
+      background: var(--bg-card2);
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      border-bottom: 1px solid var(--border);
+    }
+    td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      vertical-align: top;
+    }
+    tr:hover td { background: rgba(255,255,255,.02); }
+    .td-muted { color: var(--text-muted); }
+
+    /* ── KPI Stats ── */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .kpi {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+    }
+    .kpi-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .kpi-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ── Timeline ── */
+    .timeline { position: relative; padding-left: 28px; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px; top: 8px; bottom: 8px;
+      width: 2px;
+      background: var(--border);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -24px; top: 6px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+    }
+    .timeline-year {
+      font-size: 11px;
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .timeline-content { font-size: 13px; color: var(--text-muted); }
+    .timeline-content strong { color: var(--text); }
+
+    /* ── Product Blueprint ── */
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+    }
+    .module-card {
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+    }
+    .module-icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    .module-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .module-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── Diff Table ── */
+    .diff-yes { color: var(--green); }
+    .diff-no { color: var(--text-muted); }
+    .diff-partial { color: var(--gold); }
+
+    /* ── Highlight ── */
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(124,92,252,.1) 0%, rgba(92,240,252,.05) 100%);
+      border: 1px solid rgba(124,92,252,.25);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .highlight-box h3 { color: #a88cfc; margin-bottom: 12px; }
+
+    /* ── Flow ── */
+    .flow {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+      margin: 16px 0;
+    }
+    .flow-step {
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 13px;
+      color: var(--text);
+      text-align: center;
+    }
+    .flow-arrow {
+      color: var(--accent);
+      font-size: 16px;
+      padding: 0 8px;
+    }
+
+    /* ── Divider ── */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 32px 0;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 40px;
+    }
+    .toc-title {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+    .toc-list {
+      list-style: none;
+      columns: 2;
+      gap: 24px;
+    }
+    .toc-list li {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding: 4px 0;
+    }
+    .toc-list a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color .15s;
+    }
+    .toc-list a:hover { color: #a88cfc; }
+
+    .risk-item {
+      display: flex;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .risk-level {
+      width: 56px;
+      text-align: center;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      height: fit-content;
+      flex-shrink: 0;
+    }
+    .risk-high { background: rgba(252,92,125,.15); color: var(--red); }
+    .risk-mid { background: rgba(245,200,66,.15); color: var(--gold); }
+    .risk-low { background: rgba(61,250,164,.15); color: var(--green); }
+
+    @media(max-width: 768px) {
+      header { padding: 32px 20px; }
+      header h1 { font-size: 22px; }
+      .container { padding: 24px 16px; }
+      .toc-list { columns: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-tag">产品研究 · 2026.09</div>
+  <h1>互动剧情游戏生产平台<br>行业研究 & 产品规划</h1>
+  <p class="subtitle">
+    梳理当前互动影游领域各大平台的格局与打法，为快手小游戏方向的互动剧情游戏生产平台提供决策依据
+  </p>
+  <div class="header-meta">
+    <div class="meta-item"><div class="dot"></div>研究范围：6个核心平台 · 5篇行业报告</div>
+    <div class="meta-item"><div class="dot" style="background:var(--accent3)"></div>服务渠道：快手小游戏 · IAA 广告变现</div>
+    <div class="meta-item"><div class="dot" style="background:var(--green)"></div>参考样本：end2x Story Workbench</div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-title">目录</div>
+    <ul class="toc-list">
+      <li><a href="#market">① 市场概况与赛道现状</a></li>
+      <li><a href="#platforms">② 六大平台详细分析</a></li>
+      <li><a href="#compare">③ 平台横向对比矩阵</a></li>
+      <li><a href="#regulation">④ 监管政策与合规要点</a></li>
+      <li><a href="#product">⑤ 快手互动剧情生产平台 · 产品规划</a></li>
+      <li><a href="#diff">⑥ 与 end2x 的差异化定位</a></li>
+      <li><a href="#roadmap">⑦ 分期路线图</a></li>
+      <li><a href="#risk">⑧ 风险与挑战</a></li>
+    </ul>
+  </div>
+
+  <!-- ① 市场概况 -->
+  <div class="section" id="market">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <h2>市场概况与赛道现状</h2>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="kpi-value">145亿</div>
+        <div class="kpi-label">2025 全球市场（人民币）</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">363亿</div>
+        <div class="kpi-label">2032 预测市场（人民币）</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">14.8%</div>
+        <div class="kpi-label">全球复合增长率 CAGR</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">+20%</div>
+        <div class="kpi-label">2026 中国年增速</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">18~26亿</div>
+        <div class="kpi-label">2026 国内市场规模</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-value">62%</div>
+        <div class="kpi-label">AI 生成互动内容占比</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>赛道关键拐点</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">2019</div>
+          <div class="timeline-content"><strong>《隐形守护者》</strong> 开创互动影游在 Steam 的商业模型，200万份、流水破亿</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2023</div>
+          <div class="timeline-content"><strong>《完蛋！我被美女包围了》</strong> 引爆全民话题，实景视频+互动选项模式被验证</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2025</div>
+          <div class="timeline-content"><strong>《盛世天下》系列</strong> 500万套、全系列营收1.76亿元，5天破百万爆款速度标志AI制作能力成熟；女性向市场打开，女性玩家占比升至55%+</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2026</div>
+          <div class="timeline-content"><strong>腾讯、字节、AI初创全面入场</strong>；造化工坊、Yoroll、PixVerse 相继发布平台；监管框架（广电16号令）正式实施；AI 降本显著——千万级项目降至600~700万，周期从8个月压至4个月</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>核心用户洞察</h3>
+      <div class="tag-list">
+        <span class="tag">18–35岁 Z世代</span>
+        <span class="tag">碎片化低门槛</span>
+        <span class="tag">强社交分享</span>
+        <span class="tag">愿为体验付费</span>
+        <span class="tag">耐心阈值低</span>
+        <span class="tag">增量来自非玩家群体</span>
+        <span class="tag">女性用户55%+</span>
+      </div>
+      <p>分发渠道多元化正在加速：<strong>Steam 买断制</strong>（PC 核心）→ <strong>抖音/快手小游戏</strong>（IAA 广告免费，80%+ 用户从未接触 Steam）→ <strong>微信小程序</strong>（微短剧用户复用）。快手老铁群体构成天然的<strong>增量蓝海</strong>——他们从短剧迁移到互动剧情游戏的路径最短。</p>
+    </div>
+  </div>
+
+  <!-- ② 平台分析 -->
+  <div class="section" id="platforms">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <h2>六大平台详细分析</h2>
+    </div>
+
+    <div class="card-grid">
+
+      <!-- 造化工坊 -->
+      <div class="platform-card" style="--accent-color: #ff6b35;">
+        <div class="platform-header">
+          <div>
+            <div class="platform-name">造化工坊</div>
+            <div class="platform-owner">腾讯 · 光子工作室</div>
+          </div>
+          <span class="badge badge-live">已上线</span>
+        </div>
+        <div class="tag-list">
+          <span class="tag">UGC 创作平台</span>
+          <span class="tag">互动影游</span>
+          <span class="tag">大厂背书</span>
+        </div>
+        <h4>核心定位</h4>
+        <p style="font-size:13px;">光子首个 AI 互动游戏梦工厂，slogan：<strong style="color:var(--text)">「造化随心，一语成境」</strong>。用文字描述灵感，零门槛 AI 辅助创作互动影游。</p>
+        <h4>功能特点</h4>
+        <ul class="feature-list">
+          <li>文字描述 → AI 生成互动影游内容</li>
+          <li>支持剧本上传辅助创作</li>
+          <li>Android / iOS / PC 多端覆盖</li>
+          <li>已上线 15+ 款 UGC 创作作品（官方展示）</li>
+          <li>开放创作权限报名入口</li>
+        </ul>
+        <div class="strategy-box">
+          <strong>打法：</strong>平台生态 + UGC 内容飞轮。借腾讯流量分发体系，构建「赛事—孵化—落地—分发」链路，以造化工坊作为腾讯互动叙事内容的基础设施。短期目标：内测 60 款 AI 互动影游。
+        </div>
+      </div>
+
+      <!-- Yoroll -->
+      <div class="platform-card" style="--accent-color: #00d4aa;">
+        <div class="platform-header">
+          <div>
+            <div class="platform-name">Yoroll</div>
+            <div class="platform-owner">LinearGame · AI 互动视频游戏平台</div>
+          </div>
+          <span class="badge badge-live">已上线</span>
+        </div>
+        <div class="tag-list">
+          <span class="tag">AI 原生</span>
+          <span class="tag">创作工具链</span>
+          <span class="tag">多渠道发行</span>
+        </div>
+        <h4>核心定位</h4>
+        <p style="font-size:13px;">AI 原生互动视频游戏创作 + 发行一体化平台。核心价值：<strong style="color:var(--text)">降低创作门槛 + 提供多渠道发行出口</strong>。</p>
+        <h4>功能特点</h4>
+        <ul class="feature-list">
+          <li>剧本生成、AI 影像制作、互动内容搭建（QTE、解谜等）</li>
+          <li>数值系统（羁绊值/心动值）</li>
+          <li>章节分镜画布 + 视频过渡编辑</li>
+          <li>H3 Superfast 视频生成（高速出图）</li>
+          <li>YoLive 实时互动（观众投票影响剧情生成）</li>
+        </ul>
+        <h4>代表案例</h4>
+        <ul class="feature-list">
+          <li>《华君传·翻牌吧女帝》：3周 200万抖音小游戏玩家</li>
+          <li>《丧尸清道夫》：科隆 gamescom 展出，平均时长 30+ 分钟</li>
+          <li>《AI Odyssey》：个人创作，TikTok 小游戏超 10 万次</li>
+        </ul>
+        <div class="strategy-box">
+          <strong>打法：</strong>工具 + 内容 + 发行三位一体。第一方精品游戏（《民国诡事》《丧尸清道夫》）反向推动工具迭代；联合开发模式降低创作者门槛；多渠道出口（抖音/TikTok/Steam/微信）最大化内容变现。
+        </div>
+      </div>
+
+      <!-- PixVerse R2 -->
+      <div class="platform-card" style="--accent-color: #7c5cfc;">
+        <div class="platform-header">
+          <div>
+            <div class="platform-name">PixVerse R2 · PixLab</div>
+            <div class="platform-owner">爱诗科技 · 世界模型方向</div>
+          </div>
+          <span class="badge badge-beta">内测中</span>
+        </div>
+        <div class="tag-list">
+          <span class="tag">世界模型</span>
+          <span class="tag">实时互动视频</span>
+          <span class="tag">AI 基础设施</span>
+        </div>
+        <h4>核心定位</h4>
+        <p style="font-size:13px;">从视频生成工具升维为<strong style="color:var(--text)">可交互世界模型</strong>，支持选项/文字/语音/QTE 多种输入方式，做互动娱乐基础设施。</p>
+        <h4>技术亮点</h4>
+        <ul class="feature-list">
+          <li>R1 → R2：连续、实时、可交互视频流（而非预渲染切片）</li>
+          <li>三种模式：世界探索（WSAD控制）、剧情互动、角色实时互动</li>
+          <li>数字人 NPC 有完整人物卡，绝不 OOC（Out of Character）</li>
+          <li>记忆连贯性：记住修改、角色变化后故事可持续</li>
+        </ul>
+        <h4>三款样板间</h4>
+        <ul class="feature-list">
+          <li>《Zero Mark》：魔法学院，提示词即咒语</li>
+          <li>《畸变回声》：太空恐怖，3A 制作人参与</li>
+          <li>《月之战》：中式武侠+硬核科幻，职业导演操刀</li>
+        </ul>
+        <div class="strategy-box">
+          <strong>打法：</strong>先出内容展示能力，再讨论孵化/分成/发行。PixLab 绑定跨界创作者（AI超创+游戏制作人+影视导演）共创，探索「预置视频分支 + 实时 AI 生成」混合模式。
+        </div>
+      </div>
+
+      <!-- AlayaLab -->
+      <div class="platform-card" style="--accent-color: #5cf0fc;">
+        <div class="platform-header">
+          <div>
+            <div class="platform-name">AlayaLab</div>
+            <div class="platform-owner">独立 AI 游戏研究实验室 · 2026</div>
+          </div>
+          <span class="badge badge-research">研究 + 产品</span>
+        </div>
+        <div class="tag-list">
+          <span class="tag">世界模型研究</span>
+          <span class="tag">游戏智能体</span>
+          <span class="tag">数字人</span>
+          <span class="tag">AI 游戏创作</span>
+        </div>
+        <h4>五大方向</h4>
+        <ul class="feature-list">
+          <li><strong style="color:var(--text)">用 AI 做游戏</strong>：Gear Zero 多人协作 AI 游戏创作工具</li>
+          <li><strong style="color:var(--text)">世界模型</strong>：Alaya-Evoke / Alaya World / Sekai2 可交互世界生成</li>
+          <li><strong style="color:var(--text)">生成式渲染</strong>：AlayaRenderer-Flash 实时神经渲染管线</li>
+          <li><strong style="color:var(--text)">游戏智能体</strong>：MeepleLM 桌游语言模型</li>
+          <li><strong style="color:var(--text)">数字人</strong>：MIO 多模态数字人、UniLS 唇形同步</li>
+        </ul>
+        <div class="strategy-box">
+          <strong>打法：</strong>研究驱动产品，Gear Zero 是面向普通用户的「几分钟把对话变成可玩版本」工具；Synthetic World 是 AI 驱动的沉浸式叙事游戏。定制模型开发 + 数据引擎对外 ToB 服务。
+        </div>
+      </div>
+
+      <!-- End2X 幕间Studio -->
+      <div class="platform-card" style="--accent-color: #f5c842;">
+        <div class="platform-header">
+          <div>
+            <div class="platform-name">End2X · 幕间 Studio</div>
+            <div class="platform-owner">独立工具 · 互动剧情工作台</div>
+          </div>
+          <span class="badge badge-beta">开放使用</span>
+        </div>
+        <div class="tag-list">
+          <span class="tag">剧本→游戏转换</span>
+          <span class="tag">视觉化剧情树</span>
+          <span class="tag">工具链完整</span>
+          <span class="tag">快手适配</span>
+        </div>
+        <h4>核心定位</h4>
+        <p style="font-size:13px;"><strong style="color:var(--text)">Story → Game 全流程工具链</strong>：将线性剧本 AI 转化为可视化互动剧情树，含广告门节点和多结局支线，直接对接快手小游戏发行。</p>
+        <h4>功能模块</h4>
+        <ul class="feature-list">
+          <li><strong style="color:var(--text)">剧本台</strong>：浏览 / 管理互动剧情项目</li>
+          <li><strong style="color:var(--text)">视频剧情树</strong>：可视化分支结构（章节/集/视频/分镜层级）</li>
+          <li><strong style="color:var(--text)">节点类型</strong>：开始/视频/选择-路由/广告门/结局</li>
+          <li><strong style="color:var(--text)">agw-story2game</strong>：AI 自动剧本转换引擎（schema v2）</li>
+          <li><strong style="color:var(--text)">产物包导出</strong>：交付工作台一键打包</li>
+        </ul>
+        <h4>示例规模（单项目）</h4>
+        <ul class="feature-list">
+          <li>5章 · 11集 · 55视频 · 131分镜</li>
+          <li>8个产物 · 124节点 · 14结局</li>
+          <li>4类选择：情感/真相/🔒广告门/◆条件解锁</li>
+        </ul>
+        <div class="strategy-box">
+          <strong>打法：</strong>工具优先、开放社区（Discord/GitHub/小红书）。聚焦「剧本 → 互动游戏」这一段，与快手 AGW 工作流深度绑定，目标是成为快手互动剧情游戏的标准制作工具。
+        </div>
+      </div>
+
+      <!-- 芒果TV + 字节 -->
+      <div class="platform-card" style="--accent-color: #fc5c7d;">
+        <div class="platform-header">
+          <div>
+            <div class="platform-name">芒果TV / 字节 / 腾讯探梦</div>
+            <div class="platform-owner">传统视频平台 · 内容侧入场</div>
+          </div>
+          <span class="badge badge-live">已入场</span>
+        </div>
+        <div class="tag-list">
+          <span class="tag">内容为王</span>
+          <span class="tag">流量变现</span>
+          <span class="tag">平台补贴</span>
+        </div>
+        <h4>芒果TV</h4>
+        <ul class="feature-list">
+          <li>推出《马上来财》（AIGC互动，播放量 1500万）</li>
+          <li>构建「赛事—孵化—落地—分发」完整链路</li>
+          <li>《公主请自重》AI 仿真人互动</li>
+        </ul>
+        <h4>字节跳动</h4>
+        <ul class="feature-list">
+          <li>Seedance 2.0 成 AI 漫剧「基础设施」</li>
+          <li>番茄小说推《诡舍》（无限流+规则怪谈）</li>
+          <li>抖音小游戏是最大存量渠道（《华君传》3周200万）</li>
+        </ul>
+        <h4>腾讯</h4>
+        <ul class="feature-list">
+          <li>「探梦 DreamNow」AIGC 平台（研发中）</li>
+          <li>光子「造化工坊」已内测 60 款</li>
+          <li>为《盛世天下》提供全球独家发行</li>
+        </ul>
+        <div class="strategy-box">
+          <strong>打法：</strong>内容平台的本质是争夺内容版权和分发话语权。抖音优势在于流量；腾讯优势在于 Steam 全球发行网络；芒果 TV 优势在于女性向内容运营经验。
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ③ 横向对比 -->
+  <div class="section" id="compare">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <h2>平台横向对比矩阵</h2>
+    </div>
+    <div class="card" style="overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>平台</th>
+            <th>定位</th>
+            <th>剧本创作</th>
+            <th>视频生成</th>
+            <th>互动编辑器</th>
+            <th>广告变现</th>
+            <th>快手适配</th>
+            <th>C端发行</th>
+            <th>商业模式</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>造化工坊</strong><br><span class="td-muted">腾讯</span></td>
+            <td>UGC 创作平台</td>
+            <td class="diff-yes">✓ AI 辅助</td>
+            <td class="diff-yes">✓ AI 生成</td>
+            <td class="diff-yes">✓ 内置</td>
+            <td class="diff-no">— 未知</td>
+            <td class="diff-no">✗</td>
+            <td class="diff-yes">✓ 多端</td>
+            <td>平台生态/分成</td>
+          </tr>
+          <tr>
+            <td><strong>Yoroll</strong><br><span class="td-muted">LinearGame</span></td>
+            <td>创作+发行一体</td>
+            <td class="diff-yes">✓ AI 辅助</td>
+            <td class="diff-yes">✓ H3 Superfast</td>
+            <td class="diff-yes">✓ 章节画布</td>
+            <td class="diff-yes">✓ 抖音/TikTok</td>
+            <td class="diff-partial">△ 部分</td>
+            <td class="diff-yes">✓ 多渠道</td>
+            <td>分成+SaaS</td>
+          </tr>
+          <tr>
+            <td><strong>PixVerse R2</strong><br><span class="td-muted">爱诗科技</span></td>
+            <td>AI 基础设施</td>
+            <td class="diff-partial">△ 实时生成</td>
+            <td class="diff-yes">✓ 实时流</td>
+            <td class="diff-partial">△ 有限</td>
+            <td class="diff-no">—</td>
+            <td class="diff-no">✗</td>
+            <td class="diff-partial">△ 实验性</td>
+            <td>能力授权/ToB</td>
+          </tr>
+          <tr>
+            <td><strong>AlayaLab</strong><br><span class="td-muted">独立</span></td>
+            <td>研究+产品</td>
+            <td class="diff-yes">✓ Gear Zero</td>
+            <td class="diff-yes">✓ 神经渲染</td>
+            <td class="diff-partial">△</td>
+            <td class="diff-no">—</td>
+            <td class="diff-no">✗</td>
+            <td class="diff-partial">△</td>
+            <td>ToB/数据引擎</td>
+          </tr>
+          <tr>
+            <td><strong>End2X</strong><br><span class="td-muted">幕间Studio</span></td>
+            <td>剧本→游戏工具</td>
+            <td class="diff-yes">✓ agw-story2game</td>
+            <td class="diff-partial">△ 依赖外部</td>
+            <td class="diff-yes">✓ 剧情树编辑</td>
+            <td class="diff-yes">✓ 广告门节点</td>
+            <td class="diff-yes">✓ 快手AGW</td>
+            <td class="diff-partial">△ 需打包</td>
+            <td>工具+社区</td>
+          </tr>
+          <tr style="background: rgba(124,92,252,.05);">
+            <td><strong style="color:#a88cfc">你的平台</strong><br><span class="td-muted">快手生态</span></td>
+            <td>快手小游戏专属<br>互动剧情生产线</td>
+            <td class="diff-yes">✓ AI 剧本生成</td>
+            <td class="diff-yes">✓ 视频生成</td>
+            <td class="diff-yes">✓ 可视化编辑</td>
+            <td class="diff-yes">✓ IAA 内置</td>
+            <td class="diff-yes">✓ 原生</td>
+            <td class="diff-yes">✓ 一键上架</td>
+            <td>SaaS+分成</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ④ 监管政策 -->
+  <div class="section" id="regulation">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <h2>监管政策与合规要点</h2>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <h3>🏛️ 互动影游备案规则（2026）</h3>
+        <p><strong>定性原则：</strong>纳入微短剧监管体系，不按游戏版号管理</p>
+        <ul class="feature-list">
+          <li>纯叙事分支互动 → 走<strong style="color:var(--green)">短剧备案</strong>（三级分类）</li>
+          <li>含战斗闯关等强游戏玩法 → 必须<strong style="color:var(--red)">游戏版号</strong></li>
+          <li>≥80万或敏感题材 → 总局备案+省级许可证</li>
+          <li>30~80万普通题材 → 省级审批</li>
+          <li>&lt;30万普通题材 → 平台审核</li>
+        </ul>
+        <p style="font-size:12px; color:var(--gold);">⚡ 快手小游戏 IAA 产品（无付费/无强游戏玩法）走最简路径：平台审核即可上架</p>
+      </div>
+      <div class="card">
+        <h3>🤖 AI 内容强制标识</h3>
+        <ul class="feature-list">
+          <li>AI 生成内容占比 &gt;30% → 强制注明 AI 生成标识</li>
+          <li>未标识不得投流、不得上线</li>
+          <li>制作方须留存 AI Prompt、工程文件、授权合同</li>
+          <li>AI 换脸/复刻声音必须书面授权</li>
+        </ul>
+        <h3 style="margin-top:16px;">🚫 内容红线</h3>
+        <ul class="feature-list">
+          <li>禁止低俗复仇、畸形婚恋</li>
+          <li>禁止魔改经典、亵渎英烈</li>
+          <li>禁止暗藏付费诱导分支（纯 IAA 合规）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑤ 产品规划 -->
+  <div class="section" id="product">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <h2>快手互动剧情游戏生产平台 · 产品规划</h2>
+    </div>
+
+    <div class="highlight-box">
+      <h3>产品北极星定义</h3>
+      <p>一个<strong>面向内容创作者和制作团队</strong>的 SaaS 工具平台，专门用于<strong>生产快手小游戏（互动剧情类）</strong>。核心价值：从剧本到可上架快手小游戏的<strong>全链路 AI 辅助生产线</strong>，内置 IAA 广告变现节点，生产出来的游戏可直接通过快手小游戏审核上架。</p>
+      <div class="flow" style="margin-top:16px;">
+        <div class="flow-step">剧本创作</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">AI 分镜/视频生成</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">互动剧情树编辑</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">广告变现配置</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">打包 & 上架快手</div>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom:16px;">核心功能模块</h3>
+    <div class="module-grid">
+      <div class="module-card">
+        <div class="module-icon">✍️</div>
+        <div class="module-title">AI 剧本工坊</div>
+        <div class="module-desc">输入一句话或上传剧本 → AI 自动扩写成带分支的互动剧本。支持题材模板（霸总、穿越、古风、都市）、角色设定管理、对白润色、章节规划。</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">🎬</div>
+        <div class="module-title">AI 分镜 & 视频生成</div>
+        <div class="module-desc">基于剧本自动生成分镜脚本 → 对接 Kling/SD/内部模型批量出图出视频。支持角色一致性（LoRA 绑定）、场景资产复用、批量生产流水线。</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">🌳</div>
+        <div class="module-title">互动剧情树编辑器</div>
+        <div class="module-desc">可视化节点编辑，支持：视频节点、选择节点、条件节点（变量追踪）、广告门节点（IAA 锁点）、多结局汇聚节点。拖拽组织，实时预览。</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">📦</div>
+        <div class="module-title">素材管理中心</div>
+        <div class="module-desc">所有 AI 生成素材统一入库管理（视频/图片/音频/语音包）。支持按角色/场景/章节筛选，CDN 自动上传，版本管理与回滚。</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">💰</div>
+        <div class="module-title">IAA 变现配置</div>
+        <div class="module-desc">可视化配置广告门位置：章节解锁广告、选项解锁广告、结局解锁广告。内置快手广告 SDK 接入规范，自动生成合规变现代码。</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">🚀</div>
+        <div class="module-title">一键打包上架</div>
+        <div class="module-desc">一键将互动剧情项目打包成快手小游戏标准工程包（含 meta.json、package.json、分包策略）。对接快手开放平台，支持提交审核流程。</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">📊</div>
+        <div class="module-title">数据看板</div>
+        <div class="module-desc">接入快手小游戏数据：DAU/留存/广告收入/支线选择分布/完播率。帮助创作者识别剧情卡点、优化广告门位置，指导下一集迭代。</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">👥</div>
+        <div class="module-title">团队协作</div>
+        <div class="module-desc">多角色权限：编剧/分镜师/AI 生成师/项目管理。版本分支管理，并行制作不同结局线。评论标注、任务分配、交付流程管理。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑥ 差异化定位 -->
+  <div class="section" id="diff">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <h2>与 end2x Story Workbench 的差异化定位</h2>
+    </div>
+
+    <p style="margin-bottom:20px;">end2x 是目前最接近目标方向的参考产品，但它仍有明显空白，这就是我们的机会。</p>
+
+    <div class="card" style="overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>能力维度</th>
+            <th>end2x 幕间Studio</th>
+            <th>你的平台（目标）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>定位</strong></td>
+            <td class="td-muted">开源工具 / 社区项目</td>
+            <td><strong style="color:var(--green)">商业 SaaS / 快手官方生态</strong></td>
+          </tr>
+          <tr>
+            <td><strong>AI 剧本生成</strong></td>
+            <td class="diff-partial">需要外部导入</td>
+            <td class="diff-yes">✓ 内置一键生成 + 模板库</td>
+          </tr>
+          <tr>
+            <td><strong>视频生成</strong></td>
+            <td class="diff-partial">外部工具生产后导入</td>
+            <td class="diff-yes">✓ 内置对接 Kling/内部模型，平台内完成</td>
+          </tr>
+          <tr>
+            <td><strong>角色一致性</strong></td>
+            <td class="diff-no">✗ 无</td>
+            <td class="diff-yes">✓ LoRA 绑定/角色资产库</td>
+          </tr>
+          <tr>
+            <td><strong>广告门配置</strong></td>
+            <td class="diff-partial">有节点类型，无 SDK 对接</td>
+            <td class="diff-yes">✓ 快手广告 SDK 内置，可视化配置</td>
+          </tr>
+          <tr>
+            <td><strong>快手上架流程</strong></td>
+            <td class="diff-partial">需手动打包</td>
+            <td class="diff-yes">✓ 一键打包 + 对接快手开放平台</td>
+          </tr>
+          <tr>
+            <td><strong>数据反馈</strong></td>
+            <td class="diff-no">✗ 无</td>
+            <td class="diff-yes">✓ 接入快手小游戏数据看板</td>
+          </tr>
+          <tr>
+            <td><strong>团队协作</strong></td>
+            <td class="diff-partial">△ 本地草稿，无多人协作</td>
+            <td class="diff-yes">✓ 多角色权限 + 版本管理</td>
+          </tr>
+          <tr>
+            <td><strong>合规辅助</strong></td>
+            <td class="diff-no">✗ 无</td>
+            <td class="diff-yes">✓ AI 标识提醒 + 备案辅助 + 内容检测</td>
+          </tr>
+          <tr>
+            <td><strong>变现深度</strong></td>
+            <td class="diff-partial">广告门节点，浅层</td>
+            <td class="diff-yes">✓ IAA 优化建议 + 广告位 A/B 测试</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="highlight-box" style="margin-top:20px;">
+      <h3>核心差异化一句话</h3>
+      <p>end2x 是<strong>开放的通用工具</strong>，解决「剧本→剧情树」这一环；我们要做的是<strong>快手生态的专属生产线</strong>——从「一句话创意」到「快手小游戏上架 & 赚钱」全程闭环，内置快手的流量分发、广告变现、审核合规体系，让创作者在平台内一站完成，不需要跨工具。</p>
+    </div>
+  </div>
+
+  <!-- ⑦ 路线图 -->
+  <div class="section" id="roadmap">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <h2>分期路线图</h2>
+    </div>
+
+    <div class="card-grid">
+      <div class="card" style="border-color: rgba(61,250,164,.3);">
+        <div style="color:var(--green); font-size:12px; font-weight:700; letter-spacing:1px; margin-bottom:12px;">PHASE 1 · MVP（1-3个月）</div>
+        <h3>快速验证核心工作流</h3>
+        <ul class="feature-list">
+          <li>剧本模板库（5种题材×3档长度）</li>
+          <li>agw-story2game 集成（可参考 end2x 方案）</li>
+          <li>互动剧情树可视化编辑器（读+改）</li>
+          <li>广告门节点配置（快手 SDK 对接）</li>
+          <li>快手小游戏打包导出（手动辅助）</li>
+          <li>内部种子用户测试（10个团队）</li>
+        </ul>
+        <p style="font-size:12px; color:var(--green);">目标：跑通1个完整项目从剧本到上架快手</p>
+      </div>
+
+      <div class="card" style="border-color: rgba(124,92,252,.3);">
+        <div style="color:var(--accent); font-size:12px; font-weight:700; letter-spacing:1px; margin-bottom:12px;">PHASE 2 · 增长（3-6个月）</div>
+        <h3>AI 生成能力内置化</h3>
+        <ul class="feature-list">
+          <li>AI 剧本扩写（LLM 接入，支持一句话扩写）</li>
+          <li>AI 分镜生成（基于剧本文本自动生成分镜稿）</li>
+          <li>Kling 视频生成对接（批量生产）</li>
+          <li>角色资产库（角色绑定，场景一致性）</li>
+          <li>团队协作（多人权限管理）</li>
+          <li>一键打包 + 快手开放平台自动提交</li>
+        </ul>
+        <p style="font-size:12px; color:var(--accent);">目标：月均生产50个互动剧情游戏项目</p>
+      </div>
+
+      <div class="card" style="border-color: rgba(245,200,66,.3);">
+        <div style="color:var(--gold); font-size:12px; font-weight:700; letter-spacing:1px; margin-bottom:12px;">PHASE 3 · 平台化（6-12个月）</div>
+        <h3>生态闭环与数据驱动</h3>
+        <ul class="feature-list">
+          <li>数据看板（接入快手小游戏 + 广告数据）</li>
+          <li>IAA 广告位优化建议（AI 推荐最佳广告门位置）</li>
+          <li>素材市场（角色/场景/BGM 共享）</li>
+          <li>合规检测自动化（AI 标识、内容审核预检）</li>
+          <li>快手官方认证制作商体系接入</li>
+          <li>商业化（SaaS 订阅 + 收益分成）</li>
+        </ul>
+        <p style="font-size:12px; color:var(--gold);">目标：成为快手互动剧情游戏官方推荐工具</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑧ 风险 -->
+  <div class="section" id="risk">
+    <div class="section-header">
+      <div class="section-num">8</div>
+      <h2>风险与挑战</h2>
+    </div>
+    <div class="card">
+      <div class="risk-item">
+        <span class="risk-level risk-high">高风险</span>
+        <div>
+          <strong>竞争挤压</strong><br>
+          <span class="td-muted">抖音/Yoroll 已跑通，腾讯正在布局。先发优势窗口期短，需快速在快手生态构建壁垒（数据网络效应、快手官方合作、快手流量支持）。</span>
+        </div>
+      </div>
+      <div class="risk-item">
+        <span class="risk-level risk-high">高风险</span>
+        <div>
+          <strong>AI 视频生成质量与成本</strong><br>
+          <span class="td-muted">视频生成成本高（单视频≈数元），规模化后成本线陡峭。需在工具侧做素材复用优化，降低单项目视频生成成本；同时对接内部算力资源降本。</span>
+        </div>
+      </div>
+      <div class="risk-item">
+        <span class="risk-level risk-mid">中风险</span>
+        <div>
+          <strong>内容合规风险</strong><br>
+          <span class="td-muted">AI 生成内容强制标识、互动影游备案规则变化频繁（2026年9月1日实施新规）。平台需内置合规检测，降低创作者合规成本，并随政策及时调整。</span>
+        </div>
+      </div>
+      <div class="risk-item">
+        <span class="risk-level risk-mid">中风险</span>
+        <div>
+          <strong>用户教育成本</strong><br>
+          <span class="td-muted">创作互动剧情需要编剧思维，门槛高于短视频创作。需要大量模板、引导、社区案例降低门槛，帮助创作者从「短剧→互动剧情游戏」的思维转变。</span>
+        </div>
+      </div>
+      <div class="risk-item" style="border:none;">
+        <span class="risk-level risk-low">低风险</span>
+        <div>
+          <strong>快手生态绑定过深</strong><br>
+          <span class="td-muted">完全绑定快手可能限制市场空间。建议核心工具链保持通用性，快手打包上架作为优先渠道，后续可扩展抖音/微信小程序。</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:24px;">
+      <h3>💡 最大机会点</h3>
+      <p>快手老铁群体 vs 抖音用户有明显的渠道差异化——抖音已被 Yoroll/字节深度渗透，但<strong>快手互动剧情游戏生产工具几乎是空白</strong>。快手短剧生态（创作者、IP、用户）是天然的供给侧，只需要一个「短剧 → 互动剧情游戏」的转化工具，让短剧创作者用最小成本进入互动游戏赛道，快手流量分发反哺内容侧，形成独特闭环。</p>
+    </div>
+  </div>
+
+  <hr />
+  <p style="text-align:center; font-size:12px; color:var(--text-muted); padding-bottom:40px;">
+    整理者：lihui26 · 2026.09.08 · 基于 AlayaLab、造化工坊、Yoroll、PixVerse、end2x 及行业报告整理
+  </p>
+
+</div>
+</body>
+</html>

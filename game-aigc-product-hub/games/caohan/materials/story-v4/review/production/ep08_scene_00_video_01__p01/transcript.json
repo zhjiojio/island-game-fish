@@ -1,0 +1,9 @@
+{
+  "transcript": "",
+  "utterances": [],
+  "method": "digital silence verified by ffmpeg",
+  "evidence": [
+    "[Parsed_volumedetect_0 @ 0x125f04500] max_volume: -91.0 dB"
+  ],
+  "note": "原节点只有标点，去掉模型额外好，画面不变。"
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>H5 快手小游戏</title>
+<style>
+  /* ── 浏览器调试：固定 360×812（竖屏默认），在浏览器视口居中 ── */
+  html {
+    width: 360px;
+    height: 812px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    box-shadow: 0 0 0 1px #444;
+    transition: width 0.3s, height 0.3s, transform 0.3s;
+  }
+  html.landscape {
+    width: 812px;
+    height: 360px;
+  }
+  body {
+    margin: 0;
+    background: #000;
+    overflow: hidden;
+    touch-action: none;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* ── 横竖屏切换按钮（手机框外，左上角） ── */
+  #debug-rotate {
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    z-index: 99999;
+    background: rgba(40,40,40,0.75);
+    border: none;
+    border-radius: 8px;
+    padding: 6px 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #fff;
+    backdrop-filter: blur(4px);
+    user-select: none;
+  }
+  #debug-rotate:hover { background: rgba(60,60,60,0.9); }
+  #debug-rotate svg { width: 16px; height: 16px; transition: transform 0.3s; }
+  html.landscape #debug-rotate svg { transform: rotate(90deg); }
+</style>
+</head>
+<body>
+<canvas id="gameCanvas" style="display:block"></canvas>
+
+<!-- 横竖屏切换按钮（浏览器窗口左上角，不在手机框内） -->
+<button id="debug-rotate" title="切换横/竖屏" onclick="toggleOrientation()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="5" y="2" width="14" height="20" rx="2"/>
+    <line x1="12" y1="18" x2="12" y2="18.5" stroke-width="2.5"/>
+  </svg>
+  <span id="debug-rotate-label">竖屏</span>
+</button>
+
+<script>
+window.canvas = document.getElementById('gameCanvas');
+
+// 将固定分辨率写入 html 属性，供 main.js 浏览器调试时读取
+var _debugHtml = document.documentElement;
+_debugHtml.setAttribute('data-debug-w', '360');
+_debugHtml.setAttribute('data-debug-h', '812');
+
+function toggleOrientation() {
+  var isLandscape = _debugHtml.classList.toggle('landscape');
+  // 横竖屏互换 w/h，保持与 CSS 同步
+  _debugHtml.setAttribute('data-debug-w', isLandscape ? '812' : '360');
+  _debugHtml.setAttribute('data-debug-h', isLandscape ? '360' : '812');
+  document.getElementById('debug-rotate-label').textContent = isLandscape ? '横屏' : '竖屏';
+  // 通知 main.js 重算 canvas 尺寸
+  window.dispatchEvent(new Event('resize'));
+}
+</script>
+<!-- ── v2.0.0 重写版：按 main.js require 顺序保持一致 ── -->
+<!-- 1. 基础初始化 -->
+<script src="js/m3-init.js?v=16"></script>
+<!-- 2. 标准库（cdn-loader/game-logger/asset-manager 未接入，见 js/main.js 同段注释） -->
+<script src="standard/kwai-event-bus.js?v=16"></script>
+<script src="standard/subpackage-loader.js?v=16"></script>
+<!-- 3. 产品定制层（必须在 kwai-ad-config.js / core/config.js 之前） -->
+<script src="js/core/product.config.js?v=22"></script>
+<!-- 4. 平台能力 API -->
+<script src="js/kwai-ad-config.js?v=16"></script>
+<script src="api/kwai-login.js?v=16"></script>
+<script src="api/kwai-ad.js?v=16"></script>
+<script src="api/kwai-share.js?v=16"></script>
+<script src="api/kwai-subpackage.js?v=16"></script>
+<script src="api/kwai-open.js?v=16"></script>
+<script src="api/kwai-file.js?v=16"></script>
+<script src="api/kwai-network.js?v=16"></script>
+<!-- 5. WebGL 渲染层 -->
+<script src="js/render/gl.js?v=16"></script>
+<script src="js/render/shaders.js?v=16"></script>
+<script src="js/render/texture.js?v=17"></script>
+<script src="js/render/batch.js?v=16"></script>
+<script src="js/render/text.js?v=16"></script>
+<script src="js/render/renderer.js?v=16"></script>
+<!-- 6. 核心层 -->
+<script src="js/core/config.js?v=17"></script>
+<script src="js/core/scene.js?v=16"></script>
+<script src="js/core/input.js?v=16"></script>
+<script src="js/core/loop.js?v=16"></script>
+<script src="js/core/ui-kit.js?v=18"></script>
+<!-- 7. 数据层 -->
+<script src="js/data/mock-levels-config.js?v=16"></script>
+<script src="js/data/remote-config.js?v=16"></script>
+<script src="js/data/difficulty.js?v=16"></script>
+<!-- 8. 系统层 -->
+<script src="js/systems/storage.js?v=16"></script>
+<script src="js/systems/audio.js?v=18"></script>
+<script src="js/systems/ads.js?v=16"></script>
+<script src="js/systems/telemetry.js?v=16"></script>
+<script src="js/systems/checkin.js?v=16"></script>
+<!-- 9. 玩法层 -->
+<script src="js/play/mode-registry.js?v=16"></script>
+<script src="js/play/modes/base-mode.js?v=17"></script>
+<script src="js/play/modes/graphics-match-mode.js?v=1"></script>
+<script src="js/play/modes/hidden.js?v=16"></script>
+<script src="js/play/modes/spot.js?v=16"></script>
+<script src="js/play/modes/hunt.js?v=16"></script>
+<script src="js/play/modes/story.js?v=16"></script>
+<script src="js/play/modes/dressup.js?v=17"></script>
+<script src="js/play/modes/puzzle.js?v=1"></script>
+<script src="js/play/hud/hud.js?v=16"></script>
+<script src="js/play/play.js?v=19"></script>
+<script src="js/play/asset-loader.js?v=1"></script>
+<script src="js/play/reward-flow.js?v=1"></script>
+<!-- 10. 弹窗 -->
+<script src="js/play/modals/win-modal.js?v=18"></script>
+<script src="js/play/modals/lose-modal.js?v=16"></script>
+<script src="js/play/modals/settings-overlay.js?v=18"></script>
+<script src="js/play/modals/unlock-overlays.js?v=16"></script>
+<script src="js/play/modals/checkin-modal.js?v=16"></script>
+<!-- 11. 场景 -->
+<script src="js/scenes/welcome.js?v=21"></script>
+<script src="js/scenes/home.js?v=19"></script>
+<script src="js/scenes/game-scene.js?v=17"></script>
+<!-- 主入口（H5 环境中 require 分支不执行，直接走 canvas 初始化）-->
+<script src="js/main.js?v=16"></script>
+</body>
+</html>

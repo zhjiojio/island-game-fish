@@ -1,0 +1,18 @@
+{
+  "videoId": "ending_cow",
+  "voiceWindows": [],
+  "newVoice": [
+    {
+      "lineId": "ending_cow__l01",
+      "speaker": "画外叙述者",
+      "kind": "narration",
+      "text": "所有线索，竟然都指向了最初那杯牛奶。",
+      "audioFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/audio/ending_cow__l01.mp3",
+      "start": 0.4,
+      "end": 4.5
+    }
+  ],
+  "durationSec": 16.091428571428573,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.5618896484375
+}

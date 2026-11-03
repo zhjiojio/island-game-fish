@@ -1,0 +1,2049 @@
+[
+  {
+    "videoId": "ep01_scene_00_video_01",
+    "sourceDurationSec": 7.0,
+    "sourceShotIds": [
+      "ep01_scene_00_video_01_shot_01",
+      "ep01_scene_00_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep01_scene_00_video_01__p01"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep01_scene_00_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "许邵泽",
+        "text": "贺星冉，分手吧。贺家这条船要沉了——我不陪你。"
+      }
+    ],
+    "durationSec": 9.041667,
+    "sha256": "40c02ce50b2c6db4cfa5129f63851d77e29ed0d98efeb1c74352beb3bd6d673e",
+    "bytes": 12003168,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep01_scene_00_video_01.mp4",
+    "uploadPath": "assets/video/ep01_scene_00_video_01.40c02ce50b2c.mp4"
+  },
+  {
+    "videoId": "ep01_branch_emotion_video_01",
+    "sourceDurationSec": 7.0,
+    "sourceShotIds": [
+      "ep01_branch_emotion_video_01_shot_01",
+      "ep01_branch_emotion_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep01_branch_emotion_video_01__p01"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep01_branch_emotion_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "许邵泽的手猛地发力。栏杆断裂，贺星冉整个人坠进夜色。"
+      }
+    ],
+    "durationSec": 10.041667,
+    "sha256": "f4d9c74fc79e28935128ecafc43b47800f66c38e2136565179c674023e51500a",
+    "bytes": 14570028,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep01_branch_emotion_video_01.mp4",
+    "uploadPath": "assets/video/ep01_branch_emotion_video_01.f4d9c74fc79e.mp4"
+  },
+  {
+    "videoId": "ep01_branch_truth_video_01",
+    "sourceDurationSec": 8.0,
+    "sourceShotIds": [
+      "ep01_branch_truth_video_01_shot_01",
+      "ep01_branch_truth_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep01_branch_truth_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "陈劲",
+        "text": "喂。活着吗。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "逆光里，他俯下身，掌心全是老茧和裂口。"
+      }
+    ],
+    "durationSec": 8.041667,
+    "sha256": "4865cd4c88860dc26c8ddd6a4192d7e0c67139280f569a5067de80a2fbe6685e",
+    "bytes": 10463843,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep01_branch_truth_video_01.mp4",
+    "uploadPath": "assets/video/ep01_branch_truth_video_01.4865cd4c8886.mp4"
+  },
+  {
+    "videoId": "ep01_branch_counterattack_video_01",
+    "sourceDurationSec": 9.0,
+    "sourceShotIds": [
+      "ep01_branch_counterattack_video_01_shot_01",
+      "ep01_branch_counterattack_video_01_shot_02",
+      "ep01_branch_counterattack_video_01_shot_03"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep01_branch_counterattack_video_01__p01",
+      "ep01_branch_counterattack_video_01__p02",
+      "ep01_branch_counterattack_video_01__p03"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep01_branch_counterattack_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "这时，门口传来脚步声"
+      },
+      {
+        "speaker": "旁白",
+        "text": "许邵泽推开半掩的门，走进来，手里还端着一杯热牛奶，一脸关切。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "许邵泽温柔地。"
+      },
+      {
+        "speaker": "许邵泽",
+        "text": "你跑哪去了，我找了你一圈——来，喝点热的，你手都凉了。"
+      }
+    ],
+    "durationSec": 27.126009,
+    "sha256": "522841d720a506bc944ced98a21e7f6162bd44ac52dcf9431768f27f08811a2e",
+    "bytes": 6557588,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep01_branch_counterattack_video_01.mp4",
+    "uploadPath": "assets/video/ep01_branch_counterattack_video_01.522841d720a5.mp4"
+  },
+  {
+    "videoId": "ep01_branch_conditional_video_01",
+    "sourceDurationSec": 9.0,
+    "sourceShotIds": [
+      "ep01_branch_conditional_video_01_shot_01",
+      "ep01_branch_conditional_video_01_shot_02",
+      "ep01_branch_conditional_video_01_shot_03"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep01_branch_conditional_video_01__p01",
+      "ep01_branch_conditional_video_01__p02",
+      "ep01_branch_conditional_video_01__p03"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep01_branch_conditional_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "贺星冉愣住。"
+      },
+      {
+        "speaker": "贺星冉",
+        "text": "什么？"
+      },
+      {
+        "speaker": "旁白",
+        "text": "贺铭语气放缓，像在安抚。"
+      },
+      {
+        "speaker": "贺铭",
+        "text": "爸不是不信你，只是……"
+      },
+      {
+        "speaker": "旁白",
+        "text": "贺星冉打断，声音变得很轻。"
+      },
+      {
+        "speaker": "贺星冉",
+        "text": "爸，我是你女儿。我跑进来跟你们说有人要杀我——你问我有没有证据。"
+      }
+    ],
+    "durationSec": 24.126009,
+    "sha256": "444825a1295dd7c15b569bf28aeb387ec324a092a4b120574f1f8f228100580e",
+    "bytes": 5487299,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep01_branch_conditional_video_01.mp4",
+    "uploadPath": "assets/video/ep01_branch_conditional_video_01.444825a1295d.mp4"
+  },
+  {
+    "videoId": "ep02_scene_00_video_01",
+    "sourceDurationSec": 3.0,
+    "sourceShotIds": [
+      "ep02_scene_00_video_01_shot_01",
+      "ep02_scene_00_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep02_scene_00_video_01__p01"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep02_scene_00_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "贺星冉痛苦状。"
+      },
+      {
+        "speaker": "贺星冉",
+        "text": "咳咳咳！"
+      }
+    ],
+    "durationSec": 7.041667,
+    "sha256": "ae09dc70a07d8a9621fa908680ec293c0bc83128298aa8f182834fb84eb27271",
+    "bytes": 8562081,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep02_scene_00_video_01.mp4",
+    "uploadPath": "assets/video/ep02_scene_00_video_01.ae09dc70a07d.mp4"
+  },
+  {
+    "videoId": "ep02_branch_emotion_video_01",
+    "sourceDurationSec": 9.0,
+    "sourceShotIds": [
+      "ep02_branch_emotion_video_01_shot_01",
+      "ep02_branch_emotion_video_01_shot_02",
+      "ep02_branch_emotion_video_01_shot_03"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep02_branch_emotion_video_01__p01",
+      "ep02_branch_emotion_video_01__p02"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep02_branch_emotion_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "越野车停在荒野里，底盘磕碰，油箱见底。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "贺星冉靠着车门，手机握在手里"
+      },
+      {
+        "speaker": "旁白",
+        "text": "一格信号，打了一晚上电话，救援车来不了，这里根本定位不到。"
+      }
+    ],
+    "durationSec": 20.083333,
+    "sha256": "ee9205df2c9a8208f3524e1b47c929afde314fa8bd0c25b256b9dbde871353a9",
+    "bytes": 7320876,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep02_branch_emotion_video_01.mp4",
+    "uploadPath": "assets/video/ep02_branch_emotion_video_01.ee9205df2c9a.mp4"
+  },
+  {
+    "videoId": "ep02_branch_truth_video_01",
+    "sourceDurationSec": 9.0,
+    "sourceShotIds": [
+      "ep02_branch_truth_video_01_shot_01",
+      "ep02_branch_truth_video_01_shot_02",
+      "ep02_branch_truth_video_01_shot_03"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep02_branch_truth_video_01__p01",
+      "ep02_branch_truth_video_01__p02",
+      "ep02_branch_truth_video_01__p03"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep02_branch_truth_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "陈劲烟停在唇边，停了一秒。"
+      },
+      {
+        "speaker": "贺星冉",
+        "text": "五万，现在转，转完就走。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "陈劲看了她一秒。"
+      },
+      {
+        "speaker": "陈劲",
+        "text": "……行。"
+      }
+    ],
+    "durationSec": 11.125,
+    "sha256": "25fcd3e16f1daeb1eef630d703b445869d9fad2c5f5a48a6121af328b42479d3",
+    "bytes": 3235802,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep02_branch_truth_video_01.mp4",
+    "uploadPath": "assets/video/ep02_branch_truth_video_01.25fcd3e16f1d.mp4"
+  },
+  {
+    "videoId": "ep02_branch_counterattack_video_01",
+    "sourceDurationSec": 9.0,
+    "sourceShotIds": [
+      "ep02_branch_counterattack_video_01_shot_01",
+      "ep02_branch_counterattack_video_01_shot_02",
+      "ep02_branch_counterattack_video_01_shot_03"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep02_branch_counterattack_video_01__p01"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep02_branch_counterattack_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "摩托车启动。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "风扑面，裹着尘土和浓重的烟味。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "贺星冉把脸贴近他的后背，闭上眼睛。"
+      }
+    ],
+    "durationSec": 12.041995,
+    "sha256": "5e517d60c4c96ead9c3647d5734239bb73a98310760ad6b01062a70636508d16",
+    "bytes": 25521554,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep02_branch_counterattack_video_01.mp4",
+    "uploadPath": "assets/video/ep02_branch_counterattack_video_01.5e517d60c4c9.mp4"
+  },
+  {
+    "videoId": "ep02_branch_conditional_video_01",
+    "sourceDurationSec": 10.0,
+    "sourceShotIds": [
+      "ep02_branch_conditional_video_01_shot_01",
+      "ep02_branch_conditional_video_01_shot_02",
+      "ep02_branch_conditional_video_01_shot_03"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep02_branch_conditional_video_01__p01",
+      "ep02_branch_conditional_video_01__p02",
+      "ep02_branch_conditional_video_01__p03"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep02_branch_conditional_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "陈劲",
+        "text": "看出来了。"
+      },
+      {
+        "speaker": "贺星冉",
+        "text": "呵呵，你还挺聪明。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "疾风里，贺星冉的胃开始翻涌，一夜没睡，加上颠簸和烟味，一股强烈的恶心猛地涌上来"
+      }
+    ],
+    "durationSec": 20.126009,
+    "sha256": "55689fc4ba188ad18a56e4161894c187fcc0c443e7ad36522f84de4ee032b298",
+    "bytes": 8542168,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep02_branch_conditional_video_01.mp4",
+    "uploadPath": "assets/video/ep02_branch_conditional_video_01.55689fc4ba18.mp4"
+  },
+  {
+    "videoId": "ep03_scene_00_video_01",
+    "sourceDurationSec": 3.0,
+    "sourceShotIds": [
+      "ep03_scene_00_video_01_shot_01",
+      "ep03_scene_00_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [],
+    "status": "visual_pass_audio_transcript_pass_timing_review",
+    "path": "video/ep03_scene_00_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "陈劲吐出一口气。"
+      },
+      {
+        "speaker": "陈劲",
+        "text": "好，答应了。"
+      }
+    ],
+    "durationSec": 3.041995,
+    "sha256": "f3d8ed413237b1f038faa0c6da3d307463b673d9a4edce825b9fa6c41f644c9d",
+    "bytes": 6399995,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep03_scene_00_video_01.mp4",
+    "uploadPath": "assets/video/ep03_scene_00_video_01.f3d8ed413237.mp4"
+  },
+  {
+    "videoId": "ep03_branch_emotion_video_01",
+    "sourceDurationSec": 9.0,
+    "sourceShotIds": [
+      "ep03_branch_emotion_video_01_shot_01",
+      "ep03_branch_emotion_video_01_shot_02",
+      "ep03_branch_emotion_video_01_shot_03"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep03_branch_emotion_video_01__p01",
+      "ep03_branch_emotion_video_01__p02"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep03_branch_emotion_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "摩托\"刺啦\"一声停在路边。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "贺星冉摘下头盔，脸色惨白，一手捂着胃。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "贺星冉气息微弱。"
+      },
+      {
+        "speaker": "贺星冉",
+        "text": "蹲下。"
+      }
+    ],
+    "durationSec": 18.083333,
+    "sha256": "41f741e72472ba6e8285db7fc1f075ba51bd378a552caa1464520d8d5b0ac5a7",
+    "bytes": 7597884,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep03_branch_emotion_video_01.mp4",
+    "uploadPath": "assets/video/ep03_branch_emotion_video_01.41f741e72472.mp4"
+  },
+  {
+    "videoId": "ep03_branch_truth_video_01",
+    "sourceDurationSec": 3.0,
+    "sourceShotIds": [
+      "ep03_branch_truth_video_01_shot_01",
+      "ep03_branch_truth_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep03_branch_truth_video_01__p01"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep03_branch_truth_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "二十分钟后，陈劲带着东西回来，把药和面包递给贺星冉。"
+      }
+    ],
+    "durationSec": 8.041667,
+    "sha256": "a2536cb2d350929614f7f83b8bace95c373273bb37a0f3fd0a29c89b28a5da2a",
+    "bytes": 14570032,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep03_branch_truth_video_01.mp4",
+    "uploadPath": "assets/video/ep03_branch_truth_video_01.a2536cb2d350.mp4"
+  },
+  {
+    "videoId": "ep03_branch_counterattack_video_01",
+    "sourceDurationSec": 9.0,
+    "sourceShotIds": [
+      "ep03_branch_counterattack_video_01_shot_01",
+      "ep03_branch_counterattack_video_01_shot_02",
+      "ep03_branch_counterattack_video_01_shot_03"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep03_branch_counterattack_video_01__p01",
+      "ep03_branch_counterattack_video_01__p02",
+      "ep03_branch_counterattack_video_01__p03"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep03_branch_counterattack_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "贺星冉接通，压低声音。"
+      },
+      {
+        "speaker": "贺星冉",
+        "text": "沐瑶，我安全，先别联系我爸妈。帮我查一下我的卡哪张还能用。"
+      },
+      {
+        "speaker": "沐瑶",
+        "text": "除了花旗那张，其他都被挂失了。但花旗是许邵泽送的，一用他就知道你在哪。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "贺星冉停顿，眼神转了转。"
+      },
+      {
+        "speaker": "贺星冉",
+        "text": "……那就让他知道。我用这张卡，就是告诉他：我没死，我在等他。"
+      }
+    ],
+    "durationSec": 28.125,
+    "sha256": "17af3a581d722d0042354a93beefdd36552d57708bff6b14ce9fa0a9be6a49fa",
+    "bytes": 9897102,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep03_branch_counterattack_video_01.mp4",
+    "uploadPath": "assets/video/ep03_branch_counterattack_video_01.17af3a581d72.mp4"
+  },
+  {
+    "videoId": "ep03_branch_conditional_video_01",
+    "sourceDurationSec": 3.0,
+    "sourceShotIds": [
+      "ep03_branch_conditional_video_01_shot_01",
+      "ep03_branch_conditional_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep03_branch_conditional_video_01__p01"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep03_branch_conditional_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "贺星冉赶紧松开。"
+      },
+      {
+        "speaker": "贺星冉",
+        "text": "我只是怕你不答应。"
+      }
+    ],
+    "durationSec": 7.041667,
+    "sha256": "fbd5fa2ecc2e90fee4125895632c440936af6830e62b7a8c7a57f548dfa0a1d1",
+    "bytes": 17710672,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep03_branch_conditional_video_01.mp4",
+    "uploadPath": "assets/video/ep03_branch_conditional_video_01.fbd5fa2ecc2e.mp4"
+  },
+  {
+    "videoId": "ep04_scene_00_video_01",
+    "sourceDurationSec": 3.0,
+    "sourceShotIds": [
+      "ep04_scene_00_video_01_shot_01",
+      "ep04_scene_00_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep04_scene_00_video_01__p01"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep04_scene_00_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "陈劲的脑子里浮现出了不该浮现的画面，他拼命甩头，转身冲进了浴室。"
+      }
+    ],
+    "durationSec": 10.041667,
+    "sha256": "0991ca39d472b679c59215c2778a7adfd103f64db116731592eeb5b00ce6c0d8",
+    "bytes": 17502513,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep04_scene_00_video_01.mp4",
+    "uploadPath": "assets/video/ep04_scene_00_video_01.0991ca39d472.mp4"
+  },
+  {
+    "videoId": "ep04_branch_emotion_video_01",
+    "sourceDurationSec": 6.0,
+    "sourceShotIds": [
+      "ep04_branch_emotion_video_01_shot_01",
+      "ep04_branch_emotion_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep04_branch_emotion_video_01__p01"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep04_branch_emotion_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "宽敞明亮的展示厅，一排豪车并列。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "贺星冉走进来，环顾一圈，指着最里面的宾利欧陆。"
+      }
+    ],
+    "durationSec": 10.041667,
+    "sha256": "7e672d693ae507ec84e91347f81df2f4994d748dfd22483cce3dbba8c79a9aaf",
+    "bytes": 15589002,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep04_branch_emotion_video_01.mp4",
+    "uploadPath": "assets/video/ep04_branch_emotion_video_01.7e672d693ae5.mp4"
+  },
+  {
+    "videoId": "ep04_branch_truth_video_01",
+    "sourceDurationSec": 6.0,
+    "sourceShotIds": [
+      "ep04_branch_truth_video_01_shot_01",
+      "ep04_branch_truth_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep04_branch_truth_video_01__p01",
+      "ep04_branch_truth_video_01__p02"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep04_branch_truth_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "贺星冉斜睨他。"
+      },
+      {
+        "speaker": "贺星冉",
+        "text": "还行，比我预想的笨要好一些。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "陈劲发动车子，无视这句话。"
+      }
+    ],
+    "durationSec": 10.083333,
+    "sha256": "fe9f8366055c8ee392a7201b4ca3870dd1361538782e27157ef798ef312459a5",
+    "bytes": 3033491,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep04_branch_truth_video_01.mp4",
+    "uploadPath": "assets/video/ep04_branch_truth_video_01.fe9f8366055c.mp4"
+  },
+  {
+    "videoId": "ep04_branch_counterattack_video_01",
+    "sourceDurationSec": 9.0,
+    "sourceShotIds": [
+      "ep04_branch_counterattack_video_01_shot_01",
+      "ep04_branch_counterattack_video_01_shot_02",
+      "ep04_branch_counterattack_video_01_shot_03"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep04_branch_counterattack_video_01__p01",
+      "ep04_branch_counterattack_video_01__p02",
+      "ep04_branch_counterattack_video_01__p03"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep04_branch_counterattack_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "贺星冉等着。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "陈劲绷着脸。"
+      },
+      {
+        "speaker": "陈劲",
+        "text": "……还行。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "贺星冉满意地转回头看窗外。"
+      }
+    ],
+    "durationSec": 10.125,
+    "sha256": "7d936fee8a8f09dca3a665dc8c44a7581ecd7e5ff17366154a76a1da14e02507",
+    "bytes": 3523676,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep04_branch_counterattack_video_01.mp4",
+    "uploadPath": "assets/video/ep04_branch_counterattack_video_01.7d936fee8a8f.mp4"
+  },
+  {
+    "videoId": "ep04_branch_conditional_video_01",
+    "sourceDurationSec": 6.0,
+    "sourceShotIds": [
+      "ep04_branch_conditional_video_01_shot_01",
+      "ep04_branch_conditional_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep04_branch_conditional_video_01__p01"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep04_branch_conditional_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "贺星冉接过房卡，瞥陈劲。"
+      },
+      {
+        "speaker": "贺星冉",
+        "text": "愣着干什么，走啊。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "进了房间，贺星冉说了句\"你先洗澡，我在床上等你\""
+      }
+    ],
+    "durationSec": 11.041995,
+    "sha256": "0fc88697c21074f4293fa85ffa37dc90fa6a884e85b7dcb67176db83a0a80c94",
+    "bytes": 15917384,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep04_branch_conditional_video_01.mp4",
+    "uploadPath": "assets/video/ep04_branch_conditional_video_01.0fc88697c210.mp4"
+  },
+  {
+    "videoId": "ep05_scene_00_video_01",
+    "sourceDurationSec": 3.0,
+    "sourceShotIds": [
+      "ep05_scene_00_video_01_shot_01",
+      "ep05_scene_00_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep05_scene_00_video_01__p01"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep05_scene_00_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "两人同时怔住了。"
+      }
+    ],
+    "durationSec": 4.041667,
+    "sha256": "3a9257b96b501b8e39f2e9462b53a76fdb11501faaec4fa5e4234b1d43f40d5e",
+    "bytes": 6826902,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep05_scene_00_video_01.mp4",
+    "uploadPath": "assets/video/ep05_scene_00_video_01.3a9257b96b50.mp4"
+  },
+  {
+    "videoId": "ep05_branch_emotion_video_01",
+    "sourceDurationSec": 9.0,
+    "sourceShotIds": [
+      "ep05_branch_emotion_video_01_shot_01",
+      "ep05_branch_emotion_video_01_shot_02",
+      "ep05_branch_emotion_video_01_shot_03"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep05_branch_emotion_video_01__p01",
+      "ep05_branch_emotion_video_01__p02"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep05_branch_emotion_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "洗漱完毕，贺星冉发现陈劲站在阳台上抽烟，一动不动。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "她走过去。"
+      },
+      {
+        "speaker": "贺星冉",
+        "text": "你站在这里做什么？"
+      }
+    ],
+    "durationSec": 12.083333,
+    "sha256": "d8cd4f4fd876e67715e66e24879f8e32fb1d293c368db1a47b04cbbd942b2098",
+    "bytes": 3971635,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep05_branch_emotion_video_01.mp4",
+    "uploadPath": "assets/video/ep05_branch_emotion_video_01.d8cd4f4fd876.mp4"
+  },
+  {
+    "videoId": "ep05_branch_truth_video_01",
+    "sourceDurationSec": 9.0,
+    "sourceShotIds": [
+      "ep05_branch_truth_video_01_shot_01",
+      "ep05_branch_truth_video_01_shot_02",
+      "ep05_branch_truth_video_01_shot_03"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep05_branch_truth_video_01__p01",
+      "ep05_branch_truth_video_01__p02",
+      "ep05_branch_truth_video_01__p03"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep05_branch_truth_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "两人分躺两侧，中间空出一米距离。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "陈劲盯着天花板，全身绷直，连呼吸都放轻了。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "陈劲看了一眼床边的沙发，又把视线移回天花板。"
+      }
+    ],
+    "durationSec": 17.125,
+    "sha256": "b5545c1d48a81366be9a01f65e3a063f970ac5034955da022129fc75d7254e92",
+    "bytes": 3871776,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep05_branch_truth_video_01.mp4",
+    "uploadPath": "assets/video/ep05_branch_truth_video_01.b5545c1d48a8.mp4"
+  },
+  {
+    "videoId": "ep05_branch_counterattack_video_01",
+    "sourceDurationSec": 6.0,
+    "sourceShotIds": [
+      "ep05_branch_counterattack_video_01_shot_01",
+      "ep05_branch_counterattack_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep05_branch_counterattack_video_01__p01",
+      "ep05_branch_counterattack_video_01__p02"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep05_branch_counterattack_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "陈劲崩溃。"
+      },
+      {
+        "speaker": "陈劲",
+        "text": "……"
+      },
+      {
+        "speaker": "旁白",
+        "text": "贺星冉理直气壮。"
+      },
+      {
+        "speaker": "贺星冉",
+        "text": "我今天受了惊吓，抱着你睡有安全感。而且——你不是说是我的临时男朋友吗？"
+      }
+    ],
+    "durationSec": 13.083333,
+    "sha256": "2f65910ff368293f1eb167bdce97ad5ba2e4d10bffb9dcf566e4b1f207dccd23",
+    "bytes": 3094075,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep05_branch_counterattack_video_01.mp4",
+    "uploadPath": "assets/video/ep05_branch_counterattack_video_01.2f65910ff368.mp4"
+  },
+  {
+    "videoId": "ep05_branch_conditional_video_01",
+    "sourceDurationSec": 6.0,
+    "sourceShotIds": [
+      "ep05_branch_conditional_video_01_shot_01",
+      "ep05_branch_conditional_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep05_branch_conditional_video_01__p01",
+      "ep05_branch_conditional_video_01__p02"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep05_branch_conditional_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "贺星冉顺着陈劲的视线往下看"
+      },
+      {
+        "speaker": "旁白",
+        "text": "她的睡裙大半滑落，什么都没穿。"
+      }
+    ],
+    "durationSec": 8.083333,
+    "sha256": "6eb242398a91bde6b4b2d71899dca8081416bc65ff7e3783d2df9b278727f0e0",
+    "bytes": 2342167,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep05_branch_conditional_video_01.mp4",
+    "uploadPath": "assets/video/ep05_branch_conditional_video_01.6eb242398a91.mp4"
+  },
+  {
+    "videoId": "ep06_scene_00_video_01",
+    "sourceDurationSec": 3.0,
+    "sourceShotIds": [
+      "ep06_scene_00_video_01_shot_01",
+      "ep06_scene_00_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep06_scene_00_video_01__p01"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep06_scene_00_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "贺星冉的手指无意识地捏紧了衣角。"
+      }
+    ],
+    "durationSec": 6.041667,
+    "sha256": "1ae6b105f70531d2f42cdef71167ca785b5e50cbdfd59abe12078b974e8a8c64",
+    "bytes": 12187486,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep06_scene_00_video_01.mp4",
+    "uploadPath": "assets/video/ep06_scene_00_video_01.1ae6b105f705.mp4"
+  },
+  {
+    "videoId": "ep06_branch_emotion_video_01",
+    "sourceDurationSec": 9.0,
+    "sourceShotIds": [
+      "ep06_branch_emotion_video_01_shot_01",
+      "ep06_branch_emotion_video_01_shot_02",
+      "ep06_branch_emotion_video_01_shot_03"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep06_branch_emotion_video_01__p01",
+      "ep06_branch_emotion_video_01__p02"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep06_branch_emotion_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "接上集"
+      },
+      {
+        "speaker": "旁白",
+        "text": "两人怔在原地。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "贺星冉脸上血色褪尽，猛地扯被子裹住自己，跳下床冲进浴室，砰地关上门。"
+      }
+    ],
+    "durationSec": 20.083991,
+    "sha256": "b3b3ec0736e6ecdb7c167db1d23aa4d29589ee47ef6e143db16f0b0c9d9be7de",
+    "bytes": 5415509,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep06_branch_emotion_video_01.mp4",
+    "uploadPath": "assets/video/ep06_branch_emotion_video_01.b3b3ec0736e6.mp4"
+  },
+  {
+    "videoId": "ep06_branch_truth_video_01",
+    "sourceDurationSec": 9.0,
+    "sourceShotIds": [
+      "ep06_branch_truth_video_01_shot_01",
+      "ep06_branch_truth_video_01_shot_02",
+      "ep06_branch_truth_video_01_shot_03"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep06_branch_truth_video_01__p01",
+      "ep06_branch_truth_video_01__p02",
+      "ep06_branch_truth_video_01__p03"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep06_branch_truth_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "陈劲看她。"
+      },
+      {
+        "speaker": "贺星冉",
+        "text": "我跟你说一句实话——我这次回家，是有麻烦的。我未婚夫想杀我。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "陈劲手里的筷子停了一下。"
+      }
+    ],
+    "durationSec": 17.125,
+    "sha256": "696486feab623e6b9a49b05ea3340d5986a613d1677a732e1a65ee6164b76caa",
+    "bytes": 3732551,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep06_branch_truth_video_01.mp4",
+    "uploadPath": "assets/video/ep06_branch_truth_video_01.696486feab62.mp4"
+  },
+  {
+    "videoId": "ep06_branch_counterattack_video_01",
+    "sourceDurationSec": 10.0,
+    "sourceShotIds": [
+      "ep06_branch_counterattack_video_01_shot_01",
+      "ep06_branch_counterattack_video_01_shot_02",
+      "ep06_branch_counterattack_video_01_shot_03"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep06_branch_counterattack_video_01__p01",
+      "ep06_branch_counterattack_video_01__p02",
+      "ep06_branch_counterattack_video_01__p03"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep06_branch_counterattack_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "陈劲握着方向盘，沉默片刻。"
+      },
+      {
+        "speaker": "陈劲",
+        "text": "行。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "贺星冉没想到他这么干脆，愣了一下。"
+      },
+      {
+        "speaker": "贺星冉",
+        "text": "那就说定了。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "不远处，沐瑶的车停过来，她拿着纸袋走过来，弯腰从车窗看见陈劲，微微怔了一下。"
+      }
+    ],
+    "durationSec": 25.125,
+    "sha256": "16cfa3af94ba907165ea53f7780197e20f0821efdf84fab381b9760daa8ce2b9",
+    "bytes": 7211451,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep06_branch_counterattack_video_01.mp4",
+    "uploadPath": "assets/video/ep06_branch_counterattack_video_01.16cfa3af94ba.mp4"
+  },
+  {
+    "videoId": "ep06_branch_conditional_video_01",
+    "sourceDurationSec": 6.0,
+    "sourceShotIds": [
+      "ep06_branch_conditional_video_01_shot_01",
+      "ep06_branch_conditional_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep06_branch_conditional_video_01__p01",
+      "ep06_branch_conditional_video_01__p02"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep06_branch_conditional_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "贺星冉",
+        "text": "因为——（顿了顿，嘴角扯出一丝笑）我要带你去见我父母，顺便宣布退婚。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "宾利驶向贺家庄园，车窗外熟悉的街景扑面而来"
+      }
+    ],
+    "durationSec": 20.083333,
+    "sha256": "b6b32284bb4b1cf4463abbb8f3fec8282e61b298e6b97b3092dfa2217c50e358",
+    "bytes": 6338718,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep06_branch_conditional_video_01.mp4",
+    "uploadPath": "assets/video/ep06_branch_conditional_video_01.b6b32284bb4b.mp4"
+  },
+  {
+    "videoId": "ep07_scene_00_video_01",
+    "sourceDurationSec": 3.0,
+    "sourceShotIds": [
+      "ep07_scene_00_video_01_shot_01",
+      "ep07_scene_00_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep07_scene_00_video_01__p01"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep07_scene_00_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "\""
+      }
+    ],
+    "durationSec": 3.041995,
+    "sha256": "a30728253ae6e5dc748e76935a45a6d9e2c70e8a79db7e6de838610c47cfe71e",
+    "bytes": 4654636,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep07_scene_00_video_01.mp4",
+    "uploadPath": "assets/video/ep07_scene_00_video_01.a30728253ae6.mp4"
+  },
+  {
+    "videoId": "ep07_branch_emotion_video_01",
+    "sourceDurationSec": 9.0,
+    "sourceShotIds": [
+      "ep07_branch_emotion_video_01_shot_01",
+      "ep07_branch_emotion_video_01_shot_02",
+      "ep07_branch_emotion_video_01_shot_03"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep07_branch_emotion_video_01__p01",
+      "ep07_branch_emotion_video_01__p02",
+      "ep07_branch_emotion_video_01__p03"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep07_branch_emotion_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "大厅宽敞明亮，贺母坐在沙发上喝茶，贺铭从书房走出来手里拿着文件。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "许邵泽也在"
+      },
+      {
+        "speaker": "旁白",
+        "text": "站在贺母旁边，笑容温和得像个局外人。"
+      }
+    ],
+    "durationSec": 16.125,
+    "sha256": "df8fcd75547afcea07bc1ff710f85a7424f438acb64812e1291d11f836b020ba",
+    "bytes": 4443908,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep07_branch_emotion_video_01.mp4",
+    "uploadPath": "assets/video/ep07_branch_emotion_video_01.df8fcd75547a.mp4"
+  },
+  {
+    "videoId": "ep07_branch_truth_video_01",
+    "sourceDurationSec": 9.0,
+    "sourceShotIds": [
+      "ep07_branch_truth_video_01_shot_01",
+      "ep07_branch_truth_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep07_branch_truth_video_01__p01",
+      "ep07_branch_truth_video_01__p02",
+      "ep07_branch_truth_video_01__p03"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep07_branch_truth_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "许邵泽收回手，依旧温柔地笑。"
+      },
+      {
+        "speaker": "许邵泽",
+        "text": "冉冉，我知道你在跟我赌气。不喜欢我没关系，我可以改。但你犯不着找一个乡下来的土包子来气我。这样……真的很伤我的心。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "贺星冉看着他那张无辜的脸，眼前闪过露台上那双手、那双眼睛里冷静的杀意，还有父母沉默的脸。"
+      }
+    ],
+    "durationSec": 28.126009,
+    "sha256": "2e31ccb657073f4076df39b6472bfbbe997a8158f6b1833ec3da74bbe36224b3",
+    "bytes": 7561718,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep07_branch_truth_video_01.mp4",
+    "uploadPath": "assets/video/ep07_branch_truth_video_01.2e31ccb65707.mp4"
+  },
+  {
+    "videoId": "ep07_branch_counterattack_video_01",
+    "sourceDurationSec": 8.0,
+    "sourceShotIds": [
+      "ep07_branch_counterattack_video_01_shot_01",
+      "ep07_branch_counterattack_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep07_branch_counterattack_video_01__p01",
+      "ep07_branch_counterattack_video_01__p02",
+      "ep07_branch_counterattack_video_01__p03",
+      "ep07_branch_counterattack_video_01__p04"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep07_branch_counterattack_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "贺铭压着怒火，深吸一口气，换了口气。"
+      },
+      {
+        "speaker": "贺铭",
+        "text": "冉冉，你从小娇生惯养，爸爸知道你是在赌气，可你再怎么闹，也不能拿自己的人生开玩笑。他一个乡下出来的，高中都没毕业，你跟他有什么未来？"
+      },
+      {
+        "speaker": "旁白",
+        "text": "贺星冉望着父亲鬓角的白发，愧疚在心里一闪而过，随即坚定。"
+      },
+      {
+        "speaker": "贺星冉",
+        "text": "爸，我已经长大了，我的事我自己决定。"
+      }
+    ],
+    "durationSec": 37.167007,
+    "sha256": "73aa57a91a0980dcf8b686a6def8703894a536da344588fbfbb3cfb0b8046d32",
+    "bytes": 10801821,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep07_branch_counterattack_video_01.mp4",
+    "uploadPath": "assets/video/ep07_branch_counterattack_video_01.73aa57a91a09.mp4"
+  },
+  {
+    "videoId": "ep07_branch_conditional_video_01",
+    "sourceDurationSec": 3.0,
+    "sourceShotIds": [
+      "ep07_branch_conditional_video_01_shot_01",
+      "ep07_branch_conditional_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep07_branch_conditional_video_01__p01"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep07_branch_conditional_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "\"小伙子，初来乍到，有些规矩得跟你说清楚。"
+      }
+    ],
+    "durationSec": 7.041667,
+    "sha256": "4dc8cf794edd1ea32097209029c39675b3cc8981d307d71702b7029a202eddae",
+    "bytes": 10167367,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep07_branch_conditional_video_01.mp4",
+    "uploadPath": "assets/video/ep07_branch_conditional_video_01.4dc8cf794edd.mp4"
+  },
+  {
+    "videoId": "ep08_scene_00_video_01",
+    "sourceDurationSec": 3.0,
+    "sourceShotIds": [
+      "ep08_scene_00_video_01_shot_01",
+      "ep08_scene_00_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep08_scene_00_video_01__p01"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep08_scene_00_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "」"
+      }
+    ],
+    "durationSec": 3.041995,
+    "sha256": "26ced2299850a26c2939b8d6709f3c44bcda742c6e1a5aa2e34597a685716b5c",
+    "bytes": 4909390,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep08_scene_00_video_01.mp4",
+    "uploadPath": "assets/video/ep08_scene_00_video_01.26ced2299850.mp4"
+  },
+  {
+    "videoId": "ep08_branch_emotion_video_01",
+    "sourceDurationSec": 6.0,
+    "sourceShotIds": [
+      "ep08_branch_emotion_video_01_shot_01",
+      "ep08_branch_emotion_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep08_branch_emotion_video_01__p01",
+      "ep08_branch_emotion_video_01__p02"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep08_branch_emotion_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "走廊灯光稍暗，周伯把陈劲引到尽头一处装饰柜旁，柜上放着一只青花瓷瓶。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "周伯语气客气，眼神却在试探。"
+      },
+      {
+        "speaker": "周伯",
+        "text": "小伙子，你当保镖当几年了？以前在哪干的？"
+      }
+    ],
+    "durationSec": 18.083333,
+    "sha256": "8ba8bbb488443a92b7ff1d28bdcf4d22f21bc65f9e42a21691148a9d605d0044",
+    "bytes": 4268630,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep08_branch_emotion_video_01.mp4",
+    "uploadPath": "assets/video/ep08_branch_emotion_video_01.8ba8bbb48844.mp4"
+  },
+  {
+    "videoId": "ep08_branch_truth_video_01",
+    "sourceDurationSec": 8.0,
+    "sourceShotIds": [
+      "ep08_branch_truth_video_01_shot_01",
+      "ep08_branch_truth_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep08_branch_truth_video_01__p01",
+      "ep08_branch_truth_video_01__p03"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep08_branch_truth_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "他重新打量这个拎着蛇皮袋的年轻人：走路随意，站姿稳得像钉在地上，刚才那个接瓶的动作，反应速度和控制力，不是工地小子该有的。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "周伯收起试探，语气不由自主客气了几分。"
+      },
+      {
+        "speaker": "周伯",
+        "text": "小伙子……我说话直，你别介意。"
+      }
+    ],
+    "durationSec": 20.083333,
+    "sha256": "5743ed5ce36b97d9cd4670b0ca60e6ab3afc4f6e845ec26a712c69852f188bbd",
+    "bytes": 4536782,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep08_branch_truth_video_01.mp4",
+    "uploadPath": "assets/video/ep08_branch_truth_video_01.5743ed5ce36b.mp4"
+  },
+  {
+    "videoId": "ep08_branch_counterattack_video_01",
+    "sourceDurationSec": 3.0,
+    "sourceShotIds": [
+      "ep08_branch_counterattack_video_01_shot_01",
+      "ep08_branch_counterattack_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep08_branch_counterattack_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "陈劲迈开腿追上去。"
+      }
+    ],
+    "durationSec": 3.041995,
+    "sha256": "c379b59575586be0e3389abd87faebaf00d09b5bb39813c13f11148cf45c1bb3",
+    "bytes": 8250732,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep08_branch_counterattack_video_01.mp4",
+    "uploadPath": "assets/video/ep08_branch_counterattack_video_01.c379b5957558.mp4"
+  },
+  {
+    "videoId": "ep08_branch_conditional_video_01",
+    "sourceDurationSec": 6.0,
+    "sourceShotIds": [
+      "ep08_branch_conditional_video_01_shot_01",
+      "ep08_branch_conditional_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep08_branch_conditional_video_01__p01"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep08_branch_conditional_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "还有"
+      },
+      {
+        "speaker": "旁白",
+        "text": "他们刚回国的儿子，是个很厉害的人。"
+      }
+    ],
+    "durationSec": 8.041667,
+    "sha256": "eb764101f330c2d3085dbfaacce4a5bed57efb827b79e817652598435cdfcd67",
+    "bytes": 11893821,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep08_branch_conditional_video_01.mp4",
+    "uploadPath": "assets/video/ep08_branch_conditional_video_01.eb764101f330.mp4"
+  },
+  {
+    "videoId": "ep09_scene_00_video_01",
+    "sourceDurationSec": 3.0,
+    "sourceShotIds": [
+      "ep09_scene_00_video_01_shot_01",
+      "ep09_scene_00_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep09_scene_00_video_01__p01"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep09_scene_00_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "他的目光说明贺星冉活着回来意味着什么。"
+      }
+    ],
+    "durationSec": 7.041667,
+    "sha256": "e8dde67a8a79f402e50c9a02c2581aa7d4dabf86701bd3378bbb230851197abe",
+    "bytes": 11590344,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep09_scene_00_video_01.mp4",
+    "uploadPath": "assets/video/ep09_scene_00_video_01.e8dde67a8a79.mp4"
+  },
+  {
+    "videoId": "ep09_branch_emotion_video_01",
+    "sourceDurationSec": 10.0,
+    "sourceShotIds": [
+      "ep09_branch_emotion_video_01_shot_01",
+      "ep09_branch_emotion_video_01_shot_02",
+      "ep09_branch_emotion_video_01_shot_03"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep09_branch_emotion_video_01__p01",
+      "ep09_branch_emotion_video_01__p02"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep09_branch_emotion_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "次日上午，贺星冉换上米白色休闲外套，叫陈劲从门口拿进佣人备好的两套便装。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "陈劲看着自己穿上同款外套、黑色T恤的样子，挑了挑眉。"
+      },
+      {
+        "speaker": "陈劲",
+        "text": "你连衣服都是定制的？"
+      }
+    ],
+    "durationSec": 22.083333,
+    "sha256": "419434b983861b3d1b3a5be0142066cecda5f8e3b19aec2d4127b5256012b0ab",
+    "bytes": 7376086,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep09_branch_emotion_video_01.mp4",
+    "uploadPath": "assets/video/ep09_branch_emotion_video_01.419434b98386.mp4"
+  },
+  {
+    "videoId": "ep09_branch_truth_video_01",
+    "sourceDurationSec": 3.0,
+    "sourceShotIds": [
+      "ep09_branch_truth_video_01_shot_01",
+      "ep09_branch_truth_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep09_branch_truth_video_01__p01"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep09_branch_truth_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "贺星冉拿回合同，从口袋里摸出花旗黑卡，递给旁边的女佣，报出一串账号。"
+      }
+    ],
+    "durationSec": 10.041667,
+    "sha256": "eff1397405b286e9efb0ef842beddc67e4cc7ae82142c291fc29b0cc6c83a17a",
+    "bytes": 9857532,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep09_branch_truth_video_01.mp4",
+    "uploadPath": "assets/video/ep09_branch_truth_video_01.eff1397405b2.mp4"
+  },
+  {
+    "videoId": "ep09_branch_counterattack_video_01",
+    "sourceDurationSec": 6.0,
+    "sourceShotIds": [
+      "ep09_branch_counterattack_video_01_shot_01",
+      "ep09_branch_counterattack_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep09_branch_counterattack_video_01__p01",
+      "ep09_branch_counterattack_video_01__p02"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep09_branch_counterattack_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "贺星冉坐下，翘起二郎腿，一副闲适的模样。"
+      },
+      {
+        "speaker": "贺星冉",
+        "text": "不够，所以再来一次。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "贺铭从沙发上放下茶杯，声音沉了下来。"
+      },
+      {
+        "speaker": "贺铭",
+        "text": "星冉，你还没死心？"
+      }
+    ],
+    "durationSec": 18.083333,
+    "sha256": "3951673085ce48204c7371bdae57b175d86f1035780fb058fecdeb6d684d30d1",
+    "bytes": 4875967,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep09_branch_counterattack_video_01.mp4",
+    "uploadPath": "assets/video/ep09_branch_counterattack_video_01.3951673085ce.mp4"
+  },
+  {
+    "videoId": "ep09_branch_conditional_video_01",
+    "sourceDurationSec": 10.0,
+    "sourceShotIds": [
+      "ep09_branch_conditional_video_01_shot_01",
+      "ep09_branch_conditional_video_01_shot_02",
+      "ep09_branch_conditional_video_01_shot_03"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep09_branch_conditional_video_01__p01",
+      "ep09_branch_conditional_video_01__p02",
+      "ep09_branch_conditional_video_01__p03"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep09_branch_conditional_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "陈劲想了想。"
+      },
+      {
+        "speaker": "陈劲",
+        "text": "一百五十万。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "贺星冉二话不说。"
+      },
+      {
+        "speaker": "贺星冉",
+        "text": "好。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "走廊另一头，许邵泽不知何时站在那里，一言不发地看着两人的背影，眼神阴沉而幽深"
+      }
+    ],
+    "durationSec": 19.125,
+    "sha256": "3672fab172fe35bc3a8cc6542c8b8e39abc00cdf647619829852648dcf1e40e0",
+    "bytes": 5437536,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep09_branch_conditional_video_01.mp4",
+    "uploadPath": "assets/video/ep09_branch_conditional_video_01.3672fab172fe.mp4"
+  },
+  {
+    "videoId": "ep10_scene_00_video_01",
+    "sourceDurationSec": 3.0,
+    "sourceShotIds": [
+      "ep10_scene_00_video_01_shot_01",
+      "ep10_scene_00_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep10_scene_00_video_01__p01"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep10_scene_00_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "陈劲走进小区时，余光扫了那辆车一眼，眉头微微皱起。"
+      }
+    ],
+    "durationSec": 8.041667,
+    "sha256": "b3a8d771cb7656ef860bc6d29dcbed0433815254d8dee4ee31e27912d03d650b",
+    "bytes": 14419950,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep10_scene_00_video_01.mp4",
+    "uploadPath": "assets/video/ep10_scene_00_video_01.b3a8d771cb76.mp4"
+  },
+  {
+    "videoId": "ep10_branch_emotion_video_01",
+    "sourceDurationSec": 9.0,
+    "sourceShotIds": [
+      "ep10_branch_emotion_video_01_shot_01",
+      "ep10_branch_emotion_video_01_shot_02",
+      "ep10_branch_emotion_video_01_shot_03"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep10_branch_emotion_video_01__p01",
+      "ep10_branch_emotion_video_01__p02",
+      "ep10_branch_emotion_video_01__p03"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep10_branch_emotion_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "陈劲下楼，准备活动活动，走进客厅"
+      },
+      {
+        "speaker": "旁白",
+        "text": "许邵泽已经优雅地坐在沙发上，单手端着红茶，嘴角挂着浅浅的笑。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "贺星冉坐在对面，脸色冷淡。"
+      }
+    ],
+    "durationSec": 17.125,
+    "sha256": "486a5e298deba12880ba107e405f1a3f6035d467e3cd072a8803c58e9614e339",
+    "bytes": 4781489,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep10_branch_emotion_video_01.mp4",
+    "uploadPath": "assets/video/ep10_branch_emotion_video_01.486a5e298deb.mp4"
+  },
+  {
+    "videoId": "ep10_branch_truth_video_01",
+    "sourceDurationSec": 9.0,
+    "sourceShotIds": [
+      "ep10_branch_truth_video_01_shot_01",
+      "ep10_branch_truth_video_01_shot_02",
+      "ep10_branch_truth_video_01_shot_03"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep10_branch_truth_video_01__p01",
+      "ep10_branch_truth_video_01__p02",
+      "ep10_branch_truth_video_01__p03"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep10_branch_truth_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "陈劲开口，声音低而稳。"
+      },
+      {
+        "speaker": "陈劲",
+        "text": "比某些人给的东西，干净多了。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "许邵泽脸色一变，笑意僵了一秒，随即恢复。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "他站起来，整了整领带，冲贺星冉点头。"
+      }
+    ],
+    "durationSec": 17.125,
+    "sha256": "aa9aef3c3725ad94de5ce8c90793100787e8554457620a52587b9f0d1323fdf5",
+    "bytes": 6015344,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep10_branch_truth_video_01.mp4",
+    "uploadPath": "assets/video/ep10_branch_truth_video_01.aa9aef3c3725.mp4"
+  },
+  {
+    "videoId": "ep10_branch_counterattack_video_01",
+    "sourceDurationSec": 10.0,
+    "sourceShotIds": [
+      "ep10_branch_counterattack_video_01_shot_01",
+      "ep10_branch_counterattack_video_01_shot_02",
+      "ep10_branch_counterattack_video_01_shot_03"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep10_branch_counterattack_video_01__p01",
+      "ep10_branch_counterattack_video_01__p02",
+      "ep10_branch_counterattack_video_01__p03"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep10_branch_counterattack_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "次日清晨，贺星冉拉着陈劲出门买早餐，在街口买了生煎、包子、豆浆，两人提着东西往回走。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "路过拐角，一个大妈牵着贵宾犬迎面走来。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "大妈笑眯眯地。"
+      },
+      {
+        "speaker": "大妈",
+        "text": "哟，小情侣早上好！你们这是刚买完早饭呀？年轻真好！祝你们幸福哦！"
+      }
+    ],
+    "durationSec": 24.125,
+    "sha256": "c5c67881ed98d7258c1802d16e34a9e6c7a7cfb18a7dd2f6a7167e9d96d146ef",
+    "bytes": 14237348,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep10_branch_counterattack_video_01.mp4",
+    "uploadPath": "assets/video/ep10_branch_counterattack_video_01.c5c67881ed98.mp4"
+  },
+  {
+    "videoId": "ep10_branch_conditional_video_01",
+    "sourceDurationSec": 3.0,
+    "sourceShotIds": [
+      "ep10_branch_conditional_video_01_shot_01",
+      "ep10_branch_conditional_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep10_branch_conditional_video_01__p01"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep10_branch_conditional_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "停在路对面的那辆黑色迈巴赫的车窗后，有人将这一幕尽收眼底。"
+      }
+    ],
+    "durationSec": 9.041667,
+    "sha256": "79e9dd6774a70cb6adac57e8f00eb8f267996d711a23e28a8fc9166155fcdb74",
+    "bytes": 15147828,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep10_branch_conditional_video_01.mp4",
+    "uploadPath": "assets/video/ep10_branch_conditional_video_01.79e9dd6774a7.mp4"
+  },
+  {
+    "videoId": "ep11_scene_00_video_01",
+    "sourceDurationSec": 3.0,
+    "sourceShotIds": [
+      "ep11_scene_00_video_01_shot_01",
+      "ep11_scene_00_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep11_scene_00_video_01__p01"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep11_scene_00_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "手机屏幕上显示的备注，只有两个字：【律师】。"
+      }
+    ],
+    "durationSec": 7.041667,
+    "sha256": "e01822e271de1b295df5e4851fb26431710e93df79e9d86031e27bd2d0a52ad5",
+    "bytes": 9179565,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep11_scene_00_video_01.mp4",
+    "uploadPath": "assets/video/ep11_scene_00_video_01.e01822e271de.mp4"
+  },
+  {
+    "videoId": "ep11_branch_emotion_video_01",
+    "sourceDurationSec": 8.0,
+    "sourceShotIds": [
+      "ep11_branch_emotion_video_01_shot_01",
+      "ep11_branch_emotion_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep11_branch_emotion_video_01__p01",
+      "ep11_branch_emotion_video_01__p02"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep11_branch_emotion_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "贺星冉的驾照租来的车，陈劲把粉色大G停好，跟着她进了一家男装店，像挑商品一样从衣架上抽出几套衣服往他怀里塞。"
+      },
+      {
+        "speaker": "贺星冉",
+        "text": "你现在身上这套太素，出席场合不够。去试试。"
+      }
+    ],
+    "durationSec": 20.083333,
+    "sha256": "63d504bbdf391120642978d8fe005738eae9dbb8ff06700b994724b0a95041d0",
+    "bytes": 8333601,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep11_branch_emotion_video_01.mp4",
+    "uploadPath": "assets/video/ep11_branch_emotion_video_01.63d504bbdf39.mp4"
+  },
+  {
+    "videoId": "ep11_branch_truth_video_01",
+    "sourceDurationSec": 3.0,
+    "sourceShotIds": [
+      "ep11_branch_truth_video_01_shot_01",
+      "ep11_branch_truth_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep11_branch_truth_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "陈劲嘴角微动。"
+      },
+      {
+        "speaker": "陈劲",
+        "text": "……"
+      }
+    ],
+    "durationSec": 3.041995,
+    "sha256": "43365ff8d62c8b7bae946a5c830815d44b137dfbe5e40fc603a10ca81de80009",
+    "bytes": 5343285,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep11_branch_truth_video_01.mp4",
+    "uploadPath": "assets/video/ep11_branch_truth_video_01.43365ff8d62c.mp4"
+  },
+  {
+    "videoId": "ep11_branch_counterattack_video_01",
+    "sourceDurationSec": 9.0,
+    "sourceShotIds": [
+      "ep11_branch_counterattack_video_01_shot_01",
+      "ep11_branch_counterattack_video_01_shot_02",
+      "ep11_branch_counterattack_video_01_shot_03"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep11_branch_counterattack_video_01__p01",
+      "ep11_branch_counterattack_video_01__p02"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep11_branch_counterattack_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "两人提着购物袋走回停车场，阳光斜打进来，贺星冉的长发被风吹得微乱。"
+      },
+      {
+        "speaker": "旁白",
+        "text": "陈劲走在她旁边，忽然开口。"
+      },
+      {
+        "speaker": "陈劲",
+        "text": "你今天好看。"
+      }
+    ],
+    "durationSec": 15.083333,
+    "sha256": "58b5095fcdfc0838660da2e666986e7119e969b385f8ca035abcf7d776cf0ef1",
+    "bytes": 7055207,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep11_branch_counterattack_video_01.mp4",
+    "uploadPath": "assets/video/ep11_branch_counterattack_video_01.58b5095fcdfc.mp4"
+  },
+  {
+    "videoId": "ep11_branch_conditional_video_01",
+    "sourceDurationSec": 3.0,
+    "sourceShotIds": [
+      "ep11_branch_conditional_video_01_shot_01",
+      "ep11_branch_conditional_video_01_shot_02"
+    ],
+    "sourceText": [],
+    "parts": [
+      "ep11_branch_conditional_video_01__p01"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "path": "video/ep11_branch_conditional_video_01.mp4",
+    "originalDialogue": [
+      {
+        "speaker": "旁白",
+        "text": "她对准拍了张照，发给了一个陌生联系人"
+      }
+    ],
+    "durationSec": 7.041667,
+    "sha256": "7ef3a160209d9a8ee542787da5762b40238bac751db673fce216c6dd484b8ed8",
+    "bytes": 11399035,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep11_branch_conditional_video_01.mp4",
+    "uploadPath": "assets/video/ep11_branch_conditional_video_01.7ef3a160209d.mp4"
+  },
+  {
+    "videoId": "ending_loop",
+    "endingId": "ending_loop",
+    "title": "隐藏结局：无限逃婚",
+    "category": "secret",
+    "description": "女主每次结婚都会回到露台，只有找到真正的时间锚点才能离开。",
+    "closing": "许邵泽再次说出分手吧，她却提前接住了那只牛奶杯。",
+    "path": "video/ending_loop.mp4",
+    "parts": [
+      "ending_loop__p01",
+      "ending_loop__p02"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "sha256": "193159c8dc74aced7fb38ec80a7016a34f20b3daf3e3ce22f43285691ad9d985",
+    "durationSec": 21.083991,
+    "bytes": 5128513,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_loop.mp4",
+    "uploadPath": "assets/video/ending_loop.193159c8dc74.mp4"
+  },
+  {
+    "videoId": "ending_streamer",
+    "endingId": "ending_streamer",
+    "title": "荒诞结局：反渣直播一姐",
+    "category": "absurd",
+    "description": "牛奶杯证据意外直播曝光，她转行连麦鉴渣。",
+    "closing": "榜一大哥陈劲只发了一条弹幕：下播，吃饭。",
+    "path": "video/ending_streamer.mp4",
+    "parts": [
+      "ending_streamer__p01",
+      "ending_streamer__p02"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "sha256": "41c574263f1600a7dbf541b8858f4c9c2cb1ab398889ef2d50130cf0a184b6f3",
+    "durationSec": 16.083333,
+    "bytes": 3838441,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_streamer.mp4",
+    "uploadPath": "assets/video/ending_streamer.41c574263f16.mp4"
+  },
+  {
+    "videoId": "ending_cow",
+    "endingId": "ending_cow",
+    "title": "荒诞结局：奶牛真相",
+    "category": "absurd",
+    "description": "所有阴谋线索最终都指向第一集那杯牛奶。",
+    "closing": "镜头切向牧场，一头奶牛意味深长地看向观众。",
+    "path": "video/ending_cow.mp4",
+    "parts": [
+      "ending_cow__p01",
+      "ending_cow__p02"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "sha256": "d482b7abaf55cd0cb99dfebb558b3cdf8fc8d4963464f312ef2b5846b69ed618",
+    "durationSec": 16.083333,
+    "bytes": 5416174,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_cow.mp4",
+    "uploadPath": "assets/video/ending_cow.d482b7abaf55.mp4"
+  },
+  {
+    "videoId": "ending_terrace",
+    "endingId": "ending_terrace",
+    "title": "反转结局：露台回旋镖",
+    "category": "reversal",
+    "description": "许邵泽再次站上露台，一步步被自己的谎言逼到断裂栏杆边。",
+    "closing": "贺星冉没有动手。镜头一转，掉下去的是他。",
+    "path": "video/ending_terrace.mp4",
+    "parts": [
+      "ending_terrace__p01",
+      "ending_terrace__p02"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "sha256": "b2dfeef14302a54f16f6a914c9915e0bad12fdae25954bd55442758dd1518d58",
+    "durationSec": 17.083333,
+    "bytes": 3932840,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_terrace.mp4",
+    "uploadPath": "assets/video/ending_terrace.b2dfeef14302.mp4"
+  },
+  {
+    "videoId": "ending_reality_show",
+    "endingId": "ending_reality_show",
+    "title": "荒诞结局：全员恋综",
+    "category": "absurd",
+    "description": "所有人被送进恋爱综艺，婚约改由观众投票。",
+    "closing": "最高票选项是：让女主独自出道。",
+    "path": "video/ending_reality_show.mp4",
+    "parts": [
+      "ending_reality_show__p01",
+      "ending_reality_show__p02"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "sha256": "300f6419963931ca0fb3ea2e8f09ba9448b0b2bc7d09dfac54b61d76b1923636",
+    "durationSec": 16.083333,
+    "bytes": 3650652,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_reality_show.mp4",
+    "uploadPath": "assets/video/ending_reality_show.300f64199639.mp4"
+  },
+  {
+    "videoId": "ending_empire",
+    "endingId": "ending_empire",
+    "title": "隐藏结局：一个全都要",
+    "category": "secret",
+    "description": "她拒绝爱情，收购许家、工地和婚庆公司，垄断逃婚产业链。",
+    "closing": "上市敲钟那天，她的公司代码是 RUNAWAY。",
+    "path": "video/ending_empire.mp4",
+    "parts": [
+      "ending_empire__p01",
+      "ending_empire__p02"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "sha256": "7d3f3e9de1127ff6a4c5872f2e01b77c382c654f40c0e1ebd6b212b70cc4980a",
+    "durationSec": 16.083333,
+    "bytes": 6340664,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_empire.mp4",
+    "uploadPath": "assets/video/ending_empire.7d3f3e9de112.mp4"
+  },
+  {
+    "videoId": "ending_future",
+    "endingId": "ending_future",
+    "title": "反转结局：陈劲是未来人",
+    "category": "reversal",
+    "description": "陈劲是未来的贺星冉花千万派回来拯救自己的。",
+    "closing": "他的旧手机亮起，付款人姓名只有两个字：星冉。",
+    "path": "video/ending_future.mp4",
+    "parts": [
+      "ending_future__p01",
+      "ending_future__p02"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "sha256": "7ecaa8093f7d1b2ca31a3e647215435385e96a31007ed4dd5dacb19275919135",
+    "durationSec": 18.083333,
+    "bytes": 3952410,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_future.mp4",
+    "uploadPath": "assets/video/ending_future.7ecaa8093f7d.mp4"
+  },
+  {
+    "videoId": "ending_boss",
+    "endingId": "ending_boss",
+    "title": "反转结局：包工头女王",
+    "category": "reversal",
+    "description": "贺星冉买下整个工地，陈劲成了她的项目经理。",
+    "closing": "她戴上安全帽宣布：这次我雇的不是保镖，是合伙人。",
+    "path": "video/ending_boss.mp4",
+    "parts": [
+      "ending_boss__p01",
+      "ending_boss__p02"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "sha256": "d5247da895e4ece0977568042dd3b91d959fdce685b0cba78536047aeea8cb38",
+    "durationSec": 18.083333,
+    "bytes": 6387192,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_boss.mp4",
+    "uploadPath": "assets/video/ending_boss.d5247da895e4.mp4"
+  },
+  {
+    "videoId": "ending_crane",
+    "endingId": "ending_crane",
+    "title": "荒诞结局：塔吊婚礼",
+    "category": "absurd",
+    "description": "两人把婚礼办在塔吊顶端，全城工地同时鸣笛。",
+    "closing": "司仪问谁反对，三十台挖掘机一起按响喇叭。",
+    "path": "video/ending_crane.mp4",
+    "parts": [
+      "ending_crane__p01",
+      "ending_crane__p02"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "sha256": "8e8009793b636fe97c4816314619b64bdfff60a9ba3cc31b429d0b3eb5ff50bd",
+    "durationSec": 16.083333,
+    "bytes": 5287782,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_crane.mp4",
+    "uploadPath": "assets/video/ending_crane.8e8009793b63.mp4"
+  },
+  {
+    "videoId": "ending_worker",
+    "endingId": "ending_worker",
+    "title": "反转结局：反派转职",
+    "category": "reversal",
+    "description": "许邵泽破产后进入陈劲的工地搬砖。",
+    "closing": "三年后，他捧回了安全生产标兵的奖状。",
+    "path": "video/ending_worker.mp4",
+    "parts": [
+      "ending_worker__p01",
+      "ending_worker__p02"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "sha256": "0a1b5dd5ae783187c5f494d19855f11bfe446613f87dfc31a5605d00e68fcb26",
+    "durationSec": 18.083333,
+    "bytes": 4697690,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_worker.mp4",
+    "uploadPath": "assets/video/ending_worker.0a1b5dd5ae78.mp4"
+  },
+  {
+    "videoId": "ending_romance",
+    "endingId": "ending_romance",
+    "title": "正式结局：被接住之后",
+    "category": "romance",
+    "description": "贺星冉在清醒中选择了陈劲，但不再把自己交给任何人。",
+    "closing": "陈劲伸出手：回家吧。这次她自己决定回哪个家。",
+    "path": "video/ending_romance.mp4",
+    "parts": [
+      "ending_romance__p01",
+      "ending_romance__p02",
+      "ending_romance__p03"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "sha256": "420ab186daf942b72e9572144503714a617b5445a7dd49f8da7c8d0b1901fc1e",
+    "durationSec": 24.125,
+    "bytes": 7682042,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_romance.mp4",
+    "uploadPath": "assets/video/ending_romance.420ab186daf9.mp4"
+  },
+  {
+    "videoId": "ending_independent",
+    "endingId": "ending_independent",
+    "title": "正式结局：自己的方向",
+    "category": "independent",
+    "description": "她拒绝旧婚约，也拒绝立刻给新关系命名。",
+    "closing": "车钥匙握在自己手里，路终于由她决定。",
+    "path": "video/ending_independent.mp4",
+    "parts": [
+      "ending_independent__p01",
+      "ending_independent__p02"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "sha256": "ceb3cf17127b86e4707c2db292a726f2270e2acfd66750d80b99357389f51a84",
+    "durationSec": 16.083333,
+    "bytes": 3424488,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_independent.mp4",
+    "uploadPath": "assets/video/ending_independent.ceb3cf17127b.mp4"
+  },
+  {
+    "videoId": "ending_revenge",
+    "endingId": "ending_revenge",
+    "title": "正式结局：许家覆灭",
+    "category": "revenge",
+    "description": "完整证据链公开，许家精心维持的体面一夜崩塌。",
+    "closing": "她没有推任何人下楼，只把真相推到了所有人面前。",
+    "path": "video/ending_revenge.mp4",
+    "parts": [
+      "ending_revenge__p01",
+      "ending_revenge__p02"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "sha256": "fa4dd99b2bb50e3a2b57118a3a09bac9b70eacd9c4e84fd1a78c1d30133a8b81",
+    "durationSec": 16.083333,
+    "bytes": 5238279,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_revenge.mp4",
+    "uploadPath": "assets/video/ending_revenge.fa4dd99b2bb5.mp4"
+  },
+  {
+    "videoId": "ending_regret",
+    "endingId": "ending_regret",
+    "title": "正式结局：错过的那只手",
+    "category": "bad",
+    "description": "她赢下了清算，却在最后一次选择里松开陈劲的手。",
+    "closing": "工地燈火逐盏熄灭，那句没说出口的留下吧成了遗憾。",
+    "path": "video/ending_regret.mp4",
+    "parts": [
+      "ending_regret__p01",
+      "ending_regret__p03",
+      "ending_regret__p02"
+    ],
+    "status": "visual_pass_audio_transcript_pass",
+    "sha256": "af3dd175a3210e48b449b7aac65b1d28ef7c2840e14c0c8bf22cc390e4bfa2a1",
+    "durationSec": 22.291667,
+    "bytes": 5815766,
+    "sourcePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_regret.mp4",
+    "uploadPath": "assets/video/ending_regret.af3dd175a321.mp4"
+  }
+]

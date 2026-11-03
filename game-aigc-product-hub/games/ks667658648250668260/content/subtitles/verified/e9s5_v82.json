@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e9s5_v82.mp4",
+  "sha256": "dbbee5688178fa25a85e12fec541c27286ffe8802b1afbe80f1381e32cdce6c1",
+  "duration": 10.042,
+  "nodes": [
+    "e9s5"
+  ],
+  "status": "speech",
+  "transcript": "婉儿，你愿意嫁给我吗？",
+  "rawText": "婉儿你愿意嫁给我吗",
+  "asrChars": [
+    [
+      3.19,
+      3.43,
+      "婉"
+    ],
+    [
+      3.43,
+      3.67,
+      "儿"
+    ],
+    [
+      4.71,
+      4.93,
+      "你"
+    ],
+    [
+      4.93,
+      5.09,
+      "愿"
+    ],
+    [
+      5.09,
+      5.21,
+      "意"
+    ],
+    [
+      5.21,
+      5.37,
+      "嫁"
+    ],
+    [
+      5.37,
+      5.47,
+      "给"
+    ],
+    [
+      5.47,
+      5.65,
+      "我"
+    ],
+    [
+      5.65,
+      6.035,
+      "吗"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "婉儿,你愿意嫁给我吗?",
+  "speakerKey": null,
+  "speakerRuleKey": "e9s5",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

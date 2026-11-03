@@ -1,0 +1,18 @@
+{
+  "videoId": "ep04_branch_counterattack_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep04_branch_counterattack_video_01__l01",
+      "speaker": "陈劲",
+      "text": "……还行。",
+      "heard": "还行",
+      "start": 5.115,
+      "end": 5.845,
+      "alignmentScore": 1.0
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 10.147120181405896,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.40252685546875
+}

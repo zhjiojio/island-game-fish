@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s4.c.mp4",
+  "sha256": "658108ff9feb68018aff7ab4599949030e4147f362961b4dc914706df0592317",
+  "duration": 10.042,
+  "nodes": [
+    "e4s4"
+  ],
+  "status": "speech",
+  "transcript": "背后是我未过门的媳妇儿，你们谁敢过来试试？",
+  "rawText": "嗯是背后是我未过门的媳妇儿你们谁敢过来试试",
+  "asrChars": [
+    [
+      1.32,
+      1.52,
+      "嗯"
+    ],
+    [
+      1.52,
+      1.69,
+      "是"
+    ],
+    [
+      4.95,
+      5.19,
+      "背"
+    ],
+    [
+      5.27,
+      5.51,
+      "后"
+    ],
+    [
+      5.91,
+      6.15,
+      "是"
+    ],
+    [
+      6.17,
+      6.35,
+      "我"
+    ],
+    [
+      6.35,
+      6.51,
+      "未"
+    ],
+    [
+      6.51,
+      6.63,
+      "过"
+    ],
+    [
+      6.63,
+      6.81,
+      "门"
+    ],
+    [
+      6.81,
+      6.91,
+      "的"
+    ],
+    [
+      6.91,
+      7.11,
+      "媳"
+    ],
+    [
+      7.11,
+      7.27,
+      "妇"
+    ],
+    [
+      7.27,
+      7.51,
+      "儿"
+    ],
+    [
+      7.91,
+      8.11,
+      "你"
+    ],
+    [
+      8.11,
+      8.21,
+      "们"
+    ],
+    [
+      8.21,
+      8.41,
+      "谁"
+    ],
+    [
+      8.41,
+      8.53,
+      "敢"
+    ],
+    [
+      8.53,
+      8.69,
+      "过"
+    ],
+    [
+      8.69,
+      8.85,
+      "来"
+    ],
+    [
+      8.85,
+      9.09,
+      "试"
+    ],
+    [
+      9.11,
+      9.615,
+      "试"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "背后,是我魏过门的媳妇儿。你们谁敢过来试试?",
+  "speakerKey": null,
+  "speakerRuleKey": "e4s4",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

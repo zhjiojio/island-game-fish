@@ -1,0 +1,66 @@
+{
+ "schemaVersion": 1,
+ "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_rub_b.mp4",
+ "sha256": "f1c04db1b51728444c50753b71626a59496b9b8eca0fbe48068bd4d909ec7120",
+ "duration": 10.042,
+ "nodes": [
+  "r_rub_b"
+ ],
+ "status": "speech",
+ "transcript": "这水是热的，一直是热的。",
+ "rawText": "这水是热的一直是热的",
+ "asrChars": [
+  [
+   4.78,
+   5.02,
+   "这"
+  ],
+  [
+   5.02,
+   5.26,
+   "水"
+  ],
+  [
+   6.28,
+   6.52,
+   "是"
+  ],
+  [
+   6.58,
+   6.8,
+   "热"
+  ],
+  [
+   6.8,
+   7.04,
+   "的"
+  ],
+  [
+   7.26,
+   7.44,
+   "一"
+  ],
+  [
+   7.44,
+   7.62,
+   "直"
+  ],
+  [
+   7.62,
+   7.74,
+   "是"
+  ],
+  [
+   7.74,
+   7.9,
+   "热"
+  ],
+  [
+   7.9,
+   9.005,
+   "的"
+  ]
+ ],
+ "timingEngine": "asr-anchor(funasr-paraformer)",
+ "reviewMethod": "batch ASR auto (needs human proof-read for punctuation/speaker)."
+}

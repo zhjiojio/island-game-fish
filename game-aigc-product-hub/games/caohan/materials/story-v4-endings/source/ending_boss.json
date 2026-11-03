@@ -1,0 +1,25 @@
+{
+  "id": "ending_boss",
+  "type": "ending",
+  "episodeId": "ep08",
+  "title": "反转结局：包工头女王",
+  "isEnding": true,
+  "category": "reversal",
+  "tone": [
+    "事业",
+    "反差"
+  ],
+  "rarity": "rare",
+  "isCanonical": false,
+  "unlock": {
+    "requiredFlags": [
+      "ep08_counterattack"
+    ],
+    "requiredEndingTags": []
+  },
+  "description": "贺星冉买下整个工地，陈劲成了她的项目经理。",
+  "closing": "她戴上安全帽宣布：这次我雇的不是保镖，是合伙人。",
+  "achievement": "ending_boss",
+  "chapterId": "ch4",
+  "chapterTitle": "第四章：把陌生人带回家"
+}

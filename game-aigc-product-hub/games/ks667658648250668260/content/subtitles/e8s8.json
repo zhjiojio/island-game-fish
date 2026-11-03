@@ -1,0 +1,10 @@
+{
+  "node": "e8s8",
+  "speakerKey": "narrator",
+  "speakerName": "李老憨",
+  "asrText": "全李家沟的汉子都来了，坝塌不下去！",
+  "asrTextRaw": "全李家沟的汉子都来了 把他不下去",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 2
+}

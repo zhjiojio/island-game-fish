@@ -1,0 +1,2030 @@
+[
+  {
+    "videoId": "ep01_scene_00_video_01",
+    "nodeId": "ep01_scene_00",
+    "title": "露台上的分手",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep01_scene_00_video_01.mp4",
+      "sha256": "40c02ce50b2c6db4cfa5129f63851d77e29ed0d98efeb1c74352beb3bd6d673e",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 10,
+    "spokenLineCount": 1,
+    "status": "pilot_approved_by_user",
+    "authoredDialogue": [
+      {
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "on_screen",
+        "text": "贺星冉，分手吧。贺家这条船要沉了——我不陪你。",
+        "startSec": 0.55,
+        "endSec": 9.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "许邵泽冷静逼近，贺星冉背靠栏杆抬眼看他，晚风掀动酒红裙角；两人保持对峙距离。",
+    "pilot": true,
+    "pilotOutput": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep01_scene_00_video_01.mp4",
+      "sha256": "a8098354592c639c4b711edb887feb517ffa0eb0fed255dffeb15ba630e0389d",
+      "durationSec": 10.041667,
+      "audio": "native_kling_only"
+    }
+  },
+  {
+    "videoId": "ep01_branch_emotion_video_01",
+    "nodeId": "ep01_branch_emotion",
+    "title": "选择后果·情感惯性",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep01_branch_emotion_video_01.mp4",
+      "sha256": "f4d9c74fc79e28935128ecafc43b47800f66c38e2136565179c674023e51500a",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 0,
+    "status": "pilot_approved_by_user",
+    "authoredDialogue": [],
+    "authoredNote": null,
+    "visualAction": "承接旧片坠落瞬间：贺星冉抓栏杆的手滑脱，酒红裙角划过断裂栏杆，身影落入暗处。许邵泽俯看后收手。只呈现失足、惊呼和高空风声，不拍落地伤口。",
+    "pilot": true,
+    "pilotOutput": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep01_branch_emotion_video_01.mp4",
+      "sha256": "2919c7ad745748ab0cb57b5f8dc1395ff41b7c2ecaf5cef4f4942581a1abd20f",
+      "durationSec": 6.041667,
+      "audio": "native_kling_only"
+    }
+  },
+  {
+    "videoId": "ep01_branch_truth_video_01",
+    "nodeId": "ep01_branch_truth",
+    "title": "选择后果·内心真相",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep01_branch_truth_video_01.mp4",
+      "sha256": "4865cd4c88860dc26c8ddd6a4192d7e0c67139280f569a5067de80a2fbe6685e",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 1,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "喂。活着吗。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉落在下方防护篷边，抬头看见逆光俯身的陈劲。他伸出有老茧的手，她迟疑后抓住。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep01_branch_counterattack_video_01",
+    "nodeId": "ep01_branch_counterattack",
+    "title": "选择后果·公开反击",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep01_branch_counterattack_video_01.mp4",
+      "sha256": "522841d720a506bc944ced98a21e7f6162bd44ac52dcf9431768f27f08811a2e",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 8,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "刚才推我的时候，你怎么不装了？",
+        "startSec": 2.65,
+        "endSec": 7.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "许邵泽端牛奶靠近。贺星冉接过杯子，在他鞋前砸碎，挡住门；碎瓷和牛奶留在两人之间。他温和的笑容僵住。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep01_branch_conditional_video_01",
+    "nodeId": "ep01_branch_conditional",
+    "title": "选择后果·秘密翻盘",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep01_branch_conditional_video_01.mp4",
+      "sha256": "444825a1295dd7c15b569bf28aeb387ec324a092a4b120574f1f8f228100580e",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 8,
+    "spokenLineCount": 3,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "off_screen",
+        "text": "贺星冉，分手吧。",
+        "startSec": 0.55,
+        "endSec": 2.68,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "那就听完。",
+        "startSec": 6.03,
+        "endSec": 7.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉把手机放在父母面前，按下露台录音；贺铭想伸手，她把手机按住。录音声带轻微设备失真，许邵泽不在画面。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep02_scene_00_video_01",
+    "nodeId": "ep02_scene_00",
+    "title": "冷开场：protection",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep02_scene_00_video_01.mp4",
+      "sha256": "ae09dc70a07d8a9621fa908680ec293c0bc83128298aa8f182834fb84eb27271",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 0,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [],
+    "authoredNote": null,
+    "visualAction": "贺星冉刚站起就捂嘴咳嗽。远处追兵拿手机照片核对她，陈劲把她护到身侧，用身体挡住照片与她的脸。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep02_branch_emotion_video_01",
+    "nodeId": "ep02_branch_emotion",
+    "title": "选择后果·渴望保护",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep02_branch_emotion_video_01.mp4",
+      "sha256": "ee9205df2c9a8208f3524e1b47c929afde314fa8bd0c25b256b9dbde871353a9",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "救援来不了。我跟你走。",
+        "startSec": 0.55,
+        "endSec": 4.35,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "手机拨号再次失败。贺星冉放下手机，朝陈劲靠近，将手放进他的掌心；他稳稳握住。越野车停在后景。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep02_branch_truth_video_01",
+    "nodeId": "ep02_branch_truth",
+    "title": "选择后果·创伤警觉",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep02_branch_truth_video_01.mp4",
+      "sha256": "25fcd3e16f1daeb1eef630d703b445869d9fad2c5f5a48a6121af328b42479d3",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [],
+    "authoredNote": null,
+    "visualAction": "贺星冉退开半步，自行站稳，举起转账页面。陈劲把伸出的手收回，指向摩托后座。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep02_branch_counterattack_video_01",
+    "nodeId": "ep02_branch_counterattack",
+    "title": "选择后果·强者保护",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep02_branch_counterattack_video_01.mp4",
+      "sha256": "5e517d60c4c96ead9c3647d5734239bb73a98310760ad6b01062a70636508d16",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 1,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "找她？先过我这关。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "追兵上前拦车，陈劲跨前一步握住拦路的手腕并推开。追兵退后，他护着贺星冉上摩托。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep02_branch_conditional_video_01",
+    "nodeId": "ep02_branch_conditional",
+    "title": "选择后果·证据反杀",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep02_branch_conditional_video_01.mp4",
+      "sha256": "55689fc4ba188ad18a56e4161894c187fcc0c443e7ad36522f84de4ee032b298",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "录音已经传出去了。还追？",
+        "startSec": 0.55,
+        "endSec": 4.42,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "坐稳。",
+        "startSec": 4.67,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉亮出手机录音播放界面，挡住靠近的追兵。对方看一眼手机停步，陈劲发动摩托。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep03_scene_00_video_01",
+    "nodeId": "ep03_scene_00",
+    "title": "冷开场：humiliation",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep03_scene_00_video_01.mp4",
+      "sha256": "f3d8ed413237b1f038faa0c6da3d307463b673d9a4edce825b9fa6c41f644c9d",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 0,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [],
+    "authoredNote": null,
+    "visualAction": "摩托停下，贺星冉急忙摘头盔，弯腰在鞋边干呕。陈劲及时侧身扶住她的手臂，递纸巾。避开呕吐物特写。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep03_branch_emotion_video_01",
+    "nodeId": "ep03_branch_emotion",
+    "title": "选择后果·释放脆弱",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep03_branch_emotion_video_01.mp4",
+      "sha256": "41f741e72472ba6e8285db7fc1f075ba51bd378a552caa1464520d8d5b0ac5a7",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "蹲下。别站那么高看我。",
+        "startSec": 0.55,
+        "endSec": 4.04,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "喝口水。",
+        "startSec": 4.29,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉蹲坐路沿，终于不再掩饰狼狈。她扯陈劲衣角示意他低下来。他蹲下把水拧开。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep03_branch_truth_video_01",
+    "nodeId": "ep03_branch_truth",
+    "title": "选择后果·维持尊严",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep03_branch_truth_video_01.mp4",
+      "sha256": "a2536cb2d350929614f7f83b8bace95c373273bb37a0f3fd0a29c89b28a5da2a",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "我没事。别看我。",
+        "startSec": 0.55,
+        "endSec": 3.09,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "东西放这儿。",
+        "startSec": 3.34,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉擦嘴站直，拒绝搀扶，努力稳住呼吸。陈劲把药和面包放到她身侧，没有追问。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep03_branch_counterattack_video_01",
+    "nodeId": "ep03_branch_counterattack",
+    "title": "选择后果·狼狈坦白",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep03_branch_counterattack_video_01.mp4",
+      "sha256": "17af3a581d722d0042354a93beefdd36552d57708bff6b14ce9fa0a9be6a49fa",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 34,
+    "spokenLineCount": 3,
+    "status": "pilot_approved_by_user",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "谢谢你。沐瑶，我安全，先别联系我爸妈。帮我查一下我的卡哪张还能用。",
+        "startSec": 0.55,
+        "endSec": 11.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉先对陈劲道谢，随后在摩托后座给沐瑶打电话。第一、三轮拍她与驾驶位陈劲；第二轮切到另一地点的沐瑶接电话。陈劲不替两人念台词。",
+    "pilot": true,
+    "pilotOutput": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep03_branch_counterattack_video_01.mp4",
+      "sha256": "4e22bccb6cd40c84b485bfc54d98ad75dd7588ba1e686f8b561d5d911740fede",
+      "durationSec": 34.171631,
+      "audio": "native_kling_only"
+    }
+  },
+  {
+    "videoId": "ep03_branch_conditional_video_01",
+    "nodeId": "ep03_branch_conditional",
+    "title": "选择后果·危机识破",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep03_branch_conditional_video_01.mp4",
+      "sha256": "fbd5fa2ecc2e90fee4125895632c440936af6830e62b7a8c7a57f548dfa0a1d1",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "是沐瑶留的。她能找到我。",
+        "startSec": 0.55,
+        "endSec": 4.42,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "收好。",
+        "startSec": 4.67,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉从沐瑶留下的随身物品夹层找到小定位器，把它放在掌心。陈劲看了一眼，她安心地攥住。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep04_scene_00_video_01",
+    "nodeId": "ep04_scene_00",
+    "title": "冷开场：identity-gap",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep04_scene_00_video_01.mp4",
+      "sha256": "0991ca39d472b679c59215c2778a7adfd103f64db116731592eeb5b00ce6c0d8",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "会开吗？",
+        "startSec": 0.55,
+        "endSec": 3.34,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "陈劲坐进驾驶位，调好后视镜。贺星冉在副驾看着他；后视镜里一辆黑车慢慢跟上。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep04_branch_emotion_video_01",
+    "nodeId": "ep04_branch_emotion",
+    "title": "选择后果·交付信任",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep04_branch_emotion_video_01.mp4",
+      "sha256": "7e672d693ae507ec84e91347f81df2f4994d748dfd22483cce3dbba8c79a9aaf",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "你开。我看看你的本事。",
+        "startSec": 0.55,
+        "endSec": 4.74,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉把钥匙放进陈劲手里，自己扣好副驾安全带。他自然发动，平稳驶离。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep04_branch_truth_video_01",
+    "nodeId": "ep04_branch_truth",
+    "title": "选择后果·夺回控制",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep04_branch_truth_video_01.mp4",
+      "sha256": "fe9f8366055c8ee392a7201b4ca3870dd1361538782e27157ef798ef312459a5",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "我来。方向盘我自己握。",
+        "startSec": 0.55,
+        "endSec": 4.04,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "听你的。",
+        "startSec": 4.29,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉取回钥匙，拉开驾驶门坐进去。陈劲绕车进入副驾，给她让出操控空间。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep04_branch_counterattack_video_01",
+    "nodeId": "ep04_branch_counterattack",
+    "title": "选择后果·阶层反差",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep04_branch_counterattack_video_01.mp4",
+      "sha256": "7d936fee8a8f09dca3a665dc8c44a7581ecd7e5ff17366154a76a1da14e02507",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "钥匙给你，别磨蹭。",
+        "startSec": 0.55,
+        "endSec": 3.26,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "还真不客气。",
+        "startSec": 3.51,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "陈劲刚要问，贺星冉直接把钥匙塞进他掌心，替他拉开驾驶门，自己走向副驾。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep04_branch_conditional_video_01",
+    "nodeId": "ep04_branch_conditional",
+    "title": "选择后果·默契验证",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep04_branch_conditional_video_01.mp4",
+      "sha256": "0fc88697c21074f4293fa85ffa37dc90fa6a884e85b7dcb67176db83a0a80c94",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "抓紧。还记得吗？",
+        "startSec": 0.55,
+        "endSec": 3.09,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "记得。别回头。",
+        "startSec": 3.34,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉盯着后视镜里的跟车，轻声说出两人已有的简短约定。陈劲看懂她的眼神，改变路线。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep05_scene_00_video_01",
+    "nodeId": "ep05_scene_00",
+    "title": "冷开场：intimacy",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep05_scene_00_video_01.mp4",
+      "sha256": "3a9257b96b501b8e39f2e9462b53a76fdb11501faaec4fa5e4234b1d43f40d5e",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 0,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [],
+    "authoredNote": null,
+    "visualAction": "贺星冉从噩梦中惊醒扑向床边陈劲，他扶住她背部，随即意识到距离太近停手。两人完整着装，被子遮住身体，镜头保持肩部以上。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep05_branch_emotion_video_01",
+    "nodeId": "ep05_branch_emotion",
+    "title": "选择后果·依恋冲动",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep05_branch_emotion_video_01.mp4",
+      "sha256": "d8cd4f4fd876e67715e66e24879f8e32fb1d293c368db1a47b04cbbd942b2098",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "别推开我。就一会儿。",
+        "startSec": 0.55,
+        "endSec": 4.27,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉抓住他衣袖不肯松开，陈劲把手停在她肩上，确认后才轻拍安抚。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep05_branch_truth_video_01",
+    "nodeId": "ep05_branch_truth",
+    "title": "选择后果·自我保护",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep05_branch_truth_video_01.mp4",
+      "sha256": "b5545c1d48a81366be9a01f65e3a063f970ac5034955da022129fc75d7254e92",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "刚才是我失态了。你睡沙发吧。",
+        "startSec": 0.55,
+        "endSec": 4.84,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉主动松手退回被子里，指向床边沙发。陈劲拿起外套走去沙发，两人保持距离。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep05_branch_counterattack_video_01",
+    "nodeId": "ep05_branch_counterattack",
+    "title": "选择后果·暧昧反攻",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep05_branch_counterattack_video_01.mp4",
+      "sha256": "2f65910ff368293f1eb167bdce97ad5ba2e4d10bffb9dcf566e4b1f207dccd23",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 12,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "我今天受了惊吓，抱着你睡有安全感。你不是我的临时男朋友吗？",
+        "startSec": 0.55,
+        "endSec": 8.69,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "临时的也得讲规矩。",
+        "startSec": 8.94,
+        "endSec": 11.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉拉住陈劲手腕让他坐回床边。他愣住但没有压向她，两人完整着装，保持可见的边界。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep05_branch_conditional_video_01",
+    "nodeId": "ep05_branch_conditional",
+    "title": "选择后果·边界掌控",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep05_branch_conditional_video_01.mp4",
+      "sha256": "6eb242398a91bde6b4b2d71899dca8081416bc65ff7e3783d2df9b278727f0e0",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 7,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "安全条款。未经允许，不准越界。",
+        "startSec": 0.55,
+        "endSec": 5.07,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "记住了。",
+        "startSec": 5.32,
+        "endSec": 6.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉拿起床头的约定纸，点着安全条款，抬眼示意他退开。陈劲举手表明明白，坐到沙发。衣物和被子始终完整遮挡。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep06_scene_00_video_01",
+    "nodeId": "ep06_scene_00",
+    "title": "冷开场：transaction",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep06_scene_00_video_01.mp4",
+      "sha256": "1ae6b105f70531d2f42cdef71167ca785b5e50cbdfd59abe12078b974e8a8c64",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 1,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [],
+    "authoredNote": null,
+    "visualAction": "贺星冉把黑卡与合同推到陈劲面前。陈劲放下筷子，却没有伸手拿卡。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep06_branch_emotion_video_01",
+    "nodeId": "ep06_branch_emotion",
+    "title": "选择后果·金钱控制",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep06_branch_emotion_video_01.mp4",
+      "sha256": "b3b3ec0736e6ecdb7c167db1d23aa4d29589ee47ef6e143db16f0b0c9d9be7de",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 7,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "钱给你。你得保证，这一年不走。",
+        "startSec": 0.55,
+        "endSec": 4.54,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "你想清楚了？",
+        "startSec": 4.79,
+        "endSec": 6.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉把卡再往前推半寸，手指压住合同签名处。陈劲看着她，接过合同。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep06_branch_truth_video_01",
+    "nodeId": "ep06_branch_truth",
+    "title": "选择后果·情感坦白",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep06_branch_truth_video_01.mp4",
+      "sha256": "696486feab623e6b9a49b05ea3340d5986a613d1677a732e1a65ee6164b76caa",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 10,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "说下去。",
+        "startSec": 8.52,
+        "endSec": 9.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉把合同翻扣，第一次直视他。陈劲筷子停住，身体转向她。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep06_branch_counterattack_video_01",
+    "nodeId": "ep06_branch_counterattack",
+    "title": "选择后果·关系升级",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep06_branch_counterattack_video_01.mp4",
+      "sha256": "16cfa3af94ba907165ea53f7780197e20f0821efdf84fab381b9760daa8ce2b9",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 8,
+    "spokenLineCount": 3,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "这三千万，算我们一起做生意。",
+        "startSec": 0.55,
+        "endSec": 4.82,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉划去雇佣标题，在合同边写下合作二字，把笔递过去。陈劲接笔点头。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep06_branch_conditional_video_01",
+    "nodeId": "ep06_branch_conditional",
+    "title": "选择后果·资金反转",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep06_branch_conditional_video_01.mp4",
+      "sha256": "b6b32284bb4b1cf4463abbb8f3fec8282e61b298e6b97b3092dfa2217c50e358",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 8,
+    "spokenLineCount": 1,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "这些记录我都留着。回去见我父母，顺便宣布退婚。",
+        "startSec": 0.55,
+        "endSec": 7.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉调出保存的黑卡流水，把手机递到陈劲面前，指向异常冻结记录。随后看向贺家庄园方向。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep07_scene_00_video_01",
+    "nodeId": "ep07_scene_00",
+    "title": "冷开场：public-humiliation",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep07_scene_00_video_01.mp4",
+      "sha256": "a30728253ae6e5dc748e76935a45a6d9e2c70e8a79db7e6de838610c47cfe71e",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 1,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "on_screen",
+        "text": "冉冉，回来了。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉带拎蛇皮袋的陈劲进入客厅。许邵泽从贺母身旁起身，笑着迎来；贺星冉停在门槛，陈劲站到她侧后方。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep07_branch_emotion_video_01",
+    "nodeId": "ep07_branch_emotion",
+    "title": "选择后果·求生忍耐",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep07_branch_emotion_video_01.mp4",
+      "sha256": "df8fcd75547afcea07bc1ff710f85a7424f438acb64812e1291d11f836b020ba",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 1,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "我累了。让开。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉避开许邵泽伸出的手，压低视线从他身边走过。陈劲不离她半步。许邵泽的手停在空中。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep07_branch_truth_video_01",
+    "nodeId": "ep07_branch_truth",
+    "title": "选择后果·愤怒反击",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep07_branch_truth_video_01.mp4",
+      "sha256": "2e31ccb657073f4076df39b6472bfbbe997a8158f6b1833ec3da74bbe36224b3",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 11,
+    "spokenLineCount": 3,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "露台上推我的人，就是你。",
+        "startSec": 0.55,
+        "endSec": 3.91,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "on_screen",
+        "text": "冉冉，你犯不着找一个土包子来气我。",
+        "startSec": 4.16,
+        "endSec": 9.19,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "回答我。",
+        "startSec": 9.44,
+        "endSec": 10.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉站定，当着家人质问。许邵泽先笑着否认，随后把目光转向陈劲试图转移话题。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep07_branch_counterattack_video_01",
+    "nodeId": "ep07_branch_counterattack",
+    "title": "选择后果·公开处刑",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep07_branch_counterattack_video_01.mp4",
+      "sha256": "73aa57a91a0980dcf8b686a6def8703894a536da344588fbfbb3cfb0b8046d32",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 8,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "off_screen",
+        "text": "贺家这条船要沉了——我不陪你。",
+        "startSec": 0.55,
+        "endSec": 4.98,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "爸，听清楚了吗？",
+        "startSec": 5.23,
+        "endSec": 7.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉当众按下录音播放，客厅静下来。贺铭握紧文件，许邵泽的笑消失。她举起手机不让人打断。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep07_branch_conditional_video_01",
+    "nodeId": "ep07_branch_conditional",
+    "title": "选择后果·身份伏笔",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep07_branch_conditional_video_01.mp4",
+      "sha256": "4dc8cf794edd1ea32097209029c39675b3cc8981d307d71702b7029a202eddae",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 8,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "周伯，这个姓，还记得吗？",
+        "startSec": 0.55,
+        "endSec": 3.88,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "zhoubo",
+        "speaker": "周伯",
+        "delivery": "on_screen",
+        "text": "你从哪儿知道这个姓？",
+        "startSec": 4.12,
+        "endSec": 7.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": "保留旧姓触发反应，具体姓氏不展示、不朗读；不新增沈姓设定。",
+    "visualAction": "陈劲把写有旧姓的折叠纸条递到周伯面前，只拍纸背、不拍字迹。周伯看清后手明显一抖，抬头重新打量陈劲。贺星冉注意到反应。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep08_scene_00_video_01",
+    "nodeId": "ep08_scene_00",
+    "title": "冷开场：power-display",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep08_scene_00_video_01.mp4",
+      "sha256": "26ced2299850a26c2939b8d6709f3c44bcda742c6e1a5aa2e34597a685716b5c",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 1,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "手滑？",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "周伯把青花瓶递出又故意松手。陈劲单手稳稳接住，瓶底离地尚远，他把瓶子放回柜上，直视周伯。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep08_branch_emotion_video_01",
+    "nodeId": "ep08_branch_emotion",
+    "title": "选择后果·维护秩序",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep08_branch_emotion_video_01.mp4",
+      "sha256": "8ba8bbb488443a92b7ff1d28bdcf4d22f21bc65f9e42a21691148a9d605d0044",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 1,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "没摔着就好。走吧。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉看到了接瓶过程，却没有拆穿，轻轻把瓶子摆正，向陈劲示意继续走。周伯收回手。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep08_branch_truth_video_01",
+    "nodeId": "ep08_branch_truth",
+    "title": "选择后果·公开护短",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep08_branch_truth_video_01.mp4",
+      "sha256": "5743ed5ce36b97d9cd4670b0ca60e6ab3afc4f6e845ec26a712c69852f188bbd",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 8,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "周伯，试够了吗？他是我带回来的人。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "zhoubo",
+        "speaker": "周伯",
+        "delivery": "on_screen",
+        "text": "是我唐突了。",
+        "startSec": 5.7,
+        "endSec": 7.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉挡在陈劲和周伯之间，指向周伯刚松开的手。周伯收起笑意低头。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep08_branch_counterattack_video_01",
+    "nodeId": "ep08_branch_counterattack",
+    "title": "选择后果·豪门反压",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep08_branch_counterattack_video_01.mp4",
+      "sha256": "c379b59575586be0e3389abd87faebaf00d09b5bb39813c13f11148cf45c1bb3",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 1,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "这瓶子我买了。以后别拿它试人。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉从陈劲手中接过古董瓶，把黑卡放在柜台上。周伯想拦又停住。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep08_branch_conditional_video_01",
+    "nodeId": "ep08_branch_conditional",
+    "title": "选择后果·秘密默契",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep08_branch_conditional_video_01.mp4",
+      "sha256": "eb764101f330c2d3085dbfaacce4a5bed57efb827b79e817652598435cdfcd67",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 1,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "您还没递稳，就松手了？",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "陈劲用两指轻敲手腕示意，贺星冉注意到周伯提前松开的手，及时托住瓶底。周伯的试探落空。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep09_scene_00_video_01",
+    "nodeId": "ep09_scene_00",
+    "title": "冷开场：contract",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep09_scene_00_video_01.mp4",
+      "sha256": "e8dde67a8a79f402e50c9a02c2581aa7d4dabf86701bd3378bbb230851197abe",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 9,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "一年，三千万。你连价都不看？",
+        "startSec": 0.55,
+        "endSec": 4.56,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "看清楚要做什么就够了。",
+        "startSec": 4.81,
+        "endSec": 8.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉把签好的合同和黑卡摆在桌上。陈劲翻到职责条款读完签名，目光没有停留在金额上。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep09_branch_emotion_video_01",
+    "nodeId": "ep09_branch_emotion",
+    "title": "选择后果·规则安全",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep09_branch_emotion_video_01.mp4",
+      "sha256": "419434b983861b3d1b3a5be0142066cecda5f8e3b19aec2d4127b5256012b0ab",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "按合同办。别谈别的。",
+        "startSec": 0.55,
+        "endSec": 4.68,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉把合同收进文件夹，黑卡夹在其中，压住签名处后才放松肩膀。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep09_branch_truth_video_01",
+    "nodeId": "ep09_branch_truth",
+    "title": "选择后果·关系冒险",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep09_branch_truth_video_01.mp4",
+      "sha256": "eff1397405b286e9efb0ef842beddc67e4cc7ae82142c291fc29b0cc6c83a17a",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 9,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "不算这些条款，你为什么留下？",
+        "startSec": 0.55,
+        "endSec": 4.92,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "因为你还需要人帮你。",
+        "startSec": 5.17,
+        "endSec": 8.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉撕下附加条款，保留主合同推到一边，直视陈劲。他把黑卡放回桌上。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep09_branch_counterattack_video_01",
+    "nodeId": "ep09_branch_counterattack",
+    "title": "选择后果·关系摊牌",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep09_branch_counterattack_video_01.mp4",
+      "sha256": "3951673085ce48204c7371bdae57b175d86f1035780fb058fecdeb6d684d30d1",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "没了合同，你还敢不敢留下？",
+        "startSec": 0.55,
+        "endSec": 4.81,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉把合同撕成两半，手停在桌边等待答案。陈劲把碎纸从她手里接过，放下，站到她身边。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep09_branch_conditional_video_01",
+    "nodeId": "ep09_branch_conditional",
+    "title": "选择后果·身份追查",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep09_branch_conditional_video_01.mp4",
+      "sha256": "3672fab172fe35bc3a8cc6542c8b8e39abc00cdf647619829852648dcf1e40e0",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 7,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "周伯刚才的通话，我保存了。",
+        "startSec": 0.55,
+        "endSec": 4.99,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "先留着。",
+        "startSec": 5.24,
+        "endSec": 6.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": "只保留既有选项中的通话存档事实；不补写未知录音或新的身世证据。",
+    "visualAction": "贺星冉把手机里保存的周伯通话条目展示给陈劲，屏幕字迹不作特写，也不播放未知录音内容。陈劲看过点头，她锁好屏幕收起手机。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep10_scene_00_video_01",
+    "nodeId": "ep10_scene_00",
+    "title": "冷开场：confrontation",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep10_scene_00_video_01.mp4",
+      "sha256": "b3a8d771cb7656ef860bc6d29dcbed0433815254d8dee4ee31e27912d03d650b",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 1,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "on_screen",
+        "text": "跑了一圈，你不还是回来了？",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "许邵泽起身堵在出口，贺星冉停下。陈劲放下手里的东西，走到她身边。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep10_branch_emotion_video_01",
+    "nodeId": "ep10_branch_emotion",
+    "title": "选择后果·接受保护",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep10_branch_emotion_video_01.mp4",
+      "sha256": "486a5e298deba12880ba107e405f1a3f6035d467e3cd072a8803c58e9614e339",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 1,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "她不想见你。让开。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉退到陈劲身后，握住他的袖口。陈劲挡住许邵泽向前的身体，留出出口。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep10_branch_truth_video_01",
+    "nodeId": "ep10_branch_truth",
+    "title": "选择后果·夺回主体",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep10_branch_truth_video_01.mp4",
+      "sha256": "aa9aef3c3725ad94de5ce8c90793100787e8554457620a52587b9f0d1323fdf5",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 1,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "婚约到此为止。以后别再来找我。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉从陈劲身侧走到最前方，抬手挡住许邵泽伸来的手，亲口拒绝。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep10_branch_counterattack_video_01",
+    "nodeId": "ep10_branch_counterattack",
+    "title": "选择后果·公开审判",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep10_branch_counterattack_video_01.mp4",
+      "sha256": "c5c67881ed98d7258c1802d16e34a9e6c7a7cfb18a7dd2f6a7167e9d96d146ef",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 7,
+    "spokenLineCount": 1,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "各位听清楚。推我下露台的，就是我的未婚夫。",
+        "startSec": 0.55,
+        "endSec": 6.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉从主持台取过话筒，面对宾客按下手机录音，许邵泽想靠近，被陈劲挡住。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep10_branch_conditional_video_01",
+    "nodeId": "ep10_branch_conditional",
+    "title": "选择后果·终局证据",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep10_branch_conditional_video_01.mp4",
+      "sha256": "79e9dd6774a70cb6adac57e8f00eb8f267996d711a23e28a8fc9166155fcdb74",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 1,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "录音、流水、跟踪照片，律师已经收到了。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉将录音、流水和跟踪照片依次排在桌上，把一份文件推向许邵泽。他拿杯子的手停住。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep11_scene_00_video_01",
+    "nodeId": "ep11_scene_00",
+    "title": "冷开场：identity-reveal",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep11_scene_00_video_01.mp4",
+      "sha256": "e01822e271de1b295df5e4851fb26431710e93df79e9d86031e27bd2d0a52ad5",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "zhoubo",
+        "speaker": "周伯",
+        "delivery": "off_screen",
+        "text": "陈先生，原来真是您。",
+        "startSec": 0.55,
+        "endSec": 3.65,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "你们认识？",
+        "startSec": 3.9,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉替陈劲整理领带。门外周伯突然恭敬称呼，陈劲抬眼；她整理领带的手停在半空。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep11_branch_emotion_video_01",
+    "nodeId": "ep11_branch_emotion",
+    "title": "选择后果·爱情与并肩",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep11_branch_emotion_video_01.mp4",
+      "sha256": "63d504bbdf391120642978d8fe005738eae9dbb8ff06700b994724b0a95041d0",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 1,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "走吧。一起回家。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉主动握住陈劲伸来的手，两人并肩穿过门口走向停车场，步调慢慢一致。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep11_branch_truth_video_01",
+    "nodeId": "ep11_branch_truth",
+    "title": "选择后果·独立与自由",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep11_branch_truth_video_01.mp4",
+      "sha256": "43365ff8d62c8b7bae946a5c830815d44b137dfbe5e40fc603a10ca81de80009",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "我不结婚了。以后，我自己选。",
+        "startSec": 0.55,
+        "endSec": 4.81,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉收起婚约文件，自己拿走车钥匙，站在驾驶门旁。陈劲给她让出路。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep11_branch_counterattack_video_01",
+    "nodeId": "ep11_branch_counterattack",
+    "title": "选择后果·复仇与清算",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep11_branch_counterattack_video_01.mp4",
+      "sha256": "58b5095fcdfc0838660da2e666986e7119e969b385f8ca035abcf7d776cf0ef1",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 7,
+    "spokenLineCount": 1,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "材料全部公开。我说过，要让所有人知道。",
+        "startSec": 0.55,
+        "endSec": 6.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉将证据递到镜头前，记者话筒围近。陈劲守在侧后方。另一侧许邵泽低头避开镜头。",
+    "pilot": false
+  },
+  {
+    "videoId": "ep11_branch_conditional_video_01",
+    "nodeId": "ep11_branch_conditional",
+    "title": "选择后果·遗憾与错过",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/video/ep11_branch_conditional_video_01.mp4",
+      "sha256": "7ef3a160209d9a8ee542787da5762b40238bac751db673fce216c6dd484b8ed8",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 11,
+    "spokenLineCount": 1,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "这次，让我一个人走。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉松开陈劲的手，独自转身；留在原地的陈劲没有追。切到她独自站上旧露台，远处工地灯光渐暗。",
+    "pilot": false
+  },
+  {
+    "videoId": "ending_loop",
+    "nodeId": "ending_loop",
+    "title": "隐藏结局：无限逃婚",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_loop.mp4",
+      "sha256": "193159c8dc74aced7fb38ec80a7016a34f20b3daf3e3ce22f43285691ad9d985",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "on_screen",
+        "text": "分手吧。",
+        "startSec": 0.55,
+        "endSec": 1.95,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "这一次，我知道了。",
+        "startSec": 2.2,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "许邵泽以与开场相同姿势走近；贺星冉看着熟悉的杯子，在他递出前先伸手稳稳接住，反过来盯住他。",
+    "pilot": false
+  },
+  {
+    "videoId": "ending_streamer",
+    "nodeId": "ending_streamer",
+    "title": "荒诞结局：反渣直播一姐",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_streamer.mp4",
+      "sha256": "41c574263f1600a7dbf541b8858f4c9c2cb1ab398889ef2d50130cf0a184b6f3",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 7,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "你把聊天记录翻到那一天。",
+        "startSec": 0.55,
+        "endSec": 4.69,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "off_screen",
+        "text": "下播，吃饭。",
+        "startSec": 4.94,
+        "endSec": 6.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉坐在环形灯前，把封存牛奶杯的证据袋放下，转向连麦手机。陈劲端着饭走到门边，她听见后笑着关掉直播灯。",
+    "pilot": false
+  },
+  {
+    "videoId": "ending_cow",
+    "nodeId": "ending_cow",
+    "title": "荒诞结局：奶牛真相",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_cow.mp4",
+      "sha256": "d482b7abaf55cd0cb99dfebb558b3cdf8fc8d4963464f312ef2b5846b69ed618",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 11,
+    "spokenLineCount": 0,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [],
+    "authoredNote": null,
+    "visualAction": "牛奶杯、奶渍照片、奶源线索依次特写，最后匹配剪辑到牧场奶牛。奶牛抬头直视镜头，慢慢嚼草，停半拍后哞叫，保留荒诞落点。",
+    "pilot": false
+  },
+  {
+    "videoId": "ending_terrace",
+    "nodeId": "ending_terrace",
+    "title": "反转结局：露台回旋镖",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_terrace.mp4",
+      "sha256": "b2dfeef14302a54f16f6a914c9915e0bad12fdae25954bd55442758dd1518d58",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 0,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [],
+    "authoredNote": null,
+    "visualAction": "许邵泽一步步倒退撞上断裂栏杆，贺星冉双手垂在身侧没有碰他。他脚下失去支撑，落出画面；她站在原地，风声骤起。无落地伤口。",
+    "pilot": false
+  },
+  {
+    "videoId": "ending_reality_show",
+    "nodeId": "ending_reality_show",
+    "title": "荒诞结局：全员恋综",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_reality_show.mp4",
+      "sha256": "300f6419963931ca0fb3ea2e8f09ba9448b0b2bc7d09dfac54b61d76b1923636",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 1,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "host",
+        "speaker": "节目主持人",
+        "delivery": "off_screen",
+        "text": "投票结果：贺星冉，独自出道！",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "三人站在综艺舞台，投票灯光汇到贺星冉身上。她听到结果，走到舞台中央独自鞠躬，另外两人留在后方。",
+    "pilot": false
+  },
+  {
+    "videoId": "ending_empire",
+    "nodeId": "ending_empire",
+    "title": "隐藏结局：一个全都要",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_empire.mp4",
+      "sha256": "7d3f3e9de1127ff6a4c5872f2e01b77c382c654f40c0e1ebd6b212b70cc4980a",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 13,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "许家、工地、婚庆公司，都签好了。",
+        "startSec": 0.55,
+        "endSec": 6.45,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "贺总，轮到你敲钟了。",
+        "startSec": 7.55,
+        "endSec": 12.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉依次签完三份收购合同，陈劲在旁合上工地文件。切到上市钟前，她握槌敲响铜钟，背后公司名RUNAWAY。",
+    "pilot": false
+  },
+  {
+    "videoId": "ending_future",
+    "nodeId": "ending_future",
+    "title": "反转结局：陈劲是未来人",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_future.mp4",
+      "sha256": "7ecaa8093f7d1b2ca31a3e647215435385e96a31007ed4dd5dacb19275919135",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 14,
+    "spokenLineCount": 2,
+    "status": "pilot_approved_by_user",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "到底是谁让你来救我的？",
+        "startSec": 0.55,
+        "endSec": 6.88,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "你。未来的你，花了一千万。",
+        "startSec": 7.12,
+        "endSec": 13.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "保留旧片冷蓝舱门、女主与陈劲面对面及旧手机的视觉设定。她拦住他追问，他取出旧手机递给她；手机付款人星冉，远处舱门灯亮。",
+    "pilot": true,
+    "pilotOutput": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ending_future.mp4",
+      "sha256": "4e152225220a4b64f7bcd73a684097801eea2d0c7baf9b0abc874ca9fdf4eedf",
+      "durationSec": 14.041995,
+      "audio": "native_kling_only"
+    }
+  },
+  {
+    "videoId": "ending_boss",
+    "nodeId": "ending_boss",
+    "title": "反转结局：包工头女王",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_boss.mp4",
+      "sha256": "d5247da895e4ece0977568042dd3b91d959fdce685b0cba78536047aeea8cb38",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 1,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "这次我雇的不是保镖，是合伙人。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉接过项目文件，戴上安全帽，把另一顶递给陈劲。他接住，两人站到工地平面图前。",
+    "pilot": false
+  },
+  {
+    "videoId": "ending_crane",
+    "nodeId": "ending_crane",
+    "title": "荒诞结局：塔吊婚礼",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_crane.mp4",
+      "sha256": "8e8009793b636fe97c4816314619b64bdfff60a9ba3cc31b429d0b3eb5ff50bd",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 12,
+    "spokenLineCount": 1,
+    "status": "pilot_approved_by_user",
+    "authoredDialogue": [
+      {
+        "speakerId": "officiant",
+        "speaker": "司仪",
+        "delivery": "off_screen",
+        "text": "谁反对？",
+        "startSec": 0.55,
+        "endSec": 4.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "保留旧片高空婚礼、城市天际线和下方列队工程车。司仪在镜头外停顿发问，新人对视；切到下方挖掘机，喇叭接连响成一片，新人忍不住笑。",
+    "pilot": true,
+    "pilotOutput": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ending_crane.mp4",
+      "sha256": "b262448e59c6ebcd4e901505977f17ac8e24fe2fad0261c021e4dccb63e02d17",
+      "durationSec": 12.129313,
+      "audio": "native_kling_only"
+    }
+  },
+  {
+    "videoId": "ending_worker",
+    "nodeId": "ending_worker",
+    "title": "反转结局：反派转职",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_worker.mp4",
+      "sha256": "0a1b5dd5ae783187c5f494d19855f11bfe446613f87dfc31a5605d00e68fcb26",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 11,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "干得不错。",
+        "startSec": 0.55,
+        "endSec": 2.62,
+        "provenance": "authored-adaptation"
+      },
+      {
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "on_screen",
+        "text": "明天我还来。",
+        "startSec": 2.87,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "许邵泽换上旧工装搬砖，擦汗继续干。时间跳转到表彰现场，他捧着安全生产标兵奖状，陈劲递过安全帽。",
+    "pilot": false
+  },
+  {
+    "videoId": "ending_romance",
+    "nodeId": "ending_romance",
+    "title": "正式结局：被接住之后",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_romance.mp4",
+      "sha256": "420ab186daf942b72e9572144503714a617b5445a7dd49f8da7c8d0b1901fc1e",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 2,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "回家吧。",
+        "startSec": 0.55,
+        "endSec": 4.04,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "陈劲停下向贺星冉伸手，耐心等她。她自己走过来握住，两人并肩走向暖灯。",
+    "pilot": false
+  },
+  {
+    "videoId": "ending_independent",
+    "nodeId": "ending_independent",
+    "title": "正式结局：自己的方向",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_independent.mp4",
+      "sha256": "ceb3cf17127b86e4707c2db292a726f2270e2acfd66750d80b99357389f51a84",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 12,
+    "spokenLineCount": 1,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "婚约取消。我的事，我自己决定。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "贺星冉把婚约放回桌上，从两个男人之间走开。切到她坐上粉色越野车驾驶位，亲手发动车，独自驶离。",
+    "pilot": false
+  },
+  {
+    "videoId": "ending_revenge",
+    "nodeId": "ending_revenge",
+    "title": "正式结局：许家覆灭",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_revenge.mp4",
+      "sha256": "fa4dd99b2bb50e3a2b57118a3a09bac9b70eacd9c4e84fd1a78c1d30133a8b81",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 1,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [
+      {
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "证据都在这里。请查清楚。",
+        "startSec": 0.55,
+        "endSec": 5.45,
+        "provenance": "authored-adaptation"
+      }
+    ],
+    "authoredNote": null,
+    "visualAction": "完整证据铺在桌上，贺星冉把文件推到记者面前，闪光灯亮起。许邵泽低着头走出人群；陈劲安静站在她身后。",
+    "pilot": false
+  },
+  {
+    "videoId": "ending_regret",
+    "nodeId": "ending_regret",
+    "title": "正式结局：错过的那只手",
+    "referenceVideo": {
+      "path": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/video/ending_regret.mp4",
+      "sha256": "af3dd175a3210e48b449b7aac65b1d28ef7c2840e14c0c8bf22cc390e4bfa2a1",
+      "use": "visual_reference_only_do_not_copy_audio"
+    },
+    "durationSec": 6,
+    "spokenLineCount": 0,
+    "status": "full_batch_in_production",
+    "authoredDialogue": [],
+    "authoredNote": null,
+    "visualAction": "贺星冉慢慢松开陈劲的手。他等了片刻，最终转身走远。她想伸手又收回，工地照明从远到近逐盏熄灭，剩下风声。",
+    "pilot": false
+  }
+]

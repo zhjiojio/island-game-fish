@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>快小游快币消费 · 资金流与数据流机制说明</title>
+<style>
+  :root{
+    --paper:#ffffff;
+    --panel:#ffffff;
+    --panel-2:#f7f8fa;
+    --line:#dcdfe5;
+    --line-2:#bcc2cc;
+    --ink:#0a0f1a;
+    --ink-2:#333c4b;
+    --ink-3:#5f6875;
+    --data:#0b7568;
+    --money:#95440a;
+    --fwd:#116632;
+    --rev:#5733bd;
+    --red:#c31d1d;
+    --blue:#1741b8;
+    --c-user:#0b7568;
+    --c-kk:#5733bd;
+    --c-my:#95440a;
+    --c-vd:#1741b8;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.7;font-size:15px;
+  }
+  .wrap{max-width:1300px;margin:0 auto;padding:44px 32px 80px}
+
+  /* ---------- 封面 ---------- */
+  .cover{border-bottom:2px solid var(--ink);padding-bottom:24px;margin-bottom:30px}
+  .eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--money);margin-bottom:12px}
+  h1{font-size:33px;line-height:1.3;margin:0 0 14px;font-weight:800;letter-spacing:-.025em;color:var(--ink)}
+  h1 em{font-style:normal;color:var(--money)}
+  .dek{color:var(--ink-2);font-size:15.5px;margin:0;max-width:66em}
+  .dek b{color:var(--ink);font-weight:600}
+
+  /* ---------- 总览 ---------- */
+  .overview{margin:26px 0 0;border:1px solid var(--line);border-radius:12px;
+    background:var(--panel-2);padding:22px 24px}
+  .ovtitle{font-size:12.5px;color:var(--ink-3);font-family:ui-monospace,Menlo,monospace;
+    letter-spacing:.16em;text-transform:uppercase;margin-bottom:18px;font-weight:600}
+  .ovrow{display:flex;align-items:center;gap:0}
+  .ovbox{flex:1 1 0;text-align:center;border:1px solid var(--line-2);border-radius:10px;
+    background:#fff;padding:14px 8px}
+  .ovbox .nm{font-size:16px;font-weight:750;display:block;letter-spacing:-.01em}
+  .ovbox .rl{font-size:12px;color:var(--ink-3);font-family:ui-monospace,Menlo,monospace}
+  .ovbox.b1 .nm{color:var(--c-user)} .ovbox.b2 .nm{color:var(--c-kk)}
+  .ovbox.b3 .nm{color:var(--c-my)}   .ovbox.b4 .nm{color:var(--c-vd)}
+  .ovar{flex:0 0 122px;display:flex;flex-direction:column;align-items:center;gap:4px;padding:0 8px}
+  .ovar .lb{font-size:11.5px;font-family:ui-monospace,Menlo,monospace;color:var(--money);white-space:nowrap}
+  .ovar .bar{width:100%;height:0;border-top:1.5px solid var(--money);position:relative}
+  .ovar .bar::after{content:"";position:absolute;right:-1px;top:-4.5px;
+    border-left:8px solid var(--money);border-top:4.5px solid transparent;border-bottom:4.5px solid transparent}
+  .ovnote{display:flex;gap:0;margin-top:12px}
+  .ovnote .sp{flex:1 1 0}
+  .ovnote .tx{flex:0 0 122px;text-align:center;font-size:11.5px;color:var(--data);
+    font-family:ui-monospace,Menlo,monospace;line-height:1.45}
+
+  /* ---------- 章节 ---------- */
+  .sec{margin-top:52px}
+  .sechead{display:flex;align-items:center;gap:12px;margin-bottom:6px;flex-wrap:wrap}
+  .secno{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;font-weight:800;
+    color:#fff;border-radius:5px;padding:3px 10px;letter-spacing:.08em}
+  .sechead h2{margin:0;font-size:23px;font-weight:780;letter-spacing:-.02em}
+  .pill{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;padding:2px 9px;border-radius:4px;
+    letter-spacing:.06em;font-weight:600}
+  .pill.fwd{background:#ecfdf3;color:var(--fwd);border:1px solid #a6f4c5}
+  .pill.rev{background:#f4f1fe;color:var(--rev);border:1px solid #d9d0fb}
+  .secdek{color:var(--ink-2);font-size:14px;margin:0 0 20px;padding-left:2px}
+  .sec.d .secno{background:var(--data)}
+  .sec.f .secno{background:var(--fwd)}
+  .sec.r .secno{background:var(--rev)}
+  .sec.f hr.rule{border-top-color:#6ee7a8}
+  .sec.r hr.rule{border-top-color:#c4b5fd}
+  .sec.m .secno{background:var(--money)}
+  .sec hr.rule{border:0;border-top:2px solid var(--line);margin:0 0 20px}
+  .sec.d hr.rule{border-top-color:#5eddd0}
+  .sec.m hr.rule{border-top-color:#fcd34d}
+
+  /* ---------- 步骤流 ---------- */
+  .flow{max-width:1120px}
+  .step{display:grid;grid-template-columns:100px 1fr 236px;gap:0;
+    border:1px solid var(--line);border-radius:11px;background:#fff;overflow:visible;position:relative;
+    box-shadow:0 1px 2px rgba(16,24,40,.05)}
+  .step .who{display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:5px;padding:14px 6px;border-right:1px solid var(--line);text-align:center;
+    border-radius:10px 0 0 10px}
+  .step .who .n{font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:800;
+    min-width:25px;height:25px;padding:0 5px;border-radius:11.5px;display:flex;align-items:center;
+    justify-content:center;background:#fff;border:1px solid var(--line-2);color:var(--ink-2)}
+  .step .who .w{font-size:13px;font-weight:700;line-height:1.3}
+  .step.u1 .who{background:#f0fdfa}  .step.u1 .who .w{color:var(--c-user)}
+  .step.u2 .who{background:#f6f4ff}  .step.u2 .who .w{color:var(--c-kk)}
+  .step.u3 .who{background:#fffbeb}  .step.u3 .who .w{color:var(--c-my)}
+  .step.u4 .who{background:#eff6ff}  .step.u4 .who .w{color:var(--c-vd)}
+  .step .body{padding:16px 19px}
+  .step .body h3{margin:0 0 7px;font-size:16.5px;font-weight:750;letter-spacing:-.015em}
+  .step .body p{margin:0;font-size:14px;color:var(--ink-2);line-height:1.72}
+  .step .body p + p{margin-top:6px}
+  .step .body code{font-family:ui-monospace,Menlo,monospace;font-size:12.8px;background:var(--panel-2);
+    border:1px solid var(--line);border-radius:4px;padding:1px 5px;color:var(--data)}
+  .step.key{border-color:#fcd34d;background:#fffdf6}
+  .step.key .body h3::after{content:"关键";font-size:10.5px;font-family:ui-monospace,Menlo,monospace;
+    color:var(--money);border:1px solid #fcd34d;background:#fffbeb;border-radius:4px;
+    padding:1px 6px;margin-left:8px;vertical-align:2px;font-weight:700}
+
+  /* 正逆向关联点提示带 */
+  .linkpt{margin:18px 0;border:1.5px solid var(--rev);border-radius:11px;background:#f8f6ff;
+    padding:15px 19px}
+  .linkpt .lk{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:11px;
+    letter-spacing:.1em;font-weight:800;color:#fff;background:var(--rev);
+    border-radius:4px;padding:3px 9px;margin-bottom:8px}
+  .linkpt p{margin:0;font-size:14px;color:var(--ink-2);line-height:1.72}
+  .linkpt b{color:var(--rev)}
+
+  /* 流别标签（合并后区分 数据流 / 资金流） */
+  .lane{display:inline-flex;align-items:center;gap:5px;font-family:ui-monospace,Menlo,monospace;
+    font-size:11px;letter-spacing:.08em;font-weight:700;border-radius:4px;padding:2px 8px;
+    margin-bottom:8px;border:1px solid}
+  .lane::before{content:"";width:6px;height:6px;border-radius:50%}
+  .lane.dt{color:var(--data);background:#effcfa;border-color:#8adbd0}
+  .lane.dt::before{background:var(--data)}
+  .lane.mn{color:var(--money);background:#fffbeb;border-color:#fcd34d}
+  .lane.mn::before{background:var(--money)}
+  .lane.bt{color:var(--ink-2);background:var(--panel-2);border-color:var(--line-2)}
+  .lane.bt::before{background:linear-gradient(90deg,var(--data) 50%,var(--money) 50%)}
+
+  /* 右侧：操作人 / 操作系统 */
+  .step .op{border-left:1px solid var(--line);background:var(--panel-2);
+    padding:14px 14px;display:flex;flex-direction:column;gap:10px;justify-content:center;
+    border-radius:0 10px 10px 0}
+  .op .grp{display:flex;flex-direction:column;gap:4px}
+  .op .lb{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;letter-spacing:.1em;
+    color:var(--ink-3);text-transform:uppercase;font-weight:600}
+  .op .vl{display:flex;flex-wrap:wrap;gap:4px}
+  .op .tg{font-size:12.5px;line-height:1.4;border-radius:5px;padding:3px 8px;
+    border:1px solid var(--line-2);background:#fff;color:var(--ink-2);font-weight:600}
+  .op .tg.role{border-color:#a9c5fd;color:var(--blue);background:#eff5ff}
+  .op .tg.sys{border-color:#8adbd0;color:var(--data);background:#effcfa;
+    font-family:ui-monospace,Menlo,monospace;font-size:11.8px;font-weight:600}
+  .op .tg.tbd{border-color:#f8b4b4;color:var(--red);background:#fef2f2}
+  .op .tg.na{border-style:dashed;color:var(--ink-3);background:transparent;font-weight:400}
+
+  /* 流程表头 */
+  .flowhead{display:grid;grid-template-columns:100px 1fr 236px;gap:0;margin-bottom:9px;
+    font-family:ui-monospace,Menlo,monospace;font-size:10.8px;letter-spacing:.14em;
+    color:var(--ink-3);text-transform:uppercase;font-weight:600}
+  .flowhead div{padding:0 14px}
+  .flowhead div:first-child{text-align:center;padding:0}
+
+  /* 向下箭头 */
+  .down{display:flex;align-items:center;gap:12px;padding:0 0 0 47px;height:46px}
+  .down .ln{width:0;height:100%;border-left:1.5px solid var(--line-2);position:relative}
+  .down .ln::after{content:"";position:absolute;left:-5.5px;bottom:-1px;
+    border-top:8px solid var(--line-2);border-left:5.5px solid transparent;border-right:5.5px solid transparent}
+  .down .tx{font-size:12.8px;color:var(--ink-2);font-family:ui-monospace,Menlo,monospace}
+  .down.d .ln{border-left:1.5px dashed #5eddd0}
+  .down.d .ln::after{border-top-color:var(--data)}
+  .down.d .tx{color:var(--data)}
+  .down.m .ln{border-left-color:#fcd34d}
+  .down.m .ln::after{border-top-color:var(--money)}
+  .down.m .tx{color:var(--money)}
+  .down.r .ln{border-left-color:#c4b5fd}
+  .down.r .ln::after{border-top-color:var(--rev)}
+  .down.r .tx{color:var(--rev)}
+
+  /* ===== 并行分叉（每列各自出箭头，不依赖百分比几何） ===== */
+  .fork{max-width:1120px}
+  .forkband{border:1.5px dashed #46c9b8;border-radius:9px;background:#effcfa;
+    padding:9px 16px;text-align:center;font-family:ui-monospace,Menlo,monospace;
+    font-size:12.8px;color:var(--data);letter-spacing:.04em;font-weight:600}
+  .forkband .dm{opacity:.55;margin:0 7px}
+  .forkarrows{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .forkarrows .fa{height:32px;display:flex;justify-content:center}
+  .forkarrows .fa .l{width:0;height:100%;border-left:1.5px dashed #46c9b8;position:relative}
+  .forkarrows .fa .l::after{content:"";position:absolute;left:-5.5px;bottom:-1px;
+    border-top:8px solid var(--data);border-left:5.5px solid transparent;border-right:5.5px solid transparent}
+  .forkcols{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch}
+  .forkcol{display:flex;flex-direction:column}
+  .forklabel{text-align:center;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;
+    letter-spacing:.06em;color:var(--data);margin:0 0 8px;font-weight:700}
+  .forkcol .step{grid-template-columns:1fr;flex:1}
+  .forkcol .step .who{flex-direction:row;gap:9px;border-right:0;border-bottom:1px solid var(--line);
+    border-radius:10px 10px 0 0;
+    padding:10px 14px;justify-content:flex-start}
+  .forkcol .step .body{flex:1}
+  .forkcol .step .op{border-left:0;border-top:1px solid var(--line);flex-direction:row;gap:20px;
+    border-radius:0 0 10px 10px;
+    flex-wrap:wrap;align-items:flex-start}
+
+  /* 判定分支 */
+  .branches{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+  .br{border:1px solid var(--line-2);border-radius:9px;background:var(--panel-2);padding:12px 14px}
+  .br .c{font-family:ui-monospace,Menlo,monospace;font-size:13px;font-weight:750;margin-bottom:6px}
+  .br.a .c{color:var(--rev)} .br.b .c{color:#a83409}
+  .br p{font-size:13.5px;color:var(--ink-2);margin:0;line-height:1.66}
+
+  /* 公式 */
+  .formula{font-family:ui-monospace,Menlo,monospace;font-size:13.8px;line-height:2.05;
+    background:var(--panel-2);border:1px solid var(--line-2);border-radius:8px;padding:12px 15px;
+    margin-top:10px;color:var(--ink-2)}
+  .formula .pos{color:var(--fwd);font-weight:600} .formula .neg{color:var(--red);font-weight:600}
+  .formula .res{color:var(--money);font-weight:700}
+
+  /* 口径提示徽标 + 大尺寸 hover 卡片 */
+  .hint{display:inline-block;font-size:11.5px;font-family:"PingFang SC",-apple-system,sans-serif;
+    background:#effcfa;color:var(--data);border:1px solid #8adbd0;border-bottom-style:dashed;
+    border-radius:4px;padding:1px 7px;margin-left:6px;vertical-align:1px;font-weight:600;
+    cursor:help;position:static}
+  .hint .tip{
+    position:absolute;left:0;right:0;top:calc(100% + 12px);width:auto;max-width:none;z-index:90;
+    background:#fff;border:1px solid var(--line-2);border-radius:12px;
+    box-shadow:0 18px 48px rgba(10,15,26,.20),0 2px 6px rgba(10,15,26,.08);
+    padding:18px 22px;
+    font-family:"PingFang SC",-apple-system,sans-serif;font-size:14.5px;line-height:1.8;
+    color:var(--ink-2);text-align:left;font-weight:400;letter-spacing:0;
+    opacity:0;visibility:hidden;transform:translateY(-6px);transition:.18s ease;pointer-events:none}
+  .hint:hover .tip,.hint:focus-within .tip{opacity:1;visibility:visible;transform:none;pointer-events:auto}
+  .hint .tip::before{content:"";position:absolute;left:28px;top:-7px;width:12px;height:12px;
+    background:#fff;border-left:1px solid var(--line-2);border-top:1px solid var(--line-2);
+    transform:rotate(45deg)}
+  .hint .tip b{color:var(--ink);font-weight:700}
+  .hint .tip .tt{display:block;font-family:ui-monospace,Menlo,monospace;font-size:12px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--data);margin-bottom:10px;font-weight:700;
+    padding-bottom:9px;border-bottom:2px solid #cdf0eb}
+  .hint .tip .fm{display:block;background:var(--panel-2);border:1px solid var(--line-2);
+    border-radius:9px;padding:14px 16px;margin:12px 0;font-family:ui-monospace,Menlo,monospace;
+    font-size:13.8px;color:var(--ink);line-height:1.95;white-space:normal}
+  .hint .tip .fm b{color:var(--money);font-weight:700}
+  .hint .tip .cav{display:block;margin-top:12px;padding:11px 13px;
+    background:#fffbeb;border:1px solid #f5be2e;border-radius:8px;
+    color:var(--ink-2);font-size:13.5px;line-height:1.75}
+  /* 层级与溢出：hover 时把所在卡片/列抬到最上层，且各层不裁切 */
+  .step:hover,.step:focus-within{z-index:80}
+  .forkcol{position:relative}
+  .forkcol:hover,.forkcol:focus-within{z-index:80}
+  .flow,.fork,.forkcols,.step .body,.formula{overflow:visible}
+  .hint:hover,.hint:focus-within{z-index:90}
+
+  /* 待定标记 + hover */
+  .pending{display:inline-block;font-size:11.5px;font-family:ui-monospace,Menlo,monospace;
+    background:#fef2f2;color:var(--red);border:1px solid #fecaca;
+    border-radius:4px;padding:1px 6px;margin-left:4px;vertical-align:1px;font-weight:600}
+  .pending.hov{cursor:help;position:relative;border-bottom-style:dashed}
+  .pending.hov::after{content:"?";font-size:9px;margin-left:3px;opacity:.7}
+  .pending.hov .tip{
+    position:absolute;left:0;top:calc(100% + 8px);width:460px;z-index:40;
+    background:#fff;border:1px solid var(--line-2);border-radius:10px;
+    box-shadow:0 12px 32px rgba(16,24,40,.16);padding:13px 15px;
+    font-family:"PingFang SC",-apple-system,sans-serif;font-size:13.5px;line-height:1.75;
+    color:var(--ink-2);text-align:left;font-weight:400;
+    opacity:0;visibility:hidden;transform:translateY(-4px);transition:.16s ease;pointer-events:none}
+  .pending.hov:hover .tip{opacity:1;visibility:visible;transform:none}
+  .pending.hov .tip b{color:var(--ink);font-weight:650}
+  .pending.hov .tip .tt{display:block;font-family:ui-monospace,Menlo,monospace;font-size:11px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--money);margin-bottom:6px;font-weight:700}
+  .pending.hov .tip .fm{display:block;background:var(--panel-2);border:1px solid var(--line);
+    border-radius:6px;padding:7px 9px;margin:7px 0;font-family:ui-monospace,Menlo,monospace;
+    font-size:12.5px;color:var(--ink);line-height:1.8}
+  .pending.hov .tip .cav{display:block;margin-top:8px;padding-top:8px;
+    border-top:1px dashed var(--line-2);color:var(--ink-2);font-size:13px}
+
+  /* 双边对账 */
+  .recon{display:grid;grid-template-columns:1fr 60px 1fr;align-items:stretch;margin-top:10px}
+  .recon .sd{border:1px solid var(--line-2);border-radius:9px;background:var(--panel-2);padding:12px 14px}
+  .recon .sd h4{margin:0 0 5px;font-size:13.5px;font-weight:720}
+  .recon .sd p{margin:0;font-size:13.2px;color:var(--ink-2);line-height:1.64}
+  .recon .md{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+  .recon .md .sym{font-size:20px;color:var(--data);font-family:ui-monospace,Menlo,monospace}
+  .recon .md .lb{font-size:10.5px;color:var(--ink-3);font-family:ui-monospace,Menlo,monospace}
+
+  /* 表结构明细 */
+  .schema{margin-top:11px;border:1px solid var(--line);border-radius:9px;
+    background:#fff;overflow:hidden}
+  .schema .sh{display:flex;align-items:center;gap:8px;padding:8px 13px;
+    border-bottom:1px solid var(--line);background:#f0fdfa;flex-wrap:wrap}
+  .schema .sh .k{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;letter-spacing:.12em;
+    color:var(--ink-3);text-transform:uppercase;font-weight:600}
+  .schema .sh .tb{font-family:ui-monospace,Menlo,monospace;font-size:13px;color:var(--data);
+    font-weight:700}
+  .schema table{width:100%;border-collapse:collapse;font-size:13.2px}
+  .schema td{padding:8px 14px;border-top:1px solid var(--line);vertical-align:top;
+    color:var(--ink-2);line-height:1.65}
+  .schema tr:first-child td{border-top:0}
+  .schema td.f{width:38%;font-family:ui-monospace,Menlo,monospace;font-size:12.3px;
+    color:var(--blue);white-space:normal}
+  .schema td.d b{color:var(--ink);font-weight:650}
+  .schema td.d em{font-style:normal;color:var(--red);font-size:12.5px;font-weight:500}
+  .schema .note{padding:9px 14px;border-top:1px solid var(--line);font-size:12.5px;
+    color:var(--ink-2);background:var(--panel-2)}
+
+  /* 输出条 */
+  .output{margin-top:18px;border:1px solid #f5be2e;border-radius:10px;
+    background:#fffbeb;padding:13px 18px;font-size:14px;color:var(--ink-2);max-width:1120px}
+  .output b{color:var(--money)}
+  .output .tag{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.1em;
+    color:var(--money);display:block;margin-bottom:3px;font-weight:700}
+
+  /* ---------- 交汇 ---------- */
+  .junction{margin-top:52px;border:1px solid #f5be2e;border-radius:12px;
+    background:#fffbeb;padding:22px 26px}
+  .junction h2{margin:0 0 7px;font-size:21px;font-weight:780;color:var(--money);letter-spacing:-.02em}
+  .junction > p{margin:0 0 18px;font-size:14.5px;color:var(--ink-2);max-width:70em}
+  .jchain{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+  .jbox{flex:1 1 0;min-width:150px;border:1px solid var(--line-2);border-radius:10px;
+    background:#fff;padding:12px 14px}
+  .jbox .t{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--ink-2);
+    letter-spacing:.1em;margin-bottom:4px;font-weight:600}
+  .jbox .v{font-size:14px;color:var(--ink-2);line-height:1.64}
+  .jbox .v b{color:var(--ink);font-weight:650}
+  .jar2{flex:0 0 78px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+  .jar2 .lb{font-size:11px;color:var(--ink-3);font-family:ui-monospace,Menlo,monospace}
+  .jar2 .bar{width:100%;height:0;border-top:1.5px solid var(--money);position:relative}
+  .jar2 .bar::after{content:"";position:absolute;right:-1px;top:-4.5px;
+    border-left:8px solid var(--money);border-top:4.5px solid transparent;border-bottom:4.5px solid transparent}
+
+  /* ---------- 责任矩阵 ---------- */
+  .mtx{width:100%;border-collapse:separate;border-spacing:0;margin-top:14px;font-size:13.5px}
+  .mtx th,.mtx td{border:1px solid var(--line);padding:12px 14px;vertical-align:top;text-align:left}
+  .mtx thead th{background:var(--panel-2);font-size:12.8px;font-weight:700;color:var(--ink-2);
+    font-family:ui-monospace,Menlo,monospace;letter-spacing:.03em;white-space:nowrap}
+  .mtx thead th.dd{color:var(--data)} .mtx thead th.mm{color:var(--money)}
+  .mtx tbody th{background:#fff;font-weight:750;font-size:14.5px;width:140px}
+  .mtx tbody tr.r1 th{color:var(--c-user)} .mtx tbody tr.r2 th{color:var(--c-kk)}
+  .mtx tbody tr.r3 th{color:var(--c-my)}   .mtx tbody tr.r4 th{color:var(--c-vd)}
+  .mtx tbody th small{display:block;font-size:11.3px;font-weight:400;color:var(--ink-3);
+    font-family:ui-monospace,Menlo,monospace;margin-top:2px}
+  .mtx td{color:var(--ink-2);line-height:1.68;background:#fff}
+  .mtx td.na{color:var(--ink-3)}
+  .mtx td b{color:var(--ink);font-weight:650}
+  .mtx td code{font-family:ui-monospace,Menlo,monospace;font-size:11.8px;background:var(--panel-2);
+    border:1px solid var(--line);border-radius:3px;padding:0 4px;color:var(--data)}
+
+  /* ---------- 待定 ---------- */
+  .todo{border:1px solid #f5a9a9;border-radius:12px;
+    background:#fef2f2;padding:18px 22px;margin-top:48px}
+  .todo h2{font-size:19px;margin:0 0 12px;color:var(--red);font-weight:770;letter-spacing:-.02em}
+  .todo .item{display:grid;grid-template-columns:84px 1fr;gap:14px;
+    padding:12px 0;border-top:1px solid #f5a9a9}
+  .todo .item:first-of-type{border-top:0;padding-top:0}
+  .todo .item .k{font-family:ui-monospace,Menlo,monospace;font-size:12.3px;color:var(--red);
+    font-weight:700;padding-top:2px}
+  .todo .item .v{font-size:14px;color:var(--ink-2);line-height:1.72}
+  .todo .item .v b{color:var(--ink);font-weight:650}
+  .todo .item .v em{font-style:normal;color:var(--ink-2);font-size:13px;display:block;margin-top:3px}
+  .todo .item .v .fm{display:block;background:#fff;border:1px solid #fecaca;border-radius:7px;
+    padding:9px 11px;margin:8px 0 4px;font-family:ui-monospace,Menlo,monospace;
+    font-size:12.6px;color:var(--ink);line-height:1.9}
+
+  /* ---------- 底部口径注释 ---------- */
+  .notes{margin-top:48px;border-top:2px solid var(--ink);padding-top:20px}
+  .notes h2{font-size:19px;margin:0 0 4px;font-weight:780;letter-spacing:-.02em}
+  .notes .nsub{font-size:13.5px;color:var(--ink-2);margin:0 0 18px}
+  .notes .ni{border:1px solid var(--line);border-radius:10px;background:var(--panel-2);
+    padding:15px 18px;margin-bottom:12px}
+  .notes .ni h3{margin:0 0 7px;font-size:15px;font-weight:750;letter-spacing:-.01em}
+  .notes .ni h3 .nk{font-family:ui-monospace,Menlo,monospace;font-size:11.3px;font-weight:700;
+    color:#fff;background:var(--money);border-radius:4px;padding:2px 7px;margin-right:8px;
+    letter-spacing:.06em;vertical-align:1.5px}
+  .notes .ni p{margin:0;font-size:13.8px;color:var(--ink-2);line-height:1.76}
+  .notes .ni p + p{margin-top:7px}
+  .notes .ni .fm{display:block;background:#fff;border:1px solid var(--line);border-radius:7px;
+    padding:10px 12px;margin:9px 0;font-family:ui-monospace,Menlo,monospace;
+    font-size:12.8px;color:var(--ink);line-height:1.95}
+  .notes .ni .fm .hl{color:var(--money);font-weight:700}
+  .notes .ni .cav{border-left:3px solid #f5be2e;padding-left:12px;color:var(--ink-2);font-size:13.3px}
+
+  .foot{margin-top:36px;padding-top:16px;border-top:1px solid var(--line-2);
+    font-size:12.5px;color:var(--ink-2);font-family:ui-monospace,Menlo,monospace;line-height:1.85}
+
+  h2.sec{font-size:16px;margin:26px 0 6px;font-weight:780;letter-spacing:-.01em;
+    display:flex;align-items:center;gap:8px}
+
+  @media (max-width:900px){
+    .ovrow{flex-direction:column} .ovar{flex:0 0 46px;width:100%}
+    .ovnote{display:none}
+    .branches{grid-template-columns:1fr}
+    .recon{grid-template-columns:1fr} .recon .md{padding:8px 0}
+    .jar2{flex:0 0 100%;height:40px}
+    .step{grid-template-columns:80px 1fr}
+    .step .op{grid-column:1 / span 2;border-left:0;border-top:1px solid var(--line);
+      flex-direction:row;gap:16px}
+    .flowhead{display:none}
+    .forkcols,.forkarrows{grid-template-columns:1fr}
+    .pending.hov .tip{width:280px;left:auto;right:0}
+  }
+  @media print{
+    body{background:#fff}
+    .step{box-shadow:none;break-inside:avoid}
+    .sec{break-inside:avoid-page}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ================= 封面 ================= -->
+  <div class="cover">
+    <div class="eyebrow">Kwai Mini-Game · Settlement Mechanism</div>
+    <h1>快小游快币消费 · <em>资金流与数据流</em>机制说明</h1>
+    <p class="dek">
+      本文梳理用户使用<b>快币</b>在<b>快小游</b>消费的完整链路，按
+      <b style="color:var(--fwd)">正向（消费结算）</b>与<b style="color:var(--rev)">逆向（退款追缴）</b>两个方向组织，
+      每一步内<b>数据流与资金流合并呈现</b>并以色块标注归属，涉及<b>用户/客服、快科、慕远、厂商</b>四个主体。
+      两条链路<b>唯一的关联点</b>是：<b>快科 → 慕远结算</b>与<b>慕远 → 厂商分成</b>时需扣除逆向产生的<b>退款总金额</b>。
+      核心前提：<b style="color:var(--c-my)">快小游运营主体为慕远</b>，<b style="color:var(--c-kk)">快币运营主体为快科</b>，二者为独立法人，需走结算流程。
+    </p>
+  </div>
+
+  <!-- ================= 总览 ================= -->
+  <div class="overview">
+    <div class="ovtitle">一句话总览 · 主体间关系</div>
+    <div class="ovrow">
+      <div class="ovbox b1"><span class="nm">用户</span><span class="rl">支出快币</span></div>
+      <div class="ovar"><div class="lb">消费对价</div><div class="bar"></div></div>
+      <div class="ovbox b2"><span class="nm">快科</span><span class="rl">快币主体 · 付款方</span></div>
+      <div class="ovar"><div class="lb">月结付款</div><div class="bar"></div></div>
+      <div class="ovbox b3"><span class="nm">慕远</span><span class="rl">快小游主体 · 收款方</span></div>
+      <div class="ovar"><div class="lb">分成结算</div><div class="bar"></div></div>
+      <div class="ovbox b4"><span class="nm">厂商</span><span class="rl">内容方</span></div>
+    </div>
+    <div class="ovnote">
+      <div class="sp"></div><div class="tx">支付回调<br/>订单落库</div>
+      <div class="sp"></div><div class="tx">双边口径<br/>对账核验</div>
+      <div class="sp"></div><div class="tx">退款明细<br/>扣减清单</div>
+      <div class="sp"></div>
+    </div>
+    <p style="margin:14px 0 0;font-size:13.5px;color:var(--ink-2)">
+      上排橙色为<b style="color:var(--money)">资金流向</b>，下排青色为伴随的<b style="color:var(--data)">数据流向</b>；
+      本文后续<b>不再拆分两条流</b>，而是按<b>正向 / 逆向</b>两章合并叙述，每步以
+      <span class="lane dt" style="margin:0">数据流</span>
+      <span class="lane mn" style="margin:0">资金流</span>
+      <span class="lane bt" style="margin:0">两者兼有</span> 标注归属。
+    </p>
+  </div>
+
+  <!-- ================= 01 正向链路 ================= -->
+  <div class="sec f">
+    <div class="sechead">
+      <span class="secno">01</span>
+      <h2>正向链路 · 消费与结算</h2>
+      <span class="pill fwd">FORWARD</span>
+    </div>
+    <p class="secdek"><b>数据流与资金流合并呈现</b>：每一步左上角标注该步属于<b style="color:var(--data)">数据流</b>、<b style="color:var(--money)">资金流</b>或两者兼有。
+      用户下单后，快科侧记账与慕远侧落单<b>并行发生</b>；到月结节点双方各自出数、交叉比对，再走 OA 付款直至厂商分成。
+      末两步是与<b style="color:var(--rev)">逆向链路</b>的<b>唯一关联点</b>——需扣除逆向产生的退款总金额。</p>
+    <hr class="rule" />
+
+    <div class="flow">
+
+      <div class="flowhead">
+        <div>主体</div><div>流程动作</div><div class="h3c">操作人 / 操作系统</div>
+      </div>
+
+      <div class="step u1">
+        <div class="who"><div class="n">1</div><div class="w">用户</div></div>
+        <div class="body">
+          <span class="lane bt">数据流 + 资金流 · 起点</span>
+          <h3>发起快币支付</h3>
+          <p>用户在快小游内下单，选择<b>快币支付</b>，支付请求进入快科账户体系；快币余额被扣减，对应<b>消费对价进入快科账体系</b>，构成整条资金链的起点。</p>
+        </div>
+        <div class="op">
+          <div class="grp"><span class="lb">操作人</span>
+            <span class="vl"><span class="tg role">C 端用户</span></span></div>
+          <div class="grp"><span class="lb">操作系统</span>
+            <span class="vl"><span class="tg sys">快小游客户端</span><span class="tg sys">快币支付</span></span></div>
+        </div>
+      </div>
+
+      <div class="fork">
+        <div class="forkband">支付请求 <span class="dm">·</span> 双侧并行记账，互不阻塞</div>
+        <div class="forkarrows">
+          <div class="fa"><div class="l"></div></div>
+          <div class="fa"><div class="l"></div></div>
+        </div>
+
+        <div class="forkcols">
+
+          <div class="forkcol">
+            <div class="forklabel">分支 A · 快科侧记账</div>
+            <div class="step u2">
+              <div class="who"><div class="n">2A</div><div class="w">快科</div></div>
+              <div class="body">
+                <span class="lane bt">数据流 + 资金流</span>
+                <h3>快币账户扣减 · 资金暂存快科</h3>
+                <p><b>数据侧</b>：按快币口径记录一次消耗，打上 <code>biztype = 快小游消费</code>，回调支付结果，形成<b>快科侧快币消耗流水</b>，是月结时快科口径出数的依据。</p>
+                <p style="color:var(--money)"><b>资金侧</b>：快币由快科主体发行，消费对价先留存快科，账面上形成<b>对慕远的应付款项</b>。</p>
+              </div>
+              <div class="op">
+                <div class="grp"><span class="lb">操作人</span>
+                  <span class="vl"><span class="tg role">系统自动</span><span class="tg role">快科财务 BP</span></span></div>
+                <div class="grp"><span class="lb">操作系统</span>
+                  <span class="vl"><span class="tg sys">快币账户系统</span><span class="tg sys">快科财务账套</span></span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="forkcol">
+            <div class="forklabel">分支 B · 慕远侧落单</div>
+            <div class="step u3 key">
+              <div class="who"><div class="n">2B</div><div class="w">慕远</div></div>
+              <div class="body">
+                <span class="lane dt">数据流</span>
+                <h3>快小游订单表新增一条记录</h3>
+                <p>标记 <code>pay_type = 快币</code>，落 <code>user_id</code>、订单号、金额、时间戳、归属厂商。</p>
+                <p style="color:var(--money)">该订单表是后续收入核算与退款匹配的<b>唯一数据底座</b>，正逆向链路均以此为准。</p>
+              </div>
+              <div class="op">
+                <div class="grp"><span class="lb">操作人</span>
+                  <span class="vl"><span class="tg role">快小游 DE</span></span></div>
+                <div class="grp"><span class="lb">操作系统</span>
+                  <span class="vl"><span class="tg sys">快小游服务端</span><span class="tg sys">快小游订单表</span></span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="forkarrows" style="margin-top:0">
+          <div class="fa"><div class="l"></div></div>
+          <div class="fa"><div class="l"></div></div>
+        </div>
+        <div class="forkband">双侧各自沉淀数据 <span class="dm">→</span> 到达月结节点 <span class="dm">·</span> 双边再并行独立出数</div>
+        <div class="forkarrows">
+          <div class="fa"><div class="l"></div></div>
+          <div class="fa"><div class="l"></div></div>
+        </div>
+
+        <div class="forkcols">
+
+          <div class="forkcol">
+            <div class="forklabel">分支 A · 快科口径</div>
+            <div class="step u2">
+              <div class="who"><div class="n">3A</div><div class="w">快科</div></div>
+              <div class="body">
+                <span class="lane dt">数据流</span>
+                <h3>按快科口径校验合理性</h3>
+                <p>快科依据快币在周期内的<b>实际消耗</b>（按 <code>biztype</code> 统计）<b>独立出数</b>，
+                用于校验慕远所报收入的合理性。</p>
+                <p>该分支与分支 B <b>互不依赖、并行进行</b>，两套口径出数后再汇合比对。</p>
+              </div>
+              <div class="op">
+                <div class="grp"><span class="lb">操作人</span>
+                  <span class="vl"><span class="tg role">快科财务 BP</span></span></div>
+                <div class="grp"><span class="lb">操作系统</span>
+                  <span class="vl"><span class="tg sys">快币消耗 biztype 报表</span></span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="forkcol">
+            <div class="forklabel">分支 B · 慕远口径</div>
+            <div class="step u3">
+              <div class="who"><div class="n">3B</div><div class="w">慕远</div></div>
+              <div class="body">
+                <span class="lane dt">数据流</span>
+                <h3>按慕远口径核算本期收入</h3>
+                <p>汇总周期内<b>快小游订单表</b>的快币金额，扣除<b>预期退款</b>（慕远侧提供）与<b>渠道费成本</b>（口径见注 1）：</p>
+                <div class="formula">
+                  <span class="pos">Σ 订单表快币金额</span><br/>
+                  &nbsp;−&nbsp; <span class="neg">预期退款</span><span class="hint">慕远提供<span class="tip">
+                    <span class="tt">预期退款 · 数据来源</span>
+                    由<b>慕远侧</b>提供：依据<b>逆向链路（02 章）</b>汇总的
+                    <b>快小游预期承担的退款总金额</b>，在收入核算时先行扣除。
+                    <span class="cav">来源：客服侧退款信息表匹配快小游订单表后判定得出，详见「口径注释 · 注 2」。</span>
+                  </span></span><br/>
+                  &nbsp;−&nbsp; <span class="neg">渠道费成本</span><span class="hint">口径已定<span class="tip">
+                    <span class="tt">渠道费成本 · 计算口径</span>
+                    根据<b>直播侧已有的充值渠道分布</b>，计算<b>加权平均费率</b>：
+                    <span class="fm">加权平均费率 = Σ(各子渠道费率 × 充值占比)<br/><br/>
+例（微信 50% / 支付宝 30% / 银联 20%）：<br/>
+≈ 1%×0.5 + 0.875%×0.3 + 0.2%×0.2 ≈ <b>0.87%</b><br/><br/>
+渠道费成本 = 小游戏安卓消耗 × 加权平均费率</span>
+                    <span class="cav">后续快小游上快币之后，再看实际使用快币人群的充值习惯；首期实验上线、数据稳定后再定最终费率。</span>
+                  </span></span><br/>
+                  =&nbsp; <span class="res">本期应确认收入</span>
+                </div>
+              </div>
+              <div class="op">
+                <div class="grp"><span class="lb">操作人</span>
+                  <span class="vl"><span class="tg role">快小游财务 BP</span></span></div>
+                <div class="grp"><span class="lb">操作系统</span>
+                  <span class="vl"><span class="tg sys">快小游订单表</span><span class="tg sys">DE 取数 / 财务核算</span></span></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="forkarrows" style="margin-top:0">
+          <div class="fa"><div class="l"></div></div>
+          <div class="fa"><div class="l"></div></div>
+        </div>
+        <div class="forkband">两套口径汇合 <span class="dm">·</span> 进入交叉比对</div>
+      </div>
+
+      <div class="step u3">
+        <div class="who"><div class="n">4</div><div class="w">双方</div></div>
+        <div class="body">
+          <span class="lane dt">数据流</span>
+          <h3>双边 CHECK · 口径交叉比对</h3>
+          <div class="recon">
+            <div class="sd">
+              <h4 style="color:var(--c-my)">慕远口径</h4>
+              <p>以<b>快小游订单表</b>为准：快币金额加总，扣预期退款与渠道费。</p>
+            </div>
+            <div class="md"><div class="sym">⇄</div><div class="lb">CHECK</div></div>
+            <div class="sd">
+              <h4 style="color:var(--c-kk)">快科口径</h4>
+              <p>以<b>快币消耗</b>为准：按 biztype 统计周期内实际消耗量。</p>
+            </div>
+          </div>
+        </div>
+        <div class="op">
+          <div class="grp"><span class="lb">操作人</span>
+            <span class="vl"><span class="tg role">快小游财务 BP</span><span class="tg role">快科财务 BP</span></span></div>
+          <div class="grp"><span class="lb">操作系统</span>
+            <span class="vl"><span class="tg sys">对账底稿</span></span></div>
+        </div>
+      </div>
+
+      <div class="down d"><div class="ln"></div><div class="tx">差异闭环后锁定</div></div>
+
+      <div class="step u3">
+        <div class="who"><div class="n">5</div><div class="w">双方</div></div>
+        <div class="body">
+          <span class="lane dt">数据流</span>
+          <h3>双边对账一致，锁定本期应结金额</h3>
+          <p>两套口径核对无差异后形成结算依据，产出<b>本期应确认收入</b>与<b>锁定的应结金额</b>。存在差异时由双方对账责任人闭环<span class="pending">待定 ①</span></p>
+        </div>
+        <div class="op">
+          <div class="grp"><span class="lb">操作人</span>
+            <span class="vl"><span class="tg role">快小游财务 BP</span><span class="tg role">快科财务 BP</span>
+            <span class="tg tbd">对账责任人待定</span></span></div>
+          <div class="grp"><span class="lb">操作系统</span>
+            <span class="vl"><span class="tg sys">线下对账 / 结算底稿</span></span></div>
+        </div>
+      </div>
+
+      <div class="down m"><div class="ln"></div><div class="tx">凭锁定金额走付款</div></div>
+
+      <div class="step u3">
+        <div class="who"><div class="n">6</div><div class="w">慕远</div></div>
+        <div class="body">
+          <span class="lane mn">资金流</span>
+          <h3>业务同学发起结算 OA</h3>
+          <p>依据上一步双边对齐的应结金额，由业务同学发起<b>快科 → 慕远</b>的结算 OA 流程，附对账结果与金额明细。</p>
+        </div>
+        <div class="op">
+          <div class="grp"><span class="lb">操作人</span>
+            <span class="vl"><span class="tg role">@快小游经管业务</span></span></div>
+          <div class="grp"><span class="lb">操作系统</span>
+            <span class="vl"><span class="tg sys">OA 结算流程</span></span></div>
+        </div>
+      </div>
+
+      <div class="down m"><div class="ln"></div><div class="tx">OA 审批通过</div></div>
+
+      <div class="step u2">
+        <div class="who"><div class="n">7</div><div class="w">快科</div></div>
+        <div class="body">
+          <span class="lane mn">资金流</span>
+          <h3>快科审批并出款（付款方）</h3>
+          <p>审批通过后按约定账期向慕远付款。<b>结算周期与账期尚未确定</b><span class="pending">待定 ①</span></p>
+        </div>
+        <div class="op">
+          <div class="grp"><span class="lb">操作人</span>
+            <span class="vl"><span class="tg role">快科财务 BP</span></span></div>
+          <div class="grp"><span class="lb">操作系统</span>
+            <span class="vl"><span class="tg sys">OA 审批</span><span class="tg sys">财务付款</span></span></div>
+        </div>
+      </div>
+
+      <div class="linkpt">
+        <span class="lk">LINK · 与逆向链路的唯一关联点</span>
+        <p>以下两步<b>必须扣除逆向链路（02 章）算出的「退款总金额」</b>，这是正向与逆向唯一交汇的地方；
+           除此之外，正向与逆向两条链路彼此独立、互不影响。</p>
+      </div>
+
+      <div class="step u3 key">
+        <div class="who"><div class="n">8</div><div class="w">慕远</div></div>
+        <div class="body">
+          <span class="lane mn">资金流</span>
+          <h3>快科 → 慕远结算（扣除逆向退款）</h3>
+          <div class="formula">
+            应结现金 &nbsp;−&nbsp; <span class="neg">退款总金额（来自逆向链路）</span>
+            &nbsp;=&nbsp; <span class="res">本期实际到账</span>
+          </div>
+          <p style="margin-top:8px">收入端同步调减：应确认收入 <b style="color:var(--red)">− 退款总金额</b>。
+             即快科当期付款金额被<b>直接调减</b>，无需单独发起反向付款流程。</p>
+        </div>
+        <div class="op">
+          <div class="grp"><span class="lb">操作人</span>
+            <span class="vl"><span class="tg role">快小游财务 BP</span><span class="tg role">快科财务 BP</span></span></div>
+          <div class="grp"><span class="lb">操作系统</span>
+            <span class="vl"><span class="tg sys">慕远财务账套</span><span class="tg sys">财务月均核算</span></span></div>
+        </div>
+      </div>
+
+      <div class="down m"><div class="ln"></div><div class="tx">按订单归属分成</div></div>
+
+      <div class="step u4 key">
+        <div class="who"><div class="n">9</div><div class="w">厂商</div></div>
+        <div class="body">
+          <span class="lane mn">资金流</span>
+          <h3>慕远与厂商分成结算（扣除逆向退款）</h3>
+          <p>慕远按订单归属向厂商结算分成收入，并在本环节<b>扣减 / 追缴</b>逆向链路输出的退款明细：
+             已结算部分执行<b>追缴</b>，未结算部分在本期分成中<b>直接扣减</b>。</p>
+        </div>
+        <div class="op">
+          <div class="grp"><span class="lb">操作人</span>
+            <span class="vl"><span class="tg role">@快小游经管业务</span></span></div>
+          <div class="grp"><span class="lb">操作系统</span>
+            <span class="vl"><span class="tg sys">推送天算系统</span></span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= 02 逆向链路 ================= -->
+  <div class="sec r">
+    <div class="sechead">
+      <span class="secno">02</span>
+      <h2>逆向链路 · 退款与追缴</h2>
+      <span class="pill rev">REVERSE</span>
+    </div>
+    <p class="secdek"><b>数据流与资金流合并呈现</b>。由客服核实退款触发：用「用户 ID + 时间戳」回订单表匹配，判定后汇总出<b>快小游应承担的退款总金额</b>。
+      该金额是<b>唯一回流到正向链路的变量</b>——在正向的<b>快科 → 慕远结算</b>与<b>慕远 → 厂商分成</b>两处被扣除。</p>
+    <hr class="rule" />
+
+    <div class="flow">
+
+      <div class="flowhead">
+        <div>主体</div><div>流程动作</div><div class="h3c">操作人 / 操作系统</div>
+      </div>
+
+      <div class="step u1">
+        <div class="who"><div class="n">1</div><div class="w">客服</div></div>
+        <div class="body">
+          <span class="lane dt">数据流</span>
+          <h3>客服核实用户退款申请</h3>
+          <p>核实通过后输出四要素数据包：用户基础 <code>id</code>、<b>充值时间</b>、<b>申请退款时间</b>、<b>实际退款金额</b>。</p>
+
+          <div class="schema">
+            <div class="sh">
+              <span class="k">数据源</span>
+              <span class="tb">ks_ue_data.dm_child_refund_info_dt</span>
+              <span class="k" style="margin-left:auto">客服侧退款信息表</span>
+            </div>
+            <table>
+              <tr>
+                <td class="f">user_id</td>
+                <td class="d">申请退款用户 ID</td>
+              </tr>
+              <tr>
+                <td class="f">employee_submit_refund_start<br/>employee_submit_refund_end</td>
+                <td class="d"><b>客服确认后</b>的充值起止时间。
+                  <em>若客服未确认，该时间为 1971，需作为脏数据剔除。</em></td>
+              </tr>
+              <tr>
+                <td class="f">refund_start_time<br/>refund_end_time</td>
+                <td class="d"><b>用户填写</b>的充值起止时间（与上方客服确认口径区分）</td>
+              </tr>
+              <tr>
+                <td class="f">apply_refund_money</td>
+                <td class="d">申请退款金额</td>
+              </tr>
+              <tr>
+                <td class="f">real_refund_money</td>
+                <td class="d"><b>实际退款金额</b>。
+                  <em>审核过后即有值，但仅当审核单状态为「退款成功」时才是真实退款金额。</em></td>
+              </tr>
+            </table>
+            <div class="note">
+              取数口径：以 <b style="color:var(--blue)">employee_submit_refund_start / end</b> 作为匹配订单的时间区间，
+              以<b style="color:var(--blue)">审核单状态 = 退款成功</b>的 <b style="color:var(--blue)">real_refund_money</b> 作为退款金额基数。
+            </div>
+          </div>
+        </div>
+        <div class="op">
+          <div class="grp"><span class="lb">操作人</span>
+            <span class="vl"><span class="tg role">客服</span></span></div>
+          <div class="grp"><span class="lb">对接人</span>
+            <span class="vl"><span class="tg role">体验支持</span></span></div>
+          <div class="grp"><span class="lb">操作系统</span>
+            <span class="vl"><span class="tg sys">客服工单系统</span>
+            <span class="tg sys">dm_child_refund_info_dt</span></span></div>
+        </div>
+      </div>
+
+      <div class="down r"><div class="ln"></div><div class="tx">数据分发 · 两个走向</div></div>
+
+      <div class="step u1">
+        <div class="who"><div class="n">2</div><div class="w">客服</div></div>
+        <div class="body">
+          <span class="lane dt">数据流</span>
+          <h3>数据分发至两个走向</h3>
+          <div class="branches">
+            <div class="br a" style="opacity:.82">
+              <div class="c" style="color:var(--ink-2)">走向 A · 直播</div>
+              <p>由直播侧自行核实与处理，本文不展开。</p>
+            </div>
+            <div class="br a">
+              <div class="c">走向 B · 快小游</div>
+              <p>进入慕远侧的订单匹配流程，即以下步骤。</p>
+            </div>
+          </div>
+        </div>
+        <div class="op">
+          <div class="grp"><span class="lb">操作人</span>
+            <span class="vl"><span class="tg role">客服</span></span></div>
+          <div class="grp"><span class="lb">操作系统</span>
+            <span class="vl"><span class="tg sys">退款数据分发</span></span></div>
+        </div>
+      </div>
+
+      <div class="down r"><div class="ln"></div><div class="tx">走向 B 展开</div></div>
+
+      <div class="step u3">
+        <div class="who"><div class="n">3</div><div class="w">慕远</div></div>
+        <div class="body">
+          <span class="lane dt">数据流</span>
+          <h3>回订单表匹配消费记录</h3>
+          <p>以 <code>user_id</code> 与退款时间区间为条件，捞出该窗口内<b>全部使用快币支付的订单</b>，
+          得到<b>消费总金额</b>与对应订单明细。</p>
+          <p>关联键：客服表 <code>user_id</code> ↔ 订单表 <code>user_id</code>；
+          时间区间取客服确认口径 <code>employee_submit_refund_start / end</code>（须剔除值为 1971 的未确认记录）。</p>
+        </div>
+        <div class="op">
+          <div class="grp"><span class="lb">操作人</span>
+            <span class="vl"><span class="tg role">快小游 DE</span></span></div>
+          <div class="grp"><span class="lb">操作系统</span>
+            <span class="vl"><span class="tg sys">快小游订单表</span>
+            <span class="tg sys">dm_child_refund_info_dt</span></span></div>
+        </div>
+      </div>
+
+      <div class="down r"><div class="ln"></div><div class="tx">比对金额大小</div></div>
+
+      <div class="step u3">
+        <div class="who"><div class="n">4</div><div class="w">慕远</div></div>
+        <div class="body">
+          <span class="lane dt">数据流</span>
+          <h3>判定：消费总额 与 退款金额 比大小</h3>
+          <p style="margin-bottom:6px">退款金额取 <code>real_refund_money</code>，且仅取<b>审核单状态为「退款成功」</b>的记录。</p>
+          <div class="branches">
+            <div class="br a">
+              <div class="c">情形一：消费总额 &gt; 退款金额</div>
+              <p>按退款金额，挑选<b>总额相匹配的订单</b>，做<b>正笔维度</b>的退款与厂商结算，保证逐笔可追溯。</p>
+            </div>
+            <div class="br b">
+              <div class="c">情形二：消费总额 ≤ 退款金额</div>
+              <p>将<b>全部消费总额</b>悉数<b>追缴退回</b>。</p>
+            </div>
+          </div>
+        </div>
+        <div class="op">
+          <div class="grp"><span class="lb">操作人</span>
+            <span class="vl"><span class="tg role">快小游 DE</span></span></div>
+          <div class="grp"><span class="lb">操作系统</span>
+            <span class="vl"><span class="tg tbd">加工方式待确认 ②</span></span></div>
+        </div>
+      </div>
+
+      <div class="down r"><div class="ln"></div><div class="tx">输出扣减清单 · 分发两方</div></div>
+
+      <div class="step u4">
+        <div class="who"><div class="n">5A</div><div class="w">厂商</div></div>
+        <div class="body">
+          <span class="lane dt">数据流</span>
+          <h3>输出扣减清单给厂商 · 用于分成扣减</h3>
+          <p>厂商收到正笔订单明细或全量金额，作为分成结算中<b>扣减与追缴</b>的依据。</p>
+        </div>
+        <div class="op">
+          <div class="grp"><span class="lb">操作人</span>
+            <span class="vl"><span class="tg role">@快小游经管业务</span></span></div>
+          <div class="grp"><span class="lb">操作系统</span>
+            <span class="vl"><span class="tg sys">推送天算系统</span></span></div>
+        </div>
+      </div>
+
+      <div class="down r"><div class="ln"></div><div class="tx">同一清单同步快科</div></div>
+
+      <div class="step u2">
+        <div class="who"><div class="n">5B</div><div class="w">快科</div></div>
+        <div class="body">
+          <span class="lane dt">数据流</span>
+          <h3>同步扣减清单给快科 · 用于月均核算</h3>
+          <p>同一份清单同步至快科财务，作为<b>退款成本</b>计入财务月均核算，与正向链路第 8 步的月结调减相衔接。</p>
+        </div>
+        <div class="op">
+          <div class="grp"><span class="lb">操作人</span>
+            <span class="vl"><span class="tg role">快小游财务 BP</span><span class="tg role">快科财务 BP</span></span></div>
+          <div class="grp"><span class="lb">操作系统</span>
+            <span class="vl"><span class="tg sys">财务月均核算</span></span></div>
+        </div>
+      </div>
+
+      <div class="down r"><div class="ln"></div><div class="tx">周期汇总</div></div>
+
+      <div class="step u1">
+        <div class="who"><div class="n">6</div><div class="w">用户</div></div>
+        <div class="body">
+          <span class="lane mn">资金流</span>
+          <h3>用户实际收到退款</h3>
+          <p>退款金额由<b>充值侧原路退回</b>用户，逆向资金到此终结；下游各主体的成本承担由以下步骤完成。</p>
+        </div>
+        <div class="op">
+          <div class="grp"><span class="lb">操作人</span>
+            <span class="vl"><span class="tg role">客服</span></span></div>
+          <div class="grp"><span class="lb">操作系统</span>
+            <span class="vl"><span class="tg sys">充值侧原路退回</span></span></div>
+        </div>
+      </div>
+
+      <div class="down r"><div class="ln"></div><div class="tx">周期汇总</div></div>
+
+      <div class="step u3 key">
+        <div class="who"><div class="n">7</div><div class="w">慕远</div></div>
+        <div class="body">
+          <span class="lane bt">数据流 + 资金流 · 产出</span>
+          <h3>汇总：快小游预期承担的退款总金额</h3>
+          <p>按判定结果确认落到快小游侧的退款成本（<b>正笔匹配金额</b>或<b>消费总额全量</b>），周期汇总得出<b>退款总金额</b>。</p>
+          <p style="color:var(--rev)">该金额是<b>逆向链路唯一的对外产出</b>，回流至正向链路后被扣除，逆向链路本身不再单独走反向付款流程。</p>
+        </div>
+        <div class="op">
+          <div class="grp"><span class="lb">操作人</span>
+            <span class="vl"><span class="tg role">快小游 DE</span><span class="tg role">快小游财务 BP</span></span></div>
+          <div class="grp"><span class="lb">操作系统</span>
+            <span class="vl"><span class="tg sys">DE 取数 / 财务核算</span></span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="output">
+      <span class="tag">OUTPUT → 正向链路（唯一关联点）</span>
+      产出 <b>退款总金额</b>，回流至正向链路两处扣除：
+      <b>① 快科 → 慕远结算</b>（收入端 &amp; 现金端同时调减）、<b>② 慕远 → 厂商分成</b>（扣减 / 追缴）。
+      同时输出<b>扣减清单</b>两份：给厂商作扣减依据，给快科作退款成本计入财务月均核算。
+    </div>
+  </div>
+
+  <!-- ================= 交汇点 ================= -->
+  <div class="junction">
+    <h2>正向 ⇄ 逆向 唯一关联点：退款总金额</h2>
+    <p>逆向链路（02 章）算出的「快小游预期承担的退款总金额」，是两条链路<b>唯一</b>的耦合变量——
+       它既是正向收入公式中的<b>预期退款项</b>，也是<b>快科 → 慕远结算</b>与<b>慕远 → 厂商分成</b>两处的<b>扣减项</b>。
+       除此之外，正向与逆向彼此独立。</p>
+    <div class="jchain">
+      <div class="jbox">
+        <div class="t">逆向产出</div>
+        <div class="v">客服四要素<br/>+ 订单匹配 + 金额判定</div>
+      </div>
+      <div class="jar2"><div class="lb">得出</div><div class="bar"></div></div>
+      <div class="jbox">
+        <div class="t">交汇变量</div>
+        <div class="v"><b>退款总金额</b></div>
+      </div>
+      <div class="jar2"><div class="lb">喂入</div><div class="bar"></div></div>
+      <div class="jbox">
+        <div class="t">正向两处扣减</div>
+        <div class="v">① 快科 → 慕远结算<br/>② 慕远 → 厂商分成</div>
+      </div>
+      <div class="jar2"><div class="lb">得出</div><div class="bar"></div></div>
+      <div class="jbox">
+        <div class="t">最终结果</div>
+        <div class="v"><b style="color:var(--money)">本期实际结算额</b></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 责任矩阵 ================= -->
+  <div class="sec">
+    <div class="sechead">
+      <span class="secno" style="background:var(--ink-2)">05</span>
+      <h2>四主体责任矩阵</h2>
+    </div>
+    <p class="secdek">同一主体在不同链路与方向上承担的角色不同，本表为前四章的转置视角，便于快速确认职责归属。</p>
+    <hr class="rule" />
+
+    <table class="mtx">
+      <thead>
+        <tr>
+          <th>主体</th>
+          <th class="dd">01 正向链路 · 消费与结算</th>
+          <th class="mm">02 逆向链路 · 退款与追缴</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="r1">
+          <th>用户 / 客服<br/><small>FLOW ENTRY</small></th>
+          <td>发起快币支付，产生原始消费数据；支出快币，构成资金链起点。</td>
+          <td><b>核实退款申请</b>，经 <code>dm_child_refund_info_dt</code> 输出四要素并分发至直播 / 快小游两个走向；用户经原路退回实际收到退款。<br/>
+            <span style="color:var(--blue);font-weight:600">客服 · 对接人：体验支持</span></td>
+        </tr>
+        <tr class="r2">
+          <th>快科<br/><small>快币主体</small></th>
+          <td>扣减快币并打 biztype，资金暂存形成对慕远的应付；按快币<b>实际消耗</b>独立出数<b>校验慕远收入合理性</b>；OA 审批后<b>作为付款方</b>向慕远出款，付款额中直接调减退款总额。<br/>
+            <span style="color:var(--blue);font-weight:600">快科财务 BP</span></td>
+          <td>不参与订单匹配与判定，但<b>接收扣减清单</b>作为退款成本计入财务月均核算。<br/>
+            <span style="color:var(--blue);font-weight:600">快科财务 BP</span></td>
+        </tr>
+        <tr class="r3">
+          <th>慕远 · 快小游<br/><small>快小游主体</small></th>
+          <td><b>订单表持有方</b>（唯一数据底座）；按 Σ快币金额 − 预期退款 − 渠道费 出收入口径；发起结算 OA，<b>作为收款方</b>收款后与厂商分成。<br/>
+            <span style="color:var(--blue);font-weight:600">快小游 DE · 快小游财务 BP · @快小游经管业务</span></td>
+          <td><b>核心执行方</b>：按 user_id + 时间戳匹配订单，执行判定，汇总退款总额并输出双份清单；确认自身应承担的退款成本。<br/>
+            <span style="color:var(--blue);font-weight:600">快小游 DE · 快小游财务 BP · @快小游经管业务</span></td>
+        </tr>
+        <tr class="r4">
+          <th>厂商<br/><small>内容方</small></th>
+          <td>作为订单归属维度存在；接收慕远按订单归属结算的<b>分成收入</b>（已扣减逆向退款）。</td>
+          <td><b>最终承担方之一</b>：接收正笔订单明细或全量金额，已结算部分被追缴，未结算部分在本期分成中扣减。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ================= 待定 ================= -->
+  <div class="todo">
+    <h2>待确认事项</h2>
+    <div class="item">
+      <div class="k">待定 ①</div>
+      <div class="v">
+        <b>结算双方 check 对账责任人</b>，以及<b>快科与慕远之间的现金结算周期与账期</b>（是否严格月结）待明确。
+        <em>影响范围：正向链路第 5 步差异闭环的责任归属，第 7 步出款节奏与资金占用。</em>
+      </div>
+    </div>
+    <div class="item">
+      <div class="k">待定 ②</div>
+      <div class="v">
+        <b>退款判定的加工方式</b>待确认（对应逆向链路第 4 步：消费总额与退款金额比大小后的正笔匹配逻辑）。
+        <em>影响范围：系统自动加工 or DE 人工取数加工，决定该环节的时效、人力成本与可追溯性。</em>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 底部口径注释 ================= -->
+  <div class="notes">
+    <h2>口径注释</h2>
+    <p class="nsub">以下为全文引用的关键口径定义，供对账与核算时统一执行标准。</p>
+
+    <div class="ni">
+      <h3><span class="nk">注 1</span>渠道费成本口径</h3>
+      <p>根据<b>直播侧之前的充值渠道分布</b>，计算<b>加权平均费率</b>，按大致结构估算：</p>
+      <span class="fm">
+        加权平均费率 = Σ(各子渠道费率 × 充值占比)<br/><br/>
+        例（微信 50%、支付宝 30%、银联 20%）：<br/>
+        ≈ 1% × 0.5 &nbsp;+&nbsp; 0.875% × 0.3 &nbsp;+&nbsp; 0.2% × 0.2 &nbsp;≈&nbsp; <span class="hl">0.87%</span><br/><br/>
+        渠道费成本 = <span class="hl">小游戏安卓消耗 × 加权平均费率</span>
+      </span>
+      <p class="cav">后续快小游上了快币之后，再看下快小游实际用快币的人群的充值习惯；首期实验上线、比较稳定后再定一下费率。</p>
+    </div>
+
+    <div class="ni">
+      <h3><span class="nk">注 2</span>退款数据取数口径</h3>
+      <p>数据源：客服侧退款信息表 <code style="font-family:ui-monospace,Menlo,monospace;font-size:13px;
+        background:#fff;border:1px solid var(--line);border-radius:3px;padding:1px 5px;color:var(--data)">ks_ue_data.dm_child_refund_info_dt</code>，对接人：<b>体验支持</b>。</p>
+      <p>· <b>时间区间</b>取客服确认口径 <b>employee_submit_refund_start / _end</b>；若客服未确认，该字段值为 1971，须作为脏数据剔除（不可直接用用户填写的 refund_start_time / refund_end_time）。</p>
+      <p>· <b>退款金额</b>取 <b>real_refund_money</b>，且仅当<b>审核单状态为「退款成功」</b>时才是真实退款金额（审核过后即有值，需按状态过滤）。</p>
+      <p>· <b>关联键</b>：客服表 user_id ↔ 快小游订单表 user_id。</p>
+    </div>
+
+    <div class="ni">
+      <h3><span class="nk">注 3</span>收入与结算口径</h3>
+      <p>· <b>慕远口径</b>：以快小游订单表为准，Σ 快币金额 − 预期退款 − 渠道费成本 = 本期应确认收入。其中<b>预期退款由慕远侧提供</b>（来自逆向链路汇总），<b>渠道费成本</b>按注 1 口径计算。</p>
+      <p>· <b>快科口径</b>：以快币实际消耗为准，按 biztype 统计周期内消耗量，用于交叉校验慕远所报收入的合理性。</p>
+      <p>· <b>退款总金额</b>同时作用于两处：收入端扣减「预期退款」，现金端扣减应结金额，得出本期实际结算额。</p>
+    </div>
+  </div>
+  <div class="foot">
+    慕远 = 快小游运营主体（收款方）&nbsp;·&nbsp;快科 = 快币运营主体（付款方）<br/>
+    快小游订单表 = 全链路唯一数据底座&nbsp;·&nbsp;退款总金额 = 正向与逆向唯一关联变量
+  </div>
+
+</div>
+</body>
+</html>

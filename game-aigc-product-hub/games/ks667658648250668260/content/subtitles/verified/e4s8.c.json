@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s8.c.mp4",
+  "sha256": "cb18fec2a500fa978f8217fc795e5a2fabcbaa404e2b93982a36b12d65ce1f9f",
+  "duration": 10.042,
+  "nodes": [
+    "e4s8"
+  ],
+  "status": "speech",
+  "transcript": "你要是没了，我也不活。",
+  "rawText": "你要是没了我也不活",
+  "asrChars": [
+    [
+      3.57,
+      3.81,
+      "你"
+    ],
+    [
+      3.83,
+      3.97,
+      "要"
+    ],
+    [
+      3.97,
+      4.21,
+      "是"
+    ],
+    [
+      4.23,
+      4.45,
+      "没"
+    ],
+    [
+      4.45,
+      4.69,
+      "了"
+    ],
+    [
+      5.61,
+      5.85,
+      "我"
+    ],
+    [
+      5.93,
+      6.11,
+      "也"
+    ],
+    [
+      6.11,
+      6.27,
+      "不"
+    ],
+    [
+      6.27,
+      6.775,
+      "活"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "你如果没了,我也不活。",
+  "speakerKey": null,
+  "speakerRuleKey": "e4s8",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

@@ -1,0 +1,667 @@
+[
+  {
+    "partId": "ep01_branch_truth_video_01__p01",
+    "sha256": "39c3253ba57a5ae8796a43feddb6a76e6b50b15e27f6c7a57a2eedd80343861e",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep01_branch_truth_video_01__p01.frames.jpg",
+    "audioEvidence": "ep01_branch_truth_video_01__p01.audio-review.json",
+    "decision": "陈劲伸手问候，女主以主观镜头的手抓住他；对白仅“喂，活着吗”，无旁白。"
+  },
+  {
+    "partId": "ep03_branch_truth_video_01__p01",
+    "sha256": "f2c2640a50916d80d7d4ffa54946efe39228631b481d87abd9c736ce8cb6d425",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep03_branch_truth_video_01__p01.frames.jpg",
+    "audioEvidence": "ep03_branch_truth_video_01__p01.audio-review.json",
+    "decision": "女主对白后擦嘴，陈劲本人回应并放下物品；两人身份与服装正确，无额外语言。"
+  },
+  {
+    "partId": "ep01_branch_conditional_video_01__p01",
+    "sha256": "158445de3727fe7bc62b0372c9d784efb3bf57c9b412e4534253adb7dddfda4c",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep01_branch_conditional_video_01__p01.frames.jpg",
+    "audioEvidence": "ep01_branch_conditional_video_01__p01.audio-review.json",
+    "decision": "音轨区分录音年轻男声、父亲男声和女主回应，三句完整；手机置于父母面前，女主压住设备，许邵泽没有被画进现场。"
+  },
+  {
+    "partId": "ep02_scene_00_video_01__p01",
+    "sha256": "0e8176ea3f9ab9df0638cec14fbcd4b2f744358b81b2437ac77bd8f83fc167ec",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep02_scene_00_video_01__p01.frames.jpg",
+    "audioEvidence": "ep02_scene_00_video_01__p01.audio-review.json",
+    "decision": "女主咳嗽，追兵出示照片，陈劲侧身遮挡，服装与人物正确；无语言对白，实际音轨只有咳嗽和现场声。"
+  },
+  {
+    "partId": "ep02_branch_emotion_video_01__p01",
+    "sha256": "b35c8da1896799036977f4b5fcc4c00aa47e95b2c177c036cb9c268f53c91619",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep02_branch_emotion_video_01__p01.frames.jpg",
+    "audioEvidence": "ep02_branch_emotion_video_01__p01.audio-review.json",
+    "decision": "女主说完选择跟随，主动握住陈劲的手；两人各说各的台词，服装和越野车场景一致。"
+  },
+  {
+    "partId": "ep02_branch_counterattack_video_01__p01",
+    "sha256": "9289ed403508864930b95a94e7180004142088bd9802d46a821ec1a6ca265cbc",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep02_branch_counterattack_video_01__p01.frames.jpg",
+    "audioEvidence": "ep02_branch_counterattack_video_01__p01.audio-review.json",
+    "decision": "陈劲本人说出拦路台词并起身推开追兵，女主留在摩托旁；无额外语言或血腥。"
+  },
+  {
+    "partId": "ep02_branch_conditional_video_01__p01",
+    "sha256": "d26e6fadce2a6c690fff620cff1e7155de4def58ea33ea399315a53de84c4c97",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep02_branch_conditional_video_01__p01.frames.jpg",
+    "audioEvidence": "ep02_branch_conditional_video_01__p01.audio-review.json",
+    "decision": "女主亮出手机说出威慑台词，陈劲回应并准备发动，追兵只在前景背影；无旁白。"
+  },
+  {
+    "partId": "ep03_branch_conditional_video_01__p01",
+    "sha256": "804bc339eb063057d644443e84f3a00f0ac16851fb026f111df89904ca20fba4",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep03_branch_conditional_video_01__p01.frames.jpg",
+    "audioEvidence": "ep03_branch_conditional_video_01__p01.audio-review.json",
+    "decision": "女主说明掌心定位器来历，陈劲本人回应，摩托停在路边；对白完整，沐瑶/慕尧及她/他属转写字形差异。"
+  },
+  {
+    "partId": "ep04_branch_emotion_video_01__p01",
+    "sha256": "ed607c6ef1b87610c936e2397250ce59447bb1f02040cc4d67052d4cfcca5913",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep04_branch_emotion_video_01__p01.frames.jpg",
+    "audioEvidence": "ep04_branch_emotion_video_01__p01.audio-review.json",
+    "decision": "女主交钥匙并扣安全带，陈劲在驾驶位发动；两句对白完整，无多余语言。"
+  },
+  {
+    "partId": "ep04_branch_counterattack_video_01__p01",
+    "sha256": "f6c44661bb5a94f544060ce15d0f1c847e8ae0036f2acdeaf3ce15be7e9045ff",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep04_branch_counterattack_video_01__p01.frames.jpg",
+    "audioEvidence": "ep04_branch_counterattack_video_01__p01.audio-review.json",
+    "decision": "交钥匙动作及两人对白完整，人物服装一致，镜头结束于车侧开门阶段。"
+  },
+  {
+    "partId": "ep04_branch_conditional_video_01__p01",
+    "sha256": "cf8a6fb70b88ee22eb6443a3f9bf148bb195b58fb6dafbecac52e4314e49042b",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep04_branch_conditional_video_01__p01.frames.jpg",
+    "audioEvidence": "ep04_branch_conditional_video_01__p01.audio-review.json",
+    "decision": "两人在各自座位说暗号，陈劲本人驾驶并转向，没有第三人同乘；对白完整无旁白。"
+  },
+  {
+    "partId": "ep04_branch_truth_video_01__p01",
+    "sha256": "7ce62e9b62f1603e112be82651825e5fddd25cc37d07933996e0af8fb5af2599",
+    "status": "rejected_seating_continuity",
+    "visualEvidence": "ep04_branch_truth_video_01__p01.frames.jpg",
+    "additionalVisualEvidence": "ep04_branch_truth-detail-5.8.jpg",
+    "audioEvidence": "ep04_branch_truth_video_01__p01.audio-review.json",
+    "decision": "对白正确，但末尾陈劲从女主驾驶位一侧挤入，副驾仍空，座位关系错误。改为首帧已分别坐在驾驶/副驾的固定双人镜头重做。"
+  },
+  {
+    "partId": "ep05_scene_00_video_01__p01",
+    "sha256": "8713a0456434222ec207d5ff160b04472f6d296a948a6be5b0f15f2597527db8",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep05_scene_00_video_01__p01.frames.jpg",
+    "audioEvidence": "ep05_scene_00_video_01__p01.audio-review.json",
+    "decision": "女主受惊伸手，陈劲上前扶住，衣服和被子完整遮挡；只有喘息与动作声，没有语言。"
+  },
+  {
+    "partId": "ep05_branch_emotion_video_01__p01",
+    "sha256": "30628bdb7fc772d03775a359a5daaa78ba9d45be1c4d9f3c034d718cfdd50c2c",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep05_branch_emotion_video_01__p01.frames.jpg",
+    "audioEvidence": "ep05_branch_emotion_video_01__p01.audio-review.json",
+    "decision": "女主请求留下，陈劲本人回应并安抚；对白完整、人物与遮挡构图稳定。"
+  },
+  {
+    "partId": "ep05_branch_counterattack_video_01__p01",
+    "sha256": "a2818164e11f91911f252f50c20c5c9a2c432b1d7be62bc352e02d29a58ca79d",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep05_branch_counterattack_video_01__p01.frames.jpg",
+    "audioEvidence": "ep05_branch_counterattack_video_01__p01.audio-review.json",
+    "decision": "女主长句完整表达安全感请求，陈劲回应讲规矩；本人说话对应，衣服被子保持遮挡，没有解释性念白。"
+  },
+  {
+    "partId": "ep05_branch_truth_video_01__p01",
+    "sha256": "2263da3e34bc8a0e8299fe215aae2a0ad358c693e450cdf6ee544d2e0c2f2ed4",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep05_branch_truth_video_01__p01.frames.jpg",
+    "audioEvidence": "ep05_branch_truth_video_01__p01.audio-review.json",
+    "decision": "画面遮挡完整，女主请他睡沙发，陈劲离开；逐字转写完整，Voxtral二次核验确认前两句女性、末句男性。"
+  },
+  {
+    "partId": "ep06_branch_emotion_video_01__p01",
+    "sha256": "e10d59c0f8207c00aef4ef171144bf655b9cdb958f281a0fae8d6c01c4546331",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep06_branch_emotion_video_01__p01.frames.jpg",
+    "audioEvidence": "ep06_branch_emotion_video_01__p01.audio-review.json",
+    "decision": "二人桌前谈合同，女主提出一年不走、陈劲确认想清楚，台词完整，无旁白。"
+  },
+  {
+    "partId": "ep01_branch_counterattack_video_01__p01",
+    "sha256": "bcfed0246cdd1d16af67d8352ebc31bfab748b9977c9c3fa1622f8ec0db4bc7d",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep01_branch_counterattack_video_01__p01.frames.jpg",
+    "audioEvidence": "ep01_branch_counterattack_video_01__p01.audio-review.json",
+    "decision": "黑西装许邵泽递杯，女主打落杯并质问，杯碎同期声及双方台词核对通过。"
+  },
+  {
+    "partId": "ep02_branch_truth_video_01__p01",
+    "sha256": "7254dc88d85a78f3266a68d16730d18bef5abd8843eeb0868008aae617c7cb54",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep02_branch_truth_video_01__p01.frames.jpg",
+    "audioEvidence": "ep02_branch_truth_video_01__p01.audio-review.json",
+    "decision": "女主举手机报价五万，陈劲答应，两人服装和摩托车位置合理，未出现账号念白。"
+  },
+  {
+    "partId": "ep05_branch_conditional_video_01__p01",
+    "sha256": "b0278c01ec239e95d8bcb960ea556f0e62f2094109f1effda4586811b3da62ee",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep05_branch_conditional_video_01__p01.frames.jpg",
+    "audioEvidence": "ep05_branch_conditional_video_01__p01.wav-crosscheck.txt",
+    "decision": "女主举安全条款，陈劲答记住了，遮挡完整；WAV独立转写逐字通过。"
+  },
+  {
+    "partId": "ep06_scene_00_video_01__p01",
+    "sha256": "f06c00231993eea5ab1083abf88854ac0f6a83207e1a0d6f843d1c6735478529",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep06_scene_00_video_01__p01.frames.jpg",
+    "audioEvidence": "ep06_scene_00_video_01__p01.wav-crosscheck.txt",
+    "decision": "早餐桌递合同，女主报价三千万，WAV逐字转写保留整整一年。"
+  },
+  {
+    "partId": "ep03_scene_00_video_01__p01",
+    "sha256": "dbda82dc8ccc6692587b664a515b5117bfe4e0040538ab805a660bfa1a479b8a",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep03_scene_00_video_01__p01.frames.jpg",
+    "audioEvidence": "ep03_scene_00_video_01__p01.audio-review.json",
+    "decision": "女主路边咳嗽，陈劲递纸巾，无语言，人物服装和位置正确。"
+  },
+  {
+    "partId": "ep04_scene_00_video_01__p01",
+    "sha256": "ccacb0e5308de434edaadcb97db6387cf1546c9fb01b48af505b55f3235424c1",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep04_scene_00_video_01__p01.frames.jpg",
+    "audioEvidence": "ep04_scene_00_video_01__p01.audio-review.json",
+    "decision": "陈劲驾驶女主副驾，追兵仅后视镜远车；会开吗/坐好两句通过。"
+  },
+  {
+    "partId": "ep06_branch_truth_video_01__p01",
+    "sha256": "d2c8b606220caded30a3ea7292fe5230fcaf84b09025995537714e398a035ef8",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep06_branch_truth_video_01__p01.frames.jpg",
+    "audioEvidence": "ep06_branch_truth_video_01__p01.audio-review.json",
+    "decision": "女主坦白未婚夫威胁，陈劲放下筷子回应；原话完整，男女声对应，无旁白。"
+  },
+  {
+    "partId": "ep06_branch_conditional_video_01__p01",
+    "sha256": "2d84aa9805645794d6f0f9ed957197fcf9a93434068b4cf75d93448e305764c3",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep06_branch_conditional_video_01__p01.frames.jpg",
+    "audioEvidence": "ep06_branch_conditional_video_01__p01.audio-review.json",
+    "decision": "车内女主展示已保存记录、说回家退婚，台词全文且仅本人发声。"
+  },
+  {
+    "partId": "ep03_branch_emotion_video_01__p01",
+    "sha256": "8ad0503a1eb3e82a445e7c830af6638e611417b67fcc9033814002c52f66daea",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep03_branch_emotion_video_01__p01.frames.jpg",
+    "audioEvidence": [
+      "ep03_branch_emotion_video_01__p01.audio-review.json",
+      "ep03_branch_emotion_video_01__p01.speaker-crosscheck-voxtral.json"
+    ],
+    "decision": "女主要求蹲下，陈劲蹲下递水；第二模型确认前句女声、喝口水男声。"
+  },
+  {
+    "partId": "ep06_branch_counterattack_video_01__p01",
+    "sha256": "a79946439527b0b7c64893dbed25606f9fe9c1980b47a50ef9b65f073c5891fc",
+    "status": "needs_video_revision",
+    "visualEvidence": "ep06_branch_counterattack_video_01__p01.frames.jpg",
+    "audioEvidence": [
+      "ep06_branch_counterattack_video_01__p01.audio-review.json",
+      "ep06_branch_counterattack_video_01__p01.speaker-crosscheck-voxtral.json"
+    ],
+    "decision": "两次音频核验均把行识别为女声，台词人物归属不符合约定，安排原生重做。"
+  },
+  {
+    "partId": "ep07_scene_00_video_01__p01",
+    "sha256": "9e0df28c7933bb289b430d523d3c805000ceda46fa08be53e0d8de0ee41ab09e",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep07_scene_00_video_01__p01.frames.jpg",
+    "audioEvidence": "ep07_scene_00_video_01__p01.audio-review.json",
+    "decision": "女主与拎袋陈劲进门，许邵泽迎接说冉冉回来了，父母留在沙发；人物及台词核对通过。"
+  },
+  {
+    "partId": "ep07_branch_emotion_video_01__p01",
+    "sha256": "d679712d26538f71d2001c9b77e69b3c18aedde37b3805cf8bdd463d048a0e73",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep07_branch_emotion_video_01__p01.frames.jpg",
+    "audioEvidence": "ep07_branch_emotion_video_01__p01.audio-review.json",
+    "decision": "女主拒绝许邵泽靠近并绕行，只有本人说我累了让开，陈劲留在后方，无多余念白。"
+  },
+  {
+    "partId": "ep07_branch_truth_video_01__p01",
+    "sha256": "f521220dd214f1e4b920d62de550a91f0acc2ee86a17053974d693a670988cd5",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep07_branch_truth_video_01__p01.frames.jpg",
+    "audioEvidence": "ep07_branch_truth_video_01__p01.audio-review.json",
+    "decision": "女主质问推落露台，许邵泽转移话题，女主追问回答我；三人位置稳定，三轮男女声及全文通过。"
+  },
+  {
+    "partId": "ep06_branch_counterattack_video_01__p01.r2",
+    "sha256": "dd69137056baed257b41cc9503186d68d76e75739525c71b6db95b008b40dd52",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep06_branch_counterattack_video_01__p01.r2.frames.jpg",
+    "audioEvidence": "ep06_branch_counterattack_video_01__p01.r2.audio-review.json",
+    "decision": "原生重做已修复：女-男-女依次发言，三句逐字完整，女主写合同递笔、陈劲接笔，未添旁白。"
+  },
+  {
+    "partId": "ep07_branch_conditional_video_01__p01",
+    "sha256": "4b6286a2b70afb196cb396e73c1db7eb999baaba3665124ea4da3e2d99b53b64",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep07_branch_conditional_video_01__p01.frames.jpg",
+    "audioEvidence": "ep07_branch_conditional_video_01__p01.audio-review.json",
+    "decision": "陈劲递不露字纸条问旧姓，周伯接纸反问，女主旁观，两句男声正确，无具体姓氏或旁白。"
+  },
+  {
+    "partId": "ep07_branch_counterattack_video_01__p01",
+    "sha256": "8e22ce6ee09b17d0c204ba80c4c62d4fc1b95a61747b3383106cde10bc2d3a5a",
+    "status": "needs_video_revision",
+    "visualEvidence": "ep07_branch_counterattack_video_01__p01.frames.jpg",
+    "audioEvidence": "ep07_branch_counterattack_video_01__p01.wav-crosscheck.txt",
+    "decision": "原话通过，但下半画面自行生成乱码字幕，原生重做清理文字。"
+  },
+  {
+    "partId": "ep04_branch_truth_video_01__p01.r2",
+    "sha256": "b0bf60c327683342e25603c4957a0e41835cdbe086736aee2b672bc560a768e1",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep04_branch_truth_video_01__p01.r2.frames.jpg",
+    "audioEvidence": "ep04_branch_truth_video_01__p01.r2.audio-review.json",
+    "decision": "女主全程驾驶座、陈劲副驾，各坐独立前排；两句男女声与原话完整，修复原版同座问题。"
+  },
+  {
+    "partId": "ep08_scene_00_video_01__p01",
+    "sha256": "33127e5a0ee7f5d85b2d12d366a77fa122ce2081d2051dbc13fe7162a42512d8",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep08_scene_00_video_01__p01.frames.jpg",
+    "audioEvidence": "ep08_scene_00_video_01__p01.audio-review.json",
+    "decision": "陈劲接住青花瓶并放回柜旁，随后问手滑，周伯不代说；无破碎、旁白或字幕。"
+  },
+  {
+    "partId": "ep08_branch_emotion_video_01__p01",
+    "sha256": "34f1e0fdd079106fabc196d08199a7fa2fa3e6b04d7fbe47f6548ebbc0d5403b",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep08_branch_emotion_video_01__p01.frames.jpg",
+    "audioEvidence": "ep08_branch_emotion_video_01__p01.audio-review.json",
+    "decision": "女主护住花瓶后带陈劲离开，没摔着就好走吧及男方嗯完整，周伯旁观，无旁白。"
+  },
+  {
+    "partId": "ep08_branch_truth_video_01__p01",
+    "sha256": "266ec9db9f4e4fc77c93209e084bfd44257fb9608eb94eca075545b60464c13f",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep08_branch_truth_video_01__p01.frames.jpg",
+    "audioEvidence": "ep08_branch_truth_video_01__p01.audio-review.json",
+    "decision": "女主挡在陈劲前质问周伯，周伯低头道歉，两句本人发声完整，无字幕。"
+  },
+  {
+    "partId": "ep07_branch_counterattack_video_01__p01.r2",
+    "sha256": "a566e70d25e660ea4abd2ae81f451fae5769f77aee7d206824908e0784cabed6",
+    "status": "needs_video_revision",
+    "visualEvidence": "ep07_branch_counterattack_video_01__p01.r2.frames.jpg",
+    "audioEvidence": "ep07_branch_counterattack_video_01__p01.r2.audio-review.json",
+    "decision": "乱码字幕已清除，台词通过；但录音期间画面右侧许邵泽随录音张嘴，仍像现场发言。改为不拍许邵泽嘴部的构图重做。"
+  },
+  {
+    "partId": "ep08_branch_counterattack_video_01__p01",
+    "sha256": "f4f94f3a862130c01ca9e64f7c9fb489722b0ed1bd5f30cebfc5200631d72f5e",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep08_branch_counterattack_video_01__p01.frames.jpg",
+    "audioEvidence": "ep08_branch_counterattack_video_01__p01.audio-review.json",
+    "decision": "女主亮黑卡并接过古董瓶，周伯欲阻拦又停住；只读买瓶与别拿它试人两句，未添加账号。"
+  },
+  {
+    "partId": "ep08_branch_conditional_video_01__p01",
+    "sha256": "573120f5b0e9525ad6ed08a909613c13ecbd8fc18442988dc959b7de6cf09e6a",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep08_branch_conditional_video_01__p01.frames.jpg",
+    "audioEvidence": "ep08_branch_conditional_video_01__p01.audio-review.json",
+    "decision": "陈劲给出手势，女主托住瓶底并指出提前松手，周伯停手；仅女主一句质问，无额外语言。"
+  },
+  {
+    "partId": "ep09_scene_00_video_01__p01",
+    "sha256": "6121a6e75ba97231d5f4c8dbfedb6b7ef5e11ea04b1579e14ca30df868aadc14",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep09_scene_00_video_01__p01.frames.jpg",
+    "audioEvidence": "ep09_scene_00_video_01__p01.audio-review.json",
+    "decision": "女主报价三千万，陈劲看职责签名并回应，两句全文和男女声正确，黑卡未产生额外数字或念白。"
+  },
+  {
+    "partId": "ep07_branch_counterattack_video_01__p01.r3",
+    "sha256": "c7639d29b3413aaba2b16beaf5a4cd6b1475a3b46b9923cd71129c418740bf57",
+    "status": "needs_video_revision",
+    "visualEvidence": "ep07_branch_counterattack_video_01__p01.r3.frames.jpg",
+    "audioEvidence": "ep07_branch_counterattack_video_01__p01.r3.audio-review.json",
+    "decision": "面部放大复核确认父亲跟随手机录音发音。必须改为无人物嘴部的手机特写，随后另镜女主问父亲。"
+  },
+  {
+    "partId": "ep09_branch_emotion_video_01__p01",
+    "sha256": "4286dc7b54a07a6f6de6b82430193635c26f55989e9991ff5d2edfe47e2d434e",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep09_branch_emotion_video_01__p01.frames.jpg",
+    "audioEvidence": "ep09_branch_emotion_video_01__p01.audio-review.json",
+    "decision": "女主合起合同划定关系，只说按合同办别谈别的，陈劲本人答好，人物动作与对白通过。"
+  },
+  {
+    "partId": "ep09_branch_truth_video_01__p01",
+    "sha256": "c0f63bff3761dff83b3e6cee87caaa8f3678a0f24890bae5f076d57484375ec0",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep09_branch_truth_video_01__p01.frames.jpg",
+    "audioEvidence": "ep09_branch_truth_video_01__p01.audio-review.json",
+    "decision": "女主移开合同问留下原因，陈劲对她回应仍需帮助，正反人物身份及两句全文通过，无旁白。"
+  },
+  {
+    "partId": "ep09_branch_counterattack_video_01__p01",
+    "sha256": "03973c691bb6c2831a94faa1061059066dd1ea7838b4538e50ae0074867cb6a7",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep09_branch_counterattack_video_01__p01.frames.jpg",
+    "audioEvidence": "ep09_branch_counterattack_video_01__p01.audio-review.json",
+    "decision": "女主撕合同追问，陈劲接纸起身来到她旁边并答敢；动作完整，两句男女声正确。"
+  },
+  {
+    "partId": "ep07_branch_counterattack_video_01__p01.r4",
+    "sha256": "dc696b785f065598c5dcb335674fc06cde08b458a33216c156a94ee57d6474ca",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep07_branch_counterattack_video_01__p01.r4.frames.jpg",
+    "audioEvidence": "ep07_branch_counterattack_video_01__p01.r4.audio-review.json",
+    "decision": "独立手机特写全程无人脸嘴，屏幕波形随录音变化，男声完整播放贺家这条船要沉了我不陪你，无字幕或额外语言。"
+  },
+  {
+    "partId": "ep09_branch_conditional_video_01__p01",
+    "sha256": "22b9f20594b560b1fa754f26eeb17b2792460defce9c505c718763bec33816d5",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep09_branch_conditional_video_01__p01.frames.jpg",
+    "audioEvidence": "ep09_branch_conditional_video_01__p01.audio-review.json",
+    "decision": "女主展示保存通话的手机并说保存了，陈劲答先留着；没有编造录音内容或多读账号。"
+  },
+  {
+    "partId": "ep07_branch_counterattack_video_01__p02",
+    "sha256": "0dd403dca931785633df0ebaf151636c340c6b5837ade303e06ae5857ea6e0b9",
+    "status": "needs_video_revision",
+    "visualEvidence": "ep07_branch_counterattack_video_01__p02.frames.jpg",
+    "audioEvidence": "ep07_branch_counterattack_video_01__p02.audio-review.json",
+    "decision": "画面已通过，但两次转写均多出重复称呼爸爸，按精确对白要求安排重做回应段。"
+  },
+  {
+    "partId": "ep10_scene_00_video_01__p01",
+    "sha256": "e9e81bb30ff7294a255ddb48b87d0cad2b96ad05d77d27863b9622621f51458f",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep10_scene_00_video_01__p01.frames.jpg",
+    "audioEvidence": "ep10_scene_00_video_01__p01.audio-review.json",
+    "decision": "许邵泽堵在门口说跑了一圈你不还是回来了，陈劲站到女主身边；仅许本人发声，画面无多余字幕。"
+  },
+  {
+    "partId": "ep10_branch_emotion_video_01__p01",
+    "sha256": "d863886b1bef54e21447b15e471954da2d32df6a8554764282fd5744d379d282",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep10_branch_emotion_video_01__p01.frames.jpg",
+    "audioEvidence": "ep10_branch_emotion_video_01__p01.audio-review.json",
+    "decision": "女主退到陈劲身后，陈劲阻止许邵泽靠近并说她不想见你让开，本人声画对应，无旁白。"
+  },
+  {
+    "partId": "ep10_branch_truth_video_01__p01",
+    "sha256": "6eff7d7c2f729c432cc077af3eb7046993c2c612513c27836d43521fd3996ff1",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep10_branch_truth_video_01__p01.frames.jpg",
+    "audioEvidence": "ep10_branch_truth_video_01__p01.audio-review.json",
+    "decision": "女主主动走到前方抬手拒绝许邵泽，说婚约到此为止以后别再来找我；本人发声完整，陈劲沉默。"
+  },
+  {
+    "partId": "ep10_branch_counterattack_video_01__p01",
+    "sha256": "2b86aca174179e6b86c2fb7629d4d896633ee01e601c91a10b2ed065ccc28bf4",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep10_branch_counterattack_video_01__p01.frames.jpg",
+    "audioEvidence": "ep10_branch_counterattack_video_01__p01.audio-review.json",
+    "decision": "女主面对宾客举话筒控诉未婚夫，陈劲阻止许靠近；只有女主完整台词，无插入录音或旁白。"
+  },
+  {
+    "partId": "ep07_branch_counterattack_video_01__p02.r2",
+    "sha256": "f331daf55c63d4a3c76ef8557b0e5fbe311d963b6476f1935e40a50d0c7f90f4",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep07_branch_counterattack_video_01__p02.r2.frames.jpg",
+    "audioEvidence": "ep07_branch_counterattack_video_01__p02.r2.audio-review.json",
+    "decision": "女主本人转头问父亲，两位男性闭嘴；Qwen与Whisper独立盲转写均为单个爸、完整六字，Voxtral确认女声。"
+  },
+  {
+    "partId": "ep10_branch_conditional_video_01__p01",
+    "sha256": "1b10f987e5c0a8e7aaaf77b89e5d22ce18eb818e31eadb615507623728232232",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep10_branch_conditional_video_01__p01.frames.jpg",
+    "audioEvidence": "ep10_branch_conditional_video_01__p01.audio-review.json",
+    "decision": "女主展示录音流水照片说律师已收，专用STT全文通过，独立音视频审核确认本人发声且无旁白。",
+    "additionalAudioVisualEvidence": "ep10_branch_conditional_video_01__p01.av-review.json",
+    "additionalVideoAudioEvidence": "ep10_branch_conditional_video_01__p01.av-review.json"
+  },
+  {
+    "partId": "ep11_scene_00_video_01__p01",
+    "sha256": "7630b4591fdc0baf46284592b4f44697bf359384d8f4056be81a6622483602cb",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep11_scene_00_video_01__p01.frames.jpg",
+    "audioEvidence": "ep11_scene_00_video_01__p01.audio-review.json",
+    "decision": "女主整理领带，门口灰发周伯称陈先生，女主反问；独立音视频审核确认首句来自后景周伯，前景陈劲未代说。",
+    "additionalAudioVisualEvidence": "ep11_scene_00_video_01__p01.av-review.json",
+    "additionalVideoAudioEvidence": "ep11_scene_00_video_01__p01.av-review.json"
+  },
+  {
+    "partId": "ep11_branch_emotion_video_01__p01",
+    "sha256": "f31f1ad7bc11872266421c016803a368d33bc9f9ea72e843a2651b961909b7ef",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep11_branch_emotion_video_01__p01.frames.jpg",
+    "audioEvidence": "ep11_branch_emotion_video_01__p01.audio-review.json",
+    "decision": "女主牵起陈劲的手一起离开服装店，只有女主说走吧一起回家；盲转写与实际抽帧对应通过。",
+    "additionalVideoAudioEvidence": "ep11_branch_emotion_video_01__p01.av-review.json"
+  },
+  {
+    "partId": "ep11_branch_truth_video_01__p01",
+    "sha256": "cb8829641bf56914ce5dced6aa59e8c0f7806dcc4c6c13fde51502841578c9d1",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep11_branch_truth_video_01__p01.frames.jpg",
+    "audioEvidence": "ep11_branch_truth_video_01__p01.audio-review.json",
+    "decision": "女主收起文件自己拿钥匙上车，陈劲让路；女主不结婚以后自己选，男方答好，全文与归属通过。"
+  },
+  {
+    "partId": "ep11_branch_counterattack_video_01__p01",
+    "sha256": "cd5c620f597beb3fb0c4a4dfe2dbaa88eea9298aa6b02cb5f60828fc8a9269b7",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep11_branch_counterattack_video_01__p01.frames.jpg",
+    "audioEvidence": "ep11_branch_counterattack_video_01__p01.audio-review.json",
+    "decision": "女主向记者展示证据并公开声明，陈劲在侧后方，许邵泽低头；只有女主两句台词，未混入记者问话或解释。"
+  },
+  {
+    "partId": "ep11_branch_conditional_video_01__p01",
+    "sha256": "e89d93e4e50d3c2857701102fac6ad2d58884058b1ce01894af91f41d1cb5ec7",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep11_branch_conditional_video_01__p01.frames.jpg",
+    "audioEvidence": "ep11_branch_conditional_video_01__p01.audio-review.json",
+    "decision": "女主松开陈劲的手独自离开停车场，只说这次让我一个人走，陈劲未追未代说。"
+  },
+  {
+    "partId": "ep11_branch_conditional_video_01__p02",
+    "sha256": "c8d409e63f0c2518332dbaee917943bd9b5a34538abe032137b05ea9f175b1dc",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ep11_branch_conditional_video_01__p02.frames.jpg",
+    "audioEvidence": "ep11_branch_conditional_video_01__p02.audio-review.json",
+    "decision": "夜色旧露台女主独自站立沉默，只有环境底噪，无可辨语言，承接独自离开后的余韵。"
+  },
+  {
+    "partId": "ending_loop__p01",
+    "sha256": "d172f785989ed68cc0fff8e069817605f9c2f23c047be62c85044ba0fe87d396",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ending_loop__p01.frames.jpg",
+    "audioEvidence": "ending_loop__p01.audio-review.json",
+    "decision": "回到酒红裙露台场景，女主提前接杯回应这一次我知道了，许邵泽说分手吧；独立音视频确认双方本人发声，无旁白。",
+    "additionalVideoAudioEvidence": "ending_loop__p01.av-review.json"
+  },
+  {
+    "partId": "ending_streamer__p01",
+    "sha256": "de32e12511a45145a19d1cbea76a6e5d2f42788397ca499525dde465896436c5",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ending_streamer__p01.frames.jpg",
+    "audioEvidence": "ending_streamer__p01.audio-review.json",
+    "decision": "女主在直播台前说聊天记录翻到那一天，门口陈劲端饭说下播吃饭；独立AV确认两人本人发声，直播屏仅模糊UI，不出现额外念白。",
+    "additionalVideoAudioEvidence": "ending_streamer__p01.av-review.json"
+  },
+  {
+    "partId": "ending_cow__p01",
+    "sha256": "28086917a70ac43a3e9572e75fbb7faa515fe2c09a308a2519a68d910098c5b2",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ending_cow__p01.frames.jpg",
+    "audioEvidence": "ending_cow__p01.audio-review.json",
+    "decision": "抽帧确认牛奶杯与证据板，无人物；盲转写无语言，音画复核无念白。",
+    "additionalVideoAudioEvidence": "ending_cow__p01.av-review.json"
+  },
+  {
+    "partId": "ending_cow__p02",
+    "sha256": "cfdb1d890ce1880b30a1ffa3da8d8c5586d6d2fbf3ec083cd3b7290450ef7a45",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ending_cow__p02.frames.jpg",
+    "audioEvidence": "ending_cow__p02.audio-review.json",
+    "decision": "奶牛抬头张嘴，音频确认牛叫与环境声，无人类对白；AV将牛叫记为嗯，声源明确为奶牛。",
+    "additionalVideoAudioEvidence": "ending_cow__p02.av-review.json"
+  },
+  {
+    "partId": "ending_terrace__p01",
+    "sha256": "c47ce7a5ea8c26f39f515fc3993e9be9305f985492c7907f8d6f273197a2cc02",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ending_terrace__p01.frames.jpg",
+    "audioEvidence": "ending_terrace__p01.audio-review.json",
+    "decision": "抽帧确认露台失足落出画面，女主留在原地；盲音频无对白，衣物与环境声。AV结果截断，仅作补充，不依赖其时间戳。",
+    "additionalVideoAudioEvidence": "ending_terrace__p01.av-review.json"
+  },
+  {
+    "partId": "ending_reality_show__p01",
+    "sha256": "56f29bbc19c4843d142af8e285b5e050a0c263ab5fae92a5ffcea0191bd845db",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ending_reality_show__p01.frames.jpg",
+    "audioEvidence": "ending_reality_show__p01.audio-review.json",
+    "decision": "场外主持宣布投票结果，三人未代读，女主独自上前；盲转写完整，无多余念白。",
+    "additionalVideoAudioEvidence": "ending_reality_show__p01.av-review.json"
+  },
+  {
+    "partId": "ending_empire__p01",
+    "sha256": "cfd8e3ccff84fb20e5a86d54f8940115865615f5f29a3444f91b57d458de1787",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ending_empire__p01.frames.jpg",
+    "audioEvidence": "ending_empire__p01.audio-review.json",
+    "decision": "签约桌前女主说签好台词，陈劲不代读；盲转写与实际AV确认台词完整。",
+    "additionalVideoAudioEvidence": "ending_empire__p01.av-review.json"
+  },
+  {
+    "partId": "ending_boss__p01",
+    "sha256": "54d2072a2daf2d6eb80ec7c31c49e0e4f4a9f598d58049cda7d757415d46c350",
+    "status": "needs_video_revision",
+    "visualEvidence": "ending_boss__p01.frames.jpg",
+    "audioEvidence": "ending_boss__p01.audio-review.json",
+    "decision": "对白正确，但最后生成重复黄色安全帽并叠戴，重做仅看图与对话。",
+    "additionalVideoAudioEvidence": "ending_boss__p01.av-review.json"
+  },
+  {
+    "partId": "ending_empire__p02",
+    "sha256": "31a83270b3c1682c41ddbeaaa132162d19b4c11204953d15b4a59d2633179fda",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ending_empire__p02.frames.jpg",
+    "audioEvidence": "ending_empire__p02.audio-review.json",
+    "decision": "抽帧确认左侧陈劲说敲钟台词，女主沉默持槌，后退敲钟动作；盲音频台词完整。AV误标场外，实际连续抽帧可见陈劲发声嘴型，无女主代读。",
+    "additionalVideoAudioEvidence": "ending_empire__p02.av-review.json"
+  },
+  {
+    "partId": "ending_worker__p01",
+    "sha256": "2d653bcf004742e739aa99ae7e90af4a24a49170c278a942437c782aaee30964",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ending_worker__p01.frames.jpg",
+    "audioEvidence": "ending_worker__p01.audio-review.json",
+    "decision": "两位男性各说自己的完整台词，许邵泽砌砖擦汗后回应，陈劲称赞；无旁白或字幕。",
+    "additionalVideoAudioEvidence": "ending_worker__p01.av-review.json"
+  },
+  {
+    "partId": "ending_worker__p02",
+    "sha256": "2e8ec95979877975828f72930e7d1f5bb62aaa8ba6b8199a45e18e1177fef24b",
+    "status": "needs_video_revision",
+    "visualEvidence": "ending_worker__p02.frames.jpg",
+    "audioEvidence": "ending_worker__p02.audio-review.json",
+    "decision": "本镜要求只有掌声，实际多出一声嗯；不修改白名单迁就生成结果，重做无语言版本。",
+    "additionalVideoAudioEvidence": "ending_worker__p02.av-review.json"
+  },
+  {
+    "partId": "ending_boss__p01.r2",
+    "sha256": "78432620bd7f5ddb357b0174b1ca2295c57f260b99864106fd1969fab080766b",
+    "status": "needs_video_revision",
+    "visualEvidence": "ending_boss__p01.r2.frames.jpg",
+    "audioEvidence": "ending_boss__p01.r2.audio-review.json",
+    "decision": "安全帽正确，但AV与独立Qwen盲转写均确认台词后陈劲多说嗯。重做保持无男性声音。",
+    "additionalVideoAudioEvidence": "ending_boss__p01.r2.av-review.json"
+  },
+  {
+    "partId": "ending_romance__p01",
+    "sha256": "96252f33eb7d8c0ca42cc66fe3ba234a48cddb9465288b6fc02107abe48f3f5e",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ending_romance__p01.frames.jpg",
+    "audioEvidence": "ending_romance__p01.audio-review.json",
+    "decision": "夕阳路口陈劲说回家吧，女主回应好，两人牵手离开；实际转写与AV一致，无旁白或额外语言。",
+    "additionalVideoAudioEvidence": "ending_romance__p01.av-review.json"
+  },
+  {
+    "partId": "ending_independent__p01",
+    "sha256": "b75fc88655fc84aef79cca031001073d4a309b8bad59ca7252119bfc9e46ae2b",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ending_independent__p01.frames.jpg",
+    "audioEvidence": "ending_independent__p01.audio-review.json",
+    "decision": "女主独自宣告取消婚约并离场，两名男性沉默；实际盲转写完整，AV嘴型声源一致，无多余语言。",
+    "additionalVideoAudioEvidence": "ending_independent__p01.av-review.json"
+  },
+  {
+    "partId": "ending_worker__p02.r2",
+    "sha256": "247486759a06b1b7fdf32129cd39f2db9a47295e36f5b08a4191ff6ec6914d62",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ending_worker__p02.r2.frames.jpg",
+    "audioEvidence": "ending_worker__p02.r2.audio-review.json",
+    "decision": "抽帧确认表彰递帽与背景鼓掌；GPT盲音频与独立Qwen STT均无语言。AV把0.00–0.04秒推断为嗯，时间跨全片且无独立音频支持，认定该项不可靠；使用两路实际音频结果，保留掌声。",
+    "additionalAudioEvidence": "ending_worker__p02.r2.stt-qwen3-asr-1.7b.json",
+    "additionalVideoAudioEvidence": "ending_worker__p02.r2.av-review.json"
+  },
+  {
+    "partId": "ending_independent__p02",
+    "sha256": "b2eb4df2f0a285b5c86729e2e1a2788aa3466fde191474fc345a6ff01b4b3f94",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ending_independent__p02.frames.jpg",
+    "audioEvidence": "ending_independent__p02.audio-review.json",
+    "decision": "女主独自驾驶粉色SUV，系安全带后开走；无对白，原生音频保留车内动作与启动声，AV与盲音频均确认无语言。",
+    "additionalVideoAudioEvidence": "ending_independent__p02.av-review.json"
+  },
+  {
+    "partId": "ending_boss__p01.r3",
+    "sha256": "6f5edd14c9960d4b851a565f41c9fb14abf527423274b8acd1f2c9743860ed93",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ending_boss__p01.r3.frames.jpg",
+    "audioEvidence": "ending_boss__p01.r3.audio-review.json",
+    "decision": "安全帽全程各一顶，女主本人说唯一台词、陈劲沉默。GPT和独立Qwen音频均确认仅一句无嗯；AV在0秒复制一条台词属于无口型无有效时间的重复记录，不作为实际重复朗读证据。",
+    "additionalAudioEvidence": "ending_boss__p01.r3.stt-qwen3-asr-1.7b.json",
+    "additionalVideoAudioEvidence": "ending_boss__p01.r3.av-review.json"
+  },
+  {
+    "partId": "ending_revenge__p01",
+    "sha256": "35de8bb31e890a9dc9f1823d22620b9093229d4af512b9933046fda8232f2bd8",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ending_revenge__p01.frames.jpg",
+    "audioEvidence": "ending_revenge__p01.audio-review.json",
+    "decision": "记者与证据板前女主本人说证据都在这里，请查清楚，两名男性沉默；许邵泽随后离开画面。抽帧为公开发布现场，非接待窗口。盲音频与AV对白一致，无旁白或额外念白。",
+    "additionalVideoAudioEvidence": "ending_revenge__p01.av-review.json"
+  },
+  {
+    "partId": "ending_regret__p01",
+    "sha256": "a7052610904b60c3265b17ecf4987c90fadc1a44d337e825e10b59a2aee87278",
+    "status": "approved_for_delivery",
+    "visualEvidence": "ending_regret__p01.frames.jpg",
+    "audioEvidence": "ending_regret__p01.audio-review.json",
+    "decision": "两人沉默分开，陈劲走远、女主持信封停留；独立Qwen原生音轨转写为空。AV无可辨识对白，其按整秒重复描述嗯的项目无音频转写支持，不视为语言，保留脚步与衣物环境声。",
+    "additionalVideoAudioEvidence": "ending_regret__p01.av-review.json"
+  }
+]

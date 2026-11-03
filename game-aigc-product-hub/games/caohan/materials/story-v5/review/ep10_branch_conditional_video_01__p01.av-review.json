@@ -1,0 +1,23 @@
+{
+  "partId": "ep10_branch_conditional_video_01__p01",
+  "sourceSha256": "1b10f987e5c0a8e7aaaf77b89e5d22ce18eb818e31eadb615507623728232232",
+  "model": "google/gemini-2.5-flash",
+  "review": {
+    "transcript": [
+      {
+        "startSec": 0.96,
+        "endSec": 5.96,
+        "text": "錄音、流水、跟踪照片,律師已經收到了。",
+        "audibleVoice": "年轻女性",
+        "visibleSpeaker": "画面中央穿白衬衫的年轻女性",
+        "mouthSyncEvidence": [
+          "0.96",
+          "5.96"
+        ]
+      }
+    ],
+    "nonverbal": [],
+    "issues": [],
+    "uncertain": []
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e9s8_v82.mp4",
+  "sha256": "310f9c4b76096ad02fdbd5e59468ab870a051b87008ce95c1a1cf2cc34a951d9",
+  "duration": 10.042,
+  "nodes": [
+    "e9s8"
+  ],
+  "status": "speech",
+  "transcript": "吉时到，新娘子进门喽！",
+  "rawText": "及时到新娘子进门喽",
+  "asrChars": [
+    [
+      3.54,
+      3.78,
+      "及"
+    ],
+    [
+      3.98,
+      4.22,
+      "时"
+    ],
+    [
+      4.38,
+      4.62,
+      "到"
+    ],
+    [
+      5.84,
+      6.08,
+      "新"
+    ],
+    [
+      6.3,
+      6.54,
+      "娘"
+    ],
+    [
+      6.7,
+      6.94,
+      "子"
+    ],
+    [
+      7.18,
+      7.42,
+      "进"
+    ],
+    [
+      7.58,
+      7.82,
+      "门"
+    ],
+    [
+      8.06,
+      9.075,
+      "喽"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "好。及时到。新娘子见门了!",
+  "speakerKey": null,
+  "speakerRuleKey": "e9s8",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

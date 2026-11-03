@@ -1,0 +1,8 @@
+{
+  "transcript": "嗯。",
+  "utterances": [],
+  "nonverbal": null,
+  "issues": [],
+  "uncertain": "Dedicated STT fallback: speaker identity and nonverbal sounds require separate review.",
+  "provenance": "ending_worker__p02.stt-qwen3-asr-1.7b.json"
+}

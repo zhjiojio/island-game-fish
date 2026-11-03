@@ -1,0 +1,161 @@
+{
+  "sourceUnchanged": true,
+  "endingCount": 14,
+  "verifiedCount": 14,
+  "results": [
+    {
+      "id": "ending_loop",
+      "status": "verified",
+      "sourceTextExact": true,
+      "decode": "pass",
+      "copySha256Matches": true,
+      "durationSec": 21.083991,
+      "sha256": "193159c8dc74aced7fb38ec80a7016a34f20b3daf3e3ce22f43285691ad9d985",
+      "videoCodec": "h264",
+      "audioCodec": "aac"
+    },
+    {
+      "id": "ending_streamer",
+      "status": "verified",
+      "sourceTextExact": true,
+      "decode": "pass",
+      "copySha256Matches": true,
+      "durationSec": 16.083333,
+      "sha256": "41c574263f1600a7dbf541b8858f4c9c2cb1ab398889ef2d50130cf0a184b6f3",
+      "videoCodec": "h264",
+      "audioCodec": "aac"
+    },
+    {
+      "id": "ending_cow",
+      "status": "verified",
+      "sourceTextExact": true,
+      "decode": "pass",
+      "copySha256Matches": true,
+      "durationSec": 16.083333,
+      "sha256": "d482b7abaf55cd0cb99dfebb558b3cdf8fc8d4963464f312ef2b5846b69ed618",
+      "videoCodec": "h264",
+      "audioCodec": "aac"
+    },
+    {
+      "id": "ending_terrace",
+      "status": "verified",
+      "sourceTextExact": true,
+      "decode": "pass",
+      "copySha256Matches": true,
+      "durationSec": 17.083333,
+      "sha256": "b2dfeef14302a54f16f6a914c9915e0bad12fdae25954bd55442758dd1518d58",
+      "videoCodec": "h264",
+      "audioCodec": "aac"
+    },
+    {
+      "id": "ending_reality_show",
+      "status": "verified",
+      "sourceTextExact": true,
+      "decode": "pass",
+      "copySha256Matches": true,
+      "durationSec": 16.083333,
+      "sha256": "300f6419963931ca0fb3ea2e8f09ba9448b0b2bc7d09dfac54b61d76b1923636",
+      "videoCodec": "h264",
+      "audioCodec": "aac"
+    },
+    {
+      "id": "ending_empire",
+      "status": "verified",
+      "sourceTextExact": true,
+      "decode": "pass",
+      "copySha256Matches": true,
+      "durationSec": 16.083333,
+      "sha256": "7d3f3e9de1127ff6a4c5872f2e01b77c382c654f40c0e1ebd6b212b70cc4980a",
+      "videoCodec": "h264",
+      "audioCodec": "aac"
+    },
+    {
+      "id": "ending_future",
+      "status": "verified",
+      "sourceTextExact": true,
+      "decode": "pass",
+      "copySha256Matches": true,
+      "durationSec": 18.083333,
+      "sha256": "7ecaa8093f7d1b2ca31a3e647215435385e96a31007ed4dd5dacb19275919135",
+      "videoCodec": "h264",
+      "audioCodec": "aac"
+    },
+    {
+      "id": "ending_boss",
+      "status": "verified",
+      "sourceTextExact": true,
+      "decode": "pass",
+      "copySha256Matches": true,
+      "durationSec": 18.083333,
+      "sha256": "d5247da895e4ece0977568042dd3b91d959fdce685b0cba78536047aeea8cb38",
+      "videoCodec": "h264",
+      "audioCodec": "aac"
+    },
+    {
+      "id": "ending_crane",
+      "status": "verified",
+      "sourceTextExact": true,
+      "decode": "pass",
+      "copySha256Matches": true,
+      "durationSec": 16.083333,
+      "sha256": "8e8009793b636fe97c4816314619b64bdfff60a9ba3cc31b429d0b3eb5ff50bd",
+      "videoCodec": "h264",
+      "audioCodec": "aac"
+    },
+    {
+      "id": "ending_worker",
+      "status": "verified",
+      "sourceTextExact": true,
+      "decode": "pass",
+      "copySha256Matches": true,
+      "durationSec": 18.083333,
+      "sha256": "0a1b5dd5ae783187c5f494d19855f11bfe446613f87dfc31a5605d00e68fcb26",
+      "videoCodec": "h264",
+      "audioCodec": "aac"
+    },
+    {
+      "id": "ending_romance",
+      "status": "verified",
+      "sourceTextExact": true,
+      "decode": "pass",
+      "copySha256Matches": true,
+      "durationSec": 24.125,
+      "sha256": "420ab186daf942b72e9572144503714a617b5445a7dd49f8da7c8d0b1901fc1e",
+      "videoCodec": "h264",
+      "audioCodec": "aac"
+    },
+    {
+      "id": "ending_independent",
+      "status": "verified",
+      "sourceTextExact": true,
+      "decode": "pass",
+      "copySha256Matches": true,
+      "durationSec": 16.083333,
+      "sha256": "ceb3cf17127b86e4707c2db292a726f2270e2acfd66750d80b99357389f51a84",
+      "videoCodec": "h264",
+      "audioCodec": "aac"
+    },
+    {
+      "id": "ending_revenge",
+      "status": "verified",
+      "sourceTextExact": true,
+      "decode": "pass",
+      "copySha256Matches": true,
+      "durationSec": 16.083333,
+      "sha256": "fa4dd99b2bb50e3a2b57118a3a09bac9b70eacd9c4e84fd1a78c1d30133a8b81",
+      "videoCodec": "h264",
+      "audioCodec": "aac"
+    },
+    {
+      "id": "ending_regret",
+      "status": "verified",
+      "sourceTextExact": true,
+      "decode": "pass",
+      "copySha256Matches": true,
+      "durationSec": 22.291667,
+      "sha256": "af3dd175a3210e48b449b7aac65b1d28ef7c2840e14c0c8bf22cc390e4bfa2a1",
+      "videoCodec": "h264",
+      "audioCodec": "aac"
+    }
+  ]
+}

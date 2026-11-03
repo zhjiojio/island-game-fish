@@ -1,0 +1,25 @@
+{
+  "id": "ending_future",
+  "type": "ending",
+  "episodeId": "ep07",
+  "title": "反转结局：陈劲是未来人",
+  "isEnding": true,
+  "category": "reversal",
+  "tone": [
+    "科幻",
+    "宿命"
+  ],
+  "rarity": "legendary",
+  "isCanonical": false,
+  "unlock": {
+    "requiredFlags": [
+      "ep07_conditional"
+    ],
+    "requiredEndingTags": []
+  },
+  "description": "陈劲是未来的贺星冉花千万派回来拯救自己的。",
+  "closing": "他的旧手机亮起，付款人姓名只有两个字：星冉。",
+  "achievement": "ending_future",
+  "chapterId": "ch4",
+  "chapterTitle": "第四章：把陌生人带回家"
+}

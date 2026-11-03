@@ -1,0 +1,242 @@
+{
+ "BE_SLAP": {
+  "ep": "EP99",
+  "scene": "house",
+  "type": "end",
+  "ending": "BE5",
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be5_kicked_out.hd.mp4",
+   "duration": 10,
+   "label": "三巴掌赶出家门",
+   "poster": "images/lastframes/be5_kicked_out.hd.jpg"
+  },
+  "char": "wanerh",
+  "speaker": "沈婉儿（怒吐）",
+  "text": "你把我当什么人了！我直接回娘家！"
+ },
+ "BE_GOD": {
+  "ep": "EP99",
+  "scene": "village",
+  "type": "end",
+  "ending": "BE4",
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be4_witch_hunt.c.mp4",
+   "duration": 10,
+   "label": "村民送你上山",
+   "poster": "images/lastframes/be4_witch_hunt.c.jpg"
+  },
+  "char": "villager",
+  "speaker": "村民（举火把嘶吼）",
+  "forceCaption": true,
+  "text": "村口那一嗓子喊完，村民真把你当成神仙。火把一路追到送仙坡——你脚下一空，直接从山崖掉了下去。"
+ },
+ "BE_MONSTER": {
+  "ep": "EP99",
+  "scene": "village",
+  "type": "end",
+  "ending": "BE4",
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be4_witch_hunt.c.mp4",
+   "duration": 10,
+   "label": "妖怪！烧了他！",
+   "poster": "images/lastframes/be4_witch_hunt.c.jpg"
+  },
+  "char": "villager",
+  "speaker": "村民（举火把嘶吼）",
+  "forceCaption": true,
+  "text": "你把本事拿来装神弄鬼，村民举火把把你押上山。火把是真的，悬崖也是真的——这一回，没人救你。"
+ },
+ "BE_LOSE_HER": {
+  "ep": "EP99",
+  "scene": "trans",
+  "type": "end",
+  "ending": "BE1",
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be1_she_left.c.mp4",
+   "duration": 10,
+   "label": "她走了",
+   "poster": "images/lastframes/be1_she_left.c.jpg"
+  },
+  "char": "aotian",
+  "speaker": "你（内心）",
+  "text": "她收拾了那件米白布衣裳，一个人走了。你追到村口喊了一声嫂子——她没回头。风把她后袖吹起，像在向你招手，又像在把你招回上辈子。"
+ },
+ "BE_RUNAWAY": {
+  "ep": "EP99",
+  "scene": "trans",
+  "type": "end",
+  "ending": "BE8",
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be3_nowhere.c.mp4",
+   "duration": 10,
+   "label": "岔路口驱赶",
+   "poster": "images/lastframes/be3_nowhere.c.jpg"
+  },
+  "char": "aotian",
+  "speaker": "你（内心）",
+  "text": "地没了，人也散了。你背着行李往县城走——回头一看，那块刚开垦的荒地早已看不见。婉儿，再也没消息了。"
+ },
+ "BE_RUNAWAY_BRIDE": {
+  "ep": "EP99",
+  "scene": "house",
+  "type": "end",
+  "ending": "BE9",
+  "media": {
+   "kind": "image",
+   "file": "images/lastframes/be1_she_left.c.jpg",
+   "label": "逃婚新娘"
+  },
+  "char": "wanerh",
+  "speaker": "沈婉儿（心碎）",
+  "text": "你到底……想不想娶我？——她扔下盖头就走。"
+ },
+ "BE_DRUNK": {
+  "ep": "EP99",
+  "scene": "village",
+  "type": "end",
+  "ending": "BE10",
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be6_lost_power_v2.c.mp4",
+   "duration": 10,
+   "label": "金光散尽",
+   "poster": "images/lastframes/be6_lost_power_v2.c.jpg"
+  },
+  "char": "aotian",
+  "speaker": "你（酒话）",
+  "text": "县城小酒馆里……你一杯接一杯，醉得连家都找不回去。头顶那道光——就在刚才、还在孔雀舞那个晚上——现在……什么都没了。"
+ },
+ "BE_PARTNER": {
+  "ep": "EP99",
+  "scene": "night",
+  "type": "end",
+  "ending": "BE11",
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be_partner_drunk.c.mp4",
+   "poster": "images/lastframes/be_partner_drunk.c.jpg",
+   "duration": 10,
+   "label": "与狼为伍"
+  },
+  "char": "aotian",
+  "speaker": "你（内心）",
+  "forceCaption": true,
+  "text": "你和赵铁牛喝到断片，两个人搭肩笑得像亲兄弟。他拍着你肩说「今晚一起去把婉儿抱回来」——你居然点了头。第二天酒醒，婉儿的位置空着，桌上只留一支断了的银簪。"
+ },
+ "BE_STARVE": {
+  "ep": "EP99",
+  "scene": "house",
+  "type": "end",
+  "ending": "BE2",
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be2_starve_death_v2.c.mp4",
+   "duration": 10,
+   "label": "冬天饿死",
+   "poster": "images/lastframes/be2_starve_death_v2.c.jpg"
+  },
+  "char": "wanerh",
+  "speaker": "沈婉儿",
+  "forceCaption": true,
+  "text": "傲天……你活着回去。这最后一块饼你吃，我不饿……嫂子等你到春天。"
+ },
+ "BE_ALLIANCE_KILLED": {
+  "ep": "EP99",
+  "scene": "trans",
+  "type": "end",
+  "ending": "BE14",
+  "media": {
+   "kind": "image",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/BE_ALLIANCE_KILLED_frame.v2.c.jpg",
+   "label": "山寨对饮·反手绑绳"
+  },
+  "char": "narrator",
+  "speaker": "旁白",
+  "forceCaption": true,
+  "text": "你以为跟老憨对饮时能阻住铁牛——却不知老憨早已同铁牛剐了一份地。一壶黄酒下肚·你玩意儿被绑的死死的。第二天早上·铁牛拍拍你肩膀：「兄弟·就以为你能胜啊。」——一重锅盖拍下去·你的国字脸当场就拍成了糑皮。婉儿推开山寨那道木门时·你已经重拾不起来了。"
+ },
+ "BE_ROOF": {
+  "ep": "EP99",
+  "scene": "house",
+  "type": "end",
+  "ending": "BE9",
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_fix_a.mp4",
+   "duration": 10,
+   "label": "雨夜坠落",
+   "poster": "images/lastframes/n5_fix_a.jpg"
+  },
+  "char": "wanerh",
+  "speaker": "沈婉儿（雨里）",
+  "text": "你说过要给我盖新房的……你说话不算数。"
+ },
+ "BE_DROUGHT": {
+  "ep": "EP99",
+  "scene": "house",
+  "type": "end",
+  "ending": "BE10",
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_biz_a.mp4",
+   "duration": 10,
+   "label": "大旱·颗粒无收",
+   "poster": "images/lastframes/n5_biz_a.jpg"
+  },
+  "char": "aotian",
+  "speaker": "你（跪在地头）",
+  "text": "三百亩玉米，一颗没收上来。"
+ },
+ "BE_ALONE": {
+  "ep": "EP99",
+  "scene": "house",
+  "type": "end",
+  "ending": "BE11",
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_biz_c.mp4",
+   "duration": 10,
+   "label": "空荡的大平层",
+   "poster": "images/lastframes/n5_biz_c.jpg"
+  },
+  "char": "narrator",
+  "speaker": "旁白",
+  "text": "你守住了自家的三亩地。可她要的，从来不是这个。"
+ },
+ "BE_RUB_ALONE": {
+  "ep": "EP99",
+  "scene": "house",
+  "type": "end",
+  "ending": "BE12",
+  "media": {
+   "kind": "video",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_guanggun.mp4",
+   "duration": 10,
+   "label": "空屋·老光棍",
+   "poster": "images/lastframes/n5_guanggun.jpg"
+  },
+  "char": "aotian",
+  "speaker": "你（一个人）",
+  "text": "她的腰再没直起来。开春，娘家人把她接走了。"
+ },
+ "BE_BEATEN": {
+  "ep": "EP99",
+  "scene": "house",
+  "type": "end",
+  "ending": "BE15",
+  "media": {
+   "kind": "image",
+   "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/BE_BEATEN_frame.c.jpg",
+   "label": "五个人围住·你倒在院里"
+  },
+  "char": "narrator",
+  "speaker": "旁白",
+  "forceCaption": true,
+  "text": "你把她护在身后，却拦不住五双拳头。她跑出去喊人，回来时你已经不会说话了。"
+ }
+}

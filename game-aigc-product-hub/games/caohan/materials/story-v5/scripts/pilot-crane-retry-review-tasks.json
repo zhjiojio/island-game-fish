@@ -1,0 +1,24 @@
+[
+  {
+    "partId": "ending_crane__p02.r2",
+    "videoId": "ending_crane",
+    "shotId": "ending_crane_shot_02",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ending_crane__p02.r2.json",
+    "requestSha256": "b02d14f91ad33213c35c31cad2b6dec29e7c349d3a43c2fb46ea19f09d014c15",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ending_crane__p02.r2.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ending_crane__p02.r2.json",
+    "durationSec": 7,
+    "expectedSpeech": [],
+    "approvedReference": {
+      "partId": "ending_crane__p02",
+      "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/segments/ending_crane__p02.mp4",
+      "referenceSha256": "739df79dfd8525379c5b919b7557088da1d4a58758f625349db3f170efe05ede",
+      "frameTimeSec": 0.15,
+      "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ending_crane__p02.png",
+      "keyframeSha256": "21099ffe30a58d74540046b1fc33cdeb9edeccff7c4ba3438d7d828e9c042469",
+      "status": "approved_for_pilot",
+      "reviewEvidence": "review/pilot-keyframes.jpg",
+      "reviewNote": "人物外观、服装、站位及场景与原片一致；第二帧为坠落中段，样片从此动作继续。"
+    }
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "videoId": "ep06_branch_truth_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep06_branch_truth_video_01__l01",
+      "speaker": "贺星冉",
+      "text": "我跟你说一句实话——我这次回家，是有麻烦的。我未婚夫想杀我。",
+      "heard": "我跟你说一句实话我这次回家是有麻烦的我未婚夫想杀我",
+      "start": 4.075,
+      "end": 11.285,
+      "alignmentScore": 1.0
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 17.136326530612244,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.51397705078125
+}

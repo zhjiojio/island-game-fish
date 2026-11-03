@@ -1,0 +1,498 @@
+{
+  "appId": "ks867658648250668260",
+  "packagePath": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage",
+  "pid": "KS-GAME",
+  "cdnDir": "AIGC-SoGame/ks867658648250668260",
+  "env": "production",
+  "fileCount": 69,
+  "totalSizeKB": 550836.6,
+  "cdnUrls": [
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_boss.590a0f32af04.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_cow.015e2dbeb7bc.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_crane.183c1f8b96fe.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_empire.995528790f0b.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_future.0958f865ffef.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_independent.c897d4ea7a3f.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_loop.51af693ecc63.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_reality_show.5e3f333cccf0.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_regret.8e4c174c3d66.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_revenge.eede044a3775.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_romance.54f046c3e8b6.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_streamer.f12bf19b384e.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_terrace.704ea3092252.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_worker.06b3bafe0ba5.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep01_branch_conditional_video_01.c3b9939c9a66.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep01_branch_counterattack_video_01.fbabe54c767b.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep01_branch_emotion_video_01.277e824750fd.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep01_branch_truth_video_01.f86285d030b7.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep01_scene_00_video_01.a496726e9e20.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep02_branch_conditional_video_01.59ad6658e36a.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep02_branch_counterattack_video_01.936c639d1c7c.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep02_branch_emotion_video_01.d6999e771433.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep02_branch_truth_video_01.032dc3fdf297.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep02_scene_00_video_01.56e62e90bbf0.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep03_branch_conditional_video_01.a141a1d2e508.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep03_branch_counterattack_video_01.d7b62e11aec8.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep03_branch_emotion_video_01.fac3e0234852.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep03_branch_truth_video_01.dd2ea47b13b5.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep03_scene_00_video_01.b4e5e2cad3f2.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep04_branch_conditional_video_01.5fc90c8074d6.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep04_branch_counterattack_video_01.44d2418a6412.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep04_branch_emotion_video_01.231ed2d2d162.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep04_branch_truth_video_01.421ecbd7de22.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep04_scene_00_video_01.2e83f8ec850b.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep05_branch_conditional_video_01.a37c64ce276f.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep05_branch_counterattack_video_01.69c78a695ac5.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep05_branch_emotion_video_01.d2c1a0549b00.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep05_branch_truth_video_01.b3d8ad2356f9.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep05_scene_00_video_01.33ee6947ea30.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep06_branch_conditional_video_01.7ee05f589f69.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep06_branch_counterattack_video_01.db4b248d1fe2.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep06_branch_emotion_video_01.32df9f55e1eb.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep06_branch_truth_video_01.e16736f195c1.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep06_scene_00_video_01.23de8c766762.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep07_branch_conditional_video_01.72f1cbe2cc4d.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep07_branch_counterattack_video_01.e48adb04baa2.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep07_branch_emotion_video_01.e14584cb6cb3.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep07_branch_truth_video_01.69cfc6cf8961.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep07_scene_00_video_01.0b7d6e52dd3f.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep08_branch_conditional_video_01.2464e58525af.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep08_branch_counterattack_video_01.97bfcfa111a4.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep08_branch_emotion_video_01.89bb55fb6f42.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep08_branch_truth_video_01.b7175594f1c6.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep08_scene_00_video_01.7a71c80ca8a6.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep09_branch_conditional_video_01.b6fc12df68d1.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep09_branch_counterattack_video_01.a9e82bf3b569.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep09_branch_emotion_video_01.682c2ca17107.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep09_branch_truth_video_01.f3a32b79d885.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep09_scene_00_video_01.3b6a4effb448.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep10_branch_conditional_video_01.bed07c575592.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep10_branch_counterattack_video_01.906ea43275e4.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep10_branch_emotion_video_01.c5a2338f9db8.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep10_branch_truth_video_01.705c62396671.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep10_scene_00_video_01.f40141753815.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep11_branch_conditional_video_01.e18a00943f50.mp4",
+    "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep11_branch_counterattack_video_01.60bdf5c2713e.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep11_branch_emotion_video_01.de116abb7abb.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep11_branch_truth_video_01.bac9c0185d88.mp4",
+    "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep11_scene_00_video_01.d11905c97b82.mp4"
+  ],
+  "files": [
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ending_boss.590a0f32af04.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ending_boss.590a0f32af04.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_boss.590a0f32af04.mp4",
+      "sizeKB": 6249.6
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ending_cow.015e2dbeb7bc.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ending_cow.015e2dbeb7bc.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_cow.015e2dbeb7bc.mp4",
+      "sizeKB": 5305.4
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ending_crane.183c1f8b96fe.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ending_crane.183c1f8b96fe.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_crane.183c1f8b96fe.mp4",
+      "sizeKB": 5174.5
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ending_empire.995528790f0b.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ending_empire.995528790f0b.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_empire.995528790f0b.mp4",
+      "sizeKB": 11140.2
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ending_future.0958f865ffef.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ending_future.0958f865ffef.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_future.0958f865ffef.mp4",
+      "sizeKB": 3878.3
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ending_independent.c897d4ea7a3f.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ending_independent.c897d4ea7a3f.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_independent.c897d4ea7a3f.mp4",
+      "sizeKB": 8703.4
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ending_loop.51af693ecc63.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ending_loop.51af693ecc63.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_loop.51af693ecc63.mp4",
+      "sizeKB": 5021
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ending_reality_show.5e3f333cccf0.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ending_reality_show.5e3f333cccf0.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_reality_show.5e3f333cccf0.mp4",
+      "sizeKB": 3578.8
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ending_regret.8e4c174c3d66.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ending_regret.8e4c174c3d66.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_regret.8e4c174c3d66.mp4",
+      "sizeKB": 5685.1
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ending_revenge.eede044a3775.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ending_revenge.eede044a3775.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_revenge.eede044a3775.mp4",
+      "sizeKB": 11581.4
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ending_romance.54f046c3e8b6.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ending_romance.54f046c3e8b6.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_romance.54f046c3e8b6.mp4",
+      "sizeKB": 7516.2
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ending_streamer.f12bf19b384e.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ending_streamer.f12bf19b384e.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_streamer.f12bf19b384e.mp4",
+      "sizeKB": 8429.6
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ending_terrace.704ea3092252.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ending_terrace.704ea3092252.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_terrace.704ea3092252.mp4",
+      "sizeKB": 8640.2
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ending_worker.06b3bafe0ba5.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ending_worker.06b3bafe0ba5.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ending_worker.06b3bafe0ba5.mp4",
+      "sizeKB": 4598.2
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep01_branch_conditional_video_01.c3b9939c9a66.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep01_branch_conditional_video_01.c3b9939c9a66.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep01_branch_conditional_video_01.c3b9939c9a66.mp4",
+      "sizeKB": 5361
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep01_branch_counterattack_video_01.fbabe54c767b.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep01_branch_counterattack_video_01.fbabe54c767b.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep01_branch_counterattack_video_01.fbabe54c767b.mp4",
+      "sizeKB": 6406.1
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep01_branch_emotion_video_01.277e824750fd.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep01_branch_emotion_video_01.277e824750fd.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep01_branch_emotion_video_01.277e824750fd.mp4",
+      "sizeKB": 14306.4
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep01_branch_truth_video_01.f86285d030b7.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep01_branch_truth_video_01.f86285d030b7.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep01_branch_truth_video_01.f86285d030b7.mp4",
+      "sizeKB": 10280.1
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep01_scene_00_video_01.a496726e9e20.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep01_scene_00_video_01.a496726e9e20.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep01_scene_00_video_01.a496726e9e20.mp4",
+      "sizeKB": 11790.6
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep02_branch_conditional_video_01.59ad6658e36a.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep02_branch_conditional_video_01.59ad6658e36a.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep02_branch_conditional_video_01.59ad6658e36a.mp4",
+      "sizeKB": 8346.9
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep02_branch_counterattack_video_01.936c639d1c7c.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep02_branch_counterattack_video_01.936c639d1c7c.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep02_branch_counterattack_video_01.936c639d1c7c.mp4",
+      "sizeKB": 25017.8
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep02_branch_emotion_video_01.d6999e771433.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep02_branch_emotion_video_01.d6999e771433.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep02_branch_emotion_video_01.d6999e771433.mp4",
+      "sizeKB": 7163.9
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep02_branch_truth_video_01.032dc3fdf297.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep02_branch_truth_video_01.032dc3fdf297.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep02_branch_truth_video_01.032dc3fdf297.mp4",
+      "sizeKB": 3164.5
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep02_scene_00_video_01.56e62e90bbf0.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep02_scene_00_video_01.56e62e90bbf0.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep02_scene_00_video_01.56e62e90bbf0.mp4",
+      "sizeKB": 8415.7
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep03_branch_conditional_video_01.a141a1d2e508.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep03_branch_conditional_video_01.a141a1d2e508.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep03_branch_conditional_video_01.a141a1d2e508.mp4",
+      "sizeKB": 17350.5
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep03_branch_counterattack_video_01.d7b62e11aec8.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep03_branch_counterattack_video_01.d7b62e11aec8.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep03_branch_counterattack_video_01.d7b62e11aec8.mp4",
+      "sizeKB": 9677
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep03_branch_emotion_video_01.fac3e0234852.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep03_branch_emotion_video_01.fac3e0234852.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep03_branch_emotion_video_01.fac3e0234852.mp4",
+      "sizeKB": 7434.5
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep03_branch_truth_video_01.dd2ea47b13b5.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep03_branch_truth_video_01.dd2ea47b13b5.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep03_branch_truth_video_01.dd2ea47b13b5.mp4",
+      "sizeKB": 14290
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep03_scene_00_video_01.b4e5e2cad3f2.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep03_scene_00_video_01.b4e5e2cad3f2.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep03_scene_00_video_01.b4e5e2cad3f2.mp4",
+      "sizeKB": 6273
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep04_branch_conditional_video_01.5fc90c8074d6.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep04_branch_conditional_video_01.5fc90c8074d6.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep04_branch_conditional_video_01.5fc90c8074d6.mp4",
+      "sizeKB": 13478.8
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep04_branch_counterattack_video_01.44d2418a6412.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep04_branch_counterattack_video_01.44d2418a6412.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep04_branch_counterattack_video_01.44d2418a6412.mp4",
+      "sizeKB": 3443.8
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep04_branch_emotion_video_01.231ed2d2d162.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep04_branch_emotion_video_01.231ed2d2d162.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep04_branch_emotion_video_01.231ed2d2d162.mp4",
+      "sizeKB": 15301.2
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep04_branch_truth_video_01.421ecbd7de22.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep04_branch_truth_video_01.421ecbd7de22.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep04_branch_truth_video_01.421ecbd7de22.mp4",
+      "sizeKB": 2969.3
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep04_scene_00_video_01.2e83f8ec850b.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep04_scene_00_video_01.2e83f8ec850b.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep04_scene_00_video_01.2e83f8ec850b.mp4",
+      "sizeKB": 17170.3
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep05_branch_conditional_video_01.a37c64ce276f.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep05_branch_conditional_video_01.a37c64ce276f.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep05_branch_conditional_video_01.a37c64ce276f.mp4",
+      "sizeKB": 2290
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep05_branch_counterattack_video_01.69c78a695ac5.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep05_branch_counterattack_video_01.69c78a695ac5.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep05_branch_counterattack_video_01.69c78a695ac5.mp4",
+      "sizeKB": 3028.4
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep05_branch_emotion_video_01.d2c1a0549b00.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep05_branch_emotion_video_01.d2c1a0549b00.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep05_branch_emotion_video_01.d2c1a0549b00.mp4",
+      "sizeKB": 3888.2
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep05_branch_truth_video_01.b3d8ad2356f9.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep05_branch_truth_video_01.b3d8ad2356f9.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep05_branch_truth_video_01.b3d8ad2356f9.mp4",
+      "sizeKB": 3784.4
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep05_scene_00_video_01.33ee6947ea30.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep05_scene_00_video_01.33ee6947ea30.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep05_scene_00_video_01.33ee6947ea30.mp4",
+      "sizeKB": 6698
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep06_branch_conditional_video_01.7ee05f589f69.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep06_branch_conditional_video_01.7ee05f589f69.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep06_branch_conditional_video_01.7ee05f589f69.mp4",
+      "sizeKB": 6208.2
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep06_branch_counterattack_video_01.db4b248d1fe2.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep06_branch_counterattack_video_01.db4b248d1fe2.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep06_branch_counterattack_video_01.db4b248d1fe2.mp4",
+      "sizeKB": 7060.5
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep06_branch_emotion_video_01.32df9f55e1eb.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep06_branch_emotion_video_01.32df9f55e1eb.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep06_branch_emotion_video_01.32df9f55e1eb.mp4",
+      "sizeKB": 5300.2
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep06_branch_truth_video_01.e16736f195c1.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep06_branch_truth_video_01.e16736f195c1.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep06_branch_truth_video_01.e16736f195c1.mp4",
+      "sizeKB": 3647.9
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep06_scene_00_video_01.23de8c766762.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep06_scene_00_video_01.23de8c766762.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep06_scene_00_video_01.23de8c766762.mp4",
+      "sizeKB": 3322.2
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep07_branch_conditional_video_01.72f1cbe2cc4d.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep07_branch_conditional_video_01.72f1cbe2cc4d.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep07_branch_conditional_video_01.72f1cbe2cc4d.mp4",
+      "sizeKB": 9984.6
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep07_branch_counterattack_video_01.e48adb04baa2.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep07_branch_counterattack_video_01.e48adb04baa2.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep07_branch_counterattack_video_01.e48adb04baa2.mp4",
+      "sizeKB": 10558.3
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep07_branch_emotion_video_01.e14584cb6cb3.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep07_branch_emotion_video_01.e14584cb6cb3.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep07_branch_emotion_video_01.e14584cb6cb3.mp4",
+      "sizeKB": 4346.1
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep07_branch_truth_video_01.69cfc6cf8961.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep07_branch_truth_video_01.69cfc6cf8961.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep07_branch_truth_video_01.69cfc6cf8961.mp4",
+      "sizeKB": 7406.3
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep07_scene_00_video_01.0b7d6e52dd3f.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep07_scene_00_video_01.0b7d6e52dd3f.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep07_scene_00_video_01.0b7d6e52dd3f.mp4",
+      "sizeKB": 4545.5
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep08_branch_conditional_video_01.2464e58525af.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep08_branch_conditional_video_01.2464e58525af.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep08_branch_conditional_video_01.2464e58525af.mp4",
+      "sizeKB": 11676.2
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep08_branch_counterattack_video_01.97bfcfa111a4.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep08_branch_counterattack_video_01.97bfcfa111a4.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep08_branch_counterattack_video_01.97bfcfa111a4.mp4",
+      "sizeKB": 8080.4
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep08_branch_emotion_video_01.89bb55fb6f42.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep08_branch_emotion_video_01.89bb55fb6f42.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep08_branch_emotion_video_01.89bb55fb6f42.mp4",
+      "sizeKB": 4203.7
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep08_branch_truth_video_01.b7175594f1c6.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep08_branch_truth_video_01.b7175594f1c6.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep08_branch_truth_video_01.b7175594f1c6.mp4",
+      "sizeKB": 4441.8
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep08_scene_00_video_01.7a71c80ca8a6.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep08_scene_00_video_01.7a71c80ca8a6.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep08_scene_00_video_01.7a71c80ca8a6.mp4",
+      "sizeKB": 4794.3
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep09_branch_conditional_video_01.b6fc12df68d1.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep09_branch_conditional_video_01.b6fc12df68d1.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep09_branch_conditional_video_01.b6fc12df68d1.mp4",
+      "sizeKB": 5319.7
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep09_branch_counterattack_video_01.a9e82bf3b569.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep09_branch_counterattack_video_01.a9e82bf3b569.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep09_branch_counterattack_video_01.a9e82bf3b569.mp4",
+      "sizeKB": 4784.6
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep09_branch_emotion_video_01.682c2ca17107.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep09_branch_emotion_video_01.682c2ca17107.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep09_branch_emotion_video_01.682c2ca17107.mp4",
+      "sizeKB": 7221.1
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep09_branch_truth_video_01.f3a32b79d885.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep09_branch_truth_video_01.f3a32b79d885.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep09_branch_truth_video_01.f3a32b79d885.mp4",
+      "sizeKB": 9704
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep09_scene_00_video_01.3b6a4effb448.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep09_scene_00_video_01.3b6a4effb448.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep09_scene_00_video_01.3b6a4effb448.mp4",
+      "sizeKB": 11373.5
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep10_branch_conditional_video_01.bed07c575592.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep10_branch_conditional_video_01.bed07c575592.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep10_branch_conditional_video_01.bed07c575592.mp4",
+      "sizeKB": 14863.3
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep10_branch_counterattack_video_01.906ea43275e4.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep10_branch_counterattack_video_01.906ea43275e4.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep10_branch_counterattack_video_01.906ea43275e4.mp4",
+      "sizeKB": 13919.4
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep10_branch_emotion_video_01.c5a2338f9db8.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep10_branch_emotion_video_01.c5a2338f9db8.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep10_branch_emotion_video_01.c5a2338f9db8.mp4",
+      "sizeKB": 4675.1
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep10_branch_truth_video_01.705c62396671.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep10_branch_truth_video_01.705c62396671.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep10_branch_truth_video_01.705c62396671.mp4",
+      "sizeKB": 5886.5
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep10_scene_00_video_01.f40141753815.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep10_scene_00_video_01.f40141753815.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep10_scene_00_video_01.f40141753815.mp4",
+      "sizeKB": 14144.2
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep11_branch_conditional_video_01.e18a00943f50.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep11_branch_conditional_video_01.e18a00943f50.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep11_branch_conditional_video_01.e18a00943f50.mp4",
+      "sizeKB": 11185.8
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep11_branch_counterattack_video_01.60bdf5c2713e.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep11_branch_counterattack_video_01.60bdf5c2713e.mp4",
+      "cdnUrl": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep11_branch_counterattack_video_01.60bdf5c2713e.mp4",
+      "sizeKB": 6899.9
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep11_branch_emotion_video_01.de116abb7abb.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep11_branch_emotion_video_01.de116abb7abb.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep11_branch_emotion_video_01.de116abb7abb.mp4",
+      "sizeKB": 8191.1
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep11_branch_truth_video_01.bac9c0185d88.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep11_branch_truth_video_01.bac9c0185d88.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep11_branch_truth_video_01.bac9c0185d88.mp4",
+      "sizeKB": 5241.1
+    },
+    {
+      "local": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/downstream/internal/.cdn-stage/assets/video/ep11_scene_00_video_01.d11905c97b82.mp4",
+      "remoteKey": "AIGC-SoGame/ks867658648250668260/assets/video/ep11_scene_00_video_01.d11905c97b82.mp4",
+      "cdnUrl": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks867658648250668260/video/ep11_scene_00_video_01.d11905c97b82.mp4",
+      "sizeKB": 9018.7
+    }
+  ],
+  "replacedFiles": [],
+  "replacedCount": 0
+}

@@ -1,0 +1,21 @@
+{
+  "partId": "ending_empire__p02",
+  "sourceSha256": "31a83270b3c1682c41ddbeaaa132162d19b4c11204953d15b4a59d2633179fda",
+  "model": "google/gemini-2.5-flash",
+  "review": {
+    "transcript": "赫总，轮到你敲钟了。",
+    "utterances": [
+      {
+        "startSec": 0.96,
+        "endSec": 2.66,
+        "text": "赫总，轮到你敲钟了。",
+        "audibleVoice": "场外声音，男性，成年",
+        "visibleSpeaker": "画面外",
+        "mouthSyncEvidence": "无"
+      }
+    ],
+    "nonverbal": "0.00-0.04秒：持续环境音，轻微的嗡嗡声。\n0.04-0.06秒：敲钟声。",
+    "issues": [],
+    "uncertain": []
+  }
+}

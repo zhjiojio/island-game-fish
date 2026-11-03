@@ -1,0 +1,25 @@
+{
+  "id": "ending_terrace",
+  "type": "ending",
+  "episodeId": "ep04",
+  "title": "反转结局：露台回旋镖",
+  "isEnding": true,
+  "category": "reversal",
+  "tone": [
+    "因果",
+    "打脸"
+  ],
+  "rarity": "rare",
+  "isCanonical": false,
+  "unlock": {
+    "requiredFlags": [
+      "ep04_counterattack"
+    ],
+    "requiredEndingTags": []
+  },
+  "description": "许邵泽再次站上露台，一步步被自己的谎言逼到断裂栏杆边。",
+  "closing": "贺星冉没有动手。镜头一转，掉下去的是他。",
+  "achievement": "ending_terrace",
+  "chapterId": "ch3",
+  "chapterTitle": "第三章：一张床与三千万"
+}

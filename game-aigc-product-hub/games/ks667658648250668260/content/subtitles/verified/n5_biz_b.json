@@ -1,0 +1,91 @@
+{
+ "schemaVersion": 1,
+ "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_biz_b.mp4",
+ "sha256": "8ea50b444eb779e4b1d00e93508326391a3e08c43c6b267a108d3d626908fcca",
+ "duration": 10.042,
+ "nodes": [
+  "r_biz_b"
+ ],
+ "status": "speech",
+ "transcript": "张家两头李家，两头年底还猪不还钱。",
+ "rawText": "张家两头李家两头年底还猪不还钱",
+ "asrChars": [
+  [
+   4.35,
+   4.55,
+   "张"
+  ],
+  [
+   4.55,
+   4.75,
+   "家"
+  ],
+  [
+   4.75,
+   4.97,
+   "两"
+  ],
+  [
+   4.97,
+   5.21,
+   "头"
+  ],
+  [
+   5.35,
+   5.59,
+   "李"
+  ],
+  [
+   5.61,
+   5.79,
+   "家"
+  ],
+  [
+   5.79,
+   5.97,
+   "两"
+  ],
+  [
+   5.97,
+   6.21,
+   "头"
+  ],
+  [
+   6.61,
+   6.85,
+   "年"
+  ],
+  [
+   6.85,
+   7.09,
+   "底"
+  ],
+  [
+   7.11,
+   7.27,
+   "还"
+  ],
+  [
+   7.27,
+   7.51,
+   "猪"
+  ],
+  [
+   7.51,
+   7.63,
+   "不"
+  ],
+  [
+   7.63,
+   7.79,
+   "还"
+  ],
+  [
+   7.79,
+   8.955,
+   "钱"
+  ]
+ ],
+ "timingEngine": "asr-anchor(funasr-paraformer)",
+ "reviewMethod": "batch ASR auto (needs human proof-read for punctuation/speaker)."
+}

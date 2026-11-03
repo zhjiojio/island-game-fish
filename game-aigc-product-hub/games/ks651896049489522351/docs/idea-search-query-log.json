@@ -1,0 +1,90 @@
+[
+  {
+    "query": "site:github.com doudizhu WebSocket JavaScript 斗地主",
+    "track": "direct",
+    "lane": "exact-title-and-tech",
+    "consumers": ["ddz-online-01"],
+    "provider": "google-web-search",
+    "result_count": 5,
+    "broadened_from": null,
+    "fallback_reason": null,
+    "coverage_caveat": "Google-indexed public GitHub pages only; no GitHub API deep inspection."
+  },
+  {
+    "query": "site:github.com 斗地主 websocket node.js canvas",
+    "track": "direct",
+    "lane": "chinese-title-tech-platform",
+    "consumers": ["ddz-online-01"],
+    "provider": "google-web-search",
+    "result_count": 5,
+    "broadened_from": null,
+    "fallback_reason": null,
+    "coverage_caveat": "Search results were mostly noisy; direct usable evidence was limited."
+  },
+  {
+    "query": "site:github.com landlord card game javascript websocket",
+    "track": "structural",
+    "lane": "english-alias-card-game-websocket",
+    "consumers": ["ddz-online-01"],
+    "provider": "google-web-search",
+    "result_count": 5,
+    "broadened_from": null,
+    "fallback_reason": null,
+    "coverage_caveat": "English alias 'landlord' is ambiguous and produced weak direct matches."
+  },
+  {
+    "query": "site:github.com multiplayer card game websocket canvas javascript",
+    "track": "structural",
+    "lane": "mechanic-platform-shape",
+    "consumers": ["ddz-online-01"],
+    "provider": "google-web-search",
+    "result_count": 5,
+    "broadened_from": null,
+    "fallback_reason": null,
+    "coverage_caveat": "Returned topic pages and broad multiplayer browser-game references."
+  },
+  {
+    "query": "github doudizhu node websocket",
+    "track": "direct",
+    "lane": "repository-slug-tech",
+    "consumers": ["ddz-online-01"],
+    "provider": "google-web-search",
+    "result_count": 5,
+    "broadened_from": "site:github.com doudizhu WebSocket JavaScript 斗地主",
+    "fallback_reason": "Initial exact site query had few direct repository pages.",
+    "coverage_caveat": "Includes non-GitHub pages and snippets; URL verification required."
+  },
+  {
+    "query": "github doudizhu javascript html5",
+    "track": "direct",
+    "lane": "frontend-html5-reference",
+    "consumers": ["ddz-online-01"],
+    "provider": "google-web-search",
+    "result_count": 5,
+    "broadened_from": "site:github.com doudizhu WebSocket JavaScript 斗地主",
+    "fallback_reason": "Needed frontend implementation references separate from server evidence.",
+    "coverage_caveat": "May find frontend-only implementations without WebSocket support."
+  },
+  {
+    "query": "github 斗地主 node websocket Doudizhu-server",
+    "track": "direct",
+    "lane": "server-slug-and-chinese-title",
+    "consumers": ["ddz-online-01"],
+    "provider": "google-web-search",
+    "result_count": 5,
+    "broadened_from": "site:github.com 斗地主 websocket node.js canvas",
+    "fallback_reason": "Needed to locate Node/WebSocket server-specific direct match.",
+    "coverage_caveat": "Search surfaced GitHub profile snippet; repository URL needs manual verification."
+  },
+  {
+    "query": "github multiplayer card game socket.io javascript",
+    "track": "structural",
+    "lane": "multiplayer-card-architecture",
+    "consumers": ["ddz-online-01"],
+    "provider": "google-web-search",
+    "result_count": 5,
+    "broadened_from": "site:github.com multiplayer card game websocket canvas javascript",
+    "fallback_reason": "Needed broader Socket.IO card-game architecture references.",
+    "coverage_caveat": "Structural references are not Dou Dizhu and cannot validate game rules."
+  }
+]

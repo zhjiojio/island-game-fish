@@ -1,0 +1,10 @@
+{
+  "description": "快手小游戏项目配置文件",
+  "projectname": "Template",
+  "appid": "kwai_game_test_appid",
+  "setting": {
+    "es6": false
+  },
+  "engine_type": "frog",
+  "aigc_skill_version": "0.0.1"
+}

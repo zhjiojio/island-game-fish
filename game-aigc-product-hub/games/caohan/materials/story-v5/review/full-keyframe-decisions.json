@@ -1,0 +1,555 @@
+[
+  {
+    "partId": "ep01_branch_truth_video_01__p01",
+    "sha256": "871f8115a769bfa359ad0b625aae1ef7d01be908ef3c7a2ca75a6cbe60249a19",
+    "status": "approved_for_generation",
+    "evidence": "full-reference-sheet-01.jpg",
+    "decision": "已查看原片首帧：人物、服装与新镜头可衔接；复用原片构图，由原生视频完成后续动作。"
+  },
+  {
+    "partId": "ep03_branch_truth_video_01__p01",
+    "sha256": "aca13e7640e3f2c071064b914053465c803bef0805e1da92373c95c093abe2f8",
+    "status": "approved_for_generation",
+    "evidence": "full-reference-sheet-02.jpg",
+    "decision": "已查看原片首帧：人物、服装与新镜头可衔接；复用原片构图，由原生视频完成后续动作。"
+  },
+  {
+    "partId": "ep05_scene_00_video_01__p01",
+    "sha256": "601acd564a40c0d3d6f542cc4f35a1480480b166fb5ef06cd21d953a7577f28a",
+    "status": "approved_for_generation",
+    "evidence": "full-reference-sheet-03.jpg",
+    "decision": "已查看原片首帧：人物、服装与新镜头可衔接；复用原片构图，由原生视频完成后续动作。"
+  },
+  {
+    "partId": "ep05_branch_truth_video_01__p01",
+    "sha256": "e588a911948ee0b35bb88029a884b2e2523680024b9f1b89e52b1c2256f55d28",
+    "status": "approved_for_generation",
+    "evidence": "full-reference-sheet-03.jpg",
+    "decision": "已查看原片首帧：人物、服装与新镜头可衔接；复用原片构图，由原生视频完成后续动作。"
+  },
+  {
+    "partId": "ep05_branch_conditional_video_01__p01",
+    "sha256": "eff841b9ebabcc95083446053d0a0f6dff379d1527afd4b2fbeb3b72e51b87a2",
+    "status": "approved_for_generation",
+    "evidence": "full-reference-sheet-03.jpg",
+    "decision": "已查看原片首帧：人物、服装与新镜头可衔接；复用原片构图，由原生视频完成后续动作。"
+  },
+  {
+    "partId": "ep06_branch_conditional_video_01__p01",
+    "sha256": "0344b96b1db3dd54e320e9dccefae36622daac9805180599cf969cdce1a2bf82",
+    "status": "approved_for_generation",
+    "evidence": "full-reference-sheet-04.jpg",
+    "decision": "已查看原片首帧：人物、服装与新镜头可衔接；复用原片构图，由原生视频完成后续动作。"
+  },
+  {
+    "partId": "ep11_branch_emotion_video_01__p01",
+    "sha256": "dcde6c473d9d998ae58a44aa4f90e40d59e9f11ff3bcbcd01a17322de3f26646",
+    "status": "approved_for_generation",
+    "evidence": "full-reference-sheet-07.jpg",
+    "decision": "已查看原片首帧：人物、服装与新镜头可衔接；复用原片构图，由原生视频完成后续动作。"
+  },
+  {
+    "partId": "ending_loop__p01",
+    "sha256": "4f0bda7f1c7e5e55cf690c87e186b5ba2b32c78dda96feecbfcc8d851b64c5a5",
+    "status": "approved_for_generation",
+    "evidence": "full-reference-sheet-07.jpg",
+    "decision": "已查看原片首帧：人物、服装与新镜头可衔接；复用原片构图，由原生视频完成后续动作。"
+  },
+  {
+    "partId": "ending_romance__p01",
+    "sha256": "c95385d05f035192c34cf5aae8321c7f01f7267196e053ffdd4779317f2229f3",
+    "status": "approved_for_generation",
+    "evidence": "full-reference-sheet-08.jpg",
+    "decision": "已查看原片首帧：人物、服装与新镜头可衔接；复用原片构图，由原生视频完成后续动作。"
+  },
+  {
+    "partId": "ending_regret__p01",
+    "sha256": "da53faf52858808e105754472a379f6e5583e007c81fa7612612fef8099d71e6",
+    "status": "approved_for_generation",
+    "evidence": "full-reference-sheet-08.jpg",
+    "decision": "已查看原片首帧：人物、服装与新镜头可衔接；复用原片构图，由原生视频完成后续动作。"
+  },
+  {
+    "partId": "ep01_branch_conditional_video_01__p01",
+    "sha256": "c3740cecd1985200bd4e8249ab3e4e1f793fb3978a6dc349c4261ee71a3255a0",
+    "status": "approved_for_generation",
+    "evidence": "keyframes/ep01_branch_conditional_video_01__p01.png",
+    "decision": "已查看生成首帧：女主酒红裙，父母身份与参考一致，手机置于三人之间，许邵泽未被误画在卧室，适合播放录音。"
+  },
+  {
+    "partId": "ep02_scene_00_video_01__p01",
+    "sha256": "35c5208f7e6ed6b8f3cf71808976134ff2d887e988447507ebdb24996bff0774",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round1.jpg",
+    "decision": "人物身份、路边摩托/越野车场景及追兵背影符合，动作起点可用。"
+  },
+  {
+    "partId": "ep02_branch_emotion_video_01__p01",
+    "sha256": "cfd8a89c56b955d4f23aa1e18d99278d0f64400bfee7392efacf459cc4827819",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round1.jpg",
+    "decision": "人物身份、路边摩托/越野车场景及追兵背影符合，动作起点可用。"
+  },
+  {
+    "partId": "ep02_branch_counterattack_video_01__p01",
+    "sha256": "caf801567c8e246629123689ae407d99a55a235fd394c1c4c1e82058dc41e385",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round1.jpg",
+    "decision": "人物身份、路边摩托/越野车场景及追兵背影符合，动作起点可用。"
+  },
+  {
+    "partId": "ep02_branch_conditional_video_01__p01",
+    "sha256": "88b075c33bd8e6363c1812b41f75fb657b5013a71899b0cd6de6229a6241209f",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round1.jpg",
+    "decision": "人物身份、路边摩托/越野车场景及追兵背影符合，动作起点可用。"
+  },
+  {
+    "partId": "ep03_branch_conditional_video_01__p01",
+    "status": "approved_for_generation",
+    "sha256": "e2aef7bc4afc2375e1c36514ad48dd36248d999c5977344d772b43e767d6fc16",
+    "evidence": "full-keyframes-round2.jpg",
+    "decision": "人物和灰外套一致，定位器置于女主掌心，摩托停在路边，适合说明定位器来历。"
+  },
+  {
+    "partId": "ep04_branch_emotion_video_01__p01",
+    "sha256": "d9e2f03af6af547c8bf07d0e7d4766504b480d638d58dc5fe6379d8a60db8736",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round3.jpg",
+    "decision": "已核对双人身份、服装、静态起始位置和关键道具；车内驾驶/副驾位置正确，卧室保持完整遮挡，早餐场景与合同黑卡对应。"
+  },
+  {
+    "partId": "ep04_branch_truth_video_01__p01",
+    "sha256": "a29951090d78d65bb3eb1685adf9e64491177d412f0835d1e6e9cd9fb7056e2c",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round3.jpg",
+    "decision": "已核对双人身份、服装、静态起始位置和关键道具；车内驾驶/副驾位置正确，卧室保持完整遮挡，早餐场景与合同黑卡对应。"
+  },
+  {
+    "partId": "ep04_branch_counterattack_video_01__p01",
+    "sha256": "0cfbbb9e9054c23db5d781eabb8e70f8a109a6581cab058e5743b38b9049ec52",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round3.jpg",
+    "decision": "已核对双人身份、服装、静态起始位置和关键道具；车内驾驶/副驾位置正确，卧室保持完整遮挡，早餐场景与合同黑卡对应。"
+  },
+  {
+    "partId": "ep04_branch_conditional_video_01__p01",
+    "sha256": "174b17a4001fec14b075de37f4e7c7b3922195b459cea6ab6e10134f7b634410",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round3.jpg",
+    "decision": "已核对双人身份、服装、静态起始位置和关键道具；车内驾驶/副驾位置正确，卧室保持完整遮挡，早餐场景与合同黑卡对应。"
+  },
+  {
+    "partId": "ep05_branch_emotion_video_01__p01",
+    "sha256": "b56d58ac8b688c18b9207e13e835ebdbec51cbdc4beffcc8f36d766e09ecc3eb",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round3.jpg",
+    "decision": "已核对双人身份、服装、静态起始位置和关键道具；车内驾驶/副驾位置正确，卧室保持完整遮挡，早餐场景与合同黑卡对应。"
+  },
+  {
+    "partId": "ep05_branch_counterattack_video_01__p01",
+    "sha256": "d3961a2c9f4ec7d2137bb671a21ac24872c9e08a2e8ad3504e3158189224aa32",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round3.jpg",
+    "decision": "已核对双人身份、服装、静态起始位置和关键道具；车内驾驶/副驾位置正确，卧室保持完整遮挡，早餐场景与合同黑卡对应。"
+  },
+  {
+    "partId": "ep06_scene_00_video_01__p01",
+    "sha256": "fc9317fcbd407876c2c29f9316d94cddf223eec40a3a7ec2409dbe8d29dc0d5e",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round3.jpg",
+    "decision": "已核对双人身份、服装、静态起始位置和关键道具；车内驾驶/副驾位置正确，卧室保持完整遮挡，早餐场景与合同黑卡对应。"
+  },
+  {
+    "partId": "ep06_branch_emotion_video_01__p01",
+    "sha256": "7c8f58557aabf2ca877816c5761f3fc01bfbc62f0470c0663bf29220f0f6683d",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round3.jpg",
+    "decision": "已核对双人身份、服装、静态起始位置和关键道具；车内驾驶/副驾位置正确，卧室保持完整遮挡，早餐场景与合同黑卡对应。"
+  },
+  {
+    "partId": "ep06_branch_truth_video_01__p01",
+    "sha256": "96de9f8ec3af3e784647ea5ba14e67d2bb55943b083c393c1e1a9ada4e4aca45",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round4.jpg",
+    "decision": "人物身份、早餐桌合同道具或客厅对峙构图已核对，允许进入原生视频。"
+  },
+  {
+    "partId": "ep06_branch_counterattack_video_01__p01",
+    "sha256": "f4d867935eff09d3f5bc725bf4493f0ba8194cdfcd35133a65ad4efd845efb64",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round4.jpg",
+    "decision": "人物身份、早餐桌合同道具或客厅对峙构图已核对，允许进入原生视频。"
+  },
+  {
+    "partId": "ep07_branch_truth_video_01__p01",
+    "sha256": "4eb088e72572526f9df21b146cedddfa729574194e5b4dd708134cff16cf3b08",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round4.jpg",
+    "decision": "人物身份、早餐桌合同道具或客厅对峙构图已核对，允许进入原生视频。"
+  },
+  {
+    "partId": "ep07_branch_conditional_video_01__p01",
+    "sha256": "b64b0a9ae80a0949698600f85e9417502eb8634340c4bb0240bc1a44849950f8",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round5.jpg",
+    "decision": "人物、管家年龄服饰与青花瓶/纸条/合同道具、起始动作已核对；第九集对话没有错误第三人背影。"
+  },
+  {
+    "partId": "ep08_scene_00_video_01__p01",
+    "sha256": "b0263ac064685b74df63b8b7a91d78185f2e7015b7ed0177690ff9a5b3126a4d",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round5.jpg",
+    "decision": "人物、管家年龄服饰与青花瓶/纸条/合同道具、起始动作已核对；第九集对话没有错误第三人背影。"
+  },
+  {
+    "partId": "ep08_branch_emotion_video_01__p01",
+    "sha256": "bf56142c3626630a3010fab42df67d847a3a8f632cc09a2ed8362ed1ab166611",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round5.jpg",
+    "decision": "人物、管家年龄服饰与青花瓶/纸条/合同道具、起始动作已核对；第九集对话没有错误第三人背影。"
+  },
+  {
+    "partId": "ep08_branch_truth_video_01__p01",
+    "sha256": "1003e78a1cfd28daf04d7f734ab70b749b1b8183a05110b0d8bd15cf04ec00c2",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round5.jpg",
+    "decision": "人物、管家年龄服饰与青花瓶/纸条/合同道具、起始动作已核对；第九集对话没有错误第三人背影。"
+  },
+  {
+    "partId": "ep08_branch_counterattack_video_01__p01",
+    "sha256": "6281b583339b3b3286edf2d8fef7ec973d426ed160498b8e5a51dd4d4cfed0c5",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round5.jpg",
+    "decision": "人物、管家年龄服饰与青花瓶/纸条/合同道具、起始动作已核对；第九集对话没有错误第三人背影。"
+  },
+  {
+    "partId": "ep08_branch_conditional_video_01__p01",
+    "sha256": "641455679373d2fe14c5555705b1758d45524dfca4af4825edd180e894d96e29",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round5.jpg",
+    "decision": "人物、管家年龄服饰与青花瓶/纸条/合同道具、起始动作已核对；第九集对话没有错误第三人背影。"
+  },
+  {
+    "partId": "ep09_scene_00_video_01__p01",
+    "sha256": "6acba5243241996f59feb603c7c113654b932de129264db9e6c5e49c52010cf2",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round5.jpg",
+    "decision": "人物、管家年龄服饰与青花瓶/纸条/合同道具、起始动作已核对；第九集对话没有错误第三人背影。"
+  },
+  {
+    "partId": "ep09_branch_emotion_video_01__p01",
+    "sha256": "6f7b7c98e43a5cbd09b390486d5d8e5971de7d38d6774f5fa5fb6a7db9f2181d",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round6.jpg",
+    "decision": "两位/三位人物身份、服装与合同/手机道具正确；许邵泽采用年轻指定面孔，站位符合起始动作。"
+  },
+  {
+    "partId": "ep09_branch_counterattack_video_01__p01",
+    "sha256": "291abf42062ea92d1ed083c27655e21fd7ce78701ccd7d0412203bd1aed7b748",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round6.jpg",
+    "decision": "两位/三位人物身份、服装与合同/手机道具正确；许邵泽采用年轻指定面孔，站位符合起始动作。"
+  },
+  {
+    "partId": "ep09_branch_conditional_video_01__p01",
+    "sha256": "f184550df9468ab9a9f41d6dd74e0ab1b206041591a7e18dbd7fb42fbbf56ced",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round6.jpg",
+    "decision": "两位/三位人物身份、服装与合同/手机道具正确；许邵泽采用年轻指定面孔，站位符合起始动作。"
+  },
+  {
+    "partId": "ep10_scene_00_video_01__p01",
+    "sha256": "588235e71f4ab6542af6b3b313adc75f5642c0a9ae63e620778b6dd9b211af3a",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round6.jpg",
+    "decision": "两位/三位人物身份、服装与合同/手机道具正确；许邵泽采用年轻指定面孔，站位符合起始动作。"
+  },
+  {
+    "partId": "ep10_branch_emotion_video_01__p01",
+    "sha256": "0f19342bde9ba35015cc6d55e153af94f2d6226271a84cddc4ce006b590becba",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round6.jpg",
+    "decision": "两位/三位人物身份、服装与合同/手机道具正确；许邵泽采用年轻指定面孔，站位符合起始动作。"
+  },
+  {
+    "partId": "ep11_branch_conditional_video_01__p02",
+    "sha256": "c4553bc4ff6a872f658d2e6c3a5905ebdfdcd475b119762fd2ef301a861974a0",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round7.jpg",
+    "decision": "人物/无人物范围与对应分镜一致，旧露台、直播房及奶杯证据桌构图可用。"
+  },
+  {
+    "partId": "ending_streamer__p01",
+    "sha256": "30f8675c50e926d6d1ad93c9d3b62d0ff384b5312f12c6aced5e4f78d732f219",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round7.jpg",
+    "decision": "人物/无人物范围与对应分镜一致，旧露台、直播房及奶杯证据桌构图可用。"
+  },
+  {
+    "partId": "ending_cow__p01",
+    "sha256": "be414e7498bf78346eaa4fa844eabc0305784f18903a2fe5bbab8f998eff150b",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round7.jpg",
+    "decision": "人物/无人物范围与对应分镜一致，旧露台、直播房及奶杯证据桌构图可用。"
+  },
+  {
+    "partId": "ep01_branch_counterattack_video_01__p01",
+    "sha256": "b21eb30b54b9b60f97d0c5df54bcb6b52a774fe797938c46d1cb744793f22dd8",
+    "status": "approved_for_generation",
+    "evidence": "keyframes/ep01_branch_counterattack_video_01__p01.keyframe-r2.png",
+    "decision": "已人工查看r2修正图，服装、指定人物身份与静态起始位置通过；仅此SHA允许进入原生生成。"
+  },
+  {
+    "partId": "ep02_branch_truth_video_01__p01",
+    "sha256": "d6d657e060529d5b109863c3fe745b10061521a051e915d29d70342c824907f8",
+    "status": "approved_for_generation",
+    "evidence": "keyframes/ep02_branch_truth_video_01__p01.keyframe-r2.png",
+    "decision": "已人工查看r2修正图，服装、指定人物身份与静态起始位置通过；仅此SHA允许进入原生生成。"
+  },
+  {
+    "partId": "ep03_scene_00_video_01__p01",
+    "sha256": "32930858c53c25d6f4a4fee30e0a131ef1c894bad1a85974d092f4bcda478c28",
+    "status": "approved_for_generation",
+    "evidence": "keyframes/ep03_scene_00_video_01__p01.keyframe-r2.png",
+    "decision": "已人工查看r2修正图，服装、指定人物身份与静态起始位置通过；仅此SHA允许进入原生生成。"
+  },
+  {
+    "partId": "ep03_branch_emotion_video_01__p01",
+    "sha256": "b9fbea6264ad7b97dcdb93147c6365e9df9227d79eca53bbeb699f6f42983712",
+    "status": "approved_for_generation",
+    "evidence": "keyframes/ep03_branch_emotion_video_01__p01.keyframe-r2.png",
+    "decision": "已人工查看r2修正图，服装、指定人物身份与静态起始位置通过；仅此SHA允许进入原生生成。"
+  },
+  {
+    "partId": "ep04_scene_00_video_01__p01",
+    "sha256": "1a48f183731db3960e1c08ad43ffeacb2dee1a910f3f302d3187202fe667f011",
+    "status": "approved_for_generation",
+    "evidence": "keyframes/ep04_scene_00_video_01__p01.keyframe-r2.png",
+    "decision": "已人工查看r2修正图，服装、指定人物身份与静态起始位置通过；仅此SHA允许进入原生生成。"
+  },
+  {
+    "partId": "ep07_scene_00_video_01__p01",
+    "sha256": "61d4a428953994bee06554de5467a5757ea24ae11ec8fe78f56aec00a7055ffd",
+    "status": "approved_for_generation",
+    "evidence": "keyframes/ep07_scene_00_video_01__p01.keyframe-r2.png",
+    "decision": "已人工查看r2修正图，服装、指定人物身份与静态起始位置通过；仅此SHA允许进入原生生成。"
+  },
+  {
+    "partId": "ep07_branch_emotion_video_01__p01",
+    "sha256": "63153daf3b90aa77ef945b1b275d6df5f4e6b7967cf955ea669cf5af5b0bfdc8",
+    "status": "approved_for_generation",
+    "evidence": "keyframes/ep07_branch_emotion_video_01__p01.keyframe-r2.png",
+    "decision": "已人工查看r2修正图，服装、指定人物身份与静态起始位置通过；仅此SHA允许进入原生生成。"
+  },
+  {
+    "partId": "ep09_branch_truth_video_01__p01",
+    "sha256": "fac5400020fc4c559c79eb3a71ad7d00c712f647165ef58ba8a60f5aad019273",
+    "status": "approved_for_generation",
+    "evidence": "keyframes/ep09_branch_truth_video_01__p01.keyframe-r2.png",
+    "decision": "已人工查看r2修正图，服装、指定人物身份与静态起始位置通过；仅此SHA允许进入原生生成。"
+  },
+  {
+    "partId": "ep10_branch_truth_video_01__p01",
+    "sha256": "31902e2d2a0b769176dc75425421ba71a393df9bfcb44abd1a41cf1bf275a5c9",
+    "status": "approved_for_generation",
+    "evidence": "review/full-keyframes-round8.jpg",
+    "decision": "已查看首帧：人物、场景、证据道具和起始姿态符合本段，允许原生视频生成。"
+  },
+  {
+    "partId": "ep10_branch_counterattack_video_01__p01",
+    "sha256": "6854684d0032c9cf065b27ab6929001c7d47d175319c4bfa51d316fddbe56073",
+    "status": "approved_for_generation",
+    "evidence": "review/full-keyframes-round8.jpg",
+    "decision": "已查看首帧：人物、场景、证据道具和起始姿态符合本段，允许原生视频生成。"
+  },
+  {
+    "partId": "ep10_branch_conditional_video_01__p01",
+    "sha256": "8f8c37d04122167af23fe8703a057771add0e51a8cc286b917c13c3e978d6ce7",
+    "status": "approved_for_generation",
+    "evidence": "review/full-keyframes-round8.jpg",
+    "decision": "已查看首帧：人物、场景、证据道具和起始姿态符合本段，允许原生视频生成。"
+  },
+  {
+    "partId": "ep11_scene_00_video_01__p01",
+    "sha256": "7c7edd4bbb8e9f93a29a6fed770f69eab98f7a6ebf52a1d5136cf903f74bfe6a",
+    "status": "approved_for_generation",
+    "evidence": "review/full-keyframes-round8.jpg",
+    "decision": "已查看首帧：人物、场景、证据道具和起始姿态符合本段，允许原生视频生成。"
+  },
+  {
+    "partId": "ep11_branch_truth_video_01__p01",
+    "sha256": "ee815ad6bd722d22615c1ba0a9c28a4a449eeecff4ec5943664fad62cf0b7292",
+    "status": "approved_for_generation",
+    "evidence": "review/full-keyframes-round8.jpg",
+    "decision": "已查看首帧：人物、场景、证据道具和起始姿态符合本段，允许原生视频生成。"
+  },
+  {
+    "partId": "ep11_branch_counterattack_video_01__p01",
+    "sha256": "b88beb4fb807760d02d886c07d39dc088218a0961c53aef47fcba18b5f217e72",
+    "status": "approved_for_generation",
+    "evidence": "review/full-keyframes-round8.jpg",
+    "decision": "已查看首帧：人物、场景、证据道具和起始姿态符合本段，允许原生视频生成。"
+  },
+  {
+    "partId": "ep11_branch_conditional_video_01__p01",
+    "sha256": "af238b8c64f6483774e7a3a791b08709fbcab9e4f153db0bd8365c97e813a46d",
+    "status": "approved_for_generation",
+    "evidence": "review/full-keyframes-round8.jpg",
+    "decision": "已查看首帧：人物、场景、证据道具和起始姿态符合本段，允许原生视频生成。"
+  },
+  {
+    "partId": "ending_terrace__p01",
+    "sha256": "f973369f3230522eb6a29b869b2d97d2543da8f2f443258c2c9c1fa8ed17b6be",
+    "status": "approved_for_generation",
+    "evidence": "review/full-keyframes-round9.jpg",
+    "decision": "已查看：露台、综艺舞台、签字办公场景，人物与正式台词场景一致。"
+  },
+  {
+    "partId": "ending_reality_show__p01",
+    "sha256": "aa328e626b9ffc456692515a52f556ec621813d136c608022255c0590fc8af37",
+    "status": "approved_for_generation",
+    "evidence": "review/full-keyframes-round9.jpg",
+    "decision": "已查看：露台、综艺舞台、签字办公场景，人物与正式台词场景一致。"
+  },
+  {
+    "partId": "ending_empire__p01",
+    "sha256": "18b8842d52789d2f1495b142d32ef275823fe9bf1298b783e9eeb872aa17a12a",
+    "status": "approved_for_generation",
+    "evidence": "review/full-keyframes-round9.jpg",
+    "decision": "已查看：露台、综艺舞台、签字办公场景，人物与正式台词场景一致。"
+  },
+  {
+    "partId": "ep06_branch_counterattack_video_01__p01.r2",
+    "sha256": "f4d867935eff09d3f5bc725bf4493f0ba8194cdfcd35133a65ad4efd845efb64",
+    "status": "approved_for_generation",
+    "evidence": "full-keyframes-round4.jpg",
+    "decision": "人物身份、早餐桌合同道具或客厅对峙构图已核对，允许进入原生视频。"
+  },
+  {
+    "partId": "ending_empire__p02",
+    "sha256": "2cfbe1d205bcb865bbaea5ab20fbfc1e2e023123d56d29435374a9d282751790",
+    "status": "approved_for_generation",
+    "evidence": "review/full-keyframes-round10.jpg",
+    "decision": "已查看静态起始图：铜钟、工地合作、搬砖和工地表彰，人物道具场景通过。"
+  },
+  {
+    "partId": "ending_boss__p01",
+    "sha256": "ff1207ce05b669acf08f11ac640a7a94e8ecb9acab9cea47a284d79aa86acfe1",
+    "status": "approved_for_generation",
+    "evidence": "review/full-keyframes-round10.jpg",
+    "decision": "已查看静态起始图：铜钟、工地合作、搬砖和工地表彰，人物道具场景通过。"
+  },
+  {
+    "partId": "ending_worker__p01",
+    "sha256": "9a97dec86f598e5caaef048345af7034314cc226da5c37937872cfe08f260d1e",
+    "status": "approved_for_generation",
+    "evidence": "review/full-keyframes-round10.jpg",
+    "decision": "已查看静态起始图：铜钟、工地合作、搬砖和工地表彰，人物道具场景通过。"
+  },
+  {
+    "partId": "ending_worker__p02",
+    "sha256": "ef520e448f14131003e17e7748964e16179fb33bc63cf1806a97f222ff16983b",
+    "status": "approved_for_generation",
+    "evidence": "review/full-keyframes-round10.jpg",
+    "decision": "已查看静态起始图：铜钟、工地合作、搬砖和工地表彰，人物道具场景通过。"
+  },
+  {
+    "partId": "ending_independent__p01",
+    "sha256": "c3a0c438067ea6e6f55d5a4265e85331a4e413f13bd0e12753d1483e3aee10a3",
+    "status": "approved_for_generation",
+    "evidence": "review/full-keyframes-round11.jpg",
+    "decision": "已查看独立结局两镜，女主弃婚约与独自驾驶粉色SUV的起始构图符合要求。"
+  },
+  {
+    "partId": "ending_independent__p02",
+    "sha256": "e0b4de012b95f050b37e4ab708949ad06d322ceac0ce365ccc1c4d8a5b4c2217",
+    "status": "approved_for_generation",
+    "evidence": "review/full-keyframes-round11.jpg",
+    "decision": "已查看独立结局两镜，女主弃婚约与独自驾驶粉色SUV的起始构图符合要求。"
+  },
+  {
+    "partId": "ending_revenge__p01",
+    "sha256": "c21b5d9b60a0aaf80453285268268a35ca43befe7169a110771d7c1c6115a839",
+    "status": "approved_for_generation",
+    "evidence": "review/full-keyframes-round12.jpg",
+    "decision": "已查看证据发布场景，女主主位，陈劲保护位，许邵泽低头，文件桌与记者完整。"
+  },
+  {
+    "partId": "ep07_branch_counterattack_video_01__p01",
+    "sha256": "e8ad2395a25546449b0a68f26bde22b8a3277caea5fbf8dd1e6ece9250634082",
+    "status": "approved_for_generation",
+    "evidence": "keyframes/ep07_branch_counterattack_video_01__p01.keyframe-r3.png",
+    "decision": "已查看r3四人修正图：左侧黑T恤陈劲、中间父亲与右侧年轻西装许邵泽身份区分清楚，女主与手机保留。"
+  },
+  {
+    "partId": "ep04_branch_truth_video_01__p01.r2",
+    "sha256": "12ea4330f7dd9c1fb3d1df23fe78bc826228c138711c4f6501c6d7a5b164073f",
+    "status": "approved_for_generation",
+    "evidence": "keyframes/ep04_branch_truth_video_01__p01.keyframe-r2.png",
+    "decision": "已人工查看r2修正图，服装、指定人物身份与静态起始位置通过；仅此SHA允许进入原生生成。"
+  },
+  {
+    "partId": "ending_cow__p02",
+    "sha256": "deac81b71c3e6e64c40e8d9425f8a1a1ca3b5f3a4f46a0911294dc38c5d2a8f4",
+    "status": "approved_for_generation",
+    "evidence": "keyframes/ending_cow__p02.png",
+    "decision": "已查看：单头健康奶牛牧场吃草，无人无文字，符合荒诞结局切镜。"
+  },
+  {
+    "partId": "ep07_branch_counterattack_video_01__p01.r2",
+    "sha256": "e8ad2395a25546449b0a68f26bde22b8a3277caea5fbf8dd1e6ece9250634082",
+    "status": "approved_for_generation",
+    "evidence": "keyframes/ep07_branch_counterattack_video_01__p01.keyframe-r3.png",
+    "decision": "已查看r3四人修正图：左侧黑T恤陈劲、中间父亲与右侧年轻西装许邵泽身份区分清楚，女主与手机保留。"
+  },
+  {
+    "partId": "ep07_branch_counterattack_video_01__p01.r3",
+    "sha256": "0fb366d83a387050e126853fa6251ce649a0e1d9f6b6264087122ac157d6fc6a",
+    "status": "approved_for_generation",
+    "evidence": "keyframes/ep07_branch_counterattack_video_01__p01.keyframe-r4.png",
+    "decision": "已查看r4修正首帧：只拍陈劲、女主与父亲三名听者及手机，移除录音者的可见嘴部。"
+  },
+  {
+    "partId": "ep07_branch_counterattack_video_01__p02",
+    "sha256": "0fb366d83a387050e126853fa6251ce649a0e1d9f6b6264087122ac157d6fc6a",
+    "status": "approved_for_generation",
+    "evidence": "keyframes/ep07_branch_counterattack_video_01__p01.keyframe-r4.png",
+    "decision": "复用已查看r4三人首帧，仅拍女主现场问话，不含录音。"
+  },
+  {
+    "partId": "ep07_branch_counterattack_video_01__p01.r4",
+    "sha256": "5dcb3cb6665e30f3678bdf6b71665d4dc946683a3d11603a2f7e817e130641fb",
+    "status": "approved_for_generation",
+    "evidence": "keyframes/ep07_branch_counterattack_video_01__p01.phone-keyframe.png",
+    "decision": "已查看手机特写，只有手、袖口和无字波形屏幕，没有人脸嘴部，可生成画外录音。"
+  },
+  {
+    "partId": "ep07_branch_counterattack_video_01__p02.r2",
+    "sha256": "0fb366d83a387050e126853fa6251ce649a0e1d9f6b6264087122ac157d6fc6a",
+    "status": "approved_for_generation",
+    "evidence": "keyframes/ep07_branch_counterattack_video_01__p01.keyframe-r4.png",
+    "decision": "复用已查看r4三人首帧，仅拍女主现场问话，不含录音。"
+  },
+  {
+    "partId": "ending_boss__p01.r2",
+    "sha256": "ff1207ce05b669acf08f11ac640a7a94e8ecb9acab9cea47a284d79aa86acfe1",
+    "status": "approved_for_generation",
+    "evidence": "review/full-keyframes-round10.jpg",
+    "decision": "已查看静态起始图：铜钟、工地合作、搬砖和工地表彰，人物道具场景通过。"
+  },
+  {
+    "partId": "ending_worker__p02.r2",
+    "sha256": "ef520e448f14131003e17e7748964e16179fb33bc63cf1806a97f222ff16983b",
+    "status": "approved_for_generation",
+    "evidence": "review/full-keyframes-round10.jpg",
+    "decision": "已查看静态起始图：铜钟、工地合作、搬砖和工地表彰，人物道具场景通过。"
+  },
+  {
+    "partId": "ending_boss__p01.r3",
+    "sha256": "ff1207ce05b669acf08f11ac640a7a94e8ecb9acab9cea47a284d79aa86acfe1",
+    "status": "approved_for_generation",
+    "evidence": "review/full-keyframes-round10.jpg",
+    "decision": "已查看静态起始图：铜钟、工地合作、搬砖和工地表彰，人物道具场景通过。"
+  }
+]

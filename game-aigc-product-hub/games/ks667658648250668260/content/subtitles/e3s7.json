@@ -1,0 +1,10 @@
+{
+  "node": "e3s7",
+  "speakerKey": "narrator",
+  "speakerName": "旁白",
+  "asrText": "一盏油灯·两碗玉米糊糊。他们对坐着·偶尔抬眼对视·她脸红低头。这一夜·风都软了。",
+  "asrTextRaw": "",
+  "matchScript": true,
+  "textSource": "script-authoritative (v82.0重生成全库视频后，旧ASR已失效，以剧本text为权威)",
+  "cues": 3
+}

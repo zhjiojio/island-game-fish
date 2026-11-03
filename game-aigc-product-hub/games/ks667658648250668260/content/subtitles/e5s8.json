@@ -1,0 +1,10 @@
+{
+  "node": "e5s8",
+  "speakerKey": "narrator",
+  "speakerName": "赵铁牛",
+  "asrText": "这辈子……我再不敢了！给您磕头！",
+  "asrTextRaw": "这辈子 我再不敢了 给你磕头",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 2
+}

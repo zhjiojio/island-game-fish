@@ -1,0 +1,18 @@
+workflow-run.yml
+.env
+.runtime/
+server/data/
+server/node_modules/
+server/*.sqlite
+server/*.sqlite-wal
+server/*.sqlite-shm
+server/.env
+server/.env.local
+server/.env.production
+server/.env.docker
+
+# 部署配置：deploy/env/*.env 与 secret.example.yaml 为可提交模板，
+# 下列填入真实凭证的文件必须留在本地。
+deploy/env/*.local.env
+deploy/env/secrets.env
+deploy/aliyun/secret.yaml

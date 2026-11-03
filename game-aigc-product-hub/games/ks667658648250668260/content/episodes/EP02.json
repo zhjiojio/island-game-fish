@@ -1,0 +1,1940 @@
+{
+  "f_s6": {
+    "ep": "EP02",
+    "scene": "house",
+    "type": "choice",
+    "title": "一亩好地已觉醒——先替嫂子试一回？",
+    "media": {
+      "kind": "image",
+      "file": "images/lastframes/S6.hd.jpg",
+      "label": "一亩好地·首次试用"
+    },
+    "options": [
+      {
+        "text": "自家后山小地（低调）",
+        "icon": "hide",
+        "stat": {
+          "liang": 10,
+          "wei": 5
+        },
+        "next": "r_f_s6_a",
+        "id": "f_s6_opt_0"
+      },
+      {
+        "text": "多开几亩后山荒地（高调）",
+        "icon": "run",
+        "stat": {
+          "liang": 15,
+          "qing": 3
+        },
+        "next": "r_f_s6_b",
+        "id": "f_s6_opt_1"
+      },
+      {
+        "text": "先告诉婉儿一声",
+        "icon": "give",
+        "stat": {
+          "wei": 15,
+          "qing": 5
+        },
+        "next": "r_f_s6_c",
+        "id": "f_s6_opt_2"
+      },
+      {
+        "text": "跑村口喊「我是神仙下凡！」",
+        "icon": "say",
+        "stat": {
+          "qing": -99,
+          "wei": -30
+        },
+        "roastKey": "roast_god_village",
+        "roast": "你把种地本事当成神迹，跑到村口大喊自己是神仙。村民举火把把你送上山，你真从悬崖上飞了下去。",
+        "next": "BE_GOD",
+        "id": "f_s6_opt_3"
+      }
+    ],
+    "epTitle": "一亩好地·为嫂子挣第一笔钱"
+  },
+  "r_f_s6_a": {
+    "ep": "EP02",
+    "scene": "field",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s6_a.png",
+      "duration": 3200,
+      "label": ""
+    },
+    "char": "aotian",
+    "speaker": "你（内心）",
+    "text": "你蹲下身，抓了把土——不显山不露水最稳。先在这巴掌大的地上试一把。手一撒，那把土像有魂似的往地里钻……你愣了愣，退后两步。",
+    "next": "s8"
+  },
+  "r_f_s6_b": {
+    "ep": "EP02",
+    "scene": "field",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s6_b.png",
+      "duration": 3200,
+      "label": ""
+    },
+    "char": "aotian",
+    "speaker": "你",
+    "text": "你叉腰站在山坡上，风吹得衣角猎猎响。「这半亩地——从今往后全归我李你！」话没说完——脚下的土突然拱开，嫩芽一寸一寸往上蹿。",
+    "next": "s8"
+  },
+  "r_f_s6_c": {
+    "ep": "EP02",
+    "scene": "house",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s6_c.png",
+      "duration": 3200,
+      "label": ""
+    },
+    "char": "aotian",
+    "speaker": "你",
+    "text": "你回头朝窑洞喊：「婉儿——你出来，跟我上山，看点好东西！」还没等她答应，你猛一转身——眼睛直了：那半亩地，青绿一片。",
+    "next": "s8"
+  },
+  "s8": {
+    "ep": "EP02",
+    "scene": "field",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S8.hd.mp4",
+      "duration": 10,
+      "label": "催熟奇迹",
+      "poster": "images/lastframes/S8.hd.jpg"
+    },
+    "char": "aotian",
+    "speaker": "你（震撼低语）",
+    "text": "真的长了……真的长了！",
+    "next": "s8b"
+  },
+  "s8b": {
+    "ep": "EP02",
+    "scene": "field",
+    "char": "aotian",
+    "speaker": "你（攥拳）",
+    "text": "这地……真是我的了！",
+    "next": "f_s8"
+  },
+  "f_s8": {
+    "ep": "EP02",
+    "scene": "field",
+    "type": "choice",
+    "title": "一夜长成熟玉米——你先：",
+    "media": {
+      "kind": "image",
+      "file": "images/lastframes/S8.hd.jpg",
+      "label": "傅熟奇迹"
+    },
+    "options": [
+      {
+        "text": "跑回家叫婉儿看",
+        "icon": "run",
+        "stat": {
+          "wei": 10,
+          "qing": 3
+        },
+        "next": "r_f_s8_a",
+        "id": "f_s8_opt_0"
+      },
+      {
+        "text": "掰一个先塞嘴里尝尝",
+        "icon": "eat",
+        "stat": {
+          "liang": 3,
+          "wei": -2
+        },
+        "next": "r_f_s8_b",
+        "id": "f_s8_opt_1"
+      },
+      {
+        "text": "靠地头缓一会儿神经回神",
+        "icon": "hide",
+        "stat": {
+          "qing": 5
+        },
+        "next": "r_f_s8_c",
+        "id": "f_s8_opt_2"
+      }
+    ]
+  },
+  "r_f_s8_a": {
+    "ep": "EP02",
+    "scene": "field",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s8_a.png",
+      "duration": 3200,
+      "label": ""
+    },
+    "char": "aotian",
+    "speaker": "你",
+    "text": "你鞋都跑掉一只，光脚在田埂上飞奔——「婉儿——！你快出来！快看！」婉儿闻声推门，一眼望见那片玉米地——腿一软，差点跪下。",
+    "next": "s9"
+  },
+  "r_f_s8_b": {
+    "ep": "EP02",
+    "scene": "field",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s8_b.png",
+      "duration": 3200,
+      "label": ""
+    },
+    "char": "aotian",
+    "speaker": "你（嚼）",
+    "text": "一口下去，浆水在嘴里炸开。你愣住——这年头哪有这么甜的玉米？他又啃一口，眼眶忽然就热了。抬头一看——婉儿不知什么时候站在田头，眼里含着泪。",
+    "next": "s9"
+  },
+  "r_f_s8_c": {
+    "ep": "EP02",
+    "scene": "field",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s8_c.png",
+      "duration": 3200,
+      "label": ""
+    },
+    "char": "aotian",
+    "speaker": "你（内心）",
+    "text": "你靠着麻袋，仰头望着天——老天爷，你把我扔到这荒年，原来是给我一条活路。眼角一瞟——婉儿踉踉跄跄跑过来，扑通就要下跪。",
+    "next": "s9"
+  },
+  "s9": {
+    "ep": "EP02",
+    "scene": "field",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S9.hd.mp4",
+      "duration": 10,
+      "label": "婉儿见证奇迹·跪地",
+      "poster": "images/lastframes/S9.hd.jpg"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿（掩嘴颤）",
+    "text": "这……这是活菩萨啊！",
+    "next": "s9b"
+  },
+  "s9b": {
+    "ep": "EP02",
+    "scene": "field",
+    "char": "wanerh",
+    "speaker": "沈婉儿（跪下泪）",
+    "text": "傲天，你是老天派来的。",
+    "next": "f_s9"
+  },
+  "f_s9": {
+    "ep": "EP02",
+    "scene": "field",
+    "type": "choice",
+    "title": "婉儿跪到地上，你——",
+    "media": {
+      "kind": "image",
+      "file": "images/lastframes/S9.hd.jpg",
+      "label": "婉儿跪地"
+    },
+    "options": [
+      {
+        "text": "一把拉她起来：别跪！",
+        "icon": "give",
+        "stat": {
+          "wei": 15
+        },
+        "next": "r_f_s9_a",
+        "id": "f_s9_opt_0"
+      },
+      {
+        "text": "摸摸她头顶：别怕",
+        "icon": "say",
+        "stat": {
+          "wei": 10,
+          "qing": 5
+        },
+        "next": "r_f_s9_b",
+        "id": "f_s9_opt_1",
+        "ad": true,
+        "adUnitId": "2300058116_01"
+      },
+      {
+        "text": "舒适地受着一会儿拜寿感",
+        "icon": "hide",
+        "stat": {
+          "wei": -8,
+          "qing": 3
+        },
+        "next": "r_f_s9_c",
+        "id": "f_s9_opt_2"
+      }
+    ]
+  },
+  "r_f_s9_a": {
+    "ep": "EP02",
+    "scene": "field",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s9_a.png",
+      "duration": 3200,
+      "label": ""
+    },
+    "char": "aotian",
+    "speaker": "你",
+    "text": "你一把把她拉起来，声音发颤：「起来！我李你的婆娘——不给天不给地，谁也不跪！」她泪珠一滴滴砸在地上——你心里咯噔一下：这个家，从今天起得由我扛。",
+    "next": "s10"
+  },
+  "r_f_s9_b": {
+    "ep": "EP02",
+    "scene": "field",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s9_b.png",
+      "duration": 3200,
+      "label": ""
+    },
+    "char": "aotian",
+    "speaker": "你",
+    "text": "你大手覆上她发顶，掌心暖得能焐化雪。「别怕。往后……有我。」她把脸埋进你怀里，肩膀轻轻抖——你攥紧了拳，不能再让她这么苦下去。",
+    "next": "s10"
+  },
+  "r_f_s9_c": {
+    "ep": "EP02",
+    "scene": "field",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_s9_c.png",
+      "duration": 3200,
+      "label": ""
+    },
+    "char": "aotian",
+    "speaker": "你（内心）",
+    "text": "你叉着腰站着，看她仍跪在玉米地里——这感觉……好像也不赖？活菩萨谁不想当。爽归爽，正事还得办——这个家的规矩，今天得立起来。",
+    "next": "s10"
+  },
+  "s10": {
+    "ep": "EP02",
+    "scene": "field",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/S10.hd.mp4",
+      "duration": 10,
+      "label": "当家人宣言",
+      "poster": "images/lastframes/S10.hd.jpg"
+    },
+    "char": "aotian",
+    "speaker": "你（沉声）",
+    "text": "从今天起，这家的粮我说了算。",
+    "next": "s10b"
+  },
+  "s10b": {
+    "ep": "EP02",
+    "scene": "field",
+    "char": "aotian",
+    "speaker": "你（温柔）",
+    "text": "婉儿，你不用再愁了。",
+    "next": "f_s10"
+  },
+  "f_s10": {
+    "ep": "EP02",
+    "scene": "field",
+    "type": "choice",
+    "title": "金光散去，你握紧拳头——第一件当家事，先做啥？",
+    "media": {
+      "kind": "image",
+      "file": "images/lastframes/S10.hd.jpg",
+      "label": "当家人宣言"
+    },
+    "options": [
+      {
+        "text": "拉婉儿进屋做顿好的",
+        "icon": "give",
+        "stat": {
+          "qing": 8,
+          "liang": 3
+        },
+        "next": "r_s10_a",
+        "id": "f_s10_opt_0"
+      },
+      {
+        "text": "绕田头再走一圈定心",
+        "icon": "say",
+        "stat": {
+          "wei": 8,
+          "liang": 2
+        },
+        "next": "r_s10_b",
+        "id": "f_s10_opt_1"
+      },
+      {
+        "text": "扛袋玉米去镇上打探行情",
+        "icon": "run",
+        "stat": {
+          "wei": 5,
+          "liang": 5
+        },
+        "next": "r_s10_c",
+        "id": "f_s10_opt_2"
+      }
+    ]
+  },
+  "r_s10_a": {
+    "ep": "EP02",
+    "scene": "field",
+    "char": "aotian",
+    "speaker": "你（心里）",
+    "text": "（转身牵她的手·掌心暖着掌心）今夜——起两个锅，蒸馍、熬粥。婉儿眼圈一红：「我这就去。」",
+    "next": "s10c"
+  },
+  "r_s10_b": {
+    "ep": "EP02",
+    "scene": "field",
+    "char": "aotian",
+    "speaker": "你（心里）",
+    "text": "（一步一步踏过田垄·把每一寸地都印在心里）明儿一早——赶集或是留粮，都得心里有底。",
+    "next": "s10c"
+  },
+  "r_s10_c": {
+    "ep": "EP02",
+    "scene": "field",
+    "char": "aotian",
+    "speaker": "你（心里）",
+    "text": "（扛起一袋玉米往肩上一摔）不打探行情，明儿卖两袋都得吃亏。婉儿在窗后望着你——那背影，第一次像顶天立地的男人。",
+    "next": "s10c"
+  },
+  "s10c": {
+    "ep": "EP02",
+    "scene": "night",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k0_a.jpg",
+      "label": "日头落山·院子飘炊烟"
+    },
+    "char": "narrator",
+    "speaker": "旁白",
+    "text": "日头落山。土院子里飘起炊烟——今晚，是荒年开局后第一顿有盼头的饭。",
+    "next": "k_bridge1"
+  },
+  "k_bridge1": {
+    "ep": "EP02",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/k_bridge.hd.mp4",
+      "duration": 10,
+      "label": "当晚·屋里·樟木箱",
+      "poster": "images/lastframes/k_bridge.hd.jpg"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿（搓衣角）",
+    "text": "傲天……嫂子娘家陪嫁的箱子还压着一件红肚兜，一支扇子。你今儿救了这个家……让嫂子给你换一身、跳一支，行么？",
+    "next": "k_side_gate_bridge"
+  },
+  "k_side_gate_bridge": {
+    "ep": "EP02",
+    "scene": "house",
+    "char": "narrator",
+    "speaker": "旁白",
+    "text": "（她把樟木箱盖轻轻掀开·油灯映着一件叠得整齐的大红肚兜，还有支雕花扇子。她低着头，手指绞着围裙一角，等你开口。）",
+    "next": "k_side_gate"
+  },
+  "k_side_gate": {
+    "ep": "EP02",
+    "scene": "house",
+    "type": "choice",
+    "title": "樟木箱一开，你眼睛就直了——今晚，想让嫂子……",
+    "options": [
+      {
+        "text": "跳一支江南采莲扇舞",
+        "icon": "say",
+        "stat": {
+          "wei": 10,
+          "qing": 3
+        },
+        "next": "r_side07",
+        "ad": true,
+        "adUnitId": "2300058116_01",
+        "id": "k_side_gate_opt_0"
+      },
+      {
+        "text": "🎁 换上箱底那件大红肚兜白纱披",
+        "icon": "give",
+        "unlock": "medal_cloth1",
+        "stat": {
+          "wei": 12
+        },
+        "next": "r_side01",
+        "ad": true,
+        "adUnitId": "2300058116_01",
+        "id": "k_side_gate_opt_1"
+      },
+      {
+        "text": "一把把她按倒在箱子上",
+        "icon": "fight",
+        "stat": {
+          "wei": -99,
+          "qing": -30
+        },
+        "roastKey": "roast_slap_box",
+        "roast": "她三巴掌掼在你脸上，抓起衣裳往箱子里一塞就跑。你趴在地上半天没爬起来——不是疼，是村口大爷从窗户外头笑了三声。",
+        "next": "BE_SLAP",
+        "id": "k_side_gate_opt_2"
+      },
+      {
+        "text": "先不看了，正事要紧",
+        "icon": "say",
+        "stat": {
+          "wei": 2
+        },
+        "next": "k_side_after",
+        "id": "k_side_gate_opt_3"
+      }
+    ]
+  },
+  "r_side07": {
+    "ep": "EP02",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side07_cailian.hd.mp4",
+      "duration": 10,
+      "label": "江南采莲扇舞",
+      "poster": "images/lastframes/side07_cailian.hd.jpg"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿（含笑）",
+    "text": "傲天……我跳的好看么？",
+    "next": "f_side_dance_react"
+  },
+  "k_side_dress": {
+    "ep": "EP02",
+    "scene": "house",
+    "type": "choice",
+    "title": "婉儿羞得低下头：「你……你想看嫂子穿哪件？」",
+    "options": [
+      {
+        "text": "🎁 大红肚兜 + 白纱披",
+        "icon": "give",
+        "unlock": "medal_cloth1",
+        "stat": {
+          "wei": 12
+        },
+        "next": "r_side01",
+        "ad": true,
+        "adUnitId": "2300058116_01",
+        "id": "k_side_dress_opt_0"
+      },
+      {
+        "text": "黑色蕾丝旗袍",
+        "icon": "give",
+        "stat": {
+          "wei": 10,
+          "qing": -2
+        },
+        "next": "r_side02",
+        "ad": true,
+        "adUnitId": "2300058116_01",
+        "id": "k_side_dress_opt_1"
+      },
+      {
+        "text": "沐浴后的白纱裙",
+        "icon": "give",
+        "stat": {
+          "wei": 15,
+          "qing": -3
+        },
+        "next": "r_side03",
+        "ad": true,
+        "adUnitId": "2300058116_01",
+        "id": "k_side_dress_opt_2"
+      },
+      {
+        "text": "偷偷摸进屏风后偷看",
+        "icon": "hide",
+        "stat": {
+          "wei": -99,
+          "qing": -30
+        },
+        "roastKey": "roast_slap_peek",
+        "roast": "嫂子躲在屏风后换衣裳，你悄悄摸过去偷看。她转头一眼看穿——巴掌落下来的时候，你连躲的时间都没有。",
+        "next": "BE_SLAP",
+        "id": "k_side_dress_opt_3"
+      },
+      {
+        "text": "直接上手不让她换",
+        "icon": "fight",
+        "stat": {
+          "wei": -99,
+          "qing": -40
+        },
+        "roastKey": "roast_slap_grab",
+        "roast": "她刚要换衣裳，你直接上手把她拉住。她使足力气一巴掌把你送出门，木门「哐当」一声关得比你耳光还响。",
+        "next": "BE_SLAP",
+        "id": "k_side_dress_opt_4"
+      },
+      {
+        "text": "算了，别折腾了",
+        "icon": "say",
+        "stat": {
+          "wei": 2
+        },
+        "next": "k_side_after",
+        "id": "k_side_dress_opt_5"
+      }
+    ]
+  },
+  "r_side01": {
+    "ep": "EP02",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side01_hongdudou.hd.mp4",
+      "duration": 10,
+      "label": "红肚兜换装",
+      "poster": "images/lastframes/side01_hongdudou.hd.jpg"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿（气声）",
+    "text": "傲天～你真坏……",
+    "next": "f_side_dress_react"
+  },
+  "r_side02": {
+    "ep": "EP02",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side02_qipao.hd.mp4",
+      "duration": 10,
+      "label": "黑蕾丝旗袍换装",
+      "poster": "images/lastframes/side02_qipao.hd.jpg"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿（气声）",
+    "text": "傲天～你真坏……",
+    "next": "f_side_dress_react"
+  },
+  "r_side03": {
+    "ep": "EP02",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side03_shishen.hd.mp4",
+      "duration": 10,
+      "label": "湿身白纱换装",
+      "poster": "images/lastframes/side03_shishen.hd.jpg"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿（气声）",
+    "text": "傲天～你真坏……",
+    "next": "f_side_dress_react"
+  },
+  "f_side_dress_react": {
+    "ep": "EP02",
+    "scene": "house",
+    "type": "choice",
+    "title": "婉儿站在灯影里转了一圈——「傲天，好看么？」",
+    "options": [
+      {
+        "text": "好看得眼睛都挪不开",
+        "icon": "say",
+        "stat": {
+          "wei": 12,
+          "qing": 5
+        },
+        "next": "f_dress_a",
+        "id": "f_side_dress_react_opt_0"
+      },
+      {
+        "text": "这身留着，等哪天再穿给我看",
+        "icon": "give",
+        "stat": {
+          "wei": 8,
+          "qing": 3
+        },
+        "next": "f_dress_b",
+        "id": "f_side_dress_react_opt_1"
+      },
+      {
+        "text": "过来点，让我细看看",
+        "icon": "give",
+        "stat": {
+          "wei": 6,
+          "qing": 2
+        },
+        "next": "f_dress_c",
+        "id": "f_side_dress_react_opt_2",
+        "ad": true,
+        "adUnitId": "2300058116_01"
+      },
+      {
+        "text": "就这样吧，早点睡",
+        "icon": "hide",
+        "stat": {
+          "wei": -15,
+          "qing": -8
+        },
+        "next": "f_dress_d",
+        "id": "f_side_dress_react_opt_3"
+      }
+    ]
+  },
+  "f_dress_a": {
+    "ep": "EP02",
+    "scene": "house",
+    "stay": true,
+    "char": "aotian",
+    "speaker": "你（凝望）",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/f_dress_a.jpg",
+      "label": "婉儿耳根红透"
+    },
+    "text": "（喉结一动）好看……真的，眼睛都挪不开。她耳根一下红透了。",
+    "next": "k_side_after"
+  },
+  "f_dress_b": {
+    "ep": "EP02",
+    "scene": "house",
+    "stay": true,
+    "char": "aotian",
+    "speaker": "你（憨笑）",
+    "media": {
+      "kind": "image",
+      "file": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/f_dress_b.jpg",
+      "label": "婉儿扑哧一笑"
+    },
+    "text": "（笑着摆手）这身留着——等哪天赶集回来，你专门再穿给我看一回。她扑哧一笑。",
+    "next": "k_side_after"
+  },
+  "f_dress_c": {
+    "ep": "EP02",
+    "scene": "house",
+    "stay": true,
+    "char": "aotian",
+    "speaker": "你（招手）",
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/f_dress_c.jpg",
+      "label": "婉儿蹭过来·脸颊烫"
+    },
+    "text": "（招招手）过来点，我细看看这针脚。她一步一步蹭过来，脸颊烫得能烫熟包子。",
+    "next": "k_side_after"
+  },
+  "f_dress_d": {
+    "ep": "EP02",
+    "scene": "house",
+    "stay": true,
+    "char": "aotian",
+    "speaker": "你（打哈欠）",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/f_dress_d.jpg",
+      "label": "婉儿笑意僵住·攥紧衣角"
+    },
+    "text": "（不抬眼）就这样吧——早点睡。她愣在原地，笑意慢慢僵了下来，转身把衣角攥紧。",
+    "next": "k_side_after"
+  },
+  "k_side_dance": {
+    "ep": "EP02",
+    "scene": "house",
+    "char": "wanerh",
+    "speaker": "沈婉儿（拿下发簪）",
+    "text": "娘家教过我一支孔雀舞——你就站好，我跳给你看。",
+    "next": "r_side04"
+  },
+  "r_side04": {
+    "ep": "EP02",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side04_kongque.hd.mp4",
+      "duration": 10,
+      "label": "孔雀舞",
+      "poster": "images/lastframes/side04_kongque.hd.jpg"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿（撒娇）",
+    "text": "傲天～我跳得好看么？",
+    "next": "f_side_dance_react"
+  },
+  "r_side05": {
+    "ep": "EP02",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side05_jazz.hd.mp4",
+      "duration": 10,
+      "label": "椅子舞",
+      "poster": "images/lastframes/side05_jazz.hd.jpg"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿（撒娇）",
+    "text": "傲天～我跳得好看么？",
+    "next": "f_side_dance_react"
+  },
+  "r_side06": {
+    "ep": "EP02",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side06_dunhuang.hd.mp4",
+      "duration": 10,
+      "label": "敦煌飞天",
+      "poster": "images/lastframes/side06_dunhuang.hd.jpg"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿（撒娇）",
+    "text": "傲天～我跳得好看么？",
+    "next": "f_side_dance_react"
+  },
+  "f_side_dance_react": {
+    "ep": "EP02",
+    "scene": "house",
+    "type": "choice",
+    "title": "婉儿旋完最后一圈，眼睛亮亮地望过来——",
+    "options": [
+      {
+        "text": "好看！像画里的仙女下凡",
+        "icon": "say",
+        "stat": {
+          "wei": 12,
+          "qing": 5
+        },
+        "next": "f_dance_a",
+        "id": "f_side_dance_react_opt_0"
+      },
+      {
+        "text": "再跳一支吧，我看不够",
+        "icon": "give",
+        "stat": {
+          "wei": 8,
+          "qing": 3
+        },
+        "next": "r_dance_encore_home_ep02",
+        "id": "f_side_dance_react_opt_1",
+        "ad": true,
+        "adUnitId": "2300058116_01"
+      },
+      {
+        "text": "就那样吧，也就还行",
+        "icon": "fight",
+        "stat": {
+          "wei": -30,
+          "qing": -15
+        },
+        "roast": "她笑意瞬间僵住，转身背对着你，肩膀微微一抖。这一晚，她没再理你。",
+        "next": "f_dance_c",
+        "id": "f_side_dance_react_opt_2"
+      }
+    ]
+  },
+  "f_dance_a": {
+    "ep": "EP02",
+    "scene": "house",
+    "stay": true,
+    "char": "aotian",
+    "speaker": "你（着迷）",
+    "media": {
+      "kind": "image",
+      "file": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/f_dance_a.jpg",
+      "label": "婉儿笑弯了眼·扎进怀里"
+    },
+    "text": "（半晌回不过神）好看……像画里的仙女下凡。她笑弯了眼，一头扎进你怀里。",
+    "next": "k_side_after"
+  },
+  "f_dance_b": {
+    "ep": "EP02",
+    "scene": "house",
+    "stay": true,
+    "char": "aotian",
+    "speaker": "你（起哄）",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/f_dance_b.jpg",
+      "label": "婉儿又拿起扇子"
+    },
+    "text": "（一拍大腿）再跳一支吧——我今儿看不够！她笑得直摇头，转身又拿起了扇子。",
+    "next": "k_side_after"
+  },
+  "f_dance_c": {
+    "ep": "EP02",
+    "scene": "house",
+    "stay": true,
+    "char": "aotian",
+    "speaker": "你（撇嘴）",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/f_dance_c.jpg",
+      "label": "婉儿肩膀一抖·背对"
+    },
+    "text": "（懒懒的）就那样吧，也就还行。她笑意瞬间僵住，肩膀微微一抖，转身背对了你。",
+    "next": "k_side_after"
+  },
+  "k_side_after": {
+    "ep": "EP02",
+    "scene": "house",
+    "stay": true,
+    "media": {
+      "kind": "image",
+      "file": "https://p1-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k_side_after.jpg",
+      "label": "婉儿依偎·糊糊温着"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿（依偎）",
+    "text": "傲天……今晚这一出，够我记一辈子的。你先歇着，我去给你温碗糊糊——你今儿累坏了。",
+    "next": "k_side_after2"
+  },
+  "k_side_after2": {
+    "ep": "EP02",
+    "scene": "house",
+    "stay": true,
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k_side_after2.jpg",
+      "label": "婉儿背影进灶房·围裙晃"
+    },
+    "char": "aotian",
+    "speaker": "你（内心）",
+    "text": "她转身进灶房时，围裙腰带在灯影里晃了晃。这日子……才叫日子。可炕头那袋新收的玉米还堆着，明儿一早得琢磨——赶集？留粮？还是别的营生？",
+    "next": "k0"
+  },
+  "k_side_after_gentle": {
+    "ep": "EP02",
+    "scene": "night",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k_side_after_gentle.jpg",
+      "label": "油灯下·掖被角"
+    },
+    "char": "aotian",
+    "speaker": "你（轻声）",
+    "text": "睡吧。明儿一早还要走三十里山路。……你笑笑给她掖好被角。油灯忽闪一下——她背过身去，眼角红了。",
+    "next": "k0"
+  },
+  "k0": {
+    "ep": "EP02",
+    "scene": "house",
+    "type": "choice",
+    "narr": true,
+    "text": "今年头一袋玉米，重于一块大洋。卖、存、显，三条路口、边上那盏灯把你背影拉得好长。婉儿隔着窗没说话，你知道——她在等你拍板。",
+    "char": "narrator",
+    "speaker": "旁白",
+    "title": "那袋玉米，是送去县城，还是……",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k_side_after.jpg",
+      "label": "玉米麻袋·站在土院"
+    },
+    "options": [
+      {
+        "text": "赶集换钱",
+        "icon": "run",
+        "stat": {
+          "liang": 20,
+          "qing": 5,
+          "wei": -2
+        },
+        "next": "k0_a",
+        "id": "k0_opt_0"
+      },
+      {
+        "text": "留粮过冬",
+        "icon": "eat",
+        "stat": {
+          "liang": 30,
+          "wei": 5,
+          "qing": -3
+        },
+        "next": "k0_b",
+        "id": "k0_opt_1"
+      },
+      {
+        "text": "请全村来看",
+        "icon": "say",
+        "stat": {
+          "qing": 15,
+          "wei": -5
+        },
+        "next": "k0_c",
+        "id": "k0_opt_2"
+      },
+      {
+        "text": "全换成烧酒自己咪",
+        "icon": "eat",
+        "stat": {
+          "liang": -99,
+          "wei": -40,
+          "qing": -20
+        },
+        "roastKey": "roast_drunk_liquor",
+        "roast": "你把整袋玉米全换成了烧酒，一个人喝到断片。醒来发现家没了、嫂子没了、只剩空瓶陪你数月亮。",
+        "next": "BE_DRUNK",
+        "id": "k0_opt_3"
+      }
+    ]
+  },
+  "k0_a": {
+    "ep": "EP02",
+    "scene": "house",
+    "stay": true,
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k0_a.jpg",
+      "label": "扛麻袋·赶集去"
+    },
+    "char": "aotian",
+    "speaker": "你（拍板）",
+    "text": "（把玉米麻袋往肩上一扛）明儿一早，赶集去。县城人多，怎么也能换个正价。",
+    "next": "e2s1"
+  },
+  "k0_b": {
+    "ep": "EP02",
+    "scene": "house",
+    "stay": true,
+    "media": {
+      "kind": "image",
+      "file": "https://p4-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k0_b.jpg",
+      "label": "麻袋塞进炕柜下"
+    },
+    "char": "aotian",
+    "speaker": "你（内心）",
+    "text": "（把麻袋塞进炕柜下）留粮过冬。这年头儿，粮食比银子稳。婉儿冬天不至于饿着。",
+    "next": "k0_b_bridge"
+  },
+  "k0_b_bridge": {
+    "ep": "EP02",
+    "scene": "house",
+    "stay": true,
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k0_b_bridge.jpg",
+      "label": "次日·村民上门借粮"
+    },
+    "char": "narrator",
+    "speaker": "旁白",
+    "text": "次日一早——李叔一家、张寡妇、王大娘轮流上门借粮。你捧着半瓦罐面粉，才算明白：留是留了，但架不住乡里乡亲一张张嘴。婉儿抹了把眼角：「傲天，还是……去镇上赶趟集吧。」",
+    "next": "e2s1"
+  },
+  "k0_c": {
+    "ep": "EP02",
+    "scene": "house",
+    "stay": true,
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k0_c.jpg",
+      "label": "请全村来家吃饭"
+    },
+    "char": "aotian",
+    "speaker": "你（笑）",
+    "text": "（一拍大腿）请全村老少来家吃！这年头儿谁家不是勒紧裤腰带过日子——我今儿高兴，请客！",
+    "next": "k0_c_bridge"
+  },
+  "k0_c_bridge": {
+    "ep": "EP02",
+    "scene": "house",
+    "stay": true,
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/k0_c_bridge.jpg",
+      "label": "缸盖掀开·只剩底儿"
+    },
+    "char": "narrator",
+    "speaker": "旁白",
+    "text": "一顿饭吃到半夜，玉米糊糊分了三大锅。散场时，你揭开缸盖一看——只剩底儿了。婉儿轻声：「明儿……你还是赶趟集吧。」你笑得洒脱：「有威望有名声，去了也好卖。」",
+    "next": "e2s1"
+  },
+  "e2s1": {
+    "ep": "EP02",
+    "scene": "trans",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s1.hd.mp4",
+      "poster": "images/lastframes/e2s1.hd.jpg",
+      "duration": 10,
+      "label": "出门赶集"
+    },
+    "char": "narrator",
+    "speaker": "旁白",
+    "forceCaption": true,
+    "text": "天蒙蒙亮，他挎起麻袋——三十里山路，从家门口一直铺到县城。风打在脸上，还带着荒年的凉。",
+    "next": "e2s2"
+  },
+  "e2s2": {
+    "ep": "EP02",
+    "scene": "village",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s2.hd.mp4",
+      "poster": "images/lastframes/e2s2.hd.jpg",
+      "duration": 10,
+      "label": "县城集市"
+    },
+    "char": "narrator",
+    "speaker": "旁白",
+    "forceCaption": true,
+    "text": "1980 年的县城——熙熙攘攘都是苦命人。他站在街口，抬眼看着满街幌子和挤挤攘攘的乡亲。这一趟，赢的是钱，输的是命。",
+    "next": "f_e2s2"
+  },
+  "f_e2s2": {
+    "ep": "EP02",
+    "scene": "village",
+    "type": "choice",
+    "title": "1980 年的县城——你怎么面对这市井人潮？",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/e2s2.jpg",
+      "label": "1980县城"
+    },
+    "options": [
+      {
+        "text": "⚔ 走人堆里·踩稳步子",
+        "icon": "fight",
+        "stat": {
+          "wei": 8,
+          "liang": 0
+        },
+        "next": "r_e2s2_a",
+        "id": "f_e2s2_opt_0"
+      },
+      {
+        "text": "👀 靠墙看局·摸清行情",
+        "icon": "say",
+        "stat": {
+          "wei": 3,
+          "liang": 5
+        },
+        "next": "r_e2s2_b",
+        "id": "f_e2s2_opt_1"
+      },
+      {
+        "text": "💰 数一遍口袋·心里有底",
+        "icon": "hide",
+        "stat": {
+          "qing": 5,
+          "liang": 3
+        },
+        "next": "r_e2s2_c",
+        "id": "f_e2s2_opt_2"
+      }
+    ]
+  },
+  "r_e2s2_a": {
+    "ep": "EP02",
+    "scene": "village",
+    "char": "aotian",
+    "speaker": "你（心里）",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_e2s2_a.c.jpg",
+      "label": "踩稳步子"
+    },
+    "text": "（挺胸·收腹·下巴微抬）苦命人多，但我不是。人潮再挤，也得先看清谁是谁。……你脚下不虚，一步跨进人堆，路自然让开。",
+    "next": "e2s3"
+  },
+  "r_e2s2_b": {
+    "ep": "EP02",
+    "scene": "village",
+    "char": "aotian",
+    "speaker": "你（心里）",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_e2s2_b.c.jpg",
+      "label": "靠墙看局"
+    },
+    "text": "（背靠土墙·眼神扫向粮摊）先摸行情——玉米、麦子、粗布……哪儿贵、哪儿松，心里都得有本账。……你把肩上的麻袋往下压了压，等最合适的时机再出手。",
+    "next": "e2s3"
+  },
+  "r_e2s2_c": {
+    "ep": "EP02",
+    "scene": "village",
+    "char": "aotian",
+    "speaker": "你（心里）",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_e2s2_c.c.jpg",
+      "label": "数一遍口袋"
+    },
+    "text": "（手插进内兜·指尖点过一张张毛票）……三块二毛七。够扯布也够进粮，但一分都不能白撒。婉儿在家等着呢。",
+    "next": "e2s3"
+  },
+  "e2s3": {
+    "ep": "EP02",
+    "scene": "village",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s3.hd.mp4",
+      "poster": "images/lastframes/e2s3.hd.jpg",
+      "duration": 10,
+      "label": "粮贩子压价"
+    },
+    "char": "vendor",
+    "speaker": "粮贩子（叼烟·脚踩秤）",
+    "text": "这袋玉米潮气重，虫眼儿也多——顶天八毛一斤。爱卖不卖，后头还排着二十个人呢。",
+    "next": "e2s3b"
+  },
+  "e2s3b": {
+    "ep": "EP02",
+    "scene": "village",
+    "char": "aotian",
+    "speaker": "你（心里）",
+    "text": "（攥紧麻袋口·眼角扫见他脚下那杆秤——秤砣位置偏了半寸）……这老小子秤有猫腻。市价一块二，他给我压到八毛，一袋六十斤就是二十四块——够婉儿半月的粮。",
+    "next": "f_e2_haggle"
+  },
+  "f_e2_haggle": {
+    "ep": "EP02",
+    "scene": "village",
+    "type": "choice",
+    "title": "粮贩子压到八毛——你怎么接？",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/e2s3.jpg",
+      "label": "粮贩压价"
+    },
+    "options": [
+      {
+        "text": "冷笑硬顶「一块二，少一分不卖」",
+        "icon": "fight",
+        "stat": {
+          "liang": 15,
+          "wei": 8
+        },
+        "next": "r_haggle_a",
+        "id": "f_e2_haggle_opt_0"
+      },
+      {
+        "text": "装可怜卖惨「家里嫂子等米下锅」",
+        "icon": "say",
+        "stat": {
+          "liang": 8,
+          "qing": 5
+        },
+        "next": "r_haggle_b",
+        "id": "f_e2_haggle_opt_1"
+      },
+      {
+        "text": "佯装收摊转身走「不卖了」",
+        "icon": "run",
+        "stat": {
+          "liang": 20,
+          "wei": 12
+        },
+        "next": "r_haggle_c",
+        "id": "f_e2_haggle_opt_2"
+      },
+      {
+        "text": "秒松口「六毛就六毛，卖」",
+        "icon": "hide",
+        "stat": {
+          "liang": -99,
+          "wei": -30
+        },
+        "roastKey": "roast_starve_sell",
+        "roast": "你在粮贩子面前秒软，六毛就六毛的卖。一袋玉米换回三个铜板，家里那口米缸从此再没满过。",
+        "next": "BE_STARVE",
+        "id": "f_e2_haggle_opt_3"
+      },
+      {
+        "text": "弯腰抠出秤砣底铅片·当众揭穿",
+        "icon": "fight",
+        "stat": {
+          "liang": 25,
+          "wei": 20
+        },
+        "next": "r_haggle_d",
+        "id": "f_e2_haggle_opt_4"
+      }
+    ]
+  },
+  "r_haggle_a": {
+    "ep": "EP02",
+    "scene": "village",
+    "char": "aotian",
+    "speaker": "你",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/r_haggle_a.jpg",
+      "label": "冷笑硬顶"
+    },
+    "text": "（一脚踩住秤盘·把麻袋往地上一顿）睁眼看清楚——粒粒饱满，晒了三个大晴天。一块二一斤，少一分我拖回去喂猪。后头排的二十个人？让他们看看你敢不敢收一块二的好货。",
+    "next": "r_haggle_a2"
+  },
+  "r_haggle_a2": {
+    "ep": "EP02",
+    "scene": "village",
+    "char": "vendor",
+    "speaker": "粮贩子（脸抽了抽）",
+    "text": "……行行行，一块，一块！你这后生嘴皮子够利索。搬秤上来。",
+    "next": "e2s4"
+  },
+  "r_haggle_b": {
+    "ep": "EP02",
+    "scene": "village",
+    "char": "aotian",
+    "speaker": "你（哑声）",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/r_haggle_b.jpg",
+      "label": "装可怜卖惨"
+    },
+    "text": "（垂头蹲下·手指抠着麻袋补丁）大哥……我嫂子刚死了当家的，屋里断粮三天了。八毛我连回程车费都凑不齐——您行行好，九毛，就九毛，让我也能给她带口热的回去。",
+    "next": "r_haggle_b2"
+  },
+  "r_haggle_b2": {
+    "ep": "EP02",
+    "scene": "village",
+    "char": "vendor",
+    "speaker": "粮贩子（叹口气）",
+    "text": "……哎。看你这后生也不容易。九毛就九毛，别让人听见了闹哄——快过秤。",
+    "next": "e2s4"
+  },
+  "r_haggle_c": {
+    "ep": "EP02",
+    "scene": "village",
+    "char": "aotian",
+    "speaker": "你（冷）",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_haggle_c.v2.c.jpg",
+      "label": "佯装收摊转身走"
+    },
+    "text": "（弯腰系麻袋口·拍拍土·扛起就走）行，八毛不卖。老子走十里地送去邻乡供销社，一块三收——你这秤，我不伺候。",
+    "next": "r_haggle_c2"
+  },
+  "r_haggle_c2": {
+    "ep": "EP02",
+    "scene": "village",
+    "char": "vendor",
+    "speaker": "粮贩子（追出来·陪笑）",
+    "text": "哎哎哎兄弟！回来回来！一块一，一块一行不行？我这也是给上头带话的价儿……你这脾气冲的，行，一块一成交！",
+    "next": "e2s4"
+  },
+  "r_haggle_d": {
+    "ep": "EP02",
+    "scene": "village",
+    "char": "aotian",
+    "speaker": "你（一把踢开秤盘）",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/r_haggle_d.jpg",
+      "label": "🎁 揭穿掺铅秤"
+    },
+    "text": "（弯腰抠出秤砣底部一块铅片·当众高举）乡亲们都来看看——这就是收玉米八毛的良心秤！底下焊了半两铅，一袋六十斤能给你少称八斤！",
+    "next": "r_haggle_d2"
+  },
+  "r_haggle_d2": {
+    "ep": "EP02",
+    "scene": "village",
+    "char": "narrator",
+    "speaker": "旁白",
+    "text": "（围观群众炸开了锅·粮贩子脸白如纸）",
+    "next": "r_haggle_d3"
+  },
+  "r_haggle_d3": {
+    "ep": "EP02",
+    "scene": "village",
+    "char": "vendor",
+    "speaker": "粮贩子（哆嗦跪地）",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/r_haggle_d.jpg",
+      "label": "粮贩子跪地求饶"
+    },
+    "text": "兄弟兄弟兄弟！小的错了！一块三！一块三收！求你别嚷嚷了——今天这袋算我孝敬您的！",
+    "next": "s_stone_video"
+  },
+  "s_stone_video": {
+    "ep": "EP02",
+    "scene": "village",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/skill_stone_activate.c.mp4",
+      "duration": 10,
+      "label": "抠铅片·揭穿掺假秤",
+      "poster": "images/lastframes/skill_stone_activate.c.jpg"
+    },
+    "char": "narrator",
+    "speaker": "旁白",
+    "text": "掌心那一块铅——从今往后，你看谁的秤都能一眼看穿。",
+    "next": "s_stone"
+  },
+  "s_stone": {
+    "ep": "EP02",
+    "scene": "village",
+    "media": {
+      "kind": "skillcard",
+      "name": "石头变钱·Lv1",
+      "desc": "一咬牙一跺脚·顽石落地成铜板",
+      "achvId": "skill_stone"
+    },
+    "char": "system",
+    "speaker": "系统",
+    "text": "叮——技能激活：石头变钱。",
+    "next": "e2s4"
+  },
+  "e2s4": {
+    "ep": "EP02",
+    "scene": "village",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s4.c.jpg",
+      "label": "数钱瞬间"
+    },
+    "char": "narrator",
+    "speaker": "旁白",
+    "text": "（麻绳扎成一沓一沓·汗浸的毛票蹭得指腹发烫）六十斤玉米——今天这一趟，比预想多进账了不少。够扯布，够带米，够让她冬天不再穿那件补丁摞补丁的旧袄。",
+    "next": "k_side_gate_e2"
+  },
+  "k_side_gate_e2": {
+    "ep": "EP02",
+    "scene": "village",
+    "type": "choice",
+    "title": "卖完粮拿了钱，集市歇脚一会——你想干点啥？",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s4_market_rest.v2.c.jpg",
+      "label": "集市歇脚·钱袋在怀"
+    },
+    "options": [
+      {
+        "text": "闭眼想婉儿一支爵士椅子舞",
+        "icon": "say",
+        "stat": {
+          "wei": 10,
+          "qing": 3
+        },
+        "next": "r_side05_e2",
+        "ad": true,
+        "adUnitId": "2300058116_01",
+        "id": "k_side_gate_e2_opt_0"
+      },
+      {
+        "text": "闭眼想婉儿一支敦煌反弹琵琶",
+        "icon": "say",
+        "stat": {
+          "wei": 12,
+          "qing": 3
+        },
+        "next": "r_side06_e2",
+        "ad": true,
+        "adUnitId": "2300058116_01",
+        "id": "k_side_gate_e2_opt_1"
+      },
+      {
+        "text": "心里念着嫂子，起身进布铺",
+        "icon": "give",
+        "stat": {
+          "wei": 8,
+          "liang": 3
+        },
+        "next": "e2_cloth_enter",
+        "id": "k_side_gate_e2_opt_2"
+      }
+    ]
+  },
+  "r_side05_e2": {
+    "ep": "EP02",
+    "scene": "village",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side05_jazz.hd.mp4",
+      "duration": 10,
+      "label": "椅子舞·想象",
+      "poster": "images/lastframes/side05_jazz.hd.jpg"
+    },
+    "char": "aotian",
+    "speaker": "你（内心）",
+    "text": "（脑子里全是嫂子影儿——她扎着头巾，转身一坐，那椅子跟活了似的。）",
+    "next": "f_side_dance_e2_react"
+  },
+  "r_side06_e2": {
+    "ep": "EP02",
+    "scene": "village",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side06_dunhuang.hd.mp4",
+      "duration": 10,
+      "label": "敦煌·想象",
+      "poster": "images/lastframes/side06_dunhuang.hd.jpg"
+    },
+    "char": "aotian",
+    "speaker": "你（内心）",
+    "text": "（这年头儿哪见过啥飞天……可脑子里就是浮出她那件米白布袍飘起来的样子。）",
+    "next": "f_side_dance_e2_react"
+  },
+  "f_side_dance_e2_react": {
+    "ep": "EP02",
+    "scene": "village",
+    "type": "choice",
+    "title": "（想象里她转过头，眼睛亮亮地问你——）\"傲天，我跳得好看么？\"",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s4_market_rest.v2.c.jpg",
+      "label": "想象·集市歇脚"
+    },
+    "options": [
+      {
+        "text": "好看，最好看",
+        "icon": "say",
+        "stat": {
+          "wei": 12,
+          "qing": 5
+        },
+        "next": "r_side_dance_e2_a",
+        "id": "f_side_dance_e2_react_opt_0"
+      },
+      {
+        "text": "再跳一支吧，我看不够",
+        "icon": "give",
+        "stat": {
+          "wei": 8,
+          "qing": 3
+        },
+        "next": "r_dance_encore_market_ep02",
+        "id": "f_side_dance_e2_react_opt_1",
+        "ad": true,
+        "adUnitId": "2300058116_01"
+      },
+      {
+        "text": "\"先买布，别耽误正事\"（心不在焉）",
+        "icon": "hide",
+        "stat": {
+          "qing": -2
+        },
+        "next": "r_side_dance_e2_c",
+        "id": "f_side_dance_e2_react_opt_2"
+      }
+    ]
+  },
+  "r_side_dance_e2_a": {
+    "ep": "EP02",
+    "scene": "village",
+    "char": "aotian",
+    "speaker": "你（心里）",
+    "stay": true,
+    "text": "（你嘟囔一句『好看，最好看』——想象里她耳根一红，抚了抚鬓角低下头，手里的布花扇抽得更紧。集市的吆喝重新灌进耳朵，那画一样的转身还在眼皮子里飘。你抖抖神儿，把毛票揣紧，起身往街西头的布铺走——总得给她带块像样的料子。）",
+    "next": "e2_cloth_enter"
+  },
+  "r_side_dance_e2_b": {
+    "ep": "EP02",
+    "scene": "village",
+    "char": "aotian",
+    "speaker": "你（心里）",
+    "stay": true,
+    "text": "（心里接上一句『再跳一支吧——我看不够』——想象里她掩嘴笑，取来新扇儿又旋了一圈。你目光一晴，回过神来，把毛票揣紧，往街西头的布铺走——总得给她带块像样的料子。）",
+    "next": "e2_cloth_enter"
+  },
+  "r_side_dance_e2_c": {
+    "ep": "EP02",
+    "scene": "village",
+    "char": "aotian",
+    "speaker": "你（心里）",
+    "stay": true,
+    "text": "（你在心里嘀咕一句『先买布，别耽误正事』——想象里她眼里的光淡了一分，头巾轻轻一摇。你抹把脸，把尴尬跟了回去，把毛票揣紧，往街西头的布铺走——总得给她带块像样的料子弥补一下。）",
+    "next": "e2_cloth_enter"
+  },
+  "e2_cloth_enter": {
+    "ep": "EP02",
+    "scene": "village",
+    "char": "narrator",
+    "speaker": "旁白",
+    "stay": true,
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/e2s5.jpg",
+      "label": "街西·布铺门口"
+    },
+    "text": "（街西头一排土房，就属这家门楣挂着蓝底白花的布幡最显眼。你掀开门帘，一股新棉花的香气扑面——柜台后老板娘正拿把竹尺量布。她抬眼看你：『小哥，扯几丈？』）",
+    "next": "f_e2_cloth"
+  },
+  "f_e2_cloth": {
+    "ep": "EP02",
+    "scene": "village",
+    "type": "choice",
+    "title": "布铺柜台前——给嫂子挑块什么布？",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/f_e2_cloth_counter.v2.c.jpg",
+      "label": "布铺柜台·四布"
+    },
+    "options": [
+      {
+        "text": "米白棉布·平价三丈",
+        "icon": "give",
+        "stat": {
+          "liang": 2,
+          "wei": 3
+        },
+        "next": "e2s5",
+        "id": "f_e2_cloth_opt_0"
+      },
+      {
+        "text": "靛蓝细麻·耐脏两丈",
+        "icon": "give",
+        "stat": {
+          "liang": 3,
+          "wei": 2
+        },
+        "next": "r_e2_cloth_indigo",
+        "id": "f_e2_cloth_opt_1"
+      },
+      {
+        "text": "大红嫁衣底",
+        "icon": "say",
+        "unlock": "dress_red",
+        "stat": {
+          "wei": 15
+        },
+        "next": "r_e2_cloth_red",
+        "id": "f_e2_cloth_opt_2",
+        "ad": true,
+        "adUnitId": "2300058116_01"
+      },
+      {
+        "text": "江南蕾丝改良旗袍",
+        "icon": "say",
+        "unlock": "dress_qipao",
+        "stat": {
+          "wei": 20
+        },
+        "next": "r_e2_cloth_qipao",
+        "id": "f_e2_cloth_opt_3",
+        "ad": true,
+        "adUnitId": "2300058116_01"
+      }
+    ]
+  },
+  "r_e2_cloth_indigo": {
+    "ep": "EP02",
+    "scene": "village",
+    "char": "aotian",
+    "speaker": "你（心里）",
+    "text": "（一掌拍在靛蓝细麻上）就它——嫂子做活计得耐脏，两丈够她做两身粗布褂子换着穿，日子长着呢。老板娘会心一笑：「懂过日子的爷。」",
+    "next": "e2s5"
+  },
+  "r_e2_cloth_red": {
+    "ep": "EP02",
+    "scene": "village",
+    "char": "aotian",
+    "speaker": "你（内心）",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2_cloth_red.v2.c.jpg",
+      "label": "想象·嫁衣底"
+    },
+    "text": "（手指拂过大红绣底）大红嫁衣底料——回家藏箱底，等哪天她愿意嫁我，就给她做嫁衣。……你把布卷紧紧夹在腋下，转头冲老板娘一抬下巴：另拿一丈米白棉布当脸面。",
+    "next": "e2s5"
+  },
+  "r_e2_cloth_qipao": {
+    "ep": "EP02",
+    "scene": "village",
+    "char": "aotian",
+    "speaker": "你（内心）",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2_cloth_qipao.v2.c.jpg",
+      "label": "想象·江南旗袍"
+    },
+    "text": "（摸了摸蓝底白花）江南蕾丝……她穿上一定像画里走出来的。……你脑子里忽然浮出婉儿穿上它的模样，喉结一动，指了指柜台：另拿一丈米白棉布。",
+    "next": "e2s5"
+  },
+  "e2s5": {
+    "ep": "EP02",
+    "scene": "village",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s5.hd.mp4",
+      "poster": "images/lastframes/e2s5.hd.jpg",
+      "duration": 10,
+      "label": "布铺·换布"
+    },
+    "char": "aotian",
+    "speaker": "你",
+    "forceCaption": true,
+    "text": "老板娘，最好的米白棉布，给我裁三丈。",
+    "next": "e2s5b_shop"
+  },
+  "e2s5b_shop": {
+    "ep": "EP02",
+    "scene": "village",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s5_boss.v2.c.jpg",
+      "label": "布铺老板娘·柜台"
+    },
+    "char": "shopwoman",
+    "speaker": "布铺老板娘（笑眯眯）",
+    "text": "好嘞后生——三丈米白棉布，给你嫂子做件新衫子。（一把竹尺量下去）你这挑得地道，年年月月耐穿。",
+    "next": "e2s5b"
+  },
+  "e2s5b": {
+    "ep": "EP02",
+    "scene": "village",
+    "char": "aotian",
+    "speaker": "你（心里）",
+    "text": "（把布卷紧紧夹在腋下）婉儿……今晚就让她穿上试试。给她一件像样的衣裳，这一趟就算值了。",
+    "next": "e2s5_bridge"
+  },
+  "e2s5_bridge": {
+    "ep": "EP02",
+    "scene": "trans",
+    "char": "narrator",
+    "speaker": "旁白",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s5_road.v2.c.jpg",
+      "label": "归途·山路夕阳"
+    },
+    "text": "你揣着布卷出布铺，天已擦黑。走出县城城门，回望这一路热闹的市井，转头就是三十里山路。翻过一道山梁，风里的煤烟味淡了，脚下的碎石咯吱响——前头岔口一个黑影一晃，把烟锅子在鞋底一磕。",
+    "next": "e2s6"
+  },
+  "e2s6": {
+    "ep": "EP02",
+    "scene": "trans",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s6.hd.mp4",
+      "poster": "images/lastframes/e2s6.hd.jpg",
+      "duration": 10,
+      "label": "反派登场·归途"
+    },
+    "char": "zhao",
+    "speaker": "赵铁牛（拦路，痞笑）",
+    "forceCaption": true,
+    "text": "哥们，借过路费——十块。",
+    "next": "f_e2s6"
+  },
+  "f_e2s6": {
+    "ep": "EP02",
+    "scene": "trans",
+    "type": "choice",
+    "title": "赵铁牛拦路要过路费——你怎么办？",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e2s6.v2.c.jpg",
+      "label": "赵铁牛拦路·山口"
+    },
+    "options": [
+      {
+        "text": "冷脸硬顶「不认识你，让开」",
+        "icon": "fight",
+        "stat": {
+          "wei": 8
+        },
+        "next": "e2s6b",
+        "id": "f_e2s6_opt_0"
+      },
+      {
+        "text": "丢五块打发「拿去买酒」",
+        "icon": "give",
+        "stat": {
+          "liang": -5,
+          "wei": -3
+        },
+        "next": "r_e2s6_pay",
+        "id": "f_e2s6_opt_1"
+      },
+      {
+        "text": "绕道躲开走小路",
+        "icon": "hide",
+        "stat": {
+          "qing": 3,
+          "wei": -2
+        },
+        "next": "r_e2s6_hide",
+        "id": "f_e2s6_opt_2"
+      }
+    ]
+  },
+  "r_e2s6_pay": {
+    "ep": "EP02",
+    "scene": "trans",
+    "char": "aotian",
+    "speaker": "你（心里）",
+    "text": "（掏出五块塞他手里）拿去打二两酒。他嘿嘿一笑接过：「哥们够意思。」——但你心里明白，欠他一次，他记你一辈子。",
+    "next": "k1"
+  },
+  "r_e2s6_hide": {
+    "ep": "EP02",
+    "scene": "trans",
+    "char": "aotian",
+    "speaker": "你（心里）",
+    "text": "（一头扎进侧边荆棘小道·背影贴着崖壁）今日避一避，是为了明日不吃他这一嘴亏。",
+    "next": "k1"
+  },
+  "e2s6b": {
+    "ep": "EP02",
+    "scene": "trans",
+    "char": "aotian",
+    "speaker": "你（冷）",
+    "text": "（收布卷）不认识你。让开。",
+    "next": "k1"
+  },
+  "k1": {
+    "ep": "EP02",
+    "scene": "trans",
+    "type": "choice",
+    "title": "赵铁牛盯着你，你选哪条路——",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/k1_zhao_encounter.c.mp4",
+      "poster": "images/lastframes/k1_zhao_encounter.c.jpg",
+      "duration": 10,
+      "label": "山口·对峙"
+    },
+    "options": [
+      {
+        "text": "「直接回家」硬闯",
+        "icon": "run",
+        "stat": {
+          "qing": 15
+        },
+        "next": "r_k1_a",
+        "id": "k1_opt_0"
+      },
+      {
+        "text": "「找李老憨结盟」绕路",
+        "icon": "say",
+        "stat": {
+          "wei": 10,
+          "qing": 5
+        },
+        "next": "r_k1_b",
+        "id": "k1_opt_1"
+      },
+      {
+        "text": "「藏一半钱地里」防被抢",
+        "icon": "hide",
+        "stat": {
+          "liang": 10
+        },
+        "next": "r_k1_c",
+        "id": "k1_opt_2"
+      },
+      {
+        "text": "跟他称兄道弟一起干",
+        "icon": "give",
+        "stat": {
+          "wei": -99,
+          "qing": -40,
+          "liang": -50
+        },
+        "roastKey": "roast_partner_zhao",
+        "roast": "你跟赵铁牛称兄道弟，觉得抱团更好混。三个月后他把地契拿走，你才发现——你才是那个被称的兄弟。",
+        "next": "BE_PARTNER",
+        "id": "k1_opt_3"
+      }
+    ]
+  },
+  "r_k1_a": {
+    "ep": "EP02",
+    "scene": "trans",
+    "char": "aotian",
+    "speaker": "你（心里）",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_k1_a.v2.c.jpg",
+      "label": "硬闯正路"
+    },
+    "text": "（咬牙握拳·走向左侧崎岖山道）他敢挡，我就把他打服。……话音落，手心忽然一阵发烫，像揣了块烙铁——身子仿佛比自己更早知道，今晚有场硬仗要打。",
+    "next": "k1_bridge_a"
+  },
+  "r_k1_b": {
+    "ep": "EP02",
+    "scene": "trans",
+    "char": "aotian",
+    "speaker": "你",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/r_k1_b.jpg",
+      "label": "结盟李老憨"
+    },
+    "text": "（敲门·压低声）李叔——赵铁牛在山口堵人。你我今晚一起下山，明儿一起去镇上。……门吱呀一声开了条缝，一双浑浊的眼上下打量你，随后重重点了下头。",
+    "next": "k1_bridge_b"
+  },
+  "r_k1_c": {
+    "ep": "EP02",
+    "scene": "trans",
+    "char": "aotian",
+    "speaker": "你（心里）",
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_k1_c.v2.c.jpg",
+      "label": "藏钱地里"
+    },
+    "text": "（蹲地埋钱袋·四顾）藏一半。就算被抢，也还够婉儿吃一冬……你拍拍手上的土，抬头一看，家的方向，那盏油灯还亮着。",
+    "next": "k1_bridge_c"
+  },
+  "k1_bridge_a": {
+    "ep": "EP02",
+    "scene": "trans",
+    "char": "narrator",
+    "speaker": "旁白",
+    "stay": true,
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_k1_a.v2.c.jpg",
+      "label": "硬闯·血路归家"
+    },
+    "text": "（月亮爬到山尖，山口那道黑影迎面就是一拳）你侧身一让，反手一拳砸在他鼻梁上，铁牛哎哟一声捂脸退了两步——你趁势蹬开他，布卷紧紧夹在肋下，一路狂奔。风灌进衣领，嘴里全是血腥气。三十里山路一步没停，眼看着自家那盏油灯从山那边冒出头来的时候，膝盖软得几乎跪下。你推开院门，鞋底沾着的泥、袖口那道口子——都顾不上了，先看一眼炕上。",
+    "next": "e3s1"
+  },
+  "k1_bridge_b": {
+    "ep": "EP02",
+    "scene": "trans",
+    "char": "narrator",
+    "speaker": "旁白",
+    "stay": true,
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/frames/r_k1_b.jpg",
+      "label": "李叔陪走·夜路归家"
+    },
+    "text": "（李老憨掂了掂手里那根枣木棍，压低嗓子笑）后生，走。……两个人一前一后贴着山崖走，山口那道黑影远远地探出头来，看见李老憨手里的家伙，又缩了回去。老憨嘿嘿冷哼一声：铁牛这怂玩意儿，就欺软怕硬。走到岔口他拍拍你的肩：布卷抱紧，回去别惊了你嫂子。你点头，一路踩着自己的影子回到院门口——屋里那盏油灯还亮着。",
+    "next": "e3s1"
+  },
+  "k1_bridge_c": {
+    "ep": "EP02",
+    "scene": "trans",
+    "char": "narrator",
+    "speaker": "旁白",
+    "stay": true,
+    "media": {
+      "kind": "image",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/r_k1_c.v2.c.jpg",
+      "label": "绕小路·夜色归家"
+    },
+    "text": "（你把布卷贴身裹紧，钱袋只留了两块散钱在腰间）拐进后山那条只有拾柴的老汉才走的小道，荆棘刮着裤脚。远远听见山口传来赵铁牛骂骂咧咧的声音——他没等到你。你摸黑翻过最后一道土坝，家的方向那盏油灯把院墙照出一片暖黄。推开门那一刻，你才发现后背的粗布褂子全汗湿了。",
+    "next": "e3s1"
+  },
+  "r_dance_encore_home_ep02": {
+    "ep": "EP02",
+    "scene": "house",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side04_kongque.hd.mp4",
+      "duration": 10,
+      "label": "孔雀舞",
+      "poster": "images/lastframes/side04_kongque.hd.jpg"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿（撒娇）",
+    "text": "傲天～我跳得好看么？",
+    "next": "k_side_after"
+  },
+  "r_dance_encore_market_ep02": {
+    "ep": "EP02",
+    "scene": "village",
+    "media": {
+      "kind": "video",
+      "file": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side07_cailian.hd.mp4",
+      "duration": 10,
+      "label": "采莲扇舞·想象中的再一支",
+      "poster": "images/lastframes/side07_cailian.hd.jpg"
+    },
+    "char": "wanerh",
+    "speaker": "沈婉儿（含笑）",
+    "text": "傲天……我跳的好看么？",
+    "next": "e2_cloth_enter"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "weihunqi",
+  "version": "73.0.0",
+  "private": true,
+  "description": "《我的未婚妻》互动影游 · 剧本/白名单/铁律架构在 content/，代码是派生产物",
+  "scripts": {
+    "build:story": "node scripts/tools/build-story.js",
+    "build:registry": "node scripts/tools/build-registry.js",
+    "build": "npm run build:registry && npm run build:story && npm run build:subtitles",
+    "validate:rules": "node scripts/tools/validate-rules.js",
+    "validate:schema": "node scripts/tools/validate-schema.js",
+    "validate:assets": "node scripts/tools/assets-check.js --no-cdn",
+    "validate:assets:cdn": "node scripts/tools/assets-check.js",
+    "validate:dryrun": "node scripts/tools/dry-run-story.js",
+    "validate:full": "bash scripts/validate-story.sh && node scripts/tools/validate-schema.js && node scripts/tools/validate-rules.js && node scripts/tools/assets-check.js --no-cdn && node scripts/tools/dry-run-story.js && npm run validate:subtitles",
+    "validate": "npm run validate:full",
+    "index": "node scripts/tools/build-story-index.js",
+    "extract:story": "node scripts/tools/extract-story.js",
+    "scaffold:choice": "node scripts/tools/scaffold-choice.js",
+    "scaffold:episode": "node scripts/tools/scaffold-episode.js",
+    "build:subtitles": "python3 scripts/subtitles/build_subtitles_js.py",
+    "validate:subtitles": "node scripts/tools/check-subtitles.js"
+  }
+}

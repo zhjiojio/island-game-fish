@@ -1,0 +1,106 @@
+# 路径：<HUB_GAMES_DIR>/<game-name>/workflow-run.yml
+# 此文件由 aigc-game-workflow 插件创建和维护
+
+game_name: "lao-tie-zhao-cha-2"
+created_at: "2026-09-01T03:19:58Z"
+updated_at: "2026-09-01T03:25:35.680Z"
+
+# 游戏类型：standard（换皮/其他）| video-adaptation（剧游）
+game_type: standard
+
+# 游戏配置（由 agw-start 确认后写入，后续阶段从此处读取）
+config:
+  appid: "ks653303422617892476"
+  ad_units:
+    rewarded_video: "2300040237_01"   # 激励视频广告位 ID
+    interstitial: "2300040237_02"     # 插屏广告位 ID
+    banner: "2300040237_03"           # Banner 广告位 ID
+  share_template_id: ""
+  server:
+    enabled: false        # true = 当前游戏包含服务端逻辑，需执行 server-design 阶段
+    framework: ""         # 例如 node-express / python-fastapi / go-gin
+    runtime: ""           # 例如 node>=22 / python>=3.11 / go>=1.22
+    package_manager: ""   # 例如 npm / pnpm / pip / poetry / go
+    local_start: ""       # 本地启动命令
+    healthcheck: ""       # 健康检查 URL 或命令
+    deploy_target: ""     # 部署目标或交接平台
+
+# 当前阶段，AI 每次读此字段决定执行哪个 skill
+#
+# standard 路径：
+#   scaffold → idea-collect → idea-search → server-design（按需）→ codegen → evolve-review
+#   → self-test（含可选 CDN）→ publish → data-collect → done
+#
+# video-adaptation 路径：
+#   scaffold → video-adaptation → server-design（按需）→ evolve-review
+#   → self-test（含可选 CDN）→ publish → data-collect → done
+stage: scaffold
+
+nodes:
+  # ── 隐私合规（强制前置）──────────────────────────────────────────────────
+  privacy:
+    state: completed
+    confirm_pending: false
+    output: docs/game-privacy.md
+
+  # ── standard 路径专属阶段 ──────────────────────────────────────────────────
+  scaffold:
+    state: completed
+    confirm_pending: true
+    output: "package/, docs/scaffold.md"
+
+  idea-collect:
+    state: pending
+    confirm_pending: false
+    output: ""
+
+  idea-search:
+    state: pending
+    confirm_pending: false
+    output: docs/idea-search.md
+
+  # ── 服务端按需阶段 ────────────────────────────────────────────────────────
+  server-design:
+    state: skipped             # skipped | pending | completed
+    confirm_pending: false
+    output: docs/server.md
+
+  codegen:
+    state: pending
+    confirm_pending: false
+    output: package/
+
+  # ── video-adaptation 路径专属阶段 ─────────────────────────────────────────
+  video-adaptation:
+    state: pending
+    confirm_pending: false
+    output: docs/story-graph.md
+
+  # ── 共享路径 ──────────────────────────────────────────────────────────────
+  evolve-review:
+    state: pending
+    confirm_pending: false
+    output: EVOLUTION.md
+    latest_round: 0
+    latest_round: 0          # 完整历史以 EVOLUTION.md 为准
+
+  self-test:
+    state: pending
+    confirm_pending: false
+    output: docs/self-test-report.md
+
+  publish:
+    state: pending
+    confirm_pending: false
+    output: docs/publish-report.md
+    version: "1.0.0"          # 每次上传后 patch +1，格式 major.minor.patch
+
+  data-collect:
+    state: pending
+    confirm_pending: false
+    output: docs/data-collect-report.md
+
+# 可选模块
+# CDN 上传已合并至 agw-self-test 内嵌步骤（Step 4.5），不再作为独立 stage
+optional_modules:
+  cdn: false

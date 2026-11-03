@@ -1,0 +1,10 @@
+{
+  "node": "e4s2",
+  "speakerKey": "narrator",
+  "speakerName": "旁白",
+  "asrText": "院门口堵着两个人。这是她最怕的人。他没退，也没让开——从今天起，谁想动这个门，先过他这道身子。",
+  "asrTextRaw": "院门口堵着两个人 这是他最怕的人 他没退 也没让开 从今天起 谁想动这个门 先过他这道身子",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 5
+}

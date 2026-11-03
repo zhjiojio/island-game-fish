@@ -1,0 +1,43 @@
+{
+  "name": "wq_B_h1_c1_10s_v1",
+  "_desc": "赛道B · 关系张力 · 主打「亡兄未过门的嫂子」· 只放情绪不放身体，过审优先",
+  "source": "/Users/fat/weihunqi-large-assets/videos/v_saoliao_wanr_looklamp.mp4",
+  "width": 1080,
+  "height": 1920,
+  "duration": 10.0,
+  "outdir": "/Users/fat/weihunqi/build-ua",
+
+  "hook": "我哥没了，她还叫我吃饭",
+
+  "options": [
+    "一把拉她起来：别跪",
+    "摸摸她头顶：别怕",
+    "站着不动，受着"
+  ],
+
+  "stats": [
+    ["嫂子好感", 10, [224, 76, 106, 255]],
+    ["村里威望", 50, [212, 160, 58, 255]],
+    ["家里存粮", 20, [127, 176, 105, 255]]
+  ],
+
+  "hit_stat_idx": 0,
+  "hit_delta": "+15",
+  "hit_delta_num": 15,
+  "toast": "嫂子好感 +15",
+
+  "cta": "她跪下，你拉不拉？",
+  "cta_sub": "点击进入 · 荒年开局",
+
+  "timeline": {
+    "hook_at": 0.3,
+    "card_in_at": 2.6,
+    "card_stagger": 0.17,
+    "finger_in_at": 4.4,
+    "press_at": 5.5,
+    "release_at": 5.8,
+    "fly_at": 5.85,
+    "cta_at": 7.1,
+    "target_idx": 0
+  }
+}

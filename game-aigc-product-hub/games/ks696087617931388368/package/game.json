@@ -1,0 +1,11 @@
+{
+  "deviceOrientation": "portrait",
+  "showStatusBar": false,
+  "runtimeVersion": "1.0.0",
+  "subpackages": [
+    { "name": "level-previews", "root": "subpackages/level-previews/" },
+    { "name": "game-assets", "root": "subpackages/game-assets/" },
+    { "name": "popup-assets", "root": "subpackages/popup-assets/" }
+  ],
+  "parallelPreloadSubpackages": []
+}

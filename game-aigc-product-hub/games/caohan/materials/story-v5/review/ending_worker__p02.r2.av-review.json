@@ -1,0 +1,31 @@
+{
+  "partId": "ending_worker__p02.r2",
+  "sourceSha256": "247486759a06b1b7fdf32129cd39f2db9a47295e36f5b08a4191ff6ec6914d62",
+  "model": "google/gemini-2.5-flash",
+  "review": {
+    "transcript": [
+      {
+        "startSec": 0.0,
+        "endSec": 5.04,
+        "text": "嗯",
+        "audibleVoice": "画面中穿黑色T恤的男性",
+        "visibleSpeaker": "画面中穿黑色T恤的男性",
+        "mouthSyncEvidence": "0.0-0.04秒，嘴唇微张，发出“嗯”的声音。",
+        "speakerAge": "成年",
+        "speakerClothes": "黑色T恤",
+        "speakerLocation": "画面右侧"
+      }
+    ],
+    "nonverbal": [
+      {
+        "startSec": 0.0,
+        "endSec": 5.04,
+        "text": "持续的背景噪音，包括建筑工地环境音和人群鼓掌声。",
+        "audibleVoice": "环境音",
+        "visibleSpeaker": "无"
+      }
+    ],
+    "issues": [],
+    "uncertain": []
+  }
+}

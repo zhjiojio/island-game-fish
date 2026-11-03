@@ -1,0 +1,10 @@
+{
+  "node": "e4s6",
+  "speakerKey": "aotian",
+  "speakerName": "你（怒吼）",
+  "asrText": "",
+  "asrTextRaw": "",
+  "matchScript": true,
+  "textSource": "script-authoritative (v82.0重生成全库视频后，旧ASR已失效，以剧本text为权威)",
+  "cues": 1
+}

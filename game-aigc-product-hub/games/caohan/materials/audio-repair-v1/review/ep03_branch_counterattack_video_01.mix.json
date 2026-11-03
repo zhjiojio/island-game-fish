@@ -1,0 +1,36 @@
+{
+  "videoId": "ep03_branch_counterattack_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep03_branch_counterattack_video_01__l01",
+      "speaker": "贺星冉",
+      "text": "沐瑶，我安全，先别联系我爸妈。帮我查一下我的卡哪张还能用。",
+      "heard": "我安全先别联系我爸妈帮我查一下我的卡哪张还能用",
+      "start": 3.7,
+      "end": 9.965,
+      "alignmentScore": 0.9583
+    },
+    {
+      "lineId": "ep03_branch_counterattack_video_01__l02",
+      "speaker": "沐瑶",
+      "text": "除了花旗那张，其他都被挂失了。但花旗是许邵泽送的，一用他就知道你在哪。",
+      "heard": "除了花旗那张其他都被挂湿了但花旗是许少泽送的一用她就知道你在哪",
+      "start": 11.375,
+      "end": 19.06,
+      "alignmentScore": 0.9032
+    },
+    {
+      "lineId": "ep03_branch_counterattack_video_01__l03",
+      "speaker": "贺星冉",
+      "text": "……那就让他知道。我用这张卡，就是告诉他：我没死，我在等他。",
+      "heard": "那就让她知道我用这张卡就是告诉她我没死我在等",
+      "start": 22.035,
+      "end": 28.0,
+      "alignmentScore": 0.8889
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 28.11936507936508,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.578338623046875
+}

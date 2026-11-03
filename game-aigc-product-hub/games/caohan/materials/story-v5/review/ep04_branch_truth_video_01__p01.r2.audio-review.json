@@ -1,0 +1,18 @@
+{
+  "transcript": "我来，方向盘我自己握。听你的。",
+  "utterances": [
+    {
+      "speaker": "female",
+      "text": "我来，方向盘我自己握。"
+    },
+    {
+      "speaker": "male",
+      "text": "听你的。"
+    }
+  ],
+  "nonverbal": [
+    "车门开启的声音"
+  ],
+  "issues": null,
+  "uncertain": null
+}

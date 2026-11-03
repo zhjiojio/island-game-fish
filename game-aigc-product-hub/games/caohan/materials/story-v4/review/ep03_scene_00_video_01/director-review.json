@@ -1,0 +1,9 @@
+{
+  "videoId": "ep03_scene_00_video_01",
+  "attempt": 2,
+  "sha256": "f3d8ed413237b1f038faa0c6da3d307463b673d9a4edce825b9fa6c41f644c9d",
+  "visualIdentity": "五点抽帧人工比对通过，人物身份、服装、场景保持，无明显换脸。",
+  "audio": "独立转写与原文相符，陈劲人名存在同音转写差异。先女声旁白后男声对白，顺序已修正。",
+  "timingReview": "未完成逐帧音素对齐；原JSON部分对白集中于首1.5秒，成片表演跨越该边界，不能认定精确复刻所有秒点。",
+  "result": "visual_pass_audio_transcript_pass_timing_review"
+}

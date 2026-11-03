@@ -1,0 +1,10 @@
+{
+  "node": "r_e3_pull",
+  "speakerKey": "aotian",
+  "speakerName": "你",
+  "asrText": "（伸出一根食指钩住衣领·极慢地帮她拉合）……以后我给你扣。……她整个人僵了一瞬，肩膀轻轻抖，你指腹擦过她锁骨，滚烫。",
+  "asrTextRaw": "",
+  "matchScript": true,
+  "textSource": "script-authoritative (v82.0重生成全库视频后，旧ASR已失效，以剧本text为权威)",
+  "cues": 5
+}

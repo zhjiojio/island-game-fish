@@ -1,0 +1,18 @@
+{
+  "transcript": "爸爸，听清楚了吗？",
+  "utterances": [
+    {
+      "speaker": "female",
+      "text": "爸爸，听清楚了吗？"
+    }
+  ],
+  "nonverbal": [],
+  "issues": [
+    "两次Voxtral均转写出重复称呼爸爸；第二次还转写出你，精确用词未通过。"
+  ],
+  "uncertain": "GPT audio未有效读取，依据两次Voxtral独立转写退回，不作为精确通过证据。",
+  "provenance": [
+    "ep07_branch_counterattack_video_01__p02.speaker-crosscheck-voxtral.json",
+    "ep07_branch_counterattack_video_01__p02.syllable-crosscheck.json"
+  ]
+}

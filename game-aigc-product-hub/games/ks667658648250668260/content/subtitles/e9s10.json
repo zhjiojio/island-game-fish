@@ -1,0 +1,10 @@
+{
+  "node": "e9s10",
+  "speakerKey": "narrator",
+  "speakerName": "旁白",
+  "asrText": "荒年会过去，水会退，地会重新长出苞米。每个时代，都有个担当的人，他不一定最聪明，但他挡在前头的时候，从来没回头",
+  "asrTextRaw": "黄年会过去 水会退 地会重新长出包米 每个时代都有个担当的人 他不一定最聪明 但他挡在前头的时候 从来没回头",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 7
+}

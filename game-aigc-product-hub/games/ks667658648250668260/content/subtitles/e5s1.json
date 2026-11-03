@@ -1,0 +1,10 @@
+{
+  "node": "e5s1",
+  "speakerKey": "narrator",
+  "speakerName": "旁白",
+  "asrText": "",
+  "asrTextRaw": "李老汉蹲在门槛上磨他那把老铁甲子 磨了半熊 他裂了四十年狐狸 什么畜生什么脾性 他闭着眼都磨得着狐狸 他你三天绕着走 第四天就敢下嘴",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 7
+}

@@ -1,0 +1,61 @@
+{
+ "schemaVersion": 1,
+ "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5_rub_b2.mp4",
+ "sha256": "76b40022d8bf0e6b0cb355d40485cbe5014e013f6995a1697df81a3d6baadbf4",
+ "duration": 10.042,
+ "nodes": [
+  "r_rub_b2"
+ ],
+ "status": "speech",
+ "transcript": "以后天天都有热水嗯。",
+ "rawText": "以后天天都有热水嗯",
+ "asrChars": [
+  [
+   7.59,
+   7.73,
+   "以"
+  ],
+  [
+   7.73,
+   7.93,
+   "后"
+  ],
+  [
+   7.93,
+   8.13,
+   "天"
+  ],
+  [
+   8.13,
+   8.31,
+   "天"
+  ],
+  [
+   8.31,
+   8.41,
+   "都"
+  ],
+  [
+   8.41,
+   8.55,
+   "有"
+  ],
+  [
+   8.55,
+   8.75,
+   "热"
+  ],
+  [
+   8.75,
+   8.99,
+   "水"
+  ],
+  [
+   9.65,
+   9.885,
+   "嗯"
+  ]
+ ],
+ "timingEngine": "asr-anchor(funasr-paraformer)",
+ "reviewMethod": "batch ASR auto (needs human proof-read for punctuation/speaker)."
+}

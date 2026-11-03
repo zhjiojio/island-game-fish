@@ -1,0 +1,101 @@
+{
+  "sourceFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/output/逃婚后我花千万雇了工地糙汉.v4.json",
+  "sourceSha256": "77cee12ed8c5f8a99e49c6ec00ef31136fa64c03eb09995732b91220ca491ec7",
+  "nodeId": "ep01_scene_00",
+  "video": {
+    "id": "ep01_scene_00_video_01",
+    "order": 1,
+    "title": "露台上的分手",
+    "durationSec": 7.0,
+    "renderMode": "video_gen",
+    "needsLipSync": true,
+    "continuity": {
+      "locationId": "source_1_1_adapted_0_贺家庄园·三楼露台",
+      "timeOfDay": "night",
+      "characterIds": [
+        "许邵泽",
+        "贺星冉"
+      ],
+      "wardrobe": "沿用角色 wardrobeByEpisode，视频内不得换装",
+      "screenDirection": "保持人物空间轴线与视线方向",
+      "startState": "承接上一视频末帧；首视频承接场景入口",
+      "endState": "保留人物动作、视线与构图状态供下一视频承接"
+    },
+    "assetRefs": [],
+    "shots": [
+      {
+        "id": "ep01_scene_00_video_01_shot_01",
+        "order": 1,
+        "durationSec": 3.5,
+        "shotSize": "全景",
+        "cameraAngle": "低角度",
+        "cameraMovement": "缓推",
+        "composition": "贺家庄园·三楼露台内建立清楚人物方位，主体动作是：许邵泽位于贺家庄园·三楼露台画面前景，身体绷紧，视线锁住对方，嘴唇正在说“贺星冉，分手吧。贺家这条船要沉了——我不陪你。”",
+        "locationId": "source_1_1_adapted_0_贺家庄园·三楼露台",
+        "timeOfDay": "night",
+        "characters": [
+          "许邵泽",
+          "贺星冉"
+        ],
+        "dialogue": [
+          {
+            "speaker": "许邵泽",
+            "text": "贺星冉，分手吧。贺家这条船要沉了——我不陪你。"
+          }
+        ],
+        "audio": {
+          "ambient": "贺家庄园·三楼露台环境底噪",
+          "music": "背叛在第一句话发生情绪低频铺底",
+          "sfx": []
+        },
+        "visual": {
+          "firstFramePrompt": "夜，贺家庄园·三楼露台，景别：全景，画面人物：许邵泽、贺星冉；许邵泽位于贺家庄园·三楼露台画面前景，身体绷紧，视线锁住对方，嘴唇正在说“贺星冉，分手吧。贺家这条船要沉了——我不陪你。”，人物外观与上镜连续，电影级写实短剧",
+          "videoPrompt": "镜头缓慢推进，清晰呈现许邵泽位于贺家庄园·三楼露台画面前景，身体绷紧，视线锁住对方，嘴唇正在说“贺星冉，分手吧。贺家这条船要沉了——我不陪你。”，保持人物服装、光向和空间轴线连续",
+          "negativePrompt": "字幕，水印，畸形手指，多余人物，角色换脸，服装突变，空间跳轴"
+        },
+        "sourceRef": {
+          "episode": 1,
+          "scene": "1-adapted-0-贺家庄园·三楼露台",
+          "unit": 0,
+          "adaptation": "reordered-authored"
+        },
+        "startSec": 0.0,
+        "endSec": 3.5
+      },
+      {
+        "id": "ep01_scene_00_video_01_shot_02",
+        "order": 2,
+        "durationSec": 3.5,
+        "shotSize": "全景",
+        "cameraAngle": "低角度",
+        "cameraMovement": "缓推",
+        "composition": "贺家庄园·三楼露台内建立清楚人物方位，主体动作是：许邵泽位于贺家庄园·三楼露台画面前景，身体绷紧，视线锁住对方，嘴唇正在说“贺星冉，分手吧。贺家这条船要沉了——我不陪你。”",
+        "locationId": "source_1_1_adapted_0_贺家庄园·三楼露台",
+        "timeOfDay": "night",
+        "characters": [
+          "许邵泽",
+          "贺星冉"
+        ],
+        "dialogue": [],
+        "audio": {
+          "ambient": "贺家庄园·三楼露台环境底噪",
+          "music": "背叛在第一句话发生情绪低频铺底",
+          "sfx": []
+        },
+        "visual": {
+          "firstFramePrompt": "夜，贺家庄园·三楼露台，景别：全景，画面人物：许邵泽、贺星冉；许邵泽位于贺家庄园·三楼露台画面前景，身体绷紧，视线锁住对方，嘴唇闭合，动作延续“贺星冉，分手吧。贺家这条船要沉了——我不陪你。”，人物外观与上镜连续，电影级写实短剧",
+          "videoPrompt": "镜头缓慢推进，清晰呈现许邵泽位于贺家庄园·三楼露台画面前景，身体绷紧，视线锁住对方，嘴唇正在说“贺星冉，分手吧。贺家这条船要沉了——我不陪你。”，保持人物服装、光向和空间轴线连续，对白结束后保持动作连续",
+          "negativePrompt": "字幕，水印，畸形手指，多余人物，角色换脸，服装突变，空间跳轴"
+        },
+        "sourceRef": {
+          "episode": 1,
+          "scene": "1-adapted-0-贺家庄园·三楼露台",
+          "unit": 0,
+          "adaptation": "reordered-authored"
+        },
+        "startSec": 3.5,
+        "endSec": 7.0
+      }
+    ]
+  }
+}

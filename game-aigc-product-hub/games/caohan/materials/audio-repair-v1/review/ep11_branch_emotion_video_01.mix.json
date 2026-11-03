@@ -1,0 +1,18 @@
+{
+  "videoId": "ep11_branch_emotion_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep11_branch_emotion_video_01__l01",
+      "speaker": "贺星冉",
+      "text": "你现在身上这套太素，出席场合不够。去试试。",
+      "heard": "你现在身上这套太速出席场合不够去试试",
+      "start": 15.715,
+      "end": 19.985,
+      "alignmentScore": 0.9444
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 20.085260770975058,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.54913330078125
+}

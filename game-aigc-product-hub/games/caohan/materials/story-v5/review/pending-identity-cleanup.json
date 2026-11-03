@@ -1,0 +1,27 @@
+{
+  "reason": "Remove wardrobe labels contradicting reviewed frame and unused production instructions; no speech changes.",
+  "parts": [
+    "ep10_branch_counterattack_video_01__p01",
+    "ep10_branch_conditional_video_01__p01",
+    "ep11_scene_00_video_01__p01",
+    "ep11_branch_emotion_video_01__p01",
+    "ep11_branch_truth_video_01__p01",
+    "ep11_branch_counterattack_video_01__p01",
+    "ep11_branch_conditional_video_01__p01",
+    "ending_loop__p01",
+    "ending_streamer__p01",
+    "ending_cow__p01",
+    "ending_cow__p02",
+    "ending_terrace__p01",
+    "ending_reality_show__p01",
+    "ending_empire__p01",
+    "ending_empire__p02",
+    "ending_boss__p01",
+    "ending_worker__p01",
+    "ending_worker__p02",
+    "ending_romance__p01",
+    "ending_independent__p01",
+    "ending_revenge__p01",
+    "ending_regret__p01"
+  ]
+}

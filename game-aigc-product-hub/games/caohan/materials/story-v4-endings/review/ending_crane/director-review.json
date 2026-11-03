@@ -1,0 +1,12 @@
+{
+  "videoId": "ending_crane",
+  "sourceParts": [
+    "ending_crane__p01",
+    "ending_crane__p02"
+  ],
+  "result": "visual_pass_audio_transcript_pass",
+  "durationSec": 16.083333,
+  "sha256": "8e8009793b636fe97c4816314619b64bdfff60a9ba3cc31b429d0b3eb5ff50bd",
+  "note": "全部源片段均通过人工身份、构图与独立转写检查；按原文顺序保留原生音轨。",
+  "finalSamplingNote": "五点抽帧确认塔吊婚礼至夜间三十台挖掘机顺序衔接，保留已审核原生音轨。"
+}

@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be5_kicked_out.hd.mp4",
+  "sha256": "a05c3191c59736450cd8a8209e02033eabf502893f98eedca7a7f93da0a871eb",
+  "duration": 10.042,
+  "nodes": [
+    "BE_SLAP",
+    "BE_KICKED"
+  ],
+  "status": "speech",
+  "transcript": "你把我当什么人了？给我滚！",
+  "rawText": "你把我当什么人了给我滚",
+  "asrChars": [
+    [
+      0.07,
+      0.23,
+      "你"
+    ],
+    [
+      0.23,
+      0.39,
+      "把"
+    ],
+    [
+      0.39,
+      0.49,
+      "我"
+    ],
+    [
+      0.49,
+      0.73,
+      "当"
+    ],
+    [
+      0.75,
+      0.91,
+      "什"
+    ],
+    [
+      0.91,
+      1.01,
+      "么"
+    ],
+    [
+      1.01,
+      1.25,
+      "人"
+    ],
+    [
+      1.25,
+      1.49,
+      "了"
+    ],
+    [
+      1.79,
+      1.95,
+      "给"
+    ],
+    [
+      1.95,
+      2.07,
+      "我"
+    ],
+    [
+      2.07,
+      2.455,
+      "滚"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "你把我当什么人了?给我滚!",
+  "speakerKey": null,
+  "speakerRuleKey": "be5_kicked_out",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

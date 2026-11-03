@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>游戏主播商业化行为转变链路 · 星钻活动的教育补贴</title>
+<style>
+  :root{
+    --ink:#11131a;
+    --ink-2:#39404e;
+    --ink-3:#7a8191;
+    --paper:#0f1117;
+    --panel:#161a23;
+    --line:#272d3a;
+    --old:#6f7788;
+    --old-dim:#454c5c;
+    --new:#ffb43d;
+    --new-2:#ff7a45;
+    --cyan:#35d6c4;
+    --violet:#8b7bf0;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:
+      radial-gradient(900px 480px at 8% 0%, #1d2230 0%, rgba(29,34,48,0) 62%),
+      radial-gradient(1000px 520px at 96% 8%, #24202e 0%, rgba(36,32,46,0) 60%),
+      var(--paper);
+    color:#e8eaf0;
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1240px;margin:0 auto;padding:26px 26px 32px}
+  .eyebrow{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--new);margin-bottom:7px;
+  }
+  h1{font-size:25px;line-height:1.25;margin:0 0 7px;letter-spacing:-.01em;font-weight:800}
+  h1 em{font-style:normal;background:linear-gradient(90deg,var(--new),var(--new-2));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .dek{color:var(--ink-3);font-size:13px;max-width:72em;margin:0 0 20px;line-height:1.5}
+
+  .grid{display:grid;grid-template-columns:1fr 44px 1fr;gap:0;align-items:stretch}
+  .panel{
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:16px 18px 14px;position:relative;overflow:hidden;
+    animation:rise .7s cubic-bezier(.2,.7,.3,1) both;
+    display:flex;flex-direction:column;
+  }
+  .panel.now{animation-delay:.18s;border-color:#3b3524;
+    background:linear-gradient(180deg,#1c1a18 0%,#161a23 46%)}
+  .panel.now::after{
+    content:"";position:absolute;inset:-1px;border-radius:14px;pointer-events:none;
+    background:linear-gradient(135deg,rgba(255,180,61,.22),rgba(255,122,69,0) 46%);
+  }
+  @keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+  .ptag{
+    display:inline-flex;align-items:center;gap:7px;font-size:10.5px;letter-spacing:.1em;
+    font-family:ui-monospace,monospace;text-transform:uppercase;
+    padding:2px 9px;border-radius:99px;margin-bottom:8px;
+  }
+  .ptag.old{background:#232833;color:var(--old);border:1px solid #2e3444}
+  .ptag.new{background:rgba(255,180,61,.12);color:var(--new);border:1px solid rgba(255,180,61,.35)}
+  .ptitle{font-size:16px;font-weight:700;margin:0 0 2px}
+  .psub{font-size:12px;color:var(--ink-3);margin:0 0 13px;line-height:1.45}
+
+  .chain{position:relative;padding-left:24px}
+  .chain::before{
+    content:"";position:absolute;left:6px;top:8px;bottom:22px;width:2px;
+    background:linear-gradient(180deg,var(--old-dim),rgba(69,76,92,.15));
+  }
+  .now .chain::before{
+    background:linear-gradient(180deg,var(--new),var(--new-2) 55%,rgba(255,122,69,.15));
+    box-shadow:0 0 14px rgba(255,150,60,.35);
+  }
+  .step{position:relative;margin-bottom:11px;animation:slide .6s cubic-bezier(.2,.7,.3,1) both}
+  .step:nth-child(1){animation-delay:.25s}
+  .step:nth-child(2){animation-delay:.35s}
+  .step:nth-child(3){animation-delay:.45s}
+  .step:nth-child(4){animation-delay:.55s}
+  .step:nth-child(5){animation-delay:.65s}
+  .step:nth-child(6){animation-delay:.75s}
+  @keyframes slide{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
+  .step::before{
+    content:"";position:absolute;left:-22px;top:5px;width:11px;height:11px;border-radius:50%;
+    background:var(--panel);border:2px solid var(--old-dim);
+  }
+  .now .step::before{border-color:var(--new);box-shadow:0 0 0 3px rgba(255,180,61,.13)}
+  .now .step.live::before{background:var(--new);animation:pulse 1.9s ease-in-out infinite}
+  @keyframes pulse{
+    0%,100%{box-shadow:0 0 0 3px rgba(255,180,61,.13)}
+    50%{box-shadow:0 0 0 7px rgba(255,180,61,.04)}
+  }
+  .slab{font-size:10px;letter-spacing:.08em;color:var(--ink-3);
+    font-family:ui-monospace,monospace;text-transform:uppercase;margin-bottom:1px;line-height:1.3}
+  .stxt{font-size:13.5px;color:#dfe3ec;font-weight:500;line-height:1.4}
+  .now .stxt b{color:var(--new)}
+  .smeta{font-size:11.5px;color:var(--ink-3);margin-top:1px;line-height:1.4}
+  .chip{
+    display:inline-block;font-size:10.5px;padding:0 7px;border-radius:4px;margin-left:6px;
+    font-family:ui-monospace,monospace;vertical-align:1.5px;
+  }
+  .chip.delay{background:#2a2f3c;color:#8d95a6}
+  .chip.live{background:rgba(53,214,196,.14);color:var(--cyan)}
+
+  .vs{display:flex;align-items:center;justify-content:center;position:relative}
+  .vs span{
+    font-family:ui-monospace,monospace;font-size:10.5px;letter-spacing:.1em;color:var(--ink-3);
+    background:var(--paper);border:1px solid var(--line);border-radius:99px;
+    padding:6px 2px;writing-mode:vertical-rl;
+  }
+  .vs::before{content:"";position:absolute;top:8%;bottom:8%;width:1px;
+    background:linear-gradient(180deg,rgba(39,45,58,0),var(--line) 30%,var(--line) 70%,rgba(39,45,58,0))}
+
+  .outcome{
+    margin-top:auto;padding:9px 12px;border-radius:8px;font-size:12.5px;
+    border:1px dashed #333a49;color:var(--ink-3);
+  }
+  .now .outcome{
+    border:1px solid rgba(255,180,61,.3);
+    background:linear-gradient(135deg,rgba(255,180,61,.10),rgba(139,123,240,.07));
+    color:#f2e5cf;
+  }
+  .outcome b{color:#fff}
+
+  .align{margin-top:16px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .ac{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px 11px;
+    animation:rise .7s cubic-bezier(.2,.7,.3,1) both;animation-delay:.6s}
+  .ac h3{margin:0 0 3px;font-size:11.5px;letter-spacing:.04em;color:var(--ink-3);font-weight:600}
+  .ac .big{font-size:13.5px;font-weight:700;margin-bottom:4px;line-height:1.35}
+  .ac .big .arrow{color:var(--new);margin:0 5px}
+  .ac p{margin:0;font-size:11.5px;color:var(--ink-3);line-height:1.5}
+  .ac .from{color:var(--old)}
+  .ac .to{color:#fff}
+
+  .bottom{
+    margin-top:16px;padding:14px 18px;border-radius:11px;
+    background:linear-gradient(120deg,rgba(255,180,61,.10),rgba(139,123,240,.08) 55%,rgba(53,214,196,.07));
+    border:1px solid #2f3547;
+  }
+  .bottom h3{margin:0 0 5px;font-size:14.5px}
+  .bottom p{margin:0;color:#c8cddb;font-size:12.5px;max-width:82em;line-height:1.55}
+  .bottom b{color:var(--new)}
+  footer{margin-top:14px;color:#555c6c;font-size:11px;border-top:1px solid var(--line);padding-top:10px}
+
+  @media (max-width:1100px){
+    .align{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:980px){
+    .grid{grid-template-columns:1fr;gap:16px}
+    .vs{display:none}
+    .align{grid-template-columns:1fr}
+    h1{font-size:27px}
+    .wrap{padding:34px 15px 60px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Anchor Commercialization Behavior Shift</div>
+  <h1>游戏主播商业化行为转变链路<br/>星钻活动是一次对主播商业化行为的<em>教育补贴</em></h1>
+  <p class="dek">对比活动前后主播商业化行为的完整链路，变化集中在三个环节：行为发起方式、收益到账时点、以及主播与用户之间的利益关系。</p>
+
+  <div class="grid">
+    <div class="panel">
+      <div class="ptag old">● Before ｜ 活动前</div>
+      <h2 class="ptitle">接单链路</h2>
+      <p class="psub">行为由主播手动接单发起，收益按 T+N 结算</p>
+      <div class="chain">
+        <div class="step">
+          <div class="slab">行为发起</div>
+          <div class="stxt">小部分主播手动接单</div>
+          <div class="smeta">需主动对接商单，参与主播数量有限</div>
+        </div>
+        <div class="step">
+          <div class="slab">挂载路径</div>
+          <div class="stxt">主播挂载路径较长</div>
+          <div class="smeta">入口层级较深，从进入到完成挂载需经过多个步骤</div>
+        </div>
+        <div class="step">
+          <div class="slab">用户互动</div>
+          <div class="stxt">接单后主播通过福利反哺用户完成</div>
+          <div class="smeta">用户侧收益来自主播让渡的部分商单收入</div>
+        </div>
+        <div class="step">
+          <div class="slab">收益到账</div>
+          <div class="stxt">次日或 T+x 获得商单本身收入<span class="chip delay">延迟</span></div>
+          <div class="smeta">合伙人需 T+4 结算、聚星需 T+1 结算，行为发生与收益到账之间存在时间间隔</div>
+        </div>
+      </div>
+      <div class="outcome">主播延迟满足 ＋ 主播反哺用户</div>
+    </div>
+
+    <div class="vs"><span>SHIFT</span></div>
+
+    <div class="panel now">
+      <div class="ptag new">◆ After ｜ 星钻活动后</div>
+      <h2 class="ptitle">挂载链路</h2>
+      <p class="psub">配合自动挂载扩大覆盖，主播与用户的收益均由平台实时发放</p>
+      <div class="chain">
+        <div class="step live">
+          <div class="slab">行为发起</div>
+          <div class="stxt">配合<b>自动挂载</b>，更多主播被挂载上</div>
+          <div class="smeta">覆盖范围不再受限于主动接单，参与主播数量增加</div>
+        </div>
+        <div class="step live">
+          <div class="slab">挂载路径</div>
+          <div class="stxt">主播大卡活动页面<b>直接展示挂载入口</b></div>
+          <div class="smeta">入口前置到活动页大卡，挂载路径显著缩短</div>
+        </div>
+        <div class="step live">
+          <div class="slab">即时激励</div>
+          <div class="stxt">挂载后即可领取<b>等价现金的星钻</b><span class="chip live">实时到账</span></div>
+          <div class="smeta">星钻实时到账，收益在行为发生的同时产生，无需等待结算周期</div>
+        </div>
+        <div class="step live">
+          <div class="slab">用户互动</div>
+          <div class="stxt">用户<b>同样获得等价现金收益</b><span class="chip live">实时</span></div>
+          <div class="smeta">用户侧收益由平台直接发放，不再来自主播让渡</div>
+        </div>
+        <div class="step">
+          <div class="slab">收益到账</div>
+          <div class="stxt">次日或 T+x 同样获得商单本身收入</div>
+          <div class="smeta">原有 T+1 / T+4 商单结算保持不变，星钻为叠加的即时收益</div>
+        </div>
+        <div class="step live">
+          <div class="slab">行为正循环</div>
+          <div class="stxt">赚到钱后<b>更多主动挂载、更多口播引导</b></div>
+          <div class="smeta">收益被实际感知后，主播主动发起挂载与口播的频次提升，链路自我循环</div>
+        </div>
+      </div>
+      <div class="outcome"><b>主播实时满足 ＋ 用户实时满足 ＋ 主播与用户完全同向</b></div>
+    </div>
+  </div>
+
+  <div class="align">
+    <div class="ac">
+      <h3>覆盖范围</h3>
+      <div class="big"><span class="from">手动接单</span><span class="arrow">→</span><span class="to">配合自动挂载</span></div>
+      <p>配合自动挂载，更多主播被挂载上，参与主播数量随之增加。</p>
+    </div>
+    <div class="ac">
+      <h3>挂载路径</h3>
+      <div class="big"><span class="from">路径较长</span><span class="arrow">→</span><span class="to">大卡直接展示入口</span></div>
+      <p>挂载入口前置到主播大卡活动页面，从进入到完成挂载的步骤减少。</p>
+    </div>
+    <div class="ac">
+      <h3>收益时效</h3>
+      <div class="big"><span class="from">T+1 / T+4</span><span class="arrow">→</span><span class="to">实时 + T+1 / T+4</span></div>
+      <p>在聚星 T+1、合伙人 T+4 的商单结算之外，新增了行为发生时即可到账的星钻收益。</p>
+    </div>
+    <div class="ac">
+      <h3>利益关系</h3>
+      <div class="big"><span class="from">主播反哺用户</span><span class="arrow">→</span><span class="to">两端同向获益</span></div>
+      <p>用户侧收益的来源由主播让渡改为平台发放，主播与用户的收益方向一致。</p>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <h3>这是一次对主播商业化行为的教育补贴</h3>
+    <p>补贴对应的不只是本期消耗，还包括<b>主播对商业化行为的认知形成</b>：更多主播在活动期内完成了「挂载 → 引导用户 → 获得收益」的完整链路，并在链路中验证了挂载可实时产生收益、且用户侧收益不再由自己承担。该认知一旦建立，即便后续补贴退坡，挂载与用户引导行为仍具备延续基础。</p>
+  </div>
+
+  <footer>暑期星钻活动 · 主播商业化行为转变链路对比 ｜ 星钻按 1 元 = 1000 钻等价现金结算</footer>
+</div>
+</body>
+</html>

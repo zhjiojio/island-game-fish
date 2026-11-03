@@ -1,0 +1,259 @@
+[
+  {
+    "partId": "ep01_scene_00_video_01__p01",
+    "videoId": "ep01_scene_00_video_01",
+    "shotId": "ep01_scene_00_video_01_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep01_scene_00_video_01__p01.json",
+    "requestSha256": "83b736dec4f499e9a23921adfabfec0f63439854e75e11b82ea3b3b6c885b4d3",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep01_scene_00_video_01__p01.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep01_scene_00_video_01__p01.json",
+    "durationSec": 10,
+    "expectedSpeech": [
+      {
+        "shotId": "ep01_scene_00_video_01_shot_01",
+        "speakerId": "xushaoze",
+        "speaker": "许邵泽",
+        "delivery": "on_screen",
+        "text": "贺星冉，分手吧。贺家这条船要沉了——我不陪你。",
+        "startSec": 0.55,
+        "endSec": 9.45
+      }
+    ],
+    "approvedReference": {
+      "partId": "ep01_scene_00_video_01__p01",
+      "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/segments/ep01_scene_00_video_01__p01.mp4",
+      "referenceSha256": "40c02ce50b2c6db4cfa5129f63851d77e29ed0d98efeb1c74352beb3bd6d673e",
+      "frameTimeSec": 0.15,
+      "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep01_scene_00_video_01__p01.png",
+      "keyframeSha256": "2384278be204bb9310ac5b4d879633e0179b3d990979b03a4139a7ada12fa183",
+      "status": "approved_for_pilot",
+      "reviewEvidence": "review/pilot-keyframes.jpg",
+      "reviewNote": "人物外观、服装、站位及场景与原片一致；第二帧为坠落中段，样片从此动作继续。"
+    }
+  },
+  {
+    "partId": "ep01_branch_emotion_video_01__p01",
+    "videoId": "ep01_branch_emotion_video_01",
+    "shotId": "ep01_branch_emotion_video_01_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep01_branch_emotion_video_01__p01.json",
+    "requestSha256": "b08393edb0c91e1424fd9e49ade8abe8afacef0c87d05e932600f63b43888c40",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep01_branch_emotion_video_01__p01.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep01_branch_emotion_video_01__p01.json",
+    "durationSec": 6,
+    "expectedSpeech": [],
+    "approvedReference": {
+      "partId": "ep01_branch_emotion_video_01__p01",
+      "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/segments/ep01_branch_emotion_video_01__p01.mp4",
+      "referenceSha256": "f4d9c74fc79e28935128ecafc43b47800f66c38e2136565179c674023e51500a",
+      "frameTimeSec": 0.15,
+      "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep01_branch_emotion_video_01__p01.png",
+      "keyframeSha256": "d921f8c772df83f1502f9200a089991b22ed827df6c4ebf98ad99cd75fb1b407",
+      "status": "approved_for_pilot",
+      "reviewEvidence": "review/pilot-keyframes.jpg",
+      "reviewNote": "人物外观、服装、站位及场景与原片一致；第二帧为坠落中段，样片从此动作继续。"
+    }
+  },
+  {
+    "partId": "ep03_branch_counterattack_video_01__p01",
+    "videoId": "ep03_branch_counterattack_video_01",
+    "shotId": "ep03_branch_counterattack_video_01_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep03_branch_counterattack_video_01__p01.json",
+    "requestSha256": "a1b7fafe6a7dce23f264e07e262d0a4e30bf838942be63c8ca10f7596ebfa43a",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep03_branch_counterattack_video_01__p01.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep03_branch_counterattack_video_01__p01.json",
+    "durationSec": 12,
+    "expectedSpeech": [
+      {
+        "shotId": "ep03_branch_counterattack_video_01_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "谢谢你。沐瑶，我安全，先别联系我爸妈。帮我查一下我的卡哪张还能用。",
+        "startSec": 0.55,
+        "endSec": 11.45
+      }
+    ],
+    "approvedReference": {
+      "partId": "ep03_branch_counterattack_video_01__p01",
+      "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/segments/ep03_branch_counterattack_video_01__p01.mp4",
+      "referenceSha256": "d0f158f6706a50c6dfa7bd37853ced680bd6675cfd0259f160b1174a4c2893fd",
+      "frameTimeSec": 0.15,
+      "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep03_branch_counterattack_video_01__p01.png",
+      "keyframeSha256": "b7924079373bf50ee2fa4e2af03a1cf6bde0085ed0f4a9d27a2789d6826f21fc",
+      "status": "approved_for_pilot",
+      "reviewEvidence": "review/pilot-keyframes.jpg",
+      "reviewNote": "人物外观、服装、站位及场景与原片一致；第二帧为坠落中段，样片从此动作继续。"
+    }
+  },
+  {
+    "partId": "ep03_branch_counterattack_video_01__p02",
+    "videoId": "ep03_branch_counterattack_video_01",
+    "shotId": "ep03_branch_counterattack_video_01_shot_02",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep03_branch_counterattack_video_01__p02.r2.json",
+    "requestSha256": "02575659328cba3064f2c58a1c5f8e0ebc81305b99a7b455c6e3335088cb8321",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep03_branch_counterattack_video_01__p02.r2.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep03_branch_counterattack_video_01__p02.r2.json",
+    "durationSec": 12,
+    "expectedSpeech": [
+      {
+        "shotId": "ep03_branch_counterattack_video_01_shot_02",
+        "speakerId": "muyao",
+        "speaker": "沐瑶",
+        "delivery": "on_screen",
+        "text": "除了花旗那张，其他都被挂失了。但花旗是许邵泽送的，一用他就知道你在哪。",
+        "startSec": 12.55,
+        "endSec": 23.45
+      }
+    ],
+    "approvedReference": {
+      "partId": "ep03_branch_counterattack_video_01__p02",
+      "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/segments/ep03_branch_counterattack_video_01__p02.mp4",
+      "referenceSha256": "03f5070143c6616d7b8916824a889dc0d6c845c419678ac266a09c26acf87327",
+      "frameTimeSec": 0.15,
+      "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep03_branch_counterattack_video_01__p02.png",
+      "keyframeSha256": "900e07239c0b78d07872c9508ecdbcd5015c243f5f28a3c3d08801bd5d04cd68",
+      "status": "approved_for_pilot",
+      "reviewEvidence": "review/pilot-keyframes.jpg",
+      "reviewNote": "人物外观、服装、站位及场景与原片一致；第二帧为坠落中段，样片从此动作继续。"
+    },
+    "supersedes": {
+      "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep03_branch_counterattack_video_01__p02.json",
+      "requestSha256": "b4466fc255ecd08520ce1b339649aa36c414f0b687ad0372b41a066f98ce1ad5",
+      "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep03_branch_counterattack_video_01__p02.mp4",
+      "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep03_branch_counterattack_video_01__p02.json"
+    }
+  },
+  {
+    "partId": "ep03_branch_counterattack_video_01__p03",
+    "videoId": "ep03_branch_counterattack_video_01",
+    "shotId": "ep03_branch_counterattack_video_01_shot_03",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep03_branch_counterattack_video_01__p03.json",
+    "requestSha256": "cab069335a42c0fa41500769ef18669180bfe09d6aa3bbeadc8d9ffb92dc9ab9",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep03_branch_counterattack_video_01__p03.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep03_branch_counterattack_video_01__p03.json",
+    "durationSec": 10,
+    "expectedSpeech": [
+      {
+        "shotId": "ep03_branch_counterattack_video_01_shot_03",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "那就让他知道。我用这张卡，就是告诉他：我没死，我在等他。",
+        "startSec": 24.55,
+        "endSec": 33.45
+      }
+    ],
+    "approvedReference": {
+      "partId": "ep03_branch_counterattack_video_01__p03",
+      "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/segments/ep03_branch_counterattack_video_01__p03.mp4",
+      "referenceSha256": "4d8a6f4196cdd3bce6de22741e5fe09237fbfe243e0070f837ef179ce66321e7",
+      "frameTimeSec": 0.15,
+      "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep03_branch_counterattack_video_01__p03.png",
+      "keyframeSha256": "97fed22f882eba4b17570ce0afb440232b699ad12d9fc4649b7b6c158b8dc5a6",
+      "status": "approved_for_pilot",
+      "reviewEvidence": "review/pilot-keyframes.jpg",
+      "reviewNote": "人物外观、服装、站位及场景与原片一致；第二帧为坠落中段，样片从此动作继续。"
+    }
+  },
+  {
+    "partId": "ending_crane__p01",
+    "videoId": "ending_crane",
+    "shotId": "ending_crane_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ending_crane__p01.json",
+    "requestSha256": "95efba1fdb897aa0143e0b3fe80420ab6300f6706b3a0d5a908a1e0aa0cb8e9e",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ending_crane__p01.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ending_crane__p01.json",
+    "durationSec": 5,
+    "expectedSpeech": [
+      {
+        "shotId": "ending_crane_shot_01",
+        "speakerId": "officiant",
+        "speaker": "司仪",
+        "delivery": "off_screen",
+        "text": "谁反对？",
+        "startSec": 0.55,
+        "endSec": 4.45
+      }
+    ],
+    "approvedReference": {
+      "partId": "ending_crane__p01",
+      "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/segments/ending_crane__p01.mp4",
+      "referenceSha256": "5207648b7c5ba7e19a7553148fe3f0d51f97baa4cef9b63225d65e3d3f54801b",
+      "frameTimeSec": 0.15,
+      "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ending_crane__p01.png",
+      "keyframeSha256": "97755afed03156feb0e1284d1d8c8d79645c0e673b8b81a429d930c59d1b78df",
+      "status": "approved_for_pilot",
+      "reviewEvidence": "review/pilot-keyframes.jpg",
+      "reviewNote": "人物外观、服装、站位及场景与原片一致；第二帧为坠落中段，样片从此动作继续。"
+    }
+  },
+  {
+    "partId": "ending_crane__p02",
+    "videoId": "ending_crane",
+    "shotId": "ending_crane_shot_02",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ending_crane__p02.r2.json",
+    "requestSha256": "b02d14f91ad33213c35c31cad2b6dec29e7c349d3a43c2fb46ea19f09d014c15",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ending_crane__p02.r2.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ending_crane__p02.r2.json",
+    "durationSec": 7,
+    "expectedSpeech": [],
+    "approvedReference": {
+      "partId": "ending_crane__p02",
+      "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/segments/ending_crane__p02.mp4",
+      "referenceSha256": "739df79dfd8525379c5b919b7557088da1d4a58758f625349db3f170efe05ede",
+      "frameTimeSec": 0.15,
+      "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ending_crane__p02.png",
+      "keyframeSha256": "21099ffe30a58d74540046b1fc33cdeb9edeccff7c4ba3438d7d828e9c042469",
+      "status": "approved_for_pilot",
+      "reviewEvidence": "review/pilot-keyframes.jpg",
+      "reviewNote": "人物外观、服装、站位及场景与原片一致；第二帧为坠落中段，样片从此动作继续。"
+    },
+    "supersedes": {
+      "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ending_crane__p02.json",
+      "requestSha256": "03887730fa8e45bcb7ced4543f13171ef507856c51b734e3151f9d451faa4dc5",
+      "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ending_crane__p02.mp4",
+      "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ending_crane__p02.json"
+    }
+  },
+  {
+    "partId": "ending_future__p01",
+    "videoId": "ending_future",
+    "shotId": "ending_future_shot_01",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ending_future__p01.json",
+    "requestSha256": "02511cae99eb10fd0e993f458ac006efe803f67d6ab9788d34a4385e589a968c",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ending_future__p01.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ending_future__p01.json",
+    "durationSec": 14,
+    "expectedSpeech": [
+      {
+        "shotId": "ending_future_shot_01",
+        "speakerId": "hexingran",
+        "speaker": "贺星冉",
+        "delivery": "on_screen",
+        "text": "到底是谁让你来救我的？",
+        "startSec": 0.55,
+        "endSec": 6.88
+      },
+      {
+        "shotId": "ending_future_shot_01",
+        "speakerId": "chenjin",
+        "speaker": "陈劲",
+        "delivery": "on_screen",
+        "text": "你。未来的你，花了一千万。",
+        "startSec": 7.12,
+        "endSec": 13.45
+      }
+    ],
+    "approvedReference": {
+      "partId": "ending_future__p01",
+      "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4-endings/segments/ending_future__p01.mp4",
+      "referenceSha256": "ef80a9168e343ebbf578765d68fd71af76e53353705b242bf86aac63c1750398",
+      "frameTimeSec": 0.15,
+      "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ending_future__p01.png",
+      "keyframeSha256": "5a88dbb3eb4e69e233af4bae8fb4d8c2ddc79312e3a9edae546a834813765472",
+      "status": "approved_for_pilot",
+      "reviewEvidence": "review/pilot-keyframes.jpg",
+      "reviewNote": "人物外观、服装、站位及场景与原片一致；第二帧为坠落中段，样片从此动作继续。"
+    }
+  }
+]

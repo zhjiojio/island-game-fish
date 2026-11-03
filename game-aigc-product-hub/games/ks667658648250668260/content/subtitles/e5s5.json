@@ -1,0 +1,10 @@
+{
+  "node": "e5s5",
+  "speakerKey": "narrator",
+  "speakerName": "赵铁牛",
+  "asrText": "坏了！中圈了！谁！谁他娘的在这儿下的夹子！",
+  "asrTextRaw": "坏了 中圈了 谁 谁他娘子在这儿杀的家子",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 3
+}

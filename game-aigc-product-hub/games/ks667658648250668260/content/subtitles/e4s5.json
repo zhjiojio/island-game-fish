@@ -1,0 +1,10 @@
+{
+  "node": "e4s5",
+  "speakerKey": "narrator",
+  "speakerName": "旁白",
+  "asrText": "锄头砸在地上，土腾起来半尺高。院子鸦雀无声。他一句话没说，可全村都听懂了。",
+  "asrTextRaw": "竹头砸在地上 土藤起来半尺高 院子压缺无声 他一句话没说 可全村都听懂了",
+  "matchScript": true,
+  "textSource": "script-authoritative (ASR 仅提供时间轴)",
+  "cues": 5
+}

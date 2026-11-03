@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s1.c.mp4",
+  "sha256": "16f1e9a8489e597f04dd4f8435a7fcf9ff20a2ed4b579ff685f52a250520229e",
+  "duration": 10.042,
+  "nodes": [
+    "e4s1"
+  ],
+  "status": "speech",
+  "transcript": "李傲天，我上门讨个说法，你交人不交？",
+  "rawText": "李傲天我上门讨个说法你叫人不叫",
+  "asrChars": [
+    [
+      3.84,
+      4.08,
+      "李"
+    ],
+    [
+      4.1,
+      4.28,
+      "傲"
+    ],
+    [
+      4.28,
+      4.52,
+      "天"
+    ],
+    [
+      5.7,
+      5.94,
+      "我"
+    ],
+    [
+      6.02,
+      6.24,
+      "上"
+    ],
+    [
+      6.24,
+      6.48,
+      "门"
+    ],
+    [
+      6.52,
+      6.66,
+      "讨"
+    ],
+    [
+      6.66,
+      6.8,
+      "个"
+    ],
+    [
+      6.8,
+      7.0,
+      "说"
+    ],
+    [
+      7.0,
+      7.24,
+      "法"
+    ],
+    [
+      7.74,
+      7.96,
+      "你"
+    ],
+    [
+      7.96,
+      8.18,
+      "叫"
+    ],
+    [
+      8.18,
+      8.3,
+      "人"
+    ],
+    [
+      8.3,
+      8.42,
+      "不"
+    ],
+    [
+      8.42,
+      9.255,
+      "叫"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "李老天。我上门讨个说法。你叫人不叫!",
+  "speakerKey": null,
+  "speakerRuleKey": "e4s1",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

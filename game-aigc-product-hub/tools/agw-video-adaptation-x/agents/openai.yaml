@@ -1,0 +1,5 @@
+interface:
+  display_name: "AGW 剧游 X"
+  short_description: "以幕间 Studio 工作台和结构化图谱逐步制作互动剧游"
+  brand_color: "#D8B86D"
+  default_prompt: "使用 $agw-video-adaptation-x 打开本地剧游工作台并继续制作当前项目。"

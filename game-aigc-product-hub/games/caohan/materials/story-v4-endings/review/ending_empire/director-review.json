@@ -1,0 +1,12 @@
+{
+  "videoId": "ending_empire",
+  "sourceParts": [
+    "ending_empire__p01",
+    "ending_empire__p02"
+  ],
+  "result": "visual_pass_audio_transcript_pass",
+  "durationSec": 16.083333,
+  "sha256": "7d3f3e9de1127ff6a4c5872f2e01b77c382c654f40c0e1ebd6b212b70cc4980a",
+  "note": "全部源片段均通过人工身份、构图与独立转写检查；按原文顺序保留原生音轨。",
+  "finalSamplingNote": "五点抽帧確認办公室收购到上市敲钟顺序及人物服装延续，屏幕公司代码正确。"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "ending_empire",
+  "type": "ending",
+  "episodeId": "ep06",
+  "title": "隐藏结局：一个全都要",
+  "isEnding": true,
+  "category": "secret",
+  "tone": [
+    "商业",
+    "黑色幽默"
+  ],
+  "rarity": "legendary",
+  "isCanonical": false,
+  "unlock": {
+    "requiredFlags": [
+      "ep06_counterattack"
+    ],
+    "requiredEndingTags": []
+  },
+  "description": "她拒绝爱情，收购许家、工地和婚庆公司，垄断逃婚产业链。",
+  "closing": "上市敲钟那天，她的公司代码是 RUNAWAY。",
+  "achievement": "ending_empire",
+  "chapterId": "ch3",
+  "chapterTitle": "第三章：一张床与三千万"
+}

@@ -1,0 +1,27 @@
+{
+  "videoId": "ep04_branch_conditional_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep04_branch_conditional_video_01__l01",
+      "speaker": "贺星冉",
+      "text": "愣着干什么，走啊。",
+      "heard": "愣着干什么走啊",
+      "start": 5.035,
+      "end": 6.8,
+      "alignmentScore": 1.0
+    },
+    {
+      "lineId": "ep04_branch_conditional_video_01__l02",
+      "speaker": "贺星冉",
+      "text": "你先洗澡，我在床上等你",
+      "heard": "你先洗澡我在床上等你",
+      "start": 8.92,
+      "end": 10.865,
+      "alignmentScore": 1.0
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 11.052698412698414,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.435577392578125
+}

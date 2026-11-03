@@ -1,0 +1,12 @@
+{
+  "videoId": "ending_streamer",
+  "sourceParts": [
+    "ending_streamer__p01",
+    "ending_streamer__p02"
+  ],
+  "result": "visual_pass_audio_transcript_pass",
+  "durationSec": 16.083333,
+  "sha256": "41c574263f1600a7dbf541b8858f4c9c2cb1ab398889ef2d50130cf0a184b6f3",
+  "note": "全部源片段均通过人工身份、构图与独立转写检查；按原文顺序保留原生音轨。",
+  "finalSamplingNote": "合并抽帧核对展示牛奶杯证据、陈劲端饭及下播弹幕，顺序正确。"
+}

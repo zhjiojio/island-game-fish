@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://weihunqi/schema/rules.json",
+  "type": "object",
+  "required": ["rules"],
+  "properties": {
+    "$comment": { "type": ["string","array"] },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id","name","level","when","must","hint"],
+        "properties": {
+          "id":    { "type": "integer" },
+          "name":  { "type": "string" },
+          "level": { "type": "string", "enum": ["fatal","warn"] },
+          "when":  { "type": "string", "description": "JavaScript 表达式，返回 truthy 时触发" },
+          "must":  { "type": "string", "description": "JavaScript 表达式，返回 truthy = 合规" },
+          "hint":  { "type": "string" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "videoId": "ep09_branch_counterattack_video_01",
+  "voiceWindows": [
+    {
+      "lineId": "ep09_branch_counterattack_video_01__l01",
+      "speaker": "贺星冉",
+      "text": "不够，所以再来一次。",
+      "heard": "不够所以再来一次",
+      "start": 5.02,
+      "end": 7.825,
+      "alignmentScore": 1.0
+    },
+    {
+      "lineId": "ep09_branch_counterattack_video_01__l02",
+      "speaker": "贺铭",
+      "text": "星冉，你还没死心？",
+      "heard": "星染你还没死心",
+      "start": 15.495,
+      "end": 18.083,
+      "alignmentScore": 0.8571
+    }
+  ],
+  "newVoice": [],
+  "durationSec": 18.088344671201813,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.544677734375
+}

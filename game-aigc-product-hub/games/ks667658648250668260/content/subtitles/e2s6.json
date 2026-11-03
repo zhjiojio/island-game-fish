@@ -1,0 +1,10 @@
+{
+  "node": "e2s6",
+  "speakerKey": "zhao",
+  "speakerName": "赵铁牛（拦路，痞笑）",
+  "asrText": "哥们，借过路费——十块。",
+  "asrTextRaw": "",
+  "matchScript": true,
+  "textSource": "script-authoritative (v82.0重生成全库视频后，旧ASR已失效，以剧本text为权威)",
+  "cues": 1
+}

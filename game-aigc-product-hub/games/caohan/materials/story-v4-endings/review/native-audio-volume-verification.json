@@ -1,0 +1,271 @@
+{
+  "checkedEndings": 14,
+  "pass": true,
+  "maxAbsoluteDifferenceDb": 0.1,
+  "results": [
+    {
+      "videoId": "ending_boss",
+      "pass": true,
+      "parts": [
+        {
+          "part": "ending_boss__p01",
+          "sourceMeanDb": -25.5,
+          "finalMeanDb": -25.5,
+          "differenceDb": 0.0
+        },
+        {
+          "part": "ending_boss__p02",
+          "sourceMeanDb": -24.2,
+          "finalMeanDb": -24.2,
+          "differenceDb": 0.0
+        }
+      ]
+    },
+    {
+      "videoId": "ending_cow",
+      "pass": true,
+      "parts": [
+        {
+          "part": "ending_cow__p01",
+          "sourceMeanDb": -29.8,
+          "finalMeanDb": -29.8,
+          "differenceDb": 0.0
+        },
+        {
+          "part": "ending_cow__p02",
+          "sourceMeanDb": -25.5,
+          "finalMeanDb": -25.5,
+          "differenceDb": 0.0
+        }
+      ]
+    },
+    {
+      "videoId": "ending_crane",
+      "pass": true,
+      "parts": [
+        {
+          "part": "ending_crane__p01",
+          "sourceMeanDb": -24.5,
+          "finalMeanDb": -24.5,
+          "differenceDb": 0.0
+        },
+        {
+          "part": "ending_crane__p02",
+          "sourceMeanDb": -23.5,
+          "finalMeanDb": -23.5,
+          "differenceDb": 0.0
+        }
+      ]
+    },
+    {
+      "videoId": "ending_empire",
+      "pass": true,
+      "parts": [
+        {
+          "part": "ending_empire__p01",
+          "sourceMeanDb": -23.4,
+          "finalMeanDb": -23.4,
+          "differenceDb": 0.0
+        },
+        {
+          "part": "ending_empire__p02",
+          "sourceMeanDb": -23.7,
+          "finalMeanDb": -23.7,
+          "differenceDb": 0.0
+        }
+      ]
+    },
+    {
+      "videoId": "ending_future",
+      "pass": true,
+      "parts": [
+        {
+          "part": "ending_future__p01",
+          "sourceMeanDb": -26.6,
+          "finalMeanDb": -26.6,
+          "differenceDb": 0.0
+        },
+        {
+          "part": "ending_future__p02",
+          "sourceMeanDb": -25.6,
+          "finalMeanDb": -25.6,
+          "differenceDb": 0.0
+        }
+      ]
+    },
+    {
+      "videoId": "ending_independent",
+      "pass": true,
+      "parts": [
+        {
+          "part": "ending_independent__p01",
+          "sourceMeanDb": -27.4,
+          "finalMeanDb": -27.4,
+          "differenceDb": 0.0
+        },
+        {
+          "part": "ending_independent__p02",
+          "sourceMeanDb": -25.9,
+          "finalMeanDb": -25.9,
+          "differenceDb": 0.0
+        }
+      ]
+    },
+    {
+      "videoId": "ending_loop",
+      "pass": true,
+      "parts": [
+        {
+          "part": "ending_loop__p01",
+          "sourceMeanDb": -25.2,
+          "finalMeanDb": -25.2,
+          "differenceDb": 0.0
+        },
+        {
+          "part": "ending_loop__p02",
+          "sourceMeanDb": -26.1,
+          "finalMeanDb": -26.1,
+          "differenceDb": 0.0
+        }
+      ]
+    },
+    {
+      "videoId": "ending_reality_show",
+      "pass": true,
+      "parts": [
+        {
+          "part": "ending_reality_show__p01",
+          "sourceMeanDb": -26.2,
+          "finalMeanDb": -26.2,
+          "differenceDb": 0.0
+        },
+        {
+          "part": "ending_reality_show__p02",
+          "sourceMeanDb": -23.1,
+          "finalMeanDb": -23.1,
+          "differenceDb": 0.0
+        }
+      ]
+    },
+    {
+      "videoId": "ending_regret",
+      "pass": true,
+      "parts": [
+        {
+          "part": "ending_regret__p01",
+          "sourceMeanDb": -33.7,
+          "finalMeanDb": -33.7,
+          "differenceDb": 0.0
+        },
+        {
+          "part": "ending_regret__p03",
+          "sourceMeanDb": -32.0,
+          "finalMeanDb": -32.1,
+          "differenceDb": -0.1
+        },
+        {
+          "part": "ending_regret__p02",
+          "sourceMeanDb": -26.9,
+          "finalMeanDb": -26.9,
+          "differenceDb": 0.0
+        }
+      ]
+    },
+    {
+      "videoId": "ending_revenge",
+      "pass": true,
+      "parts": [
+        {
+          "part": "ending_revenge__p01",
+          "sourceMeanDb": -23.3,
+          "finalMeanDb": -23.3,
+          "differenceDb": 0.0
+        },
+        {
+          "part": "ending_revenge__p02",
+          "sourceMeanDb": -25.7,
+          "finalMeanDb": -25.7,
+          "differenceDb": 0.0
+        }
+      ]
+    },
+    {
+      "videoId": "ending_romance",
+      "pass": true,
+      "parts": [
+        {
+          "part": "ending_romance__p01",
+          "sourceMeanDb": -29.4,
+          "finalMeanDb": -29.4,
+          "differenceDb": 0.0
+        },
+        {
+          "part": "ending_romance__p02",
+          "sourceMeanDb": -34.8,
+          "finalMeanDb": -34.8,
+          "differenceDb": 0.0
+        },
+        {
+          "part": "ending_romance__p03",
+          "sourceMeanDb": -34.9,
+          "finalMeanDb": -34.9,
+          "differenceDb": 0.0
+        }
+      ]
+    },
+    {
+      "videoId": "ending_streamer",
+      "pass": true,
+      "parts": [
+        {
+          "part": "ending_streamer__p01",
+          "sourceMeanDb": -25.1,
+          "finalMeanDb": -25.1,
+          "differenceDb": 0.0
+        },
+        {
+          "part": "ending_streamer__p02",
+          "sourceMeanDb": -30.1,
+          "finalMeanDb": -30.1,
+          "differenceDb": 0.0
+        }
+      ]
+    },
+    {
+      "videoId": "ending_terrace",
+      "pass": true,
+      "parts": [
+        {
+          "part": "ending_terrace__p01",
+          "sourceMeanDb": -24.3,
+          "finalMeanDb": -24.3,
+          "differenceDb": 0.0
+        },
+        {
+          "part": "ending_terrace__p02",
+          "sourceMeanDb": -27.6,
+          "finalMeanDb": -27.6,
+          "differenceDb": 0.0
+        }
+      ]
+    },
+    {
+      "videoId": "ending_worker",
+      "pass": true,
+      "parts": [
+        {
+          "part": "ending_worker__p01",
+          "sourceMeanDb": -25.7,
+          "finalMeanDb": -25.7,
+          "differenceDb": 0.0
+        },
+        {
+          "part": "ending_worker__p02",
+          "sourceMeanDb": -24.4,
+          "finalMeanDb": -24.4,
+          "differenceDb": 0.0
+        }
+      ]
+    }
+  ]
+}

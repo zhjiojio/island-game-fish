@@ -1,0 +1,34 @@
+[
+  {
+    "partId": "ep03_branch_counterattack_video_01__p02.r2",
+    "videoId": "ep03_branch_counterattack_video_01",
+    "shotId": "ep03_branch_counterattack_video_01_shot_02",
+    "request": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/requests/ep03_branch_counterattack_video_01__p02.r2.json",
+    "requestSha256": "02575659328cba3064f2c58a1c5f8e0ebc81305b99a7b455c6e3335088cb8321",
+    "output": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/video/ep03_branch_counterattack_video_01__p02.r2.mp4",
+    "jobFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/.cache/media-jobs/ep03_branch_counterattack_video_01__p02.r2.json",
+    "durationSec": 12,
+    "expectedSpeech": [
+      {
+        "shotId": "ep03_branch_counterattack_video_01_shot_02",
+        "speakerId": "muyao",
+        "speaker": "沐瑶",
+        "delivery": "on_screen",
+        "text": "除了花旗那张，其他都被挂失了。但花旗是许邵泽送的，一用他就知道你在哪。",
+        "startSec": 12.55,
+        "endSec": 23.45
+      }
+    ],
+    "approvedReference": {
+      "partId": "ep03_branch_counterattack_video_01__p02",
+      "referenceVideo": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v4/segments/ep03_branch_counterattack_video_01__p02.mp4",
+      "referenceSha256": "03f5070143c6616d7b8916824a889dc0d6c845c419678ac266a09c26acf87327",
+      "frameTimeSec": 0.15,
+      "keyframe": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/story-v5/keyframes/ep03_branch_counterattack_video_01__p02.png",
+      "keyframeSha256": "900e07239c0b78d07872c9508ecdbcd5015c243f5f28a3c3d08801bd5d04cd68",
+      "status": "approved_for_pilot",
+      "reviewEvidence": "review/pilot-keyframes.jpg",
+      "reviewNote": "人物外观、服装、站位及场景与原片一致；第二帧为坠落中段，样片从此动作继续。"
+    }
+  }
+]

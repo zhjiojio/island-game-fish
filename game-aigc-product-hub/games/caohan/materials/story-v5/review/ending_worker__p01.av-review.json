@@ -1,0 +1,28 @@
+{
+  "partId": "ending_worker__p01",
+  "sourceSha256": "2d653bcf004742e739aa99ae7e90af4a24a49170c278a942437c782aaee30964",
+  "model": "google/gemini-2.5-flash",
+  "review": {
+    "utterances": [
+      {
+        "startSec": 0.0,
+        "endSec": 0.0,
+        "text": "干的不错。",
+        "audibleVoice": "画面中右侧穿黑色短袖的年轻男性",
+        "visibleSpeaker": "画面中右侧穿黑色短袖的年轻男性",
+        "mouthSyncEvidence": "嘴唇张开，与声音同步"
+      },
+      {
+        "startSec": 0.0,
+        "endSec": 0.0,
+        "text": "明天我还来。",
+        "audibleVoice": "画面中左侧穿灰色外套的年轻男性",
+        "visibleSpeaker": "画面中左侧穿灰色外套的年轻男性",
+        "mouthSyncEvidence": "嘴唇张开，与声音同步"
+      }
+    ],
+    "nonverbal": "持续背景声：建筑工地环境音，包括敲击声、人声嘈杂和远处机械声。",
+    "issues": [],
+    "uncertain": []
+  }
+}

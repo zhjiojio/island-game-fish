@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/e4s3.c.mp4",
+  "sha256": "f7746039a31de8502b299b5a98c03b5c97dd8b63a2014d3000f5e6eeb59ace7e",
+  "duration": 10.042,
+  "nodes": [
+    "e4s3"
+  ],
+  "status": "speech",
+  "transcript": "今天谁敢碰她一根手指头，我李傲天先跟他拼命！",
+  "rawText": "今天谁敢碰他一根手指头我李傲天先跟他拼命",
+  "asrChars": [
+    [
+      3.62,
+      3.84,
+      "今"
+    ],
+    [
+      3.84,
+      4.08,
+      "天"
+    ],
+    [
+      4.14,
+      4.38,
+      "谁"
+    ],
+    [
+      4.38,
+      4.62,
+      "敢"
+    ],
+    [
+      4.64,
+      4.84,
+      "碰"
+    ],
+    [
+      4.84,
+      4.98,
+      "他"
+    ],
+    [
+      4.98,
+      5.2,
+      "一"
+    ],
+    [
+      5.2,
+      5.4,
+      "根"
+    ],
+    [
+      5.4,
+      5.64,
+      "手"
+    ],
+    [
+      5.68,
+      5.84,
+      "指"
+    ],
+    [
+      5.84,
+      6.08,
+      "头"
+    ],
+    [
+      7.62,
+      7.86,
+      "我"
+    ],
+    [
+      7.9,
+      8.12,
+      "李"
+    ],
+    [
+      8.12,
+      8.36,
+      "傲"
+    ],
+    [
+      8.36,
+      8.6,
+      "天"
+    ],
+    [
+      8.72,
+      8.96,
+      "先"
+    ],
+    [
+      8.98,
+      9.12,
+      "跟"
+    ],
+    [
+      9.12,
+      9.32,
+      "他"
+    ],
+    [
+      9.32,
+      9.54,
+      "拼"
+    ],
+    [
+      9.54,
+      9.805,
+      "命"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "今天谁敢碰他一根手指头?我李傲天先跟他拼命!",
+  "speakerKey": null,
+  "speakerRuleKey": "e4s3",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

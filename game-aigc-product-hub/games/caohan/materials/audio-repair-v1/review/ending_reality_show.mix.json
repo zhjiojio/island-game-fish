@@ -1,0 +1,27 @@
+{
+  "videoId": "ending_reality_show",
+  "voiceWindows": [],
+  "newVoice": [
+    {
+      "lineId": "ending_reality_show__l01",
+      "speaker": "画外叙述者",
+      "kind": "narration",
+      "text": "婚约变成了恋综，决定权交给了观众。",
+      "audioFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/audio/ending_reality_show__l01.mp3",
+      "start": 0.4,
+      "end": 4.2
+    },
+    {
+      "lineId": "ending_reality_show__l02",
+      "speaker": "画外叙述者",
+      "kind": "narration",
+      "text": "而观众的选择是：让她独自出道。",
+      "audioFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/materials/audio-repair-v1/audio/ending_reality_show__l02.mp3",
+      "start": 8.442,
+      "end": 12.018
+    }
+  ],
+  "durationSec": 16.091428571428573,
+  "status": "audio_candidate_pending_listening",
+  "peakBeforeHeadroom": 0.69305419921875
+}

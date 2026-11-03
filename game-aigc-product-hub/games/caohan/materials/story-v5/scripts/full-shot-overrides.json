@@ -1,0 +1,116 @@
+{
+  "ending_cow": [
+    {
+      "duration": 5,
+      "cast": [],
+      "place": "证据桌",
+      "action": "只有道具特写：装有残留牛奶的杯子、奶渍照片、奶源线索纸张。沿旧片桌面缓慢移向奶杯，文字不清晰可读。没有人物、没有语言。",
+      "lineIndices": []
+    },
+    {
+      "duration": 6,
+      "cast": [],
+      "place": "牧场",
+      "action": "匹配剪辑到牧场奶牛，奶牛抬头直视镜头，慢慢嚼草，停半拍后清楚哞叫一次。无人物无语言。",
+      "lineIndices": []
+    }
+  ],
+  "ending_empire": [
+    {
+      "duration": 7,
+      "cast": [
+        "hexingran",
+        "chenjin"
+      ],
+      "place": "公司会议室",
+      "action": "贺星冉签完三份收购合同，陈劲在旁合上工地文件。保留原片现代会议室与正式服装，仅这两位人物。",
+      "lineIndices": [
+        0
+      ]
+    },
+    {
+      "duration": 6,
+      "cast": [
+        "hexingran",
+        "chenjin"
+      ],
+      "place": "上市敲钟台",
+      "action": "贺星冉与陈劲站在上市铜钟旁，他说完后让开半步，她握槌敲响铜钟。",
+      "lineIndices": [
+        1
+      ]
+    }
+  ],
+  "ending_worker": [
+    {
+      "duration": 6,
+      "cast": [
+        "xushaoze",
+        "chenjin"
+      ],
+      "place": "工地",
+      "action": "穿旧工装的许邵泽搬好一摞砖，擦汗准备继续干。陈劲在旁查看并点头。",
+      "lineIndices": [
+        0,
+        1
+      ]
+    },
+    {
+      "duration": 5,
+      "cast": [
+        "xushaoze",
+        "chenjin"
+      ],
+      "place": "工地表彰现场",
+      "action": "时间跳转到表彰现场，许邵泽穿同一工装捧着安全生产标兵奖状，陈劲递过安全帽，两人点头。奖状不作文字特写，只有鼓掌声，无语言。",
+      "lineIndices": []
+    }
+  ],
+  "ending_independent": [
+    {
+      "duration": 6,
+      "cast": [
+        "hexingran",
+        "chenjin",
+        "xushaoze"
+      ],
+      "place": "房间",
+      "action": "贺星冉把婚约放回桌上，自己拿起车钥匙，从两个男人之间走开。",
+      "lineIndices": [
+        0
+      ]
+    },
+    {
+      "duration": 6,
+      "cast": [
+        "hexingran"
+      ],
+      "place": "粉色越野车驾驶位",
+      "action": "贺星冉独自坐上粉色越野车驾驶位，系好安全带，亲手发动车并独自驶离。无人说话。",
+      "lineIndices": []
+    }
+  ],
+  "ep11_branch_conditional": [
+    {
+      "duration": 6,
+      "cast": [
+        "hexingran",
+        "chenjin"
+      ],
+      "place": "停车场",
+      "action": "贺星冉松开陈劲的手，自己转身离开；陈劲留在原地，没有追。",
+      "lineIndices": [
+        0
+      ]
+    },
+    {
+      "duration": 5,
+      "cast": [
+        "hexingran"
+      ],
+      "place": "旧露台",
+      "action": "贺星冉独自站在旧露台，远处工地灯光渐暗，她扶着完整栏杆望向远处。没有其他人、无语言。",
+      "lineIndices": []
+    }
+  ]
+}

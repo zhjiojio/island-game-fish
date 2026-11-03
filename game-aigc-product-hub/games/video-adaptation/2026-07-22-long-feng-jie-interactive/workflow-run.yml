@@ -1,0 +1,22 @@
+kind: video-adaptation
+name: long-feng-jie-interactive
+source_video: /Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/materials/龙凤劫/💥【全集】正片抢先看 ｜《龙凤劫：我的战神保镖》#AA短剧批发 #AI #真人AI短剧 #都市 #drama #短劇 #短劇全集 #逆襲 #情感 [WjXsbAYNd80].mp4
+stage: done
+created_at: 2026-07-22T17:06:23+08:00
+updated_at: 2026-07-22T18:08:33+08:00
+stages:
+  video-ingest:
+    status: completed
+    output: docs/video-analysis.md
+  story-architect:
+    status: completed
+    output: docs/story-graph.md
+  asset-director:
+    status: completed
+    output: docs/asset-manifest.md
+  web-game-builder:
+    status: completed
+    output: package/
+  deploy-verifier:
+    status: completed
+    output: docs/deploy-report.md

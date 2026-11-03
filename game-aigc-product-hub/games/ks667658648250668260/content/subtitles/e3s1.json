@@ -1,0 +1,10 @@
+{
+  "node": "e3s1",
+  "speakerKey": "narrator",
+  "speakerName": "旁白",
+  "asrText": "夜半三更·婉儿蜷在炕上侧躺——她一辈子没摸过这么好的布。",
+  "asrTextRaw": "",
+  "matchScript": true,
+  "textSource": "script-authoritative (v82.0重生成全库视频后，旧ASR已失效，以剧本text为权威)",
+  "cues": 2
+}

@@ -1,0 +1,10 @@
+{
+  "node": "e3s4",
+  "speakerKey": "wanerh",
+  "speakerName": "沈婉儿",
+  "asrText": "（她从屏风后缓步走出·米白布袍在肩头一滑）……傲天哥·你看看合身么？",
+  "asrTextRaw": "",
+  "matchScript": true,
+  "textSource": "script-authoritative (v82.0重生成全库视频后，旧ASR已失效，以剧本text为权威)",
+  "cues": 1
+}

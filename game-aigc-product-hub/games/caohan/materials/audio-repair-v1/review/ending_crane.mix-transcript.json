@@ -1,0 +1,13 @@
+{
+  "transcript": "他们真的把婚礼办在了塔顶上。谁反对？",
+  "utterances": [
+    {
+      "speaker": "speaker1",
+      "text": "他们真的把婚礼办在了塔顶上。谁反对？"
+    }
+  ],
+  "nonverbal": [],
+  "issues": [],
+  "uncertain": "",
+  "reviewModel": "mistralai/voxtral-small-24b-2507"
+}

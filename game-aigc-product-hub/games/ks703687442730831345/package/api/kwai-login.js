@@ -1,0 +1,1 @@
+(function(r){var M=r.M3;M.KwaiLogin={login:function(cb){var k=M.Platform.sdk;if(k&&k.login)k.login({success:cb,fail:function(){cb(null);}});else cb(null);}};})(typeof GameGlobal!=='undefined'?GameGlobal:typeof window!=='undefined'?window:global);

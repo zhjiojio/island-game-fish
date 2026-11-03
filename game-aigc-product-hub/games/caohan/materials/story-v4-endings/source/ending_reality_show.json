@@ -1,0 +1,25 @@
+{
+  "id": "ending_reality_show",
+  "type": "ending",
+  "episodeId": "ep05",
+  "title": "荒诞结局：全员恋综",
+  "isEnding": true,
+  "category": "absurd",
+  "tone": [
+    "综艺",
+    "恶搞"
+  ],
+  "rarity": "rare",
+  "isCanonical": false,
+  "unlock": {
+    "requiredFlags": [
+      "ep05_conditional"
+    ],
+    "requiredEndingTags": []
+  },
+  "description": "所有人被送进恋爱综艺，婚约改由观众投票。",
+  "closing": "最高票选项是：让女主独自出道。",
+  "achievement": "ending_reality_show",
+  "chapterId": "ch3",
+  "chapterTitle": "第三章：一张床与三千万"
+}

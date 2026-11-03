@@ -1,0 +1,141 @@
+{
+  "sourceFile": "/Users/kwaibear/Documents/AIGCGame/game-aigc-product-hub/games/caohan/output/逃婚后我花千万雇了工地糙汉.v4.json",
+  "sourceSha256": "77cee12ed8c5f8a99e49c6ec00ef31136fa64c03eb09995732b91220ca491ec7",
+  "nodeId": "ep02_branch_emotion",
+  "video": {
+    "id": "ep02_branch_emotion_video_01",
+    "order": 1,
+    "title": "选择后果·渴望保护",
+    "durationSec": 9.0,
+    "renderMode": "image_motion",
+    "needsLipSync": false,
+    "continuity": {
+      "locationId": "source_2_2_1",
+      "timeOfDay": "day",
+      "characterIds": [
+        "贺星冉"
+      ],
+      "wardrobe": "沿用角色 wardrobeByEpisode，视频内不得换装",
+      "screenDirection": "保持人物空间轴线与视线方向",
+      "startState": "承接上一视频末帧；首视频承接场景入口",
+      "endState": "保留人物动作、视线与构图状态供下一视频承接"
+    },
+    "assetRefs": [],
+    "shots": [
+      {
+        "id": "ep02_branch_emotion_video_01_shot_01",
+        "order": 1,
+        "durationSec": 3,
+        "shotSize": "全景",
+        "cameraAngle": "侧后方",
+        "cameraMovement": "缓推",
+        "composition": "荒郊野外·抛锚越野车旁内建立清楚人物方位，主体动作是：越野车停在荒野里，底盘磕碰，油箱见底。",
+        "locationId": "source_2_2_1",
+        "timeOfDay": "day",
+        "characters": [
+          "贺星冉"
+        ],
+        "dialogue": [
+          {
+            "speaker": "旁白",
+            "text": "越野车停在荒野里，底盘磕碰，油箱见底。"
+          }
+        ],
+        "audio": {
+          "ambient": "荒郊野外·抛锚越野车旁环境底噪",
+          "music": "追杀情绪低频铺底",
+          "sfx": []
+        },
+        "visual": {
+          "firstFramePrompt": "清晨，荒郊野外·抛锚越野车旁，景别：全景，画面人物：贺星冉；越野车停在荒野里，底盘磕碰，油箱见底。，人物外观与上镜连续，电影级写实短剧；选择后果：靠近他，我现在只能信这双手",
+          "videoPrompt": "镜头缓慢推进，清晰呈现越野车停在荒野里，底盘磕碰，油箱见底。，保持人物服装、光向和空间轴线连续，明确展示“靠近他，我现在只能信这双手”导致的动作和关系变化",
+          "negativePrompt": "字幕，水印，畸形手指，多余人物，角色换脸，服装突变，空间跳轴"
+        },
+        "sourceRef": {
+          "episode": 2,
+          "scene": "2-1",
+          "unit": 1,
+          "adaptation": "condensed"
+        },
+        "startSec": 0.0,
+        "endSec": 3.0
+      },
+      {
+        "id": "ep02_branch_emotion_video_01_shot_02",
+        "order": 2,
+        "durationSec": 3,
+        "shotSize": "中景",
+        "cameraAngle": "主观视角",
+        "cameraMovement": "跟拍",
+        "composition": "荒郊野外·抛锚越野车旁内建立清楚人物方位，主体动作是：贺星冉靠着车门，手机握在手里",
+        "locationId": "source_2_2_1",
+        "timeOfDay": "day",
+        "characters": [
+          "贺星冉"
+        ],
+        "dialogue": [
+          {
+            "speaker": "旁白",
+            "text": "贺星冉靠着车门，手机握在手里"
+          }
+        ],
+        "audio": {
+          "ambient": "荒郊野外·抛锚越野车旁环境底噪",
+          "music": "追杀情绪低频铺底",
+          "sfx": []
+        },
+        "visual": {
+          "firstFramePrompt": "清晨，荒郊野外·抛锚越野车旁，景别：中景，画面人物：贺星冉；贺星冉靠着车门，手机握在手里，人物外观与上镜连续，电影级写实短剧；选择后果：靠近他，我现在只能信这双手",
+          "videoPrompt": "镜头跟随主体，清晰呈现贺星冉靠着车门，手机握在手里，保持人物服装、光向和空间轴线连续，明确展示“靠近他，我现在只能信这双手”导致的动作和关系变化",
+          "negativePrompt": "字幕，水印，畸形手指，多余人物，角色换脸，服装突变，空间跳轴"
+        },
+        "sourceRef": {
+          "episode": 2,
+          "scene": "2-1",
+          "unit": 2,
+          "adaptation": "condensed"
+        },
+        "startSec": 3.0,
+        "endSec": 6.0
+      },
+      {
+        "id": "ep02_branch_emotion_video_01_shot_03",
+        "order": 3,
+        "durationSec": 3,
+        "shotSize": "近景",
+        "cameraAngle": "平视",
+        "cameraMovement": "固定后骤推",
+        "composition": "荒郊野外·抛锚越野车旁内建立清楚人物方位，主体动作是：一格信号，打了一晚上电话，救援车来不了，这里根本定位不到。",
+        "locationId": "source_2_2_1",
+        "timeOfDay": "day",
+        "characters": [
+          "贺星冉"
+        ],
+        "dialogue": [
+          {
+            "speaker": "旁白",
+            "text": "一格信号，打了一晚上电话，救援车来不了，这里根本定位不到。"
+          }
+        ],
+        "audio": {
+          "ambient": "荒郊野外·抛锚越野车旁环境底噪",
+          "music": "追杀情绪低频铺底",
+          "sfx": []
+        },
+        "visual": {
+          "firstFramePrompt": "清晨，荒郊野外·抛锚越野车旁，景别：近景，画面人物：贺星冉；一格信号，打了一晚上电话，救援车来不了，这里根本定位不到。，人物外观与上镜连续，电影级写实短剧；选择后果：靠近他，我现在只能信这双手",
+          "videoPrompt": "镜头缓慢推进，清晰呈现一格信号，打了一晚上电话，救援车来不了，这里根本定位不到。，保持人物服装、光向和空间轴线连续，明确展示“靠近他，我现在只能信这双手”导致的动作和关系变化",
+          "negativePrompt": "字幕，水印，畸形手指，多余人物，角色换脸，服装突变，空间跳轴"
+        },
+        "sourceRef": {
+          "episode": 2,
+          "scene": "2-1",
+          "unit": 3,
+          "adaptation": "condensed"
+        },
+        "startSec": 6.0,
+        "endSec": 9.0
+      }
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/side05_jazz.hd.mp4",
+  "sha256": "c599c95fe23e3af1274553768ea4e64e280d2fb8d9363959f9cf31ffbb6a65b1",
+  "duration": 10.042,
+  "nodes": [
+    "r_side05",
+    "r_side05_e5",
+    "r_side05_e2"
+  ],
+  "status": "speech",
+  "transcript": "傲天，我跳得好看吗？",
+  "rawText": "不是傲天我跳的好看吗",
+  "asrChars": [
+    [
+      0.03,
+      0.15,
+      "不"
+    ],
+    [
+      0.15,
+      0.39,
+      "是"
+    ],
+    [
+      7.06,
+      7.3,
+      "傲"
+    ],
+    [
+      7.3,
+      7.54,
+      "天"
+    ],
+    [
+      8.5,
+      8.74,
+      "我"
+    ],
+    [
+      8.8,
+      8.94,
+      "跳"
+    ],
+    [
+      8.94,
+      9.08,
+      "的"
+    ],
+    [
+      9.08,
+      9.22,
+      "好"
+    ],
+    [
+      9.22,
+      9.46,
+      "看"
+    ],
+    [
+      9.52,
+      9.815,
+      "吗"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "家沟。沈婉儿、赵铁牛、李老憨。傲天,我跳得好看吗?",
+  "speakerKey": null,
+  "speakerRuleKey": "side05_jazz",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

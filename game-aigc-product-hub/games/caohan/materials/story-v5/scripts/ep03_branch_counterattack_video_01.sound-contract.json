@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "mode": "diegetic_only",
+  "nodeId": "ep03_branch_counterattack",
+  "videoId": "ep03_branch_counterattack_video_01",
+  "spokenWhitelist": [
+    {
+      "shotId": "ep03_branch_counterattack_video_01_shot_01",
+      "speakerId": "hexingran",
+      "speaker": "贺星冉",
+      "delivery": "on_screen",
+      "text": "谢谢你。沐瑶，我安全，先别联系我爸妈。帮我查一下我的卡哪张还能用。",
+      "startSec": 0.55,
+      "endSec": 11.45
+    },
+    {
+      "shotId": "ep03_branch_counterattack_video_01_shot_02",
+      "speakerId": "muyao",
+      "speaker": "沐瑶",
+      "delivery": "on_screen",
+      "text": "除了花旗那张，其他都被挂失了。但花旗是许邵泽送的，一用他就知道你在哪。",
+      "startSec": 12.55,
+      "endSec": 23.45
+    },
+    {
+      "shotId": "ep03_branch_counterattack_video_01_shot_03",
+      "speakerId": "hexingran",
+      "speaker": "贺星冉",
+      "delivery": "on_screen",
+      "text": "那就让他知道。我用这张卡，就是告诉他：我没死，我在等他。",
+      "startSec": 24.55,
+      "endSec": 33.45
+    }
+  ],
+  "nonverbalSound": [
+    {
+      "shotId": "ep03_branch_counterattack_video_01_shot_01",
+      "audio": {
+        "ambient": "摩托引擎和轻微风声",
+        "music": "无配乐，以现场声为主",
+        "sfx": [],
+        "vocalizations": []
+      }
+    },
+    {
+      "shotId": "ep03_branch_counterattack_video_01_shot_02",
+      "audio": {
+        "ambient": "轻微室内底噪",
+        "music": "无配乐，以现场声为主",
+        "sfx": [],
+        "vocalizations": []
+      }
+    },
+    {
+      "shotId": "ep03_branch_counterattack_video_01_shot_03",
+      "audio": {
+        "ambient": "摩托引擎和轻微风声",
+        "music": "无配乐，以现场声为主",
+        "sfx": [],
+        "vocalizations": []
+      }
+    }
+  ],
+  "instruction": "只允许按顺序说出 spokenWhitelist 的 text；仅指定人物发声。画内对白匹配本人嘴型；画外和电话对白不驱动画面人物口型。其余描述只用于画面/音效；禁止旁白、解说、内心 OS、额外语言。空白名单即无人说话。"
+}

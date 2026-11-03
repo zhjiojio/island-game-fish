@@ -1,0 +1,14 @@
+{
+  "name": "puff_sprite",
+  "desc": "车装满离场瞬间在【车位原地】迸发的星星散开序列帧。源 GIF 无 alpha（白底），已用 luminance key + unpremultiply 抠成透明",
+  "frames": 8,
+  "frameW": 120,
+  "frameH": 120,
+  "layout": "8x1",
+  "durationMs": 100,
+  "totalMs": 800,
+  "loop": false,
+  "keyed": true,
+  "keyMethod": "luminance-key + unpremultiply-over-white",
+  "anchor": "slot-center"
+}

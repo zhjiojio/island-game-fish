@@ -1,0 +1,43 @@
+{
+  "name": "wq_E_h1_c1_10s_v1",
+  "_desc": "赛道E · 失败反差 · 主打「翻车+死因鉴定冷幽默」· 下沉市场最易爆量",
+  "source": "/Users/fat/weihunqi-large-assets/side-videos/videos/be5_kicked_out.mp4",
+  "width": 1080,
+  "height": 1920,
+  "duration": 10.0,
+  "outdir": "/Users/fat/weihunqi/build-ua",
+
+  "hook": "第五套衣裳，三巴掌",
+
+  "options": [
+    "认错，把衣裳烧了",
+    "再变一套哄她",
+    "梗着脖子不认错"
+  ],
+
+  "stats": [
+    ["嫂子好感", 14, [224, 76, 106, 255]],
+    ["村里威望", 42, [212, 160, 58, 255]],
+    ["家里存粮", 31, [127, 176, 105, 255]]
+  ],
+
+  "hit_stat_idx": 0,
+  "hit_delta": "-30",
+  "hit_delta_num": -30,
+  "toast": "嫂子好感 -30",
+
+  "cta": "我死在第 4 集，你呢？",
+  "cta_sub": "点击进入 · 荒年开局",
+
+  "timeline": {
+    "hook_at": 0.3,
+    "card_in_at": 2.5,
+    "card_stagger": 0.17,
+    "finger_in_at": 4.4,
+    "press_at": 5.5,
+    "release_at": 5.8,
+    "fly_at": 5.85,
+    "cta_at": 7.1,
+    "target_idx": 1
+  }
+}

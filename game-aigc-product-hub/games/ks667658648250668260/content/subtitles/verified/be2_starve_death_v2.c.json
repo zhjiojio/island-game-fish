@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/be2_starve_death_v2.c.mp4",
+  "sha256": "6e58a75f5e3fe5e9de99d2918ea3650b82644a763fcbcbdcc593a16cd5b50f78",
+  "duration": 10.042,
+  "nodes": [
+    "BE_STARVE"
+  ],
+  "status": "speech",
+  "transcript": "傲天，你活着回去。",
+  "rawText": "傲天你活着回去嗯嗯嗯嗯嗯",
+  "asrChars": [
+    [
+      1.36,
+      1.6,
+      "傲"
+    ],
+    [
+      1.62,
+      1.86,
+      "天"
+    ],
+    [
+      3.28,
+      3.52,
+      "你"
+    ],
+    [
+      4.22,
+      4.46,
+      "活"
+    ],
+    [
+      4.58,
+      4.78,
+      "着"
+    ],
+    [
+      4.78,
+      5.02,
+      "回"
+    ],
+    [
+      5.04,
+      5.485,
+      "去"
+    ],
+    [
+      7.9,
+      8.02,
+      "嗯"
+    ],
+    [
+      8.02,
+      8.26,
+      "嗯"
+    ],
+    [
+      8.64,
+      8.88,
+      "嗯"
+    ],
+    [
+      9.12,
+      9.36,
+      "嗯"
+    ],
+    [
+      9.46,
+      9.755,
+      "嗯"
+    ]
+  ],
+  "timingEngine": "FunASR-seaco-paraformer",
+  "crossCheckText": "傲天：你活着回去。",
+  "speakerKey": null,
+  "speakerRuleKey": "be2_starve_death",
+  "reviewMethod": "Current CDN video hashed; local Paraformer + Whisper; spelling/punctuation corrected without substituting script narration."
+}

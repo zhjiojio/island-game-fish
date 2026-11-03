@@ -1,0 +1,61 @@
+{
+ "schemaVersion": 1,
+ "url": "https://p5-ad.adkwai.com/udata/pkg/KS-GAME/AIGC-SoGame/ks667658648250668260/n5s0a.mp4",
+ "sha256": "a8a60a4f7b5f9fee79bfd5d9c5b07ec338f1b398082b88546b4a6087651ddb90",
+ "duration": 5.042,
+ "nodes": [
+  "e5s0a"
+ ],
+ "status": "speech",
+ "transcript": "跟我斗你还嫩了点儿。",
+ "rawText": "跟我斗你还嫩了点儿",
+ "asrChars": [
+  [
+   0.56,
+   0.8,
+   "跟"
+  ],
+  [
+   0.82,
+   1.04,
+   "我"
+  ],
+  [
+   1.04,
+   1.28,
+   "斗"
+  ],
+  [
+   3.02,
+   3.2,
+   "你"
+  ],
+  [
+   3.2,
+   3.38,
+   "还"
+  ],
+  [
+   3.38,
+   3.6,
+   "嫩"
+  ],
+  [
+   3.6,
+   3.76,
+   "了"
+  ],
+  [
+   3.76,
+   3.94,
+   "点"
+  ],
+  [
+   3.94,
+   4.535,
+   "儿"
+  ]
+ ],
+ "timingEngine": "asr-anchor(funasr-paraformer)",
+ "reviewMethod": "batch ASR auto (needs human proof-read for punctuation/speaker)."
+}

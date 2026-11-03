@@ -1,0 +1,173 @@
+  // ═══ v0.3.6 追加 · lv:10..29 · 20 城市寻物默认坐标（AI 预标 3-5%）═══
+  10: [
+    {prop:'jingju_lianpu', x:  4.0, y:  8.0, w:  5.0, h:  5.5, tag:'京剧脸谱'},
+    {prop:'bingtanghulu', x: 31.0, y:  8.0, w:  5.5, h:  6.0, tag:'糖葫芦'},
+    {prop:'tuye_pigu', x: 53.0, y:  4.0, w:  6.0, h:  5.0, tag:'兔爷'},
+    {prop:'paozi_hu', x: 82.0, y: 14.0, w:  5.0, h:  5.5, tag:'铜壶'},
+    {prop:'gongbi_niaolong', x:  4.0, y: 82.0, w:  5.5, h:  6.0, tag:'鸟笼'}
+  ],
+  11: [
+    {prop:'nirenzhang', x:  4.0, y:  8.0, w:  5.0, h:  5.5, tag:'泥人张'},
+    {prop:'yangliuqing_nianhua', x: 31.0, y:  8.0, w:  5.5, h:  6.0, tag:'杨柳青年画'},
+    {prop:'tianjin_mahua', x: 53.0, y:  4.0, w:  6.0, h:  5.0, tag:'十八街麻花'},
+    {prop:'fengzheng', x: 82.0, y: 14.0, w:  5.0, h:  5.5, tag:'沙燕风筝'},
+    {prop:'erhu', x:  4.0, y: 82.0, w:  5.5, h:  6.0, tag:'二胡'}
+  ],
+  12: [
+    {prop:'lvyou_ditu', x:  4.0, y:  8.0, w:  5.0, h:  5.5, tag:'古城地图'},
+    {prop:'zhengding_pancake', x: 31.0, y:  8.0, w:  5.5, h:  6.0, tag:'缸炉烧饼'},
+    {prop:'gulou_lingdang', x: 53.0, y:  4.0, w:  6.0, h:  5.0, tag:'寺庙铜铃'},
+    {prop:'guqin', x: 82.0, y: 14.0, w:  5.0, h:  5.5, tag:'古琴'},
+    {prop:'yumu_yu', x:  4.0, y: 82.0, w:  5.5, h:  6.0, tag:'木鱼'}
+  ],
+  13: [
+    {prop:'laobianjiaozi', x:  4.0, y:  8.0, w:  5.0, h:  5.5, tag:'老边饺子'},
+    {prop:'gaolizhi_yaocai', x: 31.0, y:  8.0, w:  5.5, h:  6.0, tag:'人参药材'},
+    {prop:'guifei_zui_bing', x: 53.0, y:  4.0, w:  6.0, h:  5.0, tag:'糖饼铁盘'},
+    {prop:'jingjuhua_dan', x: 82.0, y: 14.0, w:  5.0, h:  5.5, tag:'评剧头饰'},
+    {prop:'dongbei_diaoqiang', x:  4.0, y: 82.0, w:  5.5, h:  6.0, tag:'关东烟袋'}
+  ],
+  14: [
+    {prop:'binggun_madie'er', x:  4.0, y:  8.0, w:  4.5, h:  5.0, tag:'马迭尔冰棍'},
+    {prop:'hongchang', x: 31.0, y:  8.0, w:  5.0, h:  5.5, tag:'红肠一节'},
+    {prop:'eluosi_taowa', x: 53.0, y:  4.0, w:  5.5, h:  4.5, tag:'套娃'},
+    {prop:'binghua_wan', x: 82.0, y: 14.0, w:  4.5, h:  5.0, tag:'冰花小碗'},
+    {prop:'shoufeng_qin', x:  4.0, y: 82.0, w:  5.0, h:  5.5, tag:'手风琴'},
+    {prop:'xifang_qiao', x: 26.0, y: 80.0, w:  5.5, h:  4.5, tag:'教堂尖顶模型'}
+  ],
+  15: [
+    {prop:'suzhou_zhezi', x:  4.0, y:  8.0, w:  4.5, h:  5.0, tag:'苏州折扇'},
+    {prop:'pingtan_pipa', x: 31.0, y:  8.0, w:  5.0, h:  5.5, tag:'评弹琵琶'},
+    {prop:'su_xiu', x: 53.0, y:  4.0, w:  5.5, h:  4.5, tag:'苏绣绷架'},
+    {prop:'biluochun_gaiwan', x: 82.0, y: 14.0, w:  4.5, h:  5.0, tag:'碧螺春盖碗'},
+    {prop:'xiaolong_zheng', x:  4.0, y: 82.0, w:  5.0, h:  5.5, tag:'小笼蒸屉'},
+    {prop:'you_zhi_san', x: 26.0, y: 80.0, w:  5.5, h:  4.5, tag:'油纸伞'}
+  ],
+  16: [
+    {prop:'longjing_cha', x:  4.0, y:  8.0, w:  4.5, h:  5.0, tag:'龙井茶饼'},
+    {prop:'xihu_choudoufu', x: 31.0, y:  8.0, w:  5.0, h:  5.5, tag:'臭豆腐一碟'},
+    {prop:'song_pai_yao', x: 53.0, y:  4.0, w:  5.5, h:  4.5, tag:'胡庆余堂药方'},
+    {prop:'si_shan', x: 82.0, y: 14.0, w:  4.5, h:  5.0, tag:'绸伞'},
+    {prop:'jinsha_pian', x:  4.0, y: 82.0, w:  5.0, h:  5.5, tag:'金丝片糖'},
+    {prop:'hangzhou_paihu', x: 26.0, y: 80.0, w:  5.5, h:  4.5, tag:'雕花木牌'}
+  ],
+  17: [
+    {prop:'qinhuai_denglong', x:  4.0, y:  8.0, w:  4.5, h:  5.0, tag:'秦淮花灯'},
+    {prop:'yasuefen', x: 31.0, y:  8.0, w:  5.0, h:  5.5, tag:'鸭血粉丝'},
+    {prop:'yun_jin', x: 53.0, y:  4.0, w:  5.5, h:  4.5, tag:'云锦织片'},
+    {prop:'jinling_tu', x: 82.0, y: 14.0, w:  4.5, h:  5.0, tag:'金陵折页地图'},
+    {prop:'zhu_ke', x:  4.0, y: 82.0, w:  5.0, h:  5.5, tag:'雨花石一枚'},
+    {prop:'chang_gao', x: 26.0, y: 80.0, w:  5.5, h:  4.5, tag:'重阳糕'}
+  ],
+  18: [
+    {prop:'qingdao_pijiu', x:  4.0, y:  8.0, w:  4.5, h:  5.0, tag:'青岛啤酒瓶'},
+    {prop:'gelunbao', x: 31.0, y:  8.0, w:  5.0, h:  5.5, tag:'哈利路亚教堂顶'},
+    {prop:'hail_bei', x: 53.0, y:  4.0, w:  5.5, h:  4.5, tag:'海螺号'},
+    {prop:'chuchuang_chu', x: 82.0, y: 14.0, w:  4.5, h:  5.0, tag:'欧式路灯'},
+    {prop:'lvshi_men', x:  4.0, y: 82.0, w:  5.0, h:  5.5, tag:'绿石栏杆'},
+    {prop:'haijie', x: 26.0, y: 80.0, w:  5.5, h:  4.5, tag:'海鲜壳堆'}
+  ],
+  19: [
+    {prop:'regan_mian', x:  4.0, y:  8.0, w:  4.0, h:  4.5, tag:'热干面碗'},
+    {prop:'doupi', x: 31.0, y:  8.0, w:  4.5, h:  5.0, tag:'三鲜豆皮'},
+    {prop:'mianwo', x: 53.0, y:  4.0, w:  5.0, h:  4.0, tag:'面窝'},
+    {prop:'jianbing_wuhan', x: 82.0, y: 14.0, w:  4.0, h:  4.5, tag:'武汉煎饼'},
+    {prop:'changjiang_qiao', x:  4.0, y: 82.0, w:  4.5, h:  5.0, tag:'长江大桥模型'},
+    {prop:'cai_lin_ji', x: 26.0, y: 80.0, w:  5.0, h:  4.0, tag:'蔡林记招牌'},
+    {prop:'tudouzai_jiu', x: 55.0, y: 84.0, w:  4.0, h:  4.5, tag:'辣椒罐'}
+  ],
+  20: [
+    {prop:'chou_doufu_hei', x:  4.0, y:  8.0, w:  4.0, h:  4.5, tag:'黑臭豆腐'},
+    {prop:'tanghuaoshaokao', x: 31.0, y:  8.0, w:  4.5, h:  5.0, tag:'糖火烧铁盘'},
+    {prop:'wenheyou_pai', x: 53.0, y:  4.0, w:  5.0, h:  4.0, tag:'文和友红招牌'},
+    {prop:'xiaolongxia_pen', x: 82.0, y: 14.0, w:  4.0, h:  4.5, tag:'小龙虾一盆'},
+    {prop:'malatang', x:  4.0, y: 82.0, w:  4.5, h:  5.0, tag:'麻辣烫竹签'},
+    {prop:'lu_dan', x: 26.0, y: 80.0, w:  5.0, h:  4.0, tag:'卤蛋一碟'},
+    {prop:'huogongdian_hu', x: 55.0, y: 84.0, w:  4.0, h:  4.5, tag:'火宫殿油纸包'}
+  ],
+  21: [
+    {prop:'shacha_mian', x:  4.0, y:  8.0, w:  4.0, h:  4.5, tag:'沙茶面碗'},
+    {prop:'tuxun', x: 31.0, y:  8.0, w:  4.5, h:  5.0, tag:'土笋冻'},
+    {prop:'minnan_qilou', x: 53.0, y:  4.0, w:  5.0, h:  4.0, tag:'骑楼柱头'},
+    {prop:'gongfucha', x: 82.0, y: 14.0, w:  4.0, h:  4.5, tag:'功夫茶壶'},
+    {prop:'nanpu_tuo', x:  4.0, y: 82.0, w:  4.5, h:  5.0, tag:'南普陀素饼'},
+    {prop:'gulangyu_gangqin', x: 26.0, y: 80.0, w:  5.0, h:  4.0, tag:'鼓浪屿钢琴'},
+    {prop:'hai_li_bang', x: 55.0, y: 84.0, w:  4.0, h:  4.5, tag:'海蛎煎'}
+  ],
+  22: [
+    {prop:'chaozhou_niurou_wan', x:  4.0, y:  8.0, w:  4.0, h:  4.5, tag:'潮汕牛肉丸'},
+    {prop:'gongfucha_chao', x: 31.0, y:  8.0, w:  4.5, h:  5.0, tag:'潮州工夫茶盘'},
+    {prop:'chaozhou_gujiang', x: 53.0, y:  4.0, w:  5.0, h:  4.0, tag:'潮州古筝'},
+    {prop:'paifang_diao', x: 82.0, y: 14.0, w:  4.0, h:  4.5, tag:'牌坊雕花'},
+    {prop:'suogao', x:  4.0, y: 82.0, w:  4.5, h:  5.0, tag:'潮汕肠粉'},
+    {prop:'yulin_shu', x: 26.0, y: 80.0, w:  5.0, h:  4.0, tag:'榕树须'},
+    {prop:'chaozhou_lu', x: 55.0, y: 84.0, w:  4.0, h:  4.5, tag:'潮州老卤味'}
+  ],
+  23: [
+    {prop:'guilin_mifen', x:  4.0, y:  8.0, w:  4.0, h:  4.5, tag:'桂林米粉'},
+    {prop:'lijiang_zhupai', x: 31.0, y:  8.0, w:  4.5, h:  5.0, tag:'漓江竹排'},
+    {prop:'shan_shui_hua', x: 53.0, y:  4.0, w:  5.0, h:  4.0, tag:'山水画一幅'},
+    {prop:'zhuang_jin', x: 82.0, y: 14.0, w:  4.0, h:  4.5, tag:'壮锦布片'},
+    {prop:'gui_hua_gao', x:  4.0, y: 82.0, w:  4.5, h:  5.0, tag:'桂花糕'},
+    {prop:'lu_sheng', x: 26.0, y: 80.0, w:  5.0, h:  4.0, tag:'芦笙'},
+    {prop:'tong_gu', x: 55.0, y: 84.0, w:  4.0, h:  4.5, tag:'铜鼓'}
+  ],
+  24: [
+    {prop:'guoqiao_mixian', x:  4.0, y:  8.0, w:  4.0, h:  4.5, tag:'过桥米线'},
+    {prop:'xuanwei_huotui', x: 31.0, y:  8.0, w:  4.5, h:  5.0, tag:'宣威火腿'},
+    {prop:'guandu_baba', x: 53.0, y:  4.0, w:  5.0, h:  4.0, tag:'官渡粑粑'},
+    {prop:'puer_bing', x: 82.0, y: 14.0, w:  4.0, h:  4.5, tag:'普洱茶饼'},
+    {prop:'dai_zhu_lou', x:  4.0, y: 82.0, w:  4.5, h:  5.0, tag:'傣式竹楼窗'},
+    {prop:'lu_yao_gui', x: 26.0, y: 80.0, w:  5.0, h:  4.0, tag:'云南野蘑菇'},
+    {prop:'kong_que_ling', x: 55.0, y: 84.0, w:  4.0, h:  4.5, tag:'孔雀翎'}
+  ],
+  25: [
+    {prop:'suan_tang_yu', x:  4.0, y:  8.0, w:  3.5, h:  4.0, tag:'酸汤鱼锅'},
+    {prop:'qingyan_zhu', x: 31.0, y:  8.0, w:  4.0, h:  4.5, tag:'青岩猪脚'},
+    {prop:'miao_yin_shi', x: 53.0, y:  4.0, w:  4.5, h:  3.5, tag:'苗族银饰'},
+    {prop:'la_zi_ji', x: 82.0, y: 14.0, w:  3.5, h:  4.0, tag:'辣子鸡罐'},
+    {prop:'guiyang_si', x:  4.0, y: 82.0, w:  4.0, h:  4.5, tag:'丝娃娃'},
+    {prop:'lu_sheng_gui', x: 26.0, y: 80.0, w:  4.5, h:  3.5, tag:'芦笙木架'},
+    {prop:'mao_tai_ping', x: 55.0, y: 84.0, w:  3.5, h:  4.0, tag:'茅台酒瓶'},
+    {prop:'guiyang_diao_lou', x: 81.0, y: 78.0, w:  4.0, h:  4.5, tag:'侗族鼓楼'}
+  ],
+  26: [
+    {prop:'zhuan_jing_tong', x:  4.0, y:  8.0, w:  3.5, h:  4.0, tag:'转经筒'},
+    {prop:'tangka', x: 31.0, y:  8.0, w:  4.0, h:  4.5, tag:'唐卡挂画'},
+    {prop:'suo_you_qing_ke', x: 53.0, y:  4.0, w:  4.5, h:  3.5, tag:'青稞酒葫芦'},
+    {prop:'yak_niu', x: 82.0, y: 14.0, w:  3.5, h:  4.0, tag:'牦牛雕像'},
+    {prop:'jinggan_niang', x:  4.0, y: 82.0, w:  4.0, h:  4.5, tag:'酥油茶壶'},
+    {prop:'jing_fan', x: 26.0, y: 80.0, w:  4.5, h:  3.5, tag:'风马旗'},
+    {prop:'zangdao', x: 55.0, y: 84.0, w:  3.5, h:  4.0, tag:'藏刀'},
+    {prop:'jiacha_zhu', x: 81.0, y: 78.0, w:  4.0, h:  4.5, tag:'青藏石柱'}
+  ],
+  27: [
+    {prop:'lanzhou_lamian', x:  4.0, y:  8.0, w:  3.5, h:  4.0, tag:'兰州拉面碗'},
+    {prop:'niunairjidan', x: 31.0, y:  8.0, w:  4.0, h:  4.5, tag:'牛奶鸡蛋醪糟'},
+    {prop:'yang_rou_chuan', x: 53.0, y:  4.0, w:  4.5, h:  3.5, tag:'羊肉串一把'},
+    {prop:'gaolin_bing', x: 82.0, y: 14.0, w:  3.5, h:  4.0, tag:'糖油糕'},
+    {prop:'huang_he_shui_lun', x:  4.0, y: 82.0, w:  4.0, h:  4.5, tag:'黄河水车模型'},
+    {prop:'niu_rou_gan', x: 26.0, y: 80.0, w:  4.5, h:  3.5, tag:'牛肉干袋'},
+    {prop:'jiu_qu', x: 55.0, y: 84.0, w:  3.5, h:  4.0, tag:'甘肃酒曲'},
+    {prop:'la_zi', x: 81.0, y: 78.0, w:  4.0, h:  4.5, tag:'油泼辣子罐'}
+  ],
+  28: [
+    {prop:'dabazha_ding', x:  4.0, y:  8.0, w:  3.5, h:  4.0, tag:'清真寺圆顶'},
+    {prop:'yang_rou_zhua_fan', x: 31.0, y:  8.0, w:  4.0, h:  4.5, tag:'手抓饭铜盘'},
+    {prop:'nang_dab', x: 53.0, y:  4.0, w:  4.5, h:  3.5, tag:'新疆馕'},
+    {prop:'putao_gan', x: 82.0, y: 14.0, w:  3.5, h:  4.0, tag:'葡萄干串'},
+    {prop:'dust_kuli', x:  4.0, y: 82.0, w:  4.0, h:  4.5, tag:'都塔尔琴'},
+    {prop:'weiwuer_mao', x: 26.0, y: 80.0, w:  4.5, h:  3.5, tag:'维族花帽'},
+    {prop:'kaomushu', x: 55.0, y: 84.0, w:  3.5, h:  4.0, tag:'馕坑火焰'},
+    {prop:'da_zhutongzi', x: 81.0, y: 78.0, w:  4.0, h:  4.5, tag:'大铜壶'}
+  ],
+  29: [
+    {prop:'kaiyuan_ta', x:  4.0, y:  8.0, w:  3.5, h:  4.0, tag:'开元寺双塔'},
+    {prop:'tie_guanyin', x: 31.0, y:  8.0, w:  4.0, h:  4.5, tag:'铁观音茶罐'},
+    {prop:'dehua_baici', x: 53.0, y:  4.0, w:  4.5, h:  3.5, tag:'德化白瓷'},
+    {prop:'minnan_gulou', x: 82.0, y: 14.0, w:  3.5, h:  4.0, tag:'闽南古厝红瓦'},
+    {prop:'nanyin_pipa', x:  4.0, y: 82.0, w:  4.0, h:  4.5, tag:'南音琵琶'},
+    {prop:'muouxi', x: 26.0, y: 80.0, w:  4.5, h:  3.5, tag:'提线木偶'},
+    {prop:'maweichu', x: 55.0, y: 84.0, w:  3.5, h:  4.0, tag:'泉州润饼'},
+    {prop:'chuan_lai_xiang', x: 81.0, y: 78.0, w:  4.0, h:  4.5, tag:'香炉青烟'}
+  ]

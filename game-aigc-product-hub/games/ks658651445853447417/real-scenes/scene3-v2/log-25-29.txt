@@ -1,0 +1,32 @@
+▶ Lv25 · 贵阳 · 青岩古镇雨天 · 8 物：酸汤鱼锅、青岩猪脚、苗族银饰、辣子鸡罐、丝娃娃、芦笙木架、茅台酒瓶、侗族鼓楼
+   ✅ Lv25 → ./generated/lv25.jpg (4386366 B)
+▶ Lv26 · 拉萨 · 八廓街转经廊 · 8 物：转经筒、唐卡挂画、青稞酒葫芦、牦牛雕像、酥油茶壶、风马旗、藏刀、青藏石柱
+   ✅ Lv26 → ./generated/lv26.jpg (4070831 B)
+▶ Lv27 · 兰州 · 正宁路夜市 · 8 物：兰州拉面碗、牛奶鸡蛋醪糟、羊肉串一把、糖油糕、黄河水车模型、牛肉干袋、甘肃酒曲、油泼辣子罐
+   ✅ Lv27 → ./generated/lv27.jpg (4043489 B)
+▶ Lv28 · 乌鲁木齐 · 国际大巴扎 · 8 物：清真寺圆顶、手抓饭铜盘、新疆馕、葡萄干串、都塔尔琴、维族花帽、馕坑火焰、大铜壶
+   ✅ Lv28 → ./generated/lv28.jpg (4093190 B)
+▶ Lv29 · 泉州 · 西街古刹夕照 · 8 物：开元寺双塔、铁观音茶罐、德化白瓷、闽南古厝红瓦、南音琵琶、提线木偶、泉州润饼、香炉青烟
+   ✅ Lv29 → ./generated/lv29.jpg (4392577 B)
+
+=== 汇总 ===
+total 147200
+drwxr-xr-x@ 19 fat  staff      608  8  9 03:09 .
+drwxr-xr-x@ 19 fat  staff      608  8  9 03:06 ..
+-rw-r--r--@  1 fat  staff  4566881  8  9 03:06 lv10.jpg
+-rw-r--r--@  1 fat  staff  4120180  8  9 03:06 lv11.jpg
+-rw-r--r--@  1 fat  staff  4563869  8  9 03:07 lv12.jpg
+-rw-r--r--@  1 fat  staff  4615745  8  9 03:08 lv13.jpg
+-rw-r--r--@  1 fat  staff  4480261  8  9 03:09 lv14.jpg
+-rw-r--r--@  1 fat  staff  4895286  8  9 03:06 lv15.jpg
+-rw-r--r--@  1 fat  staff  4335072  8  9 03:07 lv16.jpg
+-rw-r--r--@  1 fat  staff  4113895  8  9 03:08 lv17.jpg
+-rw-r--r--@  1 fat  staff  4014702  8  9 03:09 lv18.jpg
+-rw-r--r--@  1 fat  staff  4322587  8  9 03:06 lv20.jpg
+-rw-r--r--@  1 fat  staff  4379681  8  9 03:07 lv21.jpg
+-rw-r--r--@  1 fat  staff  4266027  8  9 03:08 lv22.jpg
+-rw-r--r--@  1 fat  staff  4386366  8  9 03:06 lv25.jpg
+-rw-r--r--@  1 fat  staff  4070831  8  9 03:06 lv26.jpg
+-rw-r--r--@  1 fat  staff  4043489  8  9 03:07 lv27.jpg
+-rw-r--r--@  1 fat  staff  4093190  8  9 03:08 lv28.jpg
+-rw-r--r--@  1 fat  staff  4392577  8  9 03:09 lv29.jpg

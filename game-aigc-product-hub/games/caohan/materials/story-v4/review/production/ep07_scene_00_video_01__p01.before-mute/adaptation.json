@@ -1,0 +1,4 @@
+{
+  "reason": "原剧本此节点只有引号，无人声，移除生成模型额外你好；画面及长度保持。",
+  "operation": "native_audio_volume_zero"
+}

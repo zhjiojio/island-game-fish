@@ -1,0 +1,5 @@
+interface:
+  display_name: "AGW 剧游 Y"
+  short_description: "独立运行幕间 Studio AI 剧游创作与能力共建工作台"
+  brand_color: "#D8B86D"
+  default_prompt: "使用 $agw-video-adaptation-y 打开独立的幕间 Studio 工作台并继续创作游戏。"
