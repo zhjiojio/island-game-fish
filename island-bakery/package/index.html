@@ -40,6 +40,15 @@
     height: 414px;
     transition: width 0.3s, height 0.3s;
   }
+  /* 竖屏：414×896 */
+  html:not(.landscape):not(.yoola-platform) {
+    width: 414px;
+    height: 896px;
+  }
+  html:not(.landscape):not(.yoola-platform) canvas {
+    width: 414px;
+    height: 896px;
+  }
   html.landscape canvas {
     width: 896px;
     height: 414px;
@@ -235,10 +244,10 @@ function toggleOrientation() {
 <script src="gameplay/play/selling.js?v=1"></script>
 <script src="gameplay/play/defense.js?v=1"></script>
 <script src="gameplay/play/vip-system.js?v=1"></script>
-<script src="gameplay/play/input.js?v=1"></script>
+<script src="gameplay/play/input.js?v=2"></script>
 <!-- 游戏渲染 -->
 <script src="gameplay/render/font-atlas.js?v=1"></script>
-<script src="gameplay/render/renderer.js?v=1"></script>
+<script src="gameplay/render/renderer.js?v=5"></script>
 <script src="gameplay/render/particle-system.js?v=1"></script>
 <script src="gameplay/render/ui-manager.js?v=1"></script>
 <!-- 游戏场景 -->
