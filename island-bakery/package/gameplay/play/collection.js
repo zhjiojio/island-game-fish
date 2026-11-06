@@ -1,7 +1,6 @@
 (function () {
   var AIGCUtils = window.AIGCUtils;
   var EventBus = AIGCUtils.EventBus || window.KwaiEvent;
-  var TREE_X = [265, 480, 695];
 
   AIGCUtils.Collection = {
     phase: "idle",
@@ -34,6 +33,32 @@
     spawnTimer: 0,
     roundDuration: 20000,
     caughtThisRound: 0,
+
+    // 获取当前设计空间下的树坐标（横竖屏自适应）
+    getTreeX: function () {
+      var W = AIGCUtils.Renderer ? AIGCUtils.Renderer.width : 960;
+      return [Math.round(W * 0.276), Math.round(W * 0.5), Math.round(W * 0.724)];
+    },
+
+    // 获取椰子飘落落地 Y（ground level）
+    getGroundY: function () {
+      var R = AIGCUtils.Renderer;
+      if (!R) return 430;
+      var H = R.height, ct = 64, ch = H - 136;
+      var groundRatio = R.portrait ? 0.72 : 0.64;
+      return ct + Math.round(ch * groundRatio) + 20;
+    },
+
+    // 获取椰子篮子目标坐标
+    getBasketPos: function () {
+      var R = AIGCUtils.Renderer;
+      if (!R) return { x: 810, y: 395 };
+      var W = R.width, H = R.height, ct = 64, ch = H - 136;
+      var groundRatio = R.portrait ? 0.72 : 0.64;
+      var groundY = ct + Math.round(ch * groundRatio);
+      var sandH = H - 72 - groundY;
+      return { x: Math.round(W * 0.84), y: groundY + Math.round(sandH * 0.14) + 20 };
+    },
 
     init: function () {
       this.resetFish();
@@ -96,6 +121,19 @@
       this.tension = 0.3;
       this.reelHeld = false;
       this.caughtFish = null;
+      // 初始化鱼钩和气泡位置到当前设计空间中心
+      var R = AIGCUtils.Renderer;
+      if (R) {
+        var W = R.width, H = R.height;
+        var ct = 64, ch = H - 136;
+        var seaTopRatio = R.portrait ? (0.25 + 0.12) : 0.21;  // 0.25 = uiH比例，0.12 = skyH比例
+        var seaTop = ct + Math.round(ch * seaTopRatio);
+        var seaH = (H - 72) - seaTop;
+        this.bubbleX = Math.round(W * 0.52);
+        this.bubbleY = seaTop + Math.round(seaH * 0.42);
+        this.hookX = this.bubbleX;
+        this.hookY = this.bubbleY;
+      }
       console.log("[Prototype] Cast charging started");
       return true;
     },
@@ -250,10 +288,12 @@
     },
 
     spawnCoconut: function (treeIndex, speed, forceGolden) {
+      var treeX = this.getTreeX();
+      var spawnY = 64 + Math.round((AIGCUtils.Renderer ? AIGCUtils.Renderer.height - 136 : 404) * 0.08) + Math.random() * 30;
       this.coconuts.push({
         treeIndex: treeIndex,
-        x: TREE_X[treeIndex] + (Math.random() - 0.5) * 120,
-        y: 165 + Math.random() * 35,
+        x: treeX[treeIndex] + (Math.random() - 0.5) * 120,
+        y: spawnY,
         vy: speed + Math.random() * 10,
         golden: forceGolden === true || forceGolden !== false && Math.random() < 0.2,
         caught: false,
@@ -386,8 +426,9 @@
         if (coconut.caught) {
           coconut.catchTimer += dt;
           var t = Math.min(1, coconut.catchTimer / 280);
-          coconut.x = coconut.catchStartX + (810 - coconut.catchStartX) * t;
-          coconut.y = coconut.catchStartY + (395 - coconut.catchStartY) * t - Math.sin(t * Math.PI) * 45;
+          var basket = this.getBasketPos();
+          coconut.x = coconut.catchStartX + (basket.x - coconut.catchStartX) * t;
+          coconut.y = coconut.catchStartY + (basket.y - coconut.catchStartY) * t - Math.sin(t * Math.PI) * 45;
           if (t >= 1) {
             this.basketVisual = Math.min(10, this.basketVisual + 1);
             this.coconuts.splice(j, 1);
@@ -398,8 +439,9 @@
         } else {
           coconut.y += coconut.vy * dt / 1000;
           coconut.rotation += dt / 600;
-          if (coconut.y > 430) {
-            coconut.y = 430;
+          var groundY = this.getGroundY();
+          if (coconut.y > groundY) {
+            coconut.y = groundY;
             coconut.cracked = true;
             coconut.crackTimer = 0;
             console.log("[Prototype] Coconut cracked on ground", coconut.golden);
@@ -409,7 +451,49 @@
       if (this.timer >= this.roundDuration) this.finishCoconutRound();
     },
 
+    // ── 横竖屏切换时，将鱼钩坐标从旧设计空间按比例重映射到新设计空间 ──
+    _lastPortrait: null,
+
+    // 获取某个方向的海域参数（设计宽度 / seaTop / seaH）
+    _seaParams: function (portrait) {
+      var W = portrait ? 540 : 960;
+      var H = portrait ? 960 : 540;
+      var ct = 64, ch = H - 136;
+      var seaTop, seaH;
+      if (portrait) {
+        var uiH = Math.round(ch * 0.25);  // 与 renderer.js drawFishing portrait 保持一致
+        var skyH = Math.round(ch * 0.12);
+        seaTop = ct + uiH + skyH;
+      } else {
+        seaTop = 150;
+      }
+      seaH = (H - 72) - seaTop;
+      return { W: W, seaTop: seaTop, seaH: seaH };
+    },
+
+    // 将 hookX/hookY/bubbleX/bubbleY 从 from 方向映射到 to 方向
+    _remapHook: function (fromPortrait, toPortrait) {
+      var from = this._seaParams(fromPortrait);
+      var to = this._seaParams(toPortrait);
+      var clamp = function (v) { return Math.max(0, Math.min(1, v)); };
+      var relHX = clamp(this.hookX / from.W);
+      var relHY = clamp((this.hookY - from.seaTop) / from.seaH);
+      var relBX = clamp(this.bubbleX / from.W);
+      var relBY = clamp((this.bubbleY - from.seaTop) / from.seaH);
+      this.hookX   = Math.round(relHX * to.W);
+      this.hookY   = Math.round(to.seaTop + relHY * to.seaH);
+      this.bubbleX = Math.round(relBX * to.W);
+      this.bubbleY = Math.round(to.seaTop + relBY * to.seaH);
+    },
+
     update: function (dt) {
+      // 检测横竖屏切换，按比例重映射鱼钩坐标
+      var R = AIGCUtils.Renderer;
+      var portrait = R ? !!R.portrait : false;
+      if (this._lastPortrait !== null && this._lastPortrait !== portrait) {
+        this._remapHook(this._lastPortrait, portrait);
+      }
+      this._lastPortrait = portrait;
       if (AIGCUtils.Game.currentArea === "fishing") this.updateFish(dt);
       if (AIGCUtils.Game.currentArea === "coconut") this.updateCoconuts(dt);
     }
