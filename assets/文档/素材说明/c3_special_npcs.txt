@@ -1,0 +1,7 @@
+task_file=/data/aime/9f651c2f-850f-4769-bfac-073dda4566fc/workspace/.image_generation_tasks/b45a868ec9a24c28bdfabd0a87119e8d.json
+size=2048x1152 ratio=16:9
+[attempt] model=GPT-Image-2.5-Sunburst attempt=1/5
+[persist] skill 目录不可写，URL 已落盘到工作目录：/data/aime/9f651c2f-850f-4769-bfac-073dda4566fc/workspace/.last_image_url
+engine=GPT-Image-2.5-Sunburst fallback=no
+url_file=/data/aime/9f651c2f-850f-4769-bfac-073dda4566fc/workspace/.last_image_url
+https://myflicker.corp.kuaishou.com/api/kpandora/v1/resource/proxy/2512573fec170b8c578cf58275747201aae3a67c051cf90bba342e3e6922fc47.png

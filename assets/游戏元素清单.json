@@ -1,0 +1,306 @@
+{
+  "version": 5,
+  "sprites": {
+    "grill_lv1": {
+      "file": "烤架-一级.png",
+      "gameId": "grill_lv1",
+      "zh": "一级烤架",
+      "path": "道具/烤架/烤架-一级.png",
+      "package": "sprites/grill_lv1.png"
+    },
+    "grill_lv2": {
+      "file": "烤架-二级.png",
+      "gameId": "grill_lv2",
+      "zh": "二级烤架",
+      "path": "道具/烤架/烤架-二级.png",
+      "package": "sprites/grill_lv2.png"
+    },
+    "grill_lv3": {
+      "file": "烤架-三级.png",
+      "gameId": "grill_lv3",
+      "zh": "三级烤架",
+      "path": "道具/烤架/烤架-三级.png",
+      "package": "sprites/grill_lv3.png"
+    },
+    "grill_lv4": {
+      "file": "烤架-四级.png",
+      "gameId": "grill_lv4",
+      "zh": "四级烤架",
+      "path": "道具/烤架/烤架-四级.png",
+      "package": "sprites/grill_lv4.png"
+    },
+    "coconut_green": {
+      "file": "椰子-青椰.png",
+      "gameId": "coconut_green",
+      "zh": "青椰原料",
+      "path": "道具/椰子/椰子-青椰.png",
+      "package": "sprites/coconut_green.png"
+    },
+    "coconut_golden": {
+      "file": "椰子-金椰.png",
+      "gameId": "coconut_golden",
+      "zh": "金椰原料",
+      "path": "道具/椰子/椰子-金椰.png",
+      "package": "sprites/coconut_golden.png"
+    },
+    "coconut_green_juiced": {
+      "file": "椰子-青椰-榨汁.png",
+      "gameId": "coconut_green_juiced",
+      "zh": "青椰榨汁",
+      "path": "道具/椰子/椰子-青椰-榨汁.png",
+      "package": "sprites/coconut_green_juiced.png"
+    },
+    "coconut_golden_juiced": {
+      "file": "椰子-金椰-榨汁.png",
+      "gameId": "coconut_golden_juiced",
+      "zh": "金椰榨汁",
+      "path": "道具/椰子/椰子-金椰-榨汁.png",
+      "package": "sprites/coconut_golden_juiced.png"
+    },
+    "customer_bear_blue": {
+      "file": "顾客-蓝熊.png",
+      "gameId": "customer_bear_blue",
+      "zh": "蓝熊",
+      "path": "角色/顾客/顾客-蓝熊.png",
+      "package": "sprites/customer_bear_blue.png"
+    },
+    "customer_bear_cream": {
+      "file": "顾客-米熊.png",
+      "gameId": "customer_bear_cream",
+      "zh": "米熊",
+      "path": "角色/顾客/顾客-米熊.png",
+      "package": "sprites/customer_bear_cream.png"
+    },
+    "customer_pig": {
+      "file": "顾客-粉猪.png",
+      "gameId": "customer_pig",
+      "zh": "粉猪",
+      "path": "角色/顾客/顾客-粉猪.png",
+      "package": "sprites/customer_pig.png"
+    },
+    "customer_penguin": {
+      "file": "顾客-企鹅.png",
+      "gameId": "customer_penguin",
+      "zh": "企鹅",
+      "path": "角色/顾客/顾客-企鹅.png",
+      "package": "sprites/customer_penguin.png"
+    },
+    "customer_fox": {
+      "file": "顾客-狐狸.png",
+      "gameId": "customer_fox",
+      "zh": "狐狸",
+      "path": "角色/顾客/顾客-狐狸.png",
+      "package": "sprites/customer_fox.png"
+    },
+    "npc_deer": {
+      "file": "特殊NPC-鹿.png",
+      "gameId": "npc_deer",
+      "zh": "鹿",
+      "path": "角色/特殊NPC/特殊NPC-鹿.png",
+      "package": "sprites/npc_deer.png"
+    },
+    "npc_badger_chef": {
+      "file": "特殊NPC-獾厨师.png",
+      "gameId": "npc_badger_chef",
+      "zh": "獾厨师",
+      "path": "角色/特殊NPC/特殊NPC-獾厨师.png",
+      "package": "sprites/npc_badger_chef.png"
+    },
+    "npc_squirrel": {
+      "file": "特殊NPC-松鼠.png",
+      "gameId": "npc_squirrel",
+      "zh": "松鼠",
+      "path": "角色/特殊NPC/特殊NPC-松鼠.png",
+      "package": "sprites/npc_squirrel.png"
+    },
+    "npc_turtle": {
+      "file": "特殊NPC-乌龟渔夫.png",
+      "gameId": "npc_turtle",
+      "zh": "乌龟渔夫",
+      "path": "角色/特殊NPC/特殊NPC-乌龟渔夫.png",
+      "package": "sprites/npc_turtle.png"
+    },
+    "hero_rabbit": {
+      "file": "主角-兔子烤鱼师.png",
+      "gameId": "hero_rabbit",
+      "zh": "正面",
+      "path": "角色/主角/主角-兔子烤鱼师.png",
+      "package": "sprites/hero_rabbit.png"
+    },
+    "hero_rabbit_side": {
+      "file": "主角-兔子-侧面.png",
+      "gameId": "hero_rabbit_side",
+      "zh": "侧面",
+      "path": "角色/主角/主角-兔子-侧面.png",
+      "package": "sprites/hero_rabbit_side.png"
+    },
+    "hero_rabbit_back": {
+      "file": "主角-兔子-背面.png",
+      "gameId": "hero_rabbit_back",
+      "zh": "背面",
+      "path": "角色/主角/主角-兔子-背面.png",
+      "package": "sprites/hero_rabbit_back.png"
+    },
+    "hero_rabbit_parts": {
+      "file": "主角-兔子-部件.png",
+      "gameId": "hero_rabbit_parts",
+      "zh": "部件",
+      "path": "角色/主角/主角-兔子-部件.png",
+      "package": "sprites/hero_rabbit_parts.png"
+    },
+    "crop_wheat": {
+      "file": "作物-小麦.png",
+      "gameId": "crop_wheat",
+      "zh": "小麦",
+      "path": "道具/作物/作物-小麦.png",
+      "package": "sprites/crop_wheat.png"
+    },
+    "crop_tomato": {
+      "file": "作物-番茄.png",
+      "gameId": "crop_tomato",
+      "zh": "番茄",
+      "path": "道具/作物/作物-番茄.png",
+      "package": "sprites/crop_tomato.png"
+    },
+    "crop_carrot": {
+      "file": "作物-胡萝卜.png",
+      "gameId": "crop_carrot",
+      "zh": "胡萝卜",
+      "path": "道具/作物/作物-胡萝卜.png",
+      "package": "sprites/crop_carrot.png"
+    },
+    "crop_strawberry": {
+      "file": "作物-草莓.png",
+      "gameId": "crop_strawberry",
+      "zh": "草莓",
+      "path": "道具/作物/作物-草莓.png",
+      "package": "sprites/crop_strawberry.png"
+    },
+    "weather_sunny": {
+      "file": "天气-晴天.png",
+      "gameId": "weather_sunny",
+      "zh": "晴天",
+      "path": "道具/天气/天气-晴天.png",
+      "package": "sprites/weather_sunny.png"
+    },
+    "weather_rain": {
+      "file": "天气-雨天.png",
+      "gameId": "weather_rain",
+      "zh": "雨天",
+      "path": "道具/天气/天气-雨天.png",
+      "package": "sprites/weather_rain.png"
+    },
+    "weather_storm": {
+      "file": "天气-暴风雨.png",
+      "gameId": "weather_storm",
+      "zh": "暴风雨",
+      "path": "道具/天气/天气-暴风雨.png",
+      "package": "sprites/weather_storm.png"
+    },
+    "weather_rainbow": {
+      "file": "天气-彩虹天.png",
+      "gameId": "weather_rainbow",
+      "zh": "彩虹天",
+      "path": "道具/天气/天气-彩虹天.png",
+      "package": "sprites/weather_rainbow.png"
+    },
+    "garden_plot_1": {
+      "file": "菜园-左上.png",
+      "gameId": "garden_plot_1",
+      "zh": "菜园左上",
+      "path": "道具/菜园/菜园-左上.png",
+      "package": "sprites/garden_plot_1.png"
+    },
+    "garden_plot_2": {
+      "file": "菜园-中上.png",
+      "gameId": "garden_plot_2",
+      "zh": "菜园中上",
+      "path": "道具/菜园/菜园-中上.png",
+      "package": "sprites/garden_plot_2.png"
+    },
+    "garden_plot_3": {
+      "file": "菜园-右上.png",
+      "gameId": "garden_plot_3",
+      "zh": "菜园右上",
+      "path": "道具/菜园/菜园-右上.png",
+      "package": "sprites/garden_plot_3.png"
+    },
+    "garden_plot_4": {
+      "file": "菜园-左下.png",
+      "gameId": "garden_plot_4",
+      "zh": "菜园左下",
+      "path": "道具/菜园/菜园-左下.png",
+      "package": "sprites/garden_plot_4.png"
+    },
+    "garden_plot_5": {
+      "file": "菜园-中下.png",
+      "gameId": "garden_plot_5",
+      "zh": "菜园中下",
+      "path": "道具/菜园/菜园-中下.png",
+      "package": "sprites/garden_plot_5.png"
+    },
+    "garden_plot_6": {
+      "file": "菜园-右下.png",
+      "gameId": "garden_plot_6",
+      "zh": "菜园右下",
+      "path": "道具/菜园/菜园-右下.png",
+      "package": "sprites/garden_plot_6.png"
+    },
+    "grilled_small": {
+      "file": "烤鱼成品-小海鱼.png",
+      "gameId": "grilled_small",
+      "speciesId": "small",
+      "path": "道具/烤鱼成品/烤鱼成品-小海鱼.png",
+      "package": "sprites/grilled_small.png"
+    },
+    "grilled_salmon": {
+      "file": "烤鱼成品-三文鱼.png",
+      "gameId": "grilled_salmon",
+      "speciesId": "salmon",
+      "path": "道具/烤鱼成品/烤鱼成品-三文鱼.png",
+      "package": "sprites/grilled_salmon.png"
+    },
+    "grilled_tuna": {
+      "file": "烤鱼成品-金枪鱼.png",
+      "gameId": "grilled_tuna",
+      "speciesId": "tuna",
+      "path": "道具/烤鱼成品/烤鱼成品-金枪鱼.png",
+      "package": "sprites/grilled_tuna.png"
+    },
+    "grilled_golden": {
+      "file": "烤鱼成品-金色传说.png",
+      "gameId": "grilled_golden",
+      "speciesId": "golden",
+      "path": "道具/烤鱼成品/烤鱼成品-金色传说.png",
+      "package": "sprites/grilled_golden.png"
+    },
+    "fish_raw_small": {
+      "file": "鱼种-小海鱼-生.png",
+      "gameId": "fish_raw_small",
+      "speciesId": "small",
+      "path": "图鉴/鱼种/鱼种-小海鱼-生.png",
+      "package": "sprites/fish_raw_small.png"
+    },
+    "fish_raw_salmon": {
+      "file": "鱼种-三文鱼-生.png",
+      "gameId": "fish_raw_salmon",
+      "speciesId": "salmon",
+      "path": "图鉴/鱼种/鱼种-三文鱼-生.png",
+      "package": "sprites/fish_raw_salmon.png"
+    },
+    "fish_raw_tuna": {
+      "file": "鱼种-金枪鱼-生.png",
+      "gameId": "fish_raw_tuna",
+      "speciesId": "tuna",
+      "path": "图鉴/鱼种/鱼种-金枪鱼-生.png",
+      "package": "sprites/fish_raw_tuna.png"
+    },
+    "fish_raw_golden": {
+      "file": "鱼种-金色传说-生.png",
+      "gameId": "fish_raw_golden",
+      "speciesId": "golden",
+      "path": "图鉴/鱼种/鱼种-金色传说-生.png",
+      "package": "sprites/fish_raw_golden.png"
+    }
+  }
+}

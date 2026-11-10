@@ -33,6 +33,7 @@
     spawnTimer: 0,
     roundDuration: 20000,
     caughtThisRound: 0,
+    fishingDrawerOpen: false,
 
     // 获取当前设计空间下的树坐标（横竖屏自适应）
     getTreeX: function () {
@@ -52,6 +53,10 @@
     // 获取椰子篮子目标坐标
     getBasketPos: function () {
       var R = AIGCUtils.Renderer;
+      if (R && R.coconutBasketAnchor) {
+        var anchor = R.coconutBasketAnchor();
+        if (anchor) return { x: anchor.x, y: anchor.y };
+      }
       if (!R) return { x: 810, y: 395 };
       var W = R.width, H = R.height, ct = 64, ch = H - 136;
       var groundRatio = R.portrait ? 0.72 : 0.64;
@@ -72,8 +77,24 @@
       this.reviveBusy = false;
     },
 
+    toggleFishingDrawer: function () {
+      if (this.phase !== "idle") return false;
+      this.fishingDrawerOpen = !this.fishingDrawerOpen;
+      console.log("[Prototype] Fishing gear drawer", this.fishingDrawerOpen);
+      return true;
+    },
+
+    isSpotUnlocked: function (spotId) {
+      return spotId === "shallow";
+    },
+
+    isBaitUnlocked: function (baitId) {
+      return baitId === "worm";
+    },
+
     resetFish: function () {
       this.phase = "idle";
+      this.fishingDrawerOpen = false;
       this.power = 0;
       this.direction = 1;
       this.timer = 0;
@@ -101,6 +122,10 @@
 
     selectBait: function (baitId) {
       if (this.phase !== "idle") return false;
+      if (baitId !== "worm" && !this.isBaitUnlocked(baitId)) {
+        AIGCUtils.Game.notify(baitId === "shrimp" ? "虾米饵待图鉴解锁" : "秘制饵待图鉴解锁");
+        return false;
+      }
       if (baitId !== "worm") {
         AIGCUtils.Game.notify(baitId === "shrimp" ? "完成10次钓鱼解锁虾米" : "5级解锁秘制鱼饵");
         return false;
@@ -182,7 +207,11 @@
     },
 
     chooseFish: function () {
-      var species = AIGCUtils.Recipes.rollFishSpecies({ spotId: this.spotId, perfect: this.perfectHook });
+      var species = AIGCUtils.Recipes.rollFishSpecies({
+        spotId: this.spotId,
+        baitId: this.baitId,
+        perfect: this.perfectHook
+      });
       return {
         speciesId: species,
         quality: this.perfectHook && this.accurateCast ? "fine" : "normal",
@@ -289,11 +318,28 @@
 
     spawnCoconut: function (treeIndex, speed, forceGolden) {
       var treeX = this.getTreeX();
-      var spawnY = 64 + Math.round((AIGCUtils.Renderer ? AIGCUtils.Renderer.height - 136 : 404) * 0.08) + Math.random() * 30;
+      var R = AIGCUtils.Renderer;
+      var crown = R && R.coconutCrownPoint ? R.coconutCrownPoint(treeIndex) : null;
+      var spawnY = 64 + Math.round((R ? R.height - 136 : 404) * 0.08) + Math.random() * 30;
+      var x = crown ? crown.x + (Math.random() - 0.5) * 24 : treeX[treeIndex] + (Math.random() - 0.5) * 120;
+      var y = crown ? crown.y + (Math.random() - 0.5) * 16 : spawnY;
+      var basket = crown && R.coconutBasketAnchor ? R.coconutBasketAnchor() : null;
+      var fallMs = 0;
+      if (basket) {
+        var dx = basket.x - x;
+        var dy = basket.y - y;
+        fallMs = Math.sqrt(dx * dx + dy * dy) / Math.max(40, speed) * 1000;
+      }
       this.coconuts.push({
         treeIndex: treeIndex,
-        x: treeX[treeIndex] + (Math.random() - 0.5) * 120,
-        y: spawnY,
+        x: x,
+        y: y,
+        fallFromX: x,
+        fallFromY: y,
+        fallToX: basket ? basket.x : null,
+        fallToY: basket ? basket.y : null,
+        fallT: 0,
+        fallMs: fallMs,
         vy: speed + Math.random() * 10,
         golden: forceGolden === true || forceGolden !== false && Math.random() < 0.2,
         caught: false,
@@ -436,6 +482,17 @@
         } else if (coconut.cracked) {
           coconut.crackTimer += dt;
           if (coconut.crackTimer >= 500) this.coconuts.splice(j, 1);
+        } else if (coconut.fallToX != null) {
+          coconut.fallT += dt;
+          coconut.rotation += dt / 600;
+          var fallT = Math.min(1, coconut.fallT / Math.max(1, coconut.fallMs));
+          coconut.x = coconut.fallFromX + (coconut.fallToX - coconut.fallFromX) * fallT;
+          coconut.y = coconut.fallFromY + (coconut.fallToY - coconut.fallFromY) * fallT;
+          if (fallT >= 1) {
+            coconut.cracked = true;
+            coconut.crackTimer = 0;
+            console.log("[CoconutArt] miss at basket", coconut.treeIndex, Math.round(coconut.x), Math.round(coconut.y));
+          }
         } else {
           coconut.y += coconut.vy * dt / 1000;
           coconut.rotation += dt / 600;

@@ -90,6 +90,11 @@
       var navY = H - 72;
 
       // ── 弹窗交互（W/H 居中，横竖屏通用）──
+      if (game.goFishingPrompt) {
+        if (inside(x, y, hw - 200, hh + 50, 180, 54)) game.confirmGoFishing();
+        if (inside(x, y, hw + 10, hh + 50, 180, 54)) game.closeGoFishingPrompt();
+        return;
+      }
       if (game.offlinePrompt) {
         if (inside(x, y, hw - 230, hh + 40, 230, 58)) game.unlockOffline();
         if (inside(x, y, hw + 20, hh + 40, 170, 58)) game.closeOfflinePrompt();
@@ -158,25 +163,18 @@
       }
       // ── 地图 ──
       if (game.currentArea === "map") {
-        if (portrait) {
-          var ct = 64, ch = H - 136;
-          var zoneH = Math.round(ch * 0.27);
-          var gap = Math.round(ch * 0.035);
-          var fishY = ct + gap, coconutY = ct + zoneH + gap * 2, shopY = ct + zoneH * 2 + gap * 3;
-          if (inside(x, y, hw - 140, H - 72 - 62, 280, 48)) { game.showOfflineEntry(); return; }
-          if (inside(x, y, 10, fishY, W - 20, zoneH)) game.navigate("fishing");
-          if (inside(x, y, 10, coconutY, W - 20, zoneH)) game.navigate("coconut");
-          if (inside(x, y, 10, shopY, W - 20, zoneH)) game.navigate("shop");
-        } else {
-          if (inside(x, y, 675, 405, 250, 48)) { game.showOfflineEntry(); return; }
-          if (inside(x, y, 80, 105, 330, 180)) game.navigate("fishing");
-          if (inside(x, y, 520, 90, 330, 180)) game.navigate("coconut");
-          if (inside(x, y, 330, 295, 330, 150)) game.navigate("shop");
-        }
+        var mapHit = portrait
+          ? AIGCUtils.MapZones.hitPortrait(x, y, W, H, AIGCUtils.GameState)
+          : AIGCUtils.MapZones.hitLandscape(x, y, AIGCUtils.GameState);
+        if (mapHit === "offline") { game.showOfflineEntry(); return; }
+        if (mapHit === "fishing") game.navigate("fishing");
+        if (mapHit === "coconut") game.navigate("coconut");
+        if (mapHit === "shop") game.navigate("shop");
         return;
       }
       // ── 钓鱼区 ──
       if (game.currentArea === "fishing") {
+        var skinGear = R.uiSkinChrome && R.artOn;
         if (portrait) {
           var ct2 = 64, cb2 = H - 72, ch2 = cb2 - ct2;
           var uiH = Math.round(ch2 * 0.33);
@@ -185,15 +183,29 @@
           // 离开按钮
           if (inside(x, y, W - 108, ct2 + 8, 98, 38)) { collection.leaveFishing(); game.navigate("map"); return; }
           if (collection.phase === "idle") {
-            // 钓点
+            if (inside(x, y, W - 112, ct2 + 54, 104, 34)) { collection.toggleFishingDrawer(); return; }
+            if (skinGear) {
+              if (collection.fishingDrawerOpen) {
+                var btnW3 = Math.round((W - 24) / 3);
+                var py = ct2 + 128;
+                if (inside(x, y, 8, py + 6, btnW3, 32)) collection.selectSpot("shallow");
+                if (collection.isSpotUnlocked("reef") && inside(x, y, 8 + btnW3 + 4, py + 6, btnW3, 32)) collection.selectSpot("reef");
+                if (collection.isSpotUnlocked("deep") && inside(x, y, 8 + (btnW3 + 4) * 2, py + 6, btnW3, 32)) collection.selectSpot("deep");
+                if (inside(x, y, 8, py + 42, btnW3, 32)) collection.selectBait("worm");
+                if (collection.isBaitUnlocked("shrimp") && inside(x, y, 8 + btnW3 + 4, py + 42, btnW3, 32)) collection.selectBait("shrimp");
+                if (collection.isBaitUnlocked("secret") && inside(x, y, 8 + (btnW3 + 4) * 2, py + 42, btnW3, 32)) collection.selectBait("secret");
+              }
+            } else {
             if (inside(x, y, 8, ct2 + 54, btnW, 34)) collection.selectSpot("shallow");
-            if (inside(x, y, 8 + btnW + 2, ct2 + 54, btnW, 34)) collection.selectSpot("reef");
-            if (inside(x, y, 8 + (btnW + 2) * 2, ct2 + 54, btnW, 34)) collection.selectSpot("deep");
-            // 鱼饵
             if (inside(x, y, 8, ct2 + 94, btnW, 34)) collection.selectBait("worm");
-            if (inside(x, y, 8 + btnW + 2, ct2 + 94, btnW, 34)) collection.selectBait("shrimp");
-            if (inside(x, y, 8 + (btnW + 2) * 2, ct2 + 94, btnW, 34)) collection.selectBait("secret");
-            // 抛竿按钮
+            if (inside(x, y, W - 112, ct2 + 54, 104, 74)) { collection.toggleFishingDrawer(); return; }
+            if (collection.fishingDrawerOpen) {
+              if (inside(x, y, 8 + btnW + 2, ct2 + 54, btnW, 34)) collection.selectSpot("reef");
+              if (inside(x, y, 8 + (btnW + 2) * 2, ct2 + 54, btnW, 34)) collection.selectSpot("deep");
+              if (inside(x, y, 8 + btnW + 2, ct2 + 94, btnW, 34)) collection.selectBait("shrimp");
+              if (inside(x, y, 8 + (btnW + 2) * 2, ct2 + 94, btnW, 34)) collection.selectBait("secret");
+            }
+            }
             if (inside(x, y, hw - 120, actY, 240, 50)) collection.startCharge();
             return;
           }
@@ -205,12 +217,28 @@
         } else {
           if (inside(x, y, 835, 72, 100, 42)) { collection.leaveFishing(); game.navigate("map"); return; }
           if (collection.phase === "idle") {
+            if (inside(x, y, 392, 376, 112, 38)) { collection.toggleFishingDrawer(); return; }
+            if (skinGear) {
+              if (collection.fishingDrawerOpen) {
+                var P = { col0: 508, col1: 618, col2: 728, spotY: 302, baitY: 336, bw: 96, bh: 30 };
+                if (inside(x, y, P.col0, P.spotY, P.bw, P.bh)) collection.selectSpot("shallow");
+                if (collection.isSpotUnlocked("reef") && inside(x, y, P.col1, P.spotY, P.bw, P.bh)) collection.selectSpot("reef");
+                if (collection.isSpotUnlocked("deep") && inside(x, y, P.col2, P.spotY, P.bw, P.bh)) collection.selectSpot("deep");
+                if (inside(x, y, P.col0, P.baitY, P.bw, P.bh)) collection.selectBait("worm");
+                if (collection.isBaitUnlocked("shrimp") && inside(x, y, P.col1, P.baitY, P.bw, P.bh)) collection.selectBait("shrimp");
+                if (collection.isBaitUnlocked("secret") && inside(x, y, P.col2, P.baitY, P.bw, P.bh)) collection.selectBait("secret");
+              }
+            } else {
             if (inside(x, y, 14, 376, 120, 38)) collection.selectSpot("shallow");
-            if (inside(x, y, 142, 376, 120, 38)) collection.selectSpot("reef");
-            if (inside(x, y, 270, 376, 120, 38)) collection.selectSpot("deep");
             if (inside(x, y, 14, 420, 120, 38)) collection.selectBait("worm");
-            if (inside(x, y, 142, 420, 120, 38)) collection.selectBait("shrimp");
-            if (inside(x, y, 270, 420, 120, 38)) collection.selectBait("secret");
+            if (inside(x, y, 392, 376, 100, 82)) { collection.toggleFishingDrawer(); return; }
+            if (collection.fishingDrawerOpen) {
+              if (inside(x, y, 142, 328, 120, 34)) collection.selectSpot("reef");
+              if (inside(x, y, 270, 328, 120, 34)) collection.selectSpot("deep");
+              if (inside(x, y, 142, 366, 120, 34)) collection.selectBait("shrimp");
+              if (inside(x, y, 270, 366, 120, 34)) collection.selectBait("secret");
+            }
+            }
             if (inside(x, y, 520, 405, 240, 50)) collection.startCharge();
             return;
           }

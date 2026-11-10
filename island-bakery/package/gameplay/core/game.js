@@ -19,6 +19,8 @@
     offlinePrompt: false,
     offlineDialog: false,
     offlineAdBusy: false,
+    goFishingPrompt: false,
+    goFishingSpeciesId: "small",
     suspended: false,
     checkpointTimeMs: 0,
     initialized: false,
@@ -89,7 +91,20 @@
         this.offlineDialog = true;
       } else if (!AIGCUtils.GameState.offlineUnlocked && AIGCUtils.GameState.playTimeMs >= 20 * 60 * 1000) {
         this.offlinePrompt = true;
+      } else if (AIGCUtils.GameState.playTimeMs < 20 * 60 * 1000) {
+        this.notify("离线采集暂未解锁");
+      } else if (AIGCUtils.GameState.offlineUnlocked) {
+        this.notify("离线采集已开启");
       }
+    },
+
+    closeGoFishingPrompt: function () {
+      this.goFishingPrompt = false;
+    },
+
+    confirmGoFishing: function () {
+      this.goFishingPrompt = false;
+      this.navigate("fishing");
     },
 
     closeOfflinePrompt: function () {
@@ -240,7 +255,8 @@
       var result = AIGCUtils.Baking.start(recipeId, options);
       if (!result.success) {
         if (result.message === "缺少这种鱼") {
-          this.notify("去钓鱼");
+          this.goFishingSpeciesId = options && options.speciesId ? AIGCUtils.Recipes.normalizeSpeciesId(options.speciesId) : "small";
+          this.goFishingPrompt = true;
         } else if (result.message === "缺椰子") {
           this.notify("缺椰子 去椰林区");
         } else {

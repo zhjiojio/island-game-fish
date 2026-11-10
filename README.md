@@ -10,6 +10,8 @@
 | `island-bakery/island-fish-shop-day1/` | 孤岛烤鱼店首日版本 | 仅用于历史对照 |
 | `whack-a-mole/package/` | 打地鼠游戏 | 浏览器本地预览，或导入快手小游戏开发工具 |
 | `game-aigc-product-hub/` | 多个游戏、素材与视频改编工具 | 每个子项目独立运行，先看对应目录的 README |
+| `docs/rubrics/` | 自主迭代 Rubrics（v1.1 / v1.2） | AI/人工迭代前阅读 |
+| `assets/` | 场景静帧拷贝与构图说明 | 见 `assets/ART_COMPOSITION_NOTES.md` |
 
 游戏运行所需的图片、音频、字体和脚本已随源码提交。依赖目录、压缩包、缓存和构建产物不提交，由开发者在本地安装或重新生成。
 

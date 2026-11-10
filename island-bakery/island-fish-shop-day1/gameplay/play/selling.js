@@ -22,9 +22,24 @@
 
     createCustomer: function (slot) {
       var stock = AIGCUtils.GameState.fishStock;
-      var orderRollOptions = { spotId: AIGCUtils.Collection.spotId, perfect: true };
+      var spotId = AIGCUtils.Collection.spotId;
+      var baitId = AIGCUtils.Collection.baitId;
+      var orderable = AIGCUtils.Recipes.getOrderableSpeciesIds(spotId, baitId);
+      var orderRollOptions = { spotId: spotId, baitId: baitId, perfect: true };
       var firstOrder = AIGCUtils.GameState.stats.totalOrders === 0 && slot === 0;
-      var speciesId = firstOrder && stock.length ? stock[Math.floor(Math.random() * stock.length)].speciesId : AIGCUtils.Recipes.rollFishSpecies(orderRollOptions);
+      var speciesId;
+      if (firstOrder && stock.length) {
+        var pickFrom = stock.filter(function (f) {
+          return orderable.indexOf(AIGCUtils.Recipes.normalizeSpeciesId(f.speciesId)) >= 0;
+        });
+        if (pickFrom.length) {
+          speciesId = pickFrom[Math.floor(Math.random() * pickFrom.length)].speciesId;
+        } else {
+          speciesId = AIGCUtils.Recipes.rollFishSpecies(orderRollOptions);
+        }
+      } else {
+        speciesId = AIGCUtils.Recipes.rollFishSpecies(orderRollOptions);
+      }
       var fish = firstOrder ? 1 : Math.floor(Math.random() * 3);
       var juice = firstOrder ? Math.floor(Math.random() * 2) : Math.floor(Math.random() * 3);
       if (!firstOrder && fish + juice === 0) juice = 1;

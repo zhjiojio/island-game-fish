@@ -144,7 +144,11 @@
     },
 
     chooseFish: function () {
-      var species = AIGCUtils.Recipes.rollFishSpecies({ spotId: this.spotId, perfect: this.perfectHook });
+      var species = AIGCUtils.Recipes.rollFishSpecies({
+        spotId: this.spotId,
+        baitId: this.baitId,
+        perfect: this.perfectHook
+      });
       return {
         speciesId: species,
         quality: this.perfectHook && this.accurateCast ? "fine" : "normal",

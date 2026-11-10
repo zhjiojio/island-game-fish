@@ -33,3 +33,8 @@ venv/
 
 # Local development certificates must not be shared publicly.
 game-aigc-product-hub/games/ks651896049489522351/package/localhost-key.pem
+
+# Local working artifacts (AI image-gen task logs, draft skins, bad-cutout backups).
+.image_generation_tasks/
+.new_ui_skin2/
+assets/_backup_bad_cutouts_20261108/

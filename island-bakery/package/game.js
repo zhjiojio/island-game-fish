@@ -67,6 +67,8 @@ require("./kwaiOpenApi/kwai-base.js"); // 生命周期
 
 // 游戏数据
 require("./gameplay/data/recipes.js");
+require("./gameplay/data/map-zones.js");
+require("./gameplay/data/asset-sprites.js");
 require("./gameplay/data/upgrades.js");
 // 游戏核心
 require("./gameplay/core/game-state.js");

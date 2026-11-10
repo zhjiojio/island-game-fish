@@ -42,10 +42,29 @@
     }) || AIGCUtils.FishSpecies[0];
   };
 
+  /**
+   * 当前钓点/鱼饵下「可被订单要求」的鱼种（与 rollFishSpecies 可出池一致，避免卡单）。
+   * MVP：仅浅滩 + 蚯蚓 → 小海鱼 + 三文鱼；礁石/深海 UI 未解锁时按浅滩处理。
+   */
+  AIGCUtils.Recipes.getOrderableSpeciesIds = function (spotId, baitId) {
+    var bait = baitId || "worm";
+    if (bait !== "worm") return ["small"];
+    var spot = spotId === "reef" || spotId === "deep" ? "shallow" : spotId;
+    if (spot === "shallow") return ["small", "salmon"];
+    return ["small"];
+  };
+
   AIGCUtils.Recipes.rollFishSpecies = function (options) {
     options = options || {};
-    if (options.spotId === "shallow" && !options.perfect) return "small";
-    if (options.spotId === "shallow" && options.perfect) return Math.random() < 0.65 ? "small" : "salmon";
+    var baitId = options.baitId || "worm";
+    if (baitId !== "worm") {
+      console.log("[Prototype] Fish roll fallback shallow worm-only pool", baitId);
+    }
+    var spotId = options.spotId === "reef" || options.spotId === "deep" ? "shallow" : options.spotId || "shallow";
+    if (spotId === "shallow") {
+      if (!options.perfect) return "small";
+      return Math.random() < 0.65 ? "small" : "salmon";
+    }
     var roll = Math.random();
     return roll < 0.55 ? "small" : roll < 0.85 ? "salmon" : roll < 0.98 ? "tuna" : "golden";
   };
