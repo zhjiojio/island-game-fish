@@ -89,21 +89,37 @@
       var portrait = R.portrait;
       var navY = H - 72;
 
-      // ── 弹窗交互（W/H 居中，横竖屏通用）──
+      // ── 弹窗交互：短框热区与 Renderer.getSettlementLayout 同源 ──
+      var hitShort = function (boxes, index) {
+        var box = boxes[index];
+        return box && inside(x, y, box.x, box.y, box.w, box.h);
+      };
       if (game.goFishingPrompt) {
-        if (inside(x, y, hw - 200, hh + 50, 180, 54)) game.confirmGoFishing();
-        if (inside(x, y, hw + 10, hh + 50, 180, 54)) game.closeGoFishingPrompt();
+        var goLayout = R.getSettlementLayout(hw, hh);
+        var goBoxes = R.getSettlementShortBoxes(goLayout, 2);
+        if (hitShort(goBoxes, 0)) game.confirmGoFishing();
+        if (hitShort(goBoxes, 1)) game.closeGoFishingPrompt();
         return;
       }
       if (game.offlinePrompt) {
-        if (inside(x, y, hw - 230, hh + 40, 230, 58)) game.unlockOffline();
-        if (inside(x, y, hw + 20, hh + 40, 170, 58)) game.closeOfflinePrompt();
+        var offLayout = R.getSettlementLayout(hw, hh);
+        var offBoxes = R.getSettlementShortBoxes(offLayout, 2);
+        if (hitShort(offBoxes, 0)) {
+          console.log("[Settlement] hit offline unlock", offBoxes[0]);
+          game.unlockOffline();
+        }
+        if (hitShort(offBoxes, 1)) game.closeOfflinePrompt();
         return;
       }
       if (game.offlineDialog) {
-        if (inside(x, y, hw - 295, hh + 40, 170, 58)) game.claimOffline(false);
-        if (inside(x, y, hw - 115, hh + 40, 230, 58)) game.claimOffline(true);
-        if (inside(x, y, hw + 125, hh + 40, 110, 58)) game.closeOfflineDialog();
+        var claimLayout = R.getSettlementLayout(hw, hh);
+        var claimBoxes = R.getSettlementShortBoxes(claimLayout, 3);
+        if (hitShort(claimBoxes, 0)) {
+          console.log("[Settlement] hit offline claim", claimBoxes[0]);
+          game.claimOffline(false);
+        }
+        if (hitShort(claimBoxes, 1)) game.claimOffline(true);
+        if (hitShort(claimBoxes, 2)) game.closeOfflineDialog();
         return;
       }
       if (game.building) {
@@ -116,39 +132,74 @@
       }
       if (game.energyPrompt) {
         var energy = AIGCUtils.Energy.get(game.energyPrompt);
-        if (energy.remainingAds !== 0 && inside(x, y, hw - 220, hh + 40, 230, 58)) game.restoreEnergyByAd();
-        if (inside(x, y, hw + 20, hh + 40, 180, 58) || energy.remainingAds === 0 && inside(x, y, hw - 90, hh + 40, 180, 58)) game.closeEnergyPrompt();
+        var energyLayout = R.getSettlementLayout(hw, hh);
+        var energyBoxes = R.getSettlementShortBoxes(
+          energyLayout,
+          energy.remainingAds === 0 ? 1 : 2
+        );
+        if (energy.remainingAds !== 0 && hitShort(energyBoxes, 0)) game.restoreEnergyByAd();
+        if (
+          (energy.remainingAds === 0 && hitShort(energyBoxes, 0)) ||
+          (energy.remainingAds !== 0 && hitShort(energyBoxes, 1))
+        ) {
+          game.closeEnergyPrompt();
+        }
         return;
       }
       if (collection.phase === "fishResult") {
-        var showGuide = AIGCUtils.GameState.fishCaught >= 3 && !AIGCUtils.GameState.tasks.coconut && !AIGCUtils.GameState.shopBuilt;
-        if (showGuide && inside(x, y, hw - 200, hh + 65, 180, 54)) {
+        var showGuide =
+          AIGCUtils.GameState.fishCaught >= 3 &&
+          !AIGCUtils.GameState.tasks.coconut &&
+          !AIGCUtils.GameState.shopBuilt;
+        var fishLayout = R.getSettlementLayout(hw, hh, "fish");
+        var fishBoxes = R.getSettlementShortBoxes(fishLayout, showGuide ? 2 : 1);
+        if (showGuide && hitShort(fishBoxes, 0)) {
           collection.acknowledgeFish();
           game.navigate("map");
-        } else if (showGuide && inside(x, y, hw + 10, hh + 65, 180, 54)) {
+        } else if (showGuide && hitShort(fishBoxes, 1)) {
           collection.acknowledgeFish();
-        } else if (!showGuide && inside(x, y, hw - 110, hh + 65, 220, 54)) {
+        } else if (!showGuide && hitShort(fishBoxes, 0)) {
           collection.acknowledgeFish();
         }
         return;
       }
       if (game.currentArea === "fishing" && collection.phase === "fishEscaped") {
-        if (portrait) {
-          var dlgH2 = 280, dlgY2 = Math.round(H / 2 - dlgH2 / 2);
-          if (inside(x, y, 30, dlgY2 + 180, 220, 52)) collection.reviveFish();
-          if (inside(x, y, 268, dlgY2 + 180, 170, 52)) collection.leaveFishing();
-        } else {
-          if (inside(x, y, 260, 335, 220, 54)) collection.reviveFish();
-          if (inside(x, y, 500, 335, 180, 54)) collection.leaveFishing();
-        }
+        var escapeLayout = R.getSettlementLayout(hw, hh, "fish");
+        var escapeBoxes = R.getSettlementShortBoxes(escapeLayout, 2);
+        if (hitShort(escapeBoxes, 0)) collection.reviveFish();
+        if (hitShort(escapeBoxes, 1)) collection.leaveFishing();
         return;
       }
       if (collection.phase === "coconutSummary" && game.currentArea === "coconut") {
-        if (AIGCUtils.GameState.shopBuilt && inside(x, y, hw - 200, hh + 50, 180, 54)) collection.startCoconutRound(1);
-        if (AIGCUtils.GameState.shopBuilt && inside(x, y, hw + 10, hh + 50, 180, 54)) game.navigate("map");
-        if (!AIGCUtils.GameState.shopBuilt && AIGCUtils.GameState.tasks.coconut && inside(x, y, hw + 10, hh + 50, 180, 54)) collection.startCoconutRound(1);
-        if (!AIGCUtils.GameState.tasks.coconut && inside(x, y, hw - 90, hh + 50, 180, 54)) collection.startCoconutRound(1);
-        if (!AIGCUtils.GameState.shopBuilt && AIGCUtils.GameState.tasks.coconut && inside(x, y, hw - 200, hh + 50, 180, 54)) game.beginBuild();
+        var settleLayout = R.getSettlementLayout(hw, hh);
+        var cocoBoxes;
+        if (AIGCUtils.GameState.shopBuilt) {
+          cocoBoxes = R.getSettlementShortBoxes(settleLayout, 2);
+          if (hitShort(cocoBoxes, 0)) {
+            console.log("[CoconutSummary] hit continue harvest", cocoBoxes[0]);
+            collection.startCoconutRound(1);
+          }
+          if (hitShort(cocoBoxes, 1)) {
+            console.log("[CoconutSummary] hit go map", cocoBoxes[1]);
+            game.navigate("map");
+          }
+        } else if (AIGCUtils.GameState.tasks.coconut) {
+          cocoBoxes = R.getSettlementShortBoxes(settleLayout, 2);
+          if (hitShort(cocoBoxes, 0)) {
+            console.log("[CoconutSummary] hit begin build", cocoBoxes[0]);
+            game.beginBuild();
+          }
+          if (hitShort(cocoBoxes, 1)) {
+            console.log("[CoconutSummary] hit another round", cocoBoxes[1]);
+            collection.startCoconutRound(1);
+          }
+        } else {
+          cocoBoxes = R.getSettlementShortBoxes(settleLayout, 1);
+          if (hitShort(cocoBoxes, 0)) {
+            console.log("[CoconutSummary] hit retry", cocoBoxes[0]);
+            collection.startCoconutRound(1);
+          }
+        }
         return;
       }
       if (game.showInventory) {

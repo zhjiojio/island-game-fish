@@ -148,8 +148,18 @@
     ],
     uiAssetCatalog: [
       { key: "btn-wood", path: "res/Image/ui/btn-wood.png" },
+      { key: "dialog-settlement-base", path: "res/Image/ui/dialog-settlement-base.png" },
+      { key: "dialog-settlement-title", path: "res/Image/ui/dialog-settlement-title.png" },
+      { key: "dialog-settlement-btn-long", path: "res/Image/ui/dialog-settlement-btn-long.png" },
+      { key: "dialog-settlement-btn-short", path: "res/Image/ui/dialog-settlement-btn-short.png" },
+      { key: "dialog-settlement-mid-coconut", path: "res/Image/ui/dialog-settlement-mid-coconut.png" },
+      { key: "dialog-settlement-mid-plate", path: "res/Image/ui/dialog-settlement-mid-plate.png" },
+      // 旧一体底图保留加载（非结算壳路径），避免其它引用瞬时空档
       { key: "dialog-fish-result", path: "res/Image/ui/dialog-fish-result.png" },
       { key: "dialog-coconut-summary", path: "res/Image/ui/dialog-coconut-summary.png" },
+      { key: "dialog-coconut-title", path: "res/Image/ui/dialog-coconut-title.png" },
+      { key: "dialog-coconut-btn-long", path: "res/Image/ui/dialog-coconut-btn-long.png" },
+      { key: "dialog-coconut-btn-short", path: "res/Image/ui/dialog-coconut-btn-short.png" },
       { key: "dialog-offline", path: "res/Image/ui/dialog-offline.png" },
       { key: "dialog-go-fishing", path: "res/Image/ui/dialog-go-fishing.png" },
       { key: "dialog-inventory", path: "res/Image/ui/dialog-inventory.png" },
@@ -186,10 +196,29 @@
     scenes: {},
     sceneAspect: {},
     sceneLoading: {},
+    sceneFailed: {},
     artOn: false,
     missingShopSprites: {},
     uiSkinChrome: false,
     artShiftX: 0,
+
+    // 当前区域优先等待的皮肤/底板 key（用于首屏门闸，避免闪旧矢量层）
+    preferredUiSkinKey: function (area) {
+      if (area === "fishing") return this.portrait ? "ui-skin-fish-port" : "ui-skin-fish-land";
+      if (area === "coconut") return this.portrait ? "ui-skin-coconut-port" : "ui-skin-coconut-land";
+      if (area === "shop") return this.portrait ? "ui-skin-shop-port" : "ui-skin-shop-land";
+      if (area === "build") return this.portrait ? "shop-port" : "build-land";
+      return this.portrait ? "ui-skin-map-port" : "ui-skin-map-land";
+    },
+
+    // 关键皮肤已就绪，或已失败（失败则放行以免永久卡在加载）
+    isCriticalArtReady: function (area) {
+      var key = this.preferredUiSkinKey(area || "map");
+      if (!key) return true;
+      if (this.scenes[key]) return true;
+      if (this.sceneFailed[key]) return true;
+      return false;
+    },
 
     loadScenes: function () {
       if (typeof KwaiMedia === "undefined" || !KwaiMedia.Image) {
@@ -197,9 +226,25 @@
         return;
       }
       var renderer = this;
-      var catalog = this.sceneCatalog.concat(this.uiSkinCatalog || []).concat(this.uiAssetCatalog || []);
+      // 优先：全屏皮肤 → UI 控件 → 场景 JPG，缩短旧矢量层窗口
+      var catalog = (this.uiSkinCatalog || [])
+        .concat(this.uiAssetCatalog || [])
+        .concat(this.sceneCatalog);
+      var preferKey =
+        AIGCUtils.Game && AIGCUtils.Game.currentArea
+          ? this.preferredUiSkinKey(AIGCUtils.Game.currentArea)
+          : this.preferredUiSkinKey("map");
+      if (preferKey) {
+        var preferItem = null;
+        var rest = [];
+        for (var ci = 0; ci < catalog.length; ci++) {
+          if (catalog[ci].key === preferKey && !preferItem) preferItem = catalog[ci];
+          else rest.push(catalog[ci]);
+        }
+        if (preferItem) catalog = [preferItem].concat(rest);
+      }
       catalog.forEach(function (item) {
-        if (renderer.scenes[item.key] || renderer.sceneLoading[item.key]) return;
+        if (renderer.scenes[item.key] || renderer.sceneLoading[item.key] || renderer.sceneFailed[item.key]) return;
         renderer.sceneLoading[item.key] = true;
         KwaiMedia.Image.load(item.path).then(function (image) {
           var gl = renderer.gl;
@@ -216,6 +261,7 @@
           console.log("[Prototype] Scene art ready", item.key, image.width, image.height);
         }).catch(function (error) {
           renderer.sceneLoading[item.key] = false;
+          renderer.sceneFailed[item.key] = true;
           console.error("[Prototype] Scene art failed", item.key, error);
         });
       });
@@ -312,6 +358,151 @@
 
     paintUiStretch: function (key, x, y, width, height) {
       return this.paintUiRegion(key, x, y, width, height, 0, 0, 1, 1);
+    },
+
+    // 全结算弹窗共用 layout；底图像素 1626x1182，绘制与点击都读这里
+    // variant: "fish" 时把长框下移，躲开中部圆盘（钓鱼区弹窗）
+    getSettlementLayout: function (hw, hh, variant) {
+      var dlgW = Math.min(520, Math.max(280, this.width - 40));
+      var dlgH = Math.round(dlgW * 1182 / 1626);
+      var dlgX = hw - Math.round(dlgW / 2);
+      var dlgY = hh - Math.round(dlgH / 2);
+      var longW = Math.round(dlgW * 0.72);
+      var longH = Math.round(longW * 91 / 760);
+      var shortW = Math.round(dlgW * 0.34);
+      var shortH = Math.round(shortW * 112 / 371);
+      var titleW = Math.round(dlgW * 586 / 1626);
+      var titleH = Math.round(titleW * 168 / 586);
+      var longX = dlgX + Math.round((dlgW - longW) / 2);
+      var isFish = variant === "fish";
+      // 默认长框偏上避开短框；钓鱼区长框再下移避开圆盘
+      var long1Y = dlgY + Math.round(dlgH * (isFish ? 0.58 : 0.48));
+      var long2Y = long1Y + longH + Math.round(dlgH * 0.014);
+      var shortGap = Math.round(dlgW * 0.04);
+      var shortPairW = shortW * 2 + shortGap;
+      var shortLeftX = dlgX + Math.round((dlgW - shortPairW) / 2);
+      var shortRightX = shortLeftX + shortW + shortGap;
+      var shortY = dlgY + Math.round(dlgH * (isFish ? 0.86 : 0.82));
+      var titleX = dlgX + Math.round((dlgW - titleW) / 2);
+      var titleY = dlgY - Math.round(titleH * 0.3);
+      var midW = Math.round(dlgW * 0.56);
+      var midH = Math.round(midW * 958 / 1608);
+      var midMaxH = Math.round(dlgH * 0.34);
+      if (midH > midMaxH) {
+        midH = midMaxH;
+        midW = Math.round(midH * 1608 / 958);
+      }
+      var midX = dlgX + Math.round((dlgW - midW) / 2);
+      var midY = dlgY + Math.round(dlgH * 0.14);
+      var plateW = Math.round(dlgW * 0.3);
+      var plateH = Math.round(plateW * 388 / 404);
+      var plateX = dlgX + Math.round((dlgW - plateW) / 2);
+      var plateY = dlgY + Math.round(dlgH * 0.16);
+      return {
+        dlgX: dlgX,
+        dlgY: dlgY,
+        dlgW: dlgW,
+        dlgH: dlgH,
+        title: { x: titleX, y: titleY, w: titleW, h: titleH },
+        mid: { x: midX, y: midY, w: midW, h: midH },
+        plate: { x: plateX, y: plateY, w: plateW, h: plateH },
+        long1: { x: longX, y: long1Y, w: longW, h: longH },
+        long2: { x: longX, y: long2Y, w: longW, h: longH },
+        shortL: { x: shortLeftX, y: shortY, w: shortW, h: shortH },
+        shortR: { x: shortRightX, y: shortY, w: shortW, h: shortH }
+      };
+    },
+
+    // 兼容旧椰子结算调用名
+    getCoconutSummaryLayout: function (hw, hh) {
+      return this.getSettlementLayout(hw, hh);
+    },
+
+    // 按短框数量生成 1/2/3 个水平居中的点击与绘制矩形
+    getSettlementShortBoxes: function (layout, count) {
+      var n = count || 0;
+      if (n <= 0) return [];
+      if (n === 1) {
+        return [
+          {
+            x: layout.dlgX + Math.round((layout.dlgW - layout.shortL.w) / 2),
+            y: layout.shortL.y,
+            w: layout.shortL.w,
+            h: layout.shortL.h
+          }
+        ];
+      }
+      if (n === 2) return [layout.shortL, layout.shortR];
+      var w = Math.round(layout.dlgW * 0.28);
+      var h = Math.round(w * 112 / 371);
+      var gap = Math.round(layout.dlgW * 0.03);
+      var total = w * 3 + gap * 2;
+      var x0 = layout.dlgX + Math.round((layout.dlgW - total) / 2);
+      var y = layout.shortL.y;
+      return [
+        { x: x0, y: y, w: w, h: h },
+        { x: x0 + w + gap, y: y, w: w, h: h },
+        { x: x0 + (w + gap) * 2, y: y, w: w, h: h }
+      ];
+    },
+
+    // 先画 UI 框图，成功后再把文案水平垂直居中填进框内；失败返回 false 由调用方兜底
+    paintLabeledUiFrame: function (frameKey, box, label, fontSize, ink) {
+      var painted = this.paintUiStretch(frameKey, box.x, box.y, box.w, box.h);
+      if (!painted) return false;
+      this.flush();
+      var size = fontSize || 17;
+      var color = ink || C.ink;
+      this.text(label, box.x + box.w / 2, this.textYInBox(label, size, box.y, box.h), size, color, "center");
+      return true;
+    },
+
+    // 蒙层 + 共用底图 + 顶部木牌标题
+    paintSettlementShell: function (layout, titleText) {
+      var W = this.width;
+      var H = this.height;
+      var hw = layout.dlgX + Math.round(layout.dlgW / 2);
+      this.rect(0, 0, W, H, C.overlay);
+      if (!this.paintUiStretch("dialog-settlement-base", layout.dlgX, layout.dlgY, layout.dlgW, layout.dlgH)) {
+        this.rect(layout.dlgX, layout.dlgY, layout.dlgW, layout.dlgH, C.cream);
+      }
+      if (!this.paintLabeledUiFrame("dialog-settlement-title", layout.title, titleText, 22, C.ink)) {
+        this.text(titleText, hw, layout.dlgY + 28, 26, C.ink, "center");
+      }
+      return layout;
+    },
+
+    // 长框文案列表（最多两行）
+    paintSettlementLongs: function (layout, labels) {
+      var list = labels || [];
+      var boxes = [layout.long1, layout.long2];
+      var hw = layout.dlgX + Math.round(layout.dlgW / 2);
+      var hasLong = !!this.scenes["dialog-settlement-btn-long"];
+      for (var i = 0; i < list.length && i < boxes.length; i++) {
+        if (!list[i]) continue;
+        if (hasLong) {
+          this.paintLabeledUiFrame("dialog-settlement-btn-long", boxes[i], list[i], 17, C.ink);
+        } else {
+          this.text(list[i], hw, boxes[i].y + Math.round(boxes[i].h / 2) - 8, 17, C.ink, "center");
+        }
+      }
+    },
+
+    // 短框按钮列表：[{ label, active }]
+    paintSettlementShorts: function (layout, buttons) {
+      var list = buttons || [];
+      var boxes = this.getSettlementShortBoxes(layout, list.length);
+      var hasShort = !!this.scenes["dialog-settlement-btn-short"];
+      for (var i = 0; i < list.length; i++) {
+        var box = boxes[i];
+        if (!box || !list[i] || !list[i].label) continue;
+        if (hasShort) {
+          this.paintLabeledUiFrame("dialog-settlement-btn-short", box, list[i].label, 16, C.ink);
+        } else {
+          this.button(box.x, box.y, box.w, box.h, list[i].label, !!list[i].active);
+        }
+      }
+      return boxes;
     },
 
     paintUiRegion: function (key, x, y, width, height, u0, v0, u1, v1) {
@@ -1195,7 +1386,7 @@
         if (collection.phase === "fishEscaped") {
           var escapedT = Math.min(1, collection.timer / 850);
           this.paintEscapedFish(hw + escapedT * 160, seaTop + seaH * 0.35 + escapedT * 55, 28);
-          this.drawFishEscapedDialog(hw, Math.round(H / 2), W, true);
+          this.drawFishEscapedDialog(hw, Math.round(H / 2));
           return;
         }
         var instr = "按住抛竿";
@@ -1277,7 +1468,7 @@
         if (collection.phase === "fishEscaped") {
           var escapedT = Math.min(1, collection.timer / 850);
           this.paintEscapedFish(470 + escapedT * 210, 300 + escapedT * 70, 34);
-          this.drawFishEscapedDialog(480, 270, 960, false);
+          this.drawFishEscapedDialog(480, 270);
           return;
         }
         var instruction = "按住抛竿";
@@ -2472,21 +2663,12 @@
 
     drawInventory: function () {
       var state = AIGCUtils.GameState;
-      var W = this.width, H = this.height;
-      var hw = Math.round(W / 2);
-      var hh = Math.round(H / 2);
-      var dlgW = this.portrait ? Math.min(W - 40, 480) : 520;
-      var dlgH = this.portrait ? 420 : 400;
-      var dlgX = hw - Math.round(dlgW / 2);
-      var dlgY = hh - Math.round(dlgH / 2);
-      this.rect(0, 0, W, H, C.overlay);
-      if (!this.paintUiStretch("dialog-inventory", dlgX, dlgY, dlgW, dlgH)) {
-        this.rect(dlgX, dlgY, dlgW, dlgH, C.cream);
-      }
-      var titleSize = 22;
-      this.text("背包", hw, this.textYInBox("背包", titleSize, dlgY + 8, 52), titleSize, C.ink, "center");
-      var lineSize = this.portrait ? 16 : 17;
-      var lineY0 = dlgY + 72;
+      var hw = Math.round(this.width / 2);
+      var hh = Math.round(this.height / 2);
+      var layout = this.getSettlementLayout(hw, hh);
+      this.paintSettlementShell(layout, "背包");
+      var lineSize = this.portrait ? 15 : 16;
+      var lineY0 = layout.dlgY + Math.round(layout.dlgH * 0.16);
       for (var i = 0; i < AIGCUtils.FishSpecies.length; i++) {
         var species = AIGCUtils.FishSpecies[i];
         var fine = state.fishStock.filter(function (fish) {
@@ -2495,196 +2677,189 @@
           return total + Math.max(1, fish.portions || 1);
         }, 0);
         var row = species.name + " " + state.getFishCount(species.id) + "  优质 " + fine;
-        var rowY = lineY0 + i * 36;
-        this.paintFishIcon(species.id, dlgX + 36, rowY + 14, 28);
-        this.text(row, dlgX + 58, this.textYInBox(row, lineSize, rowY, 32), lineSize, C.ink, "left");
+        var rowY = lineY0 + i * 30;
+        this.paintFishIcon(species.id, layout.dlgX + 40, rowY + 12, 26);
+        this.text(row, layout.dlgX + 60, this.textYInBox(row, lineSize, rowY, 28), lineSize, C.ink, "left");
       }
-      var matY = lineY0 + AIGCUtils.FishSpecies.length * 36 + 8;
-      this.text(
+      this.paintSettlementLongs(layout, [
         "椰子 " + state.ingredients.coconut + "    金椰子 " + state.ingredients.goldenCoconut,
-        hw,
-        this.textYInBox("椰子", lineSize, matY, 32),
-        lineSize,
-        C.ink,
-        "center"
-      );
+        "烤鱼 " + state.getProductCount("fish_grilled") + "    椰子汁 " + state.getProductCount("coconut_juice")
+      ]);
       this.text(
-        "烤鱼 " + state.getProductCount("fish_grilled") + "    椰子汁 " + state.getProductCount("coconut_juice"),
+        "轻触空白处关闭",
         hw,
-        this.textYInBox("烤鱼", lineSize, matY + 38, 32),
-        lineSize,
-        C.ink,
+        layout.dlgY + layout.dlgH - 22,
+        14,
+        [0.45, 0.42, 0.38, 0.9],
         "center"
       );
-      this.text("轻触空白处关闭", hw, dlgY + dlgH - 28, 14, [0.45, 0.42, 0.38, 0.9], "center");
     },
 
-    drawFishEscapedDialog: function (hw, hh, W, portrait) {
-      var H = this.height;
+    drawFishEscapedDialog: function (hw, hh) {
       var collection = AIGCUtils.Collection;
-      this.rect(0, 0, W, H, C.overlay);
-      if (!this.paintUiStretch("dialog-fish-result", hw - 200, hh - 150, 400, 300)) {
-        if (portrait) {
-          var dlgH = 280, dlgY = Math.round(H / 2 - dlgH / 2);
-          this.rect(20, dlgY, W - 40, dlgH, C.cream);
-          this.text("太晚了 鱼跑了", hw, dlgY + 40, 26, C.ink, "center");
-          this.text("可复活当前这次钓鱼", hw, dlgY + 90, 17, C.ink, "center");
-        } else {
-          this.rect(225, 125, 510, 285, C.cream);
-          this.text("太晚了 鱼跑了", hw, 165, 26, C.ink, "center");
-          this.text("可复活当前这次钓鱼", hw, 225, 17, C.ink, "center");
-        }
-      } else {
-        this.text("太晚了 鱼跑了", hw, hh - 118, 26, C.ink, "center");
-        this.text("看广告可复活本次", hw, hh + 18, 17, C.ink, "center");
+      var layout = this.getSettlementLayout(hw, hh, "fish");
+      this.paintSettlementShell(layout, "太晚了 鱼跑了");
+      if (this.paintUiStretch("dialog-settlement-mid-plate", layout.plate.x, layout.plate.y, layout.plate.w, layout.plate.h)) {
+        this.flush();
       }
-      if (portrait) {
-        var dlgY2 = Math.round(H / 2 - 140);
-        this.button(30, dlgY2 + 180, 220, 52, collection.reviveBusy ? "广告加载中" : "看广告复活", true);
-        this.button(268, dlgY2 + 180, 170, 52, "放弃重钓", false);
-      } else {
-        this.button(260, 335, 220, 54, collection.reviveBusy ? "广告加载中" : "看广告复活", true);
-        this.button(500, 335, 180, 54, "放弃重钓", false);
-      }
+      this.paintSettlementLongs(layout, ["看广告可复活本次", "可复活当前这次钓鱼"]);
+      this.paintSettlementShorts(layout, [
+        { label: collection.reviveBusy ? "广告加载中" : "看广告复活", active: true },
+        { label: "放弃重钓", active: false }
+      ]);
     },
 
     drawFishResult: function () {
       var fish = AIGCUtils.Collection.caughtFish;
       if (!fish) return;
-      var W = this.width, H = this.height;
-      var hw = Math.round(W / 2);
-      var hh = Math.round(H / 2);
+      var hw = Math.round(this.width / 2);
+      var hh = Math.round(this.height / 2);
+      var layout = this.getSettlementLayout(hw, hh, "fish");
       var species = AIGCUtils.Recipes.getFishSpecies(fish.speciesId);
-      this.rect(0, 0, W, H, C.overlay);
-      if (!this.paintUiStretch("dialog-fish-result", hw - 200, hh - 150, 400, 300)) {
-        this.rect(hw - 200, hh - 155, 400, 300, C.cream);
+      this.paintSettlementShell(layout, "钓到鱼了");
+      if (this.paintUiStretch("dialog-settlement-mid-plate", layout.plate.x, layout.plate.y, layout.plate.w, layout.plate.h)) {
+        this.flush();
       }
-      this.text("钓到鱼了", hw, hh - 118, 26, C.ink, "center");
-      this.fish(hw, hh - 48, 48, false, fish.speciesId);
-      this.text(species.name + " " + fish.weight.toFixed(1) + "kg", hw, hh - 2, 17, C.ink, "center");
-      this.text((fish.quality === "fine" ? "优质鱼获" : "普通鱼获") + " · " + fish.portions + "份鱼肉", hw, hh + 28, 17, fish.quality === "fine" ? C.orange : C.ink, "center");
-      var showGuide = AIGCUtils.GameState.fishCaught >= 3 && !AIGCUtils.GameState.tasks.coconut && !AIGCUtils.GameState.shopBuilt;
+      this.paintFishIcon(
+        fish.speciesId,
+        layout.plate.x + layout.plate.w / 2,
+        layout.plate.y + layout.plate.h / 2,
+        Math.round(layout.plate.w * 0.55)
+      );
+      var line1 = species.name + " " + fish.weight.toFixed(1) + "kg";
+      var line2 =
+        (fish.quality === "fine" ? "优质鱼获" : "普通鱼获") + " · " + fish.portions + "份鱼肉";
+      var showGuide =
+        AIGCUtils.GameState.fishCaught >= 3 &&
+        !AIGCUtils.GameState.tasks.coconut &&
+        !AIGCUtils.GameState.shopBuilt;
       if (showGuide) {
-        if (!this.scenes["dialog-fish-result"]) {
-          this.text("三条鱼已备好 去地图选椰林", hw, hh + 52, 17, C.green, "center");
-        }
-        this.button(hw - 200, hh + 65, 180, 54, "去地图", true);
-        this.button(hw + 10, hh + 65, 180, 54, "继续钓鱼", false);
+        this.paintSettlementLongs(layout, [line1, "三条鱼已备好 去地图选椰林"]);
+        this.paintSettlementShorts(layout, [
+          { label: "去地图", active: true },
+          { label: "继续钓鱼", active: false }
+        ]);
       } else {
-        this.button(hw - 110, hh + 65, 220, 54, "收进鱼篓", true);
+        this.paintSettlementLongs(layout, [line1, line2]);
+        this.paintSettlementShorts(layout, [{ label: "收进鱼篓", active: true }]);
       }
     },
 
     drawCoconutSummary: function () {
       var collection = AIGCUtils.Collection;
-      var W = this.width, H = this.height;
-      var hw = Math.round(W / 2);
-      var hh = Math.round(H / 2);
-      this.rect(0, 0, W, H, C.overlay);
-      if (!this.paintUiStretch("dialog-coconut-summary", hw - 240, hh - 165, 480, 300)) {
-        this.rect(hw - 240, hh - 165, 480, 300, C.cream);
-        this.coconut(hw, hh - 50, 35);
-      }
-      this.text("本轮采摘结束", hw, hh - 122, 26, C.ink, "center");
-      this.text("筐里共有 " + collection.caughtThisRound + " 个椰子", hw, hh - 6, 17, C.ink, "center");
+      var hw = Math.round(this.width / 2);
+      var hh = Math.round(this.height / 2);
+      var layout = this.getSettlementLayout(hw, hh);
+      var countLabel = "框里还有 " + collection.caughtThisRound + " 个椰子";
+      var promptLabel = "";
+      var shorts = [];
       if (AIGCUtils.GameState.shopBuilt) {
-        this.text("继续采摘 还是去地图逛逛", hw, hh + 22, 17, C.ink, "center");
-        this.button(hw - 200, hh + 50, 180, 54, "继续采摘", true);
-        this.button(hw + 10, hh + 50, 180, 54, "去地图逛逛", false);
+        promptLabel = "继续采摘 还是去地图逛逛";
+        shorts = [
+          { label: "继续采摘", active: true },
+          { label: "去地图逛逛", active: false }
+        ];
       } else if (AIGCUtils.GameState.tasks.coconut) {
-        this.text("现在建店 还是继续采摘", hw, hh + 22, 17, C.ink, "center");
-        this.button(hw - 200, hh + 50, 180, 54, "搭建烤鱼店", true);
-        this.button(hw + 10, hh + 50, 180, 54, "再采一轮", false);
+        promptLabel = "现在建店 还是继续采摘";
+        shorts = [
+          { label: "搭建烤鱼店", active: true },
+          { label: "再采一轮", active: false }
+        ];
       } else {
-        this.button(hw - 90, hh + 50, 180, 54, "再试一次", true);
+        shorts = [{ label: "再试一次", active: true }];
       }
+      this.paintSettlementShell(layout, "本轮采摘结束");
+      if (this.paintUiStretch("dialog-settlement-mid-coconut", layout.mid.x, layout.mid.y, layout.mid.w, layout.mid.h)) {
+        this.flush();
+      } else {
+        this.coconut(hw, layout.mid.y + Math.round(layout.mid.h / 2), 35);
+      }
+      this.paintSettlementLongs(layout, promptLabel ? [countLabel, promptLabel] : [countLabel]);
+      this.paintSettlementShorts(layout, shorts);
     },
 
     drawEnergyPrompt: function () {
       var type = AIGCUtils.Game.energyPrompt;
       var energy = AIGCUtils.Energy.get(type);
       var isFish = type === "fish";
-      var W = this.width, H = this.height;
-      var hw = Math.round(W / 2);
-      var hh = Math.round(H / 2);
-      this.rect(0, 0, W, H, C.overlay);
-      this.rect(hw - 245, hh - 185, 490, 320, C.cream);
-      this.text(isFish ? "钓鱼体力耗尽" : "采摘体力耗尽", hw, hh - 150, 30, C.ink, "center");
-      this.text(isFish ? "15分钟恢复1格体力" : "36分钟恢复1格体力", hw, hh - 90, 21, C.ink, "center");
-      this.text(isFish ? "看广告可补满 不限次数" : "看广告可补满 今日剩" + energy.remainingAds + "次", hw, hh - 45, 20, C.ink, "center");
+      var hw = Math.round(this.width / 2);
+      var hh = Math.round(this.height / 2);
+      var layout = this.getSettlementLayout(hw, hh);
+      this.paintSettlementShell(layout, isFish ? "钓鱼体力耗尽" : "采摘体力耗尽");
+      var line1 = isFish ? "15分钟恢复1格体力" : "36分钟恢复1格体力";
+      var line2 = isFish
+        ? "看广告可补满 不限次数"
+        : "看广告可补满 今日剩" + energy.remainingAds + "次";
       if (energy.remainingAds === 0) {
-        this.text("请等待恢复 或明天再来", hw, hh - 5, 18, C.orange, "center");
-        this.button(hw - 90, hh + 40, 180, 58, "稍后再来", true);
+        this.paintSettlementLongs(layout, [line1, "请等待恢复 或明天再来"]);
+        this.paintSettlementShorts(layout, [{ label: "稍后再来", active: true }]);
       } else {
-        var adLabel = isFish ? "看广告补满（不限次）" : "看广告补满（剩" + energy.remainingAds + "次）";
-        this.button(hw - 220, hh + 40, 230, 58, AIGCUtils.Game.energyAdBusy ? "广告加载中" : adLabel, true);
-        this.button(hw + 20, hh + 40, 180, 58, isFish ? "继续等待" : "放弃采摘", false);
+        var adLabel = isFish
+          ? AIGCUtils.Game.energyAdBusy
+            ? "广告加载中"
+            : "看广告补满（不限次）"
+          : AIGCUtils.Game.energyAdBusy
+            ? "广告加载中"
+            : "看广告补满（剩" + energy.remainingAds + "次）";
+        this.paintSettlementLongs(layout, [line1, line2]);
+        this.paintSettlementShorts(layout, [
+          { label: adLabel, active: true },
+          { label: isFish ? "继续等待" : "放弃采摘", active: false }
+        ]);
       }
     },
 
     drawGoFishingPrompt: function () {
-      var W = this.width, H = this.height;
-      var hw = Math.round(W / 2);
-      var hh = Math.round(H / 2);
-      var dlgW = 480;
-      var dlgH = 300;
-      var dlgX = hw - Math.round(dlgW / 2);
-      var dlgY = hh - Math.round(dlgH / 2);
+      var hw = Math.round(this.width / 2);
+      var hh = Math.round(this.height / 2);
+      var layout = this.getSettlementLayout(hw, hh);
       var speciesId = AIGCUtils.Game.goFishingSpeciesId || "small";
       var species = AIGCUtils.Recipes.getFishSpecies(speciesId);
-      this.rect(0, 0, W, H, C.overlay);
-      if (!this.paintUiStretch("dialog-go-fishing", dlgX, dlgY, dlgW, dlgH)) {
-        this.rect(dlgX, dlgY, dlgW, dlgH, C.cream);
-      }
-      var titleSize = 24;
-      this.text("厨房缺鱼", hw, dlgY + 36, titleSize, C.ink, "center");
-      this.paintFishIcon(speciesId, hw, dlgY + 118, 56);
-      this.text(
+      this.paintSettlementShell(layout, "厨房缺鱼");
+      this.paintFishIcon(speciesId, hw, layout.plate.y + Math.round(layout.plate.h / 2), 56);
+      this.paintSettlementLongs(layout, [
         "「" + species.name + "」原料不足",
-        hw,
-        dlgY + 168,
-        17,
-        C.ink,
-        "center"
-      );
-      this.text("去钓鱼区补充后再回来烤制？", hw, dlgY + 198, 15, [0.42, 0.38, 0.34, 0.95], "center");
-      this.button(hw - 200, dlgY + dlgH - 64, 180, 54, "去钓鱼", true);
-      this.button(hw + 20, dlgY + dlgH - 64, 180, 54, "先取消", false);
+        "去钓鱼区补充后再回来烤制？"
+      ]);
+      this.paintSettlementShorts(layout, [
+        { label: "去钓鱼", active: true },
+        { label: "先取消", active: false }
+      ]);
     },
 
     drawOfflinePrompt: function () {
-      var W = this.width, H = this.height;
-      var hw = Math.round(W / 2);
-      var hh = Math.round(H / 2);
-      this.rect(0, 0, W, H, C.overlay);
-      if (!this.paintUiStretch("dialog-offline", hw - 295, hh - 150, 590, 300)) {
-        this.rect(hw - 255, hh - 185, 510, 320, C.cream);
-      }
-      this.text("离线自动采集", hw, hh - 118, 26, C.ink, "center");
-      this.text("下线也能收鱼肉和椰子", hw, hh - 62, 17, C.ink, "center");
-      this.text("看1次广告 永久解锁", hw, hh - 18, 17, C.orange, "center");
-      this.button(hw - 230, hh + 40, 230, 58, AIGCUtils.Game.offlineAdBusy ? "广告加载中" : "看广告永久解锁", true);
-      this.button(hw + 20, hh + 40, 170, 58, "稍后再说", false);
+      var hw = Math.round(this.width / 2);
+      var hh = Math.round(this.height / 2);
+      var layout = this.getSettlementLayout(hw, hh);
+      this.paintSettlementShell(layout, "离线自动采集");
+      this.paintSettlementLongs(layout, ["下线也能收鱼肉和椰子", "看1次广告 永久解锁"]);
+      this.paintSettlementShorts(layout, [
+        {
+          label: AIGCUtils.Game.offlineAdBusy ? "广告加载中" : "看广告永久解锁",
+          active: true
+        },
+        { label: "稍后再说", active: false }
+      ]);
     },
 
     drawOfflineDialog: function () {
       var pending = AIGCUtils.GameState.pendingOffline;
-      var W = this.width, H = this.height;
-      var hw = Math.round(W / 2);
-      var hh = Math.round(H / 2);
-      this.rect(0, 0, W, H, C.overlay);
-      if (!this.paintUiStretch("dialog-offline", hw - 295, hh - 150, 590, 300)) {
-        this.rect(hw - 305, hh - 195, 610, 335, C.cream);
-        this.fish(hw - 150, hh - 40, 33, false, "small");
-        this.coconut(hw + 80, hh - 40, 27);
-      }
-      this.text("欢迎回来", hw, hh - 118, 26, C.ink, "center");
-      this.text("离线" + AIGCUtils.OfflineManager.getOfflineDuration() + " 采集到", hw, hh - 62, 17, C.ink, "center");
-      this.text("鱼肉 " + pending.fish + "份", hw - 40, hh - 8, 17, C.ink, "center");
-      this.text("椰子 " + pending.coconut + "个", hw + 90, hh - 8, 17, C.ink, "center");
-      this.button(hw - 295, hh + 40, 170, 58, "直接领取", true);
-      this.button(hw - 115, hh + 40, 230, 58, AIGCUtils.Game.offlineAdBusy ? "广告加载中" : "看广告双倍领取", false);
-      this.button(hw + 125, hh + 40, 110, 58, "稍后", false);
+      var hw = Math.round(this.width / 2);
+      var hh = Math.round(this.height / 2);
+      var layout = this.getSettlementLayout(hw, hh);
+      this.paintSettlementShell(layout, "欢迎回来");
+      this.paintSettlementLongs(layout, [
+        "离线" + AIGCUtils.OfflineManager.getOfflineDuration() + " 采集到",
+        "鱼肉 " + pending.fish + "份    椰子 " + pending.coconut + "个"
+      ]);
+      this.paintSettlementShorts(layout, [
+        { label: "直接领取", active: true },
+        {
+          label: AIGCUtils.Game.offlineAdBusy ? "广告加载中" : "看广告双倍领取",
+          active: false
+        },
+        { label: "稍后", active: false }
+      ]);
     },
 
     draw: function () {
@@ -2696,8 +2871,24 @@
       gl.clear(gl.COLOR_BUFFER_BIT);
       this.vertices = [];
       this.boundTexture = this.fontTexture || this.ensureDummyTexture();
-      if (!this.sceneCatalog.length || (!this.scenes["map-land"] && !this.sceneLoading["map-land"])) this.loadScenes();
+      this.loadScenes();
       var area = AIGCUtils.Game.currentArea;
+      // 关键皮肤未就绪时不画矢量兜底，避免刷新闪旧图层
+      if (!this.isCriticalArtReady(area)) {
+        this.artOn = false;
+        this.uiSkinChrome = false;
+        var waitKey = this.preferredUiSkinKey(area);
+        if (this._loggedWaitKey !== waitKey) {
+          this._loggedWaitKey = waitKey;
+          console.log("[Prototype] Waiting critical art", waitKey);
+        }
+        if (this.fontReady) {
+          this.text("加载中", Math.round(this.width / 2), Math.round(this.height / 2) - 10, 22, C.cream, "center");
+        }
+        this.flush();
+        return;
+      }
+      this._loggedWaitKey = null;
       this.artShiftX = 0;
       // 椰林只让被点中的那棵树绕树根摆，底板不再跟着平移。
       if (area === "fishing" && AIGCUtils.Collection.phase === "reeling") {
@@ -2713,7 +2904,10 @@
       this.uiSkinChrome = !!(backdrop && backdrop.indexOf("ui-skin-") === 0);
       if (this.uiSkinChrome) {
         this.artOn = !!(backdrop && this.paintScene(backdrop, shift, 0, this.width, this.height, 0, 0));
-        if (this.artOn) console.log("[Prototype] UI skin backdrop", backdrop);
+        if (this.artOn && this._loggedBackdrop !== backdrop) {
+          this._loggedBackdrop = backdrop;
+          console.log("[Prototype] UI skin backdrop", backdrop);
+        }
       } else {
         this.artOn = !!(backdrop && this.paintScene(backdrop, shift - 14, contentTop, this.width + 28, contentHeight, 0, 0));
       }
