@@ -41,9 +41,13 @@
       return [Math.round(W * 0.276), Math.round(W * 0.5), Math.round(W * 0.724)];
     },
 
-    // 获取椰子飘落落地 Y（ground level）
+    // 获取椰子落地 Y：对齐该布局树根那一条地面（横竖屏同一套）
     getGroundY: function () {
       var R = AIGCUtils.Renderer;
+      if (R && R.coconutArtLayout) {
+        var rootY = R.coconutArtLayout().rootY;
+        if (rootY) return rootY;
+      }
       if (!R) return 430;
       var H = R.height, ct = 64, ch = H - 136;
       var groundRatio = R.portrait ? 0.72 : 0.64;
@@ -111,8 +115,10 @@
 
     selectSpot: function (spotId) {
       if (this.phase !== "idle") return false;
-      if (spotId !== "shallow") {
-        AIGCUtils.Game.notify(spotId === "reef" ? "铁竿解锁礁石" : "金竿解锁深海");
+      if (!this.isSpotUnlocked(spotId)) {
+        var spotHint = spotId === "reef" ? "需要铁竿" : "需要金竿";
+        AIGCUtils.Game.notify(spotHint);
+        console.log("[Prototype] Fishing spot locked", spotId, spotHint);
         return false;
       }
       this.spotId = spotId;
@@ -122,12 +128,10 @@
 
     selectBait: function (baitId) {
       if (this.phase !== "idle") return false;
-      if (baitId !== "worm" && !this.isBaitUnlocked(baitId)) {
-        AIGCUtils.Game.notify(baitId === "shrimp" ? "虾米饵待图鉴解锁" : "秘制饵待图鉴解锁");
-        return false;
-      }
-      if (baitId !== "worm") {
-        AIGCUtils.Game.notify(baitId === "shrimp" ? "完成10次钓鱼解锁虾米" : "5级解锁秘制鱼饵");
+      if (!this.isBaitUnlocked(baitId)) {
+        var baitHint = baitId === "shrimp" ? "完成 10 次钓鱼" : "5 级解锁";
+        AIGCUtils.Game.notify(baitHint);
+        console.log("[Prototype] Bait locked", baitId, baitHint);
         return false;
       }
       this.baitId = baitId;
@@ -137,6 +141,10 @@
 
     startCharge: function () {
       if (this.phase !== "idle") return false;
+      if (this.fishingDrawerOpen) {
+        this.fishingDrawerOpen = false;
+        console.log("[Prototype] Fishing gear drawer closed for cast");
+      }
       if (!AIGCUtils.Energy.consume("fish")) return AIGCUtils.Game.showEnergyPrompt("fish");
       this.phase = "charging";
       this.power = 0;
@@ -302,7 +310,11 @@
       if (this.phase !== "coconutRound" || this.treeCooldowns[index] > 0) return false;
       this.treeShakes[index] = 360;
       this.treeCooldowns[index] = 700;
-      this.spawnCoconut(index, 82 + Math.max(0, this.waveIndex - 1) * 9);
+      // 每棵树每次掉落 1～3 颗，从该树树冠掉出
+      var speed = 82 + Math.max(0, this.waveIndex - 1) * 9;
+      var dropCount = 1 + Math.floor(Math.random() * 3);
+      for (var d = 0; d < dropCount; d++) this.spawnCoconut(index, speed);
+      console.log("[Prototype] shakeTree drop", index, "count", dropCount, "speed", speed);
       return true;
     },
 
@@ -323,23 +335,10 @@
       var spawnY = 64 + Math.round((R ? R.height - 136 : 404) * 0.08) + Math.random() * 30;
       var x = crown ? crown.x + (Math.random() - 0.5) * 24 : treeX[treeIndex] + (Math.random() - 0.5) * 120;
       var y = crown ? crown.y + (Math.random() - 0.5) * 16 : spawnY;
-      var basket = crown && R.coconutBasketAnchor ? R.coconutBasketAnchor() : null;
-      var fallMs = 0;
-      if (basket) {
-        var dx = basket.x - x;
-        var dy = basket.y - y;
-        fallMs = Math.sqrt(dx * dx + dy * dy) / Math.max(40, speed) * 1000;
-      }
       this.coconuts.push({
         treeIndex: treeIndex,
         x: x,
         y: y,
-        fallFromX: x,
-        fallFromY: y,
-        fallToX: basket ? basket.x : null,
-        fallToY: basket ? basket.y : null,
-        fallT: 0,
-        fallMs: fallMs,
         vy: speed + Math.random() * 10,
         golden: forceGolden === true || forceGolden !== false && Math.random() < 0.2,
         caught: false,
@@ -362,11 +361,13 @@
           coconut.catchTimer = 0;
           coconut.catchStartX = coconut.x;
           coconut.catchStartY = coconut.y;
+          // 点中椰子：所属树立刻停晃，避免同一次点击再把 treeShakes 设回去
+          if (coconut.treeIndex !== undefined) this.treeShakes[coconut.treeIndex] = 0;
           this.caughtThisRound++;
           var type = coconut.golden ? "goldenCoconut" : "coconut";
           AIGCUtils.GameState.collect(type, 1);
           EventBus.emit("collection:collected", { type: type, amount: 1 });
-          console.log("[Prototype] Coconut caught", type, this.caughtThisRound);
+          console.log("[Prototype] Coconut caught", type, this.caughtThisRound, "stopShake", coconut.treeIndex);
           return true;
         }
       }
@@ -394,6 +395,11 @@
     },
 
     updateFish: function (dt) {
+      var busy = ["idle", "charging", "waiting", "bite", "reeling", "fishCaught", "fishEscaped", "fishResult"];
+      if (busy.indexOf(this.phase) < 0) {
+        console.log("[Prototype] Fishing phase reset", this.phase);
+        this.resetFish();
+      }
       if (this.phase === "charging") {
         this.power += this.direction * dt / 900;
         if (this.power >= 1) {
@@ -482,18 +488,8 @@
         } else if (coconut.cracked) {
           coconut.crackTimer += dt;
           if (coconut.crackTimer >= 500) this.coconuts.splice(j, 1);
-        } else if (coconut.fallToX != null) {
-          coconut.fallT += dt;
-          coconut.rotation += dt / 600;
-          var fallT = Math.min(1, coconut.fallT / Math.max(1, coconut.fallMs));
-          coconut.x = coconut.fallFromX + (coconut.fallToX - coconut.fallFromX) * fallT;
-          coconut.y = coconut.fallFromY + (coconut.fallToY - coconut.fallFromY) * fallT;
-          if (fallT >= 1) {
-            coconut.cracked = true;
-            coconut.crackTimer = 0;
-            console.log("[CoconutArt] miss at basket", coconut.treeIndex, Math.round(coconut.x), Math.round(coconut.y));
-          }
         } else {
+          // 匀速下落：初速约 82+波次*9+小随机，横坐标留在掉出时的位置
           coconut.y += coconut.vy * dt / 1000;
           coconut.rotation += dt / 600;
           var groundY = this.getGroundY();
@@ -501,7 +497,7 @@
             coconut.y = groundY;
             coconut.cracked = true;
             coconut.crackTimer = 0;
-            console.log("[Prototype] Coconut cracked on ground", coconut.golden);
+            console.log("[Prototype] Coconut cracked on root ground", coconut.golden, Math.round(coconut.x), Math.round(coconut.y), "rootY", groundY);
           }
         }
       }

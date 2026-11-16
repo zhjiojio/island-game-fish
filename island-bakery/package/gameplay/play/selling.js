@@ -113,15 +113,22 @@
         this.moneyEffects[effectIndex].timer += dt;
         if (this.moneyEffects[effectIndex].timer >= 1100) this.moneyEffects.splice(effectIndex, 1);
       }
+      // 与 Renderer.customerLeaveWalkMs + customerLeaveFadeMs 对齐：走到右边界再淡出完毕后换人
+      var leaveTotalMs = 1100;
       for (var i = 0; i < this.queue.length; i++) {
         var customer = this.queue[i];
         customer.arrival = Math.max(0, customer.arrival - dt * 0.7);
         if (!customer.leaving) continue;
         customer.leaveTimer += dt;
-      if (customer.leaveTimer >= 1100) {
-        this.queue[i] = this.createCustomer(i);
-        console.log("[Prototype] Customer replaced with currently obtainable order", this.queue[i].order.speciesId);
-      }
+        if (customer.leaveTimer >= leaveTotalMs) {
+          this.queue[i] = this.createCustomer(i);
+          console.log(
+            "[Prototype] Customer replaced after edge fade",
+            "leaveTimer=" + Math.round(customer.leaveTimer),
+            "order",
+            this.queue[i].order.speciesId
+          );
+        }
       }
     },
 

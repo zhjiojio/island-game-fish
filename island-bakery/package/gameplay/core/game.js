@@ -19,8 +19,13 @@
     offlinePrompt: false,
     offlineDialog: false,
     offlineAdBusy: false,
+    offlineUnlockMs: 15 * 60 * 1000,
+    // 仅本局内存：稍后再说关掉后，本次游玩不再自动弹；下次进入且未解锁会再弹。
+    offlinePromptDismissed: false,
     goFishingPrompt: false,
     goFishingSpeciesId: "small",
+    // 横屏地图点带锁路牌 / 未建烤鱼店时弹出「暂未解锁」
+    mapLockedPrompt: false,
     suspended: false,
     checkpointTimeMs: 0,
     initialized: false,
@@ -67,6 +72,9 @@
       this.lastTime = AIGCUtils._now();
       AIGCUtils.OfflineManager.calculateEarnings();
       this.offlineDialog = !!AIGCUtils.GameState.pendingOffline;
+      if (this.offlineAdBusy || this.energyAdBusy) return;
+      this.offlinePromptDismissed = false;
+      this.tryArmOfflinePrompt();
     },
 
     advancePlayTime: function (dt) {
@@ -77,21 +85,45 @@
         this.checkpointTimeMs = 0;
         AIGCUtils.OfflineManager.updateOnlineTime();
       }
-      if (state.playTimeMs < 20 * 60 * 1000) return;
+      if (state.playTimeMs < this.offlineUnlockMs) return;
       state.stage = Math.max(3, state.stage || 1);
-      if (state.offlinePromptSeen) return;
-      state.offlinePromptSeen = true;
+      this.tryArmOfflinePrompt();
+    },
+
+    tryArmOfflinePrompt: function () {
+      var state = AIGCUtils.GameState;
+      if (state.playTimeMs < this.offlineUnlockMs) return;
+      if (!this._offlineThresholdLogged) {
+        this._offlineThresholdLogged = true;
+        console.log(
+          "[Prototype] Offline threshold",
+          "playTimeMs=" + state.playTimeMs,
+          "offlinePromptSeen=" + state.offlinePromptSeen,
+          "offlineUnlocked=" + state.offlineUnlocked,
+          "offlinePrompt=" + this.offlinePrompt
+        );
+      }
+      if (state.offlineUnlocked) return;
+      if (this.offlinePromptDismissed) return;
+      if (this.offlinePrompt) return;
+      if (this.offlineDialog || this.energyPrompt || this.mapLockedPrompt) return;
+      // 弹窗是否看过只在 drawOfflinePrompt 真正画出来之后写入。
+      // 这里不能提前落盘，否则存档里的 offlinePromptSeen 会在没画出时挡住下一次。
       this.offlinePrompt = true;
-      state.save();
-      console.log("[Prototype] Offline unlock reached", state.playTimeMs);
+      if (!this._offlinePlayTimeSaved) {
+        this._offlinePlayTimeSaved = true;
+        state.save();
+      }
+      console.log("[Prototype] Offline prompt armed", "playTimeMs=" + state.playTimeMs);
     },
 
     showOfflineEntry: function () {
       if (AIGCUtils.GameState.pendingOffline) {
         this.offlineDialog = true;
-      } else if (!AIGCUtils.GameState.offlineUnlocked && AIGCUtils.GameState.playTimeMs >= 20 * 60 * 1000) {
+      } else if (!AIGCUtils.GameState.offlineUnlocked && AIGCUtils.GameState.playTimeMs >= this.offlineUnlockMs) {
+        this.offlinePromptDismissed = false;
         this.offlinePrompt = true;
-      } else if (AIGCUtils.GameState.playTimeMs < 20 * 60 * 1000) {
+      } else if (AIGCUtils.GameState.playTimeMs < this.offlineUnlockMs) {
         this.notify("离线采集暂未解锁");
       } else if (AIGCUtils.GameState.offlineUnlocked) {
         this.notify("离线采集已开启");
@@ -102,6 +134,16 @@
       this.goFishingPrompt = false;
     },
 
+    showMapLockedPrompt: function () {
+      this.mapLockedPrompt = true;
+      console.log("[Prototype] Map locked prompt open");
+    },
+
+    closeMapLockedPrompt: function () {
+      this.mapLockedPrompt = false;
+      console.log("[Prototype] Map locked prompt closed");
+    },
+
     confirmGoFishing: function () {
       this.goFishingPrompt = false;
       this.navigate("fishing");
@@ -109,10 +151,16 @@
 
     closeOfflinePrompt: function () {
       this.offlinePrompt = false;
+      this.offlinePromptDismissed = true;
+      console.log(
+        "[Prototype] Offline prompt dismissed",
+        "playTimeMs=" + AIGCUtils.GameState.playTimeMs,
+        "offlineUnlocked=" + AIGCUtils.GameState.offlineUnlocked
+      );
     },
 
     unlockOffline: function () {
-      if (this.offlineAdBusy || AIGCUtils.GameState.offlineUnlocked || AIGCUtils.GameState.playTimeMs < 20 * 60 * 1000) return false;
+      if (this.offlineAdBusy || AIGCUtils.GameState.offlineUnlocked || AIGCUtils.GameState.playTimeMs < this.offlineUnlockMs) return false;
       var game = this;
       this.offlineAdBusy = true;
       KwaiAd.showRewarded(function () {
@@ -126,7 +174,9 @@
       }, function () {
         game.offlineAdBusy = false;
         game.offlinePrompt = false;
+        game.offlinePromptDismissed = true;
         game.notify("未解锁 可稍后再试");
+        console.log("[Prototype] Offline unlock ad cancelled", AIGCUtils.GameState.playTimeMs);
       });
       return true;
     },
@@ -246,6 +296,13 @@
       if (area === "coconut" && AIGCUtils.GameState.shopBuilt && AIGCUtils.Collection.phase === "coconutSummary") {
         AIGCUtils.Collection.phase = "idle";
       }
+      if (area === "fishing") {
+        var fishingBusy = ["idle", "charging", "waiting", "bite", "reeling", "fishCaught", "fishEscaped", "fishResult"];
+        if (fishingBusy.indexOf(AIGCUtils.Collection.phase) < 0) {
+          console.log("[Prototype] Fishing phase reset on enter", AIGCUtils.Collection.phase);
+          AIGCUtils.Collection.resetFish();
+        }
+      }
       this.currentArea = area;
       return true;
     },
@@ -313,7 +370,7 @@
       this.advancePlayTime(Math.max(0, dt));
       dt = Math.min(50, Math.max(0, dt));
       if (this.messageTimer > 0) this.messageTimer -= dt;
-      if (this.offlinePrompt || this.offlineDialog || this.energyPrompt) return;
+      if (this.offlinePrompt || this.offlineDialog || this.energyPrompt || this.mapLockedPrompt) return;
       if (this.building) {
         this.buildAnim += dt;
         return;

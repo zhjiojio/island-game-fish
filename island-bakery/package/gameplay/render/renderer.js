@@ -47,7 +47,7 @@
       var gl = window.canvas.getContext("webgl");
       if (!gl) return false;
       var vertexSource = "attribute vec2 a_position;attribute vec4 a_color;attribute vec2 a_uv;attribute float a_textured;varying vec4 v_color;varying vec2 v_uv;varying float v_textured;void main(){gl_Position=vec4(a_position,0.0,1.0);v_color=a_color;v_uv=a_uv;v_textured=a_textured;}";
-      var fragmentSource = "precision mediump float;uniform sampler2D u_font;varying vec4 v_color;varying vec2 v_uv;varying float v_textured;void main(){vec4 color=v_color;if(v_textured>1.5){vec4 tex=texture2D(u_font,v_uv);color=vec4(tex.rgb*v_color.rgb,tex.a*v_color.a);}else if(v_textured>0.5){color.a*=texture2D(u_font,v_uv).a;}gl_FragColor=color;}";
+      var fragmentSource = "precision mediump float;uniform sampler2D u_font;varying vec4 v_color;varying vec2 v_uv;varying float v_textured;void main(){vec4 color=v_color;if(v_textured>2.5){vec4 tex=texture2D(u_font,v_uv);float g=dot(tex.rgb,vec3(0.299,0.587,0.114));color=vec4(vec3(g)*v_color.rgb,tex.a*v_color.a);}else if(v_textured>1.5){vec4 tex=texture2D(u_font,v_uv);color=vec4(tex.rgb*v_color.rgb,tex.a*v_color.a);}else if(v_textured>0.5){color.a*=texture2D(u_font,v_uv).a;}gl_FragColor=color;}";
       function compile(type, source) {
         var shader = gl.createShader(type);
         gl.shaderSource(shader, source);
@@ -147,6 +147,8 @@
       { key: "ui-skin-map-port", path: "res/Image/ui/ui-skin-map-port.png" }
     ],
     uiAssetCatalog: [
+      // 竖屏共用顶栏木板条（自 fish-port 抠出，背景透明）
+      { key: "ui-hud-chrome-port", path: "res/Image/ui/ui-hud-chrome-port.png?v=3" },
       { key: "btn-wood", path: "res/Image/ui/btn-wood.png" },
       { key: "dialog-settlement-base", path: "res/Image/ui/dialog-settlement-base.png" },
       { key: "dialog-settlement-title", path: "res/Image/ui/dialog-settlement-title.png" },
@@ -189,10 +191,11 @@
       { key: "grilled_golden", path: "res/Image/sprites/grilled_golden.png" },
       { key: "coconut_green", path: "res/Image/sprites/coconut_green.png" },
       { key: "coconut_green_juiced", path: "res/Image/sprites/coconut_green_juiced.png" },
-      { key: "coconut_tree", path: "res/Image/sprites/coconut_tree.png?v=2" }
+      { key: "coconut_tree", path: "res/Image/sprites/coconut_tree.png?v=2" },
+      { key: "coconut_basket_big", path: "res/Image/sprites/coconut_basket_big.png" },
+      { key: "coconut_basket_small", path: "res/Image/sprites/coconut_basket_small.png" }
     ],
 
-    fishingGearPanelLand: { x: 498, y: 296, w: 448, h: 96, rowSpotY: 302, rowBaitY: 336, col0: 508, col1: 618, col2: 728, btnW: 96, btnH: 30 },
     scenes: {},
     sceneAspect: {},
     sceneLoading: {},
@@ -234,14 +237,29 @@
         AIGCUtils.Game && AIGCUtils.Game.currentArea
           ? this.preferredUiSkinKey(AIGCUtils.Game.currentArea)
           : this.preferredUiSkinKey("map");
-      if (preferKey) {
-        var preferItem = null;
+      // 竖屏共用透明木板条：与当前区皮肤一并优先加载
+      var preferKeys = [];
+      if (preferKey) preferKeys.push(preferKey);
+      if (this.portrait && preferKeys.indexOf("ui-hud-chrome-port") < 0) {
+        preferKeys.push("ui-hud-chrome-port");
+      }
+      if (preferKeys.length) {
+        var picked = [];
         var rest = [];
-        for (var ci = 0; ci < catalog.length; ci++) {
-          if (catalog[ci].key === preferKey && !preferItem) preferItem = catalog[ci];
-          else rest.push(catalog[ci]);
+        var seen = {};
+        for (var pk = 0; pk < preferKeys.length; pk++) {
+          for (var ci = 0; ci < catalog.length; ci++) {
+            if (catalog[ci].key === preferKeys[pk] && !seen[catalog[ci].key]) {
+              picked.push(catalog[ci]);
+              seen[catalog[ci].key] = true;
+              break;
+            }
+          }
         }
-        if (preferItem) catalog = [preferItem].concat(rest);
+        for (var cj = 0; cj < catalog.length; cj++) {
+          if (!seen[catalog[cj].key]) rest.push(catalog[cj]);
+        }
+        catalog = picked.concat(rest);
       }
       catalog.forEach(function (item) {
         if (renderer.scenes[item.key] || renderer.sceneLoading[item.key] || renderer.sceneFailed[item.key]) return;
@@ -458,32 +476,49 @@
     },
 
     // 蒙层 + 共用底图 + 顶部木牌标题
-    paintSettlementShell: function (layout, titleText) {
+    // options.titleBold / titleInk 只给需要加粗深棕标题的弹窗，缺省仍是原来的墨色单次绘制
+    paintSettlementShell: function (layout, titleText, options) {
       var W = this.width;
       var H = this.height;
       var hw = layout.dlgX + Math.round(layout.dlgW / 2);
+      var opts = options || {};
+      var titleInk = opts.titleInk || C.ink;
       this.rect(0, 0, W, H, C.overlay);
       if (!this.paintUiStretch("dialog-settlement-base", layout.dlgX, layout.dlgY, layout.dlgW, layout.dlgH)) {
         this.rect(layout.dlgX, layout.dlgY, layout.dlgW, layout.dlgH, C.cream);
       }
-      if (!this.paintLabeledUiFrame("dialog-settlement-title", layout.title, titleText, 22, C.ink)) {
-        this.text(titleText, hw, layout.dlgY + 28, 26, C.ink, "center");
+      if (opts.titleBold) {
+        var titleBox = layout.title;
+        var titleSize = opts.titleSize || 22;
+        if (this.paintUiStretch("dialog-settlement-title", titleBox.x, titleBox.y, titleBox.w, titleBox.h)) {
+          this.flush();
+          var titleY = this.textYInBox(titleText, titleSize, titleBox.y, titleBox.h);
+          var titleX = titleBox.x + titleBox.w / 2;
+          this.text(titleText, titleX - 0.6, titleY, titleSize, titleInk, "center");
+          this.text(titleText, titleX + 0.6, titleY, titleSize, titleInk, "center");
+        } else {
+          this.text(titleText, hw - 0.6, layout.dlgY + 28, 26, titleInk, "center");
+          this.text(titleText, hw + 0.6, layout.dlgY + 28, 26, titleInk, "center");
+        }
+      } else if (!this.paintLabeledUiFrame("dialog-settlement-title", layout.title, titleText, 22, titleInk)) {
+        this.text(titleText, hw, layout.dlgY + 28, 26, titleInk, "center");
       }
       return layout;
     },
 
-    // 长框文案列表（最多两行）
-    paintSettlementLongs: function (layout, labels) {
+    // 长框文案列表（最多两行）。fontSize 缺省 17，避免其它弹窗字号变化
+    paintSettlementLongs: function (layout, labels, fontSize) {
       var list = labels || [];
       var boxes = [layout.long1, layout.long2];
       var hw = layout.dlgX + Math.round(layout.dlgW / 2);
+      var size = fontSize || 17;
       var hasLong = !!this.scenes["dialog-settlement-btn-long"];
       for (var i = 0; i < list.length && i < boxes.length; i++) {
         if (!list[i]) continue;
         if (hasLong) {
-          this.paintLabeledUiFrame("dialog-settlement-btn-long", boxes[i], list[i], 17, C.ink);
+          this.paintLabeledUiFrame("dialog-settlement-btn-long", boxes[i], list[i], size, C.ink);
         } else {
-          this.text(list[i], hw, boxes[i].y + Math.round(boxes[i].h / 2) - 8, 17, C.ink, "center");
+          this.text(list[i], hw, boxes[i].y + Math.round(boxes[i].h / 2) - 8, size, C.ink, "center");
         }
       }
     },
@@ -505,21 +540,22 @@
       return boxes;
     },
 
-    paintUiRegion: function (key, x, y, width, height, u0, v0, u1, v1) {
+    paintUiRegion: function (key, x, y, width, height, u0, v0, u1, v1, tint, mode) {
       var texture = this.scenes[key];
       if (!texture) return false;
       this.useTexture(texture);
-      var white = [1, 1, 1, 1];
-      this.vertex(x, y, white, u0, v0, 2);
-      this.vertex(x + width, y, white, u1, v0, 2);
-      this.vertex(x, y + height, white, u0, v1, 2);
-      this.vertex(x + width, y, white, u1, v0, 2);
-      this.vertex(x + width, y + height, white, u1, v1, 2);
-      this.vertex(x, y + height, white, u0, v1, 2);
+      var color = tint || [1, 1, 1, 1];
+      var textured = mode || 2;
+      this.vertex(x, y, color, u0, v0, textured);
+      this.vertex(x + width, y, color, u1, v0, textured);
+      this.vertex(x, y + height, color, u0, v1, textured);
+      this.vertex(x + width, y, color, u1, v0, textured);
+      this.vertex(x + width, y + height, color, u1, v1, textured);
+      this.vertex(x, y + height, color, u0, v1, textured);
       return true;
     },
 
-    drawOrderRow: function (cx, centerY, lineSize, label, iconSize, drawIcon) {
+    drawOrderRow: function (cx, centerY, lineSize, label, iconSize, drawIcon, ink) {
       var tw = this.textWidth(label, lineSize);
       var gap = 5;
       var total = iconSize + gap + tw;
@@ -527,7 +563,7 @@
       var iconCx = left + Math.round(iconSize / 2);
       var textX = left + iconSize + gap;
       drawIcon(iconCx, centerY);
-      this.text(label, textX, this.textYInBox(label, lineSize, centerY - lineSize, lineSize + 6), lineSize, C.ink, "left");
+      this.text(label, textX, this.textYInBox(label, lineSize, centerY - lineSize, lineSize + 6), lineSize, ink || C.ink, "left");
     },
 
     paintCoconutIcon: function (variant, cx, cy, size) {
@@ -591,92 +627,148 @@
       return this.paintFishIcon(id, cx, cy, size);
     },
 
-    drawFishingGearSlot: function (x, y, w, h, label, active, unlocked) {
-      if (!unlocked) {
-        if (!this.uiSkinChrome) {
-          this.rect(x, y, w, h, [0.52, 0.48, 0.42, 0.88]);
-          this.text("锁", x + w / 2, y + h / 2 - 10, 15, C.cream, "center");
-          this.text(label, x + w / 2, y + h / 2 + 8, 12, [0.95, 0.92, 0.86, 0.95], "center");
-        }
-        return;
-      }
-      this.button(x, y, w, h, label, active);
+    // 横屏钓具：入口在左下「地图」木牌上方，展开面板与点击共用这一套矩形
+    fishingGearLandLayout: function () {
+      var navTop = this.height - 72;
+      var entryH = 40;
+      var entry = { x: 20, y: navTop - entryH - 8, w: 188, h: entryH };
+      var btnW = 112;
+      var btnH = 34;
+      var gap = 6;
+      var labelH = 20;
+      var label = { x: entry.x, y: entry.y - 4 - labelH, w: entry.w, h: labelH };
+      var baitY = label.y - gap - btnH;
+      var spotY = baitY - gap - btnH;
+      var x0 = entry.x;
+      function col(index) { return x0 + index * (btnW + gap); }
+      return {
+        entry: entry,
+        label: label,
+        spots: [
+          { id: "shallow", label: "浅滩·木竿", x: col(0), y: spotY, w: btnW, h: btnH },
+          { id: "reef", label: "礁石·铁竿", x: col(1), y: spotY, w: btnW, h: btnH },
+          { id: "deep", label: "深海·金竿", x: col(2), y: spotY, w: btnW, h: btnH }
+        ],
+        baits: [
+          { id: "worm", label: "蚯蚓", x: col(0), y: baitY, w: btnW, h: btnH },
+          { id: "shrimp", label: "虾米", x: col(1), y: baitY, w: btnW, h: btnH },
+          { id: "secret", label: "秘制", x: col(2), y: baitY, w: btnW, h: btnH }
+        ]
+      };
     },
 
-    drawFishingGearDrawerPanel: function (collection, portrait) {
-      var fs = 13;
-      var inkMuted = [0.48, 0.44, 0.4, 0.88];
-      if (portrait) {
-        var W = this.width;
-        var ct = 64;
-        var btnW = Math.round((W - 24) / 3);
-        var px = 8;
-        var py = ct + 128;
-        var ph = 76;
-        if (!this.uiSkinChrome) this.rect(px, py, W - 16, ph, [0.98, 0.94, 0.86, 0.94]);
-        this.text("当前 · 浅滩 · 蚯蚓", Math.round(W / 2), py - 10, fs, inkMuted, "center");
-        this.drawFishingGearSlot(px, py + 6, btnW, 32, "浅滩", collection.spotId === "shallow", true);
-        this.drawFishingGearSlot(px + btnW + 4, py + 6, btnW, 32, "礁石", collection.spotId === "reef", collection.isSpotUnlocked("reef"));
-        this.drawFishingGearSlot(px + (btnW + 4) * 2, py + 6, btnW, 32, "深海", collection.spotId === "deep", collection.isSpotUnlocked("deep"));
-        this.drawFishingGearSlot(px, py + 42, btnW, 32, "蚯蚓", collection.baitId === "worm", true);
-        this.drawFishingGearSlot(px + btnW + 4, py + 42, btnW, 32, "虾米", collection.baitId === "shrimp", collection.isBaitUnlocked("shrimp"));
-        this.drawFishingGearSlot(px + (btnW + 4) * 2, py + 42, btnW, 32, "秘制", collection.baitId === "secret", collection.isBaitUnlocked("secret"));
-        if (!collection.isSpotUnlocked("reef")) {
-          this.text("礁石·铁竿（剧情解锁）", px + btnW + 4 + btnW / 2, py + 22, 11, inkMuted, "center");
-        }
-        if (!collection.isBaitUnlocked("shrimp")) {
-          this.text("虾米（图鉴解锁）", px + btnW + 4 + btnW / 2, py + 58, 11, inkMuted, "center");
-        }
+    // 竖屏钓具：入口贴在左下「地图」木牌正上方。宽度与横屏入口相同，才能放下整句文案。点击与绘制共用。
+    fishingGearPortLayout: function () {
+      var mapX = 20;
+      var navTop = this.height - 72;
+      var entryH = 40;
+      var entry = { x: mapX, y: navTop - entryH - 8, w: 188, h: entryH };
+      var btnW = 112;
+      var btnH = 34;
+      var gap = 6;
+      var labelH = 20;
+      var label = { x: entry.x, y: entry.y - 4 - labelH, w: entry.w, h: labelH };
+      var baitY = label.y - gap - btnH;
+      var spotY = baitY - gap - btnH;
+      var x0 = entry.x;
+      function col(index) { return x0 + index * (btnW + gap); }
+      return {
+        entry: entry,
+        label: label,
+        spots: [
+          { id: "shallow", label: "浅滩·木竿", x: col(0), y: spotY, w: btnW, h: btnH },
+          { id: "reef", label: "礁石·铁竿", x: col(1), y: spotY, w: btnW, h: btnH },
+          { id: "deep", label: "深海·金竿", x: col(2), y: spotY, w: btnW, h: btnH }
+        ],
+        baits: [
+          { id: "worm", label: "蚯蚓", x: col(0), y: baitY, w: btnW, h: btnH },
+          { id: "shrimp", label: "虾米", x: col(1), y: baitY, w: btnW, h: btnH },
+          { id: "secret", label: "秘制", x: col(2), y: baitY, w: btnW, h: btnH }
+        ]
+      };
+    },
+
+    // 竖屏待机抛竿按钮让到入口右侧，避免盖住「选取钓鱼区和鱼饵」
+    fishingCastPortButton: function () {
+      var entry = this.fishingGearPortLayout().entry;
+      return { x: entry.x + entry.w + 8, y: this.height - 72 - 58, w: 240, h: 50 };
+    },
+
+    drawWoodSign: function (x, y, w, h, label, active, locked, fontSize) {
+      if (!locked) {
+        this.button(x, y, w, h, label, !!active, fontSize);
         return;
       }
-      var P = this.fishingGearPanelLand;
-      if (!this.uiSkinChrome) this.rect(P.x, P.y, P.w, P.h, [0.98, 0.94, 0.86, 0.92]);
-      this.text("当前 · 浅滩 · 蚯蚓", P.x + P.w / 2, P.y - 8, fs, inkMuted, "center");
-      this.drawFishingGearSlot(P.col0, P.rowSpotY, P.btnW, P.btnH, "浅滩", collection.spotId === "shallow", true);
-      this.drawFishingGearSlot(P.col1, P.rowSpotY, P.btnW, P.btnH, "礁石", collection.spotId === "reef", collection.isSpotUnlocked("reef"));
-      this.drawFishingGearSlot(P.col2, P.rowSpotY, P.btnW, P.btnH, "深海", collection.spotId === "deep", collection.isSpotUnlocked("deep"));
-      this.drawFishingGearSlot(P.col0, P.rowBaitY, P.btnW, P.btnH, "蚯蚓", collection.baitId === "worm", true);
-      this.drawFishingGearSlot(P.col1, P.rowBaitY, P.btnW, P.btnH, "虾米", collection.baitId === "shrimp", collection.isBaitUnlocked("shrimp"));
-      this.drawFishingGearSlot(P.col2, P.rowBaitY, P.btnW, P.btnH, "秘制", collection.baitId === "secret", collection.isBaitUnlocked("secret"));
+      var fs = fontSize || (this.uiSkinChrome ? 16 : 17);
+      var gray = [0.46, 0.44, 0.4, 1];
+      if (this.scenes["btn-wood"]) {
+        var pad = this.uiSkinChrome ? Math.max(2, Math.min(6, Math.round(Math.min(w, h) * 0.1))) : 0;
+        this.paintUiRegion(
+          "btn-wood",
+          x + pad,
+          y + pad,
+          Math.max(1, w - pad * 2),
+          Math.max(1, h - pad * 2),
+          0, 0, 1, 1,
+          [0.78, 0.78, 0.78, 1],
+          3
+        );
+        this.flush();
+      } else {
+        this.rect(x, y, w, h, [0.55, 0.52, 0.46, 0.92]);
+      }
+      this.text(label, x + w / 2, this.textYInBox(label, fs, y, h), fs, gray, "center");
+    },
+
+    drawFishingGearSigns: function (collection, layout) {
+      var entry = layout.entry;
+      this.drawWoodSign(
+        entry.x,
+        entry.y,
+        entry.w,
+        entry.h,
+        collection.fishingDrawerOpen ? "收回" : "选取钓鱼区和鱼饵",
+        true,
+        false,
+        layout.entryFont
+      );
+      if (!collection.fishingDrawerOpen) return;
+      var spotName = collection.spotId === "reef" ? "礁石" : collection.spotId === "deep" ? "深海" : "浅滩";
+      var baitName = collection.baitId === "shrimp" ? "虾米" : collection.baitId === "secret" ? "秘制" : "蚯蚓";
+      var current = "当前：" + spotName + " " + baitName;
+      var label = layout.label;
+      this.text(current, label.x + label.w / 2, this.textYInBox(current, 15, label.y, label.h), 15, [0.29, 0.18, 0.11, 1], "center");
+      var i;
+      for (i = 0; i < layout.spots.length; i++) {
+        var spot = layout.spots[i];
+        this.drawWoodSign(spot.x, spot.y, spot.w, spot.h, spot.label, collection.spotId === spot.id, !collection.isSpotUnlocked(spot.id));
+      }
+      for (i = 0; i < layout.baits.length; i++) {
+        var bait = layout.baits[i];
+        this.drawWoodSign(bait.x, bait.y, bait.w, bait.h, bait.label, collection.baitId === bait.id, !collection.isBaitUnlocked(bait.id));
+      }
+    },
+
+    drawFishingGearLand: function (collection) {
+      this.drawFishingGearSigns(collection, this.fishingGearLandLayout());
+    },
+
+    drawFishingGearPort: function (collection) {
+      var layout = this.fishingGearPortLayout();
+      if (!this._loggedPortGearLayout) {
+        this._loggedPortGearLayout = true;
+        console.log("[Prototype] Portrait fishing gear entry", layout.entry.x, layout.entry.y, layout.entry.w, layout.entry.h);
+      }
+      this.drawFishingGearSigns(collection, layout);
     },
 
     drawFishingGear: function (collection, portrait) {
       if (collection.phase !== "idle") return;
-      if (this.uiSkinChrome && this.artOn) {
-        if (portrait) {
-          this.button(this.width - 112, 64 + 54, 104, 34, collection.fishingDrawerOpen ? "收起钓具" : "钓具", true);
-        } else {
-          this.button(392, 376, 112, 38, collection.fishingDrawerOpen ? "收起钓具" : "钓具", true);
-        }
-        if (!collection.fishingDrawerOpen) return;
-        this.drawFishingGearDrawerPanel(collection, portrait);
+      if (!portrait) {
+        this.drawFishingGearLand(collection);
         return;
       }
-      if (portrait) {
-        var W = this.width, ct = 64;
-        var btnW = Math.round((W - 16) / 3);
-        this.drawFishingGearSlot(8, ct + 54, btnW, 34, "浅滩", collection.spotId === "shallow", true);
-        this.drawFishingGearSlot(8, ct + 94, btnW, 34, "蚯蚓", collection.baitId === "worm", true);
-        this.button(W - 112, ct + 54, 104, 34, collection.fishingDrawerOpen ? "收起" : "更多", true);
-        if (collection.fishingDrawerOpen) {
-          if (!this.uiSkinChrome) this.rect(8, ct + 132, W - 16, 72, [0.98, 0.94, 0.86, 0.92]);
-          this.drawFishingGearSlot(8 + btnW + 2, ct + 54, btnW, 34, "礁石", collection.spotId === "reef", collection.isSpotUnlocked("reef"));
-          this.drawFishingGearSlot(8 + (btnW + 2) * 2, ct + 54, btnW, 34, "深海", collection.spotId === "deep", collection.isSpotUnlocked("deep"));
-          this.drawFishingGearSlot(8 + btnW + 2, ct + 94, btnW, 34, "虾米", collection.baitId === "shrimp", collection.isBaitUnlocked("shrimp"));
-          this.drawFishingGearSlot(8 + (btnW + 2) * 2, ct + 94, btnW, 34, "秘制", collection.baitId === "secret", collection.isBaitUnlocked("secret"));
-        }
-      } else {
-        this.drawFishingGearSlot(14, 376, 120, 38, "浅滩", collection.spotId === "shallow", true);
-        this.drawFishingGearSlot(14, 420, 120, 38, "蚯蚓", collection.baitId === "worm", true);
-        this.button(392, 376, 100, 38, collection.fishingDrawerOpen ? "收起" : "更多", true);
-        if (collection.fishingDrawerOpen) {
-          if (!this.uiSkinChrome) this.rect(8, 318, 388, 58, [0.98, 0.94, 0.86, 0.92]);
-          this.drawFishingGearSlot(142, 328, 120, 34, "礁石·铁竿", collection.spotId === "reef", collection.isSpotUnlocked("reef"));
-          this.drawFishingGearSlot(270, 328, 120, 34, "深海·金竿", collection.spotId === "deep", collection.isSpotUnlocked("deep"));
-          this.drawFishingGearSlot(142, 366, 120, 34, "虾米", collection.baitId === "shrimp", collection.isBaitUnlocked("shrimp"));
-          this.drawFishingGearSlot(270, 366, 120, 34, "秘制", collection.baitId === "secret", collection.isBaitUnlocked("secret"));
-        }
-      }
+      this.drawFishingGearPort(collection);
     },
 
     speciesShopUnlocked: function (speciesId) {
@@ -985,13 +1077,13 @@
       }
     },
 
-    button: function (x, y, width, height, label, active) {
+    button: function (x, y, width, height, label, active, fontSize) {
       if (this.uiSkinChrome) {
         if (this.scenes["btn-wood"]) {
           var pad = Math.max(2, Math.min(6, Math.round(Math.min(width, height) * 0.1)));
           this.paintUiStretch("btn-wood", x + pad, y + pad, width - pad * 2, height - pad * 2);
           this.flush();
-          var fsSkin = 16;
+          var fsSkin = fontSize || 16;
           this.text(
             label,
             x + width / 2,
@@ -1002,14 +1094,14 @@
           );
         } else {
           var ink = active ? C.ink : [0.42, 0.38, 0.34, 0.92];
-          var fsFallback = 16;
+          var fsFallback = fontSize || 16;
           this.text(label, x + width / 2, this.textYInBox(label, fsFallback, y, height), fsFallback, ink, "center");
         }
         return;
       }
       if (this.scenes["btn-wood"]) {
         var alpha = active ? 1 : 0.82;
-        var fsWood = 17;
+        var fsWood = fontSize || 17;
         this.paintUiStretch("btn-wood", x, y, width, height);
         this.text(
           label,
@@ -1024,25 +1116,29 @@
       this.rect(x + 3, y + 5, width, height, C.shadow);
       this.rect(x, y, width, height, active ? C.orange : C.wood);
       this.rect(x + 4, y + 4, width - 8, height - 10, active ? C.honey : C.paper);
-      var fsVec = 17;
+      var fsVec = fontSize || 17;
       this.text(label, x + width / 2, this.textYInBox(label, fsVec, y, height), fsVec, C.ink, "center");
     },
 
     progress: function (x, y, width, value, cursor, zoneStart, zoneEnd) {
       var start = zoneStart === undefined ? 0.25 : zoneStart;
       var end = zoneEnd === undefined ? 0.75 : zoneEnd;
+      // 填充深橙；游标/进度超出高亮区时更深橙红（钓鱼张力条不走这里）
+      var marker = cursor === undefined || cursor === null ? value : cursor;
+      var fillColor = C.orange;
+      if (marker !== null && marker !== undefined && (marker < start || marker > end)) {
+        fillColor = [0.82, 0.25, 0.12, 1];
+      }
       if (this.uiSkinChrome) {
         this.rect(x + width * start, y + 6, width * (end - start), 10, [0.42, 0.58, 0.38, 0.35]);
-        var marker = cursor === undefined || cursor === null ? value : cursor;
         this.rect(x + width * marker - 2, y, 4, 22, C.red);
-        if (value !== null) this.rect(x, y + 18, width * Math.max(0, Math.min(1, value)), 6, C.honey);
+        if (value !== null) this.rect(x, y + 18, width * Math.max(0, Math.min(1, value)), 6, fillColor);
         return;
       }
       this.rect(x - 4, y - 4, width + 8, 32, C.wood);
       this.rect(x, y, width, 24, C.cream);
       this.rect(x + width * start, y, width * (end - start), 24, C.green);
-      if (value !== null) this.rect(x, y + 29, width * Math.max(0, Math.min(1, value)), 8, C.honey);
-      var marker = cursor === undefined || cursor === null ? value : cursor;
+      if (value !== null) this.rect(x, y + 29, width * Math.max(0, Math.min(1, value)), 8, fillColor);
       this.rect(x + width * marker - 3, y - 8, 6, 40, C.red);
     },
 
@@ -1140,15 +1236,40 @@
 
     hudBarY: 10,
     hudBarH: 44,
+    // 竖屏顶栏唯一权威：透明木板条 ui-hud-chrome-port + 下列叠字参数（全区共用）
+    // barY 19→22：几何居中后中文位图视觉重心仍偏上，整体下移 3 与图标齐平
+    hudBarYPort: 22,
+    hudBarHPort: 27,
+    hudChromeKeyPort: "ui-hud-chrome-port",
+    hudSlotCxPort: [0.319, 0.446, 0.575, 0.705, 0.829],
+    /** 竖屏只叠钓鱼区抠出的木板条（不带场景背景），数字另用钓鱼槽位参数 */
+    paintSharedHudChromePort: function () {
+      if (!this.portrait || !this.uiSkinChrome) return false;
+      var key = this.hudChromeKeyPort || "ui-hud-chrome-port";
+      if (!this.scenes[key]) {
+        if (!this.sceneLoading[key] && !this.sceneFailed[key]) this.loadScenes();
+        return false;
+      }
+      // 素材宽高比 → 设计宽度下的绘制高度（1152x154 ≈ 设计高 72）
+      var aspect = this.sceneAspect[key] || (1152 / 154);
+      var h = Math.max(1, Math.round(this.width / aspect));
+      this.flush();
+      var ok = this.paintUiRegion(key, 0, 0, this.width, h, 0, 0, 1, 1);
+      if (ok) this.flush();
+      if (ok && this._hudChromeLogKey !== key + ":" + h) {
+        this._hudChromeLogKey = key + ":" + h;
+        console.log("[HUD] portrait shared chrome strip", key, "h", h);
+      }
+      return ok;
+    },
     hudSlotCenters: function () {
       if (this.portrait) {
-        return [
-          { cx: 0.27, text: null },
-          { cx: 0.415, text: null },
-          { cx: 0.56, text: null },
-          { cx: 0.705, text: null },
-          { cx: 0.85, text: null }
-        ];
+        var list = this.hudSlotCxPort || [];
+        var out = [];
+        for (var i = 0; i < list.length; i++) {
+          out.push({ cx: list[i], text: null });
+        }
+        return out;
       }
       return [
         { cx: 0.4025, text: null },
@@ -1164,7 +1285,15 @@
       var slot = slots[slotIndex];
       if (!slot) return;
       var cx = Math.round(this.width * slot.cx);
-      var y = this.textYInBox(line, size, this.hudBarY, this.hudBarH);
+      var barY = this.portrait ? this.hudBarYPort : this.hudBarY;
+      var barH = this.portrait ? this.hudBarHPort : this.hudBarH;
+      var y = this.textYInBox(line, size, barY, barH);
+      var area = AIGCUtils.Game && AIGCUtils.Game.currentArea;
+      var logKey = (area || "") + "/" + barY + "/" + barH + "/" + size + "/" + cx;
+      if (this.portrait && slotIndex === 0 && this._hudPortLogKey !== logKey) {
+        this._hudPortLogKey = logKey;
+        console.log("[HUD] portrait metric", area, "shared-fish", "bar", barY, barH, "size", size, "y0", Math.round(y), "cx0", cx);
+      }
       this.text(line, cx, y, size, C.ink, "center");
     },
 
@@ -1175,7 +1304,7 @@
         this.rect(0, 0, W, 64, C.cream);
         this.rect(0, 60, W, 4, C.wood);
       }
-      var fs = this.uiSkinChrome ? (this.portrait ? 14 : 15) : this.portrait ? 15 : 17;
+      var fs = this.uiSkinChrome ? (this.portrait ? 12 : 15) : this.portrait ? 15 : 17;
       if (this.uiSkinChrome) {
         this.drawHudMetric("第" + state.day + "天", 0, fs);
         this.drawHudMetric("金币" + state.coins, 1, fs);
@@ -1265,7 +1394,7 @@
             this.text("新目标 采摘椰子", hw, coconutY + zoneH * 0.72, 17, C.ink, "center");
           }
         }
-        var offlineLit = !!AIGCUtils.GameState.pendingOffline || AIGCUtils.GameState.playTimeMs >= 20 * 60 * 1000;
+        var offlineLit = !!AIGCUtils.GameState.pendingOffline || AIGCUtils.GameState.playTimeMs >= AIGCUtils.Game.offlineUnlockMs;
         var offlineLabel = AIGCUtils.GameState.pendingOffline ? "领取" : "离线";
         this.button(hw - 140, cb - 62, 280, 48, offlineLabel, offlineLit);
       } else {
@@ -1304,7 +1433,7 @@
             this.text("新目标 采摘椰子", 735, 210, 17, C.ink, "center");
           }
         }
-        var offlineLitLand = !!AIGCUtils.GameState.pendingOffline || AIGCUtils.GameState.playTimeMs >= 20 * 60 * 1000;
+        var offlineLitLand = !!AIGCUtils.GameState.pendingOffline || AIGCUtils.GameState.playTimeMs >= AIGCUtils.Game.offlineUnlockMs;
         var offlineLabelLand = AIGCUtils.GameState.pendingOffline ? "领取" : "离线";
         this.button(675, 405, 250, 48, offlineLabelLand, offlineLitLand);
       }
@@ -1337,8 +1466,6 @@
           this.text("1选点 2选饵 3抛竿 4等咬钩 5提竿", hw - 50, ct + 18, 14, C.ink, "center");
         }
         this.button(W - 108, ct + 8, 98, 38, "离开", false);
-        // 钓点和鱼饵按钮（3列网格）
-        this.drawFishingGear(collection, true);
         if (!this.artOn) {
           for (var i = 0; i < 6; i++) {
             this.line(seaTop > 0 ? 40 + i * 80 : 0, seaTop + 22 + (i % 2) * 26, 70 + i * 80, seaTop + 22 + (i % 2) * 26, 4, C.cream);
@@ -1403,21 +1530,22 @@
         if (collection.phase === "charging") this.progress(20, barY, W - 40, collection.power, collection.power, 0.4, 0.7);
         if (collection.phase === "reeling") {
           this.progress(20, barY, W - 40, collection.reelProgress, collection.reelCursor, 0.35, 0.65);
-          if (!this.uiSkinChrome) {
-            this.text("线张力", 18, barY + 38, 15, C.cream, "right");
-            this.rect(20, barY + 38, W - 40, 11, C.cream);
-          } else {
-            this.text("线张力", 18, barY + 38, 15, C.ink, "right");
-          }
-          this.rect(20, barY + 38, (W - 40) * Math.min(1, collection.tension), 11, collection.tension > 0.8 ? C.red : C.honey);
+          var tensionGroove = [0.28, 0.16, 0.09, 1];
+          var tensionFill = collection.tension > 0.8 ? C.red : C.orange;
+          this.text("线张力", 20, barY + 24, 13, this.uiSkinChrome ? C.ink : C.cream, "left");
+          this.rect(20, barY + 38, W - 40, 11, tensionGroove);
+          this.rect(20, barY + 38, (W - 40) * Math.min(1, Math.max(0, collection.tension)), 11, tensionFill);
         }
-        // 主操作按钮
+        // 主操作按钮。待机和蓄力时入口还在左侧，抛竿钮靠右让开
         var actY = cb - 58;
-        if (collection.phase === "idle") this.button(hw - 120, actY, 240, 50, "按住抛竿", true);
-        if (collection.phase === "charging") this.button(hw - 120, actY, 240, 50, "松开抛竿 " + Math.round(collection.power * 100) + "%", true);
+        var castPort = this.fishingCastPortButton();
+        if (collection.phase === "idle") this.button(castPort.x, castPort.y, castPort.w, castPort.h, "按住抛竿", true);
+        if (collection.phase === "charging") this.button(castPort.x, castPort.y, castPort.w, castPort.h, "松开抛竿 " + Math.round(collection.power * 100) + "%", true);
         if (collection.phase === "waiting") this.button(hw - 120, actY, 240, 50, "提竿", false);
         if (collection.phase === "bite") this.button(hw - 120, actY, 240, 50, "立即提竿", true);
         if (collection.phase === "reeling") this.button(hw - 140, actY, 280, 52, collection.reelHeld ? "收线中 松开可放线" : "按住收线 松开放线", true);
+        // 钓具画在兔子和抛竿按钮之后，展开的木牌才不会被船舱挡住
+        this.drawFishingGear(collection, true);
 
       } else {
         if (!this.artOn) {
@@ -1429,7 +1557,6 @@
           this.text("1选点  2看气泡  3选饵  4抛竿  5等咬钩  6提竿  7拉锯", 425, 82, 17, C.ink, "center");
         }
         this.button(835, 72, 100, 42, "离开", false);
-        this.drawFishingGear(collection, false);
         if (!this.artOn) {
           for (var i = 0; i < 8; i++) {
             this.line(300 + i * 85, 205 + (i % 3) * 52, 340 + i * 85, 205 + (i % 3) * 52, 4, C.cream);
@@ -1483,36 +1610,42 @@
         if (collection.phase === "charging") this.progress(350, 340, 480, collection.power, collection.power, 0.4, 0.7);
         if (collection.phase === "reeling") {
           this.progress(350, 340, 480, collection.reelProgress, collection.reelCursor, 0.35, 0.65);
-          if (!this.uiSkinChrome) {
-            this.text("线张力", 330, 375, 16, C.cream, "right");
-            this.rect(350, 378, 480, 12, C.cream);
-          } else {
-            this.text("线张力", 330, 375, 16, C.ink, "right");
-          }
-          this.rect(350, 378, 480 * Math.min(1, collection.tension), 12, collection.tension > 0.8 ? C.red : C.honey);
+          var tensionGroove = [0.28, 0.16, 0.09, 1];
+          var tensionFill = collection.tension > 0.8 ? C.red : C.orange;
+          this.text("线张力", 330, 375, 16, this.uiSkinChrome ? C.ink : C.cream, "right");
+          this.rect(350, 378, 480, 12, tensionGroove);
+          this.rect(350, 378, 480 * Math.min(1, Math.max(0, collection.tension)), 12, tensionFill);
         }
+        // 先画抛竿，再画钓具，展开木牌才不会被船舱挡住；横屏抛竿坐标保持原位
         if (collection.phase === "idle") this.button(520, 405, 240, 50, "按住抛竿", true);
         if (collection.phase === "charging") this.button(360, 405, 240, 50, "松开抛竿 " + Math.round(collection.power * 100) + "%", true);
         if (collection.phase === "waiting") this.button(360, 405, 240, 50, "提竿", false);
         if (collection.phase === "bite") this.button(360, 405, 240, 50, "立即提竿", true);
         if (collection.phase === "reeling") this.button(330, 405, 300, 55, collection.reelHeld ? "收线中 松开可放线" : "按住收线 松开放线", true);
+        this.drawFishingGear(collection, false);
       }
     },
 
     /**
      * 三棵可摇的椰子树。x 与 input.js 的 treeAt 一致。
-     * 树根放在海岸线上沿，下面的空篮子留在底板上。
+     * 横屏大筐盖住中间树干下端，小筐盖住右边树干下端。接椰子落在小筐中心。
+     * 竖屏只在沙滩右侧原筐位置画小筐，不画大筐。
      */
     coconutArtLayout: function () {
       var W = this.width;
       var xs = this.portrait
         ? [Math.round(W * 0.276), Math.round(W * 0.5), Math.round(W * 0.724)]
         : [265, 480, 695];
+      var landBig = { x: xs[1], y: 436, h: 94 };
+      var landSmall = { x: xs[2], y: 440, h: 103 };
+      var portSmall = { x: 397, y: 750, h: 112 };
       return {
         xs: xs,
         rootY: this.portrait ? 730 : 432,
         treeH: this.portrait ? 560 : 384,
-        basket: this.portrait ? { x: 389, y: 748 } : { x: 756, y: 440 },
+        basket: this.portrait ? { x: portSmall.x, y: portSmall.y } : { x: landSmall.x, y: landSmall.y },
+        bigBasket: this.portrait ? null : landBig,
+        smallBasket: this.portrait ? portSmall : landSmall,
         nutH: this.portrait ? 40 : 34
       };
     },
@@ -1571,11 +1704,38 @@
           console.log("[CoconutArt] sway", i, "root", pose.x, pose.y, "crown", crown ? Math.round(crown.x) + "," + Math.round(crown.y) : "missing");
         }
       }
+      if (this.portrait) this.drawPortCoconutBasket(layout);
+      else this.drawLandCoconutBaskets(layout);
       if (shakes[0] <= 0 && shakes[1] <= 0 && shakes[2] <= 0) this.cocoSwayLog = -1;
       var mark = (this.portrait ? "port" : "land") + ":" + layout.xs.join(",");
       if (this.cocoArtLog !== mark) {
         this.cocoArtLog = mark;
-        console.log("[CoconutArt] slots", layout.xs.join(","), "rootY", layout.rootY, "basket", layout.basket.x, layout.basket.y);
+        var big = layout.bigBasket;
+        console.log("[CoconutArt] slots", layout.xs.join(","), "rootY", layout.rootY, "basket", layout.basket.x, layout.basket.y, "big", big ? big.x + "," + big.y : "none");
+      }
+    },
+
+    // 竖屏只画小筐，中心是接椰子和数量字的位置。画在三棵树之后，盖住右边树干下端。
+    drawPortCoconutBasket: function (layout) {
+      var small = layout.smallBasket;
+      if (!small) return;
+      var drew = this.paintCenterSprite("coconut_basket_small", small.x, small.y, small.h, {});
+      if (!drew && !this.cocoPortBasketMiss) {
+        this.cocoPortBasketMiss = true;
+        console.warn("[CoconutArt] portrait basket sprite missing");
+      }
+    },
+
+    // 横屏大筐只摆放，小筐中心是接椰子和数量字的位置。画在三棵树之后，盖住树干下端。
+    drawLandCoconutBaskets: function (layout) {
+      var big = layout.bigBasket;
+      var small = layout.smallBasket;
+      if (!big || !small) return;
+      var drewBig = this.paintCenterSprite("coconut_basket_big", big.x, big.y, big.h, {});
+      var drewSmall = this.paintCenterSprite("coconut_basket_small", small.x, small.y, small.h, {});
+      if ((!drewBig || !drewSmall) && !this.cocoBasketMiss) {
+        this.cocoBasketMiss = true;
+        console.warn("[CoconutArt] basket sprite missing", "big", !!drewBig, "small", !!drewSmall);
       }
     },
 
@@ -1611,7 +1771,14 @@
       }
       collection.coconuts.forEach(function (coconut) {
         if (this.uiSkinChrome && this.artOn) {
-          this.paintCenterSprite("coconut_green", coconut.x, coconut.y, this.coconutArtLayout().nutH, { rot: coconut.cracked ? 0 : coconut.rotation || 0 });
+          var nutH = this.coconutArtLayout().nutH;
+          this.paintCenterSprite("coconut_green", coconut.x, coconut.y, nutH, { rot: coconut.cracked ? 0 : coconut.rotation || 0 });
+          // 原画层碎裂：补两道裂痕，约半秒后由 updateCoconuts 移除
+          if (coconut.cracked) {
+            var span = nutH * 0.7;
+            this.line(coconut.x - span, coconut.y - span * 0.3, coconut.x + span, coconut.y + span * 0.3, 4, C.cream);
+            this.line(coconut.x - span * 0.85, coconut.y + span * 0.45, coconut.x + span * 0.85, coconut.y - span * 0.45, 4, C.cream);
+          }
           return;
         }
         if (this.artOn && !coconut.cracked) {
@@ -1626,7 +1793,11 @@
         }
       }, this);
       var basketX = Math.round(W * 0.84);
-      if (this.uiSkinChrome) {
+      if (this.uiSkinChrome && this.artOn && this.coconutArtLayout().smallBasket) {
+        var smallBasket = this.coconutArtLayout().smallBasket;
+        var countLabel = "" + collection.caughtThisRound;
+        this.text(countLabel, smallBasket.x, this.textYInBox(countLabel, 17, smallBasket.y - smallBasket.h / 2, smallBasket.h), 17, C.ink, "center");
+      } else if (this.uiSkinChrome) {
         var signY = this.portrait ? ct + Math.round(ch * 0.55) : ct + Math.round(ch * 0.52);
         this.text("" + collection.caughtThisRound, basketX, signY, 17, C.ink, "center");
       } else {
@@ -1854,15 +2025,59 @@
       return { w: w, h: h, u0: trim[0], v0: trim[1], u1: trim[2], v1: trim[3] };
     },
 
-    paintTexturedQuad: function (key, x, y, w, h, u0, v0, u1, v1, rot, pivotX, pivotY) {
+    // 设计画布矩形裁切贴图四边形（无旋转时按 UV 等比裁）；完全在画外返回 null
+    clipTexturedRect: function (x, y, w, h, u0, v0, u1, v1) {
+      if (w <= 0 || h <= 0) return null;
+      var x2 = x + w;
+      var y2 = y + h;
+      var cx1 = Math.max(0, x);
+      var cy1 = Math.max(0, y);
+      var cx2 = Math.min(this.width, x2);
+      var cy2 = Math.min(this.height, y2);
+      if (cx2 <= cx1 || cy2 <= cy1) return null;
+      return {
+        x: cx1,
+        y: cy1,
+        w: cx2 - cx1,
+        h: cy2 - cy1,
+        u0: u0 + (u1 - u0) * ((cx1 - x) / w),
+        v0: v0 + (v1 - v0) * ((cy1 - y) / h),
+        u1: u0 + (u1 - u0) * ((cx2 - x) / w),
+        v1: v0 + (v1 - v0) * ((cy2 - y) / h)
+      };
+    },
+
+    paintTexturedQuad: function (key, x, y, w, h, u0, v0, u1, v1, rot, pivotX, pivotY, tint, clipToCanvas) {
       if (!this.scenes[key] || w <= 0 || h <= 0) return false;
+      var color = tint || [1, 1, 1, 1];
+      if (color[3] != null && color[3] <= 0.01) return false;
+      var drawX = x;
+      var drawY = y;
+      var drawW = w;
+      var drawH = h;
+      var du0 = u0;
+      var dv0 = v0;
+      var du1 = u1;
+      var dv1 = v1;
+      // 无旋转时裁到设计画布，避免人/气泡画出 960×540（或当前竖屏设计宽高）
+      if (clipToCanvas && !rot) {
+        var clipped = this.clipTexturedRect(x, y, w, h, u0, v0, u1, v1);
+        if (!clipped) return false;
+        drawX = clipped.x;
+        drawY = clipped.y;
+        drawW = clipped.w;
+        drawH = clipped.h;
+        du0 = clipped.u0;
+        dv0 = clipped.v0;
+        du1 = clipped.u1;
+        dv1 = clipped.v1;
+      }
       this.useTexture(this.scenes[key]);
-      var white = [1, 1, 1, 1];
       var pts = [
-        [x, y, u0, v0],
-        [x + w, y, u1, v0],
-        [x, y + h, u0, v1],
-        [x + w, y + h, u1, v1]
+        [drawX, drawY, du0, dv0],
+        [drawX + drawW, drawY, du1, dv0],
+        [drawX, drawY + drawH, du0, dv1],
+        [drawX + drawW, drawY + drawH, du1, dv1]
       ];
       if (rot) {
         var c = Math.cos(rot);
@@ -1874,12 +2089,12 @@
           pts[i][1] = pivotY + dx * s + dy * c;
         }
       }
-      this.vertex(pts[0][0], pts[0][1], white, pts[0][2], pts[0][3], 2);
-      this.vertex(pts[1][0], pts[1][1], white, pts[1][2], pts[1][3], 2);
-      this.vertex(pts[2][0], pts[2][1], white, pts[2][2], pts[2][3], 2);
-      this.vertex(pts[1][0], pts[1][1], white, pts[1][2], pts[1][3], 2);
-      this.vertex(pts[3][0], pts[3][1], white, pts[3][2], pts[3][3], 2);
-      this.vertex(pts[2][0], pts[2][1], white, pts[2][2], pts[2][3], 2);
+      this.vertex(pts[0][0], pts[0][1], color, pts[0][2], pts[0][3], 2);
+      this.vertex(pts[1][0], pts[1][1], color, pts[1][2], pts[1][3], 2);
+      this.vertex(pts[2][0], pts[2][1], color, pts[2][2], pts[2][3], 2);
+      this.vertex(pts[1][0], pts[1][1], color, pts[1][2], pts[1][3], 2);
+      this.vertex(pts[3][0], pts[3][1], color, pts[3][2], pts[3][3], 2);
+      this.vertex(pts[2][0], pts[2][1], color, pts[2][2], pts[2][3], 2);
       return true;
     },
 
@@ -1900,7 +2115,11 @@
         u1 = swap;
       }
       var pivotY = motion.pivot === "center" ? y + drawH / 2 : footY;
-      if (!this.paintTexturedQuad(key, x, y, frame.w, drawH, u0, frame.v0, u1, frame.v1, motion.rot || 0, footX, pivotY)) return null;
+      var alpha = motion.alpha == null ? 1 : motion.alpha;
+      if (alpha <= 0.01) return null;
+      var tint = [1, 1, 1, alpha];
+      var clip = !!motion.clipToCanvas;
+      if (!this.paintTexturedQuad(key, x, y, frame.w, drawH, u0, frame.v0, u1, frame.v1, motion.rot || 0, footX, pivotY, tint, clip)) return null;
       this.flush();
       return { x: x, y: y, w: frame.w, h: drawH };
     },
@@ -1914,21 +2133,52 @@
       var x = cx - frame.w / 2;
       var y = cy - drawH / 2;
       if (drawH < 0.4) return { x: x, y: cy, w: frame.w, h: 0 };
-      if (!this.paintTexturedQuad(key, x, y, frame.w, drawH, frame.u0, frame.v0, frame.u1, frame.v1, motion.rot || 0, cx, cy)) return null;
+      var alpha = motion.alpha == null ? 1 : motion.alpha;
+      if (alpha <= 0.01) return null;
+      var tint = [1, 1, 1, alpha];
+      if (!this.paintTexturedQuad(key, x, y, frame.w, drawH, frame.u0, frame.v0, frame.u1, frame.v1, motion.rot || 0, cx, cy, tint, !!motion.clipToCanvas)) return null;
       this.flush();
       return { x: x, y: y, w: frame.w, h: drawH };
     },
 
+    // 离场：画面内向右走到设计右边界钉住，再淡出；进场仍从右侧外走进，画外不画
+    customerLeaveWalkMs: 550,
+    customerLeaveFadeMs: 550,
+
     customerSlidePoint: function (slotPoint, customer) {
-      var span = Math.max(24, this.width + 40 - slotPoint.x);
+      var edgeX = this.width;
       var enter = Math.max(0, Math.min(1, (customer.arrival || 0) / 320));
-      var leave = customer.leaving ? Math.max(0, Math.min(1, (customer.leaveTimer || 0) / 1100)) : 0;
-      var along = customer.leaving ? Math.max(enter, leave) : enter;
+      var enterSpan = Math.max(24, edgeX + 40 - slotPoint.x);
+      var enterX = slotPoint.x + enterSpan * enter;
+      if (!customer.leaving) {
+        return {
+          x: enterX,
+          y: slotPoint.y,
+          headDx: slotPoint.headDx || 0,
+          headDy: slotPoint.headDy || 0,
+          alpha: 1,
+          id: slotPoint.id
+        };
+      }
+      var walkMs = this.customerLeaveWalkMs;
+      var fadeMs = this.customerLeaveFadeMs;
+      var leaveTimer = customer.leaveTimer || 0;
+      var exitSpan = Math.max(1, edgeX - slotPoint.x);
+      var walk = Math.max(0, Math.min(1, leaveTimer / walkMs));
+      var leaveX = slotPoint.x + exitSpan * walk;
+      // 若交付时人还在进场途中，从更靠右的位置继续向右边界走，不往回拽
+      leaveX = Math.max(leaveX, Math.min(enterX, edgeX));
+      if (leaveX > edgeX) leaveX = edgeX;
+      var alpha = 1;
+      if (leaveTimer > walkMs) {
+        alpha = Math.max(0, 1 - (leaveTimer - walkMs) / fadeMs);
+      }
       return {
-        x: slotPoint.x + span * along,
+        x: leaveX,
         y: slotPoint.y,
         headDx: slotPoint.headDx || 0,
         headDy: slotPoint.headDy || 0,
+        alpha: alpha,
         id: slotPoint.id
       };
     },
@@ -1973,19 +2223,21 @@
     },
 
     drawArtJuice: function (current) {
-      if (!current || !this.shopJuicerPoint) return false;
+      // 画在青椰子堆和榨汁器之间的 work。竖屏是中层圆木板，横屏是柜台空位。
+      var anchor = this.shopWorkPoint;
+      if (!current || !anchor) return false;
       var juiced = current.taps >= 3 || current.stage === "straw";
       var key = juiced ? "coconut_green_juiced" : "coconut_green";
       var hitProgress = current.hitTimer > 0 ? 1 - current.hitTimer / 260 : 1;
       var shake = current.hitTimer > 0 ? Math.sin(hitProgress * Math.PI * 3) * 4 : 0;
-      var h = this.portrait ? 84 : 108;
-      this.paintFootSprite(key, this.shopJuicerPoint.x + shake, this.shopJuicerPoint.y, 0, h, false);
-      var mark = key + ":" + current.taps + ":" + current.stage;
+      var h = 56;
+      this.paintFootSprite(key, anchor.x + shake, anchor.y, 0, h, false);
+      var mark = (this.portrait ? "port:" : "land:") + key + ":" + current.taps + ":" + current.stage;
       if (this.artJuiceLog !== mark) {
         this.artJuiceLog = mark;
-        console.log("[ShopLayout] juice sprite", key, "taps", current.taps, "stage", current.stage, "shake", Math.round(shake));
+        console.log("[ShopLayout] juice sprite", this.portrait ? "port" : "land", key, "taps", current.taps, "stage", current.stage, "at", Math.round(anchor.x + shake), Math.round(anchor.y), "shake", Math.round(shake));
       }
-      this.shopJuice = { key: key, taps: current.taps, stage: current.stage, shake: shake };
+      this.shopJuice = { key: key, taps: current.taps, stage: current.stage, shake: shake, x: anchor.x, y: anchor.y };
       return true;
     },
 
@@ -2001,7 +2253,7 @@
       if (!slot) return false;
       var end = this.shopPoint(slot);
       var net = this.grillNet(this.shopGrillBox);
-      var h = this.portrait ? 20 : 38;
+      var h = this.portrait ? 48 : 38;
       var key = "grilled_" + speciesId;
       var frame = this.spriteFrame(key, 0, h);
       if (!frame) return false;
@@ -2027,6 +2279,8 @@
     },
 
     drawShopOrderBubble: function (customer, foot) {
+      var alpha = foot && foot.alpha != null ? foot.alpha : 1;
+      if (alpha <= 0.01) return;
       var headX = foot.x + (foot.headDx || 0);
       var headY = foot.y + (foot.headDy || 0);
       var fishN = customer.leaving ? 0 : (customer.order.fish || 0);
@@ -2055,7 +2309,10 @@
       var padTop = Math.round(bh * 0.16);
       var bx = Math.round(headX - bw / 2);
       var by = Math.round(headY - bh);
-      if (!this.paintUiStretch("order-bubble", bx, by, bw, bh)) {
+      var bubbleTint = [1, 1, 1, alpha];
+      var bubbleClip = this.clipTexturedRect(bx, by, bw, bh, 0, 0, 1, 1);
+      if (!bubbleClip) return;
+      if (!this.paintUiRegion("order-bubble", bubbleClip.x, bubbleClip.y, bubbleClip.w, bubbleClip.h, bubbleClip.u0, bubbleClip.v0, bubbleClip.u1, bubbleClip.v1, bubbleTint)) {
         if (!this.missingShopSprites["order-bubble"]) {
           this.missingShopSprites["order-bubble"] = true;
           console.warn("[ShopLayout] order bubble missing");
@@ -2075,26 +2332,31 @@
         headX: headX, headY: headY,
         textLeft: textLeft, textRight: textRight, textTop: textTop, textBottom: textBottom,
         inside: inside,
-        customerId: customer.id
+        customerId: customer.id,
+        alpha: alpha
       });
       if (!inside && !this.bubbleFitWarned) {
         this.bubbleFitWarned = true;
         console.warn("[ShopLayout] order text outside bubble", customer.id, Math.round(textLeft), Math.round(textRight), bx, bx + bw);
       }
+      // 气泡主体已裁出画外时不再画字，避免字飘到设计画面外
+      if (ccx < 0 || ccx > this.width || textTop > this.height || textBottom < 0) return;
       var self = this;
+      var greenInk = [C.green[0], C.green[1], C.green[2], C.green[3] * alpha];
+      var inkFade = [C.ink[0], C.ink[1], C.ink[2], C.ink[3] * alpha];
       for (var row = 0; row < lines.length; row++) {
         var line = lines[row];
         var cy = textTop + lineH * row + lineH / 2;
         if (line.kind === "bye") {
-          this.text(line.text, ccx, this.textYInBox(line.text, font, cy - lineH / 2, lineH), font, C.green, "center");
+          this.text(line.text, ccx, this.textYInBox(line.text, font, cy - lineH / 2, lineH), font, greenInk, "center");
         } else if (line.kind === "fish") {
           this.drawOrderRow(ccx, cy, font, line.text, icon, function (ix, iy) {
             self.paintGrilledIcon(customer.order.speciesId, ix, iy, icon);
-          });
+          }, inkFade);
         } else {
           this.drawOrderRow(ccx, cy, font, line.text, icon, function (ix, iy) {
             self.paintCoconutIcon("green_juiced", ix, iy, icon);
-          });
+          }, inkFade);
         }
       }
     },
@@ -2104,7 +2366,9 @@
       var board = this.portrait ? L.port : L.land;
       var plates = (board && board.plates) || [];
       var goods = AIGCUtils.GameState.bakedGoods;
-      var height = this.portrait ? 20 : 38;
+      // 竖屏成品约 48 并垫木盘；横屏保持原高度
+      var height = this.portrait ? 48 : 38;
+      var drawnIds = [];
       for (var i = 0; i < plates.length; i++) {
         var plate = plates[i];
         var count = goods.filter(function (good) {
@@ -2112,12 +2376,72 @@
         }).length;
         if (!count) continue;
         var anchor = this.shopPoint(plate);
+        if (this.portrait) {
+          // 无盘子贴图时画扁木盘椭圆，鱼脚底落在盘心；锚点不挪以免挡邻槽
+          this.ellipse(anchor.x, anchor.y + 1, 13, 5, C.wood);
+          this.ellipse(anchor.x, anchor.y, 12, 4, C.woodLight);
+          drawnIds.push(plate.id + "x" + count);
+        }
         var placed = this.paintFootSprite("grilled_" + plate.id, anchor.x, anchor.y, 0, height, false);
         if (count > 1) {
           var labelX = placed ? placed.x + placed.w + 2 : anchor.x + 16;
           var labelY = placed ? placed.y + placed.h * 0.35 : anchor.y - 14;
           this.text("×" + count, labelX, labelY, this.portrait ? 12 : 13, C.ink, "left");
         }
+      }
+      if (this.portrait && drawnIds.length) {
+        var plateMark = "port:" + drawnIds.join(",");
+        if (this.portPlateLog !== plateMark) {
+          this.portPlateLog = plateMark;
+          // 核对竖屏成品脚底是否落在兔子同层木桌（rabbit.y≈0.825）
+          var ys = plates.map(function (p) { return p.id + ":" + p.y; }).join(",");
+          console.log("[ShopLayout] port plated fish", plateMark, "h", height, "anchors", ys);
+        }
+      }
+    },
+
+    // 成品桌最右一条鱼再往右的空桌面。脚底比鱼锚点靠前，椰汁才落在木桌上，不叠到四条鱼上，也不用榨汁器。
+    landJuiceStackPoint: function () {
+      var plates = AIGCUtils.ShopLayout.land.plates;
+      var last = plates[plates.length - 1];
+      return { x: last.x + 72, y: last.y + 36 };
+    },
+
+    // 竖屏椰汁堆用独立锚点，不跟成品鱼末槽走，避免调鱼高度时连带下移。
+    portJuiceStackPoint: function () {
+      var stack = AIGCUtils.ShopLayout.port.juiceStack || { x: 0.23, y: 0.775 };
+      var point = this.shopPoint(stack);
+      if (this.portJuiceStackLog !== stack.y) {
+        this.portJuiceStackLog = stack.y;
+        console.log("[ShopLayout] port juice stack fixed anchor", stack.x, stack.y, "screen", Math.round(point.x), Math.round(point.y));
+      }
+      return point;
+    },
+
+    drawJuiceStack: function () {
+      var goods = AIGCUtils.GameState.bakedGoods || [];
+      var count = 0;
+      for (var i = 0; i < goods.length; i++) {
+        if (goods[i].recipeId === "coconut_juice") count++;
+      }
+      if (count < 1) return;
+      var anchor = this.portrait ? this.portJuiceStackPoint() : this.landJuiceStackPoint();
+      var shown = Math.min(3, count);
+      var h = this.portrait ? 26 : 44;
+      var step = this.portrait ? 15 : 26;
+      var labelDx = this.portrait ? 16 : 28;
+      var labelSize = this.portrait ? 12 : 13;
+      for (var n = 0; n < shown; n++) {
+        this.paintFootSprite("coconut_green_juiced", anchor.x, anchor.y - n * step, 0, h, false);
+      }
+      if (count > 3) {
+        var midY = anchor.y - (shown - 1) * step * 0.5 - h * 0.35;
+        this.text("×" + count, anchor.x + labelDx, midY, labelSize, C.ink, "left");
+      }
+      var stackMark = (this.portrait ? "port:" : "land:") + count;
+      if (this.artJuiceStackLog !== stackMark) {
+        this.artJuiceStackLog = stackMark;
+        console.log("[ShopLayout] juice stack", this.portrait ? "port" : "land", count, "draw", shown, "at", Math.round(anchor.x), Math.round(anchor.y));
       }
     },
 
@@ -2129,6 +2453,16 @@
       var grill = this.shopPoint(board.grill);
       var grillW = this.portrait ? Math.round(this.width * 0.32) : 164;
       this.shopGrillBox = this.paintFootSprite(L.grillKey(), grill.x, grill.y, grillW, 0, false);
+      // 竖屏：成品鱼/椰汁先于兔子，桌面在角色之下
+      if (this.portrait) {
+        this.drawShopPlates();
+        this.drawJuiceStack();
+        this.portGoodsDrawnUnderRabbit = true;
+        if (!this.portGoodsLayerLog) {
+          this.portGoodsLayerLog = true;
+          console.log("[ShopLayout] port ready goods under rabbit");
+        }
+      }
       var rabbit = this.shopPoint(board.rabbit);
       var rabbitH = this.portrait ? Math.round(this.height * 0.13) : 124;
       var bakingNow = AIGCUtils.Baking;
@@ -2136,22 +2470,80 @@
       if (bakingNow && bakingNow.current && bakingNow.current.recipeId === "fish_grilled" && bakingNow.current.stage === "flip") {
         rabbitRot = Math.sin(Date.now() / 160) * 0.22;
       }
-      this.paintFootSprite("hero_rabbit_grill", rabbit.x, rabbit.y, 0, rabbitH, true, { rot: rabbitRot });
+      var rabbitX = rabbit.x;
+      var rabbitY = rabbit.y;
+      if (board.work && bakingNow) {
+        var work = this.shopPoint(board.work);
+        var juiceNow = bakingNow.current && bakingNow.current.recipeId === "coconut_juice";
+        var juiceBack = !juiceNow && bakingNow.plating && bakingNow.plating.recipeId === "coconut_juice";
+        if (juiceNow || juiceBack) {
+          var along = juiceNow
+            ? Math.max(0, Math.min(1, (bakingNow.current.elapsed || 0) / 420))
+            : Math.max(0, Math.min(1, (bakingNow.plating.timer || 0) / 420));
+          // 椰子画在 work 台面上。兔子站到柜台前方地面，避免整只被椰子挡住。
+          // 横屏柜台前是 120。竖屏中层柜台更高，157 才落到柜台前方地面。
+          var standX = work.x;
+          var standY = work.y + (this.portrait ? 157 : 120);
+          var fromX = juiceNow ? rabbit.x : standX;
+          var fromY = juiceNow ? rabbit.y : standY;
+          var toX = juiceNow ? standX : rabbit.x;
+          var toY = juiceNow ? standY : rabbit.y;
+          var homeH = this.portrait ? Math.round(this.height * 0.13) : 124;
+          var fromH = juiceNow ? homeH : 112;
+          var toH = juiceNow ? 112 : homeH;
+          rabbitX = fromX + (toX - fromX) * along;
+          rabbitY = fromY + (toY - fromY) * along;
+          rabbitH = fromH + (toH - fromH) * along;
+          var phase = juiceNow ? "to-work" : "back";
+          if (this.artRabbitPhase !== phase) {
+            this.artRabbitPhase = phase;
+            console.log("[ShopLayout] rabbit", phase, "work", Math.round(work.x), Math.round(work.y), "stand", Math.round(standX), Math.round(standY));
+          }
+        } else if (this.artRabbitPhase) {
+          this.artRabbitPhase = "";
+        }
+      }
+      this.paintFootSprite("hero_rabbit_grill", rabbitX, rabbitY, 0, rabbitH, true, { rot: rabbitRot });
       var customers = board.customers || [];
       var queue = (AIGCUtils.Selling && AIGCUtils.Selling.queue) || [];
       var customerH = this.portrait ? Math.round(this.height * 0.12) : 116;
       for (var i = 0; i < customers.length && i < queue.length; i++) {
         var point = this.shopPoint(customers[i]);
         var slid = this.customerSlidePoint(point, queue[i]);
-        this.paintFootSprite(L.customerSpriteKey(queue[i]), slid.x, slid.y, 0, customerH, false);
-        this.drawShopOrderBubble(queue[i], slid);
-        var motionKey = queue[i].id + ":" + (queue[i].leaving ? "out" : "in");
+        // 站立精灵脚底贴 land/port.customers；离场到右边界后淡出；画布外裁切不画。
+        if ((slid.alpha == null ? 1 : slid.alpha) > 0.01) {
+          this.paintFootSprite(L.customerSpriteKey(queue[i]), slid.x, slid.y, 0, customerH, false, {
+            alpha: slid.alpha == null ? 1 : slid.alpha,
+            clipToCanvas: true
+          });
+          this.drawShopOrderBubble(queue[i], slid);
+        }
+        var motionKey = queue[i].id + ":" + (queue[i].leaving ? "out" : "in") + ":" + Math.round((slid.alpha == null ? 1 : slid.alpha) * 10);
         if ((queue[i].arrival > 300 || queue[i].leaving) && this.customerMotionLog !== motionKey) {
           this.customerMotionLog = motionKey;
-          console.log("[ShopLayout] customer", queue[i].leaving ? "leave" : "arrive", queue[i].id, "slot", i, "x", Math.round(slid.x), "foot", Math.round(point.x));
+          var headX = Math.round(slid.x + (slid.headDx || 0));
+          var headY = Math.round(slid.y + (slid.headDy || 0));
+          console.log(
+            "[ShopLayout] customer",
+            queue[i].leaving ? "leave" : "arrive",
+            queue[i].id,
+            "slot",
+            i,
+            "foot",
+            Math.round(slid.x),
+            Math.round(slid.y),
+            "edge",
+            this.width,
+            "alpha",
+            (slid.alpha == null ? 1 : slid.alpha).toFixed(2),
+            "head",
+            headX,
+            headY
+          );
         }
       }
       this.shopJuicerPoint = this.shopPoint(board.juicer);
+      this.shopWorkPoint = board.work ? this.shopPoint(board.work) : null;
       if (!this.shopArtLogged) {
         this.shopArtLogged = true;
         console.log("[ShopLayout] art slots", this.portrait ? "port" : "land", JSON.stringify(board));
@@ -2161,6 +2553,7 @@
     drawReadyGoods: function () {
       if (this.uiSkinChrome && this.artOn && AIGCUtils.ShopLayout) {
         this.drawShopPlates();
+        this.drawJuiceStack();
         return;
       }
       var W = this.width, H = this.height;
@@ -2228,6 +2621,13 @@
             startX = this.shopGrillBox.x + this.shopGrillBox.w / 2;
             startY = this.shopGrillBox.y + this.shopGrillBox.h * 0.3;
           }
+        } else if (!isFish && this.shopWorkPoint) {
+          var juiceStack = this.portrait ? this.portJuiceStackPoint() : this.landJuiceStackPoint();
+          var lift = this.portrait ? 18 : 28;
+          startX = this.shopWorkPoint.x;
+          startY = this.shopWorkPoint.y - lift;
+          endX = juiceStack.x;
+          endY = juiceStack.y - lift;
         } else if (!isFish && this.shopJuicerPoint) {
           startX = this.shopJuicerPoint.x;
           startY = this.shopJuicerPoint.y - 36;
@@ -2240,17 +2640,21 @@
       var artFlight = isFish && this.uiSkinChrome && this.artOn && this.drawArtFishFlight(plating, t);
       if (isFish && !artFlight) this.fish(x, y, 27, true, plating.speciesId);
       if (!isFish) {
-        if (this.uiSkinChrome && this.artOn) this.paintCenterSprite("coconut_green_juiced", x, y, this.portrait ? 52 : 70, {});
+        if (this.uiSkinChrome && this.artOn) this.paintCenterSprite("coconut_green_juiced", x, y, this.portrait ? 52 : 56, {});
         else this.juice(x, y, 40);
       }
-      this.text(plating.title, isFish ? startX : (this.portrait ? Math.round(W * 0.75) : 520), Math.round(H * 0.2), 18, isFish ? C.cream : C.ink, "center");
+      var titleX = isFish ? startX : (this.portrait ? Math.round(W * 0.75) : 520);
+      if (!isFish && this.uiSkinChrome && this.artOn && this.shopWorkPoint) titleX = this.shopWorkPoint.x;
+      this.text(plating.title, titleX, Math.round(H * 0.2), 18, isFish ? C.cream : C.ink, "center");
     },
 
     drawShop: function () {
       this.shopGrillBox = null;
       this.shopJuicerPoint = null;
+      this.shopWorkPoint = null;
       this.shopBubbles = [];
       this.shopFlight = null;
+      this.portGoodsDrawnUnderRabbit = false;
       if (this.uiSkinChrome && this.artOn) this.drawShopCast();
       var W = this.width, H = this.height;
       var ct = 64, cb = H - 72, ch = cb - ct;
@@ -2387,14 +2791,15 @@
         if (baking.current && baking.current.recipeId === "fish_grilled") {
           if (baking.current.stage === "stoke") {
             this.text("生火 绿区点击", Math.round(kitchenW / 2), kitchenY + 26, 13, C.cream, "center");
-            this.progress(8, kitchenY + Math.round(kitchenH * 0.85), kitchenW - 18, null, baking.current.cursor, 0.4, 0.6);
+            this.progress(8, kitchenY + Math.round(kitchenH * 0.85), kitchenW - 18, baking.current.cursor, baking.current.cursor, 0.4, 0.6);
           } else if (baking.current.stage === "cooking") {
             this.text(baking.current.perfectFire ? "完美火势" : "烤制中", Math.round(kitchenW / 2), kitchenY + 26, 13, C.cream, "center");
             if (!this.uiSkinChrome) this.rect(8, kitchenY + Math.round(kitchenH * 0.85), kitchenW - 18, 13, C.cream);
-            this.rect(8, kitchenY + Math.round(kitchenH * 0.85), (kitchenW - 18) * Math.min(1, baking.current.elapsed / baking.current.cookDuration), 13, C.honey);
+            // 烤制填充深橙（横竖屏同源）
+            this.rect(8, kitchenY + Math.round(kitchenH * 0.85), (kitchenW - 18) * Math.min(1, baking.current.elapsed / baking.current.cookDuration), 13, C.orange);
           } else if (baking.current.stage === "flip") {
             this.text("翻面 绿色外焦里嫩", Math.round(kitchenW / 2), kitchenY + 26, 13, C.cream, "center");
-            this.progress(8, kitchenY + Math.round(kitchenH * 0.85), kitchenW - 18, null, baking.current.cursor);
+            this.progress(8, kitchenY + Math.round(kitchenH * 0.85), kitchenW - 18, baking.current.cursor, baking.current.cursor);
           }
         }
         // 椰子汁区（右1/3）
@@ -2421,6 +2826,12 @@
         }
         if (baking.current && baking.current.recipeId === "coconut_juice") {
           var artJuicePort = this.uiSkinChrome && this.artOn && this.drawArtJuice(baking.current);
+          var hintX = juiceCX;
+          var hintY = kitchenY + 26;
+          if (artJuicePort && this.shopWorkPoint) {
+            hintX = Math.round(this.shopWorkPoint.x);
+            hintY = Math.round(this.shopWorkPoint.y - 72);
+          }
           if (baking.current.stage === "crack") {
             if (!artJuicePort) {
               var hitProgress2 = baking.current.hitTimer > 0 ? 1 - baking.current.hitTimer / 260 : 1;
@@ -2430,10 +2841,10 @@
               for (var cr2 = 0; cr2 < baking.current.taps; cr2++) this.line(juiceCX - 16 + cr2 * 10, juiceCY - 22, juiceCX - 8 + cr2 * 8, juiceCY - 4, 3, C.cream);
               this.line(juiceCX - 55, kitchenY + 38, juiceCX - 16 + swing2 * 10, juiceCY - 24 + swing2 * 18, 7, C.woodLight);
             }
-            this.text(baking.current.taps >= 3 ? "敲开了" : "点击敲开 " + baking.current.taps + "/3", juiceCX, kitchenY + 26, 13, C.ink, "center");
+            this.text(baking.current.taps >= 3 ? "敲开了" : "点击敲开 " + baking.current.taps + "/3", hintX, hintY, 13, C.ink, "center");
           } else {
             if (!artJuicePort) this.juice(juiceCX, juiceCY, 44, false);
-            this.text("点击插吸管", juiceCX, kitchenY + 26, 13, C.ink, "center");
+            this.text("点击插吸管", hintX, hintY, 13, C.ink, "center");
           }
         } else {
           if (state.ingredients.coconut > 0) {
@@ -2447,8 +2858,11 @@
             this.text("椰子用完 去椰林", juiceCX, kitchenY + 56, 13, C.cream, "center");
           }
         }
-        // 成品 + 食材选择
-        this.drawReadyGoods();
+        // 成品 + 食材选择。原画层成品已在兔子前画过，这里不再重复以免盖住兔子
+        if (!(this.uiSkinChrome && this.artOn && this.portGoodsDrawnUnderRabbit)) {
+          this.drawReadyGoods();
+        }
+        this.portGoodsDrawnUnderRabbit = false;
         this.drawPlating();
         var bW = Math.round((W - 10) / AIGCUtils.FishSpecies.length);
         for (var si = 0; si < AIGCUtils.FishSpecies.length; si++) {
@@ -2545,25 +2959,30 @@
         if (baking.current && baking.current.recipeId === "fish_grilled") {
           if (baking.current.stage === "stoke") {
             this.text("生火中 绿色区域点击", 210, 170, 20, C.cream, "center");
-            this.progress(75, 360, 270, null, baking.current.cursor, 0.4, 0.6);
+            this.progress(75, 360, 270, baking.current.cursor, baking.current.cursor, 0.4, 0.6);
           } else if (baking.current.stage === "cooking") {
             this.text(baking.current.perfectFire ? "完美火势 加速20%" : "烤制中", 210, 170, 19, C.cream, "center");
             if (!this.uiSkinChrome) this.rect(75, 360, 270, 20, C.cream);
-            this.rect(75, 360, 270 * Math.min(1, baking.current.elapsed / baking.current.cookDuration), 20, C.honey);
+            // 烤制填充深橙（横竖屏同源）
+            this.rect(75, 360, 270 * Math.min(1, baking.current.elapsed / baking.current.cookDuration), 20, C.orange);
           } else if (baking.current.stage === "flip") {
             this.text("翻面 绿色外焦里嫩", 210, 170, 19, C.cream, "center");
-            this.progress(75, 360, 270, null, baking.current.cursor);
+            this.progress(75, 360, 270, baking.current.cursor, baking.current.cursor);
           }
         }
+        var artLayerLand = !!(this.uiSkinChrome && this.artOn);
         var ljX = 520, ljY = 245;
-        if (this.shopJuicerPoint) {
+        if (artLayerLand && this.shopWorkPoint) {
+          ljX = Math.round(this.shopWorkPoint.x);
+          ljY = Math.round(this.shopWorkPoint.y - 8);
+        } else if (this.shopJuicerPoint) {
           ljX = Math.round(this.shopJuicerPoint.x);
           ljY = Math.round(this.shopJuicerPoint.y - 28);
         }
         if (baking.current && baking.current.recipeId === "coconut_juice") {
-          var artJuiceLand = this.uiSkinChrome && this.artOn && this.drawArtJuice(baking.current);
+          if (artLayerLand) this.drawArtJuice(baking.current);
           if (baking.current.stage === "crack") {
-            if (!artJuiceLand) {
+            if (!artLayerLand) {
               var hitProgress = baking.current.hitTimer > 0 ? 1 - baking.current.hitTimer / 260 : 1;
               var swing = baking.current.hitTimer > 0 ? Math.sin(hitProgress * Math.PI) : 0;
               var coconutShake = baking.current.hitTimer > 0 ? Math.sin(hitProgress * Math.PI * 3) * 4 : 0;
@@ -2574,7 +2993,7 @@
             }
             this.text(baking.current.taps >= 3 ? "敲开了" : "点击敲开 " + baking.current.taps + "/3", ljX, ljY - 65, 18, C.ink, "center");
           } else {
-            if (!artJuiceLand) {
+            if (!artLayerLand) {
               this.juice(ljX, ljY, 65, false);
               if (!this.shopJuicerPoint) this.line(575, 280, 595, 220, 5, C.orange);
             }
@@ -2750,7 +3169,7 @@
       var hw = Math.round(this.width / 2);
       var hh = Math.round(this.height / 2);
       var layout = this.getSettlementLayout(hw, hh);
-      var countLabel = "框里还有 " + collection.caughtThisRound + " 个椰子";
+      var countLabel = "本轮采摘了 " + collection.caughtThisRound + " 个椰子";
       var promptLabel = "";
       var shorts = [];
       if (AIGCUtils.GameState.shopBuilt) {
@@ -2776,6 +3195,25 @@
       }
       this.paintSettlementLongs(layout, promptLabel ? [countLabel, promptLabel] : [countLabel]);
       this.paintSettlementShorts(layout, shorts);
+    },
+
+    // 未解锁：轻蒙层 + 居中小木牌「暂未解锁」，点任意处关闭（不用结算大壳）
+    drawMapLockedPrompt: function () {
+      var W = this.width;
+      var H = this.height;
+      var hw = Math.round(W / 2);
+      var hh = Math.round(H / 2);
+      var signW = Math.min(320, Math.max(220, Math.round(W * 0.42)));
+      var signH = Math.round(signW * 168 / 586);
+      var signX = hw - Math.round(signW / 2);
+      var signY = hh - Math.round(signH / 2);
+      this.rect(0, 0, W, H, C.overlay);
+      var label = "暂未解锁";
+      var fs = this.portrait ? 20 : 22;
+      if (!this.paintLabeledUiFrame("dialog-settlement-title", { x: signX, y: signY, w: signW, h: signH }, label, fs, C.ink)) {
+        this.rect(signX, signY, signW, signH, C.wood);
+        this.text(label, hw, this.textYInBox(label, fs, signY, signH), fs, C.ink, "center");
+      }
     },
 
     drawEnergyPrompt: function () {
@@ -2815,16 +3253,41 @@
       var layout = this.getSettlementLayout(hw, hh);
       var speciesId = AIGCUtils.Game.goFishingSpeciesId || "small";
       var species = AIGCUtils.Recipes.getFishSpecies(speciesId);
-      this.paintSettlementShell(layout, "厨房缺鱼");
-      this.paintFishIcon(speciesId, hw, layout.plate.y + Math.round(layout.plate.h / 2), 56);
-      this.paintSettlementLongs(layout, [
-        "「" + species.name + "」原料不足",
-        "去钓鱼区补充后再回来烤制？"
-      ]);
-      this.paintSettlementShorts(layout, [
+      var line1 = species.name + "不足";
+      var line2 = "去钓鱼区钓完后再回来烤制？";
+      // 深棕，不是纯黑。加粗只描在木牌内部，其它弹窗不走这条
+      var titleInk = [0.36, 0.2, 0.09, 1];
+      this.paintSettlementShell(layout, "厨房缺鱼", { titleInk: titleInk, titleBold: true });
+      var fishSize = 96;
+      var fishCx = layout.dlgX + layout.dlgW / 2;
+      var titleBottom = layout.title.y + layout.title.h;
+      var fishCy = (titleBottom + layout.long1.y) / 2;
+      this.paintFishIcon(speciesId, fishCx, fishCy, fishSize);
+      var longSize = 17;
+      var longLimit = layout.long1.w - 24;
+      var lines = [line1, line2];
+      for (var li = 0; li < lines.length; li++) {
+        while (longSize > 13 && this.textWidth(lines[li], longSize) > longLimit) longSize -= 1;
+      }
+      this.paintSettlementLongs(layout, lines, longSize);
+      this.goFishingShortBoxes = this.paintSettlementShorts(layout, [
         { label: "去钓鱼", active: true },
-        { label: "先取消", active: false }
+        { label: "暂时不去", active: false }
       ]);
+      if (this._goFishingPaintKey !== speciesId) {
+        this._goFishingPaintKey = speciesId;
+        console.log(
+          "[厨房缺鱼] 绘制",
+          line1,
+          "字号",
+          longSize,
+          "鱼中心",
+          Math.round(fishCx),
+          Math.round(fishCy),
+          "尺寸",
+          fishSize
+        );
+      }
     },
 
     drawOfflinePrompt: function () {
@@ -2832,7 +3295,28 @@
       var hh = Math.round(this.height / 2);
       var layout = this.getSettlementLayout(hw, hh);
       this.paintSettlementShell(layout, "离线自动采集");
-      this.paintSettlementLongs(layout, ["下线也能收鱼肉和椰子", "看1次广告 永久解锁"]);
+      // 标题与两块长框之间的空白正中：长框贴图放大作花边框，字号同步加大
+      var midLabel = "离线看广告实现自动采集食材";
+      var midInk = [0.36, 0.2, 0.09, 1];
+      var titleBottom = layout.title.y + layout.title.h;
+      var gapMidY = (titleBottom + layout.long1.y) / 2;
+      var midW = Math.round(layout.long1.w * 0.98);
+      var midH = Math.max(Math.round(layout.long1.h * 1.65), Math.round(layout.dlgH * 0.12));
+      var gapRoom = Math.max(24, layout.long1.y - titleBottom - 8);
+      if (midH > gapRoom) midH = gapRoom;
+      var midBox = {
+        x: layout.dlgX + Math.round((layout.dlgW - midW) / 2),
+        y: Math.round(gapMidY - midH / 2),
+        w: midW,
+        h: midH
+      };
+      var midSize = 18;
+      var midLimit = midW - 28;
+      while (midSize > 14 && this.textWidth(midLabel, midSize) > midLimit) midSize -= 1;
+      if (!this.paintLabeledUiFrame("dialog-settlement-btn-long", midBox, midLabel, midSize, midInk)) {
+        this.text(midLabel, hw, this.textYInBox(midLabel, midSize, midBox.y, midBox.h), midSize, midInk, "center");
+      }
+      this.paintSettlementLongs(layout, ["下线也能收鱼肉和椰子", "看 1 次广告，永久解锁"]);
       this.paintSettlementShorts(layout, [
         {
           label: AIGCUtils.Game.offlineAdBusy ? "广告加载中" : "看广告永久解锁",
@@ -2840,6 +3324,25 @@
         },
         { label: "稍后再说", active: false }
       ]);
+      var state = AIGCUtils.GameState;
+      if (!state.offlinePromptSeen) {
+        state.offlinePromptSeen = true;
+        state.save();
+        console.log(
+          "[Prototype] Offline prompt drawn",
+          "playTimeMs=" + state.playTimeMs,
+          "offlinePromptSeen=" + state.offlinePromptSeen,
+          "offlineUnlocked=" + state.offlineUnlocked,
+          "offlinePrompt=" + AIGCUtils.Game.offlinePrompt,
+          "midBox",
+          midBox.x,
+          midBox.y,
+          midBox.w,
+          midBox.h,
+          "midSize",
+          midSize
+        );
+      }
     },
 
     drawOfflineDialog: function () {
@@ -2916,6 +3419,8 @@
       if (area === "coconut") this.drawCoconut();
       if (area === "build") this.drawBuild();
       if (area === "shop") this.drawShop();
+      // 竖屏只叠钓鱼木板透明条（地图/椰林/烤鱼/未开放同屏均受益；场景背景保留）
+      if (area !== "build") this.paintSharedHudChromePort();
       if (area !== "build") {
         this.drawHUD();
         this.drawNav();
@@ -2929,9 +3434,14 @@
       if (area === "fishing" && AIGCUtils.Collection.phase === "fishResult") this.drawFishResult();
       if (area === "coconut" && AIGCUtils.Collection.phase === "coconutSummary") this.drawCoconutSummary();
       if (AIGCUtils.Game.goFishingPrompt) this.drawGoFishingPrompt();
+      else {
+        this.goFishingShortBoxes = null;
+        this._goFishingPaintKey = null;
+      }
       if (AIGCUtils.Game.offlinePrompt) this.drawOfflinePrompt();
       if (AIGCUtils.Game.offlineDialog && AIGCUtils.GameState.pendingOffline) this.drawOfflineDialog();
       if (AIGCUtils.Game.energyPrompt) this.drawEnergyPrompt();
+      if (AIGCUtils.Game.mapLockedPrompt) this.drawMapLockedPrompt();
       this.flush();
     }
   };

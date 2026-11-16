@@ -96,9 +96,23 @@
       };
       if (game.goFishingPrompt) {
         var goLayout = R.getSettlementLayout(hw, hh);
-        var goBoxes = R.getSettlementShortBoxes(goLayout, 2);
-        if (hitShort(goBoxes, 0)) game.confirmGoFishing();
-        if (hitShort(goBoxes, 1)) game.closeGoFishingPrompt();
+        var goBoxes = (R.goFishingShortBoxes && R.goFishingShortBoxes.length === 2)
+          ? R.goFishingShortBoxes
+          : R.getSettlementShortBoxes(goLayout, 2);
+        if (hitShort(goBoxes, 0)) {
+          console.log("[厨房缺鱼] 命中左短框 去钓鱼", goBoxes[0].x, goBoxes[0].y, goBoxes[0].w, goBoxes[0].h);
+          game.confirmGoFishing();
+        } else if (hitShort(goBoxes, 1)) {
+          console.log("[厨房缺鱼] 命中右短框 暂时不去", goBoxes[1].x, goBoxes[1].y, goBoxes[1].w, goBoxes[1].h);
+          game.closeGoFishingPrompt();
+        } else {
+          console.log("[厨房缺鱼] 点在框外 不关闭");
+        }
+        return;
+      }
+      if (game.mapLockedPrompt) {
+        console.log("[MapLocked] dismiss by tap", x, y);
+        game.closeMapLockedPrompt();
         return;
       }
       if (game.offlinePrompt) {
@@ -208,6 +222,10 @@
       }
       // ── 导航栏 ──
       if (y >= navY) {
+        if (game.currentArea === "fishing" && collection.fishingDrawerOpen) {
+          collection.fishingDrawerOpen = false;
+          console.log("[Prototype] Fishing gear drawer closed outside");
+        }
         if (inside(x, y, 20, navY + 8, 130, 48)) game.navigate("map");
         if (inside(x, y, 170, navY + 8, 130, 48)) game.showInventory = true;
         return;
@@ -221,43 +239,54 @@
         if (mapHit === "fishing") game.navigate("fishing");
         if (mapHit === "coconut") game.navigate("coconut");
         if (mapHit === "shop") game.navigate("shop");
+        if (mapHit === "locked") {
+          console.log("[MapLocked] hit locked zone", x, y);
+          game.showMapLockedPrompt();
+        }
         return;
       }
       // ── 钓鱼区 ──
       if (game.currentArea === "fishing") {
-        var skinGear = R.uiSkinChrome && R.artOn;
         if (portrait) {
-          var ct2 = 64, cb2 = H - 72, ch2 = cb2 - ct2;
-          var uiH = Math.round(ch2 * 0.33);
-          var btnW = Math.round((W - 16) / 3);
+          var ct2 = 64, cb2 = H - 72;
           var actY = cb2 - 58;
           // 离开按钮
           if (inside(x, y, W - 108, ct2 + 8, 98, 38)) { collection.leaveFishing(); game.navigate("map"); return; }
           if (collection.phase === "idle") {
-            if (inside(x, y, W - 112, ct2 + 54, 104, 34)) { collection.toggleFishingDrawer(); return; }
-            if (skinGear) {
-              if (collection.fishingDrawerOpen) {
-                var btnW3 = Math.round((W - 24) / 3);
-                var py = ct2 + 128;
-                if (inside(x, y, 8, py + 6, btnW3, 32)) collection.selectSpot("shallow");
-                if (collection.isSpotUnlocked("reef") && inside(x, y, 8 + btnW3 + 4, py + 6, btnW3, 32)) collection.selectSpot("reef");
-                if (collection.isSpotUnlocked("deep") && inside(x, y, 8 + (btnW3 + 4) * 2, py + 6, btnW3, 32)) collection.selectSpot("deep");
-                if (inside(x, y, 8, py + 42, btnW3, 32)) collection.selectBait("worm");
-                if (collection.isBaitUnlocked("shrimp") && inside(x, y, 8 + btnW3 + 4, py + 42, btnW3, 32)) collection.selectBait("shrimp");
-                if (collection.isBaitUnlocked("secret") && inside(x, y, 8 + (btnW3 + 4) * 2, py + 42, btnW3, 32)) collection.selectBait("secret");
-              }
-            } else {
-            if (inside(x, y, 8, ct2 + 54, btnW, 34)) collection.selectSpot("shallow");
-            if (inside(x, y, 8, ct2 + 94, btnW, 34)) collection.selectBait("worm");
-            if (inside(x, y, W - 112, ct2 + 54, 104, 74)) { collection.toggleFishingDrawer(); return; }
+            var portGear = R.fishingGearPortLayout();
+            var portEntry = portGear.entry;
+            if (inside(x, y, portEntry.x, portEntry.y, portEntry.w, portEntry.h)) {
+              collection.toggleFishingDrawer();
+              return;
+            }
             if (collection.fishingDrawerOpen) {
-              if (inside(x, y, 8 + btnW + 2, ct2 + 54, btnW, 34)) collection.selectSpot("reef");
-              if (inside(x, y, 8 + (btnW + 2) * 2, ct2 + 54, btnW, 34)) collection.selectSpot("deep");
-              if (inside(x, y, 8 + btnW + 2, ct2 + 94, btnW, 34)) collection.selectBait("shrimp");
-              if (inside(x, y, 8 + (btnW + 2) * 2, ct2 + 94, btnW, 34)) collection.selectBait("secret");
+              var hitPort = false;
+              var pi;
+              var portLabel = portGear.label;
+              if (inside(x, y, portLabel.x, portLabel.y, portLabel.w, portLabel.h)) hitPort = true;
+              for (pi = 0; pi < portGear.spots.length; pi++) {
+                var portSpot = portGear.spots[pi];
+                if (inside(x, y, portSpot.x, portSpot.y, portSpot.w, portSpot.h)) {
+                  collection.selectSpot(portSpot.id);
+                  hitPort = true;
+                }
+              }
+              for (pi = 0; pi < portGear.baits.length; pi++) {
+                var portBait = portGear.baits[pi];
+                if (inside(x, y, portBait.x, portBait.y, portBait.w, portBait.h)) {
+                  collection.selectBait(portBait.id);
+                  hitPort = true;
+                }
+              }
+              if (!hitPort) {
+                collection.fishingDrawerOpen = false;
+                console.log("[Prototype] Fishing gear drawer closed outside");
+              } else {
+                return;
+              }
             }
-            }
-            if (inside(x, y, hw - 120, actY, 240, 50)) collection.startCharge();
+            var castPort = R.fishingCastPortButton();
+            if (inside(x, y, castPort.x, castPort.y, castPort.w, castPort.h)) collection.startCharge();
             return;
           }
           if (collection.phase === "waiting" || collection.phase === "bite") {
@@ -268,27 +297,37 @@
         } else {
           if (inside(x, y, 835, 72, 100, 42)) { collection.leaveFishing(); game.navigate("map"); return; }
           if (collection.phase === "idle") {
-            if (inside(x, y, 392, 376, 112, 38)) { collection.toggleFishingDrawer(); return; }
-            if (skinGear) {
-              if (collection.fishingDrawerOpen) {
-                var P = { col0: 508, col1: 618, col2: 728, spotY: 302, baitY: 336, bw: 96, bh: 30 };
-                if (inside(x, y, P.col0, P.spotY, P.bw, P.bh)) collection.selectSpot("shallow");
-                if (collection.isSpotUnlocked("reef") && inside(x, y, P.col1, P.spotY, P.bw, P.bh)) collection.selectSpot("reef");
-                if (collection.isSpotUnlocked("deep") && inside(x, y, P.col2, P.spotY, P.bw, P.bh)) collection.selectSpot("deep");
-                if (inside(x, y, P.col0, P.baitY, P.bw, P.bh)) collection.selectBait("worm");
-                if (collection.isBaitUnlocked("shrimp") && inside(x, y, P.col1, P.baitY, P.bw, P.bh)) collection.selectBait("shrimp");
-                if (collection.isBaitUnlocked("secret") && inside(x, y, P.col2, P.baitY, P.bw, P.bh)) collection.selectBait("secret");
-              }
-            } else {
-            if (inside(x, y, 14, 376, 120, 38)) collection.selectSpot("shallow");
-            if (inside(x, y, 14, 420, 120, 38)) collection.selectBait("worm");
-            if (inside(x, y, 392, 376, 100, 82)) { collection.toggleFishingDrawer(); return; }
-            if (collection.fishingDrawerOpen) {
-              if (inside(x, y, 142, 328, 120, 34)) collection.selectSpot("reef");
-              if (inside(x, y, 270, 328, 120, 34)) collection.selectSpot("deep");
-              if (inside(x, y, 142, 366, 120, 34)) collection.selectBait("shrimp");
-              if (inside(x, y, 270, 366, 120, 34)) collection.selectBait("secret");
+            var gear = R.fishingGearLandLayout();
+            var entry = gear.entry;
+            if (inside(x, y, entry.x, entry.y, entry.w, entry.h)) {
+              collection.toggleFishingDrawer();
+              return;
             }
+            if (collection.fishingDrawerOpen) {
+              var hitGear = false;
+              var gi;
+              var landLabel = gear.label;
+              if (inside(x, y, landLabel.x, landLabel.y, landLabel.w, landLabel.h)) hitGear = true;
+              for (gi = 0; gi < gear.spots.length; gi++) {
+                var spotBox = gear.spots[gi];
+                if (inside(x, y, spotBox.x, spotBox.y, spotBox.w, spotBox.h)) {
+                  collection.selectSpot(spotBox.id);
+                  hitGear = true;
+                }
+              }
+              for (gi = 0; gi < gear.baits.length; gi++) {
+                var baitBox = gear.baits[gi];
+                if (inside(x, y, baitBox.x, baitBox.y, baitBox.w, baitBox.h)) {
+                  collection.selectBait(baitBox.id);
+                  hitGear = true;
+                }
+              }
+              if (!hitGear) {
+                collection.fishingDrawerOpen = false;
+                console.log("[Prototype] Fishing gear drawer closed outside");
+              } else {
+                return;
+              }
             }
             if (inside(x, y, 520, 405, 240, 50)) collection.startCharge();
             return;
@@ -303,7 +342,12 @@
       }
       // ── 椰林区 ──
       if (game.currentArea === "coconut") {
-        if (collection.phase === "coconutRound" && collection.catchCoconut(x, y)) return;
+        // 先接椰子：成功则立刻停晃并 return，同一次点击不再 shakeTree
+        if (collection.phase === "coconutRound" && collection.catchCoconut(x, y)) {
+          var stopTree = this.treeAt(x, y);
+          if (stopTree >= 0) collection.treeShakes[stopTree] = 0;
+          return;
+        }
         var treeIndex = this.treeAt(x, y);
         if (treeIndex >= 0) collection.shakeTree(treeIndex);
         return;
@@ -317,20 +361,35 @@
           var kitchenY3 = custBottom3 + 14;
           var kitchenH3 = Math.round(ch3 * 0.38);
           var kitchenW3 = Math.round(W * 2 / 3);
-          var juiceW3 = W - kitchenW3;
-          // 顾客点击（左/右半区域，面朝玩家）
-          if (y >= ct3 && y <= custBottom3) {
-            if (x < Math.round(W / 2)) { game.sellCustomer(0); return; }
-            else { game.sellCustomer(1); return; }
+          var portBoard = AIGCUtils.ShopLayout && AIGCUtils.ShopLayout.port;
+          // 中层圆木板：只做椰汁，绝不交付顾客（须先于顾客热区判定）
+          if (portBoard && portBoard.work) {
+            var workPt = R.shopPoint(portBoard.work);
+            var workHit = Math.round(W * 0.22);
+            if (inside(x, y, workPt.x - workHit / 2, workPt.y - workHit / 2, workHit, workHit)) {
+              console.log("[ShopHit] port work juice", Math.round(x), Math.round(y), "recipe", baking.current ? baking.current.recipeId : "none");
+              if (baking.current && baking.current.recipeId === "coconut_juice") { baking.hit(); return; }
+              if (!baking.current) { game.startRecipe("coconut_juice"); return; }
+              return;
+            }
+          }
+          // 上层两桌：顾客脚下两块矩形
+          if (portBoard && portBoard.customers) {
+            var custHitW = Math.round(W * 0.28);
+            var custHitH = Math.round(H * 0.12);
+            for (var ci = 0; ci < portBoard.customers.length; ci++) {
+              var cFoot = R.shopPoint(portBoard.customers[ci]);
+              var cLeft = cFoot.x - custHitW / 2;
+              var cTop = cFoot.y - custHitH * 0.75;
+              if (inside(x, y, cLeft, cTop, custHitW, custHitH)) {
+                console.log("[ShopHit] port customer", ci, Math.round(x), Math.round(y), "foot", Math.round(cFoot.x), Math.round(cFoot.y));
+                game.sellCustomer(ci); return;
+              }
+            }
           }
           // 烤制区（左2/3厨房）
           if (baking.current && inside(x, y, 0, kitchenY3, kitchenW3, kitchenH3)) {
             baking.hit(); return;
-          }
-          // 椰子汁区（右1/3）
-          if (inside(x, y, kitchenW3 + 4, kitchenY3 + 28, juiceW3 - 10, kitchenH3 - 40)) {
-            if (baking.current && baking.current.recipeId === "coconut_juice") { baking.hit(); return; }
-            if (!baking.current) { game.startRecipe("coconut_juice"); return; }
           }
           // 鱼品选择
           var bW2 = Math.round((W - 10) / AIGCUtils.FishSpecies.length);
