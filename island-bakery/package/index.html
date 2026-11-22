@@ -61,6 +61,7 @@
     touch-action: none;
     width: 100%;
     height: 100%;
+    position: relative;
   }
 
   /* ── 胶囊 UI（右上角） ── */
@@ -139,10 +140,37 @@
   #debug-rotate svg { width: 16px; height: 16px; transition: transform 0.3s; }
   html.landscape #debug-rotate svg { transform: rotate(90deg); }
   html.yoola-platform #debug-rotate { display: none; }
+
+  /* R0037：首屏硬门闸 loading，资源齐前盖住画布，避免旧残缺素材闪现 */
+  #boot-loading {
+    position: absolute;
+    inset: 0;
+    z-index: 9000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1f292b;
+    pointer-events: none;
+  }
+  #boot-loading .boot-loading-text {
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.08em;
+    color: #faf0c8;
+  }
+  html:not(.yoola-platform) #boot-loading {
+    /* 与调试机框同尺寸：跟随 html 盒 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 </style>
 </head>
 <body>
 <canvas id="game" style="display:block"></canvas>
+<div id="boot-loading"><span class="boot-loading-text">加载中</span></div>
 
 <!-- 胶囊 UI + Home 键（仅浏览器调试用） -->
 <div id="debug-capsule">
@@ -220,41 +248,66 @@ function toggleOrientation() {
 <script src="kwaiOpenApi/kwai-repost.js?v=1"></script>
 <script src="kwaiOpenApi/kwai-ui.js?v=1"></script>
 <script src="kwaiOpenApi/kwai-storage.js?v=1"></script>
-<script src="kwaiOpenApi/kwai-media.js?v=1"></script>
+<script src="kwaiOpenApi/kwai-media.js?v=5"></script>
 <script src="kwaiOpenApi/kwai-base.js?v=1"></script>
 <!-- 在下方按依赖顺序追加游戏 js 文件；kwaiStandard/main.js 保持最后 -->
 
 <!-- 游戏数据 -->
 <script src="gameplay/data/recipes.js?v=1"></script>
-<script src="gameplay/data/map-zones.js?v=5"></script>
+<script src="gameplay/data/map-zones.js?v=6"></script>
 <script src="gameplay/data/asset-sprites.js?v=4"></script>
-<script src="gameplay/data/shop-layout.js?v=8"></script>
+<script src="gameplay/data/shop-layout.js?v=21"></script>
+<script src="gameplay/data/shop-anims.js?v=10"></script>
 <script src="gameplay/data/upgrades.js?v=1"></script>
 <!-- 游戏核心 -->
-<script src="gameplay/core/game-state.js?v=1"></script>
+<script src="gameplay/core/game-state.js?v=4"></script>
 <script src="gameplay/core/energy.js?v=1"></script>
 <script src="gameplay/core/day-cycle.js?v=1"></script>
 <script src="gameplay/core/ad-manager.js?v=1"></script>
 <script src="gameplay/core/tutorial.js?v=1"></script>
+<script src="gameplay/core/onboarding.js?v=1"></script>
 <script src="gameplay/core/share-manager.js?v=1"></script>
 <script src="gameplay/core/offline-manager.js?v=1"></script>
 <script src="gameplay/core/achievement.js?v=1"></script>
-<script src="gameplay/core/sound-manager.js?v=1"></script>
-<script src="gameplay/core/game.js?v=5"></script>
+<script src="gameplay/core/sound-manager.js?v=8"></script>
+<script src="gameplay/core/game.js?v=13"></script>
 <!-- 游戏玩法 -->
-<script src="gameplay/play/baking.js?v=1"></script>
-<script src="gameplay/play/collection.js?v=3"></script>
-<script src="gameplay/play/selling.js?v=1"></script>
+<script src="gameplay/play/baking.js?v=10"></script>
+<script src="gameplay/play/collection.js?v=8"></script>
+<script src="gameplay/play/selling.js?v=5"></script>
 <script src="gameplay/play/defense.js?v=1"></script>
 <script src="gameplay/play/vip-system.js?v=1"></script>
-<script src="gameplay/play/input.js?v=10"></script>
+<script src="gameplay/play/input.js?v=22"></script>
 <!-- 游戏渲染 -->
-<script src="gameplay/render/font-atlas.js?v=2"></script>
-<script src="gameplay/render/renderer.js?v=40"></script>
+<script src="gameplay/render/font-atlas.js?v=5"></script>
+<script src="gameplay/render/anim-driver.js?v=10"></script>
+<script src="gameplay/render/renderer.js?v=158"></script>
 <script src="gameplay/render/particle-system.js?v=1"></script>
 <script src="gameplay/render/ui-manager.js?v=1"></script>
 <!-- 游戏场景 -->
 <script src="gameplay/scene/scene-manager.js?v=1"></script>
+<script>
+  // H5 预览专用：首屏 loading 由入口维护，玩法代码不直接操作 DOM
+  window.AIGCUtils = window.AIGCUtils || {};
+  window.AIGCUtils.BootOverlay = {
+    sync: function (ready, progress) {
+      var el = document.getElementById("boot-loading");
+      if (!el) return;
+      if (ready) {
+        if (el.style.display !== "none") {
+          el.style.display = "none";
+          console.log("[Boot] R0037 hide loading overlay");
+        }
+        return;
+      }
+      el.style.display = "flex";
+      var label = el.querySelector(".boot-loading-text");
+      if (label) {
+        label.textContent = "加载中 " + (progress && progress.pct != null ? progress.pct : 0) + "%";
+      }
+    }
+  };
+</script>
 <script src="kwaiStandard/main.js?v=1"></script>
 </body>
 </html>

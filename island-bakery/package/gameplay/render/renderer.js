@@ -2,6 +2,8 @@
   var AIGCUtils = window.AIGCUtils;
   var C = {
     ink: [0.24, 0.19, 0.15, 1],
+    /** R0025：弹窗统一深棕字色 ≈ #5E3314（引导图手写风中位色） */
+    dialogInk: [94 / 255, 51 / 255, 20 / 255, 1],
     cream: [0.98, 0.92, 0.79, 1],
     paper: [0.96, 0.86, 0.67, 1],
     sand: [0.91, 0.76, 0.52, 1],
@@ -47,7 +49,67 @@
       var gl = window.canvas.getContext("webgl");
       if (!gl) return false;
       var vertexSource = "attribute vec2 a_position;attribute vec4 a_color;attribute vec2 a_uv;attribute float a_textured;varying vec4 v_color;varying vec2 v_uv;varying float v_textured;void main(){gl_Position=vec4(a_position,0.0,1.0);v_color=a_color;v_uv=a_uv;v_textured=a_textured;}";
-      var fragmentSource = "precision mediump float;uniform sampler2D u_font;varying vec4 v_color;varying vec2 v_uv;varying float v_textured;void main(){vec4 color=v_color;if(v_textured>2.5){vec4 tex=texture2D(u_font,v_uv);float g=dot(tex.rgb,vec3(0.299,0.587,0.114));color=vec4(vec3(g)*v_color.rgb,tex.a*v_color.a);}else if(v_textured>1.5){vec4 tex=texture2D(u_font,v_uv);color=vec4(tex.rgb*v_color.rgb,tex.a*v_color.a);}else if(v_textured>0.5){color.a*=texture2D(u_font,v_uv).a;}gl_FragColor=color;}";
+      var fragmentSource = [
+        "precision mediump float;",
+        "uniform sampler2D u_font;",
+        "uniform sampler2D u_mask;",
+        "uniform sampler2D u_meta;",
+        "uniform float u_time;",
+        "uniform float u_foam;",
+        "uniform vec2 u_resolution;",
+        "varying vec4 v_color;",
+        "varying vec2 v_uv;",
+        "varying float v_textured;",
+        "void main(){",
+        "  vec4 color=v_color;",
+        // R0018 浪形保留；R0019 只改近岸浪花（碎点 swash + 波峰碎沫）
+        "  if(v_textured>3.0){",
+        "    vec4 m=texture2D(u_mask,v_uv);",
+        "    float cover=m.a;",
+        "    if(cover<0.004) discard;",
+        "    float t=u_time;",
+        "    float depth=smoothstep(0.18,0.88,v_uv.y);",
+        "    float yFreq=mix(6.2,3.4,depth);",
+        "    float warp=sin(v_uv.x*3.8+t*0.28)*0.55+sin(v_uv.x*1.6-t*0.14)*0.30;",
+        "    float phase=v_uv.y*yFreq-t*0.68+warp;",
+        "    float w1=sin(phase);",
+        "    float w2=sin(phase*0.52+v_uv.x*1.05-t*0.26+1.0);",
+        "    float h=w1*0.80+w2*0.32;",
+        "    vec3 raw=m.rgb;",
+        "    float lum=dot(raw,vec3(0.30,0.59,0.11));",
+        "    vec3 chroma=raw/max(lum,0.06);",
+        "    float flatLum=mix(lum,0.40,0.58);",
+        "    vec3 col=chroma*flatLum;",
+        "    col=mix(raw,col,0.72);",
+        "    col+=vec3(0.11,0.10,0.07)*h;",
+        "    col-=vec3(0.09,0.07,0.05)*smoothstep(0.10,-0.50,h);",
+        "    float face=smoothstep(-0.20,0.40,h)*(1.0-smoothstep(0.45,0.90,h));",
+        "    col+=vec3(0.05,0.045,0.03)*face;",
+        "    float crest=pow(smoothstep(0.72,0.98,w1),2.5);",
+        "    col=mix(col,vec3(0.96,0.94,0.88),crest*0.14);",
+        "    col=clamp(col,0.0,1.0);",
+        "    vec4 meta=texture2D(u_meta,v_uv);",
+        "    float shore=meta.r*u_foam;",
+        "    float pulse=0.5+0.5*sin(t*1.13);",
+        "    float front=shore*1.15-0.20-pulse*0.55;",
+        "    float swash=smoothstep(0.02,0.22,front)*smoothstep(0.55,0.18,front);",
+        "    float grit=sin(v_uv.x*48.0+t*2.4+meta.b*6.28)*sin(v_uv.x*19.0-t*1.6+shore*9.0);",
+        "    swash*=smoothstep(-0.15,0.55,grit);",
+        "    swash*=smoothstep(0.08,0.45,shore);",
+        "    float crestFoam=pow(smoothstep(0.55,0.95,h),2.0)*smoothstep(0.12,0.70,shore);",
+        "    crestFoam*=smoothstep(0.0,0.6,grit*0.5+0.5);",
+        "    float foam=max(swash*0.92,crestFoam*0.55)*cover;",
+        "    col=mix(col,vec3(0.97,0.99,0.96),foam);",
+        "    float a=smoothstep(0.02,0.85,cover);",
+        "    gl_FragColor=vec4(col,a);",
+        "    return;",
+        "  }",
+        "  if(v_textured>2.5){vec4 tex=texture2D(u_font,v_uv);float g=dot(tex.rgb,vec3(0.299,0.587,0.114));color=vec4(vec3(g)*v_color.rgb,tex.a*v_color.a);}",
+        "  else if(v_textured>1.5){vec4 tex=texture2D(u_font,v_uv);color=vec4(tex.rgb*v_color.rgb,tex.a*v_color.a);}",
+        "  else if(v_textured>0.5){color.a*=texture2D(u_font,v_uv).a;}",
+        "  gl_FragColor=color;",
+        "}"
+      ].join("");
       function compile(type, source) {
         var shader = gl.createShader(type);
         gl.shaderSource(shader, source);
@@ -85,6 +147,14 @@
       gl.vertexAttribPointer(textured, 1, gl.FLOAT, false, 36, 32);
       this.fontUniform = gl.getUniformLocation(program, "u_font");
       gl.uniform1i(this.fontUniform, 0);
+      this.maskUniform = gl.getUniformLocation(program, "u_mask");
+      this.metaUniform = gl.getUniformLocation(program, "u_meta");
+      this.timeUniform = gl.getUniformLocation(program, "u_time");
+      this.foamUniform = gl.getUniformLocation(program, "u_foam");
+      this.resUniform = gl.getUniformLocation(program, "u_resolution");
+      gl.uniform1i(this.maskUniform, 1);
+      gl.uniform1i(this.metaUniform, 2);
+      gl.uniform1f(this.foamUniform, 1);
       gl.enable(gl.BLEND);
       gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
       this.loadFont();
@@ -139,6 +209,46 @@
     uiSkinCatalog: [
       { key: "ui-skin-fish-land", path: "res/Image/ui/ui-skin-fish-land.png" },
       { key: "ui-skin-fish-port", path: "res/Image/ui/ui-skin-fish-port.png" },
+      // 分层重做：去船完整海面（noboat）/ 浪层占位底板（seabase）/ 深海 + 浪 sheet + 真船
+      { key: "ui-skin-fish-land-noboat", path: "res/Image/ui/ui-skin-fish-land-noboat.png" },
+      { key: "ui-skin-fish-port-noboat", path: "res/Image/ui/ui-skin-fish-port-noboat.png" },
+      { key: "ui-skin-fish-land-seabase", path: "res/Image/ui/ui-skin-fish-land-seabase.png?v=3" },
+      { key: "ui-skin-fish-port-seabase", path: "res/Image/ui/ui-skin-fish-port-seabase.png?v=3" },
+      { key: "ui-skin-fish-land-deepbase", path: "res/Image/ui/ui-skin-fish-land-deepbase.png?v=1" },
+      { key: "ui-skin-fish-port-deepbase", path: "res/Image/ui/ui-skin-fish-port-deepbase.png?v=1" },
+      { key: "ui-skin-fish-land-seaflat", path: "res/Image/ui/ui-skin-fish-land-seaflat.png?v=12" },
+      { key: "ui-skin-fish-port-seaflat", path: "res/Image/ui/ui-skin-fish-port-seaflat.png?v=14" },
+      { key: "ui-skin-fish-land-deepflat", path: "res/Image/ui/ui-skin-fish-land-deepflat.png?v=12" },
+      { key: "ui-skin-fish-port-deepflat", path: "res/Image/ui/ui-skin-fish-port-deepflat.png?v=14" },
+      { key: "ui-chrome-land", path: "res/Image/ui/ui-chrome-land.png?v=2" },
+      { key: "ui-chrome-port", path: "res/Image/ui/ui-chrome-port.png?v=2" },
+      { key: "sea-mask-land", path: "res/Image/ui/sea-mask-land.png?v=12" },
+      { key: "sea-mask-port", path: "res/Image/ui/sea-mask-port.png?v=12" },
+      { key: "sea-mask-deep-land", path: "res/Image/ui/sea-mask-deep-land.png?v=12" },
+      { key: "sea-mask-deep-port", path: "res/Image/ui/sea-mask-deep-port.png?v=12" },
+      { key: "sea-meta-land", path: "res/Image/ui/sea-meta-land.png?v=2" },
+      { key: "sea-meta-port", path: "res/Image/ui/sea-meta-port.png?v=2" },
+      { key: "sea-meta-deep-land", path: "res/Image/ui/sea-meta-deep-land.png?v=2" },
+      { key: "sea-meta-deep-port", path: "res/Image/ui/sea-meta-deep-port.png?v=2" },
+      { key: "boat_fish_land", path: "res/Image/sprites/boat_fish_land.png?v=6" },
+      { key: "boat_fish_port", path: "res/Image/sprites/boat_fish_port.png?v=10" },
+      { key: "rock_reef_lv1", path: "res/Image/sprites/rock_reef_lv1.png?v=2" },
+      // 旧风景 sheet 保留加载，运行时改用纯海 swell/crash
+      { key: "anim_sea_wave_shallow_land", path: "res/Image/sprites/anim/sea_wave_shallow_land_sheet.png?v=3" },
+      { key: "anim_sea_wave_shallow_port", path: "res/Image/sprites/anim/sea_wave_shallow_port_sheet.png?v=3" },
+      { key: "anim_sea_wave_deep_land", path: "res/Image/sprites/anim/sea_wave_deep_land_sheet.png?v=3" },
+      { key: "anim_sea_wave_deep_port", path: "res/Image/sprites/anim/sea_wave_deep_port_sheet.png?v=3" },
+      { key: "anim_sea_swell_land", path: "res/Image/sprites/anim/sea_swell_land_sheet.png?v=3" },
+      { key: "anim_sea_swell_port", path: "res/Image/sprites/anim/sea_swell_port_sheet.png?v=3" },
+      { key: "anim_sea_crash_land", path: "res/Image/sprites/anim/sea_crash_land_sheet.png?v=3" },
+      { key: "anim_sea_crash_port", path: "res/Image/sprites/anim/sea_crash_port_sheet.png?v=3" },
+      // R0020b：横屏浅滩整屏海域 16 帧全分辨率，拆 4 张 2×2 atlas（960×540 每格，避免半分辨率发糊）
+      { key: "anim_fish_sea_gif_land_0", path: "res/Image/sprites/anim/fish_sea_gif_land_atlas0.png?v=5" },
+      { key: "anim_fish_sea_gif_land_1", path: "res/Image/sprites/anim/fish_sea_gif_land_atlas1.png?v=5" },
+      { key: "anim_fish_sea_gif_land_2", path: "res/Image/sprites/anim/fish_sea_gif_land_atlas2.png?v=5" },
+      { key: "anim_fish_sea_gif_land_3", path: "res/Image/sprites/anim/fish_sea_gif_land_atlas3.png?v=5" },
+      { key: "anim_rabbit_fish_cast", path: "res/Image/sprites/anim/rabbit_fish_cast_sheet.png?v=1" },
+      { key: "anim_rabbit_fish_reel", path: "res/Image/sprites/anim/rabbit_fish_reel_sheet.png?v=1" },
       { key: "ui-skin-shop-land", path: "res/Image/ui/ui-skin-shop-land.png" },
       { key: "ui-skin-shop-port", path: "res/Image/ui/ui-skin-shop-port.png" },
       { key: "ui-skin-coconut-land", path: "res/Image/ui/ui-skin-coconut-land.png" },
@@ -165,6 +275,11 @@
       { key: "dialog-offline", path: "res/Image/ui/dialog-offline.png" },
       { key: "dialog-go-fishing", path: "res/Image/ui/dialog-go-fishing.png" },
       { key: "dialog-inventory", path: "res/Image/ui/dialog-inventory.png" },
+      // R0025 新人引导：三弹窗 + 统一按钮底图（主包首屏）
+      { key: "dialog-onboard-intro", path: "res/Image/ui/dialog-onboard-intro.png" },
+      { key: "dialog-onboard-coconut", path: "res/Image/ui/dialog-onboard-coconut.png" },
+      { key: "dialog-onboard-end", path: "res/Image/ui/dialog-onboard-end.png" },
+      { key: "ui-guide-btn", path: "res/Image/ui/ui-guide-btn.png" },
       { key: "order-bubble", path: "res/Image/ui/order-bubble.png?v=3" },
       { key: "order-bubble-skin-land", path: "res/Image/ui/order-bubble-skin-land.png?v=1" },
       { key: "e1-fish-icons", path: "res/Image/e1_fish_icons.png?v=3" },
@@ -175,6 +290,25 @@
       { key: "grill_lv3", path: "res/Image/sprites/grill_lv3.png" },
       { key: "grill_lv4", path: "res/Image/sprites/grill_lv4.png" },
       { key: "hero_rabbit_grill", path: "res/Image/sprites/hero_rabbit_grill.png" },
+      { key: "anim_rabbit_grill_cook", path: "res/Image/sprites/anim/grill_lv1_cook_sheet.png" },
+      { key: "anim_grill_lv1_cook", path: "res/Image/sprites/anim/grill_lv1_cook_sheet.png" },
+      { key: "anim_grill_lv2_cook", path: "res/Image/sprites/anim/grill_lv2_cook_sheet.png" },
+      { key: "anim_grill_lv3_cook", path: "res/Image/sprites/anim/grill_lv3_cook_sheet.png" },
+      { key: "anim_grill_lv4_cook", path: "res/Image/sprites/anim/grill_lv4_cook_sheet.png" },
+      { key: "anim_rabbit_grill_ignite", path: "res/Image/sprites/anim/rabbit_grill_ignite_sheet.png" },
+      { key: "anim_rabbit_grill_flip", path: "res/Image/sprites/anim/rabbit_grill_flip_sheet.png" },
+      { key: "anim_rabbit_put_tools", path: "res/Image/sprites/anim/rabbit_put_tools_sheet.png?v=2" },
+      { key: "anim_rabbit_juice_walk", path: "res/Image/sprites/anim/rabbit_juice_walk_sheet.png?v=2" },
+      { key: "anim_rabbit_juice_crack", path: "res/Image/sprites/anim/rabbit_juice_crack_sheet.png?v=3" },
+      { key: "anim_rabbit_juice_straw", path: "res/Image/sprites/anim/rabbit_juice_straw_sheet.png?v=3" },
+      { key: "anim_customer_bear_walk", path: "res/Image/sprites/anim/customer_bear_walk_sheet.png" },
+      { key: "anim_customer_penguin_walk", path: "res/Image/sprites/anim/customer_penguin_walk_sheet.png" },
+      { key: "anim_customer_fox_walk", path: "res/Image/sprites/anim/customer_fox_walk_sheet.png" },
+      { key: "anim_customer_pig_walk", path: "res/Image/sprites/anim/customer_pig_walk_sheet.png" },
+      { key: "anim_customer_bear_wait", path: "res/Image/sprites/anim/customer_bear_wait_sheet.png" },
+      { key: "anim_customer_penguin_wait", path: "res/Image/sprites/anim/customer_penguin_wait_sheet.png" },
+      { key: "anim_customer_fox_wait", path: "res/Image/sprites/anim/customer_fox_wait_sheet.png" },
+      { key: "anim_customer_pig_wait", path: "res/Image/sprites/anim/customer_pig_wait_sheet.png" },
       { key: "hero_rabbit_fish", path: "res/Image/sprites/hero_rabbit_fish.png" },
       { key: "fish_raw_small", path: "res/Image/sprites/fish_raw_small.png" },
       { key: "fish_raw_salmon", path: "res/Image/sprites/fish_raw_salmon.png" },
@@ -200,27 +334,319 @@
     sceneAspect: {},
     sceneLoading: {},
     sceneFailed: {},
+    /** R0010 C1：sea-mask CPU 像素缓存，供海界采样（与 GPU 纹理同源） */
+    seaMaskCpu: {},
     artOn: false,
     missingShopSprites: {},
     uiSkinChrome: false,
     artShiftX: 0,
+    artShiftY: 0,
+    /** R0008 C0：URL 调试参数，默认全关，不污染线上 */
+    seaDebugMode: "",
+    seaDebugT: null,
+    seaUiMode: "", // "" | "off" | "baked"
+    /** R0014 C3：?sea=static 跳过动态海，只露 seaflat */
+    seaRenderMode: "",
+    /** R0015 C4：?foam=0 关闭拍岸/波峰碎沫 */
+    seaFoamMode: "",
+    _seaDebugParsed: false,
+
+    parseSeaDebugParams: function () {
+      if (this._seaDebugParsed) return;
+      this._seaDebugParsed = true;
+      try {
+        var q = new URLSearchParams(window.location.search || "");
+        this.seaDebugMode = q.get("seaDebug") || "";
+        var t = q.get("seaT");
+        this.seaDebugT = t != null && t !== "" ? parseFloat(t) : null;
+        this.seaUiMode = q.get("ui") || "";
+        this.seaRenderMode = q.get("sea") || "";
+        this.seaFoamMode = q.get("foam") || "";
+        if (this.seaDebugMode || this.seaUiMode || this.seaDebugT != null || this.seaRenderMode || this.seaFoamMode) {
+          console.log(
+            "[FishAnim] R0008 seaDebug",
+            this.seaDebugMode || "off",
+            "seaT",
+            this.seaDebugT,
+            "ui",
+            this.seaUiMode || "default",
+            "sea",
+            this.seaRenderMode || "dynamic",
+            "foam",
+            this.seaFoamMode === "0" ? "off" : "on"
+          );
+        }
+      } catch (e) {
+        this.seaDebugMode = "";
+        this.seaDebugT = null;
+        this.seaUiMode = "";
+        this.seaRenderMode = "";
+        this.seaFoamMode = "";
+      }
+    },
+
+    fishingUiChromeKey: function () {
+      return this.portrait ? "ui-chrome-port" : "ui-chrome-land";
+    },
+
+    /**
+     * 钓鱼底板：
+     * R0008：浅滩/礁石/深海用 seaflat/deepflat（海域由 sea-mask + GLSL；UI 已拆到 ui-chrome）。
+     * 旧一体皮会把船烤进图里；noboat 有绿罩，均停用。
+     */
+    fishingBaseKey: function () {
+      var spot = (AIGCUtils.Collection && AIGCUtils.Collection.spotId) || "shallow";
+      var deep = spot === "deep";
+      var key = this.portrait
+        ? (deep ? "ui-skin-fish-port-deepflat" : "ui-skin-fish-port-seaflat")
+        : (deep ? "ui-skin-fish-land-deepflat" : "ui-skin-fish-land-seaflat");
+      if (this.scenes[key] || this.sceneLoading[key] || !this.sceneFailed[key]) return key;
+      return this.portrait ? "ui-skin-fish-port" : "ui-skin-fish-land";
+    },
+
+    /**
+     * R0020：横屏浅滩用整屏海域 GIF（含船+静坐兔+UI 皮）。
+     * 深海/竖屏仍走着色器海 + 分层船兔。
+     */
+    fishingUsesLandSeaGif: function () {
+      if (this.portrait) return false;
+      var deep = ((AIGCUtils.Collection && AIGCUtils.Collection.spotId) || "shallow") === "deep";
+      return !deep;
+    },
+
+    fishingLandSeaGifKey: function () {
+      return "anim_fish_sea_gif_land_0";
+    },
+
+    /** GIF 内静坐兔脚底（设计坐标 960×540；舱内坐垫，近舷条带遮脚） */
+    fishingLandSeaGifRabbitSeat: function () {
+      return { x: 235, y: 248, h: 80 };
+    },
+
+    /** 横屏 GIF 船右侧开阔海：游鱼不得进入船身及其左侧 */
+    fishingLandSeaGifFishMinX: function () {
+      return 420;
+    },
+
+    /**
+     * 与 paintLandSeaGifBackdrop / 兔摇摆共用一整圈时长（毫秒）。
+     * 手动调这个即可：越小越快，越大越慢。参考：2000偏快 / 3000适中 / 4000偏慢；原片≈4480。
+     */
+    fishingLandSeaGifPeriodMs: 3000,
+    fishingLandSeaGifFrameCount: 16,
+
+    fishingLandSeaGifClock: function (now) {
+      var n = this.fishingLandSeaGifFrameCount || 16;
+      var periodMs = this.fishingLandSeaGifPeriodMs || 4000;
+      var t = now || Date.now();
+      var cycle = (t % periodMs) / periodMs;
+      var ft = cycle * n;
+      var f0 = Math.floor(ft) % n;
+      var f1 = (f0 + 1) % n;
+      var frac = ft - Math.floor(ft);
+      return { periodMs: periodMs, n: n, cycle: cycle, frameT: ft, f0: f0, f1: f1, frac: frac };
+    },
+
+    /**
+     * R0020g：兔与 GIF 同慢速时钟；一整圈一次柔和起伏（跟底图船浪观感），
+     * 不再跟发跳的灯笼逐帧表（会显得更快、更不一致）。
+     */
+    fishingLandSeaGifSurf: function (now) {
+      var clk = this.fishingLandSeaGifClock(now);
+      var phase = clk.cycle * Math.PI * 2;
+      // 第 0 帧 bobY=0；符号取反，与 GIF 船初始起伏同向
+      var bobY = Math.sin(phase) * -4.5;
+      var bobRot = Math.cos(phase) * -0.018;
+      return {
+        bobY: bobY,
+        bobRot: bobRot,
+        phase: phase,
+        cycle: clk.cycle,
+        frameT: clk.frameT,
+        frameCount: clk.n,
+        periodMs: clk.periodMs
+      };
+    },
+
+    /**
+     * R0006/R0007：只有真·无烤船底板才画船精灵，否则必双船。
+     * 像素核对：seabase/deepbase 无船；一体皮/noboat 有烤船（noboat 还有绿罩，已停用）。
+     */
+    fishingBaseHasBakedBoat: function (key) {
+      var k = key || this.backdropKey("fishing") || this.fishingBaseKey();
+      if (!k) return true;
+      if (k.indexOf("seaflat") >= 0 || k.indexOf("deepflat") >= 0) return false;
+      if (k.indexOf("seabase") >= 0 || k.indexOf("deepbase") >= 0) return false;
+      return true;
+    },
+
+    /** @deprecated 旧风景浪；运行时用 swell/crash */
+    fishingWaveSheetKey: function () {
+      return this.fishingCrashSheetKey();
+    },
+
+    fishingSwellSheetKey: function () {
+      return this.portrait ? "anim_sea_swell_port" : "anim_sea_swell_land";
+    },
+
+    fishingCrashSheetKey: function () {
+      return this.portrait ? "anim_sea_crash_port" : "anim_sea_crash_land";
+    },
+
+    fishingSeaMaskKey: function () {
+      var deep = ((AIGCUtils.Collection && AIGCUtils.Collection.spotId) || "shallow") === "deep";
+      if (this.portrait) return deep ? "sea-mask-deep-port" : "sea-mask-port";
+      return deep ? "sea-mask-deep-land" : "sea-mask-land";
+    },
+
+    /** R0015：岸距/水深 meta，与 mask 同组 */
+    fishingSeaMetaKey: function () {
+      var deep = ((AIGCUtils.Collection && AIGCUtils.Collection.spotId) || "shallow") === "deep";
+      if (this.portrait) return deep ? "sea-meta-deep-port" : "sea-meta-port";
+      return deep ? "sea-meta-deep-land" : "sea-meta-land";
+    },
 
     // 当前区域优先等待的皮肤/底板 key（用于首屏门闸，避免闪旧矢量层）
     preferredUiSkinKey: function (area) {
-      if (area === "fishing") return this.portrait ? "ui-skin-fish-port" : "ui-skin-fish-land";
+      if (area === "fishing") return this.fishingBaseKey();
       if (area === "coconut") return this.portrait ? "ui-skin-coconut-port" : "ui-skin-coconut-land";
       if (area === "shop") return this.portrait ? "ui-skin-shop-port" : "ui-skin-shop-land";
       if (area === "build") return this.portrait ? "shop-port" : "build-land";
       return this.portrait ? "ui-skin-map-port" : "ui-skin-map-land";
     },
 
-    // 关键皮肤已就绪，或已失败（失败则放行以免永久卡在加载）
-    isCriticalArtReady: function (area) {
-      var key = this.preferredUiSkinKey(area || "map");
-      if (!key) return true;
-      if (this.scenes[key]) return true;
-      if (this.sceneFailed[key]) return true;
+    /**
+     * R0037：当前区「必需包」key 列表（齐了才进玩法；失败也算 settled 防卡死）
+     */
+    bootAssetKeys: function (area) {
+      var keys = [];
+      var add = function (k) {
+        if (k && keys.indexOf(k) < 0) keys.push(k);
+      };
+      area = area || "map";
+      // R0039：离线「欢迎回来」/解锁窗依赖结算壳，进区前一并纳入必需包
+      if (
+        AIGCUtils.Game &&
+        (AIGCUtils.Game.offlineDialog ||
+          AIGCUtils.Game.offlinePrompt ||
+          (AIGCUtils.GameState && AIGCUtils.GameState.pendingOffline))
+      ) {
+        add("dialog-settlement-base");
+        add("dialog-settlement-title");
+        add("dialog-settlement-btn-long");
+        add("dialog-settlement-btn-short");
+      }
+      if (area === "map") {
+        add(this.portrait ? "ui-skin-map-port" : "ui-skin-map-land");
+        add("btn-wood");
+        if (AIGCUtils.Onboarding && AIGCUtils.Onboarding.isActive && AIGCUtils.Onboarding.isActive()) {
+          add("dialog-onboard-intro");
+          add("dialog-onboard-coconut");
+          add("dialog-onboard-end");
+          add("ui-guide-btn");
+        }
+      } else if (area === "coconut") {
+        add(this.portrait ? "ui-skin-coconut-port" : "ui-skin-coconut-land");
+        add("coconut_tree");
+        add("coconut_basket_big");
+        add("coconut_basket_small");
+        add("coconut_green");
+        add("btn-wood");
+        if (this.portrait) add("ui-hud-chrome-port");
+      } else if (area === "fishing") {
+        add(this.fishingBaseKey());
+        add(this.fishingUiChromeKey());
+        add(this.fishingSeaMaskKey());
+        add(this.fishingSeaMetaKey());
+        add("hero_rabbit_fish");
+        add("btn-wood");
+        if (this.fishingUsesLandSeaGif()) {
+          add("anim_fish_sea_gif_land_0");
+          add("anim_fish_sea_gif_land_1");
+          add("anim_fish_sea_gif_land_2");
+          add("anim_fish_sea_gif_land_3");
+        } else {
+          var fishBase = this.fishingBaseKey();
+          if (!this.fishingBaseHasBakedBoat(fishBase)) {
+            add(this.portrait ? "boat_fish_port" : "boat_fish_land");
+          }
+        }
+      } else if (area === "shop") {
+        add(this.portrait ? "ui-skin-shop-port" : "ui-skin-shop-land");
+        add("hero_rabbit_grill");
+        add("grill_lv1");
+        add("btn-wood");
+        add("order-bubble");
+        if (!this.portrait) add("order-bubble-skin-land");
+        if (this.portrait) add("ui-hud-chrome-port");
+      } else if (area === "build") {
+        add(this.portrait ? "shop-port" : "build-land");
+      } else {
+        add(this.preferredUiSkinKey(area));
+      }
+      return keys;
+    },
+
+    catalogHasKey: function (key) {
+      if (!key) return false;
+      var lists = [this.uiSkinCatalog, this.uiAssetCatalog, this.sceneCatalog];
+      for (var li = 0; li < lists.length; li++) {
+        var list = lists[li] || [];
+        for (var i = 0; i < list.length; i++) {
+          if (list[i].key === key) return true;
+        }
+      }
       return false;
+    },
+
+    /** 成功、失败、或不在目录（无法加载）都算 settled */
+    isAssetSettled: function (key) {
+      if (!key) return true;
+      if (this.scenes[key] || this.sceneFailed[key]) return true;
+      if (!this.catalogHasKey(key)) return true;
+      return false;
+    },
+
+    isAreaArtReady: function (area) {
+      var keys = this.bootAssetKeys(area || "map");
+      for (var i = 0; i < keys.length; i++) {
+        if (!this.isAssetSettled(keys[i])) return false;
+      }
+      return true;
+    },
+
+    /** R0037：字帖 + 当前区必需包齐（或失败放行）才进玩法 */
+    isBootReady: function (area) {
+      if (!this.fontReady) return false;
+      return this.isAreaArtReady(area || (AIGCUtils.Game && AIGCUtils.Game.currentArea) || "map");
+    },
+
+    getBootProgress: function (area) {
+      area = area || (AIGCUtils.Game && AIGCUtils.Game.currentArea) || "map";
+      var keys = this.bootAssetKeys(area);
+      var done = this.fontReady ? 1 : 0;
+      var total = keys.length + 1;
+      for (var i = 0; i < keys.length; i++) {
+        if (this.isAssetSettled(keys[i])) done++;
+      }
+      return { done: done, total: total, pct: total ? Math.floor((done / total) * 100) : 100 };
+    },
+
+    syncBootLoadingDom: function (ready, progress) {
+      // R0013：DOM 只允许出现在 H5 预览入口 index.html，玩法侧仅调用可选适配器
+      var overlay = AIGCUtils.BootOverlay;
+      if (overlay && overlay.sync) overlay.sync(ready, progress);
+    },
+
+    // 兼容旧名：改为走必需包门闸
+    isCriticalArtReady: function (area) {
+      return this.isBootReady(area);
+    },
+
+    /** R0013：横屏首屏跳过竖屏专用项；切竖屏时再由缺图分支触发 loadScenes */
+    isPortraitOnlyCatalogItem: function (item) {
+      var key = (item && item.key) || "";
+      return key.indexOf("-port") >= 0 || key.indexOf("_port") >= 0;
     },
 
     loadScenes: function () {
@@ -229,20 +655,34 @@
         return;
       }
       var renderer = this;
-      // 优先：全屏皮肤 → UI 控件 → 场景 JPG，缩短旧矢量层窗口
+      var area =
+        AIGCUtils.Game && AIGCUtils.Game.currentArea
+          ? AIGCUtils.Game.currentArea
+          : "map";
+      // 优先：全屏皮肤 → UI 控件 → 场景 JPG
       var catalog = (this.uiSkinCatalog || [])
         .concat(this.uiAssetCatalog || [])
         .concat(this.sceneCatalog);
-      var preferKey =
-        AIGCUtils.Game && AIGCUtils.Game.currentArea
-          ? this.preferredUiSkinKey(AIGCUtils.Game.currentArea)
-          : this.preferredUiSkinKey("map");
-      // 竖屏共用透明木板条：与当前区皮肤一并优先加载
-      var preferKeys = [];
-      if (preferKey) preferKeys.push(preferKey);
-      if (this.portrait && preferKeys.indexOf("ui-hud-chrome-port") < 0) {
-        preferKeys.push("ui-hud-chrome-port");
+      // R0013：横屏只入队横屏+共用资源，避免竖屏大图抢首屏与显存
+      if (!this.portrait) {
+        var landOnly = [];
+        var skippedPort = 0;
+        for (var si = 0; si < catalog.length; si++) {
+          if (this.isPortraitOnlyCatalogItem(catalog[si])) {
+            skippedPort++;
+            continue;
+          }
+          landOnly.push(catalog[si]);
+        }
+        if (skippedPort && this._loadScenesSkipPortLog !== skippedPort) {
+          this._loadScenesSkipPortLog = skippedPort;
+          console.log("[Prototype] R0013 landscape skip portrait assets", skippedPort);
+        }
+        catalog = landOnly;
       }
+      // R0037：必需包优先；未齐前只下必需包，齐了再下其余（两阶段）
+      var preferKeys = this.bootAssetKeys(area);
+      var areaArtReady = this.isAreaArtReady(area);
       if (preferKeys.length) {
         var picked = [];
         var rest = [];
@@ -259,11 +699,20 @@
         for (var cj = 0; cj < catalog.length; cj++) {
           if (!seen[catalog[cj].key]) rest.push(catalog[cj]);
         }
-        catalog = picked.concat(rest);
+        catalog = areaArtReady ? picked.concat(rest) : picked;
+        if (!areaArtReady && this._bootPhaseLog !== area) {
+          this._bootPhaseLog = area;
+          console.log("[Boot] R0037 phase1 boot-only", area, preferKeys.length);
+        }
+        if (areaArtReady && this._bootPhase2Log !== area) {
+          this._bootPhase2Log = area;
+          console.log("[Boot] R0037 phase2 rest catalog", area, rest.length);
+        }
       }
       catalog.forEach(function (item) {
         if (renderer.scenes[item.key] || renderer.sceneLoading[item.key] || renderer.sceneFailed[item.key]) return;
         renderer.sceneLoading[item.key] = true;
+        var cleanPath = String(item.path || "").split("?")[0];
         KwaiMedia.Image.load(item.path).then(function (image) {
           var gl = renderer.gl;
           var texture = gl.createTexture();
@@ -275,12 +724,41 @@
           gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
           renderer.scenes[item.key] = texture;
           renderer.sceneAspect[item.key] = image.width / image.height;
+          // C1：海面蒙版额外缓存 CPU 像素，供鱼/泡沫/水线查询（半分辨率也够用）
+          if (item.key.indexOf("sea-mask") === 0) {
+            try {
+              var maskW = image.width;
+              var maskH = image.height;
+              var maskFbo = gl.createFramebuffer();
+              gl.bindFramebuffer(gl.FRAMEBUFFER, maskFbo);
+              gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, texture, 0);
+              var rawPixels = new Uint8Array(maskW * maskH * 4);
+              gl.readPixels(0, 0, maskW, maskH, gl.RGBA, gl.UNSIGNED_BYTE, rawPixels);
+              gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+              gl.deleteFramebuffer(maskFbo);
+              // readPixels 原点在左下，翻转成与 2D 画布一致的上到下顺序
+              var maskPixels = new Uint8Array(maskW * maskH * 4);
+              var rowBytes = maskW * 4;
+              for (var my = 0; my < maskH; my++) {
+                var srcOff = (maskH - 1 - my) * rowBytes;
+                maskPixels.set(rawPixels.subarray(srcOff, srcOff + rowBytes), my * rowBytes);
+              }
+              renderer.seaMaskCpu[item.key] = {
+                w: maskW,
+                h: maskH,
+                data: maskPixels
+              };
+              console.log("[FishAnim] R0011 sea-mask CPU cached", item.key, maskW, maskH);
+            } catch (cpuErr) {
+              console.warn("[FishAnim] R0011 sea-mask CPU cache failed", item.key, cpuErr);
+            }
+          }
           renderer.sceneLoading[item.key] = false;
           console.log("[Prototype] Scene art ready", item.key, image.width, image.height);
         }).catch(function (error) {
           renderer.sceneLoading[item.key] = false;
           renderer.sceneFailed[item.key] = true;
-          console.error("[Prototype] Scene art failed", item.key, error);
+          console.error("[Prototype] Scene art failed", item.key, "path", item.path, "clean", cleanPath, error);
         });
       });
     },
@@ -318,26 +796,30 @@
     },
 
     backdropKey: function (area) {
+      // R0037：UI 皮未失败前不回退旧 scene JPG，避免闪残缺旧底
       if (area === "map") {
         var night = AIGCUtils.DayCycle && AIGCUtils.DayCycle.state === "night" && this.scenes.night;
         if (night) return "night";
         var mapUi = this.portrait ? "ui-skin-map-port" : "ui-skin-map-land";
         if (this.scenes[mapUi]) return mapUi;
+        if (!this.sceneFailed[mapUi]) return mapUi;
         return this.sceneKey("map");
       }
       if (area === "fishing") {
+        var fishBase = this.fishingBaseKey();
+        if (this.scenes[fishBase] || !this.sceneFailed[fishBase]) return fishBase;
         var fishUi = this.portrait ? "ui-skin-fish-port" : "ui-skin-fish-land";
-        if (this.scenes[fishUi]) return fishUi;
+        if (this.scenes[fishUi] || !this.sceneFailed[fishUi]) return fishUi;
         return this.sceneKey("fish");
       }
       if (area === "coconut") {
         var cocoUi = this.portrait ? "ui-skin-coconut-port" : "ui-skin-coconut-land";
-        if (this.scenes[cocoUi]) return cocoUi;
+        if (this.scenes[cocoUi] || !this.sceneFailed[cocoUi]) return cocoUi;
         return this.sceneKey("coconut");
       }
       if (area === "shop") {
         var shopUi = this.portrait ? "ui-skin-shop-port" : "ui-skin-shop-land";
-        if (this.scenes[shopUi]) return shopUi;
+        if (this.scenes[shopUi] || !this.sceneFailed[shopUi]) return shopUi;
         return this.sceneKey("shop");
       }
       if (area === "build") return this.portrait ? "shop-port" : "build-land";
@@ -470,19 +952,19 @@
       if (!painted) return false;
       this.flush();
       var size = fontSize || 17;
-      var color = ink || C.ink;
+      var color = ink || C.dialogInk;
       this.text(label, box.x + box.w / 2, this.textYInBox(label, size, box.y, box.h), size, color, "center");
       return true;
     },
 
     // 蒙层 + 共用底图 + 顶部木牌标题
-    // options.titleBold / titleInk 只给需要加粗深棕标题的弹窗，缺省仍是原来的墨色单次绘制
+    // options.titleBold / titleInk 只给需要加粗深棕标题的弹窗，缺省 dialogInk
     paintSettlementShell: function (layout, titleText, options) {
       var W = this.width;
       var H = this.height;
       var hw = layout.dlgX + Math.round(layout.dlgW / 2);
       var opts = options || {};
-      var titleInk = opts.titleInk || C.ink;
+      var titleInk = opts.titleInk || C.dialogInk;
       this.rect(0, 0, W, H, C.overlay);
       if (!this.paintUiStretch("dialog-settlement-base", layout.dlgX, layout.dlgY, layout.dlgW, layout.dlgH)) {
         this.rect(layout.dlgX, layout.dlgY, layout.dlgW, layout.dlgH, C.cream);
@@ -516,9 +998,9 @@
       for (var i = 0; i < list.length && i < boxes.length; i++) {
         if (!list[i]) continue;
         if (hasLong) {
-          this.paintLabeledUiFrame("dialog-settlement-btn-long", boxes[i], list[i], size, C.ink);
+          this.paintLabeledUiFrame("dialog-settlement-btn-long", boxes[i], list[i], size, C.dialogInk);
         } else {
-          this.text(list[i], hw, boxes[i].y + Math.round(boxes[i].h / 2) - 8, size, C.ink, "center");
+          this.text(list[i], hw, boxes[i].y + Math.round(boxes[i].h / 2) - 8, size, C.dialogInk, "center");
         }
       }
     },
@@ -532,7 +1014,7 @@
         var box = boxes[i];
         if (!box || !list[i] || !list[i].label) continue;
         if (hasShort) {
-          this.paintLabeledUiFrame("dialog-settlement-btn-short", box, list[i].label, 16, C.ink);
+          this.paintLabeledUiFrame("dialog-settlement-btn-short", box, list[i].label, 16, C.dialogInk);
         } else {
           this.button(box.x, box.y, box.w, box.h, list[i].label, !!list[i].active);
         }
@@ -589,7 +1071,7 @@
       return false;
     },
 
-    paintFishIcon: function (speciesId, cx, cy, size) {
+    paintFishIcon: function (speciesId, cx, cy, size, tint) {
       var id = AIGCUtils.Recipes.normalizeSpeciesId(speciesId);
       if (!this.scenes["e1-fish-icons"] && !this.sceneLoading["e1-fish-icons"]) this.loadScenes();
       var grid = {
@@ -599,7 +1081,7 @@
         golden: [0.5, 0.5, 1, 1]
       };
       var uv = grid[id] || grid.small;
-      if (this.paintUiRegion("e1-fish-icons", cx - size / 2, cy - size / 2, size, size, uv[0], uv[1], uv[2], uv[3])) {
+      if (this.paintUiRegion("e1-fish-icons", cx - size / 2, cy - size / 2, size, size, uv[0], uv[1], uv[2], uv[3], tint || null)) {
         this.flush();
         return true;
       }
@@ -771,6 +1253,31 @@
       this.drawFishingGearPort(collection);
     },
 
+    /**
+     * 首次烤鱼引导：FishSpecies 顺序中第一只已解锁且库存>0 的生鱼下标。
+     * 已看过引导、正在烤制、或无可烤鱼时返回 -1。
+     */
+    firstCookableFishIndex: function () {
+      var state = AIGCUtils.GameState;
+      if (!state || state.grillFishGuideSeen) return -1;
+      if (AIGCUtils.Baking && AIGCUtils.Baking.current) return -1;
+      var list = AIGCUtils.FishSpecies || [];
+      for (var i = 0; i < list.length; i++) {
+        var sp = list[i];
+        if (this.speciesShopUnlocked(sp.id) && state.getFishCount(sp.id) > 0) return i;
+      }
+      return -1;
+    },
+
+    /** 指向底部生鱼按钮的弹跳箭头（首次引导） */
+    drawGrillFishGuideArrow: function (cx, tipY) {
+      var bob = Math.sin(Date.now() / 220) * 5;
+      var y = tipY + bob;
+      this.tri(cx, y + 16, cx - 11, y, cx + 11, y, C.orange);
+      // 白底加粗：深色木台上看不清黑字（R0015）
+      this.drawGuideTip("点这里开始烤", cx, y - 14, { size: 15 });
+    },
+
     speciesShopUnlocked: function (speciesId) {
       if (speciesId === "small") return true;
       if (AIGCUtils.GameState.getFishCount(speciesId) > 0) return true;
@@ -784,12 +1291,15 @@
       return "fish_raw_" + id;
     },
 
-    paintSwimFish: function (speciesId, x, y, targetH, flip) {
+    paintSwimFish: function (speciesId, x, y, targetH, flip, opts) {
+      opts = opts || {};
       var key = this.rawFishKey(speciesId);
+      var scaleY = opts.scaleY == null ? 0.88 : opts.scaleY;
       var frame = this.spriteFrame(key, 0, targetH);
       if (!frame) return false;
+      var drawH = frame.h * scaleY;
       var left = x - frame.w / 2;
-      var top = y - frame.h / 2;
+      var top = y - drawH / 2;
       var u0 = frame.u0;
       var u1 = frame.u1;
       if (flip) {
@@ -797,7 +1307,12 @@
         u0 = u1;
         u1 = swap;
       }
-      if (!this.paintTexturedQuad(key, left, top, frame.w, frame.h, u0, frame.v0, u1, frame.v1, 0, x, y)) return false;
+      // 水下鱼：水色 tint + 可见透明度；出水 fish surface:true
+      var alpha = opts.alpha != null ? opts.alpha : (opts.surface ? 0.98 : 0.7);
+      var tint = opts.surface
+        ? [1, 1, 1, alpha]
+        : [0.78, 0.9, 1.0, alpha];
+      if (!this.paintTexturedQuad(key, left, top, frame.w, drawH, u0, frame.v0, u1, frame.v1, 0, x, y, tint)) return false;
       this.flush();
       return true;
     },
@@ -814,27 +1329,782 @@
 
     /**
      * 钓鱼兔子脚底对齐座位。竿尖是精灵内部的木色尖端，旋转后仍从该点出线。
-     * footU/tipU/tipV 来自 hero_rabbit_fish.png 内容区，不是整张画布中心。
+     * footU/tipU/tipV 来自 hero_rabbit_fish.png 内容区；sheet 帧沿用同一 tip 标定。
      */
-    paintFishingRabbit: function (seatX, seatY, targetH, rot) {
-      var key = "hero_rabbit_fish";
-      var frame = this.spriteFrame(key, 0, targetH);
-      if (!frame) return null;
+    paintFishingRabbit: function (seatX, seatY, targetH, rot, motion) {
+      motion = motion || {};
       var footU = 0.3813;
       var tipU = 0.9991;
       var tipV = 0.0532;
-      var left = seatX - footU * frame.w;
-      var top = seatY - frame.h;
-      if (!this.paintTexturedQuad(key, left, top, frame.w, frame.h, frame.u0, frame.v0, frame.u1, frame.v1, rot, seatX, seatY)) return null;
-      this.flush();
-      var dx = left + tipU * frame.w - seatX;
-      var dy = top + tipV * frame.h - seatY;
+      var painted = false;
+      var frameW = 0;
+      var frameH = targetH;
+      // R0020：hide=true 只算竿尖（GIF 已烤静坐兔），不画静帧
+      var hideSprite = !!motion.hide;
+      if (motion.hasSheet && motion.sheetKey) {
+        painted = !!this.paintSheetFoot(motion.sheetKey, seatX, seatY, targetH, {
+          u0: motion.u0,
+          v0: motion.v0,
+          u1: motion.u1,
+          v1: motion.v1
+        }, false, {
+          rot: rot || 0,
+          alpha: motion.alpha == null ? 1 : motion.alpha,
+          pivotX: motion.pivotX,
+          pivotY: motion.pivotY
+        });
+        if (painted) {
+          var aspect = this.sceneAspect[motion.sheetKey] || 8;
+          // 单格近似正方形 sheet：宽≈高
+          frameW = targetH;
+          frameH = targetH;
+        }
+      }
+      if (!painted) {
+        var key = "hero_rabbit_fish";
+        var frame = this.spriteFrame(key, 0, targetH);
+        if (!frame) {
+          // R0020：静帧未就绪时仍按内容比例估 tip，避免 GIF 模式等竿线直接 return
+          if (!hideSprite) return null;
+          frameW = Math.round(targetH * (1690 / 1839));
+          frameH = targetH;
+        } else {
+          frameW = frame.w;
+          frameH = frame.h;
+          var left = seatX - footU * frame.w;
+          var top = seatY - frame.h;
+          var pivotX = motion.pivotX == null ? seatX : motion.pivotX;
+          var pivotY = motion.pivotY == null ? seatY : motion.pivotY;
+          if (!hideSprite) {
+            if (!this.paintTexturedQuad(key, left, top, frame.w, frame.h, frame.u0, frame.v0, frame.u1, frame.v1, rot, pivotX, pivotY)) return null;
+            this.flush();
+          }
+        }
+      } else {
+        // sheet 脚底居中画；tip 仍按静帧 UV 相对座位推算
+        frameW = targetH;
+        frameH = targetH;
+      }
+      var left2 = seatX - footU * frameW;
+      var top2 = seatY - frameH;
+      var px = motion.pivotX == null ? seatX : motion.pivotX;
+      var py = motion.pivotY == null ? seatY : motion.pivotY;
+      var dx = left2 + tipU * frameW - px;
+      var dy = top2 + tipV * frameH - py;
       var c = Math.cos(rot || 0);
       var s = Math.sin(rot || 0);
       return {
-        tipX: seatX + dx * c - dy * s,
-        tipY: seatY + dx * s + dy * c
+        tipX: px + dx * c - dy * s,
+        tipY: py + dx * s + dy * c
       };
+    },
+
+    /**
+     * 唯一海面时钟：上带 swell / 下带 crash / 船兔 bob 共用。
+     * 12 帧、约 2.5s 一圈；禁止船另开频率。
+     * R0010 补丁8：竖屏减小 amp/bobRot，避免船角抬起露沙、探出底边。
+     */
+    fishingSurfMotion: function (now) {
+      var t = now || Date.now();
+      var periodMs = 2500;
+      var frameCount = 12;
+      var cycle = (t % periodMs) / periodMs;
+      var phase = cycle * Math.PI * 2;
+      var amp = this.portrait ? 3 : 7;
+      var bobY = Math.sin(phase) * amp + Math.sin(phase * 2) * amp * 0.2;
+      var bobRot = this.portrait
+        ? Math.sin(phase) * 0.008 + Math.sin(phase * 2) * 0.002
+        : Math.sin(phase) * 0.032 + Math.sin(phase * 2) * 0.01;
+      return {
+        phase: phase,
+        cycle: cycle,
+        frameT: cycle * frameCount,
+        frameCount: frameCount,
+        bobY: bobY,
+        bobRot: bobRot,
+        periodMs: periodMs
+      };
+    },
+
+    /** 设计画布在 framebuffer 中的 scissor 矩形（WebGL 原点左下） */
+    designCanvasScissorRect: function () {
+      var gl = this.gl;
+      if (!gl) return null;
+      var bufH = gl.drawingBufferHeight || this.viewHeight;
+      var scaleX = (gl.drawingBufferWidth || this.viewWidth) / Math.max(1, this.viewWidth);
+      var scaleY = bufH / Math.max(1, this.viewHeight);
+      var x = Math.round(this.offsetX * scaleX);
+      var w = Math.round(this.width * this.scale * scaleX);
+      var h = Math.round(this.height * this.scale * scaleY);
+      var topInView = this.offsetY * scaleY;
+      var y = Math.round(bufH - topInView - h);
+      return { x: x, y: y, w: w, h: h };
+    },
+
+    beginDesignCanvasScissor: function () {
+      var gl = this.gl;
+      var rect = this.designCanvasScissorRect();
+      if (!gl || !rect || rect.w <= 0 || rect.h <= 0) return false;
+      this.flush();
+      gl.enable(gl.SCISSOR_TEST);
+      gl.scissor(rect.x, rect.y, rect.w, rect.h);
+      return true;
+    },
+
+    endDesignCanvasScissor: function () {
+      var gl = this.gl;
+      if (!gl) return;
+      this.flush();
+      gl.disable(gl.SCISSOR_TEST);
+    },
+
+    /** @deprecated 兼容旧调用；请用 fishingSurfMotion */
+    fishingWavePhase: function (now) {
+      return this.fishingSurfMotion(now).phase;
+    },
+
+    /**
+     * 底板纹理 V → 屏幕 Y（与 paintScene 的 letterbox 一致），
+     * 保证山脚线跟 seabase 像素对齐，而不是瞎猜屏幕百分比。
+     */
+    fishingTexVToScreenY: function (texV) {
+      var box = this.fishingLetterbox();
+      return box.y0 + (box.y1 - box.y0) * Math.max(0, Math.min(1, texV));
+    },
+
+    /** 与 paintScene / drawDynamicSea 同一套 letterbox（屏幕 ↔ 纹理 UV） */
+    fishingLetterbox: function () {
+      var aspect = this.sceneAspect[this.fishingBaseKey()] || (this.portrait ? 1152 / 2048 : 2048 / 1152);
+      var rectAspect = this.width / Math.max(1, this.height);
+      var u0 = 0;
+      var v0 = 0;
+      var u1 = 1;
+      var v1 = 1;
+      if (aspect > rectAspect) {
+        var showU = rectAspect / aspect;
+        var padU = (1 - showU) / 2;
+        u0 = padU;
+        u1 = 1 - padU;
+      } else {
+        var showV = aspect / rectAspect;
+        var padV = (1 - showV) / 2;
+        v0 = padV;
+        v1 = 1 - padV;
+      }
+      return {
+        u0: u0,
+        v0: v0,
+        u1: u1,
+        v1: v1,
+        y0: v0 * this.height,
+        y1: v1 * this.height,
+        x0: u0 * this.width,
+        x1: u1 * this.width,
+        aspect: aspect
+      };
+    },
+
+    getSeaMaskCpu: function () {
+      var key = this.fishingSeaMaskKey();
+      return this.seaMaskCpu[key] || null;
+    },
+
+    /** 屏幕坐标 → 蒙版像素坐标（可小数，供双线性） */
+    screenToSeaMaskPx: function (sx, sy) {
+      var cpu = this.getSeaMaskCpu();
+      if (!cpu) return null;
+      var box = this.fishingLetterbox();
+      var u = box.u0 + (sx / Math.max(1, this.width)) * (box.u1 - box.u0);
+      var v = box.v0 + (sy / Math.max(1, this.height)) * (box.v1 - box.v0);
+      return {
+        x: Math.max(0, Math.min(cpu.w - 1.001, u * (cpu.w - 1))),
+        y: Math.max(0, Math.min(cpu.h - 1.001, v * (cpu.h - 1))),
+        cpu: cpu
+      };
+    },
+
+    /** 蒙版像素 → 屏幕 Y（用 letterbox 逆变换） */
+    seaMaskPxToScreenY: function (py) {
+      var cpu = this.getSeaMaskCpu();
+      if (!cpu) return null;
+      var box = this.fishingLetterbox();
+      var v = py / Math.max(1, cpu.h - 1);
+      return box.y0 + ((v - box.v0) / Math.max(1e-6, box.v1 - box.v0)) * (box.y1 - box.y0);
+    },
+
+    seaMaskPxToScreenX: function (px) {
+      var cpu = this.getSeaMaskCpu();
+      if (!cpu) return null;
+      var box = this.fishingLetterbox();
+      var u = px / Math.max(1, cpu.w - 1);
+      return box.x0 + ((u - box.u0) / Math.max(1e-6, box.u1 - box.u0)) * (box.x1 - box.x0);
+    },
+
+    /** 双线性采样蒙版 alpha（0~1）。蒙版未就绪返回 -1 */
+    seaMaskAt: function (sx, sy) {
+      var mapped = this.screenToSeaMaskPx(sx, sy);
+      if (!mapped) return -1;
+      var cpu = mapped.cpu;
+      var x = mapped.x;
+      var y = mapped.y;
+      var x0 = Math.floor(x);
+      var y0 = Math.floor(y);
+      var x1 = Math.min(cpu.w - 1, x0 + 1);
+      var y1 = Math.min(cpu.h - 1, y0 + 1);
+      var fx = x - x0;
+      var fy = y - y0;
+      var data = cpu.data;
+      function aAt(ix, iy) {
+        return data[((iy * cpu.w + ix) << 2) + 3] / 255;
+      }
+      var a00 = aAt(x0, y0);
+      var a10 = aAt(x1, y0);
+      var a01 = aAt(x0, y1);
+      var a11 = aAt(x1, y1);
+      var a0 = a00 * (1 - fx) + a10 * fx;
+      var a1 = a01 * (1 - fx) + a11 * fx;
+      return a0 * (1 - fy) + a1 * fy;
+    },
+
+    /** 按屏幕行扫描左右水域边界；无海返回 null */
+    seaBoundsAtY: function (sy) {
+      var cpu = this.getSeaMaskCpu();
+      if (!cpu) return null;
+      var mapped = this.screenToSeaMaskPx(this.width * 0.5, sy);
+      if (!mapped) return null;
+      var row = Math.round(mapped.y);
+      row = Math.max(0, Math.min(cpu.h - 1, row));
+      var data = cpu.data;
+      var w = cpu.w;
+      var left = -1;
+      var right = -1;
+      var x;
+      for (x = 0; x < w; x++) {
+        if (data[((row * w + x) << 2) + 3] > 150) {
+          left = x;
+          break;
+        }
+      }
+      if (left < 0) return null;
+      for (x = w - 1; x >= left; x--) {
+        if (data[((row * w + x) << 2) + 3] > 150) {
+          right = x;
+          break;
+        }
+      }
+      return {
+        left: this.seaMaskPxToScreenX(left),
+        right: this.seaMaskPxToScreenX(right),
+        midY: sy
+      };
+    },
+
+    /**
+     * 某列沙滩水线（海区底部边缘）的屏幕 Y。
+     * 从该列顶部往下找最后一处 alpha 高的像素。
+     */
+    shoreLineAtX: function (sx) {
+      var cpu = this.getSeaMaskCpu();
+      if (!cpu) return null;
+      var mapped = this.screenToSeaMaskPx(sx, this.height * 0.5);
+      if (!mapped) return null;
+      var col = Math.round(mapped.x);
+      col = Math.max(0, Math.min(cpu.w - 1, col));
+      var data = cpu.data;
+      var w = cpu.w;
+      var last = -1;
+      var y;
+      for (y = 0; y < cpu.h; y++) {
+        if (data[((y * w + col) << 2) + 3] > 150) last = y;
+      }
+      if (last < 0) return null;
+      return this.seaMaskPxToScreenY(last);
+    },
+
+    /**
+     * R0010：海域几何以蒙版为真源；无蒙版时回退旧屏幕比例（仅兜底）。
+     * seaTop/beachLine 若来自蒙版，可供鱼/泡沫使用；不得再当「猜海岸」权威去画海。
+     */
+    fishingSeaLayout: function () {
+      var spot = (AIGCUtils.Collection && AIGCUtils.Collection.spotId) || "shallow";
+      var deep = spot === "deep";
+      var seaBottom = Math.max(88, this.height - 72);
+      var seaTop;
+      var beachLine;
+      var fromMask = false;
+      var cpu = this.getSeaMaskCpu();
+      if (cpu) {
+        var shores = [];
+        var i;
+        for (i = 0; i < 9; i++) {
+          var sx = Math.round(this.width * (0.12 + i * 0.09));
+          var sy = this.shoreLineAtX(sx);
+          if (sy != null && !isNaN(sy)) shores.push(sy);
+        }
+        if (shores.length) {
+          shores.sort(function (a, b) {
+            return a - b;
+          });
+          beachLine = Math.round(shores[Math.floor(shores.length / 2)]);
+          fromMask = true;
+        }
+        // 远海顶：屏幕中线附近自上而下第一个有海的 Y
+        var midX = Math.round(this.width * 0.55);
+        var yScan;
+        for (yScan = 40; yScan < seaBottom; yScan += 4) {
+          if (this.seaMaskAt(midX, yScan) > 0.55) {
+            seaTop = yScan;
+            fromMask = true;
+            break;
+          }
+        }
+      }
+      if (seaTop == null) {
+        seaTop = Math.round(this.fishingTexVToScreenY(this.portrait ? 480 / 2048 : 330 / 1152));
+        seaTop = Math.max(seaTop, 80);
+      }
+      if (beachLine == null) {
+        beachLine = Math.round(this.fishingTexVToScreenY(this.portrait ? 1680 / 2048 : 1000 / 1152));
+      }
+      seaBottom = Math.max(seaTop + 8, seaBottom);
+      var seaH = Math.max(8, seaBottom - seaTop);
+      var farWeight = deep ? 0.55 : 0.48;
+      var farH = Math.round(seaH * farWeight);
+      var nearTop = seaTop + farH;
+      var nearH = Math.max(8, seaBottom - nearTop);
+      if (fromMask && !this._seaGeomLog) {
+        this._seaGeomLog = true;
+        console.log(
+          "[FishAnim] R0010 sea geometry from mask",
+          this.fishingSeaMaskKey(),
+          "seaTop",
+          seaTop,
+          "beachLine",
+          beachLine
+        );
+      }
+      return {
+        seaTop: seaTop,
+        seaBottom: seaBottom,
+        beachTop: beachLine,
+        beachLine: beachLine,
+        seaH: seaH,
+        farH: farH,
+        nearTop: nearTop,
+        nearH: nearH,
+        deep: deep,
+        fromMask: fromMask
+      };
+    },
+
+    /** 画布内裁剪，杜绝外扩方块 */
+    clipSeaRect: function (x, y, w, h) {
+      var x0 = Math.max(0, x);
+      var y0 = Math.max(0, y);
+      var x1 = Math.min(this.width, x + w);
+      var y1 = Math.min(this.height, y + h);
+      if (x1 - x0 < 1 || y1 - y0 < 1) return null;
+      return { x: x0, y: y0, w: x1 - x0, h: y1 - y0 };
+    },
+
+    /**
+     * R0008：实时海面。
+     * 一张整幅海面 quad + sea-mask：RGB 是海水基色，A 是海岸线蒙版。
+     * 浪、波光、拍岸白沫全部在 fragment shader 里按时间生成，
+     * 不切条、不滚静图、不叠半透明矩形。
+     */
+    /**
+     * R0020b：横屏浅滩整屏播海域 GIF——16 帧全分辨率，4 张 2×2 atlas。
+     * 每格 960×540，1:1 铺满设计画布，不再半分辨率拉伸发糊。
+     */
+    paintLandSeaGifBackdrop: function () {
+      var cols = 2;
+      var rows = 2;
+      var perAtlas = cols * rows;
+      var atlasCount = 4;
+      var clk = this.fishingLandSeaGifClock(Date.now());
+      var f0 = clk.f0;
+      var atlasIdx = Math.floor(f0 / perAtlas);
+      var local = f0 % perAtlas;
+      var key = "anim_fish_sea_gif_land_" + atlasIdx;
+      if (!this.scenes[key]) {
+        if (!this.sceneLoading[key] && !this.sceneFailed[key]) this.loadScenes();
+        if (!this._landGifMissLog || this._landGifMissLog !== key) {
+          this._landGifMissLog = key;
+          console.warn("[FishAnim] R0020b land sea gif atlas missing/loading", key);
+        }
+        return false;
+      }
+      var c0 = local % cols;
+      var r0 = Math.floor(local / cols);
+      var u0 = c0 / cols;
+      var u1 = (c0 + 1) / cols;
+      var v0 = r0 / rows;
+      var v1 = (r0 + 1) / rows;
+      var ok = this.paintUiRegion(key, 0, 0, this.width, this.height, u0, v0, u1, v1, [1, 1, 1, 1]);
+      if (ok) this.flush();
+      if (ok && this._landGifPaintLog !== key + ":" + f0) {
+        this._landGifPaintLog = key + ":" + f0;
+        console.log("[FishAnim] R0020f paintLandSeaGifBackdrop syncClock", key, "frame", f0, "/", clk.n, "period", clk.periodMs);
+      }
+      return !!ok;
+    },
+
+    drawDynamicSea: function () {
+      this.parseSeaDebugParams();
+      // R0020：横屏浅滩改整屏 GIF，跳过着色器海
+      if (this.fishingUsesLandSeaGif()) {
+        if (!this._seaGifSkipLog) {
+          this._seaGifSkipLog = true;
+          console.log("[FishAnim] R0020 land sea gif skip drawDynamicSea");
+        }
+        return false;
+      }
+      // R0014：?sea=static 回退静态 seaflat，不画动态海
+      if (this.seaRenderMode === "static") {
+        if (!this._seaStaticLog) {
+          this._seaStaticLog = true;
+          console.log("[FishAnim] R0014 sea=static skip dynamic sea");
+        }
+        return false;
+      }
+      var maskKey = this.fishingSeaMaskKey();
+      var mask = this.scenes[maskKey];
+      var baseKey = this.fishingBaseKey();
+      if (!mask || !this.scenes[baseKey] || !this.gl || !this.program) return false;
+      var gl = this.gl;
+      // C7：海面与底板锁定，不跟收线 artShift 平移
+      var x = 0;
+      var y = 0;
+      var aspect = this.sceneAspect[baseKey] || (this.portrait ? 1152 / 2048 : 2048 / 1152);
+      var rectAspect = this.width / this.height;
+      var u0 = 0, v0 = 0, u1 = 1, v1 = 1;
+      if (aspect > rectAspect) {
+        var showU = rectAspect / aspect;
+        var padU = (1 - showU) / 2;
+        u0 = padU;
+        u1 = 1 - padU;
+      } else {
+        var showV = aspect / rectAspect;
+        var padV = (1 - showV) / 2;
+        v0 = padV;
+        v1 = 1 - padV;
+      }
+      gl.useProgram(this.program);
+      // C0：?seaDebug=1 时可冻结海面时间（&seaT=秒）
+      var seaT =
+        this.seaDebugMode && this.seaDebugT != null && !isNaN(this.seaDebugT)
+          ? this.seaDebugT
+          : (Date.now() % 3600000) / 1000;
+      gl.uniform1f(this.timeUniform, seaT);
+      gl.uniform2f(this.resUniform, gl.drawingBufferWidth || this.width, gl.drawingBufferHeight || this.height);
+      var metaKey = this.fishingSeaMetaKey();
+      var hasMeta = !!this.scenes[metaKey];
+      // meta 未就绪时关泡沫，避免 dummy 白纹里当岸距
+      var foamOn = this.seaFoamMode === "0" || !hasMeta ? 0 : 1;
+      gl.uniform1f(this.foamUniform, foamOn);
+      gl.activeTexture(gl.TEXTURE1);
+      gl.bindTexture(gl.TEXTURE_2D, mask);
+      gl.uniform1i(this.maskUniform, 1);
+      var meta = this.scenes[metaKey] || this.ensureDummyTexture();
+      gl.activeTexture(gl.TEXTURE2);
+      gl.bindTexture(gl.TEXTURE_2D, meta);
+      gl.uniform1i(this.metaUniform, 2);
+      gl.activeTexture(gl.TEXTURE0);
+      var white = [1, 1, 1, 1];
+      var mx = this.width;
+      var my = this.height;
+      this.vertex(x, y, white, u0, v0, 3.5);
+      this.vertex(x + mx, y, white, u1, v0, 3.5);
+      this.vertex(x, y + my, white, u0, v1, 3.5);
+      this.vertex(x + mx, y, white, u1, v0, 3.5);
+      this.vertex(x + mx, y + my, white, u1, v1, 3.5);
+      this.vertex(x, y + my, white, u0, v1, 3.5);
+      this.flush();
+      if (!this._seaShaderLog) {
+        this._seaShaderLog = true;
+        console.log(
+          "[FishAnim] R0019 C4 shore foam swash",
+          maskKey,
+          "meta",
+          metaKey,
+          !!this.scenes[metaKey],
+          "foam",
+          foamOn,
+          "portrait",
+          !!this.portrait
+        );
+      }
+      return true;
+    },
+
+    /**
+     * N 帧 sheet 双帧交叉。frameCount 默认 12。
+     * tintRgb 可选 [r,g,b] 用于上带提亮/下带压暗。
+     * stable：船区用单帧，避免交叉闪。
+     */
+    paintWaveSheetCrossfade: function (key, x, y, w, h, frameT, v0, v1, alpha, frameCount, tintRgb, stable) {
+      if (!this.scenes[key] || w <= 0 || h <= 0) return false;
+      var a = alpha == null ? 1 : alpha;
+      if (a <= 0.01) return false;
+      var clipped = this.clipSeaRect(x, y, w, h);
+      if (!clipped) return false;
+      // R0012：横向 12 帧长图超过 2048 纹理上限，已重排为 4×3 网格
+      var sheetCols = 4;
+      var sheetRows = 3;
+      var n = frameCount || 12;
+      var ft = ((frameT % n) + n) % n;
+      var f0 = Math.floor(ft) % n;
+      var f1 = (f0 + 1) % n;
+      var frac = stable ? 0 : ft - Math.floor(ft);
+      var vv0 = v0 == null ? 0 : v0;
+      var vv1 = v1 == null ? 1 : v1;
+      var tr = tintRgb && tintRgb[0] != null ? tintRgb[0] : 1;
+      var tg = tintRgb && tintRgb[1] != null ? tintRgb[1] : 1;
+      var tb = tintRgb && tintRgb[2] != null ? tintRgb[2] : 1;
+      var c0 = f0 % sheetCols;
+      var r0 = Math.floor(f0 / sheetCols);
+      var u00 = c0 / sheetCols;
+      var u01 = (c0 + 1) / sheetCols;
+      var w00 = r0 / sheetRows + vv0 / sheetRows;
+      var w01 = r0 / sheetRows + vv1 / sheetRows;
+      var ok0 = this.paintUiRegion(key, clipped.x, clipped.y, clipped.w, clipped.h, u00, w00, u01, w01, [tr, tg, tb, a * (1 - frac)]);
+      var ok1 = true;
+      if (!stable && frac > 0.02) {
+        var c1 = f1 % sheetCols;
+        var r1 = Math.floor(f1 / sheetCols);
+        var u10 = c1 / sheetCols;
+        var u11 = (c1 + 1) / sheetCols;
+        var w10 = r1 / sheetRows + vv0 / sheetRows;
+        var w11 = r1 / sheetRows + vv1 / sheetRows;
+        ok1 = this.paintUiRegion(key, clipped.x, clipped.y, clipped.w, clipped.h, u10, w10, u11, w11, [tr, tg, tb, a * frac]);
+      }
+      this.flush();
+      return !!(ok0 || ok1);
+    },
+
+    /**
+     * @deprecated R0010：第二套海岸线，新路径禁止使用。
+     * 仅保留给旧 swell/crash 条带路径；动态海/鱼/泡沫已改查 sea-mask。
+     * 返回 { cut, feather }：cut 以左为沙滩/栅栏，feather 内 alpha 0→1。
+     */
+    fishingSeaLeftMask: function (layout, midY) {
+      if (layout.deep) return { cut: 0, feather: 0 };
+      var beach = layout.beachLine != null ? layout.beachLine : layout.beachTop;
+      var rise = this.portrait ? Math.round(layout.seaH * 0.42) : Math.round(layout.seaH * 0.48);
+      var riseTop = beach - rise;
+      var cut;
+      var feather;
+      if (this.portrait) {
+        var tp = Math.max(0, Math.min(1, (midY - layout.seaTop) / Math.max(1, beach - layout.seaTop)));
+        // 越靠近沙滩挖空越大，漏出沙滩；远水只让开一点岸
+        cut = Math.round(this.width * (0.06 + 0.22 * tp * tp));
+        feather = 28;
+      } else {
+        if (midY <= riseTop) {
+          // 远水：尽量盖左侧静海，只留窄栅栏缝
+          cut = Math.round(28 + Math.sin(midY * 0.04) * 3);
+          feather = 32;
+        } else if (midY >= beach) {
+          // 沙滩线以下：大挖空漏出沙滩舌
+          cut = Math.round(310 + Math.sin(midY * 0.03) * 6);
+          feather = 44;
+        } else {
+          // 沙滩上升带：平滑加大 cut → 围绕沙滩包裹
+          var u = (midY - riseTop) / Math.max(1, rise);
+          u = u * u * (3 - 2 * u);
+          cut = Math.round(28 + u * 282 + Math.sin(midY * 0.045) * 5);
+          feather = Math.round(32 + u * 14);
+        }
+      }
+      cut = Math.max(0, Math.min(cut, Math.round(this.width * 0.38)));
+      if (cut <= 2) feather = 0;
+      return { cut: cut, feather: feather };
+    },
+
+    /** @deprecated 改用 fishingSeaLeftMask */
+    fishingSeaDrawSpans: function (layout, y, h) {
+      var mask = this.fishingSeaLeftMask(layout, y + h * 0.5);
+      return [{ x: mask.cut, w: this.width - mask.cut }];
+    },
+
+    /**
+     * R0005：用户要求撤销海浪分层动画（R0001–R0004）。
+     * 不再绘制 swell/crash/不透明海罩；画面用 noboat 完整静海 + 船兔。
+     */
+    drawFishingUnifiedSea: function () {
+      if (!this._waveSheetLog || this._waveSheetLog.indexOf("R0005") !== 0) {
+        this._waveSheetLog = "R0005:disabled";
+        console.log("[FishAnim] R0005 sea wave overlay disabled by user rollback");
+      }
+      return false;
+    },
+
+    /** 单行浪：主体 + 左缘羽化（mask 已按该行 Y 算好） */
+    paintSeaRowSoftLeft: function (key, layout, surf, y, h, mask, v0, v1, alpha, tint) {
+      if (h < 2 || alpha < 0.02) return;
+      var bodyX = mask.cut + mask.feather;
+      if (bodyX < this.width - 2) {
+        this.paintWaveSheetCrossfade(
+          key,
+          bodyX,
+          y,
+          this.width - bodyX,
+          h,
+          surf.frameT,
+          v0,
+          v1,
+          alpha,
+          surf.frameCount,
+          tint,
+          false
+        );
+      }
+      if (mask.feather <= 0) return;
+      var cols = 7;
+      var cw = mask.feather / cols;
+      var ci;
+      for (ci = 0; ci < cols; ci++) {
+        this.paintWaveSheetCrossfade(
+          key,
+          mask.cut + ci * cw,
+          y,
+          cw + 1.5,
+          h,
+          surf.frameT,
+          v0,
+          v1,
+          alpha * ((ci + 1) / cols),
+          surf.frameCount,
+          tint,
+          false
+        );
+      }
+    },
+
+    /** @deprecated R0004 改按行绘制 */
+    paintSeaLayerSoftLeft: function (key, layout, surf, y, h, v0, v1, alpha, tint) {
+      var mask = this.fishingSeaLeftMask(layout, y + h * 0.5);
+      this.paintSeaRowSoftLeft(key, layout, surf, y, h, mask, v0, v1, alpha, tint);
+    },
+
+    /** 拍岸碎浪：落点必须在蒙版水域内（C1）；观感重做留给 C4 */
+    drawFishingShoreFoam: function (layout, surf) {
+      if (layout.deep) return;
+      var yBase = (layout.beachLine || layout.beachTop) - 6;
+      var i;
+      for (i = 0; i < 20; i++) {
+        var px = ((i * 71 + Math.floor(surf.cycle * 48)) % (this.width + 30)) - 10;
+        var py = yBase + Math.sin(surf.phase * 1.3 + i * 0.9) * 5 + (i % 3) * 2;
+        if (py < layout.seaTop + 8 || py > layout.seaBottom - 4) continue;
+        if (px < 8 || px > this.width - 8) continue;
+        // R0010：用蒙版判定，不再用 fishingSeaLeftMask 硬编码 cut
+        var a = this.seaMaskAt(px, py);
+        if (a >= 0 && a < 0.6) continue;
+        var pr = 2 + (i % 4);
+        var pa = 0.22 + 0.18 * (0.5 + 0.5 * Math.sin(surf.phase * 2 + i));
+        this.circle(px, py, pr, [0.98, 0.99, 1, pa], 8);
+        if (i % 2 === 0) this.circle(px + 7, py + 1, pr * 0.65, [1, 1, 1, pa * 0.65], 6);
+      }
+      this.flush();
+    },
+
+    // R0002：Far/Near 旧入口保留为空，避免误调再叠第二层矩形
+    drawFishingFarBand: function () {},
+    drawFishingNearBand: function () {},
+
+    /**
+     * 真船脚底槽（静帧位置）；实际绘制加 surf.bobY。
+     * R0010：横屏可跟蒙版水线；竖屏是「甲板视角」，船脚必须固定在甲板槽。
+     * 补丁5：竖屏换新抠图船精灵（完整船体），脚点居中贴底；横屏不变。
+     * 补丁6/7：竖屏脚点下移并为上抬留余量；下晃溢出由 clipToCanvas 裁掉。
+     */
+    fishingBoatFoot: function () {
+      // R0020d：横屏 GIF 空船底图上，船脚与烤兔座位用同一刚体偏移，才能同相摇摆
+      if (this.fishingUsesLandSeaGif()) {
+        var gs = this.fishingLandSeaGifRabbitSeat();
+        var off = this.fishingRabbitSeatOnBoat();
+        return {
+          x: gs.x - (off.dx || 0),
+          y: gs.y - (off.dy || 0),
+          h: 176
+        };
+      }
+      var x = this.portrait ? 270 : 210;
+      var h = this.portrait ? 252 : 176;
+      // 补丁7b：再下移，压住微转抬起的右下角，避免露沙；溢出仍靠 clipToCanvas 裁掉
+      var y = this.portrait ? 1000 : 300;
+      if (!this.portrait) {
+        var shoreY = this.shoreLineAtX(x);
+        if (shoreY != null && !isNaN(shoreY)) {
+          y = Math.round(shoreY - 6);
+          y = Math.max(120, Math.min(this.height - 80, y));
+        }
+      } else if (!this._boatPortFootLog) {
+        this._boatPortFootLog = true;
+        console.log("[FishAnim] R0010 patch7b portrait boat foot lower corner", x, y, h);
+      }
+      return { x: x, y: y, h: h };
+    },
+
+    /** 兔相对船脚底的固定甲板偏移（船兔一体） */
+    fishingRabbitSeatOnBoat: function () {
+      // 补丁5：新船居中后，兔坐左舷坐垫附近甲板
+      if (this.portrait) return { dx: -55, dy: -118, h: 128 };
+      return { dx: -58, dy: -72, h: 92 };
+    },
+
+    paintFishingBoatSprite: function (footX, footY, bobRot) {
+      var key = this.portrait ? "boat_fish_port" : "boat_fish_land";
+      if (!this.scenes[key]) {
+        if (!this.sceneLoading[key] && !this.missingShopSprites[key]) {
+          this.missingShopSprites[key] = true;
+          console.warn("[FishAnim] boat sprite missing", key);
+        }
+        return null;
+      }
+      var foot = this.fishingBoatFoot();
+      var drawn = this.paintFootSprite(key, footX, footY, 0, foot.h, false, {
+        rot: bobRot || 0,
+        alpha: 1,
+        // 竖屏：下晃超出画布底的船底裁掉，避免探出沙滩底边
+        clipToCanvas: !!this.portrait
+      });
+      if (!this._boatBobLog) {
+        this._boatBobLog = true;
+        var aspect = this.sceneAspect[key] || 1;
+        var drawW = Math.round(foot.h * aspect);
+        console.log(
+          "[FishAnim] R0010 patch7 boat+rabbit surfBob",
+          key,
+          Math.round(footX),
+          Math.round(footY),
+          "h",
+          foot.h,
+          "w",
+          drawW,
+          "clip",
+          !!this.portrait
+        );
+      }
+      return drawn;
+    },
+
+    /** 礁石钓点才画；浅滩/深海不画。初期未解锁也不画。 */
+    paintFishingReefRocks: function (bobY) {
+      var spot = (AIGCUtils.Collection && AIGCUtils.Collection.spotId) || "shallow";
+      if (spot !== "reef") return;
+      if (!AIGCUtils.Collection.isSpotUnlocked || !AIGCUtils.Collection.isSpotUnlocked("reef")) return;
+      var key = "rock_reef_lv1";
+      if (!this.scenes[key]) return;
+      var portrait = this.portrait;
+      var rocks = portrait
+        ? [{ x: 120, y: 720, h: 70 }, { x: 360, y: 760, h: 56 }]
+        : [{ x: 520, y: 400, h: 64 }, { x: 700, y: 360, h: 52 }];
+      for (var i = 0; i < rocks.length; i++) {
+        var r = rocks[i];
+        this.paintFootSprite(key, r.x, r.y + bobY * 0.35, 0, r.h, false, { alpha: 0.95 });
+      }
     },
 
     drawArtFishingMotion: function () {
@@ -842,41 +2112,176 @@
       var portrait = this.portrait;
       var now = Date.now();
       var shift = this.artShiftX || 0;
-      // 座位槽：横屏左舱内沿，竖屏灯笼右侧空长凳。单位是设计坐标。
-      var seatX = (portrait ? 194 : 152) + shift;
-      var seatY = portrait ? 828 : 228;
-      var rabbitH = portrait ? 131 : 92;
-      var rot = collection.phase === "reeling" && collection.reelHeld ? Math.sin(collection.timer / 75) * 0.12 : 0;
+      var landGif = this.fishingUsesLandSeaGif();
+      // R0020：横屏浅滩先铺整屏 GIF；否则着色器海
+      if (landGif) {
+        if (!this.paintLandSeaGifBackdrop()) {
+          // sheet 未就绪时仍画着色器海兜底，避免黑屏
+          this.drawDynamicSea();
+        }
+      } else {
+        // R0008：先把实时海面铺满，再画鱼/礁石/船兔；UI 在返回后绘制，永远最上层
+        this.drawDynamicSea();
+      }
+      // R0020f：横屏 GIF 用底图船实测位移时钟；其它模式仍用 fishingSurfMotion
+      var surf = landGif ? this.fishingLandSeaGifSurf(now) : this.fishingSurfMotion(now);
+      var foot = this.fishingBoatFoot();
+      var boatX = foot.x + shift;
+      var boatY = foot.y + surf.bobY;
+      var seat = this.fishingRabbitSeatOnBoat();
+      var seatX = boatX + seat.dx;
+      var seatY = boatY + seat.dy;
+      var rabbitH = seat.h;
+      if (landGif) {
+        rabbitH = this.fishingLandSeaGifRabbitSeat().h;
+      }
+      var anim = AIGCUtils.AnimDriver;
+      var rabbitMotion = anim && anim.resolve ? anim.resolve("fish_rabbit") : null;
+      if (rabbitMotion) {
+        seatX += rabbitMotion.dx || 0;
+        seatY += rabbitMotion.dy || 0;
+      }
+      var rot = surf.bobRot;
+      if (rabbitMotion && (rabbitMotion.rot || rabbitMotion.rot === 0)) {
+        rot += rabbitMotion.rot || 0;
+      } else if (collection.phase === "reeling" && collection.reelHeld) {
+        rot += Math.sin(collection.timer / 75) * 0.12;
+      }
       var pool = AIGCUtils.Recipes.getOrderableSpeciesIds(collection.spotId, collection.baitId);
       if (!pool || !pool.length) pool = ["small"];
+
+      var layout = this.fishingSeaLayout();
+
+      // C1：鱼上限贴蒙版水线；自主游动完整逻辑留给 C6
+      var fishCeil = Math.min(layout.beachLine || layout.beachTop, layout.seaBottom) - 30;
+      var farLow = layout.seaTop + Math.round(layout.farH * 0.82);
       var school = portrait ? [
-        { id: "small", x: 90, y: 620, h: 34, flip: false, phase: 0.2 },
-        { id: "small", x: 250, y: 690, h: 28, flip: true, phase: 1.4 },
-        { id: "small", x: 410, y: 640, h: 32, flip: false, phase: 2.3 },
-        { id: "salmon", x: 180, y: 530, h: 48, flip: true, phase: 0.8 }
+        { id: "small", x: 60, y: Math.min(layout.nearTop + 70, fishCeil), h: 30, vx: 34, phase: 0.2 },
+        { id: "small", x: 210, y: Math.min(layout.nearTop + 125, fishCeil), h: 26, vx: -27, phase: 1.4 },
+        { id: "small", x: 360, y: Math.min(layout.nearTop + 95, fishCeil), h: 29, vx: 40, phase: 2.3 },
+        { id: "small", x: 450, y: Math.min(farLow, fishCeil), h: 22, vx: -21, phase: 3.1 },
+        { id: "salmon", x: 140, y: layout.seaTop + Math.round(layout.farH * 0.52), h: 46, vx: 30, phase: 0.8 },
+        { id: "salmon", x: 380, y: layout.seaTop + Math.round(layout.farH * 0.70), h: 38, vx: -24, phase: 2.0 }
       ] : [
-        { id: "small", x: 470, y: 355, h: 26, flip: false, phase: 0.4 },
-        { id: "small", x: 640, y: 385, h: 22, flip: true, phase: 1.6 },
-        { id: "small", x: 860, y: 348, h: 24, flip: false, phase: 2.5 },
-        { id: "salmon", x: 760, y: 268, h: 38, flip: true, phase: 0.9 }
+        { id: "small", x: 480, y: Math.min(layout.nearTop + 30, fishCeil), h: 26, vx: 46, phase: 0.4 },
+        { id: "small", x: 620, y: Math.min(layout.nearTop + 72, fishCeil), h: 23, vx: -35, phase: 1.6 },
+        { id: "small", x: 800, y: Math.min(layout.nearTop + 26, fishCeil), h: 24, vx: 30, phase: 2.5 },
+        { id: "small", x: 910, y: Math.min(farLow, fishCeil), h: 20, vx: -22, phase: 3.4 },
+        { id: "salmon", x: 720, y: layout.seaTop + Math.round(layout.farH * 0.55), h: 38, vx: -30, phase: 0.9 },
+        { id: "salmon", x: 560, y: layout.seaTop + Math.round(layout.farH * 0.76), h: 32, vx: 26, phase: 2.2 }
       ];
+      var swimT = now / 1000;
+      // R0020b：横屏 GIF 模式鱼只在船右侧游；其它横屏也抬高左界，避免穿船
+      var fishMinX = landGif ? this.fishingLandSeaGifFishMinX() : portrait ? 60 : 400;
+      var span = Math.max(1, this.width - fishMinX - 40);
+      var fishOut = 0;
       for (var i = 0; i < school.length; i++) {
         var swimmer = school[i];
-        if (pool.indexOf(swimmer.id) < 0) continue;
-        var swimX = swimmer.x + shift + Math.sin(now / 900 + swimmer.phase) * 16;
-        var swimY = swimmer.y + Math.cos(now / 1100 + swimmer.phase) * 6;
-        this.paintSwimFish(swimmer.id, swimX, swimY, swimmer.h, swimmer.flip);
+        var running = swimmer.x + swimT * swimmer.vx;
+        var swimX = fishMinX + (((running % span) + span) % span) + shift;
+        var swimY = swimmer.y + Math.cos(surf.phase * 0.9 + swimmer.phase) * 4 + surf.bobY * 0.4;
+        if (swimX < fishMinX) {
+          fishOut++;
+          continue;
+        }
+        // 用蒙版夹左右界；越界则本帧不画（C6 再做掉头）
+        var bounds = this.seaBoundsAtY(swimY);
+        if (bounds && bounds.left != null && bounds.right != null) {
+          var leftBound = Math.max(bounds.left + 12, fishMinX);
+          if (swimX < leftBound || swimX > bounds.right - 12) {
+            fishOut++;
+            continue;
+          }
+        }
+        var cover = this.seaMaskAt(swimX, swimY);
+        if (cover >= 0 && cover < 0.6) {
+          fishOut++;
+          continue;
+        }
+        this.paintSwimFish(swimmer.id, swimX, swimY, swimmer.h, swimmer.vx < 0, {
+          alpha: swimmer.id === "salmon" ? 0.78 : 0.88,
+          scaleY: 0.9
+        });
       }
-      var rabbit = this.paintFishingRabbit(seatX, seatY, rabbitH, rot);
-      var mark = (portrait ? "port" : "land") + ":" + collection.spotId + ":" + pool.join("+");
+      if (fishOut && (!this._fishMaskSkipLog || this._fishMaskSkipLog < 3)) {
+        this._fishMaskSkipLog = (this._fishMaskSkipLog || 0) + 1;
+        console.log("[FishAnim] R0010 skip fish outside mask", fishOut);
+      }
+
+      this.paintFishingReefRocks(0);
+      // R0006：底板已烤船则禁止再画精灵，否则双船
+      // R0020e：横屏 GIF 底图已带船 → 禁止再叠 boat 精灵；只画活兔并跟 surf bob 摇摆
+      var baseKey = this.backdropKey("fishing") || this.fishingBaseKey();
+      var bakedBoat = landGif || this.fishingBaseHasBakedBoat(baseKey);
+      // R0010 补丁8：竖屏船兔用 scissor 硬裁设计画布，旋转角探底也被剪掉
+      var boatScissor = portrait && this.beginDesignCanvasScissor();
+      if (boatScissor && !this._boatScissorLog) {
+        this._boatScissorLog = true;
+        console.log("[FishAnim] R0010 patch8 portrait boat scissor+softBob", surf.bobY, surf.bobRot);
+      }
+      if (!bakedBoat) {
+        this.paintFishingBoatSprite(boatX, boatY, surf.bobRot);
+      } else if (!this._boatBakeLog || this._boatBakeLog !== baseKey + (landGif ? ":gif" : "")) {
+        this._boatBakeLog = baseKey + (landGif ? ":gif" : "");
+        console.log("[FishAnim] R0020e skip boat sprite (gif has boat)", baseKey, "landGif", !!landGif);
+      }
+      if (landGif && (!this._rabbitGifBobLog || this._rabbitGifBobLog !== "on")) {
+        this._rabbitGifBobLog = "on";
+        console.log(
+          "[FishAnim] R0020e land gif rabbit-only surfBob",
+          Math.round(seatX),
+          Math.round(seatY),
+          "bobY",
+          surf.bobY.toFixed(1)
+        );
+      }
+
+      // 船与兔绕同一个船底支点做刚体旋转，避免各自绕脚底转而「错位/闪」
+      var rabbitDraw = {};
+      if (rabbitMotion) {
+        for (var mk in rabbitMotion) rabbitDraw[mk] = rabbitMotion[mk];
+      }
+      rabbitDraw.pivotX = boatX;
+      rabbitDraw.pivotY = boatY;
+      var rabbit = this.paintFishingRabbit(seatX, seatY, rabbitH, rot, rabbitDraw);
+      if (boatScissor) this.endDesignCanvasScissor();
+      var mark =
+        (portrait ? "port" : "land") +
+        ":" +
+        (collection.spotId || "shallow") +
+        ":" +
+        collection.phase +
+        ":surf" +
+        surf.periodMs;
       if (this.fishArtLog !== mark) {
         this.fishArtLog = mark;
-        console.log("[FishingArt] seat", Math.round(seatX), Math.round(seatY), "tip", rabbit ? Math.round(rabbit.tipX) + "," + Math.round(rabbit.tipY) : "missing", "pool", pool.join(","));
+        console.log(
+          "[FishingArt]",
+          mark,
+          "base",
+          baseKey,
+          "bakedBoat",
+          bakedBoat,
+          "boatSprite",
+          !bakedBoat,
+          "boat",
+          Math.round(boatX),
+          Math.round(boatY),
+          "seat",
+          Math.round(seatX),
+          Math.round(seatY)
+        );
       }
       if (!rabbit) return;
-      var lineOut = collection.phase === "charging" || collection.phase === "waiting" || collection.phase === "bite" || collection.phase === "reeling";
+      var lineOut =
+        collection.phase === "charging" ||
+        collection.phase === "cast_anim" ||
+        collection.phase === "waiting" ||
+        collection.phase === "bite" ||
+        collection.phase === "reeling";
       var floatX = collection.bubbleX;
-      var floatY = collection.bubbleY + Math.sin(now / 260) * 5;
+      // 浮标跟同一 surf，幅度略小于船
+      var floatY = collection.bubbleY + Math.sin(surf.phase * 1.15) * 4;
       if (collection.phase === "bite") floatY += 18;
       if (collection.phase === "reeling") {
         floatX += Math.sin(collection.timer / 90) * 18;
@@ -893,17 +2298,78 @@
       }
       if (collection.phase === "reeling") {
         var hooked = pool[Math.floor(now / 700) % pool.length];
-        this.paintSwimFish(hooked, floatX + 18, floatY + 26, portrait ? 36 : 32, false);
+        this.paintSwimFish(hooked, floatX + 18, floatY + 26, portrait ? 36 : 32, false, { alpha: 0.88, scaleY: 0.92 });
       }
       if (collection.phase === "fishCaught") {
         var caughtT = Math.min(1, collection.timer / 850);
         var caughtId = collection.caughtFish && collection.caughtFish.speciesId;
         if (pool.indexOf(caughtId) < 0) caughtId = pool[0];
         var jumpY = collection.bubbleY - Math.sin(caughtT * Math.PI) * (portrait ? 110 : 130);
-        this.paintSwimFish(caughtId, collection.bubbleX, jumpY, portrait ? 52 : 46, false);
+        this.paintSwimFish(caughtId, collection.bubbleX, jumpY, portrait ? 52 : 46, false, { surface: true, alpha: 0.98, scaleY: 1 });
         this.line(rabbit.tipX, rabbit.tipY, collection.bubbleX, jumpY, 2, C.ink);
         this.text("钓到了", portrait ? this.width / 2 : 610, portrait ? 420 : 150, 28, C.cream, "center");
       }
+    },
+
+    /**
+     * R0008 C7：顶部木条 + 底部地图/背包独立透明层。
+     * 绘制时机：动态海 / 鱼 / 礁石 / 船兔 / 鱼线 之后，HUD 叠字与弹窗之前。
+     * ?ui=off 隐藏；?ui=baked 跳过（回退烤底板）。
+     */
+    paintFishingUiChrome: function () {
+      this.parseSeaDebugParams();
+      // R0020：GIF 已烤 UI 外观；返回 true 阻止再叠 shared hud，热区仍由 input 固定矩形负责
+      if (this.fishingUsesLandSeaGif()) {
+        if (!this._gifChromeSkipLog) {
+          this._gifChromeSkipLog = true;
+          console.log("[FishAnim] R0020 land sea gif skip ui-chrome (baked)");
+        }
+        return true;
+      }
+      if (this.seaUiMode === "off" || this.seaUiMode === "baked") return false;
+      var key = this.fishingUiChromeKey();
+      if (!this.scenes[key]) {
+        if (!this.sceneLoading[key] && !this.sceneFailed[key]) this.loadScenes();
+        if (!this._chromeMissLog || this._chromeMissLog !== key) {
+          this._chromeMissLog = key;
+          console.warn("[FishAnim] R0008 ui-chrome missing/loading", key);
+        }
+        return false;
+      }
+      this.flush();
+      // 与 seaflat 同一 letterbox，位移恒为 0（C7：底板/UI 都不跟收线晃）
+      var ok = this.paintScene(key, 0, 0, this.width, this.height, 0, 0);
+      if (ok) this.flush();
+      if (ok && this._chromePaintLog !== key) {
+        this._chromePaintLog = key;
+        console.log("[FishAnim] R0008 paintFishingUiChrome", key);
+      }
+      if (this.seaDebugMode === "mask") this.paintSeaDebugOverlay();
+      return !!ok;
+    },
+
+    /** C0/C1：调试叠层——UI 矩形、船脚、蒙版水线采样点 */
+    paintSeaDebugOverlay: function () {
+      var navY = this.height - 72;
+      this.rect(0, 0, this.width, 64, [1, 0.2, 0.2, 0.18]);
+      this.rect(0, navY, this.width, 72, [0.2, 1, 0.3, 0.18]);
+      this.rect(20, navY + 8, 130, 48, [1, 1, 0, 0.25]);
+      this.rect(170, navY + 8, 130, 48, [1, 1, 0, 0.25]);
+      var foot = this.fishingBoatFoot();
+      this.circle(foot.x, foot.y, 6, [1, 0, 0, 0.9], 10);
+      // 沿若干 X 画蒙版水线点（青色），便于对照岸线
+      var xi;
+      for (xi = 0; xi < 12; xi++) {
+        var sx = Math.round(this.width * (0.08 + xi * 0.07));
+        var sy = this.shoreLineAtX(sx);
+        if (sy == null || isNaN(sy)) continue;
+        this.circle(sx, sy, 3, [0.1, 0.95, 0.95, 0.85], 6);
+      }
+      var layout = this.fishingSeaLayout();
+      if (layout && layout.beachLine != null) {
+        this.rect(0, layout.beachLine - 1, this.width, 2, [0.2, 0.9, 1, 0.35]);
+      }
+      this.flush();
     },
 
     pulseFrame: function (x, y, width, height) {
@@ -913,6 +2379,60 @@
       this.rect(x, y + height - 6, width, 6, color);
       this.rect(x, y, 6, height, color);
       this.rect(x + width - 6, y, 6, height, color);
+    },
+
+    /**
+     * R0025：地图路牌右上角锁（锁梁 + 锁体），对齐其它未解锁区烤死锁的位置感。
+     */
+    drawMapPadlock: function (x, y, size) {
+      var s = size || 28;
+      var bodyW = Math.round(s * 0.72);
+      var bodyH = Math.round(s * 0.58);
+      var bodyX = Math.round(x - bodyW / 2);
+      var bodyY = Math.round(y + s * 0.28);
+      var shackleR = Math.round(s * 0.28);
+      var metal = [0.22, 0.2, 0.18, 0.92];
+      var metalHi = [0.38, 0.35, 0.32, 0.95];
+      var hole = [0.1, 0.09, 0.08, 0.95];
+      var thick = Math.max(3, Math.round(s * 0.12));
+      // 锁梁：上半圆弧（屏坐标系 Y 向下，sin 负向为上）
+      var i;
+      for (i = 0; i < 12; i++) {
+        var a0 = Math.PI + (i / 12) * Math.PI;
+        var a1 = Math.PI + ((i + 1) / 12) * Math.PI;
+        this.line(
+          x + Math.cos(a0) * shackleR,
+          bodyY + Math.sin(a0) * shackleR,
+          x + Math.cos(a1) * shackleR,
+          bodyY + Math.sin(a1) * shackleR,
+          thick,
+          metal
+        );
+      }
+      this.rect(bodyX, bodyY, bodyW, bodyH, metal);
+      this.rect(bodyX + 2, bodyY + 2, bodyW - 4, Math.max(2, Math.round(bodyH * 0.22)), metalHi);
+      this.circle(x, bodyY + Math.round(bodyH * 0.42), Math.max(2, Math.round(s * 0.08)), hole, 8);
+      this.rect(
+        x - Math.max(1, Math.round(s * 0.04)),
+        bodyY + Math.round(bodyH * 0.42),
+        Math.max(2, Math.round(s * 0.08)),
+        Math.round(bodyH * 0.28),
+        hole
+      );
+    },
+
+    /**
+     * R0026：红色闪烁箭头，锚在路牌顶边正中上方，三角朝下指木牌文字。
+     */
+    drawMapGuideArrow: function (zoneRect) {
+      if (!zoneRect) return;
+      var ax = zoneRect.x + Math.round(zoneRect.w / 2);
+      var tipY = zoneRect.y - 2;
+      var baseY = tipY - 22;
+      var alpha = 0.45 + 0.55 * (0.5 + 0.5 * Math.sin(Date.now() / 260));
+      var col = [Math.min(1, C.red[0] * 1.15), C.red[1] * 0.85, C.red[2] * 0.85, alpha];
+      this.tri(ax, tipY, ax - 12, baseY, ax + 12, baseY, col);
+      this.rect(ax - 3, baseY - 14, 6, 16, col);
     },
 
     resize: function () {
@@ -1077,6 +2597,122 @@
       }
     },
 
+    /** 伪加粗：位图字帖无字重，叠绘邻像素模拟黑体加粗（烤鱼引导字用） */
+    textBold: function (text, x, y, size, color, align) {
+      this.text(text, x + 1, y, size, color, align);
+      this.text(text, x, y + 1, size, color, align);
+      this.text(text, x + 1, y + 1, size, color, align);
+      this.text(text, x, y, size, color, align);
+    },
+
+    /**
+     * R0031→R0033：全局玩法提示——暖奶油金粗体 + 慢速流光。
+     * 色板贴近本游戏 cream / honey，比绿跳、比纯棕闷更贴手绘木牌画风。
+     */
+    guideTipSize: function () {
+      return this.portrait ? 17 : 20;
+    },
+
+    drawGuideTip: function (label, x, y, opts) {
+      opts = opts || {};
+      var size = opts.size != null ? opts.size : this.guideTipSize();
+      var align = opts.align || "center";
+      if (!label) return;
+      var value = String(label);
+      var totalW = this.fontReady ? this.textWidth(value, size) : value.length * size * 0.7;
+      var startX = x;
+      if (align === "center") startX -= totalW / 2;
+      if (align === "right") startX -= totalW;
+      // R0034/R0035：按字帖真实字形包围盒居中包裹
+      // R0036c：无阴影边框；奶油多层由外向内渐隐，边缘淡化融入绿叶
+      if (opts.backdrop) {
+        var padX = Math.max(12, Math.round(size * 0.7));
+        var padY = Math.max(6, Math.round(size * 0.35));
+        var bounds = this.textLineBounds(value, size);
+        var glyphTop = y + bounds.minOff * bounds.scale;
+        var glyphBot = y + bounds.maxExt * bounds.scale;
+        var boxX = Math.round(startX - padX);
+        var boxY = Math.round(glyphTop - padY);
+        var boxW = Math.round(totalW + padX * 2);
+        var boxH = Math.max(
+          Math.round(glyphBot - glyphTop + padY * 2),
+          Math.round(size * 1.1)
+        );
+        var step = Math.max(3, Math.round(size * 0.18));
+        // 由外到内叠淡奶油：外圈几乎透明，中心略实，模拟渐变淡化（无硬边阴影）
+        var fadeLayers = [
+          { expand: step * 3, a: 0.05 },
+          { expand: step * 2, a: 0.08 },
+          { expand: step, a: 0.14 },
+          { expand: 0, a: 0.26 }
+        ];
+        for (var fi = 0; fi < fadeLayers.length; fi++) {
+          var fl = fadeLayers[fi];
+          this.rect(
+            boxX - fl.expand,
+            boxY - fl.expand,
+            boxW + fl.expand * 2,
+            boxH + fl.expand * 2,
+            [C.cream[0], C.cream[1], C.cream[2], fl.a]
+          );
+        }
+        if (!this._loggedGuideTipBackdrop) {
+          this._loggedGuideTipBackdrop = true;
+          console.log("[GuideTip] backdrop soft cream fade R0036c");
+        }
+      }
+      // 描边：backdrop 时加粗加深（浅底上仍用深木色压字）
+      var stroke = opts.backdrop
+        ? [0.22, 0.14, 0.08, 0.78]
+        : [0.22, 0.14, 0.08, 0.55];
+      if (opts.backdrop) {
+        this.text(value, x - 1, y, size, stroke, align);
+        this.text(value, x + 1, y, size, stroke, align);
+        this.text(value, x, y - 1, size, stroke, align);
+        this.text(value, x, y + 1, size, stroke, align);
+      }
+      this.textBold(value, x, y, size, stroke, align);
+      // 主色：暖奶油；流光：蜂蜜金
+      var base = [0.98, 0.9, 0.72, 1];
+      var hi = [1.0, 0.78, 0.32, 1];
+      if (!this.fontReady || !this.fontTexture) {
+        this.textBold(value, x, y, size, base, align);
+        return;
+      }
+      var font = AIGCUtils.FontAtlas;
+      var scale = size / font.fontSize;
+      // R0033：流光约 2.5× 更慢（原 /260 → /650）
+      var now = Date.now() / 650;
+      this.useTexture(this.fontTexture);
+      var cursor = startX;
+      var n = Math.max(1, value.length - 1);
+      for (var i = 0; i < value.length; i++) {
+        var ch = value[i];
+        var glyph = font.glyphs[ch];
+        if (!glyph) continue;
+        var u = i / n;
+        var wave = 0.5 + 0.5 * Math.sin(now - u * Math.PI * 1.6);
+        var bright = wave * wave;
+        var col = [
+          base[0] + (hi[0] - base[0]) * bright,
+          base[1] + (hi[1] - base[1]) * bright,
+          base[2] + (hi[2] - base[2]) * bright,
+          1
+        ];
+        if (glyph.w > 0 && glyph.h > 0) {
+          var gx = cursor + glyph.xoffset * scale;
+          var gy = y + glyph.yoffset * scale;
+          var gw = glyph.w * scale;
+          var gh = glyph.h * scale;
+          this.textQuad(gx + 1, gy, gw, gh, glyph, col);
+          this.textQuad(gx, gy + 1, gw, gh, glyph, col);
+          this.textQuad(gx + 1, gy + 1, gw, gh, glyph, col);
+          this.textQuad(gx, gy, gw, gh, glyph, col);
+        }
+        cursor += glyph.advance * scale;
+      }
+    },
+
     button: function (x, y, width, height, label, active, fontSize) {
       if (this.uiSkinChrome) {
         if (this.scenes["btn-wood"]) {
@@ -1130,7 +2766,8 @@
         fillColor = [0.82, 0.25, 0.12, 1];
       }
       if (this.uiSkinChrome) {
-        this.rect(x + width * start, y + 6, width * (end - start), 10, [0.42, 0.58, 0.38, 0.35]);
+        // 绿区加深：原 α0.35 几乎看不见中心带（R0015）
+        this.rect(x + width * start, y + 6, width * (end - start), 10, [0.28, 0.62, 0.30, 0.88]);
         this.rect(x + width * marker - 2, y, 4, 22, C.red);
         if (value !== null) this.rect(x, y + 18, width * Math.max(0, Math.min(1, value)), 6, fillColor);
         return;
@@ -1369,10 +3006,14 @@
           this.rect(10, coconutY, W - 20, zoneH, C.leafLight);
           this.rect(10, shopY, W - 20, zoneH, AIGCUtils.GameState.shopBuilt ? C.honey : C.woodLight);
         } else {
-          var nextZone = fishY;
-          if (AIGCUtils.GameState.fishCaught >= 3 && !AIGCUtils.GameState.tasks.coconut && !AIGCUtils.GameState.shopBuilt) nextZone = coconutY;
-          else if (AIGCUtils.GameState.shopBuilt || AIGCUtils.GameState.tasks.coconut) nextZone = shopY;
-          this.pulseFrame(10, nextZone, W - 20, zoneH);
+          // R0025：引导进行中用红箭头，完成后保留旧脉冲框
+          var OnbPulse = AIGCUtils.Onboarding;
+          if (!OnbPulse || OnbPulse.isDone()) {
+            var nextZone = fishY;
+            if (AIGCUtils.GameState.fishCaught >= 3 && !AIGCUtils.GameState.tasks.coconut && !AIGCUtils.GameState.shopBuilt) nextZone = coconutY;
+            else if (AIGCUtils.GameState.shopBuilt || AIGCUtils.GameState.tasks.coconut) nextZone = shopY;
+            this.pulseFrame(10, nextZone, W - 20, zoneH);
+          }
         }
         if (!this.artOn) {
           this.fish(70, fishY + zoneH * 0.5, 36, false);
@@ -1380,11 +3021,24 @@
         }
         if (this.uiSkinChrome) {
           var pz = AIGCUtils.MapZones.port;
-          if (AIGCUtils.GameState.fishCaught < 3 && !AIGCUtils.GameState.tasks.coconut) {
-            this.rect(pz.coconut.x, pz.coconut.y, pz.coconut.w, pz.coconut.h, [0.35, 0.32, 0.28, 0.45]);
+          var OnbP = AIGCUtils.Onboarding;
+          // R0025：灰块改为锁图标；教程箭头由 drawMapGuideArrow 绘制
+          if (OnbP ? OnbP.isCoconutLocked() : !AIGCUtils.GameState.tasks.fish) {
+            this.drawMapPadlock(pz.coconut.x + pz.coconut.w - 22, pz.coconut.y + 18, 32);
           }
-          if (!AIGCUtils.GameState.shopBuilt) {
-            this.rect(pz.shop.x, pz.shop.y, pz.shop.w, pz.shop.h, [0.35, 0.32, 0.28, 0.45]);
+          if (OnbP ? OnbP.isShopLocked() : !AIGCUtils.GameState.shopBuilt) {
+            this.drawMapPadlock(pz.shop.x + pz.shop.w - 22, pz.shop.y + 18, 32);
+          }
+          if (OnbP && OnbP.arrowZone) {
+            var arrowPort =
+              OnbP.arrowZone === "fishing"
+                ? pz.fish
+                : OnbP.arrowZone === "coconut"
+                  ? pz.coconut
+                  : OnbP.arrowZone === "shop"
+                    ? pz.shop
+                    : null;
+            this.drawMapGuideArrow(arrowPort);
           }
         } else {
           this.text("钓鱼区", hw, fishY + zoneH * 0.45, 26, C.ink, "center");
@@ -1406,11 +3060,15 @@
           this.rect(520, 90, 330, 180, C.leafLight);
           this.rect(330, 295, 330, 150, AIGCUtils.GameState.shopBuilt ? C.honey : C.woodLight);
         } else {
-          var mapZ = AIGCUtils.MapZones.land;
-          var guide = mapZ.fish;
-          if (AIGCUtils.GameState.fishCaught >= 3 && !AIGCUtils.GameState.tasks.coconut && !AIGCUtils.GameState.shopBuilt) guide = mapZ.coconut;
-          else if (AIGCUtils.GameState.shopBuilt || AIGCUtils.GameState.tasks.coconut) guide = mapZ.shop;
-          this.pulseFrame(guide.x, guide.y, guide.w, guide.h);
+          // R0025：引导进行中用红箭头，完成后保留旧脉冲框
+          var OnbL = AIGCUtils.Onboarding;
+          if (!OnbL || OnbL.isDone()) {
+            var mapZ = AIGCUtils.MapZones.land;
+            var guide = mapZ.fish;
+            if (AIGCUtils.GameState.fishCaught >= 3 && !AIGCUtils.GameState.tasks.coconut && !AIGCUtils.GameState.shopBuilt) guide = mapZ.coconut;
+            else if (AIGCUtils.GameState.shopBuilt || AIGCUtils.GameState.tasks.coconut) guide = mapZ.shop;
+            this.pulseFrame(guide.x, guide.y, guide.w, guide.h);
+          }
         }
         if (!this.artOn) {
           this.fish(185, 175, 48, false);
@@ -1418,11 +3076,23 @@
         }
         if (this.uiSkinChrome) {
           var mz = AIGCUtils.MapZones.land;
-          if (AIGCUtils.GameState.fishCaught < 3 && !AIGCUtils.GameState.tasks.coconut) {
-            this.rect(mz.coconut.x, mz.coconut.y, mz.coconut.w, mz.coconut.h, [0.35, 0.32, 0.28, 0.45]);
+          var OnbM = AIGCUtils.Onboarding;
+          if (OnbM ? OnbM.isCoconutLocked() : !AIGCUtils.GameState.tasks.fish) {
+            this.drawMapPadlock(mz.coconut.x + mz.coconut.w - 18, mz.coconut.y + 14, 26);
           }
-          if (!AIGCUtils.GameState.shopBuilt) {
-            this.rect(mz.shop.x, mz.shop.y, mz.shop.w, mz.shop.h, [0.35, 0.32, 0.28, 0.45]);
+          if (OnbM ? OnbM.isShopLocked() : !AIGCUtils.GameState.shopBuilt) {
+            this.drawMapPadlock(mz.shop.x + mz.shop.w - 18, mz.shop.y + 14, 26);
+          }
+          if (OnbM && OnbM.arrowZone) {
+            var arrowLand =
+              OnbM.arrowZone === "fishing"
+                ? mz.fish
+                : OnbM.arrowZone === "coconut"
+                  ? mz.coconut
+                  : OnbM.arrowZone === "shop"
+                    ? mz.shop
+                    : null;
+            this.drawMapGuideArrow(arrowLand);
           }
         } else {
           this.text("钓鱼区", 280, 160, 28, C.ink, "center");
@@ -1500,7 +3170,7 @@
           this.circle(fishX, fishY2, 7, C.orange);
           if (struggling) {
             this.fish(fishX + 12, fishY2 + 28, 22, false);
-            this.text("绿色区按住收线 松开放线", hw, seaTop + 40, 16, C.cream, "center");
+            this.drawGuideTip("绿色区按住收线 松开放线", hw, seaTop + 40, { size: 16 });
           }
           if (collection.phase === "fishCaught") {
             var caughtT = Math.min(1, collection.timer / 850);
@@ -1518,13 +3188,16 @@
         }
         var instr = "按住抛竿";
         if (collection.phase === "charging") instr = "松开甩竿";
+        if (collection.phase === "cast_anim") instr = "抛竿中";
         if (collection.phase === "waiting") instr = "等待浮标下沉再提竿";
         if (collection.phase === "bite") instr = "咬钩了 立即提竿";
-        if (collection.phase === "reeling") instr = "拉锯战 控制线张力";
+        if (collection.phase === "reeling") instr = "进度条到绿色长条区域时长按";
         if (collection.phase === "idle") instr = "选中浅滩与蚯蚓 按住抛竿";
         var instrY = this.uiSkinChrome ? ct + 78 : seaTop + (struggling ? 64 : 40);
-        var instrColor = this.uiSkinChrome ? [0.42, 0.38, 0.34, 0.92] : C.cream;
-        this.text(instr, hw, instrY, 15, instrColor, "center");
+        // R0031：统一绿色流光粗体提示
+        this.drawGuideTip(instr, hw, instrY, {
+          size: collection.phase === "reeling" ? (this.portrait ? 15 : 17) : this.guideTipSize()
+        });
         // 进度条
         var barY = cb - 110;
         if (collection.phase === "charging") this.progress(20, barY, W - 40, collection.power, collection.power, 0.4, 0.7);
@@ -1541,6 +3214,7 @@
         var castPort = this.fishingCastPortButton();
         if (collection.phase === "idle") this.button(castPort.x, castPort.y, castPort.w, castPort.h, "按住抛竿", true);
         if (collection.phase === "charging") this.button(castPort.x, castPort.y, castPort.w, castPort.h, "松开抛竿 " + Math.round(collection.power * 100) + "%", true);
+        if (collection.phase === "cast_anim") this.button(hw - 120, actY, 240, 50, "抛竿中", false);
         if (collection.phase === "waiting") this.button(hw - 120, actY, 240, 50, "提竿", false);
         if (collection.phase === "bite") this.button(hw - 120, actY, 240, 50, "立即提竿", true);
         if (collection.phase === "reeling") this.button(hw - 140, actY, 280, 52, collection.reelHeld ? "收线中 松开可放线" : "按住收线 松开放线", true);
@@ -1582,7 +3256,7 @@
           this.circle(fishX, fishY2, 8, C.orange);
           if (struggling) {
             this.fish(fishX + 15, fishY2 + 36, 27, false);
-            this.text("绿色区按住收线 松开放线", 600, 170, 18, C.cream, "center");
+            this.drawGuideTip("绿色区按住收线 松开放线", 600, 170, { size: 18 });
           }
           if (collection.phase === "fishCaught") {
             var caughtT = Math.min(1, collection.timer / 850);
@@ -1600,13 +3274,15 @@
         }
         var instruction = "按住抛竿";
         if (collection.phase === "charging") instruction = "松开甩竿";
+        if (collection.phase === "cast_anim") instruction = "抛竿中";
         if (collection.phase === "waiting") instruction = "等待浮标下沉再提竿";
         if (collection.phase === "bite") instruction = "咬钩了 立即提竿";
-        if (collection.phase === "reeling") instruction = "拉锯战 控制线张力";
+        if (collection.phase === "reeling") instruction = "进度条到绿色长条区域时长按";
         if (collection.phase === "idle") instruction = "选中浅滩与蚯蚓 按住抛竿";
         var landInstrY = this.uiSkinChrome ? 118 : 225;
-        var landInstrColor = this.uiSkinChrome ? [0.42, 0.38, 0.34, 0.92] : C.cream;
-        this.text(instruction, 600, landInstrY, 15, landInstrColor, "center");
+        this.drawGuideTip(instruction, 600, landInstrY, {
+          size: collection.phase === "reeling" ? 17 : this.guideTipSize()
+        });
         if (collection.phase === "charging") this.progress(350, 340, 480, collection.power, collection.power, 0.4, 0.7);
         if (collection.phase === "reeling") {
           this.progress(350, 340, 480, collection.reelProgress, collection.reelCursor, 0.35, 0.65);
@@ -1616,12 +3292,14 @@
           this.rect(350, 378, 480, 12, tensionGroove);
           this.rect(350, 378, 480 * Math.min(1, Math.max(0, collection.tension)), 12, tensionFill);
         }
-        // 先画抛竿，再画钓具，展开木牌才不会被船舱挡住；横屏抛竿坐标保持原位
-        if (collection.phase === "idle") this.button(520, 405, 240, 50, "按住抛竿", true);
-        if (collection.phase === "charging") this.button(360, 405, 240, 50, "松开抛竿 " + Math.round(collection.power * 100) + "%", true);
-        if (collection.phase === "waiting") this.button(360, 405, 240, 50, "提竿", false);
-        if (collection.phase === "bite") this.button(360, 405, 240, 50, "立即提竿", true);
-        if (collection.phase === "reeling") this.button(330, 405, 300, 55, collection.reelHeld ? "收线中 松开可放线" : "按住收线 松开放线", true);
+        // R0039：横屏主操作钮统一锚在「按住抛竿」位 (520,405,240,50)，各阶段不跳位
+        var landAct = { x: 520, y: 405, w: 240, h: 50 };
+        if (collection.phase === "idle") this.button(landAct.x, landAct.y, landAct.w, landAct.h, "按住抛竿", true);
+        if (collection.phase === "charging") this.button(landAct.x, landAct.y, landAct.w, landAct.h, "松开抛竿 " + Math.round(collection.power * 100) + "%", true);
+        if (collection.phase === "cast_anim") this.button(landAct.x, landAct.y, landAct.w, landAct.h, "抛竿中", false);
+        if (collection.phase === "waiting") this.button(landAct.x, landAct.y, landAct.w, landAct.h, "提竿", false);
+        if (collection.phase === "bite") this.button(landAct.x, landAct.y, landAct.w, landAct.h, "立即提竿", true);
+        if (collection.phase === "reeling") this.button(landAct.x, landAct.y, landAct.w, landAct.h, collection.reelHeld ? "收线中 松开可放线" : "按住收线 松开放线", true);
         this.drawFishingGear(collection, false);
       }
     },
@@ -1760,14 +3438,12 @@
         }
       }
       if (!this.artOn && !this.uiSkinChrome) this.text("椰林区", hw, ct + 24, 28, C.ink, "center");
-      if (collection.phase !== "coconutRound") {
-        var instr = "点击椰树开始采摘";
-        if (this.uiSkinChrome) {
-          this.text(instr, hw, ct + 76, 15, [0.45, 0.42, 0.38, 0.88], "center");
-        } else {
-          if (this.artOn) this.rect(hw - 190, groundY + 4, 380, 32, [0.98, 0.92, 0.79, 0.88]);
-          this.text(instr, hw, groundY + 10, 17, C.ink, "center");
-        }
+      // R0034：椰林绿叶底加半透明深底，奶油金字才清晰
+      if (collection.phase !== "coconutSummary") {
+        // R0039：去掉过亮底框，只保留奶油金提示字
+        var cocoTip = "点击椰树摇落椰子 接住掉落椰子";
+        var cocoTipY = this.uiSkinChrome ? ct + 76 : (collection.phase === "coconutRound" ? ct + 76 : groundY + 10);
+        this.drawGuideTip(cocoTip, hw, cocoTipY);
       }
       collection.coconuts.forEach(function (coconut) {
         if (this.uiSkinChrome && this.artOn) {
@@ -2059,8 +3735,8 @@
       var dv0 = v0;
       var du1 = u1;
       var dv1 = v1;
-      // 无旋转时裁到设计画布，避免人/气泡画出 960×540（或当前竖屏设计宽高）
-      if (clipToCanvas && !rot) {
+      // 先按设计画布裁 UV/矩形，再旋转（R0010 补丁7：船有 bobRot 时也要裁掉屏底溢出）
+      if (clipToCanvas) {
         var clipped = this.clipTexturedRect(x, y, w, h, u0, v0, u1, v1);
         if (!clipped) return false;
         drawX = clipped.x;
@@ -2114,14 +3790,71 @@
         u0 = u1;
         u1 = swap;
       }
-      var pivotY = motion.pivot === "center" ? y + drawH / 2 : footY;
+      var pivotX = motion.pivotX == null ? footX : motion.pivotX;
+      var pivotY = motion.pivotY == null
+        ? (motion.pivot === "center" ? y + drawH / 2 : footY)
+        : motion.pivotY;
       var alpha = motion.alpha == null ? 1 : motion.alpha;
       if (alpha <= 0.01) return null;
       var tint = [1, 1, 1, alpha];
       var clip = !!motion.clipToCanvas;
-      if (!this.paintTexturedQuad(key, x, y, frame.w, drawH, u0, frame.v0, u1, frame.v1, motion.rot || 0, footX, pivotY, tint, clip)) return null;
+      if (!this.paintTexturedQuad(key, x, y, frame.w, drawH, u0, frame.v0, u1, frame.v1, motion.rot || 0, pivotX, pivotY, tint, clip)) return null;
       this.flush();
       return { x: x, y: y, w: frame.w, h: drawH };
+    },
+
+    /**
+     * 合表（兔+炉）内兔子相对单格的中心/高度/脚底占比。
+     * 用于把动态合表里的兔子对齐到静帧 rabbit 槽位。
+     */
+    combinedGrillRabbitMeta: function (sheetKey) {
+      var table = {
+        anim_grill_lv1_cook: { cxFrac: 0.25, hFrac: 0.59, botFrac: 0.95 },
+        anim_grill_lv2_cook: { cxFrac: 0.25, hFrac: 0.72, botFrac: 0.98 },
+        anim_grill_lv3_cook: { cxFrac: 0.25, hFrac: 0.64, botFrac: 0.92 },
+        anim_grill_lv4_cook: { cxFrac: 0.25, hFrac: 0.61, botFrac: 0.92 },
+        anim_rabbit_grill_cook: { cxFrac: 0.26, hFrac: 0.97, botFrac: 0.98 },
+        anim_rabbit_grill_ignite: { cxFrac: 0.26, hFrac: 0.75, botFrac: 0.98 },
+        anim_rabbit_grill_flip: { cxFrac: 0.26, hFrac: 0.9, botFrac: 0.98 }
+      };
+      return table[sheetKey] || { cxFrac: 0.25, hFrac: 0.62, botFrac: 0.95 };
+    },
+
+    /** 横条精灵表单帧：脚底对齐，UV 由 AnimDriver.resolve 给出 */
+    paintSheetFoot: function (sheetKey, footX, footY, targetH, uv, flip, motion) {
+      motion = motion || {};
+      uv = uv || { u0: 0, v0: 0, u1: 1, v1: 1 };
+      if (!this.scenes[sheetKey]) {
+        if (!this.sceneLoading[sheetKey] && !this.missingShopSprites[sheetKey]) {
+          this.missingShopSprites[sheetKey] = true;
+          console.warn("[ShopAnim] sheet missing", sheetKey);
+        }
+        return null;
+      }
+      var aspect = this.sceneAspect[sheetKey] || 1;
+      var du = Math.max(0.001, (uv.u1 - uv.u0));
+      var dv = Math.max(0.001, (uv.v1 - uv.v0));
+      // 整表宽高比 * 单格 UV → 单格内容比
+      var cellAspect = aspect * du / dv;
+      var h = targetH || 128;
+      var w = h * cellAspect;
+      var drawH = h * (motion.scaleY == null ? 1 : motion.scaleY);
+      var x = footX - w / 2;
+      var y = footY - drawH;
+      var u0 = uv.u0;
+      var u1 = uv.u1;
+      if (flip) {
+        var swap = u0;
+        u0 = u1;
+        u1 = swap;
+      }
+      var alpha = motion.alpha == null ? 1 : motion.alpha;
+      if (alpha <= 0.01) return null;
+      var pivotX = motion.pivotX == null ? footX : motion.pivotX;
+      var pivotY = motion.pivotY == null ? footY : motion.pivotY;
+      if (!this.paintTexturedQuad(sheetKey, x, y, w, drawH, u0, uv.v0, u1, uv.v1, motion.rot || 0, pivotX, pivotY, [1, 1, 1, alpha], !!motion.clipToCanvas)) return null;
+      this.flush();
+      return { x: x, y: y, w: w, h: drawH };
     },
 
     paintCenterSprite: function (key, cx, cy, targetH, motion) {
@@ -2141,15 +3874,20 @@
       return { x: x, y: y, w: frame.w, h: drawH };
     },
 
-    // 离场：画面内向右走到设计右边界钉住，再淡出；进场仍从右侧外走进，画外不画
+    // 离场：走到「右缘内侧、全身仍可见」再淡出；进场从同一内侧点走进，避免半身被裁
     customerLeaveWalkMs: 550,
     customerLeaveFadeMs: 550,
+    // 脚底相对右缘内缩，约半个顾客身宽，站在边上也不被 clip 切成半身
+    customerEdgeInset: 48,
 
     customerSlidePoint: function (slotPoint, customer) {
-      var edgeX = this.width;
+      var edgeRestX = this.width - (this.customerEdgeInset || 48);
+      if (edgeRestX < slotPoint.x + 8) edgeRestX = Math.min(this.width - 8, slotPoint.x + 8);
       var enter = Math.max(0, Math.min(1, (customer.arrival || 0) / 320));
-      var enterSpan = Math.max(24, edgeX + 40 - slotPoint.x);
-      var enterX = slotPoint.x + enterSpan * enter;
+      // smoothstep，进场不弹射
+      var enterEase = enter * enter * (3 - 2 * enter);
+      var enterSpan = Math.max(24, edgeRestX - slotPoint.x);
+      var enterX = slotPoint.x + enterSpan * enterEase;
       if (!customer.leaving) {
         return {
           x: enterX,
@@ -2157,18 +3895,20 @@
           headDx: slotPoint.headDx || 0,
           headDy: slotPoint.headDy || 0,
           alpha: 1,
-          id: slotPoint.id
+          id: slotPoint.id,
+          nearEdge: enter > 0.02
         };
       }
       var walkMs = this.customerLeaveWalkMs;
       var fadeMs = this.customerLeaveFadeMs;
       var leaveTimer = customer.leaveTimer || 0;
-      var exitSpan = Math.max(1, edgeX - slotPoint.x);
+      var exitSpan = Math.max(1, edgeRestX - slotPoint.x);
       var walk = Math.max(0, Math.min(1, leaveTimer / walkMs));
-      var leaveX = slotPoint.x + exitSpan * walk;
-      // 若交付时人还在进场途中，从更靠右的位置继续向右边界走，不往回拽
-      leaveX = Math.max(leaveX, Math.min(enterX, edgeX));
-      if (leaveX > edgeX) leaveX = edgeX;
+      var walkEase = walk * walk * (3 - 2 * walk);
+      var leaveX = slotPoint.x + exitSpan * walkEase;
+      // 若交付时人还在进场途中，从更靠右的位置继续向右缘内侧走，不往回拽
+      leaveX = Math.max(leaveX, Math.min(enterX, edgeRestX));
+      if (leaveX > edgeRestX) leaveX = edgeRestX;
       var alpha = 1;
       if (leaveTimer > walkMs) {
         alpha = Math.max(0, 1 - (leaveTimer - walkMs) / fadeMs);
@@ -2179,7 +3919,8 @@
         headDx: slotPoint.headDx || 0,
         headDy: slotPoint.headDy || 0,
         alpha: alpha,
-        id: slotPoint.id
+        id: slotPoint.id,
+        nearEdge: true
       };
     },
 
@@ -2193,51 +3934,85 @@
     drawArtStokeFlames: function (box) {
       var x = box.x + box.w * 0.5;
       var baseY = box.y + box.h;
-      var now = Date.now();
-      var fh = box.h * 0.24 + Math.sin(now / 200) * box.h * 0.05 + Math.sin(now / 137) * box.h * 0.03;
-      var fw = box.w * 0.11 + Math.sin(now / 160 + 1) * box.w * 0.02;
+      var now = typeof AIGCUtils._now === "function" ? AIGCUtils._now() : Date.now();
+      var fh = box.h * 0.22 + Math.sin(now / 200) * box.h * 0.04 + Math.sin(now / 137) * box.h * 0.025;
+      var fw = box.w * 0.1 + Math.sin(now / 160 + 1) * box.w * 0.015;
       this.tri(x, baseY - fh, x - fw, baseY, x + fw, baseY, C.orange);
-      var fh2 = fh * 0.65 + Math.sin(now / 115 + 2) * box.h * 0.03;
+      var fh2 = fh * 0.65 + Math.sin(now / 115 + 2) * box.h * 0.025;
       this.tri(x + fw * 0.1, baseY - fh2, x - fw * 0.5, baseY, x + fw * 0.55, baseY, C.honey);
-      if (this.artFlameLog !== "stoke") {
-        this.artFlameLog = "stoke";
-        console.log("[ShopLayout] stoke flame at grill bottom", Math.round(x), Math.round(baseY));
+      // 动态火星：多粒沿抛物线上升并淡出，烤制/生火共用
+      this.drawGrillSparks(x, baseY - fh * 0.35, box.w, box.h, now);
+      if (this.artFlameLog !== "stoke-sparks") {
+        this.artFlameLog = "stoke-sparks";
+        console.log("[ShopLayout] stoke flame+sparks at grill bottom", Math.round(x), Math.round(baseY));
+      }
+    },
+
+    drawGrillSparks: function (cx, cy, boxW, boxH, now) {
+      var n = 10;
+      for (var i = 0; i < n; i++) {
+        var life = ((now / (280 + i * 37) + i * 0.17) % 1);
+        var rise = life * (boxH * 0.55 + (i % 3) * 6);
+        var drift = Math.sin(now / 220 + i * 1.7) * (boxW * 0.08) + (i - n / 2) * (boxW * 0.012);
+        var sx = cx + drift;
+        var sy = cy - rise;
+        var fade = 1 - life;
+        var r = (1.2 + (i % 3) * 0.7) * (0.45 + fade);
+        var hot = i % 2 === 0;
+        var col = hot
+          ? [1, 0.72 + 0.2 * fade, 0.25, 0.55 * fade]
+          : [1, 0.45, 0.12, 0.4 * fade];
+        this.circle(sx, sy, r, col, 8);
       }
     },
 
     drawArtGrillFish: function (current, box, slideAmp) {
-      var phase = Date.now() / 160;
-      var slide = current.stage === "flip" ? Math.sin(phase) * slideAmp : 0;
-      var scaleY = current.stage === "flip" ? Math.abs(Math.cos(phase)) : 1;
+      // 翻面 scaleY 只在点击翻面后的 flipFx 并行段启动，等待翻面时鱼保持静贴
+      var flipFx = AIGCUtils.Baking && AIGCUtils.Baking.flipFx;
+      var flipping = !!(flipFx && flipFx.timer < flipFx.duration);
+      var phase = flipping ? (flipFx.timer / Math.max(1, flipFx.duration)) * Math.PI : 0;
+      var slide = flipping ? Math.sin(phase) * slideAmp : 0;
+      var scaleY = flipping ? Math.abs(Math.cos(phase)) : 1;
       var net = this.grillNet(box);
       var fishH = Math.max(28, Math.round(box.h * 0.4));
-      var speciesId = AIGCUtils.Recipes.normalizeSpeciesId(current.speciesId);
+      var speciesId = AIGCUtils.Recipes.normalizeSpeciesId(
+        (current && current.speciesId) || (flipFx && flipFx.speciesId) || "small"
+      );
       var key = "grilled_" + speciesId;
       this.paintCenterSprite(key, net.x + slide, net.y, fishH, { scaleY: scaleY });
-      var mark = current.stage + ":" + speciesId;
+      var stageMark = flipping ? "flipFx" : (current && current.stage) || "none";
+      var mark = stageMark + ":" + speciesId;
       if (this.artGrillLog !== mark) {
         this.artGrillLog = mark;
-        console.log("[ShopLayout] grill fish", current.stage, key, "net", Math.round(net.x), Math.round(net.y), "scaleY", scaleY.toFixed(2), "slide", Math.round(slide));
+        console.log("[ShopLayout] grill fish", stageMark, key, "net", Math.round(net.x), Math.round(net.y), "scaleY", scaleY.toFixed(2), "slide", Math.round(slide));
       }
-      this.shopNet = { x: net.x, y: net.y, scaleY: scaleY, slide: slide, key: key, stage: current.stage };
+      this.shopNet = { x: net.x, y: net.y, scaleY: scaleY, slide: slide, key: key, stage: stageMark };
     },
 
     drawArtJuice: function (current) {
-      // 画在青椰子堆和榨汁器之间的 work。竖屏是中层圆木板，横屏是柜台空位。
+      // 台面椰子：横屏用 juiceNut（右红框），竖屏仍用 work（椰子位置不变）。
+      // pick_coconut 起才画到台面；put_tools / walk 段不提前出现椰子。
       var anchor = this.shopWorkPoint;
       if (!current || !anchor) return false;
-      var juiced = current.taps >= 3 || current.stage === "straw";
+      if (current.stage === "put_tools" || current.stage === "walk_to_work") return false;
+      // crack/straw 的兔子 sheet 只含角色；椰子落 juiceNut/work，与 juiceStand 左右分开
+      var juiced = current.taps >= 3 || current.stage === "straw" || current.stage === "straw_anim";
       var key = juiced ? "coconut_green_juiced" : "coconut_green";
       var hitProgress = current.hitTimer > 0 ? 1 - current.hitTimer / 260 : 1;
       var shake = current.hitTimer > 0 ? Math.sin(hitProgress * Math.PI * 3) * 4 : 0;
+      var pickLift = 0;
+      if (current.stage === "pick_coconut") {
+        var auto = (AIGCUtils.Baking.juiceAuto && AIGCUtils.Baking.juiceAuto.pick_coconut) || 280;
+        pickLift = -Math.sin(Math.min(1, current.elapsed / auto) * Math.PI) * 18;
+      }
       var h = 56;
-      this.paintFootSprite(key, anchor.x + shake, anchor.y, 0, h, false);
+      this.paintFootSprite(key, anchor.x + shake, anchor.y + pickLift, 0, h, false);
       var mark = (this.portrait ? "port:" : "land:") + key + ":" + current.taps + ":" + current.stage;
       if (this.artJuiceLog !== mark) {
         this.artJuiceLog = mark;
-        console.log("[ShopLayout] juice sprite", this.portrait ? "port" : "land", key, "taps", current.taps, "stage", current.stage, "at", Math.round(anchor.x + shake), Math.round(anchor.y), "shake", Math.round(shake));
+        console.log("[ShopLayout] juice sprite", this.portrait ? "port" : "land", key, "taps", current.taps, "stage", current.stage, "at", Math.round(anchor.x + shake), Math.round(anchor.y + pickLift), "shake", Math.round(shake));
       }
-      this.shopJuice = { key: key, taps: current.taps, stage: current.stage, shake: shake, x: anchor.x, y: anchor.y };
+      this.shopJuice = { key: key, taps: current.taps, stage: current.stage, shake: shake, x: anchor.x, y: anchor.y + pickLift };
       return true;
     },
 
@@ -2309,7 +4084,9 @@
       var padTop = Math.round(bh * 0.16);
       var bx = Math.round(headX - bw / 2);
       var by = Math.round(headY - bh);
-      var bubbleTint = [1, 1, 1, alpha];
+      // 只降低框透明度；文字保持清晰
+      var frameAlpha = Math.max(0, Math.min(1, alpha * 0.5));
+      var bubbleTint = [1, 1, 1, frameAlpha];
       var bubbleClip = this.clipTexturedRect(bx, by, bw, bh, 0, 0, 1, 1);
       if (!bubbleClip) return;
       if (!this.paintUiRegion("order-bubble", bubbleClip.x, bubbleClip.y, bubbleClip.w, bubbleClip.h, bubbleClip.u0, bubbleClip.v0, bubbleClip.u1, bubbleClip.v1, bubbleTint)) {
@@ -2397,14 +4174,118 @@
           var ys = plates.map(function (p) { return p.id + ":" + p.y; }).join(",");
           console.log("[ShopLayout] port plated fish", plateMark, "h", height, "anchors", ys);
         }
+      } else if (!this.portrait) {
+        var landIds = [];
+        for (var li = 0; li < plates.length; li++) {
+          var lp = plates[li];
+          var lc = 0;
+          for (var gi = 0; gi < goods.length; gi++) {
+            if (goods[gi].recipeId === "fish_grilled" && goods[gi].speciesId === lp.id) lc++;
+          }
+          if (lc) landIds.push(lp.id + "x" + lc);
+        }
+        if (landIds.length) {
+          var landMark = "land:" + landIds.join(",");
+          if (this.landPlateLog !== landMark) {
+            this.landPlateLog = landMark;
+            console.log("[ShopLayout] R0046 land plated fish", landMark, "y", plates[0] && plates[0].y);
+          }
+        }
       }
     },
 
-    // 成品桌最右一条鱼再往右的空桌面。脚底比鱼锚点靠前，椰汁才落在木桌上，不叠到四条鱼上，也不用榨汁器。
+    /**
+     * R0045：横屏桌面带五等分——小海鱼/三文鱼/金枪鱼/金色传说/椰子汁。
+     * 分布域 = land.trayBand（约半屏），非整屏宽。
+     * 每格单体 = 物体在上 + 同宽木牌(101×54)在下，格内水平居中；间距由等宽格自然均匀。
+     */
+    landShopTrayMetrics: function () {
+      var land = AIGCUtils.ShopLayout && AIGCUtils.ShopLayout.land;
+      var band = (land && land.trayBand) || { left: 36, right: 546 };
+      var bandLeft = band.left;
+      var bandRight = band.right;
+      var usable = Math.max(1, bandRight - bandLeft);
+      var cellW = usable / 5;
+      var plaqueW = 101;
+      var plaqueH = 54;
+      var iconSize = 32;
+      // R0045c：继续下沉贴木牌；负值越大越贴（抵消素材底透明边）
+      var gapV = -18;
+      var groupW = plaqueW;
+      // R0045f：五格整体下移；木牌顶 Y（物体相对此贴紧）
+      var plaqueY = (land && land.trayPlaqueY != null) ? land.trayPlaqueY : 414;
+      var baseFootY = plaqueY - gapV;
+      var baseIconY = baseFootY - Math.round(iconSize / 2);
+      var iconDyList = (land && land.trayIconDy) || [0, 0, 0, 0, 0];
+      var cells = [];
+      if (cellW + 0.01 < groupW && !this._loggedTrayBandTight) {
+        this._loggedTrayBandTight = true;
+        console.log("[ShopLayout] R0045 trayBand cellW < plaqueW", "cellW", Math.round(cellW), "plaqueW", plaqueW, "band", bandLeft, bandRight);
+      }
+      for (var i = 0; i < 5; i++) {
+        var cellLeft = bandLeft + i * cellW;
+        var centerX = cellLeft + cellW / 2;
+        var plaqueX = centerX - plaqueW / 2;
+        var dy = iconDyList[i] || 0;
+        var iconFootY = baseFootY + dy;
+        var iconY = baseIconY + dy;
+        var hitX = Math.min(plaqueX, centerX - iconSize / 2);
+        var hitY = iconY - Math.round(iconSize / 2);
+        var hitBottom = plaqueY + plaqueH;
+        cells.push({
+          index: i,
+          cellLeft: Math.round(cellLeft),
+          cellW: Math.round(cellW),
+          centerX: Math.round(centerX),
+          iconX: Math.round(centerX),
+          iconY: Math.round(iconY),
+          iconFootY: Math.round(iconFootY),
+          iconSize: iconSize,
+          iconDy: dy,
+          plaqueX: Math.round(plaqueX),
+          plaqueY: plaqueY,
+          plaqueW: plaqueW,
+          plaqueH: plaqueH,
+          hitX: Math.round(hitX),
+          hitY: Math.round(hitY),
+          hitW: Math.round(Math.max(groupW, iconSize)),
+          hitH: Math.round(hitBottom - hitY)
+        });
+      }
+      return {
+        cells: cells,
+        plaqueW: plaqueW,
+        plaqueH: plaqueH,
+        barY: plaqueY,
+        bandLeft: bandLeft,
+        bandRight: bandRight,
+        // 兼容旧调用
+        start: cells[0].hitX,
+        step: Math.round(cellW),
+        btnW: plaqueW,
+        btnPad: 0,
+        hitW: Math.round(Math.max(groupW, iconSize))
+      };
+    },
+
+    /** @deprecated 转调五等分 tray */
+    landFishBarMetrics: function () {
+      return this.landShopTrayMetrics();
+    },
+
+    landFishBarStep: function () {
+      return this.landShopTrayMetrics().step;
+    },
+
+    landFishBarStartX: function () {
+      return this.landShopTrayMetrics().start;
+    },
+
+    // 横屏椰汁脚点：落在第 5 格物体位（木牌上方），与竖排单体对齐
     landJuiceStackPoint: function () {
-      var plates = AIGCUtils.ShopLayout.land.plates;
-      var last = plates[plates.length - 1];
-      return { x: last.x + 72, y: last.y + 36 };
+      var tray = this.landShopTrayMetrics();
+      var juiceCell = tray.cells[4];
+      return { x: juiceCell.iconX, y: juiceCell.iconFootY };
     },
 
     // 竖屏椰汁堆用独立锚点，不跟成品鱼末槽走，避免调鱼高度时连带下移。
@@ -2418,6 +4299,17 @@
       return point;
     },
 
+    /** 竖屏兜底：椰汁旁木牌（横屏改走五等分格 4） */
+    drawJuiceCountPlaque: function (anchor, count, juiceH) {
+      if (!anchor || count < 1) return;
+      if (!this.portrait) return;
+      var plaqueW = Math.max(72, Math.round((this.width - 10) / AIGCUtils.FishSpecies.length) - 36);
+      var plaqueH = 50;
+      var plaqueX = Math.round(anchor.x + 4);
+      var plaqueY = Math.round(anchor.y - juiceH * 0.45 - plaqueH * 0.5);
+      this.button(plaqueX, plaqueY, plaqueW, plaqueH, "椰子汁 " + count, true, 14);
+    },
+
     drawJuiceStack: function () {
       var goods = AIGCUtils.GameState.bakedGoods || [];
       var count = 0;
@@ -2429,19 +4321,89 @@
       var shown = Math.min(3, count);
       var h = this.portrait ? 26 : 44;
       var step = this.portrait ? 15 : 26;
-      var labelDx = this.portrait ? 16 : 28;
-      var labelSize = this.portrait ? 12 : 13;
       for (var n = 0; n < shown; n++) {
         this.paintFootSprite("coconut_green_juiced", anchor.x, anchor.y - n * step, 0, h, false);
       }
-      if (count > 3) {
-        var midY = anchor.y - (shown - 1) * step * 0.5 - h * 0.35;
-        this.text("×" + count, anchor.x + labelDx, midY, labelSize, C.ink, "left");
-      }
+      // 横屏木牌由 drawLandShopTray 第 5 格统一画；竖屏仍用旁侧牌
+      if (this.portrait) this.drawJuiceCountPlaque(anchor, count, h);
       var stackMark = (this.portrait ? "port:" : "land:") + count;
       if (this.artJuiceStackLog !== stackMark) {
         this.artJuiceStackLog = stackMark;
         console.log("[ShopLayout] juice stack", this.portrait ? "port" : "land", count, "draw", shown, "at", Math.round(anchor.x), Math.round(anchor.y));
+      }
+    },
+
+    /** R0045：横屏桌面带五等分绘制（4 鱼 + 椰汁；物体上、木牌下） */
+    drawLandShopTray: function () {
+      var state = AIGCUtils.GameState;
+      var tray = this.landShopTrayMetrics();
+      var cells = tray.cells;
+      for (var i = 0; i < 4; i++) {
+        var cell = cells[i];
+        var species = AIGCUtils.FishSpecies[i];
+        if (!species) continue;
+        var fishCount = state.getFishCount(species.id);
+        var unlocked = this.speciesShopUnlocked(species.id);
+        var lbl = species.name + " " + (unlocked ? fishCount : 0);
+        var active = unlocked && fishCount > 0;
+        if (!unlocked) {
+          var grayTint = [0.55, 0.55, 0.55, 1];
+          if (this.uiSkinChrome) {
+            this.paintFishIcon(species.id, cell.iconX, cell.iconY, 32, grayTint);
+          } else {
+            this.rect(cell.plaqueX, cell.plaqueY, cell.plaqueW, cell.plaqueH, [0.55, 0.52, 0.48, 0.55]);
+            this.paintFishIcon(species.id, cell.iconX, cell.iconY, 30, grayTint);
+          }
+          if (this.uiSkinChrome) {
+            this.button(cell.plaqueX, cell.plaqueY, cell.plaqueW, cell.plaqueH, lbl, false);
+          }
+        } else if (this.uiSkinChrome) {
+          this.paintFishIcon(species.id, cell.iconX, cell.iconY, active ? 32 : 28);
+          this.button(cell.plaqueX, cell.plaqueY, cell.plaqueW, cell.plaqueH, lbl, active);
+        } else {
+          this.button(cell.plaqueX, cell.plaqueY, cell.plaqueW, cell.plaqueH, lbl, active);
+          this.paintFishIcon(species.id, cell.iconX, cell.iconY, active ? 30 : 28);
+        }
+      }
+      // 第 5 格：物体在上、同宽木牌在下；有成品时桌上椰汁由 drawJuiceStack 画在 iconFootY
+      var juiceCell = cells[4];
+      var juiceCount = 0;
+      var goods = state.bakedGoods || [];
+      for (var g = 0; g < goods.length; g++) {
+        if (goods[g].recipeId === "coconut_juice") juiceCount++;
+      }
+      var juiceLbl = "椰子汁 " + juiceCount;
+      if (this.uiSkinChrome) {
+        if (juiceCount < 1) {
+          this.paintCenterSprite("coconut_green_juiced", juiceCell.iconX, juiceCell.iconY, 28, {});
+        }
+        this.button(
+          juiceCell.plaqueX,
+          juiceCell.plaqueY,
+          juiceCell.plaqueW,
+          juiceCell.plaqueH,
+          juiceLbl,
+          juiceCount > 0
+        );
+      } else {
+        this.button(juiceCell.plaqueX, juiceCell.plaqueY, juiceCell.plaqueW, juiceCell.plaqueH, juiceLbl, juiceCount > 0);
+      }
+      if (!this._loggedLandShopTray) {
+        this._loggedLandShopTray = true;
+        console.log(
+          "[ShopLayout] R0045d land tray iconDy",
+          "tuna",
+          cells[2] && cells[2].iconDy,
+          cells[2] && cells[2].iconY,
+          "juice",
+          cells[4] && cells[4].iconDy,
+          cells[4] && cells[4].iconFootY
+        );
+      }
+      var guideIdxLand = this.firstCookableFishIndex();
+      if (guideIdxLand >= 0 && guideIdxLand < 4) {
+        var guideCell = cells[guideIdxLand];
+        this.drawGrillFishGuideArrow(guideCell.centerX, guideCell.iconY - Math.round(guideCell.iconSize / 2) - 8);
       }
     },
 
@@ -2452,7 +4414,71 @@
       if (!board) return;
       var grill = this.shopPoint(board.grill);
       var grillW = this.portrait ? Math.round(this.width * 0.32) : 164;
-      this.shopGrillBox = this.paintFootSprite(L.grillKey(), grill.x, grill.y, grillW, 0, false);
+      var rabbit = this.shopPoint(board.rabbit);
+      // 横屏约 1.4×（124→174），脚底已在 layout 下移，保持手靠近操作台（R0015）
+      var rabbitH = this.portrait ? Math.round(this.height * 0.13) : 174;
+      if (!this.portrait && this._landRabbitScaleLog !== rabbitH + ":" + Math.round(rabbit.y)) {
+        this._landRabbitScaleLog = rabbitH + ":" + Math.round(rabbit.y);
+        console.log("[ShopLayout] land rabbit scale", "h", rabbitH, "foot", Math.round(rabbit.x), Math.round(rabbit.y));
+      }
+      var bakingNow = AIGCUtils.Baking;
+      var anim = AIGCUtils.AnimDriver;
+      var rabbitMotion = anim ? anim.resolve("rabbit") : { rot: 0, scaleY: 1, dx: 0, dy: 0, flip: true, key: "hero_rabbit_grill" };
+      // 合帧表已含烤架：跳过单独烤架，避免双炉。sheet 原画是兔左炉右，禁止整表镜像。
+      var useCombined = !!(rabbitMotion && rabbitMotion.combinedGrill && rabbitMotion.hasSheet && rabbitMotion.sheetKey);
+      if (useCombined) {
+        // 按合表内兔子占比，把兔子对齐到静帧槽位的大小与脚底
+        // R0020：maxH 须保住「合表内兔视觉高≈rabbitH」；0.36 在 960×540 会把 cook sheetH 295 压到 194（兔≈114）
+        var comboMeta = this.combinedGrillRabbitMeta(rabbitMotion.sheetKey);
+        var sheetHRaw = Math.round(rabbitH / Math.max(0.35, comboMeta.hFrac));
+        var maxH = Math.min(this.width, this.height) * 0.56;
+        var sheetH = sheetHRaw > maxH ? Math.round(maxH) : sheetHRaw;
+        // 格心在脚底；兔子中心约在格内 cxFrac → 平移使兔子脚底对齐 rabbit 槽
+        var comboX = rabbit.x + (0.5 - comboMeta.cxFrac) * sheetH;
+        var comboY = rabbit.y + (1 - comboMeta.botFrac) * sheetH;
+        var halfW = sheetH * 0.5;
+        if (comboX - halfW < 4) comboX = halfW + 4;
+        if (comboX + halfW > this.width - 4) comboX = this.width - 4 - halfW;
+        this.shopGrillBox = {
+          x: grill.x - grillW / 2,
+          y: grill.y - Math.round(sheetH * 0.55),
+          w: grillW,
+          h: Math.round(sheetH * 0.55)
+        };
+        this.shopCombinedAnim = true;
+        this._comboSheetH = sheetH;
+        this._comboFootX = comboX;
+        this._comboFootY = comboY;
+        if (this._comboAlignLog !== rabbitMotion.sheetKey + ":" + sheetH) {
+          this._comboAlignLog = rabbitMotion.sheetKey + ":" + sheetH;
+          console.log(
+            "[ShopAnim] combo align rabbit",
+            rabbitMotion.sheetKey,
+            "sheetH",
+            sheetH,
+            "raw",
+            sheetHRaw,
+            "maxH",
+            Math.round(maxH),
+            "clamped",
+            sheetHRaw > maxH,
+            "rabbitH",
+            rabbitH,
+            "rabbitVis",
+            Math.round(sheetH * comboMeta.hFrac),
+            "foot",
+            Math.round(comboX),
+            Math.round(comboY),
+            "slot",
+            Math.round(rabbit.x),
+            Math.round(rabbit.y)
+          );
+        }
+      } else {
+        this.shopCombinedAnim = false;
+        this._comboSheetH = 0;
+        this.shopGrillBox = this.paintFootSprite(L.grillKey(), grill.x, grill.y, grillW, 0, false);
+      }
       // 竖屏：成品鱼/椰汁先于兔子，桌面在角色之下
       if (this.portrait) {
         this.drawShopPlates();
@@ -2463,62 +4489,181 @@
           console.log("[ShopLayout] port ready goods under rabbit");
         }
       }
-      var rabbit = this.shopPoint(board.rabbit);
-      var rabbitH = this.portrait ? Math.round(this.height * 0.13) : 124;
-      var bakingNow = AIGCUtils.Baking;
-      var rabbitRot = 0;
-      if (bakingNow && bakingNow.current && bakingNow.current.recipeId === "fish_grilled" && bakingNow.current.stage === "flip") {
-        rabbitRot = Math.sin(Date.now() / 160) * 0.22;
-      }
       var rabbitX = rabbit.x;
       var rabbitY = rabbit.y;
-      if (board.work && bakingNow) {
-        var work = this.shopPoint(board.work);
+      if ((board.juiceStand || board.work) && bakingNow) {
+        // 椰汁兔子站位：优先 juiceStand（与椰子左右分离），无则回退 work
+        var standSlot = board.juiceStand || board.work;
+        var work = this.shopPoint(standSlot);
         var juiceNow = bakingNow.current && bakingNow.current.recipeId === "coconut_juice";
         var juiceBack = !juiceNow && bakingNow.plating && bakingNow.plating.recipeId === "coconut_juice";
         if (juiceNow || juiceBack) {
-          var along = juiceNow
-            ? Math.max(0, Math.min(1, (bakingNow.current.elapsed || 0) / 420))
-            : Math.max(0, Math.min(1, (bakingNow.plating.timer || 0) / 420));
-          // 椰子画在 work 台面上。兔子站到柜台前方地面，避免整只被椰子挡住。
-          // 横屏柜台前是 120。竖屏中层柜台更高，157 才落到柜台前方地面。
+          // 椰汁工位：横屏脚底见 juiceStand（红框地板）；大小与烤鱼兔同
+          var homeH = this.portrait ? Math.round(this.height * 0.13) : 174;
+          var workH = this.portrait ? Math.round(homeH * 1.08) : homeH;
           var standX = work.x;
-          var standY = work.y + (this.portrait ? 157 : 120);
-          var fromX = juiceNow ? rabbit.x : standX;
-          var fromY = juiceNow ? rabbit.y : standY;
-          var toX = juiceNow ? standX : rabbit.x;
-          var toY = juiceNow ? standY : rabbit.y;
-          var homeH = this.portrait ? Math.round(this.height * 0.13) : 124;
-          var fromH = juiceNow ? homeH : 112;
-          var toH = juiceNow ? 112 : homeH;
-          rabbitX = fromX + (toX - fromX) * along;
-          rabbitY = fromY + (toY - fromY) * along;
-          rabbitH = fromH + (toH - fromH) * along;
-          var phase = juiceNow ? "to-work" : "back";
+          var standY = work.y;
+          if (!this.portrait && this._landJuiceStandLog !== standX + ":" + standY) {
+            this._landJuiceStandLog = standX + ":" + standY;
+            console.log("[ShopLayout] land juiceStand foot", Math.round(standX), Math.round(standY), "h", workH);
+          }
+          var along = 0;
+          var fromX = rabbit.x;
+          var fromY = rabbit.y;
+          var toX = standX;
+          var toY = standY;
+          var fromH = homeH;
+          var toH = workH;
+          if (juiceNow) {
+            var js = bakingNow.current.stage;
+            var auto = bakingNow.juiceAuto || { put_tools: 320, walk_to_work: 420, pick_coconut: 280 };
+            // put_tools 留在烤架；walk 用 smoothstep，避免弹射起步；到位后停在 stand
+            if (js === "put_tools") {
+              along = 0;
+            } else if (js === "walk_to_work") {
+              along = Math.max(0, Math.min(1, (bakingNow.current.elapsed || 0) / auto.walk_to_work));
+            } else {
+              along = 1;
+            }
+            fromX = rabbit.x;
+            fromY = rabbit.y;
+            toX = standX;
+            toY = standY;
+            fromH = homeH;
+            toH = workH;
+          } else {
+            along = Math.max(0, Math.min(1, (bakingNow.plating.timer || 0) / 420));
+            fromX = standX;
+            fromY = standY;
+            toX = rabbit.x;
+            toY = rabbit.y;
+            fromH = workH;
+            toH = homeH;
+          }
+          var ease = along * along * (3 - 2 * along);
+          rabbitX = fromX + (toX - fromX) * ease;
+          rabbitY = fromY + (toY - fromY) * ease;
+          rabbitH = fromH + (toH - fromH) * ease;
+          var phase = juiceNow ? (bakingNow.current.stage === "put_tools" ? "put-tools" : bakingNow.current.stage === "walk_to_work" ? "to-work" : "at-work") : "back";
           if (this.artRabbitPhase !== phase) {
             this.artRabbitPhase = phase;
-            console.log("[ShopLayout] rabbit", phase, "work", Math.round(work.x), Math.round(work.y), "stand", Math.round(standX), Math.round(standY));
+            console.log("[ShopLayout] rabbit", phase, "juiceStand", Math.round(standX), Math.round(standY), "h", workH, "along", along.toFixed(2));
           }
         } else if (this.artRabbitPhase) {
           this.artRabbitPhase = "";
         }
       }
-      this.paintFootSprite("hero_rabbit_grill", rabbitX, rabbitY, 0, rabbitH, true, { rot: rabbitRot });
+      rabbitX += rabbitMotion.dx || 0;
+      rabbitY += rabbitMotion.dy || 0;
+      var rabbitKey = rabbitMotion.key || "hero_rabbit_grill";
+      // 兔子烤架默认面右用 flip；AnimDriver.flip 表示面朝左
+      var rabbitFlip = rabbitMotion.flip != null ? rabbitMotion.flip : true;
+      if (useCombined) {
+        var sheetH2 = this._comboSheetH || Math.round(rabbitH / 0.62);
+        var comboX2 = (this._comboFootX != null ? this._comboFootX : rabbit.x) + (rabbitMotion.dx || 0);
+        var comboY2 = (this._comboFootY != null ? this._comboFootY : rabbit.y) + (rabbitMotion.dy || 0);
+        // 合表原画兔左炉右：不跟兔子 facing 镜像，避免炉兔左右对调
+        var painted = this.paintSheetFoot(rabbitMotion.sheetKey, comboX2, comboY2, sheetH2, {
+          u0: rabbitMotion.u0,
+          v0: rabbitMotion.v0,
+          u1: rabbitMotion.u1,
+          v1: rabbitMotion.v1
+        }, false, { alpha: rabbitMotion.alpha == null ? 1 : rabbitMotion.alpha });
+        if (!painted) {
+          // sheet 未就绪时回退静帧
+          this.shopCombinedAnim = false;
+          if (!this.shopGrillBox || !this.shopGrillBox.w) {
+            this.shopGrillBox = this.paintFootSprite(L.grillKey(), grill.x, grill.y, grillW, 0, false);
+          }
+          this.paintFootSprite("hero_rabbit_grill", rabbitX, rabbitY, 0, rabbitH, rabbitFlip, {
+            rot: rabbitMotion.rot || 0,
+            scaleY: rabbitMotion.scaleY == null ? 1 : rabbitMotion.scaleY
+          });
+        } else {
+          var sheetMark = rabbitMotion.clipId + ":" + rabbitMotion.frame;
+          if (this.artSheetLog !== sheetMark) {
+            this.artSheetLog = sheetMark;
+            console.log("[ShopAnim] sheet", rabbitMotion.sheetKey, "frame", rabbitMotion.frame, "/", rabbitMotion.frameCount, "at", Math.round(comboX2), Math.round(comboY2), "h", sheetH2, "noFlip");
+          }
+        }
+      } else if (rabbitMotion && rabbitMotion.hasSheet && rabbitMotion.sheetKey) {
+        // 椰汁走位/敲插等单角色 sheet（不含烤架）
+        var juicePainted = this.paintSheetFoot(rabbitMotion.sheetKey, rabbitX, rabbitY, rabbitH, {
+          u0: rabbitMotion.u0,
+          v0: rabbitMotion.v0,
+          u1: rabbitMotion.u1,
+          v1: rabbitMotion.v1
+        }, rabbitFlip, { alpha: rabbitMotion.alpha == null ? 1 : rabbitMotion.alpha });
+        if (!juicePainted) {
+          this.paintFootSprite("hero_rabbit_grill", rabbitX, rabbitY, 0, rabbitH, rabbitFlip, {
+            rot: rabbitMotion.rot || 0,
+            scaleY: rabbitMotion.scaleY == null ? 1 : rabbitMotion.scaleY
+          });
+        } else {
+          var juiceMark = rabbitMotion.clipId + ":" + rabbitMotion.frame;
+          if (this.artJuiceSheetLog !== juiceMark) {
+            this.artJuiceSheetLog = juiceMark;
+            console.log("[ShopAnim] juice sheet", rabbitMotion.sheetKey, "frame", rabbitMotion.frame, "at", Math.round(rabbitX), Math.round(rabbitY));
+          }
+        }
+      } else {
+        this.paintFootSprite(rabbitKey.indexOf("anim_") === 0 ? "hero_rabbit_grill" : rabbitKey, rabbitX, rabbitY, 0, rabbitH, rabbitFlip, {
+          rot: rabbitMotion.rot || 0,
+          scaleY: rabbitMotion.scaleY == null ? 1 : rabbitMotion.scaleY
+        });
+      }
       var customers = board.customers || [];
       var queue = (AIGCUtils.Selling && AIGCUtils.Selling.queue) || [];
       var customerH = this.portrait ? Math.round(this.height * 0.12) : 116;
       for (var i = 0; i < customers.length && i < queue.length; i++) {
         var point = this.shopPoint(customers[i]);
         var slid = this.customerSlidePoint(point, queue[i]);
-        // 站立精灵脚底贴 land/port.customers；离场到右边界后淡出；画布外裁切不画。
-        if ((slid.alpha == null ? 1 : slid.alpha) > 0.01) {
-          this.paintFootSprite(L.customerSpriteKey(queue[i]), slid.x, slid.y, 0, customerH, false, {
-            alpha: slid.alpha == null ? 1 : slid.alpha,
-            clipToCanvas: true
-          });
-          this.drawShopOrderBubble(queue[i], slid);
+        var custAnim = anim ? anim.resolve("customer_" + queue[i].id) : null;
+        var custKey = L.customerSpriteKey(queue[i]);
+        // 离场朝右 / 进场朝左：按各类型 walk sheet 原画朝向决定是否镜像（狐狸 sheet 面左）
+        var custFlip = false;
+        if (queue[i].leaving) {
+          custFlip = AIGCUtils.ShopAnims.walkFlipForDir(queue[i].type, true);
+        } else if ((queue[i].arrival || 0) > 2) {
+          custFlip = AIGCUtils.ShopAnims.walkFlipForDir(queue[i].type, false);
         }
-        var motionKey = queue[i].id + ":" + (queue[i].leaving ? "out" : "in") + ":" + Math.round((slid.alpha == null ? 1 : slid.alpha) * 10);
+        var custAlpha = slid.alpha == null ? 1 : slid.alpha;
+        if (custAnim && custAnim.alpha != null) custAlpha *= custAnim.alpha;
+        // 站立精灵脚底贴 land/port.customers；侧身走/等待由 sheet 驱动；离场到右边界后淡出。
+        if (custAlpha > 0.01) {
+          // 等餐到位不裁切，避免右槽顾客被切成半身；仅进离场贴边时裁画外部分
+          var custClip = !!(queue[i].leaving || (queue[i].arrival || 0) > 2);
+          var cx = slid.x + (custAnim ? custAnim.dx || 0 : 0);
+          var cy = slid.y + (custAnim ? custAnim.dy || 0 : 0);
+          var usedSheet = false;
+          if (custAnim && custAnim.hasSheet && custAnim.sheetKey) {
+            usedSheet = !!this.paintSheetFoot(custAnim.sheetKey, cx, cy, customerH, {
+              u0: custAnim.u0,
+              v0: custAnim.v0,
+              u1: custAnim.u1,
+              v1: custAnim.v1
+            }, custFlip, {
+              alpha: custAlpha,
+              clipToCanvas: custClip
+            });
+          }
+          if (!usedSheet) {
+            this.paintFootSprite(custKey, cx, cy, 0, customerH, custFlip, {
+              alpha: custAlpha,
+              clipToCanvas: custClip,
+              rot: custAnim ? custAnim.rot || 0 : 0,
+              scaleY: custAnim && custAnim.scaleY != null ? custAnim.scaleY : 1
+            });
+          }
+          this.drawShopOrderBubble(queue[i], {
+            x: slid.x,
+            y: slid.y,
+            headDx: slid.headDx,
+            headDy: slid.headDy,
+            alpha: custAlpha
+          });
+        }
+        var motionKey = queue[i].id + ":" + (queue[i].leaving ? "out" : "in") + ":" + Math.round(custAlpha * 10) + ":" + (custAnim ? custAnim.clipId : "");
         if ((queue[i].arrival > 300 || queue[i].leaving) && this.customerMotionLog !== motionKey) {
           this.customerMotionLog = motionKey;
           var headX = Math.round(slid.x + (slid.headDx || 0));
@@ -2529,13 +4674,17 @@
             queue[i].id,
             "slot",
             i,
+            "clip",
+            custAnim ? custAnim.clipId : "none",
+            "side",
+            custAnim ? !!custAnim.sideView : false,
             "foot",
             Math.round(slid.x),
             Math.round(slid.y),
             "edge",
             this.width,
             "alpha",
-            (slid.alpha == null ? 1 : slid.alpha).toFixed(2),
+            custAlpha.toFixed(2),
             "head",
             headX,
             headY
@@ -2543,10 +4692,17 @@
         }
       }
       this.shopJuicerPoint = this.shopPoint(board.juicer);
-      this.shopWorkPoint = board.work ? this.shopPoint(board.work) : null;
+      // 台面椰子锚点：优先 juiceNut（横屏靠左红框 / 竖屏右红框圆木板），否则 work
+      var nutSlot = board.juiceNut || board.work;
+      this.shopWorkPoint = nutSlot ? this.shopPoint(nutSlot) : null;
       if (!this.shopArtLogged) {
         this.shopArtLogged = true;
         console.log("[ShopLayout] art slots", this.portrait ? "port" : "land", JSON.stringify(board));
+      }
+      var nutMark = (this.portrait ? "port:" : "land:") + (nutSlot ? Math.round(this.shopPoint(nutSlot).x) + "," + Math.round(this.shopPoint(nutSlot).y) : "none");
+      if (this.artNutSlotLog !== nutMark) {
+        this.artNutSlotLog = nutMark;
+        console.log("[ShopLayout] juiceNut/work", this.portrait ? "port" : "land", nutMark);
       }
     },
 
@@ -2588,6 +4744,14 @@
         this.ellipse(juiceX, plateY + 22, 20, 7, C.cream);
         this.juice(juiceX, plateY + 5, 22);
         this.text("椰子汁", juiceX, plateY + 34, 11, C.ink, "center");
+      }
+      // R0042：非皮肤层也用右侧木牌数量，不用 ×N
+      if (juiceGoods.length > 0) {
+        this.drawJuiceCountPlaque(
+          { x: juiceStartX, y: plateY + 5 },
+          juiceGoods.length,
+          22
+        );
       }
     },
 
@@ -2645,7 +4809,9 @@
       }
       var titleX = isFish ? startX : (this.portrait ? Math.round(W * 0.75) : 520);
       if (!isFish && this.uiSkinChrome && this.artOn && this.shopWorkPoint) titleX = this.shopWorkPoint.x;
-      this.text(plating.title, titleX, Math.round(H * 0.2), 18, isFish ? C.cream : C.ink, "center");
+      // R0029：椰子汁完成提示上移；烤鱼标题位置不变
+      var titleY = isFish ? Math.round(H * 0.2) : Math.round(H * 0.11);
+      this.text(plating.title, titleX, titleY, 18, isFish ? C.cream : C.ink, "center");
     },
 
     drawShop: function () {
@@ -2760,14 +4926,25 @@
           this.line(furnaceX + grillW / 2 - 6, grillY + 18, furnaceX + grillW / 2 + 3, grillY + 36, 5, C.wood);
         }
         // 原画层：火在烤架精灵下沿，鱼贴烤网中心。矢量层仍相对旧烤架面。
-        var artFishPort = this.uiSkinChrome && this.artOn && this.shopGrillBox && baking.current && baking.current.recipeId === "fish_grilled";
+        // flipFx：点击翻面后 current 已清空，仍要并行画完烤鱼翻面。
+        // 出餐飞行已接管鱼时不再叠画 flipFx，避免烤网与飞行双鱼
+        var flipFxPort = baking.flipFx && baking.flipFx.timer < baking.flipFx.duration && !(baking.plating && baking.plating.recipeId === "fish_grilled");
+        var artFishPort = this.uiSkinChrome && this.artOn && this.shopGrillBox && ((baking.current && baking.current.recipeId === "fish_grilled") || flipFxPort);
         if (artFishPort) {
-          if (baking.current.stage === "stoke") this.drawArtStokeFlames(this.shopGrillBox);
-          if (baking.current.stage === "cooking" || baking.current.stage === "flip") this.drawArtGrillFish(baking.current, this.shopGrillBox, 16);
+          // 合帧表已含火与鱼，不再叠画火星/烤鱼，避免双层
+          if (!this.shopCombinedAnim) {
+            if (baking.current && baking.current.stage === "stoke") this.drawArtStokeFlames(this.shopGrillBox);
+            if (baking.current && (baking.current.stage === "cooking" || baking.current.stage === "flip")) {
+              this.drawArtStokeFlames(this.shopGrillBox);
+            }
+            if ((baking.current && (baking.current.stage === "cooking" || baking.current.stage === "flip")) || flipFxPort) {
+              this.drawArtGrillFish(baking.current, this.shopGrillBox, 16);
+            }
+          }
         } else {
           var flameNow = Date.now();
           var flameBase = baking.current && baking.current.recipeId === "fish_grilled" && baking.current.perfectFire ? 34 : 19;
-          if (this.artOn && !(baking.current && baking.current.recipeId === "fish_grilled")) flameBase = 0;
+          if (this.artOn && !(baking.current && baking.current.recipeId === "fish_grilled") && !flipFxPort) flameBase = 0;
           var fh = flameBase + Math.sin(flameNow / 200) * 6 + Math.sin(flameNow / 137) * 3;
           var fw = 14 + Math.sin(flameNow / 160 + 1) * 3;
           var flameBaseY = grillY - 9;
@@ -2777,28 +4954,32 @@
             this.tri(furnaceX + fw * 0.1, flameBaseY - fh2, furnaceX - fw * 0.5, flameBaseY, furnaceX + fw * 0.55, flameBaseY, C.honey);
           }
           if (baking.current && baking.current.recipeId === "fish_grilled") {
-            var flipLift = baking.current.stage === "flip" ? Math.abs(Math.sin(Date.now() / 160)) * 26 : 0;
-            var flipSlide = baking.current.stage === "flip" ? Math.sin(Date.now() / 160) * 16 : 0;
+            // 等待翻面时鱼静贴；只有 flipFx 才抬翻
+            var flipLift = flipFxPort ? Math.abs(Math.sin((baking.flipFx.timer / baking.flipFx.duration) * Math.PI)) * 26 : 0;
+            var flipSlide = flipFxPort ? Math.sin((baking.flipFx.timer / baking.flipFx.duration) * Math.PI) * 16 : 0;
             if (this.uiSkinChrome) this.paintFishIcon(baking.current.speciesId, furnaceX + flipSlide, grillY - 48 - flipLift, 36);
             else this.fish(furnaceX + flipSlide, grillY - 48 - flipLift, 22, true, baking.current.speciesId);
           }
         }
-        if (!(baking.current && baking.current.recipeId === "fish_grilled") && !this.artOn) {
-          this.text("选生鱼 开始烤制", Math.round(kitchenW / 2), kitchenY + 26, 13, C.cream, "center");
+        // R0031：烤鱼指引统一绿色流光粗体
+        var grillHintXPort = Math.round(kitchenW / 2);
+        var grillHintYPort = kitchenY + 26;
+        if (!(baking.current && baking.current.recipeId === "fish_grilled")) {
+          this.drawGuideTip("点击生鱼开始烤", grillHintXPort, grillHintYPort);
         }
         if (!this.artOn) this.rabbitBack(furnaceX, grillY + 18, 26);
         // 进度条/文字在兔子之上（最顶层）
         if (baking.current && baking.current.recipeId === "fish_grilled") {
           if (baking.current.stage === "stoke") {
-            this.text("生火 绿区点击", Math.round(kitchenW / 2), kitchenY + 26, 13, C.cream, "center");
+            this.drawGuideTip("生火 绿区点击", grillHintXPort, grillHintYPort);
             this.progress(8, kitchenY + Math.round(kitchenH * 0.85), kitchenW - 18, baking.current.cursor, baking.current.cursor, 0.4, 0.6);
           } else if (baking.current.stage === "cooking") {
-            this.text(baking.current.perfectFire ? "完美火势" : "烤制中", Math.round(kitchenW / 2), kitchenY + 26, 13, C.cream, "center");
+            this.drawGuideTip(baking.current.perfectFire ? "完美火势" : "烤制中", grillHintXPort, grillHintYPort);
             if (!this.uiSkinChrome) this.rect(8, kitchenY + Math.round(kitchenH * 0.85), kitchenW - 18, 13, C.cream);
             // 烤制填充深橙（横竖屏同源）
             this.rect(8, kitchenY + Math.round(kitchenH * 0.85), (kitchenW - 18) * Math.min(1, baking.current.elapsed / baking.current.cookDuration), 13, C.orange);
           } else if (baking.current.stage === "flip") {
-            this.text("翻面 绿色外焦里嫩", Math.round(kitchenW / 2), kitchenY + 26, 13, C.cream, "center");
+            this.drawGuideTip("翻面 绿区点击", grillHintXPort, grillHintYPort);
             this.progress(8, kitchenY + Math.round(kitchenH * 0.85), kitchenW - 18, baking.current.cursor, baking.current.cursor);
           }
         }
@@ -2828,11 +5009,14 @@
           var artJuicePort = this.uiSkinChrome && this.artOn && this.drawArtJuice(baking.current);
           var hintX = juiceCX;
           var hintY = kitchenY + 26;
-          if (artJuicePort && this.shopWorkPoint) {
+          if ((artJuicePort || this.shopWorkPoint) && this.shopWorkPoint) {
             hintX = Math.round(this.shopWorkPoint.x);
             hintY = Math.round(this.shopWorkPoint.y - 72);
           }
-          if (baking.current.stage === "crack") {
+          var juiceStagePort = baking.current.stage;
+          if (juiceStagePort === "put_tools" || juiceStagePort === "walk_to_work" || juiceStagePort === "pick_coconut" || juiceStagePort === "straw_anim") {
+            // 自动段不画提示文案（避免出现「放下」等字）
+          } else if (juiceStagePort === "crack") {
             if (!artJuicePort) {
               var hitProgress2 = baking.current.hitTimer > 0 ? 1 - baking.current.hitTimer / 260 : 1;
               var swing2 = baking.current.hitTimer > 0 ? Math.sin(hitProgress2 * Math.PI) : 0;
@@ -2841,15 +5025,26 @@
               for (var cr2 = 0; cr2 < baking.current.taps; cr2++) this.line(juiceCX - 16 + cr2 * 10, juiceCY - 22, juiceCX - 8 + cr2 * 8, juiceCY - 4, 3, C.cream);
               this.line(juiceCX - 55, kitchenY + 38, juiceCX - 16 + swing2 * 10, juiceCY - 24 + swing2 * 18, 7, C.woodLight);
             }
-            this.text(baking.current.taps >= 3 ? "敲开了" : "点击敲开 " + baking.current.taps + "/3", hintX, hintY, 13, C.ink, "center");
-          } else {
+            this.drawGuideTip(
+              baking.current.taps >= 3 ? "敲开了" : "点击敲开 " + baking.current.taps + "/3",
+              hintX,
+              hintY
+            );
+          } else if (juiceStagePort === "straw") {
             if (!artJuicePort) this.juice(juiceCX, juiceCY, 44, false);
-            this.text("点击插吸管", hintX, hintY, 13, C.ink, "center");
+            this.drawGuideTip("点击插吸管", hintX, hintY);
           }
         } else {
           if (state.ingredients.coconut > 0) {
+            // R0031：椰汁空闲提示统一绿色流光
+            var juiceTipXPort = juiceCX;
+            var juiceTipYPort = kitchenY + 10;
+            if (this.shopWorkPoint) {
+              juiceTipXPort = Math.round(this.shopWorkPoint.x);
+              juiceTipYPort = Math.round(this.shopWorkPoint.y - 110);
+            }
+            this.drawGuideTip("点击椰子开始制作椰汁", juiceTipXPort, juiceTipYPort);
             if (!this.uiSkinChrome) {
-              this.text("点椰子开始", juiceCX, kitchenY + 26, 13, C.ink, "center");
               this.coconut(juiceCX - 18, juiceCY, 21);
               this.coconut(juiceCX + 16, juiceCY + 10, 17);
             }
@@ -2871,11 +5066,14 @@
           var unlocked2 = this.speciesShopUnlocked(species2.id);
           var bx2 = 5 + si * bW;
           if (!unlocked2) {
-            if (!this.uiSkinChrome) {
-              this.rect(bx2, cb - 60, bW - 4, 50, [0.55, 0.52, 0.48, 0.75]);
-              this.text("锁", bx2 + Math.round(bW / 2), cb - 42, 17, C.cream, "center");
+            // 未解锁：灰色鱼标，不画「锁」字；点击仍走 startRecipe → 原弹窗
+            var lockIc2 = Math.min(32, Math.round(bW * 0.38));
+            var grayTint2 = [0.55, 0.55, 0.55, 1];
+            if (this.uiSkinChrome) {
+              this.paintFishIcon(species2.id, bx2 + 18, cb - 28, lockIc2, grayTint2);
             } else {
-              this.text("锁", bx2 + Math.round(bW / 2), cb - 38, 16, [0.5, 0.46, 0.42, 0.9], "center");
+              this.rect(bx2, cb - 60, bW - 4, 50, [0.55, 0.52, 0.48, 0.55]);
+              this.paintFishIcon(species2.id, bx2 + Math.round(bW * 0.28), cb - 28, lockIc2, grayTint2);
             }
           } else if (fishCount2) {
             var ic2 = Math.min(32, Math.round(bW * 0.38));
@@ -2896,6 +5094,11 @@
               this.paintFishIcon(species2.id, bx2 + Math.round(bW * 0.28), cb - 28, ic0);
             }
           }
+        }
+        var guideIdxPort = this.firstCookableFishIndex();
+        if (guideIdxPort >= 0) {
+          var guideCxPort = 5 + guideIdxPort * bW + Math.round(bW / 2);
+          this.drawGrillFishGuideArrow(guideCxPort, cb - 68);
         }
 
       } else {
@@ -2928,14 +5131,22 @@
           this.line(lgX - lgW / 2 + 7, lgY + 20, lgX - lgW / 2 - 4, lgY + 44, 5, C.wood);
           this.line(lgX + lgW / 2 - 7, lgY + 20, lgX + lgW / 2 + 4, lgY + 44, 5, C.wood);
         }
-        var artFishLand = this.uiSkinChrome && this.artOn && this.shopGrillBox && baking.current && baking.current.recipeId === "fish_grilled";
+        var flipFxLand = baking.flipFx && baking.flipFx.timer < baking.flipFx.duration && !(baking.plating && baking.plating.recipeId === "fish_grilled");
+        var artFishLand = this.uiSkinChrome && this.artOn && this.shopGrillBox && ((baking.current && baking.current.recipeId === "fish_grilled") || flipFxLand);
         if (artFishLand) {
-          if (baking.current.stage === "stoke") this.drawArtStokeFlames(this.shopGrillBox);
-          if (baking.current.stage === "cooking" || baking.current.stage === "flip") this.drawArtGrillFish(baking.current, this.shopGrillBox, 20);
+          if (!this.shopCombinedAnim) {
+            if (baking.current && baking.current.stage === "stoke") this.drawArtStokeFlames(this.shopGrillBox);
+            if (baking.current && (baking.current.stage === "cooking" || baking.current.stage === "flip")) {
+              this.drawArtStokeFlames(this.shopGrillBox);
+            }
+            if ((baking.current && (baking.current.stage === "cooking" || baking.current.stage === "flip")) || flipFxLand) {
+              this.drawArtGrillFish(baking.current, this.shopGrillBox, 20);
+            }
+          }
         } else {
           var lgFlameNow = Date.now();
           var lgFlameBase = baking.current && baking.current.recipeId === "fish_grilled" && baking.current.perfectFire ? 44 : 26;
-          if (this.artOn && !(baking.current && baking.current.recipeId === "fish_grilled")) lgFlameBase = 0;
+          if (this.artOn && !(baking.current && baking.current.recipeId === "fish_grilled") && !flipFxLand) lgFlameBase = 0;
           var lgFh = lgFlameBase + Math.sin(lgFlameNow / 200) * 8 + Math.sin(lgFlameNow / 137) * 4;
           var lgFw = 20 + Math.sin(lgFlameNow / 160 + 1) * 4;
           var lgFlameBaseY = lgY - 9;
@@ -2945,29 +5156,33 @@
             this.tri(lgX + lgFw * 0.1, lgFlameBaseY - lgFh2, lgX - lgFw * 0.5, lgFlameBaseY, lgX + lgFw * 0.55, lgFlameBaseY, C.honey);
           }
           if (baking.current && baking.current.recipeId === "fish_grilled") {
-            var landFlip = baking.current.stage === "flip" ? Math.abs(Math.sin(Date.now() / 160)) * 32 : 0;
-            var landSlide = baking.current.stage === "flip" ? Math.sin(Date.now() / 160) * 20 : 0;
+            var landFlip = flipFxLand ? Math.abs(Math.sin((baking.flipFx.timer / baking.flipFx.duration) * Math.PI)) * 32 : 0;
+            var landSlide = flipFxLand ? Math.sin((baking.flipFx.timer / baking.flipFx.duration) * Math.PI) * 20 : 0;
             if (this.uiSkinChrome) this.paintFishIcon(baking.current.speciesId, lgX + landSlide, lgY - 48 - landFlip, 42);
             else this.fish(lgX + landSlide, lgY - 48 - landFlip, 34, true, baking.current.speciesId);
           }
         }
-        if (!(baking.current && baking.current.recipeId === "fish_grilled") && !this.artOn) {
-          this.text("选择生鱼 开始烤制", 220, 170, 19, C.cream, "center");
+        if (!(baking.current && baking.current.recipeId === "fish_grilled")) {
+          this.drawGuideTip("点击生鱼开始烤", 220, 170);
         }
         if (!this.artOn) this.rabbitBack(lgX, lgY + 20, 28);
-        // 进度条/文字在兔子之上（最顶层）
+        // 进度条/文字在兔子之上（最顶层）— R0031 绿色流光统一样式
         if (baking.current && baking.current.recipeId === "fish_grilled") {
           if (baking.current.stage === "stoke") {
-            this.text("生火中 绿色区域点击", 210, 170, 20, C.cream, "center");
+            this.drawGuideTip("生火 绿区点击", 210, 170);
             this.progress(75, 360, 270, baking.current.cursor, baking.current.cursor, 0.4, 0.6);
           } else if (baking.current.stage === "cooking") {
-            this.text(baking.current.perfectFire ? "完美火势 加速20%" : "烤制中", 210, 170, 19, C.cream, "center");
+            this.drawGuideTip(baking.current.perfectFire ? "完美火势" : "烤制中", 210, 170);
             if (!this.uiSkinChrome) this.rect(75, 360, 270, 20, C.cream);
             // 烤制填充深橙（横竖屏同源）
             this.rect(75, 360, 270 * Math.min(1, baking.current.elapsed / baking.current.cookDuration), 20, C.orange);
           } else if (baking.current.stage === "flip") {
-            this.text("翻面 绿色外焦里嫩", 210, 170, 19, C.cream, "center");
+            this.drawGuideTip("翻面 绿区点击", 210, 170);
             this.progress(75, 360, 270, baking.current.cursor, baking.current.cursor);
+          }
+          if (this._grillHintStyleLog !== baking.current.stage) {
+            this._grillHintStyleLog = baking.current.stage;
+            console.log("[ShopGuide] land grill hint style", baking.current.stage, "drawGuideTip green shine");
           }
         }
         var artLayerLand = !!(this.uiSkinChrome && this.artOn);
@@ -2981,7 +5196,10 @@
         }
         if (baking.current && baking.current.recipeId === "coconut_juice") {
           if (artLayerLand) this.drawArtJuice(baking.current);
-          if (baking.current.stage === "crack") {
+          var juiceStageLand = baking.current.stage;
+          if (juiceStageLand === "put_tools" || juiceStageLand === "walk_to_work" || juiceStageLand === "pick_coconut" || juiceStageLand === "straw_anim") {
+            // 自动段不画提示文案（避免出现「放下」等字）
+          } else if (juiceStageLand === "crack") {
             if (!artLayerLand) {
               var hitProgress = baking.current.hitTimer > 0 ? 1 - baking.current.hitTimer / 260 : 1;
               var swing = baking.current.hitTimer > 0 ? Math.sin(hitProgress * Math.PI) : 0;
@@ -2991,18 +5209,28 @@
               this.line(ljX - 80, ljY - 95, ljX - 25 + swing * 15, ljY - 35 + swing * 35, 8, C.woodLight);
               this.rect(ljX - 42 + swing * 15, ljY - 55 + swing * 35, 45, 25, C.wood);
             }
-            this.text(baking.current.taps >= 3 ? "敲开了" : "点击敲开 " + baking.current.taps + "/3", ljX, ljY - 65, 18, C.ink, "center");
-          } else {
+            this.drawGuideTip(
+              baking.current.taps >= 3 ? "敲开了" : "点击敲开 " + baking.current.taps + "/3",
+              ljX,
+              ljY - 65
+            );
+          } else if (juiceStageLand === "straw") {
             if (!artLayerLand) {
               this.juice(ljX, ljY, 65, false);
               if (!this.shopJuicerPoint) this.line(575, 280, 595, 220, 5, C.orange);
             }
-            this.text("点击插吸管", ljX, ljY - 65, 18, C.ink, "center");
+            this.drawGuideTip("点击插吸管", ljX, ljY - 65);
           }
         } else {
           if (state.ingredients.coconut > 0) {
+            var juiceTipXLand = 520;
+            var juiceTipYLand = 150;
+            if (this.shopWorkPoint) {
+              juiceTipXLand = Math.round(this.shopWorkPoint.x);
+              juiceTipYLand = Math.round(this.shopWorkPoint.y - 110);
+            }
+            this.drawGuideTip("点击椰子开始制作椰汁", juiceTipXLand, juiceTipYLand);
             if (!this.uiSkinChrome) {
-              this.text("点击椰子开始", 520, 180, 16, C.ink, "center");
               this.coconut(555, 220, 22);
               this.coconut(580, 230, 20);
               this.coconut(540, 238, 19);
@@ -3044,38 +5272,8 @@
           }
           this.text("+" + money.amount, moneyX, moneyY, 25, [0.42, 0.67, 0.34, alpha], "center");
         }
-        for (var speciesIndex = 0; speciesIndex < AIGCUtils.FishSpecies.length; speciesIndex++) {
-          var species = AIGCUtils.FishSpecies[speciesIndex];
-          var fishCount = state.getFishCount(species.id);
-          var unlocked = this.speciesShopUnlocked(species.id);
-          var bx = 20 + speciesIndex * 150;
-          if (!unlocked) {
-            if (!this.uiSkinChrome) {
-              this.rect(bx, 402, 135, 54, [0.55, 0.52, 0.48, 0.75]);
-              this.text("锁", bx + 68, 424, 17, C.cream, "center");
-            } else {
-              this.text("锁", bx + 68, 424, 16, [0.5, 0.46, 0.42, 0.9], "center");
-            }
-          } else if (fishCount) {
-            var lbl = species.name + " " + fishCount;
-            if (this.uiSkinChrome) {
-              this.paintFishIcon(species.id, bx + 16, 402 + 27, 32);
-              this.button(bx + 34, 402, 101, 54, lbl, true);
-            } else {
-              this.button(bx, 402, 135, 54, lbl, true);
-              this.paintFishIcon(species.id, bx + 22, 402 + 27, 30);
-            }
-          } else {
-            var lbl0 = species.name + " 0";
-            if (this.uiSkinChrome) {
-              this.paintFishIcon(species.id, bx + 16, 402 + 27, 28);
-              this.button(bx + 32, 402, 103, 54, lbl0, false);
-            } else {
-              this.button(bx, 402, 135, 54, lbl0, false);
-              this.paintFishIcon(species.id, bx + 22, 402 + 27, 28);
-            }
-          }
-        }
+        // R0045：桌面带五等分竖排（4 鱼 + 椰汁）统一绘制
+        this.drawLandShopTray();
         if (!this.uiSkinChrome) this.text("点椰子做椰子汁", 520, 382, 16, C.ink, "center");
       }
     },
@@ -3121,6 +5319,19 @@
       if (this.paintUiStretch("dialog-settlement-mid-plate", layout.plate.x, layout.plate.y, layout.plate.w, layout.plate.h)) {
         this.flush();
       }
+      // R0041：与「钓到鱼了」同款，圆盘中心补生鱼素材
+      var escaped = collection.escapedFish;
+      var speciesId = (escaped && escaped.speciesId) || "small";
+      this.paintFishIcon(
+        speciesId,
+        layout.plate.x + layout.plate.w / 2,
+        layout.plate.y + layout.plate.h / 2,
+        Math.round(layout.plate.w * 0.55)
+      );
+      if (!this._loggedEscapedFishIcon) {
+        this._loggedEscapedFishIcon = true;
+        console.log("[FishDialog] R0041 escaped plate fish", speciesId);
+      }
       this.paintSettlementLongs(layout, ["看广告可复活本次", "可复活当前这次钓鱼"]);
       this.paintSettlementShorts(layout, [
         { label: collection.reviveBusy ? "广告加载中" : "看广告复活", active: true },
@@ -3148,7 +5359,10 @@
       var line1 = species.name + " " + fish.weight.toFixed(1) + "kg";
       var line2 =
         (fish.quality === "fine" ? "优质鱼获" : "普通鱼获") + " · " + fish.portions + "份鱼肉";
+      var Onboarding = AIGCUtils.Onboarding;
+      var legacyDone = !Onboarding || Onboarding.shouldShowLegacyThreeFishGuide();
       var showGuide =
+        legacyDone &&
         AIGCUtils.GameState.fishCaught >= 3 &&
         !AIGCUtils.GameState.tasks.coconut &&
         !AIGCUtils.GameState.shopBuilt;
@@ -3172,6 +5386,7 @@
       var countLabel = "本轮采摘了 " + collection.caughtThisRound + " 个椰子";
       var promptLabel = "";
       var shorts = [];
+      var onboardActive = AIGCUtils.Onboarding && AIGCUtils.Onboarding.isActive();
       if (AIGCUtils.GameState.shopBuilt) {
         promptLabel = "继续采摘 还是去地图逛逛";
         shorts = [
@@ -3179,11 +5394,20 @@
           { label: "去地图逛逛", active: false }
         ];
       } else if (AIGCUtils.GameState.tasks.coconut) {
-        promptLabel = "现在建店 还是继续采摘";
-        shorts = [
-          { label: "搭建烤鱼店", active: true },
-          { label: "再采一轮", active: false }
-        ];
+        if (onboardActive) {
+          // R0025：首轮椰子二选一
+          promptLabel = "去烤鱼店 还是继续采摘";
+          shorts = [
+            { label: "去烤鱼店", active: true },
+            { label: "留在椰子林", active: false }
+          ];
+        } else {
+          promptLabel = "现在建店 还是继续采摘";
+          shorts = [
+            { label: "搭建烤鱼店", active: true },
+            { label: "再采一轮", active: false }
+          ];
+        }
       } else {
         shorts = [{ label: "再试一次", active: true }];
       }
@@ -3197,23 +5421,97 @@
       this.paintSettlementShorts(layout, shorts);
     },
 
-    // 未解锁：轻蒙层 + 居中小木牌「暂未解锁」，点任意处关闭（不用结算大壳）
+    // 未解锁：轻蒙层 + 略高木牌，两行（标题 + 条件），奶油色字；点任意处关闭
     drawMapLockedPrompt: function () {
       var W = this.width;
       var H = this.height;
       var hw = Math.round(W / 2);
       var hh = Math.round(H / 2);
-      var signW = Math.min(320, Math.max(220, Math.round(W * 0.42)));
-      var signH = Math.round(signW * 168 / 586);
+      var lines = AIGCUtils.MapZones.getLockedPromptLines(AIGCUtils.Game.mapLockedZone);
+      var title = lines.title;
+      var detail = lines.detail;
+      var titleFs = this.portrait ? 18 : 20;
+      var detailFs = this.portrait ? 13 : 14;
+      var signW = Math.min(460, Math.max(300, Math.round(W * 0.58)));
+      var signH = Math.max(110, Math.round(signW * 0.36));
       var signX = hw - Math.round(signW / 2);
       var signY = hh - Math.round(signH / 2);
-      this.rect(0, 0, W, H, C.overlay);
-      var label = "暂未解锁";
-      var fs = this.portrait ? 20 : 22;
-      if (!this.paintLabeledUiFrame("dialog-settlement-title", { x: signX, y: signY, w: signW, h: signH }, label, fs, C.ink)) {
-        this.rect(signX, signY, signW, signH, C.wood);
-        this.text(label, hw, this.textYInBox(label, fs, signY, signH), fs, C.ink, "center");
+      var maxTextW = Math.round(signW * 0.86);
+      while (detailFs > 11 && this.textWidth(detail, detailFs) > maxTextW) {
+        detailFs -= 1;
       }
+      this.rect(0, 0, W, H, C.overlay);
+      if (!this.paintUiStretch("dialog-settlement-title", signX, signY, signW, signH)) {
+        this.rect(signX, signY, signW, signH, C.wood);
+      } else {
+        this.flush();
+      }
+      // 两行收在木牌中上：标题约 38%，条件约 58%，避免贴底
+      var titleY = signY + Math.round(signH * 0.38);
+      var detailY = signY + Math.round(signH * 0.58);
+      // R0025：弹窗统一 dialogInk（木牌上若对比偏弱可再调）
+      var inkLight = C.dialogInk;
+      this.text(title, hw, titleY, titleFs, inkLight, "center");
+      this.text(detail, hw, detailY, detailFs, inkLight, "center");
+    },
+
+    /**
+     * R0025：新人引导三弹窗。失败时降级为纯色木牌 + 文字，不阻塞流程。
+     */
+    drawOnboardingDialog: function () {
+      var Onboarding = AIGCUtils.Onboarding;
+      if (!Onboarding || !Onboarding.dialog) return;
+      var kind = Onboarding.dialog;
+      var W = this.width;
+      var H = this.height;
+      var hw = Math.round(W / 2);
+      var hh = Math.round(H / 2);
+      var layout = this.getSettlementLayout(hw, hh);
+      var assetKey =
+        kind === "intro"
+          ? "dialog-onboard-intro"
+          : kind === "coconutGuide"
+            ? "dialog-onboard-coconut"
+            : kind === "end"
+              ? "dialog-onboard-end"
+              : null;
+      this.rect(0, 0, W, H, C.overlay);
+      var painted = assetKey && this.paintUiStretch(assetKey, layout.dlgX, layout.dlgY, layout.dlgW, layout.dlgH);
+      if (!painted) {
+        console.warn("[Onboarding] dialog asset missing, fallback", assetKey);
+        this.rect(layout.dlgX, layout.dlgY, layout.dlgW, layout.dlgH, C.cream);
+        var fallbackTitle =
+          kind === "intro" ? "欢迎来到孤岛" : kind === "coconutGuide" ? "去椰子林" : "引导结束";
+        this.text(fallbackTitle, hw, layout.dlgY + Math.round(layout.dlgH * 0.35), 22, C.dialogInk, "center");
+      } else {
+        this.flush();
+      }
+
+      Onboarding.buttonBox = null;
+      if (kind === "end") {
+        this.text(
+          "点击任意处关闭",
+          hw,
+          layout.dlgY + Math.round(layout.dlgH * 0.88),
+          16,
+          C.dialogInk,
+          "center"
+        );
+        return;
+      }
+
+      var btnLabel = kind === "intro" ? "去钓鱼" : "去椰子林";
+      var btnW = Math.round(layout.dlgW * 0.4);
+      var btnH = Math.round(btnW * 864 / 2016);
+      var btnX = layout.dlgX + Math.round((layout.dlgW - btnW) / 2);
+      var btnY = layout.dlgY + Math.round(layout.dlgH * 0.78);
+      var btnBox = { x: btnX, y: btnY, w: btnW, h: btnH };
+      if (!this.paintLabeledUiFrame("ui-guide-btn", btnBox, btnLabel, 18, C.dialogInk)) {
+        this.rect(btnX, btnY, btnW, btnH, C.woodLight);
+        this.flush();
+        this.text(btnLabel, btnX + btnW / 2, this.textYInBox(btnLabel, 18, btnY, btnH), 18, C.dialogInk, "center");
+      }
+      Onboarding.buttonBox = btnBox;
     },
 
     drawEnergyPrompt: function () {
@@ -3290,7 +5588,28 @@
       }
     },
 
+    /** R0039：结算壳图就绪才画离线窗，避免 cream 白块闪现 */
+    isSettlementShellReady: function () {
+      var keys = [
+        "dialog-settlement-base",
+        "dialog-settlement-title",
+        "dialog-settlement-btn-long",
+        "dialog-settlement-btn-short"
+      ];
+      for (var i = 0; i < keys.length; i++) {
+        if (!this.scenes[keys[i]] && !this.sceneFailed[keys[i]]) return false;
+      }
+      return !!(this.scenes["dialog-settlement-base"] || this.sceneFailed["dialog-settlement-base"]);
+    },
+
     drawOfflinePrompt: function () {
+      if (!this.isSettlementShellReady()) {
+        if (!this._loggedOfflineShellWait) {
+          this._loggedOfflineShellWait = true;
+          console.log("[Boot] R0039 wait settlement shell for offline prompt");
+        }
+        return;
+      }
       var hw = Math.round(this.width / 2);
       var hh = Math.round(this.height / 2);
       var layout = this.getSettlementLayout(hw, hh);
@@ -3347,6 +5666,14 @@
 
     drawOfflineDialog: function () {
       var pending = AIGCUtils.GameState.pendingOffline;
+      if (!pending) return;
+      if (!this.isSettlementShellReady()) {
+        if (!this._loggedWelcomeShellWait) {
+          this._loggedWelcomeShellWait = true;
+          console.log("[Boot] R0039 wait settlement shell for 欢迎回来");
+        }
+        return;
+      }
       var hw = Math.round(this.width / 2);
       var hh = Math.round(this.height / 2);
       var layout = this.getSettlementLayout(hw, hh);
@@ -3376,51 +5703,71 @@
       this.boundTexture = this.fontTexture || this.ensureDummyTexture();
       this.loadScenes();
       var area = AIGCUtils.Game.currentArea;
-      // 关键皮肤未就绪时不画矢量兜底，避免刷新闪旧图层
-      if (!this.isCriticalArtReady(area)) {
+      // R0037：必需包+字帖未齐不进玩法，只留 loading（禁旧 JPG/矢量兜底）
+      var bootProgress = this.getBootProgress(area);
+      var bootReady = this.isBootReady(area);
+      this.syncBootLoadingDom(bootReady, bootProgress);
+      if (!bootReady) {
         this.artOn = false;
         this.uiSkinChrome = false;
         var waitKey = this.preferredUiSkinKey(area);
-        if (this._loggedWaitKey !== waitKey) {
-          this._loggedWaitKey = waitKey;
-          console.log("[Prototype] Waiting critical art", waitKey);
+        if (this._loggedWaitKey !== waitKey + ":" + bootProgress.done) {
+          this._loggedWaitKey = waitKey + ":" + bootProgress.done;
+          console.log(
+            "[Boot] R0037 waiting",
+            area,
+            waitKey,
+            bootProgress.done + "/" + bootProgress.total,
+            "font=" + !!this.fontReady
+          );
         }
+        // 画布侧再盖一层，避免 HTML 层未挂时露残局
+        this.rect(0, 0, this.width, this.height, [0.12, 0.16, 0.17, 1]);
         if (this.fontReady) {
-          this.text("加载中", Math.round(this.width / 2), Math.round(this.height / 2) - 10, 22, C.cream, "center");
+          this.text(
+            "加载中 " + bootProgress.pct + "%",
+            Math.round(this.width / 2),
+            Math.round(this.height / 2) - 10,
+            22,
+            C.cream,
+            "center"
+          );
         }
         this.flush();
         return;
       }
       this._loggedWaitKey = null;
+      this.parseSeaDebugParams();
       this.artShiftX = 0;
-      // 椰林只让被点中的那棵树绕树根摆，底板不再跟着平移。
-      if (area === "fishing" && AIGCUtils.Collection.phase === "reeling") {
-        this.artShiftX = Math.sin(AIGCUtils.Collection.timer / 70) * 6;
-      }
-      if (area === "build" && AIGCUtils.Game.buildAnim > 0) {
-        this.artShiftX = Math.sin(Math.min(1, AIGCUtils.Game.buildAnim / 320) * Math.PI) * 8;
-      }
+      this.artShiftY = 0;
+      // 已关闭画面震动：收线/建店不再写 artShift（船兔仍可走海浪 bob，不含左右震）
       var backdrop = this.backdropKey(area);
       var contentTop = 64;
       var contentHeight = this.height - 72 - contentTop;
       var shift = Math.max(-12, Math.min(12, this.artShiftX));
+      var shiftY = Math.max(-8, Math.min(8, this.artShiftY));
       this.uiSkinChrome = !!(backdrop && backdrop.indexOf("ui-skin-") === 0);
+      // 钓鱼底板锁定静止；其它区域仍可用 shift
+      var backShiftX = area === "fishing" ? 0 : shift;
+      var backShiftY = area === "fishing" ? 0 : shiftY;
       if (this.uiSkinChrome) {
-        this.artOn = !!(backdrop && this.paintScene(backdrop, shift, 0, this.width, this.height, 0, 0));
+        this.artOn = !!(backdrop && this.paintScene(backdrop, backShiftX, backShiftY, this.width, this.height, 0, 0));
         if (this.artOn && this._loggedBackdrop !== backdrop) {
           this._loggedBackdrop = backdrop;
           console.log("[Prototype] UI skin backdrop", backdrop);
         }
       } else {
-        this.artOn = !!(backdrop && this.paintScene(backdrop, shift - 14, contentTop, this.width + 28, contentHeight, 0, 0));
+        this.artOn = !!(backdrop && this.paintScene(backdrop, backShiftX - 14, contentTop + backShiftY, this.width + 28, contentHeight, 0, 0));
       }
       if (area === "map") this.drawMap();
       if (area === "fishing") this.drawFishing();
       if (area === "coconut") this.drawCoconut();
       if (area === "build") this.drawBuild();
       if (area === "shop") this.drawShop();
-      // 竖屏只叠钓鱼木板透明条（地图/椰林/烤鱼/未开放同屏均受益；场景背景保留）
-      if (area !== "build") this.paintSharedHudChromePort();
+      // R0008：钓鱼区用全幅 ui-chrome；其它竖屏区仍用共享顶栏条
+      var fishingChromeOk = false;
+      if (area === "fishing") fishingChromeOk = this.paintFishingUiChrome();
+      if (area !== "build" && !(area === "fishing" && fishingChromeOk)) this.paintSharedHudChromePort();
       if (area !== "build") {
         this.drawHUD();
         this.drawNav();
@@ -3442,6 +5789,10 @@
       if (AIGCUtils.Game.offlineDialog && AIGCUtils.GameState.pendingOffline) this.drawOfflineDialog();
       if (AIGCUtils.Game.energyPrompt) this.drawEnergyPrompt();
       if (AIGCUtils.Game.mapLockedPrompt) this.drawMapLockedPrompt();
+      // R0025：引导弹窗盖在所有结算/提示之上
+      if (AIGCUtils.Onboarding && AIGCUtils.Onboarding.isDialogOpen()) {
+        this.drawOnboardingDialog();
+      }
       this.flush();
     }
   };

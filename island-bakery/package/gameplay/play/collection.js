@@ -24,6 +24,8 @@
     reelHeld: false,
     struggleTime: 0,
     caughtFish: null,
+    /** R0041：逃鱼弹窗圆盘展示用（不入库） */
+    escapedFish: null,
     reviveBusy: false,
     coconuts: [],
     basketVisual: 0,
@@ -111,6 +113,7 @@
       this.caughtFish = null;
       this.accurateCast = false;
       this.perfectHook = false;
+      if (AIGCUtils.SoundManager) AIGCUtils.SoundManager.stopLoop("fish.reel");
     },
 
     selectSpot: function (spotId) {
@@ -178,9 +181,16 @@
       this.hookX = this.bubbleX + (this.accurateCast ? 0 : (this.power < 0.4 ? -125 : 125));
       this.hookY = this.bubbleY;
       this.waitDuration = 3000 + Math.random() * 2000 + (this.accurateCast ? 0 : 2000);
-      this.phase = "waiting";
+      // 松开后先播完整抛竿动作，再进 waiting（此前直接 waiting 导致「抛竿之后没动作」）
+      this.phase = "cast_anim";
       this.timer = 0;
-      console.log("[Prototype] Cast released", this.power.toFixed(2), this.accurateCast, this.waitDuration);
+      // R0001：与 FishingAnims.rabbit_fish_cast.durationMs 对齐，避免动画未播完就进 waiting
+      this.castAnimMs = 1500;
+      if (AIGCUtils.SoundManager) AIGCUtils.SoundManager.play("fish.cast");
+      console.log("[Prototype] Cast released → cast_anim", this.power.toFixed(2), this.accurateCast, this.waitDuration);
+      if (AIGCUtils.EventBus && typeof AIGCUtils.EventBus.emit === "function") {
+        AIGCUtils.EventBus.emit("anim:play", { actorId: "fish_rabbit", clipId: "rabbit_fish_cast", force: true, lockMs: 1500, restart: true, fallbackKey: "hero_rabbit_fish", facing: 1 });
+      }
       return true;
     },
 
@@ -199,6 +209,8 @@
       this.reelProgress = 0;
       this.tension = 0.3;
       this.reelHeld = false;
+      // 提竿进拉锯后全程播拉线循环，直到收杆成功/断线/离区
+      if (AIGCUtils.SoundManager) AIGCUtils.SoundManager.playLoop("fish.reel");
       console.log("[Prototype] Fish hooked", this.perfectHook);
       return true;
     },
@@ -236,6 +248,10 @@
       this.phase = "fishCaught";
       this.timer = 0;
       this.reelHeld = false;
+      if (AIGCUtils.SoundManager) {
+        AIGCUtils.SoundManager.stopLoop("fish.reel");
+        AIGCUtils.SoundManager.play("fish.catch");
+      }
       EventBus.emit("collection:collected", { type: "fish", amount: this.caughtFish.portions, fish: this.caughtFish });
       console.log("[Prototype] Fish caught", this.caughtFish.speciesId, this.caughtFish.weight, this.caughtFish.portions);
     },
@@ -245,8 +261,18 @@
       this.phase = "fishEscaped";
       this.timer = 0;
       this.reelHeld = false;
+      // R0041：缓存当次品种供「鱼跑了」圆盘画鱼（不 collect）
+      this.escapedFish = this.chooseFish();
+      if (AIGCUtils.SoundManager) {
+        AIGCUtils.SoundManager.stopLoop("fish.reel");
+        AIGCUtils.SoundManager.play("common.fail");
+      }
       EventBus.emit("collection:escaped", { reason: reason });
-      console.log("[Prototype] Fish escaped", reason);
+      console.log(
+        "[Prototype] Fish escaped",
+        reason,
+        this.escapedFish && this.escapedFish.speciesId
+      );
     },
 
     reviveFish: function () {
@@ -263,6 +289,7 @@
           collection.reelProgress = 0;
           collection.tension = 0.3;
           collection.reelHeld = false;
+          if (AIGCUtils.SoundManager) AIGCUtils.SoundManager.playLoop("fish.reel");
           AIGCUtils.Game.notify("鱼回来了 按住收线");
           console.log("[Prototype] Fishing revived after rewarded ad");
         } else {
@@ -299,6 +326,7 @@
       this.treeCooldowns = [0, 0, 0];
       var index = treeIndex === undefined ? 1 : treeIndex;
       this.treeShakes[index] = 360;
+      if (AIGCUtils.SoundManager) AIGCUtils.SoundManager.play("coco.shake");
       this.spawnWave(index);
       console.log("[Prototype] Coconut round started");
       return true;
@@ -310,6 +338,7 @@
       if (this.phase !== "coconutRound" || this.treeCooldowns[index] > 0) return false;
       this.treeShakes[index] = 360;
       this.treeCooldowns[index] = 700;
+      if (AIGCUtils.SoundManager) AIGCUtils.SoundManager.play("coco.shake");
       // 每棵树每次掉落 1～3 颗，从该树树冠掉出
       var speed = 82 + Math.max(0, this.waveIndex - 1) * 9;
       var dropCount = 1 + Math.floor(Math.random() * 3);
@@ -366,6 +395,7 @@
           this.caughtThisRound++;
           var type = coconut.golden ? "goldenCoconut" : "coconut";
           AIGCUtils.GameState.collect(type, 1);
+          if (AIGCUtils.SoundManager) AIGCUtils.SoundManager.play("coco.catch", { throttleMs: 50 });
           EventBus.emit("collection:collected", { type: type, amount: 1 });
           console.log("[Prototype] Coconut caught", type, this.caughtThisRound, "stopShake", coconut.treeIndex);
           return true;
@@ -380,6 +410,7 @@
       this.reelHeld = false;
       if (this.caughtThisRound > 0) AIGCUtils.GameState.tasks.coconut = true;
       AIGCUtils.GameState.save();
+      if (AIGCUtils.SoundManager) AIGCUtils.SoundManager.play("ui.settle_open");
       EventBus.emit("collection:round-complete", { caught: this.caughtThisRound });
       console.log("[Prototype] Coconut round finished", this.caughtThisRound);
     },
@@ -395,7 +426,7 @@
     },
 
     updateFish: function (dt) {
-      var busy = ["idle", "charging", "waiting", "bite", "reeling", "fishCaught", "fishEscaped", "fishResult"];
+      var busy = ["idle", "charging", "cast_anim", "waiting", "bite", "reeling", "fishCaught", "fishEscaped", "fishResult"];
       if (busy.indexOf(this.phase) < 0) {
         console.log("[Prototype] Fishing phase reset", this.phase);
         this.resetFish();
@@ -411,12 +442,21 @@
         }
         return;
       }
+      if (this.phase === "cast_anim") {
+        this.timer += dt;
+        if (this.timer >= (this.castAnimMs || 1500)) {
+          this.phase = "waiting";
+          this.timer = 0;
+          console.log("[FishAnim] cast_anim done → waiting");
+        }
+        return;
+      }
       if (this.phase === "waiting") {
         this.timer += dt;
         if (this.timer >= this.waitDuration) {
           this.phase = "bite";
           this.timer = 0;
-          AIGCUtils.SoundManager.playSfx("bite");
+          if (AIGCUtils.SoundManager) AIGCUtils.SoundManager.play("fish.bite");
           console.log("[Prototype] Fish bite signal");
         }
         return;
@@ -454,7 +494,14 @@
       }
       if (this.phase === "fishCaught") {
         this.timer += dt;
-        if (this.timer >= 850) this.phase = "fishResult";
+        if (this.timer >= 850) {
+          this.phase = "fishResult";
+          // 钓鱼结果 / 椰林结算 / 离线领取共用 ui.settle_open
+          if (AIGCUtils.SoundManager) {
+            AIGCUtils.SoundManager.play("ui.settle_open");
+            AIGCUtils.SoundManager.play("common.success");
+          }
+        }
       }
     },
 
@@ -497,6 +544,7 @@
             coconut.y = groundY;
             coconut.cracked = true;
             coconut.crackTimer = 0;
+            if (AIGCUtils.SoundManager) AIGCUtils.SoundManager.play("coco.miss_crack", { throttleMs: 80 });
             console.log("[Prototype] Coconut cracked on root ground", coconut.golden, Math.round(coconut.x), Math.round(coconut.y), "rootY", groundY);
           }
         }

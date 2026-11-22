@@ -99,11 +99,17 @@
       customer.leaveTimer = 0;
       this.moneyEffects.push({ slot: customerIndex, amount: price, timer: 0 });
       AIGCUtils.GameState.save();
+      if (AIGCUtils.SoundManager) {
+        // 交付 + 金币到账：均为默认音量的 50%
+        AIGCUtils.SoundManager.play("shop.deliver", { volume: 0.5 });
+        AIGCUtils.SoundManager.play("common.coin", { volume: 0.5 });
+      }
       EventBus.emit("selling:sold", {
         price: price,
         itemCount: products.length,
         customerIndex: customerIndex
       });
+      console.log("[ShopAnim] customer_leave_side", customer.id, customer.type);
       console.log("[Prototype] Order delivered", customer.id, products.length, price);
       return { success: true, price: price, itemCount: products.length };
     },
@@ -117,7 +123,13 @@
       var leaveTotalMs = 1100;
       for (var i = 0; i < this.queue.length; i++) {
         var customer = this.queue[i];
+        var wasArriving = customer.arrival > 2;
         customer.arrival = Math.max(0, customer.arrival - dt * 0.7);
+        if (wasArriving && customer.arrival <= 2 && !customer.leaving && !customer._enterLogged) {
+          customer._enterLogged = true;
+          if (AIGCUtils.SoundManager) AIGCUtils.SoundManager.play("shop.customer_arrive");
+          console.log("[ShopAnim] customer_enter_side", customer.id, customer.type, "slot", customer.slot);
+        }
         if (!customer.leaving) continue;
         customer.leaveTimer += dt;
         if (customer.leaveTimer >= leaveTotalMs) {

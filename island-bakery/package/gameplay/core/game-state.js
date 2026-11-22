@@ -17,6 +17,10 @@
       stage: 1,
       offlineUnlocked: false,
       offlinePromptSeen: false,
+      /** 烤鱼店首次「点生鱼」箭头引导是否已看过；true 后不再显示 */
+      grillFishGuideSeen: false,
+      /** 新人引导：{ done, stage }；缺省由 Onboarding.normalize 兼容旧档 */
+      onboarding: { done: false, stage: "intro" },
       lastOnlineTime: null,
       pendingOffline: null,
       stats: { totalBaked: 0, totalJuice: 0, totalSold: 0, totalOrders: 0, totalCoins: 0 }
@@ -28,8 +32,23 @@
   AIGCUtils.GameState.init = function () {
     var fresh = defaults();
     var saved = null;
+    var wantFresh = false;
     try {
-      if (typeof KwaiStorage !== "undefined") saved = KwaiStorage.getSync(SAVE_KEY);
+      wantFresh =
+        typeof location !== "undefined" &&
+        /(?:\?|&)fresh=1(?:&|$)/.test(String(location.search || ""));
+      // 验收用：?fresh=1 清空本地存档，强制新人引导起手（不影响正式无参链路）
+      if (wantFresh && typeof KwaiStorage !== "undefined" && KwaiStorage.removeSync) {
+        KwaiStorage.removeSync(SAVE_KEY);
+        console.log("[Prototype] fresh=1 wiped save", SAVE_KEY);
+      }
+    } catch (wipeErr) {
+      console.warn("[Prototype] fresh wipe failed", wipeErr);
+    }
+    try {
+      if (!wantFresh && typeof KwaiStorage !== "undefined") {
+        saved = KwaiStorage.getSync(SAVE_KEY);
+      }
     } catch (error) {
       console.warn("[Prototype] Save read failed", error);
     }
@@ -48,6 +67,15 @@
     AIGCUtils.GameState.ingredients.fish = AIGCUtils.GameState.getFishCount();
     AIGCUtils.GameState.ingredients.coconut = Math.max(0, AIGCUtils.GameState.ingredients.coconut || 0);
     AIGCUtils.GameState.ingredients.goldenCoconut = Math.max(0, AIGCUtils.GameState.ingredients.goldenCoconut || 0);
+    // R0025：旧档无 onboarding 时按进度判定 done / intro
+    if (AIGCUtils.Onboarding) {
+      AIGCUtils.GameState.onboarding = AIGCUtils.Onboarding.normalize(
+        saved && saved.onboarding,
+        AIGCUtils.GameState
+      );
+    } else if (!AIGCUtils.GameState.onboarding) {
+      AIGCUtils.GameState.onboarding = { done: false, stage: "intro" };
+    }
   };
 
   AIGCUtils.GameState.save = function () {
@@ -67,6 +95,8 @@
           stage: AIGCUtils.GameState.stage,
           offlineUnlocked: AIGCUtils.GameState.offlineUnlocked,
           offlinePromptSeen: AIGCUtils.GameState.offlinePromptSeen,
+          grillFishGuideSeen: !!AIGCUtils.GameState.grillFishGuideSeen,
+          onboarding: AIGCUtils.GameState.onboarding || { done: false, stage: "intro" },
           lastOnlineTime: AIGCUtils.GameState.lastOnlineTime,
           pendingOffline: AIGCUtils.GameState.pendingOffline,
           stats: AIGCUtils.GameState.stats

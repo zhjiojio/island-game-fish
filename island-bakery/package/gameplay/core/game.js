@@ -24,8 +24,9 @@
     offlinePromptDismissed: false,
     goFishingPrompt: false,
     goFishingSpeciesId: "small",
-    // 横屏地图点带锁路牌 / 未建烤鱼店时弹出「暂未解锁」
+    // 地图点带锁路牌 / 未建烤鱼店：弹「未达到解锁条件」+ 分区条件
     mapLockedPrompt: false,
+    mapLockedZone: null,
     suspended: false,
     checkpointTimeMs: 0,
     initialized: false,
@@ -39,18 +40,34 @@
       AIGCUtils.Collection.init();
       AIGCUtils.Baking.init();
       AIGCUtils.Selling.init();
+      if (AIGCUtils.AnimDriver) AIGCUtils.AnimDriver.init();
+      if (AIGCUtils.SoundManager) AIGCUtils.SoundManager.init();
       this.bindEvents();
       this.bindLifecycle();
       if (!AIGCUtils.GameState.lastOnlineTime) AIGCUtils.GameState.lastOnlineTime = Date.now();
       AIGCUtils.OfflineManager.calculateEarnings();
       this.offlineDialog = !!AIGCUtils.GameState.pendingOffline;
-      if (AIGCUtils.GameState.shopBuilt) {
-        this.currentArea = "shop";
-      } else if (AIGCUtils.GameState.readyToBuild()) {
-        this.currentArea = "coconut";
-        AIGCUtils.Collection.phase = "coconutSummary";
-      } else {
-        this.currentArea = AIGCUtils.GameState.tasks.fish ? "coconut" : "fishing";
+      // R0025：新人引导未完成时由 Onboarding 决定落点；完成后沿用原进度落点
+      var onboardLanded =
+        AIGCUtils.Onboarding && AIGCUtils.Onboarding.applyInitLanding(this);
+      if (!onboardLanded) {
+        if (AIGCUtils.GameState.shopBuilt) {
+          this.currentArea = "shop";
+        } else if (AIGCUtils.GameState.readyToBuild()) {
+          this.currentArea = "coconut";
+          AIGCUtils.Collection.phase = "coconutSummary";
+        } else {
+          this.currentArea = AIGCUtils.GameState.tasks.fish ? "coconut" : "fishing";
+        }
+      }
+      // 刷新进区：preload 后立即尝试自动播 BGM（快手可无手势；H5 尽力自动播）
+      if (AIGCUtils.SoundManager) {
+        AIGCUtils.SoundManager.currentArea = this.currentArea;
+        AIGCUtils.SoundManager.preloadAreaBgm(this.currentArea);
+        AIGCUtils.SoundManager.tryAutoplayBgm();
+      }
+      if (this.offlineDialog && AIGCUtils.SoundManager) {
+        this._offlineSettleSoundPending = true;
       }
       console.log("[Prototype] Day one initialized", this.currentArea);
     },
@@ -71,7 +88,11 @@
       this.suspended = false;
       this.lastTime = AIGCUtils._now();
       AIGCUtils.OfflineManager.calculateEarnings();
+      var hadOffline = this.offlineDialog;
       this.offlineDialog = !!AIGCUtils.GameState.pendingOffline;
+      if (this.offlineDialog && !hadOffline && AIGCUtils.SoundManager) {
+        AIGCUtils.SoundManager.play("ui.settle_open");
+      }
       if (this.offlineAdBusy || this.energyAdBusy) return;
       this.offlinePromptDismissed = false;
       this.tryArmOfflinePrompt();
@@ -107,6 +128,7 @@
       if (this.offlinePromptDismissed) return;
       if (this.offlinePrompt) return;
       if (this.offlineDialog || this.energyPrompt || this.mapLockedPrompt) return;
+      if (AIGCUtils.Onboarding && AIGCUtils.Onboarding.isDialogOpen()) return;
       // 弹窗是否看过只在 drawOfflinePrompt 真正画出来之后写入。
       // 这里不能提前落盘，否则存档里的 offlinePromptSeen 会在没画出时挡住下一次。
       this.offlinePrompt = true;
@@ -120,6 +142,7 @@
     showOfflineEntry: function () {
       if (AIGCUtils.GameState.pendingOffline) {
         this.offlineDialog = true;
+        if (AIGCUtils.SoundManager) AIGCUtils.SoundManager.play("ui.settle_open");
       } else if (!AIGCUtils.GameState.offlineUnlocked && AIGCUtils.GameState.playTimeMs >= this.offlineUnlockMs) {
         this.offlinePromptDismissed = false;
         this.offlinePrompt = true;
@@ -134,14 +157,17 @@
       this.goFishingPrompt = false;
     },
 
-    showMapLockedPrompt: function () {
+    showMapLockedPrompt: function (zoneKey) {
+      this.mapLockedZone = zoneKey || null;
       this.mapLockedPrompt = true;
-      console.log("[Prototype] Map locked prompt open");
+      console.log("[MapLocked] prompt open zone=" + this.mapLockedZone);
     },
 
     closeMapLockedPrompt: function () {
+      var prev = this.mapLockedZone;
       this.mapLockedPrompt = false;
-      console.log("[Prototype] Map locked prompt closed");
+      this.mapLockedZone = null;
+      console.log("[MapLocked] prompt closed zone=" + prev);
     },
 
     confirmGoFishing: function () {
@@ -187,6 +213,7 @@
       if (!doubleReward) {
         AIGCUtils.OfflineManager.claimEarnings(false);
         this.offlineDialog = false;
+        if (AIGCUtils.SoundManager) AIGCUtils.SoundManager.play("common.success");
         return true;
       }
       this.offlineAdBusy = true;
@@ -194,6 +221,7 @@
         AIGCUtils.OfflineManager.claimEarnings(true);
         game.offlineAdBusy = false;
         game.offlineDialog = false;
+        if (AIGCUtils.SoundManager) AIGCUtils.SoundManager.play("common.success");
         game.notify("双倍食材已放入背包");
       }, function () {
         game.offlineAdBusy = false;
@@ -219,6 +247,7 @@
       EventBus.on("selling:sold", function (data) {
         console.log("[Prototype] Coins received", data.price);
       });
+      // R0026：结束弹窗改在烤鱼落盘完成时触发（见 Baking.update），此处不再订阅 baking:done
     },
 
     beginBuild: function () {
@@ -229,14 +258,10 @@
       }
       AIGCUtils.Collection.phase = "idle";
       AIGCUtils.Collection.coconuts = [];
-      this.building = true;
-      this.buildProgress = 0;
-      this.buildStage = "chop";
-      this.buildHits = 0;
-      this.buildAnim = 0;
-      this.currentArea = "build";
       this.showInventory = false;
-      console.log("[Prototype] Shop construction started");
+      // R0026：跳过砍树/锯木/搭建小游戏，直接开业进店
+      console.log("[Onboarding] skip build mini-game → open shop");
+      this.finishBuild();
     },
 
     buildAction: function () {
@@ -245,6 +270,8 @@
       var required = [3, 3, 4, 2];
       var stageIndex = stages.indexOf(this.buildStage);
       if (stageIndex < 0) return false;
+      var hitStage = this.buildStage;
+      if (AIGCUtils.SoundManager) AIGCUtils.SoundManager.playBuildHit(hitStage);
       this.buildHits++;
       this.buildAnim = 0;
       this.buildProgress = (stageIndex + this.buildHits / required[stageIndex]) / stages.length;
@@ -255,6 +282,7 @@
         }
         this.buildStage = stages[stageIndex + 1];
         this.buildHits = 0;
+        if (AIGCUtils.SoundManager) AIGCUtils.SoundManager.play("build.step_done");
       }
       console.log("[Prototype] Build action", this.buildStage, this.buildHits);
       return true;
@@ -267,6 +295,11 @@
       AIGCUtils.GameState.save();
       AIGCUtils.Selling.start();
       this.currentArea = "shop";
+      if (AIGCUtils.Onboarding) AIGCUtils.Onboarding.onFinishBuild();
+      if (AIGCUtils.SoundManager) {
+        AIGCUtils.SoundManager.play("build.done");
+        AIGCUtils.SoundManager.setArea("shop");
+      }
       this.notify("烤鱼店开业");
       console.log("[Prototype] Shop opened");
     },
@@ -283,6 +316,8 @@
       }
       if (area === "map") {
         this.currentArea = "map";
+        if (AIGCUtils.Onboarding) AIGCUtils.Onboarding.syncArrowForMap();
+        if (AIGCUtils.SoundManager) AIGCUtils.SoundManager.setArea("map");
         return true;
       }
       if (area === "shop" && !AIGCUtils.GameState.shopBuilt) {
@@ -304,6 +339,7 @@
         }
       }
       this.currentArea = area;
+      if (AIGCUtils.SoundManager) AIGCUtils.SoundManager.setArea(area);
       return true;
     },
 
@@ -319,6 +355,13 @@
         } else {
           this.notify(result.message);
         }
+        return;
+      }
+      // 首次烤鱼引导：成功开烤后写入存档，后续不再画箭头
+      if (recipeId === "fish_grilled" && !AIGCUtils.GameState.grillFishGuideSeen) {
+        AIGCUtils.GameState.grillFishGuideSeen = true;
+        AIGCUtils.GameState.save();
+        console.log("[ShopGuide] grillFishGuideSeen saved after first fish_grilled start");
       }
     },
 
@@ -367,10 +410,22 @@
 
     update: function (dt) {
       if (this.suspended) return;
+      // R0037：资源门闸未过不跑玩法逻辑，避免加载中推进采集/烤制
+      if (AIGCUtils.Renderer && AIGCUtils.Renderer.isBootReady && !AIGCUtils.Renderer.isBootReady(this.currentArea)) {
+        return;
+      }
       this.advancePlayTime(Math.max(0, dt));
       dt = Math.min(50, Math.max(0, dt));
       if (this.messageTimer > 0) this.messageTimer -= dt;
-      if (this.offlinePrompt || this.offlineDialog || this.energyPrompt || this.mapLockedPrompt) return;
+      if (
+        this.offlinePrompt ||
+        this.offlineDialog ||
+        this.energyPrompt ||
+        this.mapLockedPrompt ||
+        (AIGCUtils.Onboarding && AIGCUtils.Onboarding.isDialogOpen())
+      ) {
+        return;
+      }
       if (this.building) {
         this.buildAnim += dt;
         return;
@@ -380,6 +435,7 @@
       }
       AIGCUtils.Baking.update(dt);
       if (AIGCUtils.GameState.shopBuilt) AIGCUtils.Selling.update(dt);
+      if (AIGCUtils.AnimDriver) AIGCUtils.AnimDriver.update(dt);
     },
 
     draw: function () {

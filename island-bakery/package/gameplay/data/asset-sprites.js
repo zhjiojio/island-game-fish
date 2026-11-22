@@ -36,6 +36,8 @@
       if (use === "golden") return "golden";
       if (use === "juice" || use === "order" || use === "green_juiced") return "green_juiced";
       return "green";
-    }
+    },
+    /** 烤鱼店帧动画目录约定；本轮无 sheet 时 AnimDriver 用静帧 + procedural 占位 */
+    shopAnimDir: "sprites/anim/"
   };
 })();

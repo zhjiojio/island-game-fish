@@ -37,6 +37,8 @@
 (function () {
 
   var AIGCUtils = window.AIGCUtils = window.AIGCUtils || {};
+  var _ksApi = typeof ks !== 'undefined' ? ks : null;
+  var _docApi = typeof document !== 'undefined' ? document : null;
 
   /**
    * 内部：本地相对路径 → 真实加载地址，统一走 ResourceLoader hook，对调用方透明。
@@ -129,14 +131,15 @@
   }
 
   function _applyWebVideoProps (videoEl, options) {
-    videoEl.style.position = 'absolute';
-    videoEl.style.left = (options.x || 0) + 'px';
-    videoEl.style.top = (options.y || 0) + 'px';
-    videoEl.style.width = options.width + 'px';
-    videoEl.style.height = options.height + 'px';
-    videoEl.style.display = 'block';
-    if (options.objectFit) videoEl.style.objectFit = options.objectFit;
-    if (options.backgroundColor !== undefined) videoEl.style.backgroundColor = options.backgroundColor;
+    var videoStyle = videoEl.style;
+    videoStyle.position = 'absolute';
+    videoStyle.left = (options.x || 0) + 'px';
+    videoStyle.top = (options.y || 0) + 'px';
+    videoStyle.width = options.width + 'px';
+    videoStyle.height = options.height + 'px';
+    videoStyle.display = 'block';
+    if (options.objectFit) videoStyle.objectFit = options.objectFit;
+    if (options.backgroundColor !== undefined) videoStyle.backgroundColor = options.backgroundColor;
     if (options.loop !== undefined) videoEl.loop = !!options.loop;
     if (options.autoplay !== undefined) videoEl.autoplay = !!options.autoplay;
     if (options.muted !== undefined) videoEl.muted = !!options.muted;
@@ -145,8 +148,8 @@
 
     // underGameView: video 在 canvas 之下，canvas 透明叠加
     if (options.underGameView) {
-      videoEl.style.zIndex = '1';
-      videoEl.style.pointerEvents = 'none';
+      videoStyle.zIndex = '1';
+      videoStyle.pointerEvents = 'none';
     }
   }
 
@@ -157,13 +160,14 @@
     // 只对齐 CSS 尺寸与层级，不覆写 canvas.width/height：
     // 物理像素尺寸（含 DPR）由上层统一管理（如 main.js resize），
     // 覆写会破坏 WebGL backing store 与 viewport 的一致性，导致 UI 缩放错乱。
-    canvas.style.position = 'absolute';
-    canvas.style.left = (options.x || 0) + 'px';
-    canvas.style.top = (options.y || 0) + 'px';
-    canvas.style.width = options.width + 'px';
-    canvas.style.height = options.height + 'px';
-    canvas.style.zIndex = '2';
-    canvas.style.pointerEvents = 'auto';
+    var canvasStyle = canvas.style;
+    canvasStyle.position = 'absolute';
+    canvasStyle.left = (options.x || 0) + 'px';
+    canvasStyle.top = (options.y || 0) + 'px';
+    canvasStyle.width = options.width + 'px';
+    canvasStyle.height = options.height + 'px';
+    canvasStyle.zIndex = '2';
+    canvasStyle.pointerEvents = 'auto';
   }
 
   function videoCreate (name, options) {
@@ -175,7 +179,7 @@
 
     if (_isKwai) {
       // 快手运行环境
-      var video = ks.createVideo(options);
+      var video = _ksApi.createVideo(options);
       _bindKwaiVideoEvents(video, options);
       _applyKwaiVideoProps(video, options);
       _resolveSrc(rawSrc, function (realSrc) { video.src = realSrc; });
@@ -184,8 +188,8 @@
     }
 
     // Web 环境
-    var container = options.container || document.body;
-    var videoEl = document.createElement('video');
+    var container = options.container || _docApi.body;
+    var videoEl = _docApi.createElement('video');
     _applyWebVideoProps(videoEl, options);
     _bindWebVideoEvents(videoEl, options);
 
@@ -193,7 +197,7 @@
 
     if (options.initialTime !== undefined) videoEl.currentTime = options.initialTime;
     _resolveSrc(rawSrc, function (realSrc) { videoEl.src = realSrc; });
-    container.appendChild(videoEl);
+    container.insertBefore(videoEl, null);
 
     _videos[name] = videoEl;
     return videoEl;
@@ -246,7 +250,7 @@
         // 禁止 v.src = ''（空 src 会让浏览器异步抛出 error，污染旧回调）
         v.removeAttribute('src');
         try { v.load(); } catch (e) {}
-        if (v.parentNode) v.parentNode.removeChild(v);
+        if (v.remove) v.remove();
       }
     }
     delete _videos[name];
@@ -264,14 +268,15 @@
   // ==================================================================
 
   var _bgm = null;
+  var _bgmLayers = {}; // 分区叠轨 BGM（如钓鱼区海浪），与玩法 sfx loop 分离
   var _sfxPool = {};
   var _sfxCount = 0;
   var _sfxMax = 10;
-  var _audioSettings = { bgmEnabled: true, sfxEnabled: true, bgmVolume: 0.6, sfxVolume: 1.0 };
+  var _audioSettings = { bgmEnabled: true, sfxEnabled: true, bgmVolume: 0.45, sfxVolume: 1.0 };
 
   function _createAudio () {
     if (_isKwai) {
-      var a = ks.createInnerAudioContext();
+      var a = _ksApi.createInnerAudioContext();
       a.obeyMuteSwitch = false;
       return a;
     }
@@ -280,7 +285,7 @@
 
   function _createSfxAudio () {
     if (_isKwai) {
-      var a = ks.createInnerAudioContext();
+      var a = _ksApi.createInnerAudioContext();
       a.obeyMuteSwitch = true;
       return a;
     }
@@ -301,62 +306,251 @@
     return a;
   }
 
-  function audioPlayBgm (src) {
+  function _tryPlayAudio (a, tag) {
+    if (!a) return;
+    try {
+      var p = a.play();
+      if (p && typeof p.catch === 'function') {
+        p.catch(function (e) { console.warn('[KwaiMedia]', tag || 'play', e && (e.message || e)); });
+      }
+    } catch (err) {
+      console.warn('[KwaiMedia]', tag || 'play', err);
+    }
+  }
+
+  /** 预加载 BGM（只设 src 不播），首次手势时可同步 play，避免刷新进区无声 */
+  function audioPreloadBgm (src) {
+    if (!src) return;
     var bgm = _getBgm();
-    if (!_audioSettings.bgmEnabled) return;
-    if (!src) { bgm.play(); return; }
-    if (bgm.__rawSrc === src) { bgm.play(); return; }
+    if (bgm.__rawSrc === src && bgm.src) return;
     bgm.__rawSrc = src;
+    bgm.__wantPlay = false;
     _resolveSrc(src, function (realSrc) {
-      if (bgm.__rawSrc !== src) return; // 期间已切换到其他 BGM，丢弃过期回调
+      if (bgm.__rawSrc !== src) return;
       bgm.src = realSrc;
-      bgm.play();
+      console.log('[KwaiMedia] bgm preloaded', src);
     });
   }
 
-  function audioPauseBgm () { if (_bgm) _bgm.pause(); }
-  function audioResumeBgm () { if (_bgm && _audioSettings.bgmEnabled) _bgm.play(); }
+  function audioPlayBgm (src) {
+    var bgm = _getBgm();
+    if (!_audioSettings.bgmEnabled) return;
+    if (!src) { _tryPlayAudio(bgm, 'bgm'); return; }
+    // 已是目标曲：手势栈内直接 play（刷新进烤鱼店的关键路径）
+    if (bgm.__rawSrc === src && bgm.src) {
+      bgm.__wantPlay = true;
+      _tryPlayAudio(bgm, 'bgm');
+      return;
+    }
+    bgm.__rawSrc = src;
+    bgm.__wantPlay = true;
+    _resolveSrc(src, function (realSrc) {
+      if (bgm.__rawSrc !== src) return;
+      bgm.src = realSrc;
+      var onReady = function () {
+        if (_isKwai) {
+          if (bgm.offCanplay) bgm.offCanplay(onReady);
+        } else {
+          bgm.removeEventListener('canplay', onReady);
+        }
+        if (bgm.__wantPlay && bgm.__rawSrc === src) _tryPlayAudio(bgm, 'bgm-ready');
+      };
+      if (_isKwai && bgm.onCanplay) bgm.onCanplay(onReady);
+      else if (!_isKwai) bgm.addEventListener('canplay', onReady);
+      _tryPlayAudio(bgm, 'bgm');
+    });
+  }
+
+  function audioPauseBgm () {
+    if (_bgm) _bgm.pause();
+    for (var k in _bgmLayers) {
+      if (_bgmLayers.hasOwnProperty(k) && _bgmLayers[k]) {
+        try { _bgmLayers[k].pause(); } catch (e) {}
+      }
+    }
+  }
+  function audioResumeBgm () {
+    if (!_audioSettings.bgmEnabled) return;
+    if (_bgm) _bgm.play();
+    for (var k in _bgmLayers) {
+      if (_bgmLayers.hasOwnProperty(k) && _bgmLayers[k]) {
+        try { _bgmLayers[k].play(); } catch (e) {}
+      }
+    }
+  }
+  function audioStopBgmLayers () {
+    for (var k in _bgmLayers) {
+      if (!_bgmLayers.hasOwnProperty(k)) continue;
+      var a = _bgmLayers[k];
+      if (!a) continue;
+      try { a.pause(); } catch (e) {}
+      _audioDestroy(a);
+    }
+    _bgmLayers = {};
+  }
   function audioStopBgm () {
     if (_bgm) {
       _bgm.pause();
       if (_isKwai) { try { _bgm.seek(0); } catch (e) {} }
       else { _bgm.currentTime = 0; }
+      _bgm.__rawSrc = null;
     }
+    audioStopBgmLayers();
   }
 
-  function audioPlaySfx (src) {
+  /**
+   * 叠一条循环 BGM（与主 BGM 并行）。volumeScale 相对 bgmVolume，钓鱼双轨用相同 scale。
+   */
+  function audioPlayBgmLayer (key, src, volumeScale) {
+    if (!_audioSettings.bgmEnabled || !key || !src) return;
+    var scale = volumeScale === undefined ? 1 : volumeScale;
+    var existing = _bgmLayers[key];
+    if (existing && existing.__rawSrc === src) {
+      existing.volume = _audioSettings.bgmVolume * scale;
+      try { existing.play(); } catch (e) {}
+      return;
+    }
+    if (existing) {
+      try { existing.pause(); } catch (e) {}
+      _audioDestroy(existing);
+      delete _bgmLayers[key];
+    }
+    var a = _createAudio();
+    a.loop = true;
+    a.__volumeScale = scale;
+    a.volume = _audioSettings.bgmVolume * scale;
+    a.__rawSrc = src;
+    _bgmLayers[key] = a;
+    _resolveSrc(src, function (realSrc) {
+      if (_bgmLayers[key] !== a) return;
+      a.src = realSrc;
+      var onReady = function () {
+        if (_isKwai) {
+          if (a.offCanplay) a.offCanplay(onReady);
+        } else {
+          a.removeEventListener('canplay', onReady);
+        }
+        if (_bgmLayers[key] === a) _tryPlayAudio(a, 'bgmLayer-ready');
+      };
+      if (_isKwai && a.onCanplay) a.onCanplay(onReady);
+      else if (!_isKwai) a.addEventListener('canplay', onReady);
+      _tryPlayAudio(a, 'bgmLayer');
+    });
+  }
+
+  function audioPreloadBgmLayer (key, src, volumeScale) {
+    if (!key || !src) return;
+    var scale = volumeScale === undefined ? 1 : volumeScale;
+    var a = _bgmLayers[key];
+    if (a && a.__rawSrc === src && a.src) {
+      a.__volumeScale = scale;
+      a.volume = _audioSettings.bgmVolume * scale;
+      return;
+    }
+    if (a) {
+      try { a.pause(); } catch (e) {}
+      _audioDestroy(a);
+    }
+    a = _createAudio();
+    a.loop = true;
+    a.__volumeScale = scale;
+    a.volume = _audioSettings.bgmVolume * scale;
+    a.__rawSrc = src;
+    _bgmLayers[key] = a;
+    _resolveSrc(src, function (realSrc) {
+      if (_bgmLayers[key] !== a) return;
+      a.src = realSrc;
+      console.log('[KwaiMedia] bgm layer preloaded', key, src);
+    });
+  }
+
+  function audioPlaySfx (src, volumeScale) {
     if (!_audioSettings.sfxEnabled) return;
+    var scale = volumeScale === undefined || volumeScale === null ? 1 : volumeScale;
     var a = _sfxPool[src];
     if (!a) {
       if (_sfxCount >= _sfxMax) {
         for (var k in _sfxPool) { if (_sfxPool.hasOwnProperty(k)) { _audioDestroy(_sfxPool[k]); delete _sfxPool[k]; _sfxCount--; break; } }
       }
       a = _createSfxAudio();
-      a.volume = _audioSettings.sfxVolume;
       _sfxPool[src] = a;
       _sfxCount++;
+      a.volume = _audioSettings.sfxVolume * scale;
       _resolveSrc(src, function (realSrc) {
         a.src = realSrc;
+        a.volume = _audioSettings.sfxVolume * scale;
         if (_isKwai) { try { a.seek(0); } catch (e) {} }
         else { a.currentTime = 0; }
         a.play();
       });
       return;
     }
+    a.volume = _audioSettings.sfxVolume * scale;
     if (_isKwai) { try { a.seek(0); } catch (e) {} }
     else { a.currentTime = 0; }
     a.play();
   }
 
-  function audioSetBgmVolume (v) { _audioSettings.bgmVolume = v; if (_bgm) _bgm.volume = v; }
-  function audioSetSfxVolume (v) { _audioSettings.sfxVolume = v; for (var k in _sfxPool) { if (_sfxPool.hasOwnProperty(k)) _sfxPool[k].volume = v; } }
+  // 短循环音效（收线 / 烤制等）；与 one-shot 池分离，避免互相挤掉
+  var _loopPool = {};
+
+  function audioPlayLoop (src) {
+    if (!_audioSettings.sfxEnabled || !src) return;
+    var a = _loopPool[src];
+    if (!a) {
+      a = _createSfxAudio();
+      a.loop = true;
+      a.volume = _audioSettings.sfxVolume * 0.7;
+      _loopPool[src] = a;
+      _resolveSrc(src, function (realSrc) {
+        if (_loopPool[src] !== a) return;
+        a.src = realSrc;
+        try { a.play(); } catch (e) { console.error('[KwaiMedia] playLoop 失败:', e); }
+      });
+      return;
+    }
+    try { a.play(); } catch (e) { console.error('[KwaiMedia] playLoop 失败:', e); }
+  }
+
+  function audioStopLoop (src) {
+    var a = _loopPool[src];
+    if (!a) return;
+    try { a.pause(); } catch (e) {}
+    if (_isKwai) { try { a.seek(0); } catch (e2) {} }
+    else { try { a.currentTime = 0; } catch (e3) {} }
+  }
+
+  function audioStopAllLoops () {
+    for (var k in _loopPool) {
+      if (_loopPool.hasOwnProperty(k)) audioStopLoop(k);
+    }
+  }
+
+  function audioSetBgmVolume (v) {
+    _audioSettings.bgmVolume = v;
+    if (_bgm) _bgm.volume = v;
+    for (var k in _bgmLayers) {
+      if (_bgmLayers.hasOwnProperty(k) && _bgmLayers[k]) {
+        var scale = _bgmLayers[k].__volumeScale;
+        _bgmLayers[k].volume = v * (scale === undefined ? 1 : scale);
+      }
+    }
+  }
+  function audioSetSfxVolume (v) {
+    _audioSettings.sfxVolume = v;
+    for (var k in _sfxPool) { if (_sfxPool.hasOwnProperty(k)) _sfxPool[k].volume = v; }
+    for (var lk in _loopPool) { if (_loopPool.hasOwnProperty(lk)) _loopPool[lk].volume = v * 0.7; }
+  }
   function audioSetBgmEnabled (e) { _audioSettings.bgmEnabled = e; e ? audioResumeBgm() : audioPauseBgm(); }
-  function audioSetSfxEnabled (e) { _audioSettings.sfxEnabled = e; }
+  function audioSetSfxEnabled (e) { _audioSettings.sfxEnabled = e; if (!e) audioStopAllLoops(); }
 
   function audioDestroyAll () {
     if (_bgm) { _audioDestroy(_bgm); _bgm = null; }
+    audioStopBgmLayers();
     for (var k in _sfxPool) { if (_sfxPool.hasOwnProperty(k)) _audioDestroy(_sfxPool[k]); }
     _sfxPool = {}; _sfxCount = 0;
+    for (var lk in _loopPool) { if (_loopPool.hasOwnProperty(lk)) _audioDestroy(_loopPool[lk]); }
+    _loopPool = {};
   }
 
   // ==================================================================
@@ -365,7 +559,7 @@
 
   function imageLoad (src) {
     return new Promise(function (resolve, reject) {
-      var img = _isKwai ? ks.createImage() : new Image();
+      var img = _isKwai ? _ksApi.createImage() : new window.Image();
       img.onload = function () { resolve(img); };
       img.onerror = function (err) { reject(err); };
       _resolveSrc(src, function (realSrc) { img.src = realSrc; });
@@ -429,10 +623,17 @@
     },
     Audio: {
       playBgm: audioPlayBgm,
+      preloadBgm: audioPreloadBgm,
+      playBgmLayer: audioPlayBgmLayer,
+      preloadBgmLayer: audioPreloadBgmLayer,
       pauseBgm: audioPauseBgm,
       resumeBgm: audioResumeBgm,
       stopBgm: audioStopBgm,
+      stopBgmLayers: audioStopBgmLayers,
       playSfx: audioPlaySfx,
+      playLoop: audioPlayLoop,
+      stopLoop: audioStopLoop,
+      stopAllLoops: audioStopAllLoops,
       setBgmVolume: audioSetBgmVolume,
       setSfxVolume: audioSetSfxVolume,
       setBgmEnabled: audioSetBgmEnabled,

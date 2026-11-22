@@ -47,6 +47,8 @@
   var AIGCUtils = window.AIGCUtils = window.AIGCUtils || {};
 
   var _isKwai = typeof ks !== 'undefined';
+  // R0013：只打一条剥离样例日志，避免每张图刷屏
+  var _stripQueryLogged = false;
 
   // cdnUrl → 本地下载后的文件路径（快手环境下载缓存，防重复下载）
   var _downloadCache = {};
@@ -71,8 +73,20 @@
   }
 
   /**
+   * 剥掉路径查询串（如 ?v=2）。玩法侧常用 ?v= 破 H5 缓存，但包内真实文件名不含查询串；
+   * CDN 清单与快手本地读盘都必须用净路径，否则真机整层精灵/字帖加载失败（R0013）。
+   * @param {string} path
+   * @returns {string}
+   */
+  function stripQuery(path) {
+    if (!path || typeof path !== 'string') return path;
+    var q = path.indexOf('?');
+    return q >= 0 ? path.slice(0, q) : path;
+  }
+
+  /**
    * 本地相对路径 → 真实加载地址（CDN URL / 下载后本地路径 / 原样本地路径）
-   * @param {string}   localPath  包内相对路径，如 'res/Image/xxx.png'
+   * @param {string}   localPath  包内相对路径，如 'res/Image/xxx.png'（可带 ?v=）
    * @param {Function} callback   function (realSrc) —— 未命中映射或 H5 环境同步触发；
    *                              快手环境命中映射且首次下载时异步触发
    */
@@ -84,13 +98,23 @@
       return;
     }
 
+    var cleanPath = stripQuery(localPath);
     var manifest = window.AIGCResourceManifest || {};
-    var normalized = localPath.replace(/^\.\//, '');
+    var normalized = cleanPath.replace(/^\.\//, '');
     var cdnUrl = manifest[normalized];
 
-    // 未命中映射：开发阶段 / 平台尚未 CDN 化，原样返回本地路径
+    // 未命中映射：开发阶段 / 平台尚未 CDN 化
+    // 快手：必须回净路径（真实文件名无 ?v=）；H5：保留原 path 以便浏览器破缓存
     if (!cdnUrl) {
-      callback(localPath);
+      if (_isKwai) {
+        if (cleanPath !== localPath && !_stripQueryLogged) {
+          _stripQueryLogged = true;
+          console.log('[ResourceLoader] R0013 strip query for Kwai local path (sample)', localPath, '->', cleanPath);
+        }
+        callback(cleanPath);
+      } else {
+        callback(localPath);
+      }
       return;
     }
 
@@ -116,10 +140,10 @@
       delete _downloadPending[cdnUrl];
       for (var i = 0; i < cbs.length; i++) cbs[i](localFilePath);
     }, function (e) {
-      console.error('[ResourceLoader] CDN 资源下载失败，降级使用本地路径', cdnUrl, e);
+      console.error('[ResourceLoader] CDN 资源下载失败，降级使用本地净路径', cdnUrl, e);
       var cbs = _downloadPending[cdnUrl];
       delete _downloadPending[cdnUrl];
-      for (var i = 0; i < cbs.length; i++) cbs[i](localPath);
+      for (var i = 0; i < cbs.length; i++) cbs[i](cleanPath);
     });
   }
 

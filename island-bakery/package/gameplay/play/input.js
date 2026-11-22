@@ -83,17 +83,49 @@
       var collection = AIGCUtils.Collection;
       var baking = AIGCUtils.Baking;
       var R = AIGCUtils.Renderer;
+      // R0037：加载中不响应点击
+      if (R.isBootReady && !R.isBootReady(game.currentArea)) return;
       var W = R.width, H = R.height;
       var hw = Math.round(W / 2);
       var hh = Math.round(H / 2);
       var portrait = R.portrait;
       var navY = H - 72;
+      var Sound = AIGCUtils.SoundManager;
+      if (Sound) {
+        Sound.noteUserGesture();
+        if (game._offlineSettleSoundPending && game.offlineDialog) {
+          game._offlineSettleSoundPending = false;
+          Sound.play("ui.settle_open");
+        }
+      }
+      var uiClick = function () {
+        if (Sound) Sound.play("ui.click");
+      };
 
       // ── 弹窗交互：短框热区与 Renderer.getSettlementLayout 同源 ──
       var hitShort = function (boxes, index) {
         var box = boxes[index];
         return box && inside(x, y, box.x, box.y, box.w, box.h);
       };
+      // R0025：新人引导弹窗最高优先级，避免穿透到地图/其它弹窗
+      var Onboarding = AIGCUtils.Onboarding;
+      if (Onboarding && Onboarding.isDialogOpen()) {
+        var obDialog = Onboarding.dialog;
+        if (obDialog === "end") {
+          uiClick();
+          Onboarding.onEndDismiss();
+          return;
+        }
+        var btn = Onboarding.buttonBox;
+        if (btn && inside(x, y, btn.x, btn.y, btn.w, btn.h)) {
+          uiClick();
+          if (obDialog === "intro") Onboarding.onIntroGoFishing();
+          else if (obDialog === "coconutGuide") Onboarding.onGoCoconutFromGuide(game);
+        } else {
+          console.log("[Onboarding] tap outside guide button, ignore");
+        }
+        return;
+      }
       if (game.goFishingPrompt) {
         var goLayout = R.getSettlementLayout(hw, hh);
         var goBoxes = (R.goFishingShortBoxes && R.goFishingShortBoxes.length === 2)
@@ -101,9 +133,11 @@
           : R.getSettlementShortBoxes(goLayout, 2);
         if (hitShort(goBoxes, 0)) {
           console.log("[厨房缺鱼] 命中左短框 去钓鱼", goBoxes[0].x, goBoxes[0].y, goBoxes[0].w, goBoxes[0].h);
+          uiClick();
           game.confirmGoFishing();
         } else if (hitShort(goBoxes, 1)) {
           console.log("[厨房缺鱼] 命中右短框 暂时不去", goBoxes[1].x, goBoxes[1].y, goBoxes[1].w, goBoxes[1].h);
+          uiClick();
           game.closeGoFishingPrompt();
         } else {
           console.log("[厨房缺鱼] 点在框外 不关闭");
@@ -112,28 +146,43 @@
       }
       if (game.mapLockedPrompt) {
         console.log("[MapLocked] dismiss by tap", x, y);
+        uiClick();
         game.closeMapLockedPrompt();
         return;
       }
       if (game.offlinePrompt) {
+        // R0039：壳图未齐不响应（与 draw 门闸一致）
+        if (R.isSettlementShellReady && !R.isSettlementShellReady()) return;
         var offLayout = R.getSettlementLayout(hw, hh);
         var offBoxes = R.getSettlementShortBoxes(offLayout, 2);
         if (hitShort(offBoxes, 0)) {
           console.log("[Settlement] hit offline unlock", offBoxes[0]);
+          uiClick();
           game.unlockOffline();
         }
-        if (hitShort(offBoxes, 1)) game.closeOfflinePrompt();
+        if (hitShort(offBoxes, 1)) {
+          uiClick();
+          game.closeOfflinePrompt();
+        }
         return;
       }
       if (game.offlineDialog) {
+        if (R.isSettlementShellReady && !R.isSettlementShellReady()) return;
         var claimLayout = R.getSettlementLayout(hw, hh);
         var claimBoxes = R.getSettlementShortBoxes(claimLayout, 3);
         if (hitShort(claimBoxes, 0)) {
           console.log("[Settlement] hit offline claim", claimBoxes[0]);
+          uiClick();
           game.claimOffline(false);
         }
-        if (hitShort(claimBoxes, 1)) game.claimOffline(true);
-        if (hitShort(claimBoxes, 2)) game.closeOfflineDialog();
+        if (hitShort(claimBoxes, 1)) {
+          uiClick();
+          game.claimOffline(true);
+        }
+        if (hitShort(claimBoxes, 2)) {
+          uiClick();
+          game.closeOfflineDialog();
+        }
         return;
       }
       if (game.building) {
@@ -151,72 +200,111 @@
           energyLayout,
           energy.remainingAds === 0 ? 1 : 2
         );
-        if (energy.remainingAds !== 0 && hitShort(energyBoxes, 0)) game.restoreEnergyByAd();
+        if (energy.remainingAds !== 0 && hitShort(energyBoxes, 0)) {
+          uiClick();
+          game.restoreEnergyByAd();
+        }
         if (
           (energy.remainingAds === 0 && hitShort(energyBoxes, 0)) ||
           (energy.remainingAds !== 0 && hitShort(energyBoxes, 1))
         ) {
+          uiClick();
           game.closeEnergyPrompt();
         }
         return;
       }
       if (collection.phase === "fishResult") {
+        // R0025：旧「三条鱼」提示仅引导完成后；新引导走收进鱼篓 → 椰林弹窗
+        var legacyDone = !Onboarding || Onboarding.shouldShowLegacyThreeFishGuide();
         var showGuide =
+          legacyDone &&
           AIGCUtils.GameState.fishCaught >= 3 &&
           !AIGCUtils.GameState.tasks.coconut &&
           !AIGCUtils.GameState.shopBuilt;
         var fishLayout = R.getSettlementLayout(hw, hh, "fish");
         var fishBoxes = R.getSettlementShortBoxes(fishLayout, showGuide ? 2 : 1);
         if (showGuide && hitShort(fishBoxes, 0)) {
+          uiClick();
           collection.acknowledgeFish();
           game.navigate("map");
         } else if (showGuide && hitShort(fishBoxes, 1)) {
+          uiClick();
           collection.acknowledgeFish();
         } else if (!showGuide && hitShort(fishBoxes, 0)) {
+          uiClick();
           collection.acknowledgeFish();
+          if (Onboarding) Onboarding.onFishAcknowledged();
         }
         return;
       }
       if (game.currentArea === "fishing" && collection.phase === "fishEscaped") {
         var escapeLayout = R.getSettlementLayout(hw, hh, "fish");
         var escapeBoxes = R.getSettlementShortBoxes(escapeLayout, 2);
-        if (hitShort(escapeBoxes, 0)) collection.reviveFish();
-        if (hitShort(escapeBoxes, 1)) collection.leaveFishing();
+        if (hitShort(escapeBoxes, 0)) {
+          uiClick();
+          collection.reviveFish();
+        }
+        if (hitShort(escapeBoxes, 1)) {
+          uiClick();
+          collection.leaveFishing();
+        }
         return;
       }
       if (collection.phase === "coconutSummary" && game.currentArea === "coconut") {
         var settleLayout = R.getSettlementLayout(hw, hh);
         var cocoBoxes;
+        var onboardActive = Onboarding && Onboarding.isActive();
         if (AIGCUtils.GameState.shopBuilt) {
           cocoBoxes = R.getSettlementShortBoxes(settleLayout, 2);
           if (hitShort(cocoBoxes, 0)) {
             console.log("[CoconutSummary] hit continue harvest", cocoBoxes[0]);
+            uiClick();
             collection.startCoconutRound(1);
           }
           if (hitShort(cocoBoxes, 1)) {
             console.log("[CoconutSummary] hit go map", cocoBoxes[1]);
+            uiClick();
             game.navigate("map");
           }
         } else if (AIGCUtils.GameState.tasks.coconut) {
           cocoBoxes = R.getSettlementShortBoxes(settleLayout, 2);
-          if (hitShort(cocoBoxes, 0)) {
-            console.log("[CoconutSummary] hit begin build", cocoBoxes[0]);
-            game.beginBuild();
-          }
-          if (hitShort(cocoBoxes, 1)) {
-            console.log("[CoconutSummary] hit another round", cocoBoxes[1]);
-            collection.startCoconutRound(1);
+          if (onboardActive) {
+            // R0025：去烤鱼店 / 留在椰子林
+            if (hitShort(cocoBoxes, 0)) {
+              console.log("[CoconutSummary] hit go shop (onboarding)", cocoBoxes[0]);
+              uiClick();
+              Onboarding.onGoShopFromCoconut(game);
+            }
+            if (hitShort(cocoBoxes, 1)) {
+              console.log("[CoconutSummary] hit stay coconut", cocoBoxes[1]);
+              uiClick();
+              Onboarding.onStayInCoconut();
+              collection.startCoconutRound(1);
+            }
+          } else {
+            if (hitShort(cocoBoxes, 0)) {
+              console.log("[CoconutSummary] hit begin build", cocoBoxes[0]);
+              uiClick();
+              game.beginBuild();
+            }
+            if (hitShort(cocoBoxes, 1)) {
+              console.log("[CoconutSummary] hit another round", cocoBoxes[1]);
+              uiClick();
+              collection.startCoconutRound(1);
+            }
           }
         } else {
           cocoBoxes = R.getSettlementShortBoxes(settleLayout, 1);
           if (hitShort(cocoBoxes, 0)) {
             console.log("[CoconutSummary] hit retry", cocoBoxes[0]);
+            uiClick();
             collection.startCoconutRound(1);
           }
         }
         return;
       }
       if (game.showInventory) {
+        uiClick();
         game.showInventory = false;
         return;
       }
@@ -226,8 +314,14 @@
           collection.fishingDrawerOpen = false;
           console.log("[Prototype] Fishing gear drawer closed outside");
         }
-        if (inside(x, y, 20, navY + 8, 130, 48)) game.navigate("map");
-        if (inside(x, y, 170, navY + 8, 130, 48)) game.showInventory = true;
+        if (inside(x, y, 20, navY + 8, 130, 48)) {
+          uiClick();
+          game.navigate("map");
+        }
+        if (inside(x, y, 170, navY + 8, 130, 48)) {
+          uiClick();
+          game.showInventory = true;
+        }
         return;
       }
       // ── 地图 ──
@@ -235,13 +329,35 @@
         var mapHit = portrait
           ? AIGCUtils.MapZones.hitPortrait(x, y, W, H, AIGCUtils.GameState)
           : AIGCUtils.MapZones.hitLandscape(x, y, AIGCUtils.GameState);
-        if (mapHit === "offline") { game.showOfflineEntry(); return; }
-        if (mapHit === "fishing") game.navigate("fishing");
-        if (mapHit === "coconut") game.navigate("coconut");
-        if (mapHit === "shop") game.navigate("shop");
-        if (mapHit === "locked") {
-          console.log("[MapLocked] hit locked zone", x, y);
-          game.showMapLockedPrompt();
+        if (mapHit === "offline") {
+          uiClick();
+          game.showOfflineEntry();
+          return;
+        }
+        if (mapHit === "fishing") {
+          uiClick();
+          if (Onboarding) Onboarding.onEnterFishingFromMap();
+          game.navigate("fishing");
+        }
+        if (mapHit === "coconut") {
+          uiClick();
+          if (Onboarding) Onboarding.onEnterCoconutFromMap();
+          game.navigate("coconut");
+        }
+        if (mapHit === "shop") {
+          uiClick();
+          // R0025：教程解锁未建店 → 直接搭建；已建店走导航
+          if (Onboarding && Onboarding.isShopClickableUnbuilt()) {
+            Onboarding.onShopMapClick(game);
+          } else {
+            game.navigate("shop");
+          }
+        }
+        var lockedZone = AIGCUtils.MapZones.parseLockedZone(mapHit);
+        if (lockedZone) {
+          console.log("[MapLocked] hit locked zone", lockedZone, x, y);
+          uiClick();
+          game.showMapLockedPrompt(lockedZone);
         }
         return;
       }
@@ -329,14 +445,15 @@
                 return;
               }
             }
+            // R0039：与 Renderer 横屏主钮同锚 (520,405,240,50)
             if (inside(x, y, 520, 405, 240, 50)) collection.startCharge();
             return;
           }
           if (collection.phase === "waiting" || collection.phase === "bite") {
-            if (inside(x, y, 360, 405, 240, 50)) collection.strike();
+            if (inside(x, y, 520, 405, 240, 50)) collection.strike();
             return;
           }
-          if (collection.phase === "reeling" && inside(x, y, 330, 395, 300, 65)) collection.setReelHeld(true);
+          if (collection.phase === "reeling" && inside(x, y, 520, 405, 240, 50)) collection.setReelHeld(true);
         }
         return;
       }
@@ -362,12 +479,18 @@
           var kitchenH3 = Math.round(ch3 * 0.38);
           var kitchenW3 = Math.round(W * 2 / 3);
           var portBoard = AIGCUtils.ShopLayout && AIGCUtils.ShopLayout.port;
-          // 中层圆木板：只做椰汁，绝不交付顾客（须先于顾客热区判定）
+          // 中层椰汁台：青椰堆～圆木板～榨汁器整条热区（与验收红框一致）
           if (portBoard && portBoard.work) {
             var workPt = R.shopPoint(portBoard.work);
-            var workHit = Math.round(W * 0.22);
-            if (inside(x, y, workPt.x - workHit / 2, workPt.y - workHit / 2, workHit, workHit)) {
-              console.log("[ShopHit] port work juice", Math.round(x), Math.round(y), "recipe", baking.current ? baking.current.recipeId : "none");
+            var juicerPt = portBoard.juicer ? R.shopPoint(portBoard.juicer) : workPt;
+            var juiceLeft = Math.round(W * 0.04);
+            var juiceRight = Math.round(W * 0.96);
+            var juiceTop = Math.round(Math.min(workPt.y, juicerPt.y) - H * 0.07);
+            var juiceBottom = Math.round(Math.max(workPt.y, juicerPt.y) + H * 0.08);
+            var juiceW = juiceRight - juiceLeft;
+            var juiceH = Math.max(Math.round(H * 0.12), juiceBottom - juiceTop);
+            if (inside(x, y, juiceLeft, juiceTop, juiceW, juiceH)) {
+              console.log("[ShopHit] port work juice", Math.round(x), Math.round(y), "box", juiceLeft, juiceTop, juiceW, juiceH);
               if (baking.current && baking.current.recipeId === "coconut_juice") { baking.hit(); return; }
               if (!baking.current) { game.startRecipe("coconut_juice"); return; }
               return;
@@ -401,12 +524,45 @@
         } else {
           if (inside(x, y, 630, 95, 300, 140)) { game.sellCustomer(0); return; }
           if (inside(x, y, 630, 250, 300, 140)) { game.sellCustomer(1); return; }
+          // 横屏椰汁台：青椰堆～work～榨汁器一带（扩大原 115 方块）
+          var landBoard = AIGCUtils.ShopLayout && AIGCUtils.ShopLayout.land;
+          if (landBoard && landBoard.work) {
+            var lw = R.shopPoint(landBoard.work);
+            var lj = landBoard.juicer ? R.shopPoint(landBoard.juicer) : lw;
+            var jLeft = Math.round(Math.min(lw.x, lj.x) - 90);
+            var jRight = Math.round(Math.max(lw.x, lj.x) + 100);
+            var jTop = Math.round(Math.min(lw.y, lj.y) - 100);
+            var jBottom = Math.round(Math.max(lw.y, lj.y) + 50);
+            var jW = Math.max(200, jRight - jLeft);
+            var jH = Math.max(140, jBottom - jTop);
+            if (inside(x, y, jLeft, jTop, jW, jH)) {
+              console.log("[ShopHit] land work juice", Math.round(x), Math.round(y), "box", jLeft, jTop, jW, jH);
+              if (baking.current && baking.current.recipeId === "coconut_juice") { baking.hit(); return; }
+              if (!baking.current) { game.startRecipe("coconut_juice"); return; }
+              return;
+            }
+          }
           if (baking.current && inside(x, y, 45, 120, 550, 265)) { baking.hit(); return; }
           if (!baking.current) {
-            if (inside(x, y, 495, 175, 115, 115)) { game.startRecipe("coconut_juice"); return; }
-            for (var j = 0; j < AIGCUtils.FishSpecies.length; j++) {
-              if (inside(x, y, 20 + j * 150, 402, 135, 54)) {
-                game.startRecipe("fish_grilled", { speciesId: AIGCUtils.FishSpecies[j].id }); return;
+            // R0045：与桌面带竖排 tray 格 0–3 热区一致（物体上+木牌下）
+            var tray = (R.landShopTrayMetrics && R.landShopTrayMetrics()) || null;
+            var cells = tray && tray.cells;
+            if (cells && cells.length >= 4) {
+              for (var j = 0; j < 4; j++) {
+                var cell = cells[j];
+                var hitY = cell.hitY != null ? cell.hitY : cell.plaqueY;
+                var hitH = cell.hitH != null ? cell.hitH : cell.plaqueH;
+                if (inside(x, y, cell.hitX, hitY, cell.hitW, hitH)) {
+                  console.log("[ShopHit] R0045 land tray cell", j, Math.round(x), Math.round(y), "hit", cell.hitX, hitY, cell.hitW, hitH);
+                  game.startRecipe("fish_grilled", { speciesId: AIGCUtils.FishSpecies[j].id }); return;
+                }
+              }
+            } else {
+              var fishBar = (R.landFishBarMetrics && R.landFishBarMetrics()) || { start: 20, step: 186, hitW: 139 };
+              for (var j2 = 0; j2 < AIGCUtils.FishSpecies.length; j2++) {
+                if (inside(x, y, fishBar.start + j2 * fishBar.step, 402, fishBar.hitW, 54)) {
+                  game.startRecipe("fish_grilled", { speciesId: AIGCUtils.FishSpecies[j2].id }); return;
+                }
               }
             }
           }

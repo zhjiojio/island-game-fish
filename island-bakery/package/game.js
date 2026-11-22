@@ -69,6 +69,8 @@ require("./kwaiOpenApi/kwai-base.js"); // 生命周期
 require("./gameplay/data/recipes.js");
 require("./gameplay/data/map-zones.js");
 require("./gameplay/data/asset-sprites.js");
+require("./gameplay/data/shop-layout.js");
+require("./gameplay/data/shop-anims.js");
 require("./gameplay/data/upgrades.js");
 // 游戏核心
 require("./gameplay/core/game-state.js");
@@ -76,6 +78,7 @@ require("./gameplay/core/energy.js");
 require("./gameplay/core/day-cycle.js");
 require("./gameplay/core/ad-manager.js");
 require("./gameplay/core/tutorial.js");
+require("./gameplay/core/onboarding.js");
 require("./gameplay/core/share-manager.js");
 require("./gameplay/core/offline-manager.js");
 require("./gameplay/core/achievement.js");
@@ -90,6 +93,7 @@ require("./gameplay/play/vip-system.js");
 require("./gameplay/play/input.js");
 // 游戏渲染
 require("./gameplay/render/font-atlas.js");
+require("./gameplay/render/anim-driver.js");
 require("./gameplay/render/renderer.js");
 require("./gameplay/render/particle-system.js");
 require("./gameplay/render/ui-manager.js");
